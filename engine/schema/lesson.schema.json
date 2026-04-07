@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mr Friess Classroom Engine Lesson Packet",
+  "type": "object",
+  "required": ["lesson_id", "subject", "grade", "topic", "time_minutes", "learning_goals", "slides", "worksheets"],
+  "properties": {
+    "lesson_id": {"type": "string"},
+    "subject": {"type": "string"},
+    "grade": {"type": "integer"},
+    "topic": {"type": "string"},
+    "lesson_label": {"type": ["string", "null"]},
+    "theme": {"type": "string"},
+    "big_idea": {"type": "string"},
+    "time_minutes": {"type": "integer"},
+    "class_context": {"type": "object"},
+    "learning_goals": {"type": "array", "items": {"type": "string"}},
+    "slides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "title", "layout", "content"],
+        "properties": {
+          "type": {"type": "string"},
+          "title": {"type": "string"},
+          "layout": {"type": "string"},
+          "content": {"type": "object"}
+        }
+      }
+    },
+    "worksheets": {
+      "type": "object",
+      "required": ["supported", "proficient", "extending"],
+      "properties": {
+        "supported": {"$ref": "#/$defs/worksheetTier"},
+        "proficient": {"$ref": "#/$defs/worksheetTier"},
+        "extending": {"$ref": "#/$defs/worksheetTier"}
+      }
+    },
+    "rubrics": {"type": "array"},
+    "teacher_extension": {"type": "object"},
+    "lesson_plan": {"type": "object"}
+  },
+  "$defs": {
+    "question": {
+      "type": "object",
+      "required": ["q_num", "q_text"],
+      "properties": {
+        "q_num": {"type": "integer"},
+        "q_text": {"type": "string"},
+        "n_lines": {"type": "integer"},
+        "slide_ref": {"type": "string"}
+      }
+    },
+    "worksheetTier": {
+      "type": "object",
+      "required": ["questions"],
+      "properties": {
+        "anchor": {"type": "array", "items": {"type": "string"}},
+        "tip": {"type": "string"},
+        "questions": {"type": "array", "items": {"$ref": "#/$defs/question"}},
+        "self_check": {"type": "array", "items": {"type": "string"}},
+        "answer_key": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}
