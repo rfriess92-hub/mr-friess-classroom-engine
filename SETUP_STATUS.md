@@ -1,6 +1,6 @@
 # Setup status
 
-## Loaded into repo
+## Loaded into repo / starter pack
 
 - `engine/content/science9_interconnected_spheres.json`
 - `engine/content/careers8_goal_setting.json`

@@ -5,6 +5,9 @@
   "scripts": {
     "doctor": "node scripts/doctor.mjs",
     "build:all": "node scripts/build-all.mjs",
+    "build:pptx": "node scripts/build-pptx.mjs",
+    "build:pdf": "node scripts/build-pdf.mjs",
     "schema:check": "node scripts/schema-check.mjs",
     "qa:render": "node scripts/qa-render.mjs"
   }
+}
