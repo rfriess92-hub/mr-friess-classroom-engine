@@ -1,0 +1,721 @@
+{
+  "lesson_id": "careers8_goal_setting",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Goal Setting",
+  "lesson_label": null,
+  "theme": "careers",
+  "big_idea": "Reflecting on our preferences and skills helps us identify the steps we need to take to achieve our career goals.",
+  "time_minutes": 79,
+  "class_context": {
+    "chromebooks": true,
+    "opener": "Contexto",
+    "mixed_ability": true
+  },
+  "learning_goals": [
+    "I can identify what makes a goal stronger or weaker.",
+    "I can improve a vague goal by making it clearer and more realistic.",
+    "I can create one goal with a practical next-step plan."
+  ],
+  "slides": [
+    {
+      "type": "TITLE",
+      "title": "Goal Setting",
+      "layout": "hero",
+      "content": {
+        "grade": 8,
+        "subject": "Careers",
+        "lesson_label": null,
+        "subtitle": "What makes a goal useful instead of just sounding good?",
+        "bottom_stripe": "16A34A"
+      }
+    },
+    {
+      "type": "ENGAGE",
+      "title": "Which goal is stronger?",
+      "layout": "stat_discussion",
+      "content": {
+        "stat_width": 2.4,
+        "scenario_lines": [
+          {
+            "text": "Goal A: Do better in school.",
+            "bold": true,
+            "size": 18
+          },
+          {
+            "text": "Goal B: Bring missing assignments up to date this week by finishing one after school each day.",
+            "bold": false,
+            "size": 13,
+            "color": "6B7280"
+          },
+          {
+            "text": "Which goal would actually help someone move forward?",
+            "bold": true,
+            "size": 15,
+            "color": "2563EB"
+          }
+        ],
+        "tint": "EFF6FF",
+        "prompt_title": "Turn and talk:",
+        "prompts": [
+          "Which goal is stronger?",
+          "What makes it stronger?",
+          "What still might get in the way?"
+        ],
+        "item_size": 14
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "A goal is not a wish",
+      "layout": "three_rows",
+      "q_ref": 1,
+      "content": {
+        "rows": [
+          {
+            "badge": "1",
+            "accent": "2563EB",
+            "head": "A wish",
+            "body": "Something you hope for."
+          },
+          {
+            "badge": "2",
+            "accent": "D97706",
+            "head": "A goal",
+            "body": "Something you are working toward."
+          },
+          {
+            "badge": "3",
+            "accent": "16A34A",
+            "head": "A plan",
+            "body": "The actions that help you move toward the goal."
+          }
+        ]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "What makes a goal useful?",
+      "layout": "two_column",
+      "q_ref": 1,
+      "content": {
+        "columns": [
+          {
+            "title": "Stronger goals include",
+            "accent": "2563EB",
+            "tint": "EFF6FF",
+            "items": [
+              "a clear target",
+              "realistic scope",
+              "a reason it matters"
+            ]
+          },
+          {
+            "title": "Plans also include",
+            "accent": "D97706",
+            "tint": "FFF7ED",
+            "items": [
+              "one first action step",
+              "a likely obstacle",
+              "a support or adjustment"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "DO",
+      "title": "Fix the weak goal",
+      "layout": "numbered_steps",
+      "q_ref": 2,
+      "content": {
+        "steps": [
+          "Start with the weak goal: Get healthier.",
+          "Add a clearer target.",
+          "Make the scope realistic for right now.",
+          "Add one first step you could actually do."
+        ]
+      }
+    },
+    {
+      "type": "MAKE_SENSE",
+      "title": "What gets in the way?",
+      "layout": "two_column",
+      "q_ref": 2,
+      "content": {
+        "columns": [
+          {
+            "title": "Common obstacles",
+            "accent": "D97706",
+            "tint": "FFF7ED",
+            "items": [
+              "forgetting",
+              "running out of time",
+              "distractions",
+              "no routine"
+            ]
+          },
+          {
+            "title": "Better response",
+            "accent": "16A34A",
+            "tint": "DCFCE7",
+            "items": [
+              {
+                "bold": "Do not conclude:",
+                "rest": " the goal is bad"
+              },
+              {
+                "bold": "Instead ask:",
+                "rest": " what support or adjustment would help?"
+              },
+              "Obstacles are normal planning problems."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "MAKE_SENSE",
+      "title": "Supports and next steps",
+      "layout": "three_rows",
+      "q_ref": 3,
+      "content": {
+        "rows": [
+          {
+            "accent": "2563EB",
+            "head": "Goal",
+            "body": "What are you working toward?"
+          },
+          {
+            "accent": "D97706",
+            "head": "First step",
+            "body": "What can you do next, not someday?"
+          },
+          {
+            "accent": "16A34A",
+            "head": "Obstacle + support",
+            "body": "What might get in the way, and how will you respond?"
+          }
+        ]
+      }
+    },
+    {
+      "type": "APPLY",
+      "title": "Write your goal plan",
+      "layout": "single_card",
+      "q_ref": 4,
+      "content": {
+        "card_height": 2.2,
+        "bar_color": "2563EB",
+        "font_size": 19,
+        "lines": [
+          {
+            "text": "Choose one goal you could actually work on.",
+            "bold": true
+          },
+          {
+            "text": "Include: your goal, why it matters, one first step, one likely obstacle, and one support or adjustment.",
+            "bold": false
+          }
+        ],
+        "instruction": "Choose a school, activity, savings, habit, or personal-growth goal you are okay working on in class."
+      }
+    },
+    {
+      "type": "SUMMARY",
+      "title": "What makes goals useful?",
+      "layout": "summary_rows",
+      "content": {
+        "rows": [
+          {
+            "accent": "2563EB",
+            "bold": "A goal is stronger when...",
+            "text": "it is clear enough to act on."
+          },
+          {
+            "accent": "D97706",
+            "bold": "A plan gets stronger when...",
+            "text": "it includes a first step and an obstacle response."
+          },
+          {
+            "accent": "16A34A",
+            "bold": "Revision matters because...",
+            "text": "adjusting a plan is part of goal setting, not failure."
+          }
+        ]
+      }
+    },
+    {
+      "type": "REFLECT",
+      "title": "Reflect",
+      "layout": "reflect",
+      "content": {
+        "goals": [
+          "I can identify what makes a goal stronger or weaker.",
+          "I can improve a vague goal by making it clearer and more realistic.",
+          "I can create one goal with a practical next-step plan."
+        ]
+      }
+    }
+  ],
+  "worksheets": {
+    "supported": {
+      "anchor": [
+        "A strong goal is more than something you want. It helps you know what to do next.",
+        "",
+        "In this lesson, you will compare weak and strong goals, improve a vague goal, and make a simple plan you could really use.",
+        "",
+        "Helpful reminders:",
+        "clear target",
+        "realistic scope",
+        "first step",
+        "obstacle",
+        "support"
+      ],
+      "tip": "If your goal is too vague, ask: What could I actually do this week?",
+      "questions": [
+        {
+          "q_num": 1,
+          "q_text": "Circle the stronger goal and explain why: (A) Do better in school. (B) Bring missing assignments up to date this week by finishing one after school each day.",
+          "n_lines": 3,
+          "slide_ref": "S4"
+        },
+        {
+          "q_num": 2,
+          "q_text": "Finish the checklist: A stronger goal has a clear ______, realistic ______, one first ______, and a plan for an obstacle or ______.",
+          "n_lines": 3,
+          "slide_ref": "S5"
+        },
+        {
+          "q_num": 3,
+          "q_text": "Make this weak goal stronger: Save money. Add how much, by when, and one first step.",
+          "n_lines": 4,
+          "slide_ref": "S7"
+        },
+        {
+          "q_num": 4,
+          "q_text": "Write one goal you could actually work on. Include why it matters, one obstacle, and one support or adjustment.",
+          "n_lines": 4,
+          "slide_ref": "S8"
+        }
+      ],
+      "game": {
+        "title": "Extra-time goal fixer",
+        "lines": [
+          "Use only after Q1–Q4 are finished.",
+          "1. Start with a weak goal: Get more organized.",
+          "2. Add a clearer target.",
+          "3. Add one first step.",
+          "4. Add one obstacle and one support."
+        ]
+      },
+      "self_check": [
+        {
+          "q_num": 1,
+          "headline": "Did you choose the stronger goal for a practical reason?",
+          "hints": [
+            "clearer",
+            "more usable"
+          ]
+        },
+        {
+          "q_num": 2,
+          "headline": "Did you include the missing parts of a stronger goal?",
+          "hints": [
+            "target",
+            "first step",
+            "support"
+          ]
+        },
+        {
+          "q_num": 3,
+          "headline": "Did you make the weak goal more specific?",
+          "hints": [
+            "how much",
+            "by when"
+          ]
+        },
+        {
+          "q_num": 4,
+          "headline": "Does your personal goal plan show what you can do next?",
+          "hints": [
+            "first step",
+            "obstacle response"
+          ]
+        }
+      ],
+      "answer_key": [
+        {
+          "q_num": 1,
+          "criterion": "Student identifies Goal B as stronger and gives a practical reason.",
+          "notes": [
+            "Look for clearer target, time frame, or action step.",
+            "A one-sentence explanation is enough."
+          ]
+        },
+        {
+          "q_num": 2,
+          "criterion": "Student completes the missing checklist ideas accurately enough.",
+          "notes": [
+            "target, scope, step, support are expected",
+            "Accept close synonyms if the meaning fits."
+          ]
+        },
+        {
+          "q_num": 3,
+          "criterion": "Student revises the weak goal into a more usable version.",
+          "notes": [
+            "Look for amount/target, time frame, and first step.",
+            "It should remain realistic."
+          ]
+        },
+        {
+          "q_num": 4,
+          "criterion": "Student includes a goal, reason, first step, obstacle, and support or adjustment.",
+          "notes": [
+            "The goal should be workable, not just motivational.",
+            "Privacy level can vary."
+          ]
+        }
+      ]
+    },
+    "proficient": {
+      "anchor": [
+        "Useful goals are clear enough to guide action. They do not rely on motivation alone.",
+        "",
+        "A stronger goal usually includes a clear target, realistic scope, a reason it matters, one first step, and a plan for a likely obstacle.",
+        "",
+        "In this lesson, you will compare goals, revise weak examples, and create a practical goal plan of your own."
+      ],
+      "tip": null,
+      "questions": [
+        {
+          "q_num": 1,
+          "q_text": "Compare Goal A and Goal B from class. Which goal is more useful, and why?",
+          "n_lines": 3,
+          "slide_ref": "S3"
+        },
+        {
+          "q_num": 2,
+          "q_text": "List five things that make a goal stronger or more usable.",
+          "n_lines": 3,
+          "slide_ref": "S5"
+        },
+        {
+          "q_num": 3,
+          "q_text": "Rewrite each weak goal so it becomes more usable: (a) Get healthier. (b) Save money.",
+          "n_lines": 4,
+          "slide_ref": "S6"
+        },
+        {
+          "q_num": 4,
+          "q_text": "Create one realistic goal with a reason, one first step, one likely obstacle, and one support or adjustment. Explain why your version is stronger than a wish.",
+          "n_lines": 4,
+          "slide_ref": "S8"
+        }
+      ],
+      "game": {
+        "title": "Goal revision challenge",
+        "lines": [
+          "Use only after Q1–Q4 are finished.",
+          "1. Pick a weak goal from class.",
+          "2. Improve the target and time frame.",
+          "3. Add one obstacle.",
+          "4. Add one realistic support."
+        ]
+      },
+      "self_check": [
+        {
+          "q_num": 1,
+          "headline": "Did you explain what made the stronger goal more usable?",
+          "hints": [
+            "clarity",
+            "action",
+            "realism"
+          ]
+        },
+        {
+          "q_num": 2,
+          "headline": "Did your checklist include both goal and planning features?",
+          "hints": [
+            "first step",
+            "obstacle/support"
+          ]
+        },
+        {
+          "q_num": 3,
+          "headline": "Did your revised goals become more specific and realistic?",
+          "hints": [
+            "not just longer",
+            "more actionable"
+          ]
+        },
+        {
+          "q_num": 4,
+          "headline": "Does your goal plan show what you can do next and how you will respond to a barrier?",
+          "hints": [
+            "usable",
+            "not vague"
+          ]
+        }
+      ],
+      "answer_key": [
+        {
+          "q_num": 1,
+          "criterion": "Student identifies the more useful goal and explains why.",
+          "notes": [
+            "Goal B is stronger.",
+            "Look for clarity, realism, and/or action step reasoning."
+          ]
+        },
+        {
+          "q_num": 2,
+          "criterion": "Student lists the main features of a strong goal.",
+          "notes": [
+            "clear target",
+            "realistic scope",
+            "reason it matters",
+            "first step",
+            "obstacle/support"
+          ]
+        },
+        {
+          "q_num": 3,
+          "criterion": "Student revises both weak goals into more actionable versions.",
+          "notes": [
+            "Revisions should show more than added wording.",
+            "They should make the goal more usable."
+          ]
+        },
+        {
+          "q_num": 4,
+          "criterion": "Student builds a realistic plan and explains why it is stronger than a wish.",
+          "notes": [
+            "Look for a real first step and an obstacle response.",
+            "This question supports rubric use."
+          ]
+        }
+      ]
+    },
+    "extending": {
+      "anchor": [
+        "Reflecting on our preferences and skills helps us identify the steps we need to take to achieve our career goals.",
+        "",
+        "Goal setting is not only about deciding what you want. It is about designing a plan that can survive reality: time limits, setbacks, distractions, and revision.",
+        "",
+        "In this lesson, evaluate what makes a goal useful, revise weak goals, and defend a practical plan using the Career Education Big Idea."
+      ],
+      "tip": null,
+      "questions": [
+        {
+          "q_num": 1,
+          "q_text": "Explain why a strong goal is more useful than a vague wish. Use one example.",
+          "n_lines": 4,
+          "slide_ref": "S4"
+        },
+        {
+          "q_num": 2,
+          "q_text": "Rewrite Get healthier and Save money into stronger goals. Then explain what improved in each one.",
+          "n_lines": 4,
+          "slide_ref": "S6"
+        },
+        {
+          "q_num": 3,
+          "q_text": "Choose one revised goal and explain one realistic obstacle, one support, and how you would revise the plan after a setback.",
+          "n_lines": 4,
+          "slide_ref": "S7"
+        },
+        {
+          "q_num": 4,
+          "q_text": "Using the Big Idea wording, argue why reflecting on preferences and skills should lead to concrete steps rather than only big intentions.",
+          "n_lines": 4,
+          "slide_ref": "S8"
+        }
+      ],
+      "game": null,
+      "self_check": [
+        {
+          "q_num": 1,
+          "headline": "Did you explain the difference between usefulness and inspiration?",
+          "hints": [
+            "action matters",
+            "clarity matters"
+          ]
+        },
+        {
+          "q_num": 2,
+          "headline": "Did you say what improved in each revised goal?",
+          "hints": [
+            "target",
+            "time frame",
+            "first step"
+          ]
+        },
+        {
+          "q_num": 3,
+          "headline": "Does your obstacle/support response sound realistic?",
+          "hints": [
+            "real barrier",
+            "real revision"
+          ]
+        },
+        {
+          "q_num": 4,
+          "headline": "Did you use the Big Idea meaningfully in your argument?",
+          "hints": [
+            "reflecting",
+            "steps",
+            "career goals"
+          ]
+        }
+      ],
+      "answer_key": [
+        {
+          "q_num": 1,
+          "criterion": "Student explains that a strong goal is more useful because it guides action.",
+          "notes": [
+            "A simple example should support the explanation.",
+            "The answer should contrast vague wanting with practical planning."
+          ]
+        },
+        {
+          "q_num": 2,
+          "criterion": "Student revises both goals effectively and explains what improved.",
+          "notes": [
+            "Look for stronger specificity and realism.",
+            "The explanation should identify the actual improvement."
+          ]
+        },
+        {
+          "q_num": 3,
+          "criterion": "Student explains one realistic barrier, one support, and one revision-after-setback move.",
+          "notes": [
+            "The plan should sound workable.",
+            "This question shows planning depth."
+          ]
+        },
+        {
+          "q_num": 4,
+          "criterion": "Student uses the Big Idea wording to argue that reflection should lead to concrete steps.",
+          "notes": [
+            "This is an argument, not just a summary.",
+            "Look for connection between preferences/skills and action."
+          ]
+        }
+      ]
+    }
+  },
+  "rubrics": [
+    {
+      "tier": "proficient",
+      "title": "Q4 — Goal plan",
+      "question": "Create one realistic goal with a reason, one first step, one likely obstacle, and one support or adjustment. Explain why your version is stronger than a wish.",
+      "criteria": [
+        {
+          "criterion": "Quality of goal plan",
+          "emerging": "Goal is present but vague or missing major planning parts.",
+          "developing": "Goal is somewhat usable but planning details are uneven or incomplete.",
+          "proficient": "Goal is realistic and includes clear planning details, including a first step and obstacle response.",
+          "extending": "Goal plan is precise, realistic, and shows strong practical thinking throughout."
+        },
+        {
+          "criterion": "Explanation of usefulness",
+          "emerging": "Explains weakly or mostly repeats the question.",
+          "developing": "Gives some explanation of why the goal is stronger than a wish.",
+          "proficient": "Clearly explains why the plan is more usable than a vague wish.",
+          "extending": "Gives a strong, convincing explanation that connects action, realism, and follow-through."
+        }
+      ]
+    },
+    {
+      "tier": "extending",
+      "title": "Q4 — Big Idea argument",
+      "question": "Using the Big Idea wording, argue why reflecting on preferences and skills should lead to concrete steps rather than only big intentions.",
+      "criteria": [
+        {
+          "criterion": "Use of Big Idea",
+          "emerging": "References the Big Idea loosely or incompletely.",
+          "developing": "Uses some of the Big Idea but not yet as a full support for the argument.",
+          "proficient": "Uses the Big Idea accurately to support the argument.",
+          "extending": "Uses the Big Idea precisely and integrates it smoothly into a strong argument."
+        },
+        {
+          "criterion": "Strength of reasoning",
+          "emerging": "Reasoning is limited or mostly general.",
+          "developing": "Reasoning shows some connection between reflection and action.",
+          "proficient": "Reasoning clearly argues that reflection should produce concrete next steps.",
+          "extending": "Reasoning is well-developed, persuasive, and grounded in realistic planning."
+        }
+      ]
+    }
+  ],
+  "teacher_extension": {
+    "target_understanding": [
+      "Students understand that stronger goals are clear, realistic, and action-oriented.",
+      "Students understand that obstacles and revision are normal parts of planning.",
+      "Students can connect reflection on strengths/preferences to practical next steps."
+    ],
+    "observation_targets": [
+      "☐ Students can tell the difference between a wish and a usable goal",
+      "☐ Students include a real first step and an obstacle response in their planning"
+    ],
+    "watch_for": [
+      {
+        "misconception": "Students think a goal is just something they want.",
+        "redirect": "What could you actually do next?"
+      },
+      {
+        "misconception": "Students think changing a plan means they failed.",
+        "redirect": "How could revising the plan help you keep moving instead of stopping?"
+      }
+    ],
+    "forward_connection": [
+      "Students can return to this planning structure in later career planning, project work, and pathway decisions."
+    ]
+  },
+  "lesson_plan": {
+    "materials": [
+      "slide deck",
+      "differentiated worksheets",
+      "answer keys",
+      "teacher guide",
+      "Chromebooks optional for private reflection"
+    ],
+    "timing": [
+      {
+        "time": "0:00–0:08",
+        "activity": "Warm-up comparison of weak and stronger goals"
+      },
+      {
+        "time": "0:08–0:20",
+        "activity": "Wish vs goal vs plan and stronger-goal checklist"
+      },
+      {
+        "time": "0:20–0:35",
+        "activity": "Revise weak goals together and independently"
+      },
+      {
+        "time": "0:35–0:48",
+        "activity": "Obstacles, supports, and next-step discussion"
+      },
+      {
+        "time": "0:48–1:12",
+        "activity": "Personal goal-plan writing and teacher conferencing"
+      },
+      {
+        "time": "1:12–1:19",
+        "activity": "Summary and reflect"
+      }
+    ],
+    "differentiation_notes": [
+      "● Supported: guided checklist completion, clearer prompts, and a more structured planner.",
+      "◆ Proficient: standard revise-and-plan tasks with moderate independence.",
+      "▲ Extending: stronger explanation, revision-after-setback thinking, and Big Idea argument."
+    ],
+    "teacher_notes": [
+      "Keep the tone practical, not slogan-heavy.",
+      "Do not force private disclosure; students can choose a safe school, activity, or routine goal.",
+      "Push for usable planning language rather than vague motivation talk."
+    ]
+  }
+}
