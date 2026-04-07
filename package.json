@@ -1,0 +1,10 @@
+{
+  "name": "mr-friess-classroom-engine",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "doctor": "node scripts/doctor.mjs",
+    "build:all": "node scripts/build-all.mjs",
+    "schema:check": "node scripts/schema-check.mjs",
+    "qa:render": "node scripts/qa-render.mjs"
+  }
