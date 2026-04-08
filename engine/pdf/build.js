@@ -11,7 +11,7 @@ function argValue(flag) {
 
 function pickPython() {
   for (const cmd of ['python', 'python3', 'py']) {
-    const probe = spawnSync(cmd, ['--version'], { stdio: 'ignore', shell: process.platform === 'win32' })
+    const probe = spawnSync(cmd, ['--version'], { stdio: 'ignore' })
     if (probe.status === 0) return cmd
   }
   return null
@@ -40,8 +40,7 @@ if (!pythonCmd) {
 mkdirSync(resolve(process.cwd(), outDir), { recursive: true })
 const scriptPath = resolve(process.cwd(), 'engine', 'pdf', 'build.py')
 const result = spawnSync(pythonCmd, [scriptPath, '--lesson', lessonPath, '--out', resolve(process.cwd(), outDir)], {
-  stdio: 'inherit',
-  shell: process.platform === 'win32'
+  stdio: 'inherit'
 })
 
 if (result.status !== 0) {

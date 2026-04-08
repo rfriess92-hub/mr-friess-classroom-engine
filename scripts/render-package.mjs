@@ -26,7 +26,7 @@ function loadJson(path) {
 
 function pickPython() {
   for (const cmd of ['python', 'python3', 'py']) {
-    const probe = spawnSync(cmd, ['--version'], { stdio: 'ignore', shell: process.platform === 'win32' })
+    const probe = spawnSync(cmd, ['--version'], { stdio: 'ignore' })
     if (probe.status === 0) return cmd
   }
   return null
@@ -80,9 +80,8 @@ function renderSlides(pkg, route, outDir) {
   try {
     const tempLessonPath = join(tempDir, `${route.output_id}.json`)
     writeFileSync(tempLessonPath, JSON.stringify(buildSlidePacket(pkg, route), null, 2), 'utf-8')
-    const result = spawnSync('node', ['engine/pptx/build.js', '--lesson', tempLessonPath, '--out', outDir], {
+    const result = spawnSync(process.execPath, ['engine/pptx/build.js', '--lesson', tempLessonPath, '--out', outDir], {
       stdio: 'inherit',
-      shell: process.platform === 'win32',
       cwd: process.cwd(),
     })
     if (result.status !== 0) {
@@ -105,7 +104,6 @@ function renderPdfOutput(packagePath, route, outDir) {
     ['engine/pdf/render_stable_core_output.py', '--package', packagePath, '--output-id', route.output_id, '--out', outDir],
     {
       stdio: 'inherit',
-      shell: process.platform === 'win32',
       cwd: process.cwd(),
     }
   )
