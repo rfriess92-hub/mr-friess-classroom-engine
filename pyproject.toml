@@ -1,10 +1,11 @@
 [project]
-name = "integrated-engine"
-version = "0.2.0"
-description = "Pinned toolchain baseline for the Mr. Friess classroom engine"
+name = "mr-friess-classroom-engine"
+version = "0.3.0"
+description = "Classroom engine and render pipeline for lesson packet builds"
 requires-python = ">=3.11"
 dependencies = [
-  "reportlab>=4.0"
+  "reportlab>=4.0",
+  "python-pptx>=1.0"
 ]
 
 [dependency-groups]
