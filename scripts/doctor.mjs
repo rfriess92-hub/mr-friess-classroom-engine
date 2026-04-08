@@ -2,11 +2,14 @@ import { repoPath, ensureExists } from './lib.mjs'
 
 const required = [
   'engine/content',
-  'README.md'
+  'engine/schema/lesson.schema.json',
+  'engine/pdf/build.py',
+  'engine/pptx/render_pptx.py',
+  'package.json',
 ]
 
 for (const item of required) {
   ensureExists(repoPath(item), item)
 }
 
-console.log('Basic repo layout check passed.')
+console.log('Current engine layout check passed.')
