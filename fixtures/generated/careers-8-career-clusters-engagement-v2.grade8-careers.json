@@ -1,0 +1,185 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers_8_career_clusters_engagement_v2",
+  "primary_architecture": "single_period_full",
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Exploring Career Clusters — Interactive Sort",
+  "theme": "careers",
+  "teacher_guide": {
+    "big_idea": "Career clusters help students organize many different jobs into meaningful groups based on common interests, skills, and workplace contexts.",
+    "learning_goals": [
+      "I can explain what a career cluster is.",
+      "I can sort jobs and short profiles into appropriate career clusters using evidence.",
+      "I can defend which career cluster feels like my best current fit and why."
+    ],
+    "materials": [
+      "slide deck",
+      "interactive career cluster worksheet",
+      "job and profile examples on slides",
+      "exit ticket"
+    ],
+    "timing": [
+      { "time": "0:00–0:08", "activity": "Open with a quick cluster challenge and pair talk about how jobs can be grouped." },
+      { "time": "0:08–0:18", "activity": "Teach the idea of career clusters and model how to sort using evidence." },
+      { "time": "0:18–0:35", "activity": "Guide students through a case-card style sort with short profiles and job examples." },
+      { "time": "0:35–0:50", "activity": "Students complete an interactive worksheet with justifications and personal fit reflection." },
+      { "time": "0:50–0:60", "activity": "Students complete a defend-your-choice exit ticket and quick share-out." }
+    ],
+    "teacher_notes": [
+      "Keep the tone exploratory rather than pressuring students to choose one career now.",
+      "Encourage evidence-based sorting rather than guessing from stereotypes or status.",
+      "Use discussion moves that make students justify why a cluster fits, not just name one quickly.",
+      "Keep teacher-only prompts and extension notes out of student-facing materials."
+    ]
+  },
+  "slides": [
+    {
+      "type": "TITLE",
+      "title": "Exploring Career Clusters — Interactive Sort",
+      "layout": "hero",
+      "content": {
+        "subtitle": "How can career clusters help us explore possible future pathways?"
+      }
+    },
+    {
+      "type": "ENGAGE",
+      "title": "Quick cluster challenge",
+      "layout": "prompt",
+      "content": {
+        "scenario": "Three jobs appear on the screen: paramedic, video game designer, and welder. If you had to sort them quickly into career clusters, what evidence would help you decide?",
+        "prompts": [
+          "What clues help you sort each job?",
+          "Which job feels easiest to place?",
+          "Which job might lead to debate, and why?"
+        ]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "Sort with evidence",
+      "layout": "three_rows",
+      "content": {
+        "rows": [
+          "Look at what the person mainly does, not just the job title.",
+          "Think about the skills, tools, and work setting involved.",
+          "Choose the best fit and be ready to defend your reasoning."
+        ]
+      }
+    },
+    {
+      "type": "DO",
+      "title": "Which cluster fits best?",
+      "layout": "two_column_compare",
+      "content": {
+        "left": "Profile: enjoys helping people in stressful situations, learning about the body, and working in fast-paced teams.",
+        "right": "Cluster choices: health science | human services",
+        "prompts": [
+          "Which cluster is the best fit right now?",
+          "What evidence makes that cluster stronger than the other one?"
+        ]
+      }
+    },
+    {
+      "type": "APPLY",
+      "title": "Case-card sort",
+      "layout": "retrieval",
+      "content": {
+        "task": "Use the worksheet to sort each job or short profile into the best-fitting career cluster and defend your decisions.",
+        "prompts": [
+          "Student profile: loves building, measuring, and using tools",
+          "Student profile: enjoys coding, troubleshooting, and designing digital products",
+          "Student profile: likes helping children learn and grow"
+        ]
+      }
+    },
+    {
+      "type": "REFLECT",
+      "title": "Defend your best fit",
+      "layout": "reflect",
+      "content": {
+        "prompts": [
+          "Which cluster feels like your best current fit?",
+          "What strengths or interests connect you to that cluster?",
+          "What makes that cluster a better fit than one other option?"
+        ]
+      }
+    }
+  ],
+  "worksheet": {
+    "anchor": [
+      "A career cluster is a group of related jobs and pathways.",
+      "Strong sorting uses evidence about the work, skills, and setting.",
+      "The goal is best fit, not perfect certainty."
+    ],
+    "tip": "When two clusters seem possible, choose the stronger fit and explain why it fits better.",
+    "questions": [
+      { "q_num": 1, "q_text": "Complete a quick sort for these jobs: paramedic, chef, welder, software developer, educational assistant, graphic designer. For each one, name the best-fitting career cluster and one clue that helped you decide.", "n_lines": 7 },
+      { "q_num": 2, "q_text": "Choose two jobs that could fit more than one cluster. Defend which cluster is the stronger fit for each one.", "n_lines": 6 },
+      { "q_num": 3, "q_text": "Read these two short profiles and decide which cluster fits each one best: (a) likes coding, logic, and solving digital problems; (b) likes coaching, helping, and working with children. Explain your reasoning.", "n_lines": 6 },
+      { "q_num": 4, "q_text": "Which career cluster feels like your best current fit, and which one feels like a possible stretch option? Explain your thinking using interests, strengths, or curiosities.", "n_lines": 6 }
+    ],
+    "self_check": [
+      "Did I sort using evidence instead of guessing?",
+      "Did I defend at least one tricky cluster choice?",
+      "Did I connect one cluster to my own interests or strengths?"
+    ],
+    "answer_key": [
+      "Sample clusters: paramedic -> health science; chef -> hospitality and tourism; welder -> skilled trades; software developer -> information technology; educational assistant -> education and training; graphic designer -> arts, A/V technology, and communications."
+    ]
+  },
+  "exit_ticket": {
+    "prompt": "Choose one career cluster that feels like your best current fit and one other cluster that could also fit you. Explain why your best-fit cluster is stronger right now, using your interests, strengths, or curiosities as evidence.",
+    "n_lines": 6,
+    "success_criteria": [
+      "I named one best-fit cluster clearly.",
+      "I compared it to one other possible cluster.",
+      "I used personal evidence from my interests, strengths, or curiosities.",
+      "I used the exit ticket as my final evidence location."
+    ],
+    "answer_key": [
+      "Answers will vary. A strong answer names a best-fit cluster, compares it to another option, and justifies the choice with personal evidence."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "careers_8_career_clusters_engagement_v2_bundle",
+    "declared_outputs": [
+      "teacher_guide",
+      "slides",
+      "worksheet",
+      "exit_ticket"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "careers_8_career_clusters_engagement_v2_bundle"
+    },
+    {
+      "output_id": "slides_main",
+      "output_type": "slides",
+      "audience": "shared_view",
+      "source_section": "slides",
+      "bundle": "careers_8_career_clusters_engagement_v2_bundle"
+    },
+    {
+      "output_id": "worksheet_main",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "worksheet",
+      "bundle": "careers_8_career_clusters_engagement_v2_bundle"
+    },
+    {
+      "output_id": "exit_ticket_main",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "exit_ticket",
+      "bundle": "careers_8_career_clusters_engagement_v2_bundle",
+      "final_evidence": true
+    }
+  ]
+}
