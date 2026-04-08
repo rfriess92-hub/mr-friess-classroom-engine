@@ -1,0 +1,183 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers_8_career_clusters",
+  "primary_architecture": "single_period_full",
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Exploring Career Clusters",
+  "theme": "careers",
+  "teacher_guide": {
+    "big_idea": "Career clusters help students organize many different jobs into meaningful groups based on common interests, skills, and workplace contexts.",
+    "learning_goals": [
+      "I can explain what a career cluster is.",
+      "I can sort jobs into appropriate career clusters using evidence.",
+      "I can reflect on which career clusters connect to my interests, strengths, or curiosities."
+    ],
+    "materials": [
+      "slide deck",
+      "career cluster worksheet",
+      "job card examples on slides",
+      "exit ticket"
+    ],
+    "timing": [
+      { "time": "0:00–0:08", "activity": "Launch with quick discussion about jobs students already know and how jobs can be grouped." },
+      { "time": "0:08–0:18", "activity": "Teach the idea of career clusters with clear examples and non-examples." },
+      { "time": "0:18–0:35", "activity": "Guide students through sorting sample jobs into career clusters." },
+      { "time": "0:35–0:50", "activity": "Students complete independent worksheet justifications and personal connections." },
+      { "time": "0:50–0:60", "activity": "Exit ticket reflection and quick debrief." }
+    ],
+    "teacher_notes": [
+      "Keep the tone exploratory rather than pressuring students to choose one career now.",
+      "Use varied examples so students see clusters as broad pathways rather than narrow labels.",
+      "Watch for stereotyping and redirect students back to skills, interests, and work contexts.",
+      "Keep teacher-only prompts and extension notes out of student-facing materials."
+    ]
+  },
+  "slides": [
+    {
+      "type": "TITLE",
+      "title": "Exploring Career Clusters",
+      "layout": "hero",
+      "content": {
+        "subtitle": "How can career clusters help us explore possible future pathways?"
+      }
+    },
+    {
+      "type": "ENGAGE",
+      "title": "Start with what you know",
+      "layout": "prompt",
+      "content": {
+        "scenario": "Think about jobs you already know from your family, community, media, school, or your own interests. How could we group those jobs in a meaningful way?",
+        "prompts": [
+          "What jobs come to mind right away?",
+          "Which jobs seem related to each other?",
+          "What makes two jobs belong together?"
+        ]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "What is a career cluster?",
+      "layout": "three_rows",
+      "content": {
+        "rows": [
+          "A career cluster is a group of jobs and pathways with related skills, interests, and work settings.",
+          "Clusters help us organize many career possibilities into broader areas.",
+          "A career cluster is not one job. It is a family of related pathways."
+        ]
+      }
+    },
+    {
+      "type": "DO",
+      "title": "Try sorting examples",
+      "layout": "two_column_compare",
+      "content": {
+        "left": "Chef, electrician, early childhood educator",
+        "right": "Health science, skilled trades, education and training",
+        "prompts": [
+          "Which job best matches each cluster?",
+          "What evidence helps you decide?"
+        ]
+      }
+    },
+    {
+      "type": "APPLY",
+      "title": "Career cluster sort",
+      "layout": "retrieval",
+      "content": {
+        "task": "Use the worksheet to sort each sample job into the best-fitting cluster and explain your reasoning.",
+        "prompts": [
+          "Nurse",
+          "Video game designer",
+          "Heavy equipment operator"
+        ]
+      }
+    },
+    {
+      "type": "REFLECT",
+      "title": "Reflect",
+      "layout": "reflect",
+      "content": {
+        "prompts": [
+          "Which cluster feels most interesting to you right now?",
+          "What strengths or interests connect you to that cluster?",
+          "Why is it helpful to think in clusters instead of only individual job titles?"
+        ]
+      }
+    }
+  ],
+  "worksheet": {
+    "anchor": [
+      "A career cluster is a group of related jobs and pathways.",
+      "Good sorting uses evidence about the work, skills, and setting."
+    ],
+    "tip": "Ask yourself what the person mainly does, what skills they use, and where the work happens.",
+    "questions": [
+      { "q_num": 1, "q_text": "Sort each job into the best-fitting cluster: nurse, carpenter, software developer, educational assistant, chef, welder.", "n_lines": 6 },
+      { "q_num": 2, "q_text": "Choose two jobs from the list and explain why they belong in those clusters.", "n_lines": 5 },
+      { "q_num": 3, "q_text": "Which career cluster seems most interesting to you right now? Explain what interests, strengths, or curiosities connect you to it.", "n_lines": 5 },
+      { "q_num": 4, "q_text": "Why can career clusters be more useful than only thinking about single job titles?", "n_lines": 4 }
+    ],
+    "self_check": [
+      "Did I sort the jobs using evidence?",
+      "Did I explain at least one cluster choice clearly?",
+      "Did I connect one cluster to my own interests or strengths?"
+    ],
+    "answer_key": [
+      "Sample clusters: nurse -> health science; carpenter -> skilled trades; software developer -> information technology; educational assistant -> education and training; chef -> hospitality and tourism; welder -> skilled trades"
+    ]
+  },
+  "exit_ticket": {
+    "prompt": "Choose one career cluster that interests you right now. Explain why it fits you better than one other cluster, using your interests, strengths, or curiosities as evidence.",
+    "n_lines": 5,
+    "success_criteria": [
+      "I named one career cluster clearly.",
+      "I gave a reason connected to my interests, strengths, or curiosities.",
+      "I used the exit ticket as my final evidence location."
+    ],
+    "answer_key": [
+      "Answers will vary. A strong answer names a cluster and justifies it with personal evidence."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "careers_8_career_clusters_bundle",
+    "declared_outputs": [
+      "teacher_guide",
+      "slides",
+      "worksheet",
+      "exit_ticket"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "careers_8_career_clusters_bundle"
+    },
+    {
+      "output_id": "slides_main",
+      "output_type": "slides",
+      "audience": "shared_view",
+      "source_section": "slides",
+      "bundle": "careers_8_career_clusters_bundle"
+    },
+    {
+      "output_id": "worksheet_main",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "worksheet",
+      "bundle": "careers_8_career_clusters_bundle"
+    },
+    {
+      "output_id": "exit_ticket_main",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "exit_ticket",
+      "bundle": "careers_8_career_clusters_bundle",
+      "final_evidence": true
+    }
+  ]
+}
