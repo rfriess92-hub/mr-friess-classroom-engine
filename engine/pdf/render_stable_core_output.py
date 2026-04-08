@@ -38,12 +38,54 @@ def render_lines(story, styles, count: int):
         story.append(Paragraph('______________________________________________________________', styles['BodyText']))
 
 
-def render_teacher_guide(packet: dict, out_path: Path) -> None:
+def packet_heading(packet: dict) -> str:
+    return f"{packet.get('subject', 'Subject')} {packet.get('grade', '')} — {packet.get('topic', 'Lesson')}"
+
+
+def resolve_source_section(root, source_section: str | None):
+    if not source_section:
+        return None
+
+    current = root
+    for token in source_section.split('.'):
+        if isinstance(current, dict):
+            current = current.get(token)
+        elif isinstance(current, list):
+            current = next(
+                (
+                    item for item in current
+                    if isinstance(item, dict)
+                    and (item.get('day_id') == token or item.get('output_id') == token)
+                ),
+                None,
+            )
+        else:
+            return None
+
+        if current is None:
+            return None
+
+    return current
+
+
+def find_output(packet: dict, output_id: str):
+    for output in packet.get('outputs', []):
+        if output.get('output_id') == output_id:
+            return output
+
+    for day in packet.get('days', []):
+        for output in day.get('outputs', []):
+            if output.get('output_id') == output_id:
+                return output
+
+    return None
+
+
+def render_teacher_guide(packet: dict, section: dict, out_path: Path) -> None:
     styles = styles_bundle()
     story = []
-    section = packet.get('teacher_guide', {})
 
-    story.append(Paragraph(f"{packet.get('subject', 'Subject')} {packet.get('grade', '')} — {packet.get('topic', 'Lesson')}", styles['CenterTitleX']))
+    story.append(Paragraph(packet_heading(packet), styles['CenterTitleX']))
     story.append(Paragraph('Teacher Guide', styles['Heading2']))
     story.append(Spacer(1, 8))
 
@@ -74,12 +116,138 @@ def render_teacher_guide(packet: dict, out_path: Path) -> None:
     doc.build(story)
 
 
-def render_worksheet(packet: dict, out_path: Path) -> None:
+def render_lesson_overview(packet: dict, section: dict, out_path: Path) -> None:
     styles = styles_bundle()
     story = []
-    section = packet.get('worksheet', {})
 
-    story.append(Paragraph(f"{packet.get('subject', 'Subject')} {packet.get('grade', '')} — {packet.get('topic', 'Lesson')}", styles['CenterTitleX']))
+    story.append(Paragraph(packet_heading(packet), styles['CenterTitleX']))
+    story.append(Paragraph('Lesson Overview', styles['Heading2']))
+    story.append(Spacer(1, 8))
+
+    if section.get('overview'):
+        story.append(Paragraph(section['overview'], styles['BodyText']))
+        story.append(Spacer(1, 8))
+    if section.get('essential_question'):
+        story.append(Paragraph(f"<b>Essential question</b>: {section['essential_question']}", styles['BodyText']))
+        story.append(Spacer(1, 8))
+    if section.get('sequence'):
+        story.append(Paragraph('Sequence', styles['SmallHeadX']))
+        for item in section['sequence']:
+            day = item.get('day', 'Day')
+            focus = item.get('focus', '')
+            story.append(Paragraph(f"<b>{day}</b>: {focus}", styles['BodyText']))
+            for artifact in item.get('artifacts', []):
+                story.append(Paragraph(f'• Artifact: {artifact}', styles['BodyText']))
+            if item.get('carryover'):
+                story.append(Paragraph(f"• Carryover: {item['carryover']}", styles['BodyText']))
+            story.append(Spacer(1, 6))
+    if section.get('integrity_checks'):
+        story.append(Paragraph('Integrity checks', styles['SmallHeadX']))
+        for item in section['integrity_checks']:
+            story.append(Paragraph(f'• {item}', styles['BodyText']))
+
+    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
+    doc.build(story)
+
+
+def render_task_sheet(packet: dict, section: dict, out_path: Path) -> None:
+    styles = styles_bundle()
+    story = []
+
+    story.append(Paragraph(packet_heading(packet), styles['CenterTitleX']))
+    story.append(Paragraph(section.get('title', 'Task Sheet'), styles['Heading2']))
+    story.append(Paragraph('Name: ____________________   Date: __________', styles['BodyText']))
+    story.append(Spacer(1, 8))
+
+    for instruction in section.get('instructions', []):
+        story.append(Paragraph(f'• {instruction}', styles['BodyText']))
+    if section.get('instructions'):
+        story.append(Spacer(1, 8))
+
+    for task in section.get('tasks', []):
+        story.append(Paragraph(task.get('label', 'Task'), styles['SmallHeadX']))
+        story.append(Paragraph(task.get('prompt', ''), styles['BodyText']))
+        render_lines(story, styles, task.get('lines', 4))
+        story.append(Spacer(1, 8))
+
+    if section.get('embedded_supports'):
+        story.append(Paragraph('Embedded supports', styles['SmallHeadX']))
+        for item in section['embedded_supports']:
+            story.append(Paragraph(f'• {item}', styles['BodyText']))
+        story.append(Spacer(1, 8))
+
+    if section.get('success_criteria'):
+        story.append(Paragraph('Success criteria', styles['SmallHeadX']))
+        for item in section['success_criteria']:
+            story.append(Paragraph(f'• {item}', styles['BodyText']))
+
+    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
+    doc.build(story)
+
+
+def render_checkpoint_sheet(packet: dict, section: dict, out_path: Path) -> None:
+    styles = styles_bundle()
+    story = []
+
+    story.append(Paragraph(packet_heading(packet), styles['CenterTitleX']))
+    story.append(Paragraph(section.get('title', 'Checkpoint Sheet'), styles['Heading2']))
+    story.append(Spacer(1, 8))
+
+    if section.get('checkpoint_focus'):
+        story.append(Paragraph(f"<b>Checkpoint focus</b>: {section['checkpoint_focus']}", styles['BodyText']))
+        story.append(Spacer(1, 8))
+    if section.get('look_fors'):
+        story.append(Paragraph('Look-fors', styles['SmallHeadX']))
+        for item in section['look_fors']:
+            story.append(Paragraph(f'• {item}', styles['BodyText']))
+        story.append(Spacer(1, 8))
+    if section.get('conference_prompts'):
+        story.append(Paragraph('Conference prompts', styles['SmallHeadX']))
+        for item in section['conference_prompts']:
+            story.append(Paragraph(f'• {item}', styles['BodyText']))
+        story.append(Spacer(1, 8))
+    if section.get('release_rule'):
+        story.append(Paragraph(f"<b>Release rule</b>: {section['release_rule']}", styles['BodyText']))
+
+    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
+    doc.build(story)
+
+
+def render_final_response_sheet(packet: dict, section: dict, out_path: Path) -> None:
+    styles = styles_bundle()
+    story = []
+
+    story.append(Paragraph(packet_heading(packet), styles['CenterTitleX']))
+    story.append(Paragraph(section.get('title', 'Final Response Sheet'), styles['Heading2']))
+    story.append(Paragraph('Name: ____________________   Date: __________', styles['BodyText']))
+    story.append(Spacer(1, 8))
+
+    if section.get('prompt'):
+        story.append(Paragraph(section['prompt'], styles['BodyText']))
+        story.append(Spacer(1, 8))
+    if section.get('planning_reminders'):
+        story.append(Paragraph('Planning reminders', styles['SmallHeadX']))
+        for item in section['planning_reminders']:
+            story.append(Paragraph(f'• {item}', styles['BodyText']))
+        story.append(Spacer(1, 8))
+
+    render_lines(story, styles, section.get('response_lines', 8))
+    story.append(Spacer(1, 8))
+
+    if section.get('success_criteria'):
+        story.append(Paragraph('Success criteria', styles['SmallHeadX']))
+        for item in section['success_criteria']:
+            story.append(Paragraph(f'• {item}', styles['BodyText']))
+
+    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
+    doc.build(story)
+
+
+def render_worksheet(packet: dict, section: dict, out_path: Path) -> None:
+    styles = styles_bundle()
+    story = []
+
+    story.append(Paragraph(packet_heading(packet), styles['CenterTitleX']))
     story.append(Paragraph('Worksheet', styles['Heading2']))
     story.append(Paragraph('Name: ____________________   Date: __________', styles['BodyText']))
     story.append(Spacer(1, 8))
@@ -106,12 +274,11 @@ def render_worksheet(packet: dict, out_path: Path) -> None:
     doc.build(story)
 
 
-def render_exit_ticket(packet: dict, out_path: Path) -> None:
+def render_exit_ticket(packet: dict, section: dict, out_path: Path) -> None:
     styles = styles_bundle()
     story = []
-    section = packet.get('exit_ticket', {})
 
-    story.append(Paragraph(f"{packet.get('subject', 'Subject')} {packet.get('grade', '')} — {packet.get('topic', 'Lesson')}", styles['CenterTitleX']))
+    story.append(Paragraph(packet_heading(packet), styles['CenterTitleX']))
     story.append(Paragraph('Exit Ticket', styles['Heading2']))
     story.append(Paragraph('Name: ____________________', styles['BodyText']))
     story.append(Spacer(1, 8))
@@ -130,21 +297,30 @@ def render_exit_ticket(packet: dict, out_path: Path) -> None:
 def main() -> None:
     args = parse_args()
     packet = load_packet(Path(args.package))
-    output = next((item for item in packet.get('outputs', []) if item.get('output_id') == args.output_id), None)
+    output = find_output(packet, args.output_id)
     if not output:
         raise SystemExit(f'Output id not found: {args.output_id}')
 
     output_type = output.get('output_type')
+    source_section = resolve_source_section(packet, output.get('source_section'))
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{output.get('output_id', output_type)}.pdf"
 
     if output_type == 'teacher_guide':
-        render_teacher_guide(packet, out_path)
+        render_teacher_guide(packet, source_section or packet.get('teacher_guide', {}), out_path)
+    elif output_type == 'lesson_overview':
+        render_lesson_overview(packet, source_section or packet.get('lesson_overview', {}), out_path)
     elif output_type == 'worksheet':
-        render_worksheet(packet, out_path)
+        render_worksheet(packet, source_section or packet.get('worksheet', {}), out_path)
+    elif output_type == 'task_sheet':
+        render_task_sheet(packet, source_section or {}, out_path)
+    elif output_type == 'checkpoint_sheet':
+        render_checkpoint_sheet(packet, source_section or {}, out_path)
     elif output_type == 'exit_ticket':
-        render_exit_ticket(packet, out_path)
+        render_exit_ticket(packet, source_section or packet.get('exit_ticket', {}), out_path)
+    elif output_type == 'final_response_sheet':
+        render_final_response_sheet(packet, source_section or {}, out_path)
     else:
         raise SystemExit(f'Unsupported PDF output type: {output_type}')
 

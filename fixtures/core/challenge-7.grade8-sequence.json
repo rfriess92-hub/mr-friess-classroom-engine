@@ -3,11 +3,89 @@
   "package_id": "challenge_7_grade8_sequence",
   "primary_architecture": "multi_day_sequence",
   "grade_band": "6-8",
+  "subject": "English Language Arts",
+  "grade": 8,
+  "topic": "Community Change Inquiry",
+  "theme": "careers",
   "secondary_architecture_support": {
     "architecture": "single_period_full",
     "note": "Secondary architecture support is present for condensed adaptation, but the multi-day inquiry sequence remains primary."
   },
   "materials_control_note": "Inquiry materials and checkpoint materials remain teacher-controlled until the checkpoint release point.",
+  "lesson_overview": {
+    "overview": "Students investigate a local change question across two class days, collect evidence in a task sheet, and convert that evidence into a final written response only after the checkpoint release point.",
+    "essential_question": "How can we use gathered evidence to explain a change that matters to our community?",
+    "sequence": [
+      {
+        "day": "Day 1",
+        "focus": "Launch the inquiry, collect evidence, and complete the checkpoint conversation.",
+        "artifacts": [
+          "Slides",
+          "Task Sheet",
+          "Checkpoint Sheet"
+        ],
+        "carryover": "Student evidence from the task sheet continues into Day 2."
+      },
+      {
+        "day": "Day 2",
+        "focus": "Re-open the inquiry, continue evidence gathering, and complete the final response in the declared evidence location.",
+        "artifacts": [
+          "Slides",
+          "Task Sheet",
+          "Final Response Sheet"
+        ],
+        "carryover": "Day 1 evidence must stay available while students draft the final response."
+      }
+    ],
+    "integrity_checks": [
+      "Teacher-only guidance stays in teacher-facing outputs.",
+      "Student task work stays in the task sheet until the final response release point.",
+      "Final evidence stays in the final response sheet, not in slide notes or teacher materials."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "A multi-day inquiry sequence must preserve where supports live, where checkpoints happen, and where final evidence is recorded.",
+    "learning_goals": [
+      "I can guide students through a two-day inquiry without collapsing teacher and student materials together.",
+      "I can use a checkpoint before releasing the final response task.",
+      "I can keep final evidence in the declared student-facing artifact."
+    ],
+    "materials": [
+      "Day 1 slide deck",
+      "Day 1 task sheet",
+      "Day 1 checkpoint sheet",
+      "Day 2 slide deck",
+      "Day 2 task sheet",
+      "Day 2 final response sheet"
+    ],
+    "timing": [
+      {
+        "time": "Day 1 / 0:00–0:10",
+        "activity": "Launch the inquiry question and clarify the task-sheet purpose."
+      },
+      {
+        "time": "Day 1 / 0:10–0:35",
+        "activity": "Students collect and sort evidence in the task sheet."
+      },
+      {
+        "time": "Day 1 / 0:35–0:50",
+        "activity": "Teacher runs checkpoint conversations using the checkpoint sheet."
+      },
+      {
+        "time": "Day 2 / 0:00–0:15",
+        "activity": "Re-open the inquiry and continue evidence collection."
+      },
+      {
+        "time": "Day 2 / 0:15–0:45",
+        "activity": "Students draft the final response in the final response sheet."
+      }
+    ],
+    "teacher_notes": [
+      "Do not release the final response sheet on Day 1.",
+      "Keep embedded supports inside the task sheet rather than moving them to a separate handout.",
+      "Use the checkpoint to verify readiness before students begin the final response."
+    ]
+  },
   "bundle": {
     "bundle_id": "challenge_7_grade8_sequence_bundle",
     "declared_outputs": [
@@ -40,6 +118,104 @@
       "day_id": "day_1",
       "day_label": "Day 1",
       "carryover_note": "Student task work continues into Day 2.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Community Change Inquiry — Day 1",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Launch the question, gather evidence, and get ready for the checkpoint."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Inquiry question",
+          "layout": "prompt",
+          "content": {
+            "scenario": "A community space is changing. How can we explain what is changing, who is affected, and what evidence matters most?",
+            "prompts": [
+              "What change do you notice?",
+              "Who might be affected by this change?",
+              "What evidence would help you explain it clearly?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Day 1 workflow",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Record the question and first observations in the task sheet.",
+              "Collect at least three pieces of evidence or examples.",
+              "Use the checkpoint to confirm you are ready for Day 2 writing."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Evidence collection",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your task sheet to collect evidence you can carry into Day 2.",
+            "prompts": [
+              "What is changing?",
+              "What details show the change clearly?",
+              "What questions still need checking?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Day 1 Task Sheet",
+        "instructions": [
+          "Write the inquiry question in your own words.",
+          "Collect evidence you can use again on Day 2.",
+          "Keep your notes clear enough that another reader could follow your thinking."
+        ],
+        "tasks": [
+          {
+            "label": "Part A",
+            "prompt": "State the change you are investigating and explain why it matters.",
+            "lines": 4
+          },
+          {
+            "label": "Part B",
+            "prompt": "Record three pieces of evidence, details, or examples that help explain the change.",
+            "lines": 6
+          },
+          {
+            "label": "Part C",
+            "prompt": "List one question you still need to answer before writing your final response.",
+            "lines": 3
+          }
+        ],
+        "embedded_supports": [
+          "Use point-form notes before writing full sentences.",
+          "Underline the strongest piece of evidence in your notes.",
+          "Keep all Day 1 evidence on this sheet so it carries forward into Day 2."
+        ],
+        "success_criteria": [
+          "I recorded a clear inquiry focus.",
+          "I collected usable evidence.",
+          "I kept my notes in the declared task-sheet location."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Day 1 Checkpoint Sheet",
+        "checkpoint_focus": "Teacher checkpoint before Day 2 final response release.",
+        "look_fors": [
+          "Student has a clear inquiry focus.",
+          "Student has at least three usable details or examples.",
+          "Student can explain which evidence is strongest and why."
+        ],
+        "conference_prompts": [
+          "Show me the evidence you plan to use tomorrow.",
+          "Which detail is strongest right now?",
+          "What still needs clarification before you draft your final response?"
+        ],
+        "release_rule": "Release the Day 2 final response sheet only when the student can point to usable evidence in the task sheet."
+      },
       "outputs": [
         {
           "output_id": "day1_slides",
@@ -68,6 +244,98 @@
       "day_id": "day_2",
       "day_label": "Day 2",
       "carryover_note": "Continue task-sheet evidence from Day 1 before final response completion.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Community Change Inquiry — Day 2",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Return to your evidence, strengthen your explanation, and complete the final response."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Re-open your evidence",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Before you draft, review the notes you carried from Day 1.",
+            "prompts": [
+              "What evidence still feels strongest?",
+              "What needs one more detail or explanation?",
+              "How will you organize your final response?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Day 2 workflow",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Review Day 1 evidence before adding anything new.",
+              "Use the task sheet to refine details and wording.",
+              "Write the final response only in the final response sheet."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Finish strong",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Which evidence made your explanation stronger?",
+              "What changed between Day 1 notes and Day 2 writing?",
+              "How did you keep your final evidence in the right place?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Day 2 Task Sheet",
+        "instructions": [
+          "Re-read your Day 1 notes before adding anything new.",
+          "Clarify wording, add one missing detail, and prepare to draft.",
+          "Do not move your final response onto this sheet."
+        ],
+        "tasks": [
+          {
+            "label": "Part A",
+            "prompt": "Review your strongest evidence from Day 1 and explain why you are keeping it.",
+            "lines": 4
+          },
+          {
+            "label": "Part B",
+            "prompt": "Add one more detail, example, or clarification that strengthens your explanation.",
+            "lines": 4
+          }
+        ],
+        "embedded_supports": [
+          "Box the evidence you will definitely use in your final response.",
+          "Cross out weak details instead of deleting the whole record.",
+          "Keep this sheet as planning evidence, not the final evidence location."
+        ],
+        "success_criteria": [
+          "I improved the evidence I collected earlier.",
+          "I know which details belong in my final response.",
+          "I kept planning work separate from final evidence."
+        ]
+      },
+      "final_response_sheet": {
+        "title": "Day 2 Final Response Sheet",
+        "prompt": "Use your carried evidence to explain the change, why it matters, and which details best support your explanation.",
+        "planning_reminders": [
+          "Use evidence from the task sheet.",
+          "Explain why the evidence matters, not just what it says.",
+          "Keep the final written answer on this sheet."
+        ],
+        "success_criteria": [
+          "My response answers the inquiry question.",
+          "My response uses evidence from the task sheet.",
+          "My final evidence is recorded in the declared final response location."
+        ],
+        "response_lines": 10
+      },
       "outputs": [
         {
           "output_id": "day2_slides",
