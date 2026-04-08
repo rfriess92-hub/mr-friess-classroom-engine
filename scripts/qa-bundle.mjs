@@ -108,12 +108,12 @@ function buildPatches() {
     {
       rank: 1,
       type: 'render_logic_issue',
-      patch: 'Use package-scoped output names or package-specific output subdirectories so artifacts from different fixtures cannot overwrite each other.'
+      patch: 'Keep package-scoped output directories as the default so artifacts from different fixtures cannot overwrite each other.'
     },
     {
       rank: 2,
       type: 'artifact_formatting_issue',
-      patch: 'Run bundle QA in a clean output directory per package, or add a strict cleanup step before rendering.'
+      patch: 'Run bundle QA against the package-specific output directory, or use --flat-dir only when you intentionally want cross-package mixing.'
     },
     {
       rank: 3,
@@ -131,11 +131,13 @@ const packageArg = argValue('--package')
 const fixtureArg = argValue('--fixture')
 const outArg = argValue('--out') ?? 'output'
 const strictDir = process.argv.includes('--strict-dir')
+const flatDir = process.argv.includes('--flat-dir')
 const resolvedPackageArg = fixtureArg ? FIXTURE_MAP[fixtureArg] : packageArg
 
 if (!resolvedPackageArg) {
   console.log('Stable-core bundle QA is present.')
-  console.log('Usage: pnpm run qa:bundle -- --fixture benchmark1 --out output [--strict-dir]')
+  console.log('Usage: pnpm run qa:bundle -- --fixture benchmark1 --out output [--strict-dir] [--flat-dir]')
+  console.log('Default behavior reads artifacts from output/<package_id>/ to match package-scoped rendering.')
   console.log('Fixture shortcuts: --fixture benchmark1 | --fixture challenge7')
   process.exit(0)
 }
@@ -151,7 +153,8 @@ const { validation, render_plan: renderPlan, routes } = planPackageRoutes(pkg)
 const expectedArtifacts = expectedArtifactsForRoutes(routes)
 const expectedFilenames = expectedArtifacts.map((artifact) => artifact.filename)
 const expectedFilenameSet = new Set(expectedFilenames)
-const outDir = repoPath(outArg)
+const baseOutDir = repoPath(outArg)
+const outDir = flatDir ? baseOutDir : resolve(baseOutDir, renderPlan.package_id ?? 'package')
 const actualArtifacts = listArtifactFiles(outDir)
 const actualArtifactSet = new Set(actualArtifacts)
 
@@ -162,10 +165,19 @@ const duplicateExpectedArtifacts = expectedFilenames.filter((filename, index) =>
 const expectedFilesByFixture = {}
 for (const [fixtureKey, fixturePath] of Object.entries(FIXTURE_MAP)) {
   const otherPkg = loadJson(repoPath(fixturePath))
-  const { routes: otherRoutes } = planPackageRoutes(otherPkg)
-  expectedFilesByFixture[fixtureKey] = expectedArtifactsForRoutes(otherRoutes).map((artifact) => artifact.filename)
+  const { routes: otherRoutes, render_plan: otherRenderPlan } = planPackageRoutes(otherPkg)
+  const otherBaseFiles = expectedArtifactsForRoutes(otherRoutes).map((artifact) => artifact.filename)
+  expectedFilesByFixture[fixtureKey] = flatDir
+    ? otherBaseFiles
+    : otherBaseFiles.map((filename) => `${otherRenderPlan.package_id}/${filename}`)
 }
-const crossPackageCollisions = fixtureArg ? summarizeCollisions(fixtureArg, expectedFilesByFixture) : []
+const currentFixtureKey = fixtureArg ?? '__current__'
+if (!expectedFilesByFixture[currentFixtureKey]) {
+  expectedFilesByFixture[currentFixtureKey] = flatDir
+    ? expectedFilenames
+    : expectedFilenames.map((filename) => `${renderPlan.package_id}/${filename}`)
+}
+const crossPackageCollisions = flatDir && fixtureArg ? summarizeCollisions(fixtureArg, expectedFilesByFixture) : []
 
 const artifactResults = expectedArtifacts
   .filter((artifact) => actualArtifactSet.has(artifact.filename))
@@ -202,7 +214,7 @@ if (missingArtifacts.length > 0) {
   blockers.push('missing_declared_artifacts')
   findings.push({
     type: 'artifact_formatting_issue',
-    note: `Missing declared artifacts: ${missingArtifacts.join(', ')}`
+    note: `Missing declared artifacts in ${outDir}: ${missingArtifacts.join(', ')}`
   })
 } else {
   fastScore += 2
@@ -281,6 +293,7 @@ const shipRule = hardFailure ? 'rebuild_before_shipping' : judgment === 'pass' ?
 emit({
   package_id: renderPlan.package_id,
   bundle_id: renderPlan.bundle.bundle_id,
+  output_directory: outDir,
   judgment,
   fast_score: fastScore,
   validation_status: validation.valid ? 'pass' : 'fail',

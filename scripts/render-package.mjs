@@ -115,11 +115,13 @@ function renderPdfOutput(packagePath, route, outDir) {
 const packageArg = argValue('--package')
 const fixtureArg = argValue('--fixture')
 const outArg = argValue('--out') ?? 'output'
+const flatOut = process.argv.includes('--flat-out')
 const resolvedPackageArg = fixtureArg ? FIXTURE_MAP[fixtureArg] : packageArg
 
 if (!resolvedPackageArg) {
   console.log('Stable-core package renderer is present.')
-  console.log('Usage: pnpm run render:package -- --fixture benchmark1 --out output')
+  console.log('Usage: pnpm run render:package -- --fixture benchmark1 --out output [--flat-out]')
+  console.log('Default behavior writes artifacts to output/<package_id>/ to isolate bundles.')
   console.log('Current first-pass support: route-driven rendering for stable-core fixture packages with supported output types')
   process.exit(0)
 }
@@ -137,7 +139,8 @@ if (!validation.valid) {
   process.exit(1)
 }
 
-const outDir = repoPath(outArg)
+const baseOutDir = repoPath(outArg)
+const outDir = flatOut ? baseOutDir : resolve(baseOutDir, renderPlan.package_id ?? 'package')
 mkdirSync(outDir, { recursive: true })
 
 for (const route of routes) {
