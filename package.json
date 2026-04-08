@@ -8,6 +8,9 @@
     "build:pptx": "node engine/pptx/build.js",
     "build:pdf": "node engine/pdf/build.js",
     "schema:check": "node scripts/schema-check.mjs",
-    "qa:render": "node scripts/qa-render.mjs"
+    "route:plan": "node scripts/route-plan.mjs",
+    "render:package": "node scripts/render-package.mjs",
+    "qa:render": "node scripts/qa-render.mjs",
+    "qa:bundle": "node scripts/qa-bundle.mjs"
   }
 }
