@@ -13,6 +13,14 @@ The repo now contains:
 
 The current backend priority is to keep one trustworthy render path rather than multiple parallel patch paths.
 
+## Operating docs
+
+Project workflow and review guidance live in `docs/`.
+
+- `docs/README.md` — docs index
+- `docs/house-workflow.md` — named workflow stages, handoff rules, and issue triage
+- `docs/review-protocol.md` — operational review routine for lesson packages, rendered artifacts, and PRs
+
 ## Canonical lesson packets
 
 - `engine/content/science9_interconnected_spheres.json`
