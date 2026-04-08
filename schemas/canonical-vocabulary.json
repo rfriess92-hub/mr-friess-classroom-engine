@@ -1,0 +1,43 @@
+{
+  "schema_version_prefix": "2.1",
+  "primary_architectures": [
+    "single_period_full",
+    "multi_day_sequence"
+  ],
+  "grade_bands": [
+    "K-2",
+    "3-5",
+    "6-8",
+    "9-12"
+  ],
+  "output_types": [
+    "teacher_guide",
+    "lesson_overview",
+    "slides",
+    "worksheet",
+    "task_sheet",
+    "checkpoint_sheet",
+    "exit_ticket",
+    "final_response_sheet"
+  ],
+  "audiences": [
+    "teacher",
+    "student",
+    "shared_view"
+  ],
+  "evidence_types": [
+    "exit_ticket",
+    "checkpoint",
+    "final_response"
+  ],
+  "alignment_modes": [
+    "direct",
+    "supporting",
+    "integrated"
+  ],
+  "aliases": {
+    "student_task": "task_sheet",
+    "checkpoint": "checkpoint_sheet",
+    "overview": "lesson_overview"
+  }
+}
