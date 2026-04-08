@@ -3,6 +3,11 @@ import { resolve } from 'node:path'
 import process from 'node:process'
 import { normalizePackageToRenderPlan } from '../engine/schema/render-plan.mjs'
 
+const FIXTURE_MAP = {
+  benchmark1: 'fixtures/core/benchmark-1.grade2-math.json',
+  challenge7: 'fixtures/core/challenge-7.grade8-sequence.json',
+}
+
 function argValue(flag) {
   const index = process.argv.indexOf(flag)
   if (index === -1) return null
@@ -18,23 +23,27 @@ function loadJson(path) {
 }
 
 const packageArg = argValue('--package')
+const fixtureArg = argValue('--fixture')
 const printPlan = process.argv.includes('--print-plan')
 
-if (!existsSync(repoPath('engine', 'schema'))) {
-  console.error('Missing engine/schema scaffold.')
+if (!existsSync(repoPath('schemas', 'canonical-vocabulary.json')) || !existsSync(repoPath('schemas', 'lesson-package.schema.json'))) {
+  console.error('Missing stable-core schemas under /schemas.')
   process.exit(1)
 }
 
-if (!packageArg) {
-  console.log('Schema v2.1 scaffold is present.')
-  console.log('Usage: pnpm run schema:check -- --package path/to/package.json [--print-plan]')
-  console.log('Note: the current repo does not yet contain authoritative Schema v2.1 benchmark packages.')
+const resolvedPackageArg = fixtureArg ? FIXTURE_MAP[fixtureArg] : packageArg
+
+if (!resolvedPackageArg) {
+  console.log('Stable-core Schema v2.1 pipeline scaffold is present.')
+  console.log('Usage: pnpm run schema:check -- --package fixtures/core/benchmark-1.grade2-math.json [--print-plan]')
+  console.log('Fixture shortcuts: --fixture benchmark1 | --fixture challenge7')
+  console.log('Canonical schema sources: /schemas/canonical-vocabulary.json and /schemas/lesson-package.schema.json')
   process.exit(0)
 }
 
-const packagePath = repoPath(packageArg)
+const packagePath = repoPath(resolvedPackageArg)
 if (!existsSync(packagePath)) {
-  console.error(`Package file not found: ${packageArg}`)
+  console.error(`Package file not found: ${resolvedPackageArg}`)
   process.exit(1)
 }
 

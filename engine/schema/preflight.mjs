@@ -6,6 +6,7 @@ import {
   expectedAudienceForOutputType,
   isCanonicalOutputType,
   isValidAudience,
+  normalizeOutputType,
 } from './canonical.mjs'
 
 function pushIssue(collection, code, message, path = null) {
@@ -85,16 +86,21 @@ export function validatePackage(pkg) {
 
   for (const entry of outputEntries) {
     const output = entry.output ?? {}
-    const outputType = output.output_type
+    const rawOutputType = output.output_type
+    const outputType = normalizeOutputType(rawOutputType)
     const audience = output.audience
 
-    if (!outputType) {
+    if (!rawOutputType) {
       pushIssue(errors, 'missing_output_type', 'Each output must declare output_type.', `${entry.path}.output_type`)
       continue
     }
 
-    if (!isCanonicalOutputType(outputType)) {
-      pushIssue(errors, 'non_canonical_output_type', `Non-canonical output_type: ${outputType}.`, `${entry.path}.output_type`)
+    if (rawOutputType !== outputType) {
+      pushIssue(warnings, 'normalized_output_type_alias', `${rawOutputType} was normalized to canonical output_type ${outputType}.`, `${entry.path}.output_type`)
+    }
+
+    if (!isCanonicalOutputType(rawOutputType)) {
+      pushIssue(errors, 'non_canonical_output_type', `Non-canonical output_type: ${rawOutputType}.`, `${entry.path}.output_type`)
     } else if (allowedOutputTypes.size && !allowedOutputTypes.has(outputType)) {
       pushIssue(errors, 'output_not_allowed_for_architecture', `${outputType} is not valid for ${pkg.primary_architecture}.`, `${entry.path}.output_type`)
     }
@@ -125,7 +131,7 @@ export function validatePackage(pkg) {
 
   if (declaredBundleOutputs.size > 0) {
     for (const declaredOutputType of declaredBundleOutputs) {
-      const present = outputEntries.some((entry) => entry.output?.output_type === declaredOutputType)
+      const present = outputEntries.some((entry) => normalizeOutputType(entry.output?.output_type) === normalizeOutputType(declaredOutputType))
       if (!present) {
         pushIssue(errors, 'missing_declared_bundle_output', `${declaredOutputType} is declared in bundle.declared_outputs but not present in package outputs.`, 'bundle.declared_outputs')
       }
