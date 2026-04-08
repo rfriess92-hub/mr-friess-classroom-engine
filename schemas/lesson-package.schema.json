@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mr-friess-classroom-engine/schemas/lesson-package.schema.json",
+  "title": "Stable Core Lesson Package Schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "package_id",
+    "primary_architecture"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^2\\.1"
+    },
+    "package_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "primary_architecture": {
+      "type": "string",
+      "enum": [
+        "single_period_full",
+        "multi_day_sequence"
+      ]
+    },
+    "secondary_architecture_support": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "required": [
+            "note"
+          ],
+          "properties": {
+            "architecture": { "type": "string" },
+            "note": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": true
+        }
+      ]
+    },
+    "materials_control_note": {
+      "type": "string"
+    },
+    "materials_control_note_required": {
+      "type": "boolean"
+    },
+    "bundle": {
+      "type": "object",
+      "required": ["bundle_id", "declared_outputs"],
+      "properties": {
+        "bundle_id": { "type": "string" },
+        "declared_outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/outputType"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/output" }
+    },
+    "days": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/day" }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "primary_architecture": { "const": "multi_day_sequence" }
+        }
+      },
+      "then": {
+        "required": ["days"]
+      }
+    }
+  ],
+  "$defs": {
+    "audience": {
+      "type": "string",
+      "enum": ["teacher", "student", "shared_view"]
+    },
+    "outputType": {
+      "type": "string",
+      "enum": [
+        "teacher_guide",
+        "lesson_overview",
+        "slides",
+        "worksheet",
+        "task_sheet",
+        "checkpoint_sheet",
+        "exit_ticket",
+        "final_response_sheet"
+      ]
+    },
+    "output": {
+      "type": "object",
+      "required": ["output_id", "output_type", "audience"],
+      "properties": {
+        "output_id": { "type": "string" },
+        "output_type": { "$ref": "#/$defs/outputType" },
+        "audience": { "$ref": "#/$defs/audience" },
+        "source_section": { "type": "string" },
+        "bundle": { "type": "string" },
+        "is_embedded": { "type": "boolean" },
+        "final_evidence": { "type": "boolean" },
+        "embedded_support_elements": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "day": {
+      "type": "object",
+      "required": ["day_id", "day_label", "outputs"],
+      "properties": {
+        "day_id": { "type": "string" },
+        "day_label": { "type": "string" },
+        "carryover_note": { "type": "string" },
+        "outputs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/output" }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
