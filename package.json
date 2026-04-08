@@ -9,6 +9,7 @@
     "build:pdf": "node engine/pdf/build.js",
     "schema:check": "node scripts/schema-check.mjs",
     "route:plan": "node scripts/route-plan.mjs",
+    "render:package": "node scripts/render-package.mjs",
     "qa:render": "node scripts/qa-render.mjs"
   }
 }

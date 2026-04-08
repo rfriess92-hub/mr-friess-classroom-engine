@@ -3,6 +3,143 @@
   "package_id": "benchmark_1_grade2_math",
   "primary_architecture": "single_period_full",
   "grade_band": "K-2",
+  "subject": "Math",
+  "grade": 2,
+  "topic": "Making Ten to Add",
+  "theme": "science",
+  "teacher_guide": {
+    "big_idea": "Making a ten helps young mathematicians add more efficiently and explain their thinking clearly.",
+    "learning_goals": [
+      "I can use make-ten thinking to solve an addition problem.",
+      "I can explain how I moved parts to make a ten.",
+      "I can show my answer with words, pictures, or equations."
+    ],
+    "materials": [
+      "slide deck",
+      "ten-frame cards",
+      "student worksheet",
+      "exit ticket"
+    ],
+    "timing": [
+      { "time": "0:00–0:08", "activity": "Warm-up with quick ten-frame noticing" },
+      { "time": "0:08–0:18", "activity": "Model make-ten strategy with counters" },
+      { "time": "0:18–0:35", "activity": "Guided practice with partner talk" },
+      { "time": "0:35–0:52", "activity": "Independent worksheet" },
+      { "time": "0:52–0:60", "activity": "Exit ticket and quick share" }
+    ],
+    "teacher_notes": [
+      "Keep student-facing language concrete and short.",
+      "Do not turn the lesson into a vocabulary quiz.",
+      "Look for whether students actually make a ten, not just whether they say the phrase."
+    ]
+  },
+  "slides": [
+    {
+      "type": "TITLE",
+      "title": "Making Ten to Add",
+      "layout": "hero",
+      "content": {
+        "subtitle": "How can making a ten help us add quickly and explain our thinking?"
+      }
+    },
+    {
+      "type": "ENGAGE",
+      "title": "Start with a picture",
+      "layout": "prompt",
+      "content": {
+        "scenario": "There are 8 dots in one ten-frame and 5 more dots beside it. How could we make a ten first?",
+        "prompts": [
+          "What do you notice?",
+          "How many more make a ten?",
+          "What happens to the extra dots?"
+        ]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "Make-ten steps",
+      "layout": "three_rows",
+      "content": {
+        "rows": [
+          "Look for a number close to ten.",
+          "Move just enough to make a full ten.",
+          "Add the ten and the extra ones."
+        ]
+      }
+    },
+    {
+      "type": "DO",
+      "title": "Try one together",
+      "layout": "two_column_compare",
+      "content": {
+        "left": "8 + 5",
+        "right": "10 + 3",
+        "prompts": [
+          "How did 8 + 5 become 10 + 3?",
+          "Why might that be easier to solve?"
+        ]
+      }
+    },
+    {
+      "type": "APPLY",
+      "title": "Show your thinking",
+      "layout": "retrieval",
+      "content": {
+        "task": "Solve each one by making a ten first.",
+        "prompts": [
+          "9 + 4",
+          "7 + 6",
+          "8 + 7"
+        ]
+      }
+    },
+    {
+      "type": "REFLECT",
+      "title": "Reflect",
+      "layout": "reflect",
+      "content": {
+        "prompts": [
+          "One way making ten helps me is ...",
+          "When I move counters, I am ...",
+          "A problem I can solve by making ten is ..."
+        ]
+      }
+    }
+  ],
+  "worksheet": {
+    "anchor": [
+      "A full ten can make adding easier.",
+      "We can move some ones to make a ten first."
+    ],
+    "tip": "Circle the number close to ten before you start.",
+    "questions": [
+      { "q_num": 1, "q_text": "Solve 8 + 5 by making a ten. Show the ten and the extra ones.", "n_lines": 3 },
+      { "q_num": 2, "q_text": "Solve 9 + 4 by making a ten. Write the new equation.", "n_lines": 3 },
+      { "q_num": 3, "q_text": "Solve 7 + 6 by making a ten. Draw or write your thinking.", "n_lines": 4 },
+      { "q_num": 4, "q_text": "Write your own make-ten problem and solve it.", "n_lines": 4 }
+    ],
+    "self_check": [
+      "Did I make a full ten first?",
+      "Did I show the extra ones?"
+    ],
+    "answer_key": [
+      "8 + 5 = 10 + 3 = 13",
+      "9 + 4 = 10 + 3 = 13",
+      "7 + 6 = 10 + 3 = 13"
+    ]
+  },
+  "exit_ticket": {
+    "prompt": "Solve 8 + 6 by making a ten. Show your thinking with a picture, numbers, or words.",
+    "n_lines": 4,
+    "success_criteria": [
+      "I made a ten first.",
+      "I showed the extra ones.",
+      "My answer matches my thinking."
+    ],
+    "answer_key": [
+      "8 + 6 = 10 + 4 = 14"
+    ]
+  },
   "bundle": {
     "bundle_id": "benchmark_1_grade2_math_bundle",
     "declared_outputs": [
