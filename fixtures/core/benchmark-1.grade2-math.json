@@ -1,0 +1,46 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "benchmark_1_grade2_math",
+  "primary_architecture": "single_period_full",
+  "grade_band": "K-2",
+  "bundle": {
+    "bundle_id": "benchmark_1_grade2_math_bundle",
+    "declared_outputs": [
+      "teacher_guide",
+      "slides",
+      "worksheet",
+      "exit_ticket"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "benchmark_1_grade2_math_bundle"
+    },
+    {
+      "output_id": "slides_main",
+      "output_type": "slides",
+      "audience": "shared_view",
+      "source_section": "slides",
+      "bundle": "benchmark_1_grade2_math_bundle"
+    },
+    {
+      "output_id": "worksheet_main",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "worksheet",
+      "bundle": "benchmark_1_grade2_math_bundle"
+    },
+    {
+      "output_id": "exit_ticket_main",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "exit_ticket",
+      "bundle": "benchmark_1_grade2_math_bundle",
+      "final_evidence": true
+    }
+  ]
+}
