@@ -1,0 +1,97 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "challenge_7_grade8_sequence",
+  "primary_architecture": "multi_day_sequence",
+  "grade_band": "6-8",
+  "secondary_architecture_support": {
+    "architecture": "single_period_full",
+    "note": "Secondary architecture support is present for condensed adaptation, but the multi-day inquiry sequence remains primary."
+  },
+  "materials_control_note": "Inquiry materials and checkpoint materials remain teacher-controlled until the checkpoint release point.",
+  "bundle": {
+    "bundle_id": "challenge_7_grade8_sequence_bundle",
+    "declared_outputs": [
+      "lesson_overview",
+      "teacher_guide",
+      "slides",
+      "task_sheet",
+      "checkpoint_sheet",
+      "final_response_sheet"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "lesson_overview_main",
+      "output_type": "lesson_overview",
+      "audience": "teacher",
+      "source_section": "lesson_overview",
+      "bundle": "challenge_7_grade8_sequence_bundle"
+    },
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "challenge_7_grade8_sequence_bundle"
+    }
+  ],
+  "days": [
+    {
+      "day_id": "day_1",
+      "day_label": "Day 1",
+      "carryover_note": "Student task work continues into Day 2.",
+      "outputs": [
+        {
+          "output_id": "day1_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_1.slides",
+          "bundle": "challenge_7_grade8_sequence_bundle"
+        },
+        {
+          "output_id": "day1_task_sheet",
+          "output_type": "task_sheet",
+          "audience": "student",
+          "source_section": "days.day_1.task_sheet",
+          "bundle": "challenge_7_grade8_sequence_bundle"
+        },
+        {
+          "output_id": "day1_checkpoint_sheet",
+          "output_type": "checkpoint_sheet",
+          "audience": "teacher",
+          "source_section": "days.day_1.checkpoint_sheet",
+          "bundle": "challenge_7_grade8_sequence_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_2",
+      "day_label": "Day 2",
+      "carryover_note": "Continue task-sheet evidence from Day 1 before final response completion.",
+      "outputs": [
+        {
+          "output_id": "day2_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_2.slides",
+          "bundle": "challenge_7_grade8_sequence_bundle"
+        },
+        {
+          "output_id": "day2_task_sheet",
+          "output_type": "task_sheet",
+          "audience": "student",
+          "source_section": "days.day_2.task_sheet",
+          "bundle": "challenge_7_grade8_sequence_bundle"
+        },
+        {
+          "output_id": "day2_final_response_sheet",
+          "output_type": "final_response_sheet",
+          "audience": "student",
+          "source_section": "days.day_2.final_response_sheet",
+          "bundle": "challenge_7_grade8_sequence_bundle",
+          "final_evidence": true
+        }
+      ]
+    }
+  ]
+}
