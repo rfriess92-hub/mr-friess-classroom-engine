@@ -1,0 +1,26 @@
+artifact_qa:
+  artifact_name: ...
+  artifact_type: pptx | pdf
+  judgment: pass | revise | block
+  fast_score: 0-14
+  escalated_full_qa: true | false
+  primary_failure_type: content_issue | render_logic_issue | artifact_formatting_issue | none
+  metadata_coherence: clean | soft | failed
+  visibility_separation: clean | soft | failed
+  overflow_refusal: clean | soft | failed
+  blockers:
+    - none | ...
+  findings:
+    - type: content_issue | render_logic_issue | artifact_formatting_issue
+      note: ...
+  top_3_patches:
+    - rank: 1
+      type: content_issue | render_logic_issue | artifact_formatting_issue
+      patch: ...
+    - rank: 2
+      type: content_issue | render_logic_issue | artifact_formatting_issue
+      patch: ...
+    - rank: 3
+      type: content_issue | render_logic_issue | artifact_formatting_issue
+      patch: ...
+  ship_rule: ship | patch_then_ship | rebuild_before_shipping
