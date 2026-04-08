@@ -73,3 +73,10 @@ export function isValidAudience(value) {
 export function allowedOutputTypesForArchitecture(primaryArchitecture) {
   return OUTPUT_TYPES_BY_ARCHITECTURE[primaryArchitecture] ?? []
 }
+
+export function expectedAudienceForOutputType(outputType) {
+  if (TEACHER_FACING_OUTPUT_TYPES.has(outputType)) return 'teacher'
+  if (STUDENT_FACING_OUTPUT_TYPES.has(outputType)) return 'student'
+  if (SHARED_VIEW_OUTPUT_TYPES.has(outputType)) return 'shared_view'
+  return null
+}

@@ -3,6 +3,7 @@ import {
   PRIMARY_ARCHITECTURES,
   REQUIRED_PACKAGE_FIELDS,
   allowedOutputTypesForArchitecture,
+  expectedAudienceForOutputType,
   isCanonicalOutputType,
   isValidAudience,
 } from './canonical.mjs'
@@ -36,6 +37,7 @@ function collectOutputEntries(pkg) {
             day_index: dayIndex + 1,
             day_id: day.day_id ?? null,
             day_label: day.day_label ?? null,
+            carryover_note: day.carryover_note ?? null,
           },
         })
       }
@@ -78,6 +80,7 @@ export function validatePackage(pkg) {
 
   const outputEntries = collectOutputEntries(pkg)
   const allowedOutputTypes = new Set(allowedOutputTypesForArchitecture(pkg.primary_architecture))
+  const declaredBundleOutputs = new Set(pkg?.bundle?.declared_outputs ?? [])
   let finalEvidenceCount = 0
 
   for (const entry of outputEntries) {
@@ -100,6 +103,15 @@ export function validatePackage(pkg) {
       pushIssue(errors, 'missing_audience', 'Each output must declare audience.', `${entry.path}.audience`)
     } else if (!isValidAudience(audience)) {
       pushIssue(errors, 'invalid_audience', `Invalid audience value: ${audience}. Expected one of ${AUDIENCES.join(', ')}.`, `${entry.path}.audience`)
+    } else {
+      const expectedAudience = expectedAudienceForOutputType(outputType)
+      if (expectedAudience && audience !== expectedAudience) {
+        pushIssue(errors, 'audience_output_mismatch', `${outputType} must use audience=${expectedAudience}, received ${audience}.`, `${entry.path}.audience`)
+      }
+    }
+
+    if (declaredBundleOutputs.size > 0 && !declaredBundleOutputs.has(outputType)) {
+      pushIssue(errors, 'undeclared_bundle_output', `${outputType} is not declared in bundle.declared_outputs.`, `${entry.path}.output_type`)
     }
 
     if (output.embedded_support_elements && output.is_embedded !== true) {
@@ -111,11 +123,20 @@ export function validatePackage(pkg) {
     }
   }
 
+  if (declaredBundleOutputs.size > 0) {
+    for (const declaredOutputType of declaredBundleOutputs) {
+      const present = outputEntries.some((entry) => entry.output?.output_type === declaredOutputType)
+      if (!present) {
+        pushIssue(errors, 'missing_declared_bundle_output', `${declaredOutputType} is declared in bundle.declared_outputs but not present in package outputs.`, 'bundle.declared_outputs')
+      }
+    }
+  }
+
   if (finalEvidenceCount > 1 && pkg.allow_final_evidence_duplication !== true) {
     pushIssue(errors, 'duplicated_final_evidence', 'Multiple final-evidence outputs declared without explicit duplication allowance.', 'outputs')
   }
 
-  if ((pkg.primary_architecture === 'inquiry' || pkg.requires_materials_control_note === true) && !pkg.materials_control_note) {
+  if (pkg.materials_control_note_required === true && !pkg.materials_control_note) {
     pushIssue(errors, 'missing_materials_control_note', 'materials_control_note is required for this package.', 'materials_control_note')
   }
 
@@ -127,6 +148,18 @@ export function validatePackage(pkg) {
 
     if (!hasNote) {
       pushIssue(errors, 'missing_secondary_architecture_support_note', 'secondary_architecture_support must include a note when present.', 'secondary_architecture_support')
+    }
+  }
+
+  if (pkg.primary_architecture === 'multi_day_sequence' && Array.isArray(pkg.days)) {
+    for (let dayIndex = 0; dayIndex < pkg.days.length; dayIndex += 1) {
+      const day = pkg.days[dayIndex]
+      if (!day?.day_id) {
+        pushIssue(errors, 'missing_day_id', 'Each day in a multi_day_sequence package must declare day_id.', `days[${dayIndex}].day_id`)
+      }
+      if (!day?.day_label) {
+        pushIssue(warnings, 'missing_day_label', 'Each day should declare day_label for render-plan readability.', `days[${dayIndex}].day_label`)
+      }
     }
   }
 
