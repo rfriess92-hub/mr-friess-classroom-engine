@@ -1,27 +1,9 @@
-import { existsSync, readdirSync, readFileSync } from 'node:fs'
+import { existsSync, readdirSync } from 'node:fs'
 import { extname, resolve } from 'node:path'
 import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
-
-const FIXTURE_MAP = {
-  benchmark1: 'fixtures/core/benchmark-1.grade2-math.json',
-  challenge7: 'fixtures/core/challenge-7.grade8-sequence.json',
-}
-
-function argValue(flag) {
-  const index = process.argv.indexOf(flag)
-  if (index === -1) return null
-  return process.argv[index + 1] ?? null
-}
-
-function repoPath(...parts) {
-  return resolve(process.cwd(), ...parts)
-}
-
-function loadJson(path) {
-  return JSON.parse(readFileSync(path, 'utf-8'))
-}
+import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
 function extensionForArtifactFamily(family) {
   if (family === 'pptx') return '.pptx'
@@ -132,13 +114,13 @@ const fixtureArg = argValue('--fixture')
 const outArg = argValue('--out') ?? 'output'
 const strictDir = process.argv.includes('--strict-dir')
 const flatDir = process.argv.includes('--flat-dir')
-const resolvedPackageArg = fixtureArg ? FIXTURE_MAP[fixtureArg] : packageArg
+const resolvedPackageArg = resolvePackageArg(packageArg, fixtureArg)
 
 if (!resolvedPackageArg) {
   console.log('Stable-core bundle QA is present.')
   console.log('Usage: pnpm run qa:bundle -- --fixture benchmark1 --out output [--strict-dir] [--flat-dir]')
   console.log('Default behavior reads artifacts from output/<package_id>/ to match package-scoped rendering.')
-  console.log('Fixture shortcuts: --fixture benchmark1 | --fixture challenge7')
+  console.log(`Fixture shortcuts: ${Object.keys(FIXTURE_MAP).map((key) => `--fixture ${key}`).join(' | ')}`)
   process.exit(0)
 }
 
