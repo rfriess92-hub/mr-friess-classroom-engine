@@ -1,5 +1,6 @@
 import { existsSync } from 'node:fs'
 import process from 'node:process'
+import { normalizeOutputType } from '../engine/schema/canonical.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
 function pushIssue(collection, severity, code, message, path = null) {
@@ -70,6 +71,15 @@ function normalizeVoiceOpportunity(value) {
   if (isNonEmptyString(value)) return [value]
   if (isNonEmptyStringArray(value)) return value
   return []
+}
+
+function normalizedOutputType(output) {
+  return normalizeOutputType(output?.output_type ?? null)
+}
+
+function isStudentPlanningOutput(output) {
+  return output?.audience === 'student'
+    && ['task_sheet', 'worksheet'].includes(normalizedOutputType(output))
 }
 
 function taskPromptText(section) {
@@ -149,7 +159,7 @@ function checkVariantGroups(groups, issues) {
     for (const entry of entries) {
       const output = entry.output ?? {}
       audiences.add(output.audience ?? 'missing')
-      outputTypes.add(output.output_type ?? 'missing')
+      outputTypes.add(normalizedOutputType(output) ?? 'missing')
 
       if (!isNonEmptyString(output.variant_role)) {
         pushIssue(issues, 'warning', 'missing_variant_role', `Variant group ${groupName} includes an output without variant_role.`, entry.path)
@@ -218,10 +228,7 @@ const issues = []
 
 for (const entry of outputEntries) {
   const output = entry.output ?? {}
-  const isStudentPlanningArtifact = output.audience === 'student'
-    && ['task_sheet', 'worksheet'].includes(output.output_type)
-
-  if (!isStudentPlanningArtifact) continue
+  if (!isStudentPlanningOutput(output)) continue
 
   const section = resolveSourceSection(pkg, output.source_section ?? null)
   checkStudentFacingSection(section, entry, issues)
@@ -237,7 +244,7 @@ emit({
   package_id: pkg.package_id ?? null,
   package_path: resolvedPackageArg,
   variant_group_count: groups.size,
-  student_planning_output_count: outputEntries.filter((entry) => entry.output?.audience === 'student' && ['task_sheet', 'worksheet'].includes(entry.output?.output_type)).length,
+  student_planning_output_count: outputEntries.filter((entry) => isStudentPlanningOutput(entry.output ?? {})).length,
   judgment: errors.length > 0 ? 'block' : warnings.length > 0 ? 'revise' : 'pass',
   error_count: errors.length,
   warning_count: warnings.length,
