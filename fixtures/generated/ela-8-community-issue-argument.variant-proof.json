@@ -1,0 +1,589 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "ela_8_community_issue_argument_variant_proof",
+  "primary_architecture": "multi_day_sequence",
+  "grade_band": "6-8",
+  "subject": "English Language Arts",
+  "grade": 8,
+  "topic": "Writing About a Community Issue",
+  "theme": "ela",
+  "secondary_architecture_support": {
+    "architecture": "single_period_full",
+    "note": "A condensed single-period adaptation is possible, but the two-day sequence remains primary because students need planning, checkpoint, differentiated worksheet support, and final writing stages."
+  },
+  "materials_control_note": "Planning materials and checkpoint materials remain teacher-controlled until the final response release point.",
+  "lesson_overview": {
+    "overview": "Students explore a familiar school issue across two class days, study a short evidence set, gather reasons and evidence in aligned task-sheet variants, complete a teacher checkpoint, and then write a final argument paragraph in the declared final evidence location.",
+    "essential_question": "How can we use reasons and evidence to write a clear argument about a community issue?",
+    "sequence": [
+      {
+        "day": "Day 1",
+        "focus": "Introduce the issue, study the evidence set, gather reasons and evidence, and prepare for the teacher checkpoint.",
+        "artifacts": [
+          "Slides",
+          "Task Sheet Variants",
+          "Checkpoint Sheet"
+        ],
+        "carryover": "Student planning from the task sheet continues into Day 2."
+      },
+      {
+        "day": "Day 2",
+        "focus": "Re-open planning, strengthen explanation, and write the final argument paragraph in the final response sheet.",
+        "artifacts": [
+          "Slides",
+          "Task Sheet Variants",
+          "Final Response Sheet"
+        ],
+        "carryover": "Day 1 planning stays available while students draft their final response."
+      }
+    ],
+    "integrity_checks": [
+      "Teacher-only checkpoint guidance stays in teacher-facing outputs.",
+      "Student planning work stays in task-sheet variants until the final response release point.",
+      "Final evidence stays in the final response sheet, not in teacher materials or slide notes.",
+      "Differentiated task-sheet variants remain aligned to the same learning goal and final evidence target."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "Argument writing becomes clearer when students gather reasons and evidence before drafting, explain how evidence supports a reason, use a checkpoint to refine their thinking, and keep final evidence in a declared student-facing artifact.",
+    "learning_goals": [
+      "I can guide students through a two-day argument-writing sequence without collapsing planning and final evidence into the same artifact.",
+      "I can use aligned worksheet variants without changing the lesson outcome.",
+      "I can use a checkpoint to strengthen student reasoning before final writing.",
+      "I can keep final written evidence in the declared final response location."
+    ],
+    "materials": [
+      "Day 1 slide deck",
+      "Day 1 task sheet variants",
+      "Day 1 checkpoint sheet",
+      "Day 2 slide deck",
+      "Day 2 task sheet variants",
+      "Day 2 final response sheet"
+    ],
+    "teacher_notes": [
+      "Do not release the final response sheet on Day 1.",
+      "Keep sentence starters and planning supports embedded in the student-facing artifacts.",
+      "Use aligned support/core/extension task sheets to vary access without changing the final evidence target."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "ela_8_community_issue_argument_variant_proof_bundle",
+    "declared_outputs": [
+      "lesson_overview",
+      "teacher_guide",
+      "slides",
+      "task_sheet",
+      "checkpoint_sheet",
+      "final_response_sheet"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "lesson_overview_main",
+      "output_type": "lesson_overview",
+      "audience": "teacher",
+      "source_section": "lesson_overview",
+      "bundle": "ela_8_community_issue_argument_variant_proof_bundle"
+    },
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "ela_8_community_issue_argument_variant_proof_bundle"
+    }
+  ],
+  "days": [
+    {
+      "day_id": "day_1",
+      "day_label": "Day 1",
+      "carryover_note": "Student planning continues into Day 2.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Writing About a Community Issue — Day 1",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Launch the issue, study the evidence set, and plan your argument."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Community issue question",
+          "layout": "prompt",
+          "content": {
+            "scenario": "A school is deciding whether to make lunch periods longer. Some students say it would improve focus and reduce stress. Others say it would create scheduling problems. How could we build a clear argument about this issue?",
+            "prompts": [
+              "What opinion might someone have about this issue?",
+              "What reasons might support that opinion?",
+              "What evidence would make the argument stronger?"
+            ]
+          }
+        }
+      ],
+      "task_sheet_supported": {
+        "title": "Day 1 Task Sheet — Support",
+        "student_voice_opportunity": [
+          "state the issue in your own words",
+          "choose which reason feels strongest"
+        ],
+        "choice_structure": "Students choose which reason feels strongest and identify one weak spot to improve.",
+        "differentiation_intent": "Increase scaffold visibility while preserving the same planning outcome and checkpoint target.",
+        "acceptable_response_modes": ["bullet", "phrase", "sentence"],
+        "instructions": [
+          "State your opinion clearly.",
+          "Use the scaffold labels and frames beside the writing spaces.",
+          "Explain how the evidence supports your reason, not just what the evidence says."
+        ],
+        "tasks": [
+          {
+            "label": "Part A — State your opinion",
+            "prompt": "What is the issue in your own words, and what do you think should happen? Frame: I think ___ should happen because ___.",
+            "lines": 4
+          },
+          {
+            "label": "Part B — Choose your reasons",
+            "prompt": "What are two reasons that support your opinion? Label them Reason 1 and Reason 2. Star the strongest reason.",
+            "lines": 4
+          },
+          {
+            "label": "Part C — Gather evidence",
+            "prompt": "Choose at least one useful detail for each reason. Use the labels Reason 1 evidence and Reason 2 evidence.",
+            "lines": 6
+          },
+          {
+            "label": "Part D — Explain your evidence",
+            "prompt": "How does your evidence support your reason? Frame: This evidence matters because ___.",
+            "lines": 4
+          },
+          {
+            "label": "Part E — What still needs work?",
+            "prompt": "Choose one weak spot and add a short note: my opinion, my strongest reason, my evidence match, or my explanation.",
+            "lines": 3
+          }
+        ],
+        "embedded_supports": [
+          "I think ___ should happen because ___.",
+          "One important reason is ___.",
+          "This evidence matters because ___.",
+          "Star the reason you think is strongest."
+        ],
+        "success_criteria": [
+          "I stated a clear opinion.",
+          "I collected reasons and evidence I can use tomorrow.",
+          "I explained how my evidence supports a reason.",
+          "I kept my planning in the declared task-sheet location."
+        ]
+      },
+      "task_sheet_core": {
+        "title": "Day 1 Task Sheet — Core",
+        "student_voice_opportunity": [
+          "state the issue in your own words",
+          "choose which reason feels strongest"
+        ],
+        "choice_structure": "Students select two reasons and identify which reason feels strongest right now.",
+        "differentiation_intent": "Preserve the common planning sequence with balanced scaffold density.",
+        "acceptable_response_modes": ["bullet", "phrase", "sentence"],
+        "instructions": [
+          "State your opinion clearly.",
+          "Record reasons and evidence you can use again on Day 2.",
+          "Explain how the evidence supports your reason, not just what the evidence says."
+        ],
+        "tasks": [
+          {
+            "label": "Part A — State your opinion",
+            "prompt": "What is the issue in your own words, and what do you think should happen?",
+            "lines": 4
+          },
+          {
+            "label": "Part B — Choose your reasons",
+            "prompt": "What are two reasons that support your opinion? Which reason feels strongest right now?",
+            "lines": 4
+          },
+          {
+            "label": "Part C — Gather evidence",
+            "prompt": "What detail from the evidence set supports each reason? Choose at least one useful detail for each reason.",
+            "lines": 6
+          },
+          {
+            "label": "Part D — Explain your evidence",
+            "prompt": "How does your evidence support your reason? Do more than repeat the detail. Explain why it matters.",
+            "lines": 4
+          },
+          {
+            "label": "Part E — What still needs work?",
+            "prompt": "What is one weak spot or question you still need to improve before writing your paragraph tomorrow?",
+            "lines": 3
+          }
+        ],
+        "embedded_supports": [
+          "I think ___ because ___.",
+          "One important reason is ___.",
+          "This evidence matters because ___.",
+          "Box the reason you think is strongest."
+        ],
+        "success_criteria": [
+          "I stated a clear opinion.",
+          "I collected reasons and evidence I can use tomorrow.",
+          "I explained how my evidence supports a reason.",
+          "I kept my planning in the declared task-sheet location."
+        ]
+      },
+      "task_sheet_extension": {
+        "title": "Day 1 Task Sheet — Extension",
+        "student_voice_opportunity": [
+          "state the issue in your own words",
+          "judge which reason is strongest and why"
+        ],
+        "choice_structure": "Students choose the strongest reason and decide which detail needs the most explanation to become convincing evidence.",
+        "differentiation_intent": "Use lighter scaffolds and more open writing space while preserving the common outcome.",
+        "acceptable_response_modes": ["bullet", "sentence", "brief paragraph"],
+        "instructions": [
+          "State your opinion clearly.",
+          "Record reasons and evidence you can use again on Day 2.",
+          "Show the logic between detail and claim, not just repetition."
+        ],
+        "tasks": [
+          {
+            "label": "Part A — State your opinion",
+            "prompt": "What is the issue in your own words, and what do you think should happen?",
+            "lines": 4
+          },
+          {
+            "label": "Part B — Choose your reasons",
+            "prompt": "What are two reasons that support your opinion? Which reason is strongest, and why?",
+            "lines": 4
+          },
+          {
+            "label": "Part C — Gather evidence",
+            "prompt": "What detail from the evidence set supports each reason? Which detail would need the most explanation to become convincing evidence?",
+            "lines": 6
+          },
+          {
+            "label": "Part D — Explain your evidence",
+            "prompt": "How does your evidence support your reason? Avoid repeating the evidence; show the logic between detail and claim.",
+            "lines": 4
+          },
+          {
+            "label": "Part E — What still needs work?",
+            "prompt": "What is one weak spot or question you still need to improve before writing your paragraph tomorrow?",
+            "lines": 3
+          }
+        ],
+        "embedded_supports": [
+          "Choose the reason you trust most.",
+          "Avoid repeating the evidence; show the logic behind it.",
+          "Be ready to explain why one detail matters."
+        ],
+        "success_criteria": [
+          "I stated a clear opinion.",
+          "I collected reasons and evidence I can use tomorrow.",
+          "I explained how my evidence supports a reason.",
+          "I kept my planning in the declared task-sheet location."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Day 1 Checkpoint Sheet",
+        "checkpoint_focus": "Teacher checkpoint before Day 2 final response release.",
+        "look_fors": [
+          "Student has a clear opinion.",
+          "Student has at least two usable reasons.",
+          "Student can point to evidence or explanation for those reasons.",
+          "Student can explain how the evidence supports the reason."
+        ],
+        "conference_prompts": [
+          "Show me the strongest reason in your planning.",
+          "What evidence makes that reason believable?",
+          "How does that evidence support your reason?",
+          "What still needs strengthening before you draft tomorrow?"
+        ],
+        "release_rule": "Release the Day 2 final response sheet only when the student can point to usable reasons and evidence in the task sheet and explain at least one connection between evidence and reason."
+      },
+      "outputs": [
+        {
+          "output_id": "day1_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_1.slides",
+          "bundle": "ela_8_community_issue_argument_variant_proof_bundle"
+        },
+        {
+          "output_id": "day1_task_sheet_supported",
+          "output_type": "task_sheet",
+          "audience": "student",
+          "source_section": "days.day_1.task_sheet_supported",
+          "bundle": "ela_8_community_issue_argument_variant_proof_bundle",
+          "variant_group": "day1_task_sheet_family",
+          "variant_role": "supported",
+          "alignment_target": "arg_reason_evidence_explanation",
+          "final_evidence_target": "day2_final_argument_paragraph"
+        },
+        {
+          "output_id": "day1_task_sheet_core",
+          "output_type": "task_sheet",
+          "audience": "student",
+          "source_section": "days.day_1.task_sheet_core",
+          "bundle": "ela_8_community_issue_argument_variant_proof_bundle",
+          "variant_group": "day1_task_sheet_family",
+          "variant_role": "core",
+          "alignment_target": "arg_reason_evidence_explanation",
+          "final_evidence_target": "day2_final_argument_paragraph"
+        },
+        {
+          "output_id": "day1_task_sheet_extension",
+          "output_type": "task_sheet",
+          "audience": "student",
+          "source_section": "days.day_1.task_sheet_extension",
+          "bundle": "ela_8_community_issue_argument_variant_proof_bundle",
+          "variant_group": "day1_task_sheet_family",
+          "variant_role": "extension",
+          "alignment_target": "arg_reason_evidence_explanation",
+          "final_evidence_target": "day2_final_argument_paragraph"
+        },
+        {
+          "output_id": "day1_checkpoint_sheet",
+          "output_type": "checkpoint_sheet",
+          "audience": "teacher",
+          "source_section": "days.day_1.checkpoint_sheet",
+          "bundle": "ela_8_community_issue_argument_variant_proof_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_2",
+      "day_label": "Day 2",
+      "carryover_note": "Use Day 1 planning before drafting the final argument paragraph.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Writing About a Community Issue — Day 2",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Revisit your planning, strengthen your explanation, and write your final paragraph."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Re-open your planning",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Before you draft, look back at the reasons and evidence you carried from Day 1.",
+            "prompts": [
+              "Which reason still feels strongest?",
+              "Which piece of evidence needs clearer explanation?",
+              "How will you organize your final paragraph?"
+            ]
+          }
+        }
+      ],
+      "task_sheet_supported": {
+        "title": "Day 2 Task Sheet — Support",
+        "student_voice_opportunity": [
+          "keep the reason you trust most",
+          "choose whether to improve evidence or explanation"
+        ],
+        "choice_structure": "Students choose one revision path before strengthening planning for the final paragraph.",
+        "differentiation_intent": "Stronger scaffold visibility with an explicit revision path and a prominent explanation frame.",
+        "acceptable_response_modes": ["bullet", "phrase", "sentence"],
+        "instructions": [
+          "Re-read your Day 1 planning before making changes.",
+          "Choose one revision path: improve your evidence or improve your explanation.",
+          "Do not write your final paragraph on this sheet."
+        ],
+        "tasks": [
+          {
+            "label": "Part A — Keep your strongest reason",
+            "prompt": "Which reason still feels strongest? Frame: My strongest reason is ___ because ___.",
+            "lines": 4
+          },
+          {
+            "label": "Part B — Revise your evidence or explanation",
+            "prompt": "Choose one path: I will improve my evidence. I will improve my explanation.",
+            "lines": 5
+          },
+          {
+            "label": "Part C — Write one stronger explanation sentence",
+            "prompt": "Write one improved explanation sentence using the frame: This evidence matters because ___.",
+            "lines": 3
+          }
+        ],
+        "embedded_supports": [
+          "Choose the reason you trust most.",
+          "Make your evidence match your reason clearly.",
+          "Explain why the detail matters, not just what it says.",
+          "Do not write your final paragraph on this sheet."
+        ],
+        "success_criteria": [
+          "I improved the planning I started on Day 1.",
+          "I know which reasons and evidence belong in my final paragraph.",
+          "I improved at least one explanation before drafting.",
+          "I kept planning separate from final evidence."
+        ]
+      },
+      "task_sheet_core": {
+        "title": "Day 2 Task Sheet — Core",
+        "student_voice_opportunity": [
+          "keep the reason you trust most",
+          "choose what needs the strongest revision"
+        ],
+        "choice_structure": "Students keep the strongest reason and decide which evidence or explanation needs revision.",
+        "differentiation_intent": "Balanced support while preserving the same revision sequence and final evidence target.",
+        "acceptable_response_modes": ["bullet", "phrase", "sentence"],
+        "instructions": [
+          "Re-read your Day 1 planning before making changes.",
+          "Strengthen one reason or one piece of evidence.",
+          "Improve your explanation before drafting the final paragraph."
+        ],
+        "tasks": [
+          {
+            "label": "Part A — Keep your strongest reason",
+            "prompt": "Which reason still feels strongest, and why are you keeping it in your final paragraph?",
+            "lines": 4
+          },
+          {
+            "label": "Part B — Revise your evidence or explanation",
+            "prompt": "What is one piece of evidence or one explanation you can improve so your opinion is supported more clearly?",
+            "lines": 5
+          },
+          {
+            "label": "Part C — Write one stronger explanation sentence",
+            "prompt": "Write one improved explanation sentence using the frame: This evidence matters because ___.",
+            "lines": 3
+          }
+        ],
+        "embedded_supports": [
+          "Choose the reason you trust most.",
+          "Make your evidence match your reason clearly.",
+          "Explain why the detail matters, not just what it says.",
+          "Keep planning work separate from your final paragraph."
+        ],
+        "success_criteria": [
+          "I improved the planning I started on Day 1.",
+          "I know which reasons and evidence belong in my final paragraph.",
+          "I improved at least one explanation before drafting.",
+          "I kept planning separate from final evidence."
+        ]
+      },
+      "task_sheet_extension": {
+        "title": "Day 2 Task Sheet — Extension",
+        "student_voice_opportunity": [
+          "judge which revision will make the argument most convincing",
+          "name the reason that gives the argument the most strength"
+        ],
+        "choice_structure": "Students choose the revision that makes the final paragraph more convincing, not just longer.",
+        "differentiation_intent": "Lighter scaffolds and more open revision space while preserving the same final evidence target.",
+        "acceptable_response_modes": ["bullet", "sentence", "brief paragraph"],
+        "instructions": [
+          "Re-read your Day 1 planning before making changes.",
+          "Choose the revision that will make your final paragraph more convincing.",
+          "Revise for stronger argument language, not repetition."
+        ],
+        "tasks": [
+          {
+            "label": "Part A — Keep your strongest reason",
+            "prompt": "Which reason gives your argument the most strength, and why are you keeping it in your final paragraph?",
+            "lines": 4
+          },
+          {
+            "label": "Part B — Revise your evidence or explanation",
+            "prompt": "Choose the change that will make your final paragraph more convincing, not just longer.",
+            "lines": 5
+          },
+          {
+            "label": "Part C — Write one stronger explanation sentence",
+            "prompt": "Write one improved explanation sentence. Avoid repeating the evidence; show the logic behind it.",
+            "lines": 3
+          }
+        ],
+        "embedded_supports": [
+          "Choose the reason you trust most.",
+          "Avoid repeating the evidence; show the logic behind it.",
+          "Revise for stronger argument language, not repetition.",
+          "Keep planning separate from final evidence."
+        ],
+        "success_criteria": [
+          "I improved the planning I started on Day 1.",
+          "I know which reasons and evidence belong in my final paragraph.",
+          "I improved at least one explanation before drafting.",
+          "I kept planning separate from final evidence."
+        ]
+      },
+      "final_response_sheet": {
+        "title": "Day 2 Final Response Sheet",
+        "prompt": "Write one argument paragraph that states your opinion clearly, gives reasons, and uses evidence or explanation to support your thinking.",
+        "planning_reminders": [
+          "State your opinion clearly.",
+          "Use one or two strong reasons from your task sheet.",
+          "Explain why your evidence supports your argument.",
+          "Keep your final written answer on this sheet."
+        ],
+        "paragraph_support": {
+          "frame_strip": [
+            "I believe ___.",
+            "One important reason is ___.",
+            "For example, ___.",
+            "This evidence matters because ___."
+          ],
+          "reminder_box": "Claim → reason → evidence → explanation"
+        },
+        "success_criteria": [
+          "My paragraph states a clear opinion.",
+          "My paragraph uses reasons and supporting evidence.",
+          "My paragraph explains why the evidence supports my argument.",
+          "My final evidence is recorded in the declared final response location."
+        ],
+        "response_lines": 10
+      },
+      "outputs": [
+        {
+          "output_id": "day2_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_2.slides",
+          "bundle": "ela_8_community_issue_argument_variant_proof_bundle"
+        },
+        {
+          "output_id": "day2_task_sheet_supported",
+          "output_type": "task_sheet",
+          "audience": "student",
+          "source_section": "days.day_2.task_sheet_supported",
+          "bundle": "ela_8_community_issue_argument_variant_proof_bundle",
+          "variant_group": "day2_task_sheet_family",
+          "variant_role": "supported",
+          "alignment_target": "arg_reason_evidence_explanation_revision",
+          "final_evidence_target": "day2_final_argument_paragraph"
+        },
+        {
+          "output_id": "day2_task_sheet_core",
+          "output_type": "task_sheet",
+          "audience": "student",
+          "source_section": "days.day_2.task_sheet_core",
+          "bundle": "ela_8_community_issue_argument_variant_proof_bundle",
+          "variant_group": "day2_task_sheet_family",
+          "variant_role": "core",
+          "alignment_target": "arg_reason_evidence_explanation_revision",
+          "final_evidence_target": "day2_final_argument_paragraph"
+        },
+        {
+          "output_id": "day2_task_sheet_extension",
+          "output_type": "task_sheet",
+          "audience": "student",
+          "source_section": "days.day_2.task_sheet_extension",
+          "bundle": "ela_8_community_issue_argument_variant_proof_bundle",
+          "variant_group": "day2_task_sheet_family",
+          "variant_role": "extension",
+          "alignment_target": "arg_reason_evidence_explanation_revision",
+          "final_evidence_target": "day2_final_argument_paragraph"
+        },
+        {
+          "output_id": "day2_final_response_sheet",
+          "output_type": "final_response_sheet",
+          "audience": "student",
+          "source_section": "days.day_2.final_response_sheet",
+          "bundle": "ela_8_community_issue_argument_variant_proof_bundle",
+          "final_evidence": true
+        }
+      ]
+    }
+  ]
+}

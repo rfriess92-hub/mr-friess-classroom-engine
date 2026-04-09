@@ -17,6 +17,8 @@ function pushIssue(collection, code, message, path = null) {
   collection.push({ code, message, path })
 }
 
+const VARIANT_ROLES = new Set(['shared_core', 'core', 'supported', 'extension'])
+
 function collectOutputEntries(pkg) {
   const entries = []
 
@@ -257,6 +259,33 @@ export function validatePackage(pkg) {
     if (output.final_evidence === true) {
       finalEvidenceCount += 1
     }
+
+    if ('variant_group' in output && !isNonEmptyString(output.variant_group)) {
+      pushIssue(errors, 'invalid_variant_group', 'variant_group must be a non-empty string when present.', `${entry.path}.variant_group`)
+    }
+
+    if ('variant_role' in output) {
+      if (!isNonEmptyString(output.variant_role)) {
+        pushIssue(errors, 'invalid_variant_role', 'variant_role must be a non-empty string when present.', `${entry.path}.variant_role`)
+      } else if (!VARIANT_ROLES.has(output.variant_role)) {
+        pushIssue(errors, 'unsupported_variant_role', `variant_role must be one of ${Array.from(VARIANT_ROLES).join(', ')}.`, `${entry.path}.variant_role`)
+      }
+      if (!isNonEmptyString(output.variant_group)) {
+        pushIssue(warnings, 'variant_role_missing_group', 'Outputs declaring variant_role should also declare variant_group.', `${entry.path}.variant_group`)
+      }
+    }
+
+    if ('alignment_target' in output && !isNonEmptyString(output.alignment_target)) {
+      pushIssue(errors, 'invalid_alignment_target', 'alignment_target must be a non-empty string when present.', `${entry.path}.alignment_target`)
+    }
+
+    if ('final_evidence_target' in output && !isNonEmptyString(output.final_evidence_target)) {
+      pushIssue(errors, 'invalid_final_evidence_target', 'final_evidence_target must be a non-empty string when present.', `${entry.path}.final_evidence_target`)
+    }
+
+    if (isNonEmptyString(output.variant_group) && audience !== 'student') {
+      pushIssue(errors, 'variant_group_audience_mismatch', 'Grouped differentiated variants must remain student-facing outputs.', `${entry.path}.audience`)
+    }
   }
 
   for (const entry of slideEntries) {
@@ -300,6 +329,49 @@ export function validatePackage(pkg) {
       if (!day?.day_label) {
         pushIssue(warnings, 'missing_day_label', 'Each day should declare day_label for render-plan readability.', `days[${dayIndex}].day_label`)
       }
+    }
+  }
+
+  const variantGroups = new Map()
+  for (const entry of outputEntries) {
+    const output = entry.output ?? {}
+    if (!isNonEmptyString(output.variant_group)) continue
+    if (!variantGroups.has(output.variant_group)) {
+      variantGroups.set(output.variant_group, [])
+    }
+    variantGroups.get(output.variant_group).push(entry)
+  }
+
+  for (const [groupName, entries] of variantGroups.entries()) {
+    const seenRoles = new Set()
+    const alignmentTargets = new Set()
+    const finalEvidenceTargets = new Set()
+
+    for (const entry of entries) {
+      const output = entry.output ?? {}
+
+      if (isNonEmptyString(output.variant_role)) {
+        if (seenRoles.has(output.variant_role)) {
+          pushIssue(errors, 'duplicate_variant_role', `variant_group ${groupName} repeats variant_role ${output.variant_role}.`, `${entry.path}.variant_role`)
+        }
+        seenRoles.add(output.variant_role)
+      }
+
+      if (isNonEmptyString(output.alignment_target)) {
+        alignmentTargets.add(output.alignment_target)
+      }
+
+      if (isNonEmptyString(output.final_evidence_target)) {
+        finalEvidenceTargets.add(output.final_evidence_target)
+      }
+    }
+
+    if (alignmentTargets.size > 1) {
+      pushIssue(errors, 'variant_group_alignment_split', `variant_group ${groupName} points to multiple alignment_target values: ${Array.from(alignmentTargets).join(', ')}.`, 'outputs')
+    }
+
+    if (finalEvidenceTargets.size > 1) {
+      pushIssue(errors, 'variant_group_final_evidence_split', `variant_group ${groupName} points to multiple final_evidence_target values: ${Array.from(finalEvidenceTargets).join(', ')}.`, 'outputs')
     }
   }
 

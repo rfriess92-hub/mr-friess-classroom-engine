@@ -76,6 +76,10 @@ export function routeRenderPlan(renderPlan) {
       final_evidence_role: output.final_evidence_role,
       source_path: output.source_path,
       source_section: output.source_section,
+      variant_group: output.variant_group,
+      variant_role: output.variant_role,
+      alignment_target: output.alignment_target,
+      final_evidence_target: output.final_evidence_target,
     }
   })
 }
