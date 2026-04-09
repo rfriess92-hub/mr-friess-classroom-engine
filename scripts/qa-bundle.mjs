@@ -22,6 +22,10 @@ function expectedArtifactsForRoutes(routes) {
         output_type: route.output_type,
         audience: route.audience,
         audience_bucket: route.audience_bucket,
+        variant_group: route.variant_group ?? null,
+        variant_role: route.variant_role ?? null,
+        alignment_target: route.alignment_target ?? null,
+        final_evidence_target: route.final_evidence_target ?? null,
         final_evidence_role: route.final_evidence_role,
         filename: `${route.output_id}${ext}`,
       }
@@ -105,6 +109,50 @@ function buildPatches() {
   ]
 }
 
+function summarizeVariantGroups(expectedArtifacts) {
+  const groups = new Map()
+
+  for (const artifact of expectedArtifacts) {
+    if (!artifact.variant_group) continue
+    if (!groups.has(artifact.variant_group)) groups.set(artifact.variant_group, [])
+    groups.get(artifact.variant_group).push(artifact)
+  }
+
+  return groups
+}
+
+function validateVariantGroups(expectedArtifacts) {
+  const findings = []
+  const blockers = []
+  const groups = summarizeVariantGroups(expectedArtifacts)
+
+  for (const [groupName, artifacts] of groups.entries()) {
+    const seenRoles = new Set()
+    const alignmentTargets = new Set()
+    const finalEvidenceTargets = new Set()
+    const audienceBuckets = new Set()
+
+    for (const artifact of artifacts) {
+      audienceBuckets.add(artifact.audience_bucket)
+      if (artifact.variant_role) {
+        if (seenRoles.has(artifact.variant_role)) blockers.push(`duplicate_variant_role_${groupName}_${artifact.variant_role}`)
+        seenRoles.add(artifact.variant_role)
+      }
+      if (artifact.alignment_target) alignmentTargets.add(artifact.alignment_target)
+      if (artifact.final_evidence_target) finalEvidenceTargets.add(artifact.final_evidence_target)
+    }
+
+    if (audienceBuckets.size > 1 || !audienceBuckets.has('student_facing')) blockers.push(`variant_group_audience_mismatch_${groupName}`)
+    if (alignmentTargets.size > 1) blockers.push(`variant_group_alignment_split_${groupName}`)
+    if (finalEvidenceTargets.size > 1) blockers.push(`variant_group_final_evidence_split_${groupName}`)
+    if (blockers.some((code) => code.endsWith(`_${groupName}`) || code.includes(`_${groupName}_`))) {
+      findings.push({ type: 'content_issue', note: `Variant group ${groupName} failed aligned-differentiation checks.` })
+    }
+  }
+
+  return { findings, blockers, group_count: groups.size }
+}
+
 function emit(result) {
   console.log(JSON.stringify({ bundle_qa: result }, null, 2))
 }
@@ -171,6 +219,7 @@ const artifactResults = expectedArtifacts
 const findings = []
 const blockers = []
 let fastScore = 0
+const variantValidation = validateVariantGroups(expectedArtifacts)
 
 if (!validation.valid) {
   blockers.push('package_validation_failed')
@@ -249,6 +298,13 @@ if (blockedArtifacts.length > 0) {
   fastScore += 2
 }
 
+if (variantValidation.blockers.length > 0) {
+  blockers.push(...variantValidation.blockers)
+  findings.push(...variantValidation.findings)
+} else if (variantValidation.group_count > 0) {
+  fastScore += 2
+}
+
 if (crossPackageCollisions.length > 0) {
   findings.push({
     type: 'render_logic_issue',
@@ -286,6 +342,7 @@ emit({
   undeclared_artifacts: undeclaredArtifacts,
   cross_package_name_collisions: crossPackageCollisions,
   blocked_artifacts: blockedArtifacts.map((item) => item.filename),
+  variant_group_count: variantValidation.group_count,
   revised_artifacts: revisedArtifacts.map((item) => item.filename),
   primary_final_evidence_artifacts: primaryFinalEvidence.map((item) => item.filename),
   findings,
@@ -304,3 +361,4 @@ emit({
 if (hardFailure) {
   process.exit(1)
 }
+

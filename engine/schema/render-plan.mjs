@@ -63,6 +63,10 @@ function normalizeOutputEntry(pkg, entry, index) {
     final_evidence_role: output.final_evidence === true ? 'primary' : 'none',
     source_path: entry.path,
     source_section: output.source_section ?? null,
+    variant_group: output.variant_group ?? null,
+    variant_role: output.variant_role ?? null,
+    alignment_target: output.alignment_target ?? null,
+    final_evidence_target: output.final_evidence_target ?? null,
     declared_bundle: output.bundle ?? pkg.bundle?.bundle_id ?? null,
   }
 }
