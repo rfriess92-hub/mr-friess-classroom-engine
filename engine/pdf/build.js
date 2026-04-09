@@ -25,6 +25,9 @@ if (!lesson) {
   process.exit(1)
 }
 
+console.warn('[deprecated] build:pdf is a legacy direct-lesson command and is not the authoritative stable-core acceptance workflow.')
+console.warn('[deprecated] For stable-core packages use: schema:check -> route:plan -> render:package -> qa:bundle')
+
 const lessonPath = resolve(process.cwd(), lesson)
 if (!existsSync(lessonPath)) {
   console.error(`Lesson file not found: ${lesson}`)
