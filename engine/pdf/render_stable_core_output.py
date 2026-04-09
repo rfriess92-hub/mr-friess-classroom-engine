@@ -5,10 +5,11 @@ import argparse
 import json
 from pathlib import Path
 
+from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
-from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
+from reportlab.platypus import KeepTogether, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 
 def parse_args() -> argparse.Namespace:
@@ -28,6 +29,7 @@ def styles_bundle():
     styles = getSampleStyleSheet()
     styles.add(ParagraphStyle(name='CenterTitleX', parent=styles['Heading1'], alignment=TA_CENTER, fontSize=18, leading=22))
     styles.add(ParagraphStyle(name='SmallHeadX', parent=styles['Heading3'], spaceAfter=6, fontSize=12, leading=14))
+    styles.add(ParagraphStyle(name='BodyTextCompactX', parent=styles['BodyText'], fontSize=10, leading=12))
     styles['BodyText'].fontSize = 10
     styles['BodyText'].leading = 13
     return styles
@@ -81,6 +83,63 @@ def find_output(packet: dict, output_id: str):
     return None
 
 
+def add_bullet_section(story, styles, title: str, items: list[str], compact: bool = False, spacer_after: int = 8):
+    if not items:
+        return
+    body_style = styles['BodyTextCompactX'] if compact else styles['BodyText']
+    block = [Paragraph(title, styles['SmallHeadX'])]
+    for item in items:
+        block.append(Paragraph(f'• {item}', body_style))
+    story.append(KeepTogether(block))
+    story.append(Spacer(1, spacer_after))
+
+
+def add_paragraph_support_block(story, styles, paragraph_support: dict):
+    frame_strip = [str(x) for x in paragraph_support.get('frame_strip', [])]
+    reminder_box = paragraph_support.get('reminder_box')
+
+    if not frame_strip and not reminder_box:
+        return
+
+    story.append(Paragraph('Paragraph support', styles['SmallHeadX']))
+
+    if frame_strip:
+        col_width = 520 / max(1, len(frame_strip))
+        strip = Table([frame_strip], colWidths=[col_width] * len(frame_strip), hAlign='CENTER')
+        strip.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, -1), colors.whitesmoke),
+            ('TEXTCOLOR', (0, 0), (-1, -1), colors.HexColor('#0f172a')),
+            ('BOX', (0, 0), (-1, -1), 0.75, colors.HexColor('#cbd5e1')),
+            ('INNERGRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#cbd5e1')),
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+            ('FONTSIZE', (0, 0), (-1, -1), 9),
+            ('LEADING', (0, 0), (-1, -1), 11),
+            ('TOPPADDING', (0, 0), (-1, -1), 6),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+            ('LEFTPADDING', (0, 0), (-1, -1), 4),
+            ('RIGHTPADDING', (0, 0), (-1, -1), 4),
+        ]))
+        story.append(strip)
+        story.append(Spacer(1, 6))
+
+    if reminder_box:
+        reminder = Table([[f"Reminder box: {reminder_box}"]], colWidths=[520], hAlign='CENTER')
+        reminder.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#f8fafc')),
+            ('TEXTCOLOR', (0, 0), (-1, -1), colors.HexColor('#334155')),
+            ('BOX', (0, 0), (-1, -1), 0.75, colors.HexColor('#94a3b8')),
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+            ('FONTSIZE', (0, 0), (-1, -1), 10),
+            ('LEADING', (0, 0), (-1, -1), 12),
+            ('TOPPADDING', (0, 0), (-1, -1), 6),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+        ]))
+        story.append(reminder)
+        story.append(Spacer(1, 8))
+
+
 def render_teacher_guide(packet: dict, section: dict, out_path: Path) -> None:
     styles = styles_bundle()
     story = []
@@ -92,25 +151,19 @@ def render_teacher_guide(packet: dict, section: dict, out_path: Path) -> None:
     if section.get('big_idea'):
         story.append(Paragraph(f"<b>Big Idea</b>: {section['big_idea']}", styles['BodyText']))
         story.append(Spacer(1, 8))
-    if section.get('learning_goals'):
-        story.append(Paragraph('Learning goals', styles['SmallHeadX']))
-        for item in section['learning_goals']:
-            story.append(Paragraph(f'• {item}', styles['BodyText']))
-        story.append(Spacer(1, 8))
-    if section.get('materials'):
-        story.append(Paragraph('Materials', styles['SmallHeadX']))
-        for item in section['materials']:
-            story.append(Paragraph(f'• {item}', styles['BodyText']))
-        story.append(Spacer(1, 8))
+    add_bullet_section(story, styles, 'Learning goals', section.get('learning_goals', []))
+    add_bullet_section(story, styles, 'Materials', section.get('materials', []))
     if section.get('timing'):
-        story.append(Paragraph('Timing', styles['SmallHeadX']))
+        block = [Paragraph('Timing', styles['SmallHeadX'])]
         for item in section['timing']:
-            story.append(Paragraph(f"• {item.get('time', '')}: {item.get('activity', '')}", styles['BodyText']))
+            block.append(Paragraph(f"• {item.get('time', '')}: {item.get('activity', '')}", styles['BodyText']))
+        story.append(KeepTogether(block))
         story.append(Spacer(1, 8))
-    if section.get('teacher_notes'):
-        story.append(Paragraph('Teacher notes', styles['SmallHeadX']))
-        for item in section['teacher_notes']:
-            story.append(Paragraph(f'• {item}', styles['BodyText']))
+    add_bullet_section(story, styles, 'Teacher notes', section.get('teacher_notes', []))
+    add_bullet_section(story, styles, 'Likely misconceptions', section.get('likely_misconceptions', []))
+    add_bullet_section(story, styles, 'Look-fors', section.get('look_fors', []))
+    add_bullet_section(story, styles, 'Support moves', section.get('support_moves', []))
+    add_bullet_section(story, styles, 'Extension moves', section.get('extension_moves', []), spacer_after=0)
 
     doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
     doc.build(story)
@@ -157,29 +210,31 @@ def render_task_sheet(packet: dict, section: dict, out_path: Path) -> None:
     story.append(Paragraph(packet_heading(packet), styles['CenterTitleX']))
     story.append(Paragraph(section.get('title', 'Task Sheet'), styles['Heading2']))
     story.append(Paragraph('Name: ____________________   Date: __________', styles['BodyText']))
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 6))
 
     for instruction in section.get('instructions', []):
         story.append(Paragraph(f'• {instruction}', styles['BodyText']))
     if section.get('instructions'):
-        story.append(Spacer(1, 8))
+        story.append(Spacer(1, 6))
 
     for task in section.get('tasks', []):
         story.append(Paragraph(task.get('label', 'Task'), styles['SmallHeadX']))
         story.append(Paragraph(task.get('prompt', ''), styles['BodyText']))
         render_lines(story, styles, task.get('lines', 4))
-        story.append(Spacer(1, 8))
+        story.append(Spacer(1, 5))
 
     if section.get('embedded_supports'):
-        story.append(Paragraph('Embedded supports', styles['SmallHeadX']))
+        block = [Paragraph('Embedded supports', styles['SmallHeadX'])]
         for item in section['embedded_supports']:
-            story.append(Paragraph(f'• {item}', styles['BodyText']))
-        story.append(Spacer(1, 8))
+            block.append(Paragraph(f'• {item}', styles['BodyTextCompactX']))
+        story.append(KeepTogether(block))
+        story.append(Spacer(1, 5))
 
     if section.get('success_criteria'):
-        story.append(Paragraph('Success criteria', styles['SmallHeadX']))
+        block = [Paragraph('Success criteria', styles['SmallHeadX'])]
         for item in section['success_criteria']:
-            story.append(Paragraph(f'• {item}', styles['BodyText']))
+            block.append(Paragraph(f'• {item}', styles['BodyTextCompactX']))
+        story.append(KeepTogether(block))
 
     doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
     doc.build(story)
@@ -230,6 +285,8 @@ def render_final_response_sheet(packet: dict, section: dict, out_path: Path) -> 
         for item in section['planning_reminders']:
             story.append(Paragraph(f'• {item}', styles['BodyText']))
         story.append(Spacer(1, 8))
+    if section.get('paragraph_support'):
+        add_paragraph_support_block(story, styles, section['paragraph_support'])
 
     render_lines(story, styles, section.get('response_lines', 8))
     story.append(Spacer(1, 8))
