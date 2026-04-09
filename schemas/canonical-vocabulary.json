@@ -35,6 +35,28 @@
     "supporting",
     "integrated"
   ],
+  "themes": [
+    "science",
+    "careers"
+  ],
+  "slide_layouts": [
+    "hero",
+    "stat_discussion",
+    "prompt",
+    "two_column",
+    "two_column_compare",
+    "three_rows",
+    "numbered_steps",
+    "rows",
+    "retrieval",
+    "summary_rows",
+    "single_card",
+    "prompt_card",
+    "checklist",
+    "bullet_focus",
+    "planner_model",
+    "reflect"
+  ],
   "aliases": {
     "student_task": "task_sheet",
     "checkpoint": "checkpoint_sheet",

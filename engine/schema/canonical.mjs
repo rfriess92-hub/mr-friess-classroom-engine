@@ -15,6 +15,8 @@ export const PRIMARY_ARCHITECTURES = VOCABULARY.primary_architectures ?? []
 export const AUDIENCES = VOCABULARY.audiences ?? []
 export const CANONICAL_OUTPUT_TYPES = VOCABULARY.output_types ?? []
 export const GRADE_BANDS = VOCABULARY.grade_bands ?? []
+export const SUPPORTED_THEMES = VOCABULARY.themes ?? []
+export const SUPPORTED_SLIDE_LAYOUTS = VOCABULARY.slide_layouts ?? []
 export const OUTPUT_TYPE_ALIASES = VOCABULARY.aliases ?? {}
 
 export const OUTPUT_TYPES_BY_ARCHITECTURE = {
@@ -64,6 +66,14 @@ export function isCanonicalOutputType(value) {
 
 export function isValidAudience(value) {
   return AUDIENCES.includes(value)
+}
+
+export function isSupportedTheme(value) {
+  return SUPPORTED_THEMES.includes(value)
+}
+
+export function isSupportedSlideLayout(value) {
+  return SUPPORTED_SLIDE_LAYOUTS.includes(value)
 }
 
 export function allowedOutputTypesForArchitecture(primaryArchitecture) {
