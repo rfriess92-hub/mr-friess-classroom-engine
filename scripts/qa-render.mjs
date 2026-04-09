@@ -87,13 +87,15 @@ function inspectPptx(path) {
       has_presentation_xml: false,
       slide_count: 0,
       notes_count: 0,
+      slide_texts: [],
       error: 'python_unavailable_for_pptx_inspection',
     }
   }
 
   const script = [
-    'import json, sys, zipfile',
-    'out = {"inspection_ok": False, "valid_zip": False, "has_content_types": False, "has_presentation_xml": False, "slide_count": 0, "notes_count": 0}',
+    'import json, sys, zipfile, xml.etree.ElementTree as ET',
+    'out = {"inspection_ok": False, "valid_zip": False, "has_content_types": False, "has_presentation_xml": False, "slide_count": 0, "notes_count": 0, "slide_texts": []}',
+    'ns = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main"}',
     'try:',
     '    with zipfile.ZipFile(sys.argv[1]) as zf:',
     '        names = zf.namelist()',
@@ -101,8 +103,16 @@ function inspectPptx(path) {
     '        out["valid_zip"] = True',
     '        out["has_content_types"] = "[Content_Types].xml" in names',
     '        out["has_presentation_xml"] = "ppt/presentation.xml" in names',
-    '        out["slide_count"] = sum(1 for n in names if n.startswith("ppt/slides/slide") and n.endswith(".xml"))',
+    '        slide_names = sorted(n for n in names if n.startswith("ppt/slides/slide") and n.endswith(".xml"))',
+    '        out["slide_count"] = len(slide_names)',
     '        out["notes_count"] = sum(1 for n in names if n.startswith("ppt/notesSlides/notesSlide") and n.endswith(".xml"))',
+    '        for slide_name in slide_names:',
+    '            try:',
+    '                root = ET.fromstring(zf.read(slide_name))',
+    '                texts = [node.text.strip() for node in root.findall(".//a:t", ns) if node.text and node.text.strip()]',
+    '                out["slide_texts"].append(" ".join(texts))',
+    '            except Exception:',
+    '                out["slide_texts"].append("")',
     'except Exception as exc:',
     '    out["error"] = str(exc)',
     'print(json.dumps(out))',
@@ -117,6 +127,7 @@ function inspectPptx(path) {
       has_presentation_xml: false,
       slide_count: 0,
       notes_count: 0,
+      slide_texts: [],
       error: result.stderr?.trim() || result.stdout?.trim() || 'pptx_inspection_failed',
     }
   }
@@ -131,9 +142,26 @@ function inspectPptx(path) {
       has_presentation_xml: false,
       slide_count: 0,
       notes_count: 0,
+      slide_texts: [],
       error: 'invalid_pptx_inspection_payload',
     }
   }
+}
+
+function detectScaffoldLeakage(slideTexts) {
+  const pattern = /\b(?:Row|Prompt|Item)\s+\d+\b/g
+  const hits = []
+
+  slideTexts.forEach((text, index) => {
+    if (!text) return
+    const matches = text.match(pattern)
+    if (!matches) return
+    for (const match of matches) {
+      hits.push({ slide_number: index + 1, token: match })
+    }
+  })
+
+  return hits
 }
 
 function emit(result) {
@@ -145,7 +173,7 @@ function buildPatches() {
     {
       rank: 1,
       type: 'render_logic_issue',
-      patch: 'Extend qa:render from fast structural checks into text-level PPTX/PDF content checks for audience separation and metadata coherence.'
+      patch: 'Keep semantic PPTX text checks enabled so visible scaffold tokens like Row 1 / Prompt 1 / Item 1 block shipping instead of slipping through structural QA.'
     },
     {
       rank: 2,
@@ -155,7 +183,7 @@ function buildPatches() {
     {
       rank: 3,
       type: 'content_issue',
-      patch: 'Add bundle-level QA so declared output completeness and cross-artifact role separation are checked together, not artifact by artifact.'
+      patch: 'Extend bundle-level semantic checks over time so teacher/student boundary leaks are caught from artifact text, not just filenames.'
     }
   ]
 }
@@ -301,6 +329,18 @@ if (artifactType === 'pptx') {
       type: 'render_logic_issue',
       note: 'PPTX package contains no slide XML entries.'
     })
+  }
+
+  if (artifactStem(artifactName).includes('slides')) {
+    const leaks = detectScaffoldLeakage(Array.isArray(pptx.slide_texts) ? pptx.slide_texts : [])
+    if (leaks.length > 0) {
+      blockers.push('pptx_scaffold_token_leakage')
+      const summary = leaks.slice(0, 6).map((hit) => `${hit.token} (slide ${hit.slide_number})`).join(', ')
+      findings.push({
+        type: 'render_logic_issue',
+        note: `Visible scaffold tokens detected in slide text: ${summary}`
+      })
+    }
   }
 }
 
