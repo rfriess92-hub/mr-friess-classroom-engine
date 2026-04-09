@@ -65,25 +65,90 @@ function normalizeSemanticText(text) {
     .toLowerCase()
 }
 
-function inspectPdf(path) {
-  const buffer = readFileSync(path)
-  const prefix = buffer.subarray(0, 5).toString('latin1')
-  const tail = readAsciiTail(buffer)
-  const body = buffer.toString('latin1')
-  return {
-    header_ok: prefix === '%PDF-',
-    eof_ok: tail.includes('%%EOF'),
-    page_marker_ok: body.includes('/Page'),
-    normalized_text: normalizeSemanticText(body),
-  }
-}
-
 function pickPython() {
   for (const cmd of ['python', 'python3', 'py']) {
     const probe = spawnSync(cmd, ['--version'], { stdio: 'ignore' })
     if (probe.status === 0) return cmd
   }
   return null
+}
+
+function inspectPdf(path) {
+  const buffer = readFileSync(path)
+  const prefix = buffer.subarray(0, 5).toString('latin1')
+  const tail = readAsciiTail(buffer)
+  const body = buffer.toString('latin1')
+  const structural = {
+    header_ok: prefix === '%PDF-',
+    eof_ok: tail.includes('%%EOF'),
+    page_marker_ok: body.includes('/Page'),
+  }
+
+  const pythonCmd = pickPython()
+  if (!pythonCmd) {
+    return {
+      ...structural,
+      text_extraction_ok: false,
+      normalized_text: '',
+      extraction_error: 'python_unavailable_for_pdf_text_extraction',
+    }
+  }
+
+  const script = [
+    'import json, sys',
+    'out = {"text_extraction_ok": False, "normalized_text": ""}',
+    'try:',
+    '    PdfReader = None',
+    '    try:',
+    '        from pypdf import PdfReader',
+    '    except Exception:',
+    '        try:',
+    '            from PyPDF2 import PdfReader',
+    '        except Exception:',
+    '            PdfReader = None',
+    '    if PdfReader is None:',
+    '        raise RuntimeError("pdf_text_extractor_unavailable")',
+    '    reader = PdfReader(sys.argv[1])',
+    '    parts = []',
+    '    for page in reader.pages:',
+    '        try:',
+    '            parts.append(page.extract_text() or "")',
+    '        except Exception:',
+    '            parts.append("")',
+    '    text = " ".join(parts)',
+    '    out["text_extraction_ok"] = True',
+    '    out["normalized_text"] = " ".join(text.replace("\\x00", " ").split()).lower()',
+    'except Exception as exc:',
+    '    out["error"] = str(exc)',
+    'print(json.dumps(out))',
+  ].join('\n')
+
+  const result = spawnSync(pythonCmd, ['-c', script, path], { encoding: 'utf-8' })
+  if (result.status !== 0) {
+    return {
+      ...structural,
+      text_extraction_ok: false,
+      normalized_text: '',
+      extraction_error: result.stderr?.trim() || result.stdout?.trim() || 'pdf_text_extraction_failed',
+    }
+  }
+
+  try {
+    const parsed = JSON.parse(result.stdout)
+    return {
+      ...structural,
+      text_extraction_ok: parsed.text_extraction_ok === true,
+      normalized_text: normalizeSemanticText(parsed.normalized_text ?? ''),
+      extraction_error: parsed.error ?? null,
+    }
+  } catch {
+    return {
+      ...structural,
+      text_extraction_ok: false,
+      normalized_text: '',
+      extraction_error: 'invalid_pdf_text_payload',
+    }
+  }
 }
 
 function inspectPptx(path) {
@@ -177,7 +242,7 @@ function expectedPdfIdentityPhrase(artifactName) {
   const stem = artifactStem(artifactName)
   if (stem.includes('teacher_guide')) return 'teacher guide'
   if (stem.includes('lesson_overview')) return 'lesson overview'
-  if (stem.includes('checkpoint_sheet')) return 'checkpoint'
+  if (stem.includes('checkpoint_sheet')) return 'checkpoint sheet'
   if (stem.includes('task_sheet')) return 'task sheet'
   if (stem.includes('final_response_sheet')) return 'final response sheet'
   if (stem.includes('worksheet')) return 'worksheet'
@@ -185,20 +250,24 @@ function expectedPdfIdentityPhrase(artifactName) {
   return null
 }
 
-function checkPdfSemantics(artifactName, audienceBucket, normalizedText) {
+function checkPdfSemantics(artifactName, audienceBucket, normalizedText, textExtractionOk) {
   const blockers = []
   const findings = []
+
+  if (!textExtractionOk) {
+    return { blockers, findings }
+  }
 
   const identityPhrase = expectedPdfIdentityPhrase(artifactName)
   if (identityPhrase && !normalizedText.includes(identityPhrase)) {
     blockers.push('pdf_identity_text_missing')
     findings.push({
       type: 'artifact_formatting_issue',
-      note: `PDF text does not include the expected identity phrase for this artifact: ${identityPhrase}.`
+      note: `Extracted PDF text does not include the expected identity phrase for this artifact: ${identityPhrase}.`
     })
   }
 
-  if (audienceBucket === 'teacher_only' && /name:\s*[_]/i.test(normalizedText)) {
+  if (audienceBucket === 'teacher_only' && normalizedText.includes('name:')) {
     blockers.push('teacher_artifact_contains_student_name_line')
     findings.push({
       type: 'content_issue',
@@ -234,7 +303,7 @@ function buildPatches() {
     {
       rank: 1,
       type: 'content_issue',
-      patch: 'Keep semantic PDF checks enabled so obvious audience-boundary leaks and missing artifact identity text are caught before shipping.'
+      patch: 'Keep semantic PDF checks enabled when extracted PDF text is available so obvious audience-boundary leaks and missing artifact identity text are caught before shipping.'
     },
     {
       rank: 2,
@@ -366,7 +435,7 @@ if (artifactType === 'pdf') {
     })
   }
 
-  const semantic = checkPdfSemantics(artifactName, audienceBucket, pdf.normalized_text)
+  const semantic = checkPdfSemantics(artifactName, audienceBucket, pdf.normalized_text, pdf.text_extraction_ok)
   blockers.push(...semantic.blockers)
   findings.push(...semantic.findings)
 }
