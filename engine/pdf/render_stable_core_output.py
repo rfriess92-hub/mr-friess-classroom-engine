@@ -262,13 +262,13 @@ def boxed_text_block(story, styles, title: str, lines: list[str], bg=colors.HexC
     story.append(Spacer(1, 8 if not compact else 6))
 
 
-def build_task_block(styles, task: dict, compact=False):
+def build_task_block(styles, task: dict, compact=False, spacing_scale: float = 1.0):
     body_style = styles['BodyTextCompactX'] if compact else styles['BodyText']
     line_style = 'BodyTextCompactX' if compact else 'BodyText'
     flowables = [
         Paragraph(task.get('label', 'Task'), styles['SectionHeadX']),
         Paragraph(task.get('prompt', ''), body_style),
-        Spacer(1, 3 if compact else 4),
+        Spacer(1, int((3 if compact else 4) * spacing_scale)),
     ]
     for _ in range(task.get('lines', 4)):
         flowables.append(Paragraph('______________________________________________________________', styles[line_style]))
@@ -276,13 +276,13 @@ def build_task_block(styles, task: dict, compact=False):
     block.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), colors.white),
         ('BOX', (0, 0), (-1, -1), 0.75, colors.HexColor('#cbd5e1')),
-        ('TOPPADDING', (0, 0), (-1, -1), 8 if not compact else 6),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 8 if not compact else 6),
+        ('TOPPADDING', (0, 0), (-1, -1), (8 if not compact else 6) * spacing_scale),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), (8 if not compact else 6) * spacing_scale),
         ('LEFTPADDING', (0, 0), (-1, -1), 10),
         ('RIGHTPADDING', (0, 0), (-1, -1), 10),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
     ]))
-    return KeepTogether([block, Spacer(1, 8 if not compact else 6)])
+    return KeepTogether([block, Spacer(1, int((8 if not compact else 6) * spacing_scale))])
 
 
 def compact_list_cell(styles, title: str, items: list[str]):
@@ -330,17 +330,17 @@ def render_task_sheet(packet: dict, section: dict, out_path: Path) -> None:
     story.append(Paragraph('Name: ____________________   Date: __________', styles['MutedX']))
     story.append(Spacer(1, 6))
     boxed_text_block(story, styles, 'Purpose', [purpose_line_for_task_sheet(section)], bg=colors.HexColor('#eef2ff'), border=colors.HexColor('#c7d2fe'), compact=True)
-    boxed_text_block(story, styles, 'Before you start', section.get('instructions', []), bg=colors.HexColor('#f8fafc'), border=colors.HexColor('#cbd5e1'), compact=day2_layout)
+    boxed_text_block(story, styles, 'Before you start', section.get('instructions', []), bg=colors.HexColor('#f8fafc'), border=colors.HexColor('#cbd5e1'), compact=(day2_layout or day1_layout))
 
     if day1_layout:
         for task in tasks[:-1]:
-            story.append(build_task_block(styles, task, compact=False))
+            story.append(build_task_block(styles, task, compact=True, spacing_scale=0.82))
         story.append(PageBreak())
         title_bar(story, styles, packet_heading(packet))
         story.append(Paragraph(f"{title} — Checkpoint prep", styles['Heading2']))
         story.append(Paragraph('Use this page to identify what still needs work before the checkpoint.', styles['MutedX']))
-        story.append(Spacer(1, 6))
-        story.append(build_task_block(styles, tasks[-1], compact=False))
+        story.append(Spacer(1, 4))
+        story.append(build_task_block(styles, tasks[-1], compact=True, spacing_scale=0.9))
         add_day1_page2_footer(story, styles, section)
     elif day2_layout:
         for task in tasks:
@@ -352,7 +352,7 @@ def render_task_sheet(packet: dict, section: dict, out_path: Path) -> None:
         boxed_text_block(story, styles, 'Support tools', section.get('embedded_supports', []), bg=colors.HexColor('#f8fafc'), border=colors.HexColor('#cbd5e1'), compact=True)
         boxed_text_block(story, styles, 'Success check', section.get('success_criteria', []), bg=colors.HexColor('#f8fafc'), border=colors.HexColor('#cbd5e1'), compact=True)
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=28, bottomMargin=28)
+    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=32, rightMargin=32, topMargin=24, bottomMargin=24)
     doc.build(story)
 
 
