@@ -1,28 +1,10 @@
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { tmpdir } from 'node:os'
 import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
-
-const FIXTURE_MAP = {
-  benchmark1: 'fixtures/core/benchmark-1.grade2-math.json',
-  challenge7: 'fixtures/core/challenge-7.grade8-sequence.json',
-}
-
-function argValue(flag) {
-  const index = process.argv.indexOf(flag)
-  if (index === -1) return null
-  return process.argv[index + 1] ?? null
-}
-
-function repoPath(...parts) {
-  return resolve(process.cwd(), ...parts)
-}
-
-function loadJson(path) {
-  return JSON.parse(readFileSync(path, 'utf-8'))
-}
+import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
 function pickPython() {
   for (const cmd of ['python', 'python3', 'py']) {
@@ -116,13 +98,13 @@ const packageArg = argValue('--package')
 const fixtureArg = argValue('--fixture')
 const outArg = argValue('--out') ?? 'output'
 const flatOut = process.argv.includes('--flat-out')
-const resolvedPackageArg = fixtureArg ? FIXTURE_MAP[fixtureArg] : packageArg
+const resolvedPackageArg = resolvePackageArg(packageArg, fixtureArg)
 
 if (!resolvedPackageArg) {
   console.log('Stable-core package renderer is present.')
   console.log('Usage: pnpm run render:package -- --fixture benchmark1 --out output [--flat-out]')
   console.log('Default behavior writes artifacts to output/<package_id>/ to isolate bundles.')
-  console.log('Current first-pass support: route-driven rendering for stable-core fixture packages with supported output types')
+  console.log(`Fixture shortcuts: ${Object.keys(FIXTURE_MAP).map((key) => `--fixture ${key}`).join(' | ')}`)
   process.exit(0)
 }
 
