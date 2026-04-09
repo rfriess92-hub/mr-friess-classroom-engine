@@ -148,9 +148,30 @@ def render_retrieval(slide, content: dict, theme: dict) -> None:
         base.add_textbox(slide, x + 0.28, text_y, 4.75, 0.26, pr.get("text", ""), font_size=15, color=base.NAVY)
 
 
+def render_reflect(slide, content: dict, accent) -> None:
+    raw_items = content.get("goals") or content.get("prompts") or []
+    items = [dict(x) if isinstance(x, dict) else {"text": str(x)} for x in raw_items]
+    heading = "Check yourself against today’s goals." if content.get("goals") else "Finish by reflecting on these prompts."
+    base.add_textbox(slide, 0.95, 1.55, 11.4, 0.40, heading, font_size=18, color=base.SLATE, align=PP_ALIGN.CENTER)
+
+    y = 2.10
+    for item in items[:3]:
+        title = item.get("title") or item.get("head") or item.get("label")
+        if title:
+            base.add_card(slide, 1.05, y, 10.2, 0.95, title, accent, base.LIGHT)
+            text_y = y + 0.33
+        else:
+            add_plain_card(slide, 1.05, y, 10.2, 0.95, accent)
+            text_y = y + 0.27
+        text = item.get("text") or item.get("body", "")
+        base.add_textbox(slide, 1.38, text_y, 8.8, 0.30, str(text), font_size=16, color=base.NAVY)
+        y += 1.18
+
+
 base.normalize_rows = normalize_rows
 base.render_three_rows = render_three_rows
 base.render_retrieval = render_retrieval
+base.render_reflect = render_reflect
 
 
 if __name__ == "__main__":
