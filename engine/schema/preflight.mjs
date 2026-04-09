@@ -2,9 +2,13 @@ import {
   AUDIENCES,
   PRIMARY_ARCHITECTURES,
   REQUIRED_PACKAGE_FIELDS,
+  SUPPORTED_SLIDE_LAYOUTS,
+  SUPPORTED_THEMES,
   allowedOutputTypesForArchitecture,
   expectedAudienceForOutputType,
   isCanonicalOutputType,
+  isSupportedSlideLayout,
+  isSupportedTheme,
   isValidAudience,
   normalizeOutputType,
 } from './canonical.mjs'
@@ -48,13 +52,134 @@ function collectOutputEntries(pkg) {
   return entries
 }
 
+function collectSlideEntries(pkg) {
+  const entries = []
+
+  if (Array.isArray(pkg.slides)) {
+    for (let slideIndex = 0; slideIndex < pkg.slides.length; slideIndex += 1) {
+      entries.push({
+        slide: pkg.slides[slideIndex],
+        path: `slides[${slideIndex}]`,
+      })
+    }
+  }
+
+  if (Array.isArray(pkg.days)) {
+    for (let dayIndex = 0; dayIndex < pkg.days.length; dayIndex += 1) {
+      const day = pkg.days[dayIndex]
+      if (!Array.isArray(day?.slides)) continue
+      for (let slideIndex = 0; slideIndex < day.slides.length; slideIndex += 1) {
+        entries.push({
+          slide: day.slides[slideIndex],
+          path: `days[${dayIndex}].slides[${slideIndex}]`,
+        })
+      }
+    }
+  }
+
+  return entries
+}
+
+function isNonEmptyString(value) {
+  return typeof value === 'string' && value.trim().length > 0
+}
+
+function isNonEmptyArray(value) {
+  return Array.isArray(value) && value.length > 0
+}
+
+function validateSlideShape(errors, warnings, slide, path) {
+  if (!slide || typeof slide !== 'object' || Array.isArray(slide)) {
+    pushIssue(errors, 'invalid_slide_entry', 'Each slide must be an object.', path)
+    return
+  }
+
+  if (!isNonEmptyString(slide.title)) {
+    pushIssue(warnings, 'missing_slide_title', 'Slides should declare a non-empty title.', `${path}.title`)
+  }
+
+  if (!isNonEmptyString(slide.layout)) {
+    pushIssue(errors, 'missing_slide_layout', 'Each slide must declare a non-empty layout.', `${path}.layout`)
+    return
+  }
+
+  if (!isSupportedSlideLayout(slide.layout)) {
+    pushIssue(errors, 'unsupported_slide_layout', `Unsupported slide layout: ${slide.layout}. Supported layouts: ${SUPPORTED_SLIDE_LAYOUTS.join(', ')}.`, `${path}.layout`)
+    return
+  }
+
+  const content = slide.content
+  if (!content || typeof content !== 'object' || Array.isArray(content)) {
+    pushIssue(errors, 'invalid_slide_content', 'Each slide must declare a content object.', `${path}.content`)
+    return
+  }
+
+  switch (slide.layout) {
+    case 'prompt': {
+      const hasLead = isNonEmptyString(content.scenario) || isNonEmptyString(content.task)
+      if (!hasLead) {
+        pushIssue(errors, 'prompt_layout_missing_lead', 'prompt layout requires content.scenario or content.task.', `${path}.content`)
+      }
+      if ('prompts' in content && !Array.isArray(content.prompts)) {
+        pushIssue(errors, 'prompt_layout_invalid_prompts', 'prompt layout content.prompts must be an array when present.', `${path}.content.prompts`)
+      }
+      break
+    }
+    case 'two_column': {
+      const hasColumns = isNonEmptyArray(content.columns)
+      const hasSides = content.left != null && content.right != null
+      if (!hasColumns && !hasSides) {
+        pushIssue(errors, 'two_column_missing_columns', 'two_column layout requires content.columns or both content.left and content.right.', `${path}.content`)
+      }
+      break
+    }
+    case 'two_column_compare': {
+      if (!isNonEmptyString(content.left) || !isNonEmptyString(content.right)) {
+        pushIssue(errors, 'two_column_compare_missing_sides', 'two_column_compare layout requires non-empty content.left and content.right strings.', `${path}.content`)
+      }
+      if ('prompts' in content && !Array.isArray(content.prompts)) {
+        pushIssue(errors, 'two_column_compare_invalid_prompts', 'two_column_compare content.prompts must be an array when present.', `${path}.content.prompts`)
+      }
+      break
+    }
+    case 'retrieval': {
+      if (!isNonEmptyString(content.task)) {
+        pushIssue(errors, 'retrieval_missing_task', 'retrieval layout requires a non-empty content.task.', `${path}.content.task`)
+      }
+      const hasPromptSet = isNonEmptyArray(content.prompts) || isNonEmptyArray(content.events) || isNonEmptyArray(content.areas)
+      if (!hasPromptSet) {
+        pushIssue(errors, 'retrieval_missing_prompt_set', 'retrieval layout requires a non-empty prompts, events, or areas array.', `${path}.content`)
+      }
+      break
+    }
+    case 'planner_model': {
+      if (!isNonEmptyString(content.model)) {
+        pushIssue(errors, 'planner_model_missing_model', 'planner_model layout requires a non-empty content.model string.', `${path}.content.model`)
+      }
+      if (!isNonEmptyArray(content.supports)) {
+        pushIssue(warnings, 'planner_model_missing_supports', 'planner_model layout should include a non-empty content.supports array.', `${path}.content.supports`)
+      }
+      break
+    }
+    case 'reflect': {
+      const hasReflectSet = isNonEmptyArray(content.goals) || isNonEmptyArray(content.prompts)
+      if (!hasReflectSet) {
+        pushIssue(errors, 'reflect_missing_items', 'reflect layout requires a non-empty goals or prompts array.', `${path}.content`)
+      }
+      break
+    }
+    default:
+      break
+  }
+}
+
 export function validatePackage(pkg) {
   const errors = []
   const warnings = []
 
   if (!pkg || typeof pkg !== 'object' || Array.isArray(pkg)) {
     pushIssue(errors, 'invalid_package', 'Package must be a JSON object.')
-    return { valid: false, errors, warnings, output_entries: [] }
+    return { valid: false, errors, warnings, output_entries: [], slide_entries: [] }
   }
 
   for (const field of REQUIRED_PACKAGE_FIELDS) {
@@ -71,6 +196,10 @@ export function validatePackage(pkg) {
     pushIssue(errors, 'invalid_primary_architecture', `Unsupported primary architecture: ${pkg.primary_architecture}.`, 'primary_architecture')
   }
 
+  if (isNonEmptyString(pkg.theme) && !isSupportedTheme(pkg.theme)) {
+    pushIssue(warnings, 'unsupported_theme_value', `Theme ${pkg.theme} is not in the supported theme vocabulary (${SUPPORTED_THEMES.join(', ')}). PPTX rendering may fall back to a default theme.`, 'theme')
+  }
+
   if (pkg.primary_architecture === 'multi_day_sequence' && !Array.isArray(pkg.days)) {
     pushIssue(errors, 'missing_days', 'multi_day_sequence packages must declare a days array.', 'days')
   }
@@ -80,6 +209,7 @@ export function validatePackage(pkg) {
   }
 
   const outputEntries = collectOutputEntries(pkg)
+  const slideEntries = collectSlideEntries(pkg)
   const allowedOutputTypes = new Set(allowedOutputTypesForArchitecture(pkg.primary_architecture))
   const declaredBundleOutputs = new Set(pkg?.bundle?.declared_outputs ?? [])
   let finalEvidenceCount = 0
@@ -129,6 +259,10 @@ export function validatePackage(pkg) {
     }
   }
 
+  for (const entry of slideEntries) {
+    validateSlideShape(errors, warnings, entry.slide, entry.path)
+  }
+
   if (declaredBundleOutputs.size > 0) {
     for (const declaredOutputType of declaredBundleOutputs) {
       const present = outputEntries.some((entry) => normalizeOutputType(entry.output?.output_type) === normalizeOutputType(declaredOutputType))
@@ -174,5 +308,6 @@ export function validatePackage(pkg) {
     errors,
     warnings,
     output_entries: outputEntries,
+    slide_entries: slideEntries,
   }
 }
