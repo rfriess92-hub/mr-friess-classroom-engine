@@ -57,6 +57,14 @@ function readAsciiTail(buffer, maxBytes = 1024) {
   return buffer.subarray(Math.max(0, buffer.length - maxBytes)).toString('latin1')
 }
 
+function normalizeSemanticText(text) {
+  return String(text ?? '')
+    .replace(/\u0000/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase()
+}
+
 function inspectPdf(path) {
   const buffer = readFileSync(path)
   const prefix = buffer.subarray(0, 5).toString('latin1')
@@ -66,6 +74,7 @@ function inspectPdf(path) {
     header_ok: prefix === '%PDF-',
     eof_ok: tail.includes('%%EOF'),
     page_marker_ok: body.includes('/Page'),
+    normalized_text: normalizeSemanticText(body),
   }
 }
 
@@ -164,6 +173,58 @@ function detectScaffoldLeakage(slideTexts) {
   return hits
 }
 
+function expectedPdfIdentityPhrase(artifactName) {
+  const stem = artifactStem(artifactName)
+  if (stem.includes('teacher_guide')) return 'teacher guide'
+  if (stem.includes('lesson_overview')) return 'lesson overview'
+  if (stem.includes('checkpoint_sheet')) return 'checkpoint'
+  if (stem.includes('task_sheet')) return 'task sheet'
+  if (stem.includes('final_response_sheet')) return 'final response sheet'
+  if (stem.includes('worksheet')) return 'worksheet'
+  if (stem.includes('exit_ticket')) return 'exit ticket'
+  return null
+}
+
+function checkPdfSemantics(artifactName, audienceBucket, normalizedText) {
+  const blockers = []
+  const findings = []
+
+  const identityPhrase = expectedPdfIdentityPhrase(artifactName)
+  if (identityPhrase && !normalizedText.includes(identityPhrase)) {
+    blockers.push('pdf_identity_text_missing')
+    findings.push({
+      type: 'artifact_formatting_issue',
+      note: `PDF text does not include the expected identity phrase for this artifact: ${identityPhrase}.`
+    })
+  }
+
+  if (audienceBucket === 'teacher_only' && /name:\s*[_]/i.test(normalizedText)) {
+    blockers.push('teacher_artifact_contains_student_name_line')
+    findings.push({
+      type: 'content_issue',
+      note: 'Teacher-only PDF appears to contain a student name line.'
+    })
+  }
+
+  if (audienceBucket === 'student_facing') {
+    const teacherLeakTerms = [
+      'teacher notes',
+      'release rule',
+      'conference prompts',
+    ]
+    const hits = teacherLeakTerms.filter((term) => normalizedText.includes(term))
+    if (hits.length > 0) {
+      blockers.push('student_artifact_contains_teacher_language')
+      findings.push({
+        type: 'content_issue',
+        note: `Student-facing PDF appears to contain teacher-only language: ${hits.join(', ')}.`
+      })
+    }
+  }
+
+  return { blockers, findings }
+}
+
 function emit(result) {
   console.log(JSON.stringify({ artifact_qa: result }, null, 2))
 }
@@ -172,18 +233,18 @@ function buildPatches() {
   return [
     {
       rank: 1,
+      type: 'content_issue',
+      patch: 'Keep semantic PDF checks enabled so obvious audience-boundary leaks and missing artifact identity text are caught before shipping.'
+    },
+    {
+      rank: 2,
       type: 'render_logic_issue',
       patch: 'Keep semantic PPTX text checks enabled so visible scaffold tokens like Row 1 / Prompt 1 / Item 1 block shipping instead of slipping through structural QA.'
     },
     {
-      rank: 2,
+      rank: 3,
       type: 'artifact_formatting_issue',
       patch: 'Persist structured artifact-QA JSON outputs after each render so release gating can compare runs over time.'
-    },
-    {
-      rank: 3,
-      type: 'content_issue',
-      patch: 'Extend bundle-level semantic checks over time so teacher/student boundary leaks are caught from artifact text, not just filenames.'
     }
   ]
 }
@@ -304,6 +365,10 @@ if (artifactType === 'pdf') {
       note: 'PDF does not appear to contain basic page structure markers.'
     })
   }
+
+  const semantic = checkPdfSemantics(artifactName, audienceBucket, pdf.normalized_text)
+  blockers.push(...semantic.blockers)
+  findings.push(...semantic.findings)
 }
 
 if (artifactType === 'pptx') {
