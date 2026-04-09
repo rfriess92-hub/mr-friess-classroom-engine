@@ -82,6 +82,29 @@ function collectSlideEntries(pkg) {
   return entries
 }
 
+function resolveSourceSection(root, sourceSection) {
+  if (!sourceSection) return null
+
+  let current = root
+  for (const token of sourceSection.split('.')) {
+    if (Array.isArray(current)) {
+      current = current.find((item) => (
+        item
+        && typeof item === 'object'
+        && (item.day_id === token || item.output_id === token)
+      )) ?? null
+    } else if (current && typeof current === 'object') {
+      current = current[token] ?? null
+    } else {
+      return null
+    }
+
+    if (current == null) return null
+  }
+
+  return current
+}
+
 function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0
 }
@@ -346,6 +369,8 @@ export function validatePackage(pkg) {
     const seenRoles = new Set()
     const alignmentTargets = new Set()
     const finalEvidenceTargets = new Set()
+    const seenSourceSections = new Set()
+    const resolvedSourceSections = []
 
     for (const entry of entries) {
       const output = entry.output ?? {}
@@ -364,6 +389,27 @@ export function validatePackage(pkg) {
       if (isNonEmptyString(output.final_evidence_target)) {
         finalEvidenceTargets.add(output.final_evidence_target)
       }
+
+      if (!isNonEmptyString(output.source_section)) {
+        pushIssue(errors, 'variant_group_missing_source_section', `variant_group ${groupName} requires a non-empty source_section for each differentiated variant.`, `${entry.path}.source_section`)
+        continue
+      }
+
+      if (seenSourceSections.has(output.source_section)) {
+        pushIssue(errors, 'variant_group_duplicate_source_section', `variant_group ${groupName} reuses source_section ${output.source_section}. Differentiated variants must point to distinct authored sections.`, `${entry.path}.source_section`)
+      }
+      seenSourceSections.add(output.source_section)
+
+      const resolvedSection = resolveSourceSection(pkg, output.source_section)
+      if (resolvedSection == null) {
+        pushIssue(errors, 'variant_group_unresolved_source_section', `variant_group ${groupName} has an unresolved source_section: ${output.source_section}.`, `${entry.path}.source_section`)
+        continue
+      }
+
+      if (resolvedSourceSections.includes(resolvedSection)) {
+        pushIssue(errors, 'variant_group_shared_resolved_source_section', `variant_group ${groupName} resolves multiple variants to the same authored section. Check for stale source selection.`, `${entry.path}.source_section`)
+      }
+      resolvedSourceSections.push(resolvedSection)
     }
 
     if (alignmentTargets.size > 1) {
