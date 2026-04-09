@@ -2,20 +2,33 @@
 from __future__ import annotations
 
 import render_pptx_patch_v2 as base
-from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE
+from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE, MSO_SHAPE
 from pptx.enum.text import PP_ALIGN
 from pptx.util import Inches, Pt
+
+
+def add_plain_card(slide, x: float, y: float, w: float, h: float, accent) -> None:
+    body = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(x), Inches(y), Inches(w), Inches(h))
+    body.fill.solid()
+    body.fill.fore_color.rgb = base.WHITE
+    body.line.color.rgb = base.BORDER
+    body.line.width = Pt(1.0)
+
+    strip = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(x), Inches(y), Inches(0.10), Inches(h))
+    strip.fill.solid()
+    strip.fill.fore_color.rgb = accent
+    strip.line.fill.background()
 
 
 def normalize_rows(content: dict, title_key: str = "Row"):
     rows = content.get("rows")
     if isinstance(rows, list) and rows:
         out = []
-        for i, row in enumerate(rows):
+        for row in rows:
             if isinstance(row, dict):
                 out.append(row)
             else:
-                out.append({"head": f"{title_key} {i+1}", "body": str(row)})
+                out.append({"body": str(row)})
         return out
     if content.get("scenario") or content.get("prompts"):
         prompts = content.get("prompts", [])
@@ -23,8 +36,8 @@ def normalize_rows(content: dict, title_key: str = "Row"):
         out = []
         if scenario:
             out.append({"head": "Scenario", "body": scenario})
-        for i, prompt in enumerate(prompts[:3], start=1):
-            out.append({"head": f"Prompt {i}", "body": str(prompt)})
+        for prompt in prompts[:3]:
+            out.append({"body": str(prompt)})
         return out
     return []
 
@@ -44,24 +57,38 @@ def render_three_rows(slide, content: dict, theme: dict) -> None:
         gap = 1.45
         body_font = 13
         body_h = 0.30
-        body_y_offset = 0.52
+        headed_body_y_offset = 0.52
+        plain_body_y_offset = 0.36
         bullet_h = 0.45
-        bullet_y_offset = 0.56
+        headed_bullet_y_offset = 0.56
+        plain_bullet_y_offset = 0.36
     else:
         start_y = 1.55
         card_h = 1.00
         gap = 1.12
         body_font = 12
         body_h = 0.24
-        body_y_offset = 0.48
+        headed_body_y_offset = 0.48
+        plain_body_y_offset = 0.30
         bullet_h = 0.34
-        bullet_y_offset = 0.50
+        headed_bullet_y_offset = 0.50
+        plain_bullet_y_offset = 0.30
 
     for i, row in enumerate(display_rows):
         y = start_y + (i * gap)
         accent = base.hex_to_rgb(row.get("accent"), fallback_accents[i % len(fallback_accents)])
         tint = theme["tints"]["primary"] if i == 0 else theme["tints"]["secondary"] if i == 1 else theme["tints"]["tertiary"] if i == 2 else theme["tints"]["quaternary"]
-        base.add_card(slide, 0.75, y, 11.8, card_h, row.get("head", row.get("title", f"Row {i+1}")), accent, tint)
+        title = row.get("head") or row.get("title") or row.get("label")
+
+        if title:
+            base.add_card(slide, 0.75, y, 11.8, card_h, title, accent, tint)
+            text_y_offset = headed_body_y_offset
+            bullets_y_offset = headed_bullet_y_offset
+        else:
+            add_plain_card(slide, 0.75, y, 11.8, card_h, accent)
+            text_y_offset = plain_body_y_offset
+            bullets_y_offset = plain_bullet_y_offset
+
         badge = row.get("badge")
         if badge:
             circ = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.OVAL, Inches(0.95), Inches(y + 0.18), Inches(0.36), Inches(0.36))
@@ -69,11 +96,12 @@ def render_three_rows(slide, content: dict, theme: dict) -> None:
             circ.fill.fore_color.rgb = accent
             circ.line.fill.background()
             base.add_textbox(slide, 1.00, y + 0.205, 0.26, 0.2, str(badge), font_size=13, color=base.WHITE, bold=True, align=PP_ALIGN.CENTER)
+
         body = row.get("body", "")
         if isinstance(body, list):
-            base.add_card_bullets(slide, 1.08, y + bullet_y_offset, 10.9, bullet_h, [str(x) for x in body], font_size=body_font)
+            base.add_card_bullets(slide, 1.08, y + bullets_y_offset, 10.9, bullet_h, [str(x) for x in body], font_size=body_font)
         else:
-            base.add_textbox(slide, 1.08, y + body_y_offset, 10.8, body_h, str(body), font_size=body_font, color=base.NAVY)
+            base.add_textbox(slide, 1.08, y + text_y_offset, 10.8, body_h, str(body), font_size=body_font, color=base.NAVY)
 
 
 def render_retrieval(slide, content: dict, theme: dict) -> None:
@@ -95,8 +123,14 @@ def render_retrieval(slide, content: dict, theme: dict) -> None:
         y = 2.00
         for i, pr in enumerate(prompt_items):
             accent = base.hex_to_rgb(pr.get("accent"), fallback_accents[i % len(fallback_accents)])
-            base.add_card(slide, 1.0, y, 11.0, 0.95, f"Prompt {i+1}", accent, base.LIGHT)
-            base.add_textbox(slide, 1.32, y + 0.34, 10.2, 0.28, pr.get("text", ""), font_size=16, color=base.NAVY)
+            title = pr.get("title") or pr.get("head") or pr.get("label")
+            if title:
+                base.add_card(slide, 1.0, y, 11.0, 0.95, title, accent, base.LIGHT)
+                text_y = y + 0.34
+            else:
+                add_plain_card(slide, 1.0, y, 11.0, 0.95, accent)
+                text_y = y + 0.27
+            base.add_textbox(slide, 1.32, text_y, 10.2, 0.28, pr.get("text", ""), font_size=16, color=base.NAVY)
             y += 1.10
         return
 
@@ -104,8 +138,14 @@ def render_retrieval(slide, content: dict, theme: dict) -> None:
     for i, pr in enumerate(prompt_items[:6]):
         x, y = positions[i]
         accent = base.hex_to_rgb(pr.get("accent"), fallback_accents[i % len(fallback_accents)])
-        base.add_card(slide, x, y, 5.3, 0.95, f"Prompt {i+1}", accent, base.LIGHT)
-        base.add_textbox(slide, x + 0.28, y + 0.34, 4.75, 0.26, pr.get("text", ""), font_size=15, color=base.NAVY)
+        title = pr.get("title") or pr.get("head") or pr.get("label")
+        if title:
+            base.add_card(slide, x, y, 5.3, 0.95, title, accent, base.LIGHT)
+            text_y = y + 0.34
+        else:
+            add_plain_card(slide, x, y, 5.3, 0.95, accent)
+            text_y = y + 0.27
+        base.add_textbox(slide, x + 0.28, text_y, 4.75, 0.26, pr.get("text", ""), font_size=15, color=base.NAVY)
 
 
 base.normalize_rows = normalize_rows
