@@ -148,6 +148,37 @@ def render_retrieval(slide, content: dict, theme: dict) -> None:
         base.add_textbox(slide, x + 0.28, text_y, 4.75, 0.26, pr.get("text", ""), font_size=15, color=base.NAVY)
 
 
+def render_two_column_compare(slide, content: dict, theme: dict) -> None:
+    left_text = str(content.get("left", ""))
+    right_text = str(content.get("right", ""))
+
+    cards = [
+        (0.75, theme["primary"], theme["tints"]["primary"], "Left", left_text),
+        (6.65, theme["secondary"], theme["tints"]["secondary"], "Right", right_text),
+    ]
+
+    for x, accent, tint, title, body in cards:
+        base.add_card(slide, x, 1.65, 5.9, 4.10, title, accent, tint)
+        base.add_card_bullets(slide, x + 0.28, 2.28, 5.2, 2.95, [body], font_size=15)
+
+    prompts = [str(x) for x in content.get("prompts", [])]
+    if prompts:
+        base.add_textbox(slide, 1.0, 5.86, 11.2, 0.24, "Talk it through:", font_size=15, color=theme["secondary"], bold=True, align=PP_ALIGN.CENTER)
+        base.add_textbox(slide, 0.95, 6.10, 11.3, 0.42, " | ".join(prompts), font_size=13, color=base.SLATE, align=PP_ALIGN.CENTER)
+
+
+def render_planner_model(slide, content: dict, theme: dict) -> None:
+    model = content.get("model", "")
+    supports = [str(x) for x in content.get("supports", [])]
+
+    if model:
+        base.add_card(slide, 1.0, 1.80, 11.0, 1.95, "Model", theme["primary"], theme["tints"]["primary"])
+        base.add_textbox(slide, 1.28, 2.32, 10.35, 1.00, model, font_size=14, color=base.NAVY)
+
+    base.add_card(slide, 1.0, 4.05, 11.0, 1.95, "Supports", theme["secondary"], theme["tints"]["secondary"])
+    base.add_card_bullets(slide, 1.32, 4.62, 10.2, 1.10, supports, font_size=15)
+
+
 def render_reflect(slide, content: dict, accent) -> None:
     raw_items = content.get("goals") or content.get("prompts") or []
     items = [dict(x) if isinstance(x, dict) else {"text": str(x)} for x in raw_items]
@@ -171,6 +202,8 @@ def render_reflect(slide, content: dict, accent) -> None:
 base.normalize_rows = normalize_rows
 base.render_three_rows = render_three_rows
 base.render_retrieval = render_retrieval
+base.render_two_column_compare = render_two_column_compare
+base.render_planner_model = render_planner_model
 base.render_reflect = render_reflect
 
 
