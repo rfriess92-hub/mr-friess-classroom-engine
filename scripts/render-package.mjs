@@ -62,7 +62,7 @@ function renderSlides(pkg, route, outDir) {
   try {
     const tempLessonPath = join(tempDir, `${route.output_id}.json`)
     writeFileSync(tempLessonPath, JSON.stringify(buildSlidePacket(pkg, route), null, 2), 'utf-8')
-    const result = spawnSync(process.execPath, ['engine/pptx/build.js', '--lesson', tempLessonPath, '--out', outDir], {
+    const result = spawnSync(process.execPath, ['engine/pptx/render-cli.mjs', '--lesson', tempLessonPath, '--out', outDir], {
       stdio: 'inherit',
       cwd: process.cwd(),
     })
@@ -141,3 +141,4 @@ for (const route of routes) {
 }
 
 console.log(`Rendered package ${renderPlan.package_id} to ${outDir}`)
+
