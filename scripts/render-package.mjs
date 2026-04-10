@@ -104,6 +104,16 @@ function writeVisualSidecar(outDir, route, visualBundle) {
   )
 }
 
+function writeImageSidecar(outDir, route, visualBundle) {
+  const imageManifest = visualBundle?.image_manifest ?? []
+  const imageQa = visualBundle?.image_qa ?? { judgment: 'pass', findings: [] }
+  writeFileSync(
+    resolve(outDir, `${route.output_id}.image.json`),
+    JSON.stringify({ image_manifest: imageManifest, image_qa: imageQa }, null, 2),
+    'utf-8',
+  )
+}
+
 const packageArg = argValue('--package')
 const fixtureArg = argValue('--fixture')
 const outArg = argValue('--out') ?? 'output'
@@ -138,6 +148,7 @@ mkdirSync(outDir, { recursive: true })
 for (const route of routes) {
   const visualBundle = buildRouteVisualPlan(pkg, route)
   writeVisualSidecar(outDir, route, visualBundle)
+  writeImageSidecar(outDir, route, visualBundle)
 
   if (route.artifact_family === 'pptx' && route.output_type === 'slides') {
     renderSlides(pkg, route, visualBundle.visual_plan, outDir)
