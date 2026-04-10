@@ -71,6 +71,9 @@
       "type": "array",
       "items": { "$ref": "#/$defs/slideNode" }
     },
+    "worksheet": {
+      "$ref": "#/$defs/worksheetSection"
+    },
     "days": {
       "type": "array",
       "items": { "$ref": "#/$defs/day" }
@@ -138,6 +141,59 @@
       },
       "additionalProperties": true
     },
+    "worksheetResponseMode": {
+      "type": "string",
+      "enum": [
+        "generic",
+        "two_choice_explanations",
+        "two_reasons",
+        "example_explanation",
+        "judgment_reasoning"
+      ]
+    },
+    "worksheetQuestion": {
+      "type": "object",
+      "properties": {
+        "q_num": {
+          "oneOf": [
+            { "type": "integer" },
+            { "type": "string", "minLength": 1 }
+          ]
+        },
+        "q_text": { "type": "string" },
+        "n_lines": { "type": "integer", "minimum": 1 },
+        "response_mode": { "$ref": "#/$defs/worksheetResponseMode" },
+        "response_labels": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "additionalProperties": true
+    },
+    "worksheetSection": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "anchor": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "tip": { "type": "string" },
+        "questions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/worksheetQuestion" }
+        },
+        "self_check": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "answer_key": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
     "slideNode": {
       "type": "object",
       "properties": {
@@ -178,6 +234,9 @@
         "slides": {
           "type": "array",
           "items": { "$ref": "#/$defs/slideNode" }
+        },
+        "worksheet": {
+          "$ref": "#/$defs/worksheetSection"
         },
         "outputs": {
           "type": "array",
