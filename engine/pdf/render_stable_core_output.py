@@ -99,6 +99,44 @@ def render_lines(story, styles, count: int, style_name: str = 'BodyText', spacer
         story.append(Spacer(1, spacer_after))
 
 
+def response_line_table(count: int, col_width: int = 520, row_height: int = 18):
+    rows = [[' '] for _ in range(max(1, int(count or 1)))]
+    table = Table(rows, colWidths=[col_width], rowHeights=[row_height] * len(rows), hAlign='LEFT')
+    styles = [
+        ('TOPPADDING', (0, 0), (-1, -1), 0),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
+        ('LEFTPADDING', (0, 0), (-1, -1), 0),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 0),
+    ]
+    for row_index in range(len(rows)):
+        styles.append(('LINEBELOW', (0, row_index), (0, row_index), 0.7, colors.HexColor('#64748b')))
+    table.setStyle(TableStyle(styles))
+    return table
+
+
+def worksheet_question_block(styles, question: dict):
+    label = f"Task {question.get('q_num', '')}".strip()
+    prompt = question.get('q_text', '')
+    line_count = max(2, int(question.get('n_lines', 3)))
+    flowables = [
+        Paragraph(label, styles['SectionHeadX']),
+        Paragraph(prompt, styles['BodyText']),
+        Spacer(1, 5),
+        response_line_table(line_count),
+    ]
+    block = Table([[flowables]], colWidths=[540])
+    block.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), colors.white),
+        ('BOX', (0, 0), (-1, -1), 0.75, colors.HexColor('#cbd5e1')),
+        ('TOPPADDING', (0, 0), (-1, -1), 8),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+        ('LEFTPADDING', (0, 0), (-1, -1), 10),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 10),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+    ]))
+    return KeepTogether([block, Spacer(1, 8)])
+
+
 def add_bullet_section(story, styles, title: str, items: list[str], compact: bool = False, spacer_after: int = 8):
     if not items:
         return
@@ -580,30 +618,21 @@ def render_worksheet(packet: dict, section: dict, out_path: Path) -> None:
     styles = styles_bundle()
     story = []
 
-    story.append(Paragraph(packet_heading(packet), styles['CenterTitleX']))
-    story.append(Paragraph('Worksheet', styles['Heading2']))
-    story.append(Paragraph('Name: ____________________   Date: __________', styles['BodyText']))
-    story.append(Spacer(1, 8))
+    title_bar(story, styles, packet_heading(packet))
+    story.append(Paragraph(section.get('title', 'Worksheet'), styles['SheetTitleX']))
+    story.append(Paragraph('Name: ____________________   Date: __________', styles['MutedX']))
+    story.append(Spacer(1, 3))
 
     if section.get('anchor'):
-        story.append(Paragraph('Anchor reminders', styles['SmallHeadX']))
-        for item in section['anchor']:
-            story.append(Paragraph(f'• {item}', styles['BodyText']))
-        story.append(Spacer(1, 8))
+        plain_label_block(story, styles, 'Anchor reminders', section.get('anchor', []), compact=False, spacer_after=5)
     if section.get('tip'):
-        story.append(Paragraph(f"<b>Tip</b>: {section['tip']}", styles['BodyText']))
-        story.append(Spacer(1, 8))
-    for q in section.get('questions', []):
-        story.append(Paragraph(f"Task {q.get('q_num', '')}", styles['SmallHeadX']))
-        story.append(Paragraph(q.get('q_text', ''), styles['BodyText']))
-        render_lines(story, styles, q.get('n_lines', 3))
-        story.append(Spacer(1, 8))
+        plain_label_block(story, styles, 'Tip', [str(section.get('tip'))], compact=False, spacer_after=6)
+    for question in section.get('questions', []):
+        story.append(worksheet_question_block(styles, question))
     if section.get('self_check'):
-        story.append(Paragraph('Self-check', styles['SmallHeadX']))
-        for item in section['self_check']:
-            story.append(Paragraph(f'• {item}', styles['BodyText']))
+        plain_label_block(story, styles, 'Self-check', section.get('self_check', []), compact=False, spacer_after=0)
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
+    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=20, bottomMargin=20)
     doc.build(story)
 
 
