@@ -228,6 +228,13 @@ def purpose_line_for_task_sheet(section: dict) -> str:
     return 'Complete each part in order and keep your planning aligned to the task.'
 
 
+def final_response_purpose_line(section: dict) -> str:
+    prompt = str(section.get('prompt', '')).strip()
+    if prompt:
+        return prompt
+    return 'Use your strongest planning from Day 2 to write the paragraph that will count as your final response.'
+
+
 def title_bar(story, styles, text: str):
     bar = Table([[Paragraph(text, styles['TitleBarX'])]], colWidths=[540])
     bar.setStyle(TableStyle([
@@ -365,6 +372,97 @@ def add_day1_page2_footer(story, styles, section: dict):
     story.append(footer)
 
 
+def pre_draft_strip(story, styles, section: dict):
+    reminders = [str(item) for item in section.get('planning_reminders', [])[:4] if str(item).strip()]
+    if not reminders:
+        return
+    cells = [Paragraph(item, styles['MicroX']) for item in reminders]
+    strip = Table([cells], colWidths=[540 / len(cells)] * len(cells), hAlign='CENTER')
+    strip.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#f8fafc')),
+        ('BOX', (0, 0), (-1, -1), 0.55, colors.HexColor('#cbd5e1')),
+        ('INNERGRID', (0, 0), (-1, -1), 0.4, colors.HexColor('#e2e8f0')),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+        ('TOPPADDING', (0, 0), (-1, -1), 5),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
+        ('LEFTPADDING', (0, 0), (-1, -1), 5),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 5),
+    ]))
+    story.append(Paragraph('Before you draft', styles['SectionHeadX']))
+    story.append(strip)
+    story.append(Spacer(1, 5))
+
+
+def optional_support_strip(story, styles, section: dict):
+    paragraph_support = section.get('paragraph_support', {}) if isinstance(section.get('paragraph_support'), dict) else {}
+    supports = [str(item).strip() for item in paragraph_support.get('frame_strip', [])[:4] if str(item).strip()]
+    reminder_box = paragraph_support.get('reminder_box')
+    if reminder_box:
+        supports.append(str(reminder_box).strip())
+    if not supports:
+        return
+    cells = [Paragraph(item, styles['MicroX']) for item in supports[:5]]
+    strip = Table([cells], colWidths=[540 / len(cells)] * len(cells), hAlign='CENTER')
+    strip.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#fff7ed')),
+        ('BOX', (0, 0), (-1, -1), 0.55, colors.HexColor('#fdba74')),
+        ('INNERGRID', (0, 0), (-1, -1), 0.4, colors.HexColor('#fed7aa')),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+        ('TOPPADDING', (0, 0), (-1, -1), 5),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
+        ('LEFTPADDING', (0, 0), (-1, -1), 5),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 5),
+    ]))
+    story.append(Paragraph('Optional support', styles['SectionHeadX']))
+    story.append(strip)
+    story.append(Spacer(1, 6))
+
+
+def final_writing_zone(story, styles, response_lines: int):
+    line_count = max(12, response_lines + 4)
+    flowables = [Paragraph('Final paragraph', styles['SectionHeadX']), Spacer(1, 2)]
+    for _ in range(line_count):
+        flowables.append(Paragraph('________________________________________________________________________________________', styles['BodyText']))
+    zone = Table([[flowables]], colWidths=[540])
+    zone.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), colors.white),
+        ('BOX', (0, 0), (-1, -1), 0.9, colors.HexColor('#94a3b8')),
+        ('TOPPADDING', (0, 0), (-1, -1), 8),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+        ('LEFTPADDING', (0, 0), (-1, -1), 10),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 10),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+    ]))
+    story.append(zone)
+    story.append(Spacer(1, 6))
+
+
+def final_success_check(story, styles, section: dict):
+    items = [str(item) for item in section.get('success_criteria', []) if str(item).strip()]
+    if not items:
+        return
+    left_items = items[:2]
+    right_items = items[2:4]
+    if not right_items and len(items) > 2:
+        right_items = items[2:]
+    left = compact_list_cell(styles, 'Success check', left_items)
+    right = compact_list_cell(styles, 'Check before you hand it in', right_items or ['I wrote my final response on this sheet.'])
+    footer = Table([[left, right]], colWidths=[265, 265])
+    footer.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#f8fafc')),
+        ('BOX', (0, 0), (-1, -1), 0.75, colors.HexColor('#cbd5e1')),
+        ('INNERGRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#e2e8f0')),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ('TOPPADDING', (0, 0), (-1, -1), 6),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+        ('LEFTPADDING', (0, 0), (-1, -1), 8),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 8),
+    ]))
+    story.append(footer)
+
+
 def render_task_sheet(packet: dict, section: dict, out_path: Path) -> None:
     styles = styles_bundle()
     story = []
@@ -455,31 +553,17 @@ def render_final_response_sheet(packet: dict, section: dict, out_path: Path) -> 
     styles = styles_bundle()
     story = []
 
-    story.append(Paragraph(packet_heading(packet), styles['CenterTitleX']))
-    story.append(Paragraph(section.get('title', 'Final Response Sheet'), styles['Heading2']))
-    story.append(Paragraph('Name: ____________________   Date: __________', styles['BodyText']))
-    story.append(Spacer(1, 8))
+    title_bar(story, styles, packet_heading(packet))
+    story.append(Paragraph(section.get('title', 'Day 2 Final Response Sheet'), styles['SheetTitleX']))
+    story.append(Paragraph('Name: ____________________   Date: __________', styles['MutedX']))
+    story.append(Spacer(1, 3))
+    purpose_line_block(story, styles, final_response_purpose_line(section))
+    pre_draft_strip(story, styles, section)
+    optional_support_strip(story, styles, section)
+    final_writing_zone(story, styles, int(section.get('response_lines', 10)))
+    final_success_check(story, styles, section)
 
-    if section.get('prompt'):
-        story.append(Paragraph(section['prompt'], styles['BodyText']))
-        story.append(Spacer(1, 8))
-    if section.get('planning_reminders'):
-        story.append(Paragraph('Planning reminders', styles['SmallHeadX']))
-        for item in section['planning_reminders']:
-            story.append(Paragraph(f'• {item}', styles['BodyText']))
-        story.append(Spacer(1, 8))
-    if section.get('paragraph_support'):
-        add_paragraph_support_block(story, styles, section['paragraph_support'])
-
-    render_lines(story, styles, section.get('response_lines', 8))
-    story.append(Spacer(1, 8))
-
-    if section.get('success_criteria'):
-        story.append(Paragraph('Success criteria', styles['SmallHeadX']))
-        for item in section['success_criteria']:
-            story.append(Paragraph(f'• {item}', styles['BodyText']))
-
-    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
+    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=28, rightMargin=28, topMargin=20, bottomMargin=20)
     doc.build(story)
 
 
