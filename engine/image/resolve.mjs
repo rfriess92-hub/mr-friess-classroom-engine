@@ -15,8 +15,8 @@ function safeArray(value) {
   return Array.isArray(value) ? value : []
 }
 
-function normalizeIntent(sourceNode, outputType, sourceLayout) {
-  const explicitIntent = sourceNode?.image_intent
+function normalizeIntent(sourceNode, route, outputType, sourceLayout) {
+  const explicitIntent = sourceNode?.image_intent ?? route?.image_intent
   if (explicitIntent?.disallow_images === true) {
     return { role: null, purpose: null, required: false, disallow_images: true, preferred_asset_tags: [] }
   }
@@ -128,7 +128,7 @@ export function enrichVisualPlanWithImages(pkg, route, sourceSection, visualPlan
       : null
     const artifactType = route.output_type === 'slides' ? 'slides' : route.output_type
     const slots = slotsForPage({ outputType: route.output_type, sourceLayout })
-    const intent = normalizeIntent(sourceNode, route.output_type, sourceLayout)
+    const intent = normalizeIntent(sourceNode, route, route.output_type, sourceLayout)
 
     if (intent.disallow_images || !intent.role || !intent.purpose || slots.length === 0) {
       return {

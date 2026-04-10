@@ -67,6 +67,10 @@
       "type": "array",
       "items": { "$ref": "#/$defs/output" }
     },
+    "slides": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/slideNode" }
+    },
     "days": {
       "type": "array",
       "items": { "$ref": "#/$defs/day" }
@@ -134,6 +138,17 @@
       },
       "additionalProperties": true
     },
+    "slideNode": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "title": { "type": "string" },
+        "layout": { "type": "string" },
+        "content": { "type": "object" },
+        "image_intent": { "$ref": "#/$defs/imageIntent" }
+      },
+      "additionalProperties": true
+    },
     "output": {
       "type": "object",
       "required": ["output_id", "output_type", "audience"],
@@ -160,6 +175,10 @@
         "day_id": { "type": "string" },
         "day_label": { "type": "string" },
         "carryover_note": { "type": "string" },
+        "slides": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/slideNode" }
+        },
         "outputs": {
           "type": "array",
           "items": { "$ref": "#/$defs/output" }
