@@ -38,7 +38,7 @@ if (!pythonCmd) {
 }
 
 mkdirSync(resolve(process.cwd(), outDir), { recursive: true })
-const scriptPath = resolve(process.cwd(), 'engine', 'pptx', 'render_pptx_visual_bridge.py')
+const scriptPath = resolve(process.cwd(), 'engine', 'pptx', 'render_pptx_image_bridge.py')
 const result = spawnSync(
   pythonCmd,
   [scriptPath, '--lesson', lessonPath, '--out', resolve(process.cwd(), outDir)],
