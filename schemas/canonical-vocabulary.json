@@ -57,6 +57,13 @@
     "planner_model",
     "reflect"
   ],
+  "worksheet_response_modes": [
+    "generic",
+    "two_choice_explanations",
+    "two_reasons",
+    "example_explanation",
+    "judgment_reasoning"
+  ],
   "image_roles": [
     "cue_icon",
     "small_illustration",
