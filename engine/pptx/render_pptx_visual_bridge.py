@@ -118,11 +118,11 @@ def add_visual_title(slide, packet: dict, slide_spec: dict, visual_page: dict, t
 
     page_role = str(visual_page.get("page_role", "")).replace("_", " ").title()
     if page_role:
-      pill = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(10.75), Inches(0.18), Inches(1.45), Inches(0.34))
-      pill.fill.solid()
-      pill.fill.fore_color.rgb = accent
-      pill.line.fill.background()
-      base.add_textbox(slide, 10.83, 0.24, 1.20, 0.16, page_role, font_size=10, color=base.WHITE, bold=True, align=PP_ALIGN.CENTER)
+        pill = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(10.75), Inches(0.18), Inches(1.45), Inches(0.34))
+        pill.fill.solid()
+        pill.fill.fore_color.rgb = accent
+        pill.line.fill.background()
+        base.add_textbox(slide, 10.83, 0.24, 1.20, 0.16, page_role, font_size=10, color=base.WHITE, bold=True, align=PP_ALIGN.CENTER)
 
     base.add_textbox(slide, 0.60, 0.58, 12.0, 0.46, slide_spec.get("title", "Untitled"), font_size=24, color=ink, bold=True)
     sep = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.60), Inches(1.18), Inches(12.0), Inches(0.03))
@@ -141,6 +141,66 @@ def image_components_for_page(visual_page: dict | None) -> list[dict]:
     ]
 
 
+def slot_component(visual_page: dict | None, slot_id: str) -> dict | None:
+    for component in image_components_for_page(visual_page):
+        if (component.get("resolved_image") or {}).get("slot_id") == slot_id:
+            return component
+    return None
+
+
+def has_slot(visual_page: dict | None, slot_id: str) -> bool:
+    return slot_component(visual_page, slot_id) is not None
+
+
+def parse_aspect_ratio(value, fallback: float) -> float:
+    if not value:
+        return fallback
+    text = str(value).strip()
+    if ':' in text:
+        left, right = text.split(':', 1)
+        try:
+            left_value = float(left)
+            right_value = float(right)
+            return left_value / right_value if right_value else fallback
+        except Exception:
+            return fallback
+    try:
+        parsed = float(text)
+        return parsed if parsed > 0 else fallback
+    except Exception:
+        return fallback
+
+
+def add_picture_contain(slide, asset_path: str, x: float, y: float, w: float, h: float, image_ratio: float) -> None:
+    slot_ratio = w / h if h else image_ratio
+    if image_ratio >= slot_ratio:
+        draw_w = w
+        draw_h = w / image_ratio
+        draw_x = x
+        draw_y = y + ((h - draw_h) / 2)
+    else:
+        draw_h = h
+        draw_w = h * image_ratio
+        draw_x = x + ((w - draw_w) / 2)
+        draw_y = y
+    slide.shapes.add_picture(asset_path, Inches(draw_x), Inches(draw_y), width=Inches(draw_w), height=Inches(draw_h))
+
+
+def add_picture_cover(slide, asset_path: str, x: float, y: float, w: float, h: float, image_ratio: float) -> None:
+    slot_ratio = w / h if h else image_ratio
+    picture = slide.shapes.add_picture(asset_path, Inches(x), Inches(y), width=Inches(w), height=Inches(h))
+    if image_ratio > slot_ratio:
+        visible_fraction = slot_ratio / image_ratio
+        crop_each = max(0.0, (1.0 - visible_fraction) / 2.0)
+        picture.crop_left = crop_each
+        picture.crop_right = crop_each
+    elif image_ratio < slot_ratio:
+        visible_fraction = image_ratio / slot_ratio
+        crop_each = max(0.0, (1.0 - visible_fraction) / 2.0)
+        picture.crop_top = crop_each
+        picture.crop_bottom = crop_each
+
+
 def render_visual_images(slide, visual_page: dict | None) -> None:
     for component in image_components_for_page(visual_page):
         resolved_image = component.get("resolved_image") or {}
@@ -150,28 +210,34 @@ def render_visual_images(slide, visual_page: dict | None) -> None:
             continue
         if not Path(asset_path).exists():
             continue
+        x = float(layout.get("x", 0))
+        y = float(layout.get("y", 0))
+        w = float(layout.get("w", 1))
+        h = float(layout.get("h", 1))
+        image_ratio = parse_aspect_ratio(resolved_image.get("aspect_ratio"), (w / h) if h else 1.0)
+        render_mode = str(resolved_image.get("render_mode") or component.get("options", {}).get("render_mode") or 'cover')
         try:
-            slide.shapes.add_picture(
-                asset_path,
-                Inches(float(layout.get("x", 0))),
-                Inches(float(layout.get("y", 0))),
-                width=Inches(float(layout.get("w", 1))),
-                height=Inches(float(layout.get("h", 1))),
-            )
+            if render_mode == 'contain':
+                add_picture_contain(slide, asset_path, x, y, w, h, image_ratio)
+            else:
+                add_picture_cover(slide, asset_path, x, y, w, h, image_ratio)
         except Exception:
             continue
 
 
-def render_prompt(slide, content: dict, theme: dict):
+def render_prompt(slide, content: dict, theme: dict) -> None:
     visual_page = content.get("_visual_page")
     main_style = component_style_bundle(visual_page, "main_prompt", theme["secondary"], theme["tints"]["secondary"], "Start here")
     task_style = component_style_bundle(visual_page, "task_step", theme["primary"], theme["tints"]["primary"], "Discuss")
     body_color = token_rgb(page_tokens(visual_page), "ink_primary", base.NAVY)
+    use_side_visual = has_slot(visual_page, 'prompt_side_visual')
 
     scenario = content.get("scenario") or content.get("task") or ""
     if scenario:
-        base.add_card(slide, 0.85, 1.55, 11.5, 1.65, main_style["title"], main_style["accent"], main_style["tint"])
-        base.add_textbox(slide, 1.15, 2.10, 10.8, 0.75, scenario, font_size=18, color=body_color)
+        main_w = 8.65 if use_side_visual else 11.5
+        text_w = 7.95 if use_side_visual else 10.8
+        base.add_card(slide, 0.85, 1.55, main_w, 1.65, main_style["title"], main_style["accent"], main_style["tint"])
+        base.add_textbox(slide, 1.15, 2.10, text_w, 0.75, scenario, font_size=18, color=body_color)
 
     prompts = [str(x) for x in content.get("prompts", [])]
     if prompts:
@@ -179,7 +245,7 @@ def render_prompt(slide, content: dict, theme: dict):
         base.add_card_bullets(slide, 1.12, 4.00, 10.8, 1.35, prompts, font_size=17)
 
 
-def render_retrieval(slide, content: dict, theme: dict):
+def render_retrieval(slide, content: dict, theme: dict) -> None:
     visual_page = content.get("_visual_page")
     prompt_style = component_style_bundle(visual_page, "task_step", theme["primary"], theme["tints"]["primary"], "Prompt")
     task = content.get("task", "Use the prompts below to build your response.")
@@ -209,25 +275,48 @@ def render_retrieval(slide, content: dict, theme: dict):
         y += 1.10
 
 
-def render_reflect(slide, content: dict, accent):
+def render_single_card(slide, content: dict, theme: dict) -> None:
+    visual_page = content.get("_visual_page")
+    accent = base.hex_to_rgb(content.get("bar_color"), theme["primary"])
+    title = "Goal plan" if not content.get("goal") else "Goal"
+    use_side_visual = has_slot(visual_page, 'prompt_card_visual')
+    add_card_w = 11.0
+    base.add_card(slide, 1.0, 2.00, add_card_w, content.get("card_height", 2.2), title, accent, base.LIGHT)
+    lines = []
+    if content.get("goal"):
+        lines.append(str(content["goal"]))
+    for line in content.get("lines", []):
+        lines.append(line.get("text", "") if isinstance(line, dict) else str(line))
+    if content.get("prompts"):
+        lines.extend(str(x) for x in content.get("prompts", []))
+    bullet_w = 7.7 if use_side_visual else 10.3
+    base.add_card_bullets(slide, 1.35, 2.50, bullet_w, 1.4, lines, font_size=content.get("font_size", 18))
+    instruction = content.get("instruction")
+    if instruction:
+        base.add_textbox(slide, 1.20, 4.75, 10.6, 0.55, instruction, font_size=16, color=base.SLATE, align=PP_ALIGN.CENTER)
+
+
+def render_reflect(slide, content: dict, accent) -> None:
     visual_page = content.get("_visual_page")
     reflect_style = component_style_bundle(visual_page, "reflection", accent, base.LIGHT, "Reflect")
     raw_items = content.get("goals") or content.get("prompts") or []
     items = [dict(x) if isinstance(x, dict) else {"text": str(x)} for x in raw_items]
     heading = "Check yourself against today’s goals." if content.get("goals") else "Finish by reflecting on these prompts."
     base.add_textbox(slide, 0.95, 1.35, 11.4, 0.40, heading, font_size=18, color=base.SLATE, align=PP_ALIGN.CENTER)
+    narrow_cards = has_slot(visual_page, 'reflect_light_visual')
 
-    y = 1.90
+    y = 2.10
+    card_w = 9.85 if narrow_cards else 10.2
     for item in items[:3]:
         title = item.get("title") or item.get("head") or item.get("label")
         if title:
-            base.add_card(slide, 1.05, y, 10.2, 0.95, title, reflect_style["accent"], reflect_style["tint"])
+            base.add_card(slide, 1.05, y, card_w, 0.95, title, reflect_style["accent"], reflect_style["tint"])
             text_y = y + 0.33
         else:
-            add_plain_card(slide, 1.05, y, 10.2, 0.95, reflect_style["accent"])
+            add_plain_card(slide, 1.05, y, card_w, 0.95, reflect_style["accent"])
             text_y = y + 0.27
         text = item.get("text") or item.get("body", "")
-        base.add_textbox(slide, 1.38, text_y, 8.8, 0.30, str(text), font_size=16, color=base.NAVY)
+        base.add_textbox(slide, 1.38, text_y, card_w - 1.4, 0.30, str(text), font_size=16, color=base.NAVY)
         y += 1.18
 
 
@@ -247,7 +336,6 @@ def render_slide(prs, slide, packet: dict, slide_spec: dict, theme: dict, slide_
             add_visual_title(slide, packet, slide_spec, visual_page, theme)
         else:
             base.add_title(slide, slide_spec.get("title", "Untitled"), accent)
-        render_visual_images(slide, visual_page)
 
         if layout == "stat_discussion":
             base.render_stat_discussion(slide, content, theme)
@@ -268,7 +356,7 @@ def render_slide(prs, slide, packet: dict, slide_spec: dict, theme: dict, slide_
         elif layout == "summary_rows":
             base.render_summary_rows(slide, content, theme)
         elif layout in {"single_card", "prompt_card"}:
-            base.render_single_card(slide, content, theme)
+            render_single_card(slide, content, theme)
         elif layout == "checklist":
             base.render_checklist(slide, content, theme)
         elif layout == "bullet_focus":
@@ -279,6 +367,8 @@ def render_slide(prs, slide, packet: dict, slide_spec: dict, theme: dict, slide_
             render_reflect(slide, content, accent)
         else:
             base.render_fallback(slide, content, accent)
+
+        render_visual_images(slide, visual_page)
     base.add_footer(slide, packet.get("subject", "Subject"), packet.get("grade", ""), packet.get("topic", "Lesson"))
 
 
@@ -301,6 +391,7 @@ def build_deck(packet: dict, out_dir) -> object:
 base.render_prompt = render_prompt
 base.render_retrieval = render_retrieval
 base.render_reflect = render_reflect
+base.render_single_card = render_single_card
 base.build_deck = build_deck
 
 

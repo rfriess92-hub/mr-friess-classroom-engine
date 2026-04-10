@@ -121,6 +121,8 @@ function buildImageComponent({ visualPlan, page, pageIndex, slot, intent, resolv
       grayscale_safe: resolvedAsset.asset.grayscale_safe === true,
       alt_text: resolvedAsset.asset.alt_text ?? '',
       slot_id: slot.slot_id,
+      render_mode: slot.render_mode ?? 'cover',
+      required: intent.required === true,
     },
     resolved_visual: resolveVisualStyle({
       surfaceVariant: visualPlan.surface_variant,
@@ -167,6 +169,7 @@ function resolveSlotsForSlidePage({ pkg, route, visualPlan, page, pageIndex, sou
         status: slot.fallback_mode === 'no_image' ? 'fallback_no_image' : 'missing_asset',
         requested_role: intent.role,
         requested_purpose: intent.purpose,
+        required: intent.required === true,
       })
       continue
     }
@@ -188,6 +191,7 @@ function resolveSlotsForSlidePage({ pkg, route, visualPlan, page, pageIndex, sou
       resolved_role: resolvedAsset.resolved_role,
       requested_purpose: intent.purpose,
       asset_path: resolvedAsset.absolute_path,
+      required: intent.required === true,
     })
   }
 
