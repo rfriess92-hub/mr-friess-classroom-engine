@@ -24,6 +24,14 @@ WORKSHEET_HEADER_HEIGHT_ESTIMATE = 60
 WORKSHEET_RESPONSE_ROW_HEIGHT = 18
 WORKSHEET_MIN_KEEP_LINES = 3
 WORKSHEET_QUESTION_BLOCK_SPACER = 8
+WORKSHEET_SECTION_SPACER = 6
+ALLOWED_WORKSHEET_RESPONSE_MODES = {
+    'generic',
+    'two_choice_explanations',
+    'two_reasons',
+    'example_explanation',
+    'judgment_reasoning',
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -134,6 +142,79 @@ def estimate_wrapped_lines(text: str, chars_per_line: int = 82) -> int:
     return total
 
 
+def question_response_mode(question: dict) -> str:
+    explicit = str(question.get('response_mode', '')).strip().lower()
+    if explicit in ALLOWED_WORKSHEET_RESPONSE_MODES:
+        return explicit
+
+    text = ' '.join(str(question.get('q_text', '')).lower().split())
+    if 'at least two reasons' in text or 'two reasons' in text:
+        return 'two_reasons'
+    if 'choose two ' in text and ('explain' in text or 'why' in text):
+        return 'two_choice_explanations'
+    if 'use one example' in text and ('explain' in text or 'evidence' in text):
+        return 'example_explanation'
+    if 'example career' in text and ('connect' in text or 'explain' in text or 'connection' in text):
+        return 'example_explanation'
+    if (
+        'is this mostly harmful' in text
+        or 'is this mostly helpful' in text
+        or ('mostly harmful, mostly helpful, or mixed' in text and 'reasoning' in text)
+    ):
+        return 'judgment_reasoning'
+    return 'generic'
+
+
+def split_two_part_line_budget(total_lines: int) -> tuple[int, int]:
+    first = total_lines // 2
+    second = total_lines - first
+    return max(2, first), max(2, second)
+
+
+def question_response_sections(question: dict) -> list[dict]:
+    mode = question_response_mode(question)
+    requested_lines = max(2, int(question.get('n_lines', 3)))
+    override_labels = [str(x) for x in question.get('response_labels', []) if str(x).strip()] if isinstance(question.get('response_labels'), list) else []
+
+    if mode == 'two_choice_explanations':
+        total_lines = max(4, requested_lines)
+        first, second = split_two_part_line_budget(total_lines)
+        labels = override_labels[:2] if len(override_labels) >= 2 else ['Choice 1', 'Choice 2']
+        return [
+            {'label': labels[0], 'lines': first},
+            {'label': labels[1], 'lines': second},
+        ]
+
+    if mode == 'two_reasons':
+        total_lines = max(4, requested_lines)
+        first, second = split_two_part_line_budget(total_lines)
+        labels = override_labels[:2] if len(override_labels) >= 2 else ['Reason 1', 'Reason 2']
+        return [
+            {'label': labels[0], 'lines': first},
+            {'label': labels[1], 'lines': second},
+        ]
+
+    if mode == 'example_explanation':
+        total_lines = max(3, requested_lines)
+        example_lines = 1 if total_lines <= 4 else 2
+        explanation_lines = max(2, total_lines - example_lines)
+        labels = override_labels[:2] if len(override_labels) >= 2 else ['Example', 'Explanation']
+        return [
+            {'label': labels[0], 'lines': example_lines},
+            {'label': labels[1], 'lines': explanation_lines},
+        ]
+
+    if mode == 'judgment_reasoning':
+        total_lines = max(3, requested_lines)
+        labels = override_labels[:2] if len(override_labels) >= 2 else ['Judgment', 'Evidence / reasoning']
+        return [
+            {'label': labels[0], 'lines': 1},
+            {'label': labels[1], 'lines': max(2, total_lines - 1)},
+        ]
+
+    return [{'label': '', 'lines': requested_lines}]
+
+
 def estimate_plain_label_block_height(lines: list[str], compact: bool = False, spacer_after: int = 6) -> int:
     per_line_height = 10 if compact else 12
     chars_per_line = 92 if compact else 82
@@ -144,13 +225,26 @@ def estimate_plain_label_block_height(lines: list[str], compact: bool = False, s
 
 
 def estimate_question_block_height(question: dict, rendered_lines: int | None = None) -> int:
-    line_count = max(2, int(rendered_lines if rendered_lines is not None else question.get('n_lines', 3)))
+    mode = question_response_mode(question)
     prompt_lines = estimate_wrapped_lines(question.get('q_text', ''), 82)
     label_height = 14
     prompt_height = prompt_lines * 12
-    inner_padding = 31
-    response_height = line_count * WORKSHEET_RESPONSE_ROW_HEIGHT
-    return label_height + prompt_height + inner_padding + response_height + WORKSHEET_QUESTION_BLOCK_SPACER
+    prompt_padding = 19
+
+    if mode == 'generic' and rendered_lines is not None:
+        sections = [{'label': '', 'lines': max(2, int(rendered_lines))}]
+    else:
+        sections = question_response_sections(question)
+
+    section_height = 0
+    for section in sections:
+        if section.get('label'):
+            section_height += 14
+            section_height += 2
+        section_height += int(section.get('lines', 1)) * WORKSHEET_RESPONSE_ROW_HEIGHT
+        section_height += WORKSHEET_SECTION_SPACER
+
+    return label_height + prompt_height + prompt_padding + section_height + WORKSHEET_QUESTION_BLOCK_SPACER
 
 
 def worksheet_page_header(story, styles, packet: dict, section: dict, continuation: bool = False):
@@ -163,16 +257,35 @@ def worksheet_page_header(story, styles, packet: dict, section: dict, continuati
     story.append(Spacer(1, 3))
 
 
+def worksheet_response_section_flowables(styles, label: str, line_count: int, add_spacer: bool = True) -> list:
+    flowables = []
+    if label:
+        flowables.append(Paragraph(f'<b>{label}</b>', styles['BodyText']))
+        flowables.append(Spacer(1, 2))
+    flowables.append(response_line_table(line_count))
+    if add_spacer:
+        flowables.append(Spacer(1, WORKSHEET_SECTION_SPACER))
+    return flowables
+
+
 def worksheet_question_block(styles, question: dict):
     label = f"Task {question.get('q_num', '')}".strip()
     prompt = question.get('q_text', '')
-    line_count = max(2, int(question.get('n_lines', 3)))
+    sections = question_response_sections(question)
     flowables = [
         Paragraph(label, styles['SectionHeadX']),
         Paragraph(prompt, styles['BodyText']),
         Spacer(1, 5),
-        response_line_table(line_count),
     ]
+    for index, section in enumerate(sections):
+        flowables.extend(
+            worksheet_response_section_flowables(
+                styles,
+                section.get('label', ''),
+                int(section.get('lines', 1)),
+                add_spacer=index < len(sections) - 1,
+            )
+        )
     block = Table([[flowables]], colWidths=[540])
     block.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), colors.white),
@@ -691,9 +804,13 @@ def render_worksheet(packet: dict, section: dict, out_path: Path) -> None:
 
     fresh_page_capacity = WORKSHEET_PAGE_USABLE_HEIGHT - WORKSHEET_HEADER_HEIGHT_ESTIMATE
     for question in section.get('questions', []):
+        mode = question_response_mode(question)
         full_height = estimate_question_block_height(question)
-        min_keep_lines = min(max(2, int(question.get('n_lines', 3))), WORKSHEET_MIN_KEEP_LINES)
-        min_height = estimate_question_block_height(question, rendered_lines=min_keep_lines)
+        if mode == 'generic':
+            min_keep_lines = min(max(2, int(question.get('n_lines', 3))), WORKSHEET_MIN_KEEP_LINES)
+            min_height = estimate_question_block_height(question, rendered_lines=min_keep_lines)
+        else:
+            min_height = full_height
 
         should_start_new_page = remaining_height < min_height
         if not should_start_new_page and full_height <= fresh_page_capacity and full_height > remaining_height:
