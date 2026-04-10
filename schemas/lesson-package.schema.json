@@ -102,6 +102,38 @@
         "final_response_sheet"
       ]
     },
+    "imageRole": {
+      "type": "string",
+      "enum": [
+        "cue_icon",
+        "small_illustration",
+        "reference_photo",
+        "example_visual",
+        "instructional_diagram"
+      ]
+    },
+    "imagePurpose": {
+      "type": "string",
+      "enum": [
+        "orient_lesson",
+        "explain_content",
+        "organize_attention"
+      ]
+    },
+    "imageIntent": {
+      "type": "object",
+      "properties": {
+        "role": { "$ref": "#/$defs/imageRole" },
+        "purpose": { "$ref": "#/$defs/imagePurpose" },
+        "required": { "type": "boolean" },
+        "disallow_images": { "type": "boolean" },
+        "preferred_asset_tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
     "output": {
       "type": "object",
       "required": ["output_id", "output_type", "audience"],
@@ -113,6 +145,7 @@
         "bundle": { "type": "string" },
         "is_embedded": { "type": "boolean" },
         "final_evidence": { "type": "boolean" },
+        "image_intent": { "$ref": "#/$defs/imageIntent" },
         "embedded_support_elements": {
           "type": "array",
           "items": { "type": "object" }

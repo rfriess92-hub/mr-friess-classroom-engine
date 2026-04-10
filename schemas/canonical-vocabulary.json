@@ -57,6 +57,18 @@
     "planner_model",
     "reflect"
   ],
+  "image_roles": [
+    "cue_icon",
+    "small_illustration",
+    "reference_photo",
+    "example_visual",
+    "instructional_diagram"
+  ],
+  "image_purposes": [
+    "orient_lesson",
+    "explain_content",
+    "organize_attention"
+  ],
   "aliases": {
     "student_task": "task_sheet",
     "checkpoint": "checkpoint_sheet",
