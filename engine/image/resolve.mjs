@@ -39,11 +39,8 @@ function normalizeIntent(sourceNode, route, outputType, sourceLayout) {
   if (outputType === 'slides' && sourceLayout === 'reflect') {
     return { role: 'small_illustration', purpose: 'organize_attention', required: false, disallow_images: false, preferred_asset_tags: ['reflect'] }
   }
-  if (outputType === 'worksheet') {
-    return { role: 'cue_icon', purpose: 'organize_attention', required: false, disallow_images: false, preferred_asset_tags: ['worksheet'] }
-  }
-  if (outputType === 'exit_ticket') {
-    return { role: 'cue_icon', purpose: 'organize_attention', required: false, disallow_images: false, preferred_asset_tags: ['exit_ticket'] }
+  if (outputType === 'worksheet' || outputType === 'exit_ticket') {
+    return { role: null, purpose: null, required: false, disallow_images: false, preferred_asset_tags: [] }
   }
 
   return { role: null, purpose: null, required: false, disallow_images: false, preferred_asset_tags: [] }
