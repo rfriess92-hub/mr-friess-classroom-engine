@@ -415,7 +415,7 @@ def optional_support_strip(story, styles, section: dict):
         ('LEFTPADDING', (0, 0), (-1, -1), 5),
         ('RIGHTPADDING', (0, 0), (-1, -1), 5),
     ]))
-    story.append(Paragraph('Optional support', styles['SectionHeadX']))
+    story.append(Paragraph('Try this structure', styles['SectionHeadX']))
     story.append(strip)
     story.append(Spacer(1, 6))
 
@@ -443,12 +443,11 @@ def final_success_check(story, styles, section: dict):
     items = [str(item) for item in section.get('success_criteria', []) if str(item).strip()]
     if not items:
         return
-    left_items = items[:2]
-    right_items = items[2:4]
-    if not right_items and len(items) > 2:
-        right_items = items[2:]
-    left = compact_list_cell(styles, 'Success check', left_items)
-    right = compact_list_cell(styles, 'Check before you hand it in', right_items or ['I wrote my final response on this sheet.'])
+    split = (len(items) + 1) // 2
+    left_items = items[:split]
+    right_items = items[split:]
+    left = compact_list_cell(styles, 'Final review', left_items)
+    right = compact_list_cell(styles, '', right_items)
     footer = Table([[left, right]], colWidths=[265, 265])
     footer.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#f8fafc')),
@@ -463,6 +462,12 @@ def final_success_check(story, styles, section: dict):
     story.append(footer)
 
 
+def neutralize_day1_student_title(title: str) -> str:
+    if 'day 1 task sheet' in title.lower():
+        return 'Day 1 Task Sheet'
+    return title
+
+
 def render_task_sheet(packet: dict, section: dict, out_path: Path) -> None:
     styles = styles_bundle()
     story = []
@@ -470,9 +475,10 @@ def render_task_sheet(packet: dict, section: dict, out_path: Path) -> None:
     tasks = section.get('tasks', [])
     day1_layout = 'day 1' in title.lower() and len(tasks) >= 5
     day2_layout = 'day 2' in title.lower() and len(tasks) == 3
+    display_title = neutralize_day1_student_title(title)
 
     title_bar(story, styles, packet_heading(packet))
-    story.append(Paragraph(title, styles['SheetTitleX']))
+    story.append(Paragraph(display_title, styles['SheetTitleX']))
     story.append(Paragraph('Name: ____________________   Date: __________', styles['MutedX']))
     story.append(Spacer(1, 3))
     purpose_line_block(story, styles, purpose_line_for_task_sheet(section))
@@ -493,7 +499,7 @@ def render_task_sheet(packet: dict, section: dict, out_path: Path) -> None:
             ))
         story.append(PageBreak())
         title_bar(story, styles, packet_heading(packet))
-        story.append(Paragraph(f"{title} — Checkpoint prep", styles['SheetTitleX']))
+        story.append(Paragraph(f"{display_title} — Checkpoint Prep", styles['SheetTitleX']))
         story.append(Paragraph('Use this page to identify what still needs work before the checkpoint.', styles['MutedX']))
         story.append(Spacer(1, 3))
         story.append(build_task_block(
