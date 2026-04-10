@@ -11,6 +11,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.platypus import (
     KeepTogether,
+    PageBreak,
     Paragraph,
     SimpleDocTemplate,
     Spacer,
@@ -375,12 +376,8 @@ def pre_draft_strip(story, styles, section: dict):
     reminders = [str(item) for item in section.get('planning_reminders', [])[:4] if str(item).strip()]
     if not reminders:
         return
-
-    chips = []
-    for item in reminders:
-        chips.append(Paragraph(item, styles['MicroX']))
-
-    strip = Table([chips], colWidths=[135] * len(chips))
+    cells = [Paragraph(item, styles['MicroX']) for item in reminders]
+    strip = Table([cells], colWidths=[540 / len(cells)] * len(cells), hAlign='CENTER')
     strip.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#f8fafc')),
         ('BOX', (0, 0), (-1, -1), 0.55, colors.HexColor('#cbd5e1')),
@@ -398,24 +395,15 @@ def pre_draft_strip(story, styles, section: dict):
 
 
 def optional_support_strip(story, styles, section: dict):
-    supports = []
     paragraph_support = section.get('paragraph_support', {}) if isinstance(section.get('paragraph_support'), dict) else {}
-    frame_strip = paragraph_support.get('frame_strip', []) if isinstance(paragraph_support, dict) else []
-    reminder_box = paragraph_support.get('reminder_box') if isinstance(paragraph_support, dict) else None
-
-    for item in frame_strip[:4]:
-        text = str(item).strip()
-        if text:
-            supports.append(text)
-
+    supports = [str(item).strip() for item in paragraph_support.get('frame_strip', [])[:4] if str(item).strip()]
+    reminder_box = paragraph_support.get('reminder_box')
     if reminder_box:
         supports.append(str(reminder_box).strip())
-
     if not supports:
         return
-
     cells = [Paragraph(item, styles['MicroX']) for item in supports[:5]]
-    strip = Table([cells], colWidths=[108] * len(cells))
+    strip = Table([cells], colWidths=[540 / len(cells)] * len(cells), hAlign='CENTER')
     strip.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#fff7ed')),
         ('BOX', (0, 0), (-1, -1), 0.55, colors.HexColor('#fdba74')),
@@ -455,12 +443,10 @@ def final_success_check(story, styles, section: dict):
     items = [str(item) for item in section.get('success_criteria', []) if str(item).strip()]
     if not items:
         return
-
     left_items = items[:2]
     right_items = items[2:4]
     if not right_items and len(items) > 2:
         right_items = items[2:]
-
     left = compact_list_cell(styles, 'Success check', left_items)
     right = compact_list_cell(styles, 'Check before you hand it in', right_items or ['I wrote my final response on this sheet.'])
     footer = Table([[left, right]], colWidths=[265, 265])
@@ -505,6 +491,7 @@ def render_task_sheet(packet: dict, section: dict, out_path: Path) -> None:
                 prompt_style='BodyTextCompactX',
                 vertical_padding=3.5,
             ))
+        story.append(PageBreak())
         title_bar(story, styles, packet_heading(packet))
         story.append(Paragraph(f"{title} — Checkpoint prep", styles['SheetTitleX']))
         story.append(Paragraph('Use this page to identify what still needs work before the checkpoint.', styles['MutedX']))
