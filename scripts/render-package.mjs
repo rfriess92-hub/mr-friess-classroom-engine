@@ -105,11 +105,19 @@ function writeVisualSidecar(outDir, route, visualBundle) {
 }
 
 function writeImageSidecar(outDir, route, visualBundle) {
-  const imageManifest = visualBundle?.image_manifest ?? []
-  const imageQa = visualBundle?.image_qa ?? { judgment: 'pass', findings: [] }
+  const imagePayload = {
+    output_id: route.output_id,
+    image_qa: visualBundle.image_qa ?? null,
+    pages: (visualBundle.visual_plan?.pages ?? []).map((page) => ({
+      page_id: page.page_id,
+      page_role: page.page_role,
+      layout_id: page.layout_id,
+      image_plan: page.image_plan ?? { judgment: 'no_image', slots: [] },
+    })),
+  }
   writeFileSync(
-    resolve(outDir, `${route.output_id}.image.json`),
-    JSON.stringify({ image_manifest: imageManifest, image_qa: imageQa }, null, 2),
+    resolve(outDir, `${route.output_id}.images.json`),
+    JSON.stringify(imagePayload, null, 2),
     'utf-8',
   )
 }

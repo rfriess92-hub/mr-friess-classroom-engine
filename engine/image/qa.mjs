@@ -1,65 +1,64 @@
-function countResolvedImageSlots(page) {
-  return (page.components ?? []).filter((component) => (
-    component.type === 'ImageSlot'
-    && (component.resolved_image?.status ?? 'resolved') === 'resolved'
-  )).length
+function safeArray(value) {
+  return Array.isArray(value) ? value : []
 }
 
-function pageHasWritingSpace(page) {
-  return (page.components ?? []).some((component) => component.visual_role === 'student_response')
-}
-
-function roleCounts(page) {
-  const counts = {}
-  for (const component of page.components ?? []) {
-    const role = component.visual_role ?? 'unknown'
-    counts[role] = (counts[role] ?? 0) + 1
-  }
-  return counts
+function slotArea(slot) {
+  const bounds = slot?.bounds ?? {}
+  return Number(bounds.w ?? 0) * Number(bounds.h ?? 0)
 }
 
 export function runImageQaOnPlan(visualPlan) {
   const findings = []
-  const pages = Array.isArray(visualPlan.pages) ? visualPlan.pages : []
+  const pages = safeArray(visualPlan.pages)
+
+  const seenAssetKinds = new Set()
 
   for (const page of pages) {
-    const imageCount = countResolvedImageSlots(page)
-    const counts = roleCounts(page)
+    const imagePlan = page.image_plan ?? { slots: [] }
+    const slots = safeArray(imagePlan.slots)
 
-    if (pageHasWritingSpace(page) && imageCount > 1) {
+    if (imagePlan.judgment === 'fallback_layout' && safeArray(imagePlan.missing_slots).length > 0) {
+      findings.push({
+        type: 'image_fallback',
+        page_id: page.page_id,
+        note: 'No compatible image asset resolved; page falls back to no-image behavior.',
+      })
+    }
+
+    if (visualPlan.artifact_type === 'worksheet' && slots.length > 1) {
       findings.push({
         type: 'worksheet_image_density',
         page_id: page.page_id,
-        note: 'Student writing page resolves more than one image slot.',
+        note: 'Worksheet page resolved more than one image slot.',
       })
     }
 
-    if ((page.authored_layout === 'reflect' || page.page_role === 'reflect') && imageCount > 1) {
-      findings.push({
-        type: 'reflect_image_crowding',
-        page_id: page.page_id,
-        note: 'Reflect page resolves more than one image slot.',
-      })
+    for (const slot of slots) {
+      if (visualPlan.artifact_type === 'worksheet' && slotArea(slot) > 0.4) {
+        findings.push({
+          type: 'worksheet_image_crowding',
+          page_id: page.page_id,
+          slot_id: slot.slot_id,
+          note: 'Worksheet image slot is too large for writing-first policy.',
+        })
+      }
+      if (visualPlan.artifact_type === 'worksheet' && slot.grayscale_safe === false) {
+        findings.push({
+          type: 'worksheet_print_safety',
+          page_id: page.page_id,
+          slot_id: slot.slot_id,
+          note: 'Worksheet image slot is not marked grayscale safe.',
+        })
+      }
+      seenAssetKinds.add(slot.role)
     }
+  }
 
-    if (imageCount > 0 && (counts.student_response ?? 0) > 0 && imageCount >= (counts.student_response ?? 0)) {
-      findings.push({
-        type: 'image_vs_writing_balance',
-        page_id: page.page_id,
-        note: 'Image presence is too strong relative to student writing space.',
-      })
-    }
-
-    const unresolvedRequired = (page.image_plan?.slots ?? []).filter((slot) => (
-      slot.status !== 'resolved' && slot.required === true
-    ))
-    if (unresolvedRequired.length > 0) {
-      findings.push({
-        type: 'required_image_missing',
-        page_id: page.page_id,
-        note: 'Required image slot did not resolve to a local approved asset.',
-      })
-    }
+  if (visualPlan.artifact_type === 'slide_deck' && seenAssetKinds.size > 2) {
+    findings.push({
+      type: 'image_style_drift',
+      note: 'Slide deck mixes too many image-role treatments in one lesson.',
+    })
   }
 
   return {
