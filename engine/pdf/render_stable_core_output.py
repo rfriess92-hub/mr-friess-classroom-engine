@@ -475,7 +475,7 @@ def render_task_sheet(packet: dict, section: dict, out_path: Path) -> None:
     tasks = section.get('tasks', [])
     day1_layout = 'day 1' in title.lower() and len(tasks) >= 5
     day2_layout = 'day 2' in title.lower() and len(tasks) == 3
-    display_title = neutralize_day1_student_title(title) if day1_layout else title
+    display_title = neutralize_day1_student_title(title)
 
     title_bar(story, styles, packet_heading(packet))
     story.append(Paragraph(display_title, styles['SheetTitleX']))
