@@ -12,6 +12,8 @@
     "render:package": "node scripts/render-package.mjs",
     "qa:render": "node scripts/qa-render.mjs",
     "qa:bundle": "node scripts/qa-bundle.mjs",
-    "qa:visual": "node scripts/qa-visual.mjs"
+    "qa:visual": "node scripts/qa-visual.mjs",
+    "select:assignment-family": "node scripts/select-assignment-family.mjs",
+    "qa:assignment-family": "node scripts/validate-assignment-build.mjs"
   }
 }
