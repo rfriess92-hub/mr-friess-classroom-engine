@@ -1,0 +1,138 @@
+{
+  "$schema_version": "1.0.0",
+  "schema_id": "mr_friess_visual_roles",
+  "cue_icons": {
+    "start_here": "compass",
+    "discuss": "messages",
+    "model": "search",
+    "task": "pencil",
+    "reflect": "rotate_ccw",
+    "support": "lightbulb",
+    "look_closely": "search",
+    "partner_talk": "message_circle_more",
+    "show_thinking": "pen_line",
+    "checkpoint": "bookmark",
+    "success": "check_circle",
+    "extension": "arrow_up_right"
+  },
+  "visual_roles": {
+    "course_band": {
+      "fill_mode": "accent_tint",
+      "border_mode": "none",
+      "radius_token": "sharp",
+      "show_icon": false
+    },
+    "title": {
+      "fill_mode": "paper",
+      "border_mode": "none"
+    },
+    "section_tab": {
+      "fill_mode": "accent_tint",
+      "border_mode": "none",
+      "radius_token": "pill",
+      "show_icon": true
+    },
+    "main_prompt": {
+      "fill_mode": "panel",
+      "border_mode": "thin",
+      "radius_token": "soft"
+    },
+    "secondary_prompt": {
+      "fill_mode": "panel_alt",
+      "border_mode": "thin",
+      "radius_token": "soft"
+    },
+    "example": {
+      "fill_mode": "panel_alt",
+      "border_mode": "thin",
+      "radius_token": "soft"
+    },
+    "support_cue": {
+      "accent_role": "support",
+      "fill_mode": "accent_tint",
+      "border_mode": "medium",
+      "radius_token": "round",
+      "show_icon": true,
+      "max_body_lines": 3
+    },
+    "talk_move": {
+      "accent_role": "support",
+      "fill_mode": "accent_tint",
+      "border_mode": "thin",
+      "radius_token": "round",
+      "show_icon": true
+    },
+    "carryover": {
+      "fill_mode": "panel_alt",
+      "border_mode": "thin",
+      "radius_token": "soft",
+      "show_icon": true
+    },
+    "task_step": {
+      "fill_mode": "panel",
+      "border_mode": "thin",
+      "radius_token": "soft"
+    },
+    "reflection": {
+      "accent_role": "reflection",
+      "fill_mode": "accent_tint",
+      "border_mode": "thin",
+      "radius_token": "round",
+      "show_icon": true
+    },
+    "student_response": {
+      "fill_mode": "paper",
+      "border_mode": "none",
+      "radius_token": "sharp",
+      "line_emphasis": "light",
+      "padding_token": "md"
+    },
+    "checkpoint": {
+      "fill_mode": "panel_alt",
+      "border_mode": "thin",
+      "radius_token": "soft",
+      "show_icon": true
+    },
+    "support_tools": {
+      "accent_role": "support",
+      "fill_mode": "accent_tint",
+      "border_mode": "thin",
+      "radius_token": "round",
+      "show_icon": true
+    },
+    "success_check": {
+      "accent_role": "success",
+      "fill_mode": "panel",
+      "border_mode": "thin",
+      "radius_token": "soft",
+      "show_icon": true
+    },
+    "teacher_note": {
+      "fill_mode": "paper",
+      "border_mode": "none",
+      "text_tone": "muted"
+    },
+    "extension": {
+      "accent_role": "extension",
+      "fill_mode": "accent_tint",
+      "border_mode": "thin",
+      "radius_token": "soft",
+      "show_icon": true
+    }
+  },
+  "icon_rules": [
+    "icons are always paired with labels",
+    "icons remain small and flat",
+    "no mixed icon families",
+    "no icons used as standalone decorations"
+  ],
+  "style_resolution_order": [
+    "token_set",
+    "surface_variant",
+    "instructional_variant",
+    "page_role",
+    "visual_role",
+    "component_type",
+    "explicit_component_overrides"
+  ]
+}

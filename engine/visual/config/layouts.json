@@ -1,0 +1,161 @@
+{
+  "$schema_version": "1.0.0",
+  "schema_id": "mr_friess_layout_templates",
+  "page_roles": {
+    "slide_deck": [
+      "launch",
+      "discuss",
+      "model",
+      "task",
+      "reflect"
+    ],
+    "worksheet": [
+      "handout",
+      "final_response"
+    ]
+  },
+  "slide_layouts": {
+    "launch_open": {
+      "page_roles": [
+        "launch"
+      ],
+      "regions": [
+        "course_band",
+        "title",
+        "main_stage",
+        "support_rail"
+      ],
+      "rules": [
+        "main_stage gets 55-70% of usable area",
+        "support_rail sits right or below",
+        "max 2 primary boxes"
+      ]
+    },
+    "discuss_two_zone": {
+      "page_roles": [
+        "discuss"
+      ],
+      "regions": [
+        "course_band",
+        "title",
+        "main_stage",
+        "secondary_stage",
+        "support_footer"
+      ],
+      "rules": [
+        "secondary_stage must be visually lighter than main_stage",
+        "support_footer stays short"
+      ]
+    },
+    "model_focus": {
+      "page_roles": [
+        "model"
+      ],
+      "regions": [
+        "course_band",
+        "title",
+        "example_stage",
+        "cue_stage"
+      ],
+      "rules": [
+        "example_stage is dominant",
+        "cue_stage is compact"
+      ]
+    },
+    "task_flow": {
+      "page_roles": [
+        "task"
+      ],
+      "regions": [
+        "course_band",
+        "title",
+        "task_stage",
+        "cue_stage",
+        "footer_note"
+      ],
+      "rules": [
+        "task_stage emphasizes action sequence",
+        "footer_note is lowest contrast"
+      ]
+    },
+    "reflect_open": {
+      "page_roles": [
+        "reflect"
+      ],
+      "regions": [
+        "course_band",
+        "title",
+        "reflection_stage",
+        "optional_support"
+      ],
+      "rules": [
+        "more whitespace than any other slide",
+        "no more than 2 content blocks"
+      ]
+    }
+  },
+  "worksheet_layouts": {
+    "task_sheet_page_1": {
+      "page_roles": [
+        "handout"
+      ],
+      "regions": [
+        "page_header",
+        "entry_panel",
+        "section_stack"
+      ],
+      "rules": [
+        "entry_panel appears before first section",
+        "each section contains prompt plus writing field",
+        "scaffold cues may appear inline or side-attached"
+      ]
+    },
+    "task_sheet_page_2": {
+      "page_roles": [
+        "handout"
+      ],
+      "regions": [
+        "page_header",
+        "checkpoint_panel",
+        "response_block",
+        "two_column_tools"
+      ],
+      "rules": [
+        "support_tools and success_check must not share identical fill treatment",
+        "support_tools should feel more active",
+        "success_check should feel calmer"
+      ]
+    },
+    "final_response_page": {
+      "page_roles": [
+        "final_response"
+      ],
+      "regions": [
+        "page_header",
+        "draft_prep_row",
+        "structure_cue",
+        "final_draft_field",
+        "final_review"
+      ],
+      "rules": [
+        "draft_prep_row may use 2-3 compact support cards",
+        "final_draft_field is visually dominant",
+        "final_review stays quiet and low contrast"
+      ]
+    }
+  },
+  "sequence_rules": {
+    "slide_deck": [
+      "across a 5-slide lesson sequence at least 3 different layout ids must be used",
+      "no more than 2 consecutive slides may share the same region structure",
+      "at least 1 slide must use a side support rail",
+      "at least 1 slide must reduce box count for visual breathing room"
+    ],
+    "worksheet": [
+      "every page gets one warm entry or orientation region",
+      "no page should look like a continuous slab of equally tinted boxes",
+      "writing space must occupy more visual openness than support cues",
+      "checklists may not become the darkest or most prominent element on the page"
+    ]
+  }
+}

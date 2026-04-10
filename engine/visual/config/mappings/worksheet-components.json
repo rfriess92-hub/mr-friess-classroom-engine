@@ -1,0 +1,21 @@
+{
+  "$schema_version": "1.0.0",
+  "schema_id": "mr_friess_worksheet_component_map",
+  "artifact_type": "worksheet",
+  "pedagogy_to_visual_component": {
+    "worksheet_page_header": "PageHeader",
+    "worksheet_before_you_start": "EntryPanel",
+    "worksheet_section_prompt": "SectionBlock",
+    "worksheet_writing_lines": "WritingField",
+    "worksheet_scaffold_cue": "ScaffoldCue",
+    "worksheet_checkpoint_panel": "CheckpointPanel",
+    "worksheet_support_tools": "SupportToolPanel",
+    "worksheet_success_check": "SuccessCheckPanel",
+    "worksheet_final_draft_field": "FinalDraftField"
+  },
+  "page_role_defaults": {
+    "handout_page_1": "task_sheet_page_1",
+    "handout_page_2": "task_sheet_page_2",
+    "final_response": "final_response_page"
+  }
+}

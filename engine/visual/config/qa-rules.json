@@ -1,0 +1,93 @@
+{
+  "$schema_version": "1.0.0",
+  "schema_id": "mr_friess_visual_qa_rules",
+  "qa_rules": [
+    {
+      "id": "main_task_visible",
+      "applies_to": [
+        "slide_deck",
+        "worksheet"
+      ],
+      "rule": "There must be exactly one visually dominant task or prompt region per page."
+    },
+    {
+      "id": "support_not_competing",
+      "applies_to": [
+        "slide_deck",
+        "worksheet"
+      ],
+      "rule": "Support cue regions must be smaller or lower contrast than main prompt regions."
+    },
+    {
+      "id": "not_all_rectangles",
+      "applies_to": [
+        "slide_deck",
+        "worksheet"
+      ],
+      "rule": "At least one component family per page must use softer corners or tab treatment."
+    },
+    {
+      "id": "writing_space_open",
+      "applies_to": [
+        "worksheet"
+      ],
+      "rule": "Student writing regions must have more open white area than adjacent prompt boxes."
+    },
+    {
+      "id": "support_tools_vs_success_check",
+      "applies_to": [
+        "worksheet"
+      ],
+      "rule": "Support tools and success check cannot share identical fill, icon, and border treatment."
+    },
+    {
+      "id": "slide_sequence_variety",
+      "applies_to": [
+        "slide_deck"
+      ],
+      "rule": "A 5-slide sequence must use at least 3 layout patterns."
+    },
+    {
+      "id": "reflection_breathing_room",
+      "applies_to": [
+        "slide_deck"
+      ],
+      "rule": "Reflection slides must use fewer content blocks than model or task slides."
+    },
+    {
+      "id": "accent_limit",
+      "applies_to": [
+        "slide_deck",
+        "worksheet"
+      ],
+      "rule": "No page may use more than 3 accent roles."
+    }
+  ],
+  "executable_checks": {
+    "flatness": {
+      "fails_when": [
+        "all major components on a page use identical border_mode",
+        "all major components on a page use identical radius_token",
+        "all major components on a page use identical fill_mode"
+      ]
+    },
+    "support_vs_main_contrast": {
+      "fails_when": [
+        "support_cue area is equal to or larger than main_prompt area",
+        "support_cue fill contrast is equal to or stronger than main_prompt fill contrast"
+      ]
+    },
+    "writing_space_openness": {
+      "fails_when": [
+        "student_response area is smaller than adjacent prompt area",
+        "student_response uses darker fill than adjacent prompt area"
+      ]
+    },
+    "slide_sequence_variety": {
+      "fails_when": [
+        "five_slide_sequence uses fewer than three unique layout ids",
+        "three_or_more consecutive slides share the same region structure"
+      ]
+    }
+  }
+}

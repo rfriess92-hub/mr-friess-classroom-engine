@@ -11,6 +11,7 @@
     "route:plan": "node scripts/route-plan.mjs",
     "render:package": "node scripts/render-package.mjs",
     "qa:render": "node scripts/qa-render.mjs",
-    "qa:bundle": "node scripts/qa-bundle.mjs"
+    "qa:bundle": "node scripts/qa-bundle.mjs",
+    "qa:visual": "node scripts/qa-visual.mjs"
   }
 }

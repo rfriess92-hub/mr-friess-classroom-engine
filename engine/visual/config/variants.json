@@ -1,0 +1,40 @@
+{
+  "$schema_version": "1.0.0",
+  "schema_id": "mr_friess_variant_behaviors",
+  "surface_variants": {
+    "baseline": {
+      "token_set": "baseline_default"
+    },
+    "playful_light": {
+      "token_set": "playful_light_default"
+    }
+  },
+  "instructional_variants": {
+    "core": {
+      "cue_density": "medium",
+      "support_visibility": "moderate",
+      "writing_structure": "balanced"
+    },
+    "support": {
+      "cue_density": "high",
+      "support_visibility": "high",
+      "writing_structure": "guided",
+      "defaults": {
+        "include_scaffold_cues": true,
+        "use_friendlier_tabs": true,
+        "show_stems": true,
+        "prefer_rounder_support_shapes": true
+      }
+    },
+    "extension": {
+      "cue_density": "low",
+      "support_visibility": "low",
+      "writing_structure": "open",
+      "defaults": {
+        "include_scaffold_cues": false,
+        "use_sharper_contrast": true,
+        "highlight_challenge_prompts": true
+      }
+    }
+  }
+}

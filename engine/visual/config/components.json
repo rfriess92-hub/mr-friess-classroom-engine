@@ -1,0 +1,285 @@
+{
+  "$schema_version": "1.0.0",
+  "schema_id": "mr_friess_component_library",
+  "shared_fields": {
+    "required": [
+      "id",
+      "type",
+      "visual_role"
+    ],
+    "content": [
+      "label",
+      "title",
+      "body",
+      "items",
+      "prompt",
+      "stem",
+      "checklist"
+    ],
+    "style": [
+      "accent_role",
+      "density",
+      "tone",
+      "icon_key"
+    ],
+    "layout": [
+      "x",
+      "y",
+      "w",
+      "h",
+      "z",
+      "anchor"
+    ],
+    "options": [
+      "show_icon",
+      "show_tab",
+      "fill_mode",
+      "border_mode",
+      "writing_lines"
+    ]
+  },
+  "component_types": {
+    "CourseBand": {
+      "artifact_types": [
+        "slide_deck"
+      ],
+      "allowed_roles": [
+        "course_band"
+      ],
+      "required_content": [
+        "title",
+        "label"
+      ]
+    },
+    "SlideTitle": {
+      "artifact_types": [
+        "slide_deck"
+      ],
+      "allowed_roles": [
+        "title"
+      ],
+      "required_content": [
+        "title"
+      ]
+    },
+    "SectionTab": {
+      "artifact_types": [
+        "slide_deck"
+      ],
+      "allowed_roles": [
+        "section_tab"
+      ],
+      "required_content": [
+        "label"
+      ]
+    },
+    "PrimaryPromptBox": {
+      "artifact_types": [
+        "slide_deck"
+      ],
+      "allowed_roles": [
+        "main_prompt"
+      ],
+      "required_content": [
+        "label",
+        "body"
+      ]
+    },
+    "ExampleBox": {
+      "artifact_types": [
+        "slide_deck"
+      ],
+      "allowed_roles": [
+        "example"
+      ],
+      "required_content": [
+        "label",
+        "body"
+      ]
+    },
+    "SupportCueBox": {
+      "artifact_types": [
+        "slide_deck"
+      ],
+      "allowed_roles": [
+        "support_cue"
+      ],
+      "required_content": [
+        "label"
+      ],
+      "optional_content": [
+        "body",
+        "stem"
+      ]
+    },
+    "TalkMoveBox": {
+      "artifact_types": [
+        "slide_deck"
+      ],
+      "allowed_roles": [
+        "talk_move"
+      ],
+      "required_content": [
+        "label",
+        "body"
+      ]
+    },
+    "CarryoverBox": {
+      "artifact_types": [
+        "slide_deck"
+      ],
+      "allowed_roles": [
+        "carryover"
+      ],
+      "required_content": [
+        "label",
+        "body"
+      ]
+    },
+    "TaskStepBox": {
+      "artifact_types": [
+        "slide_deck"
+      ],
+      "allowed_roles": [
+        "task_step"
+      ],
+      "required_content": [
+        "label",
+        "items"
+      ]
+    },
+    "ReflectionPrompt": {
+      "artifact_types": [
+        "slide_deck"
+      ],
+      "allowed_roles": [
+        "reflection"
+      ],
+      "required_content": [
+        "label",
+        "body"
+      ]
+    },
+    "FooterNote": {
+      "artifact_types": [
+        "slide_deck"
+      ],
+      "allowed_roles": [
+        "teacher_note"
+      ],
+      "required_content": [
+        "body"
+      ]
+    },
+    "PageHeader": {
+      "artifact_types": [
+        "worksheet"
+      ],
+      "allowed_roles": [
+        "course_band"
+      ],
+      "required_content": [
+        "title",
+        "label"
+      ]
+    },
+    "EntryPanel": {
+      "artifact_types": [
+        "worksheet"
+      ],
+      "allowed_roles": [
+        "secondary_prompt"
+      ],
+      "required_content": [
+        "label",
+        "items"
+      ]
+    },
+    "SectionBlock": {
+      "artifact_types": [
+        "worksheet"
+      ],
+      "allowed_roles": [
+        "main_prompt",
+        "checkpoint"
+      ],
+      "required_content": [
+        "label",
+        "prompt"
+      ]
+    },
+    "WritingField": {
+      "artifact_types": [
+        "worksheet"
+      ],
+      "allowed_roles": [
+        "student_response"
+      ],
+      "required_options": [
+        "writing_lines"
+      ]
+    },
+    "ScaffoldCue": {
+      "artifact_types": [
+        "worksheet"
+      ],
+      "allowed_roles": [
+        "support_cue"
+      ],
+      "required_content": [
+        "label",
+        "stem"
+      ]
+    },
+    "CheckpointPanel": {
+      "artifact_types": [
+        "worksheet"
+      ],
+      "allowed_roles": [
+        "checkpoint"
+      ],
+      "required_content": [
+        "label",
+        "body"
+      ]
+    },
+    "SupportToolPanel": {
+      "artifact_types": [
+        "worksheet"
+      ],
+      "allowed_roles": [
+        "support_tools"
+      ],
+      "required_content": [
+        "label",
+        "items"
+      ]
+    },
+    "SuccessCheckPanel": {
+      "artifact_types": [
+        "worksheet"
+      ],
+      "allowed_roles": [
+        "success_check"
+      ],
+      "required_content": [
+        "label",
+        "checklist"
+      ]
+    },
+    "FinalDraftField": {
+      "artifact_types": [
+        "worksheet"
+      ],
+      "allowed_roles": [
+        "student_response"
+      ],
+      "required_content": [
+        "label"
+      ],
+      "required_options": [
+        "writing_lines"
+      ]
+    }
+  }
+}
