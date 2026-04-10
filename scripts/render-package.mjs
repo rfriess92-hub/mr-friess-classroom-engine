@@ -104,6 +104,24 @@ function writeVisualSidecar(outDir, route, visualBundle) {
   )
 }
 
+function writeImageSidecar(outDir, route, visualBundle) {
+  const imagePayload = {
+    output_id: route.output_id,
+    image_qa: visualBundle.image_qa ?? null,
+    pages: (visualBundle.visual_plan?.pages ?? []).map((page) => ({
+      page_id: page.page_id,
+      page_role: page.page_role,
+      layout_id: page.layout_id,
+      image_plan: page.image_plan ?? { judgment: 'no_image', slots: [] },
+    })),
+  }
+  writeFileSync(
+    resolve(outDir, `${route.output_id}.images.json`),
+    JSON.stringify(imagePayload, null, 2),
+    'utf-8',
+  )
+}
+
 const packageArg = argValue('--package')
 const fixtureArg = argValue('--fixture')
 const outArg = argValue('--out') ?? 'output'
@@ -138,6 +156,7 @@ mkdirSync(outDir, { recursive: true })
 for (const route of routes) {
   const visualBundle = buildRouteVisualPlan(pkg, route)
   writeVisualSidecar(outDir, route, visualBundle)
+  writeImageSidecar(outDir, route, visualBundle)
 
   if (route.artifact_family === 'pptx' && route.output_type === 'slides') {
     renderSlides(pkg, route, visualBundle.visual_plan, outDir)
