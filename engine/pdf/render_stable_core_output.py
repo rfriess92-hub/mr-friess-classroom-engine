@@ -19,6 +19,12 @@ from reportlab.platypus import (
     TableStyle,
 )
 
+WORKSHEET_PAGE_USABLE_HEIGHT = int(letter[1] - 40)
+WORKSHEET_HEADER_HEIGHT_ESTIMATE = 60
+WORKSHEET_RESPONSE_ROW_HEIGHT = 18
+WORKSHEET_MIN_KEEP_LINES = 3
+WORKSHEET_QUESTION_BLOCK_SPACER = 8
+
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
@@ -99,7 +105,7 @@ def render_lines(story, styles, count: int, style_name: str = 'BodyText', spacer
         story.append(Spacer(1, spacer_after))
 
 
-def response_line_table(count: int, col_width: int = 520, row_height: int = 18):
+def response_line_table(count: int, col_width: int = 520, row_height: int = WORKSHEET_RESPONSE_ROW_HEIGHT):
     rows = [[' '] for _ in range(max(1, int(count or 1)))]
     table = Table(rows, colWidths=[col_width], rowHeights=[row_height] * len(rows), hAlign='LEFT')
     styles = [
@@ -112,6 +118,49 @@ def response_line_table(count: int, col_width: int = 520, row_height: int = 18):
         styles.append(('LINEBELOW', (0, row_index), (0, row_index), 0.7, colors.HexColor('#64748b')))
     table.setStyle(TableStyle(styles))
     return table
+
+
+def estimate_wrapped_lines(text: str, chars_per_line: int = 82) -> int:
+    text = str(text or '').strip()
+    if not text:
+        return 1
+    total = 0
+    for raw_line in text.splitlines() or ['']:
+        line = raw_line.strip()
+        if not line:
+            total += 1
+            continue
+        total += max(1, ((len(line) - 1) // chars_per_line) + 1)
+    return total
+
+
+def estimate_plain_label_block_height(lines: list[str], compact: bool = False, spacer_after: int = 6) -> int:
+    per_line_height = 10 if compact else 12
+    chars_per_line = 92 if compact else 82
+    content_lines = sum(max(1, estimate_wrapped_lines(item, chars_per_line)) for item in lines)
+    block_padding = 16 if compact else 24
+    title_height = 14
+    return title_height + (content_lines * per_line_height) + block_padding + spacer_after
+
+
+def estimate_question_block_height(question: dict, rendered_lines: int | None = None) -> int:
+    line_count = max(2, int(rendered_lines if rendered_lines is not None else question.get('n_lines', 3)))
+    prompt_lines = estimate_wrapped_lines(question.get('q_text', ''), 82)
+    label_height = 14
+    prompt_height = prompt_lines * 12
+    inner_padding = 31
+    response_height = line_count * WORKSHEET_RESPONSE_ROW_HEIGHT
+    return label_height + prompt_height + inner_padding + response_height + WORKSHEET_QUESTION_BLOCK_SPACER
+
+
+def worksheet_page_header(story, styles, packet: dict, section: dict, continuation: bool = False):
+    title_bar(story, styles, packet_heading(packet))
+    title = section.get('title', 'Worksheet')
+    if continuation:
+        title = f"{title} — Continued"
+    story.append(Paragraph(title, styles['SheetTitleX']))
+    story.append(Paragraph('Name: ____________________   Date: __________', styles['MutedX']))
+    story.append(Spacer(1, 3))
 
 
 def worksheet_question_block(styles, question: dict):
@@ -134,7 +183,7 @@ def worksheet_question_block(styles, question: dict):
         ('RIGHTPADDING', (0, 0), (-1, -1), 10),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
     ]))
-    return KeepTogether([block, Spacer(1, 8)])
+    return KeepTogether([block, Spacer(1, WORKSHEET_QUESTION_BLOCK_SPACER)])
 
 
 def add_bullet_section(story, styles, title: str, items: list[str], compact: bool = False, spacer_after: int = 8):
@@ -617,20 +666,55 @@ def render_final_response_sheet(packet: dict, section: dict, out_path: Path) -> 
 def render_worksheet(packet: dict, section: dict, out_path: Path) -> None:
     styles = styles_bundle()
     story = []
+    worksheet_page_header(story, styles, packet, section)
+    remaining_height = WORKSHEET_PAGE_USABLE_HEIGHT - WORKSHEET_HEADER_HEIGHT_ESTIMATE
 
-    title_bar(story, styles, packet_heading(packet))
-    story.append(Paragraph(section.get('title', 'Worksheet'), styles['SheetTitleX']))
-    story.append(Paragraph('Name: ____________________   Date: __________', styles['MutedX']))
-    story.append(Spacer(1, 3))
+    anchor_items = section.get('anchor', [])
+    if anchor_items:
+        anchor_height = estimate_plain_label_block_height(anchor_items, compact=False, spacer_after=5)
+        if remaining_height < anchor_height:
+            story.append(PageBreak())
+            worksheet_page_header(story, styles, packet, section, continuation=True)
+            remaining_height = WORKSHEET_PAGE_USABLE_HEIGHT - WORKSHEET_HEADER_HEIGHT_ESTIMATE
+        plain_label_block(story, styles, 'Anchor reminders', anchor_items, compact=False, spacer_after=5)
+        remaining_height -= anchor_height
 
-    if section.get('anchor'):
-        plain_label_block(story, styles, 'Anchor reminders', section.get('anchor', []), compact=False, spacer_after=5)
     if section.get('tip'):
-        plain_label_block(story, styles, 'Tip', [str(section.get('tip'))], compact=False, spacer_after=6)
+        tip_lines = [str(section.get('tip'))]
+        tip_height = estimate_plain_label_block_height(tip_lines, compact=False, spacer_after=6)
+        if remaining_height < tip_height:
+            story.append(PageBreak())
+            worksheet_page_header(story, styles, packet, section, continuation=True)
+            remaining_height = WORKSHEET_PAGE_USABLE_HEIGHT - WORKSHEET_HEADER_HEIGHT_ESTIMATE
+        plain_label_block(story, styles, 'Tip', tip_lines, compact=False, spacer_after=6)
+        remaining_height -= tip_height
+
+    fresh_page_capacity = WORKSHEET_PAGE_USABLE_HEIGHT - WORKSHEET_HEADER_HEIGHT_ESTIMATE
     for question in section.get('questions', []):
+        full_height = estimate_question_block_height(question)
+        min_keep_lines = min(max(2, int(question.get('n_lines', 3))), WORKSHEET_MIN_KEEP_LINES)
+        min_height = estimate_question_block_height(question, rendered_lines=min_keep_lines)
+
+        should_start_new_page = remaining_height < min_height
+        if not should_start_new_page and full_height <= fresh_page_capacity and full_height > remaining_height:
+            should_start_new_page = True
+
+        if should_start_new_page:
+            story.append(PageBreak())
+            worksheet_page_header(story, styles, packet, section, continuation=True)
+            remaining_height = fresh_page_capacity
+
         story.append(worksheet_question_block(styles, question))
-    if section.get('self_check'):
-        plain_label_block(story, styles, 'Self-check', section.get('self_check', []), compact=False, spacer_after=0)
+        remaining_height = max(0, remaining_height - full_height)
+
+    self_check_items = section.get('self_check', [])
+    if self_check_items:
+        self_check_height = estimate_plain_label_block_height(self_check_items, compact=False, spacer_after=0)
+        if remaining_height < self_check_height:
+            story.append(PageBreak())
+            worksheet_page_header(story, styles, packet, section, continuation=True)
+            remaining_height = WORKSHEET_PAGE_USABLE_HEIGHT - WORKSHEET_HEADER_HEIGHT_ESTIMATE
+        plain_label_block(story, styles, 'Self-check', self_check_items, compact=False, spacer_after=0)
 
     doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=20, bottomMargin=20)
     doc.build(story)
