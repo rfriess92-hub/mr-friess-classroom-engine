@@ -18,6 +18,7 @@ export const GRADE_BANDS = VOCABULARY.grade_bands ?? []
 export const SUPPORTED_THEMES = VOCABULARY.themes ?? []
 export const SUPPORTED_SLIDE_LAYOUTS = VOCABULARY.slide_layouts ?? []
 export const OUTPUT_TYPE_ALIASES = VOCABULARY.aliases ?? {}
+export const SLIDE_LAYOUT_ALIASES = VOCABULARY.slide_layout_aliases ?? {}
 
 export const OUTPUT_TYPES_BY_ARCHITECTURE = {
   single_period_full: [
@@ -60,6 +61,11 @@ export function normalizeOutputType(value) {
   return OUTPUT_TYPE_ALIASES[value] ?? value
 }
 
+export function normalizeSlideLayout(value) {
+  if (!value) return value
+  return SLIDE_LAYOUT_ALIASES[value] ?? value
+}
+
 export function isCanonicalOutputType(value) {
   return CANONICAL_OUTPUT_TYPES.includes(normalizeOutputType(value))
 }
@@ -73,7 +79,7 @@ export function isSupportedTheme(value) {
 }
 
 export function isSupportedSlideLayout(value) {
-  return SUPPORTED_SLIDE_LAYOUTS.includes(value)
+  return SUPPORTED_SLIDE_LAYOUTS.includes(normalizeSlideLayout(value))
 }
 
 export function allowedOutputTypesForArchitecture(primaryArchitecture) {

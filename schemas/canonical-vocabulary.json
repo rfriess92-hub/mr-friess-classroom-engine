@@ -50,12 +50,21 @@
     "rows",
     "retrieval",
     "summary_rows",
-    "single_card",
     "prompt_card",
     "checklist",
     "bullet_focus",
     "planner_model",
     "reflect"
+  ],
+  "slide_layout_aliases": {
+    "single_card": "prompt_card"
+  },
+  "worksheet_response_modes": [
+    "generic",
+    "two_choice_explanations",
+    "two_reasons",
+    "example_explanation",
+    "judgment_reasoning"
   ],
   "image_roles": [
     "cue_icon",

@@ -1,4 +1,5 @@
 import { loadJson, repoPath } from '../../scripts/lib.mjs'
+import { normalizeSlideLayout } from '../schema/canonical.mjs'
 import { slotsForPage } from './slots.mjs'
 
 const REGISTRY_PATH = repoPath('engine', 'image', 'asset-registry.json')
@@ -39,11 +40,8 @@ function normalizeIntent(sourceNode, route, outputType, sourceLayout) {
   if (outputType === 'slides' && sourceLayout === 'reflect') {
     return { role: 'small_illustration', purpose: 'organize_attention', required: false, disallow_images: false, preferred_asset_tags: ['reflect'] }
   }
-  if (outputType === 'worksheet') {
-    return { role: 'cue_icon', purpose: 'organize_attention', required: false, disallow_images: false, preferred_asset_tags: ['worksheet'] }
-  }
-  if (outputType === 'exit_ticket') {
-    return { role: 'cue_icon', purpose: 'organize_attention', required: false, disallow_images: false, preferred_asset_tags: ['exit_ticket'] }
+  if (outputType === 'worksheet' || outputType === 'exit_ticket') {
+    return { role: null, purpose: null, required: false, disallow_images: false, preferred_asset_tags: [] }
   }
 
   return { role: null, purpose: null, required: false, disallow_images: false, preferred_asset_tags: [] }
@@ -124,7 +122,7 @@ export function enrichVisualPlanWithImages(pkg, route, sourceSection, visualPlan
   const pages = safeArray(visualPlan.pages).map((page, pageIndex) => {
     const sourceNode = sourceNodeForPage(sourceSection, route.output_type, pageIndex)
     const sourceLayout = route.output_type === 'slides'
-      ? String(sourceNode?.layout ?? '').toLowerCase()
+      ? normalizeSlideLayout(String(sourceNode?.layout ?? '').toLowerCase())
       : null
     const artifactType = route.output_type === 'slides' ? 'slides' : route.output_type
     const slots = slotsForPage({ outputType: route.output_type, sourceLayout })
