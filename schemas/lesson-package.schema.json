@@ -67,6 +67,10 @@
       "type": "array",
       "items": { "$ref": "#/$defs/output" }
     },
+    "slides": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/slideNode" }
+    },
     "days": {
       "type": "array",
       "items": { "$ref": "#/$defs/day" }
@@ -102,6 +106,49 @@
         "final_response_sheet"
       ]
     },
+    "imageRole": {
+      "type": "string",
+      "enum": [
+        "cue_icon",
+        "small_illustration",
+        "reference_photo",
+        "example_visual",
+        "instructional_diagram"
+      ]
+    },
+    "imagePurpose": {
+      "type": "string",
+      "enum": [
+        "orient_lesson",
+        "explain_content",
+        "organize_attention"
+      ]
+    },
+    "imageIntent": {
+      "type": "object",
+      "properties": {
+        "role": { "$ref": "#/$defs/imageRole" },
+        "purpose": { "$ref": "#/$defs/imagePurpose" },
+        "required": { "type": "boolean" },
+        "disallow_images": { "type": "boolean" },
+        "preferred_asset_tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "slideNode": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "title": { "type": "string" },
+        "layout": { "type": "string" },
+        "content": { "type": "object" },
+        "image_intent": { "$ref": "#/$defs/imageIntent" }
+      },
+      "additionalProperties": true
+    },
     "output": {
       "type": "object",
       "required": ["output_id", "output_type", "audience"],
@@ -113,6 +160,7 @@
         "bundle": { "type": "string" },
         "is_embedded": { "type": "boolean" },
         "final_evidence": { "type": "boolean" },
+        "image_intent": { "$ref": "#/$defs/imageIntent" },
         "embedded_support_elements": {
           "type": "array",
           "items": { "type": "object" }
@@ -127,6 +175,10 @@
         "day_id": { "type": "string" },
         "day_label": { "type": "string" },
         "carryover_note": { "type": "string" },
+        "slides": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/slideNode" }
+        },
         "outputs": {
           "type": "array",
           "items": { "$ref": "#/$defs/output" }

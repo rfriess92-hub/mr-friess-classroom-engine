@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "fallback_roles": {
+    "reference_photo": ["small_illustration", "cue_icon"],
+    "small_illustration": ["cue_icon"],
+    "example_visual": ["small_illustration", "cue_icon"],
+    "instructional_diagram": ["small_illustration", "cue_icon"],
+    "cue_icon": []
+  },
+  "assets": [
+    {
+      "asset_id": "careers_reference_collage",
+      "path": "engine/image/assets/photos/careers_reference_collage.png",
+      "approved_source": "internal_curated",
+      "compatible_artifact_types": ["slides"],
+      "compatible_image_roles": ["reference_photo", "example_visual"],
+      "image_purposes": ["orient_lesson", "explain_content"],
+      "aspect_ratio": "16:9",
+      "crop_focus": "center",
+      "print_safe": true,
+      "grayscale_safe": true,
+      "alt_text": "A broad collage representing several kinds of work and career sectors.",
+      "tone_tags": ["middle_years", "school_safe"],
+      "lesson_tags": ["careers", "hero"]
+    },
+    {
+      "asset_id": "career_spot_01",
+      "path": "engine/image/assets/illustrations/career_spot_01.png",
+      "approved_source": "internal_curated",
+      "compatible_artifact_types": ["slides"],
+      "compatible_image_roles": ["small_illustration", "instructional_diagram"],
+      "image_purposes": ["organize_attention", "explain_content", "orient_lesson"],
+      "aspect_ratio": "3:2",
+      "crop_focus": "center",
+      "print_safe": true,
+      "grayscale_safe": true,
+      "alt_text": "A simple illustration connecting interests, strengths, and values.",
+      "tone_tags": ["middle_years", "school_safe"],
+      "lesson_tags": ["careers", "prompt_card", "reflect"]
+    },
+    {
+      "asset_id": "explore_cue_icon",
+      "path": "engine/image/assets/icons/explore_cue_icon.png",
+      "approved_source": "internal_curated",
+      "compatible_artifact_types": ["slides", "worksheet", "exit_ticket"],
+      "compatible_image_roles": ["cue_icon"],
+      "image_purposes": ["organize_attention", "orient_lesson"],
+      "aspect_ratio": "1:1",
+      "crop_focus": "center",
+      "print_safe": true,
+      "grayscale_safe": true,
+      "alt_text": "A simple explore icon.",
+      "tone_tags": ["middle_years", "school_safe"],
+      "lesson_tags": ["careers", "prompt", "two_column", "reflect", "worksheet", "exit_ticket"]
+    }
+  ]
+}
