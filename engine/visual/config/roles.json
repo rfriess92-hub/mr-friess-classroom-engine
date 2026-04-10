@@ -13,7 +13,8 @@
     "show_thinking": "pen_line",
     "checkpoint": "bookmark",
     "success": "check_circle",
-    "extension": "arrow_up_right"
+    "extension": "arrow_up_right",
+    "image": "image"
   },
   "visual_roles": {
     "course_band": {
@@ -79,6 +80,12 @@
       "border_mode": "thin",
       "radius_token": "round",
       "show_icon": true
+    },
+    "image_anchor": {
+      "fill_mode": "paper",
+      "border_mode": "none",
+      "radius_token": "sharp",
+      "show_icon": false
     },
     "student_response": {
       "fill_mode": "paper",
