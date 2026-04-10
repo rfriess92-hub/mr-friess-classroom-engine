@@ -415,7 +415,7 @@ def optional_support_strip(story, styles, section: dict):
         ('LEFTPADDING', (0, 0), (-1, -1), 5),
         ('RIGHTPADDING', (0, 0), (-1, -1), 5),
     ]))
-    story.append(Paragraph('Try this structure', styles['SectionHeadX']))
+    story.append(Paragraph('Support tools', styles['SectionHeadX']))
     story.append(strip)
     story.append(Spacer(1, 6))
 
@@ -446,7 +446,7 @@ def final_success_check(story, styles, section: dict):
     split = (len(items) + 1) // 2
     left_items = items[:split]
     right_items = items[split:]
-    left = compact_list_cell(styles, 'Final review', left_items)
+    left = compact_list_cell(styles, 'Success check', left_items)
     right = compact_list_cell(styles, '', right_items)
     footer = Table([[left, right]], colWidths=[265, 265])
     footer.setStyle(TableStyle([
@@ -462,9 +462,12 @@ def final_success_check(story, styles, section: dict):
     story.append(footer)
 
 
-def neutralize_day1_student_title(title: str) -> str:
-    if 'day 1 task sheet' in title.lower():
+def neutralize_student_task_title(title: str) -> str:
+    lowered = title.lower()
+    if 'day 1 task sheet' in lowered:
         return 'Day 1 Task Sheet'
+    if 'day 2 task sheet' in lowered:
+        return 'Day 2 Task Sheet'
     return title
 
 
@@ -475,7 +478,7 @@ def render_task_sheet(packet: dict, section: dict, out_path: Path) -> None:
     tasks = section.get('tasks', [])
     day1_layout = 'day 1' in title.lower() and len(tasks) >= 5
     day2_layout = 'day 2' in title.lower() and len(tasks) == 3
-    display_title = neutralize_day1_student_title(title)
+    display_title = neutralize_student_task_title(title)
 
     title_bar(story, styles, packet_heading(packet))
     story.append(Paragraph(display_title, styles['SheetTitleX']))
