@@ -1,0 +1,8 @@
+{
+  "$schema_version": "1.0.0",
+  "schema_id": "mr_friess_assignment_family_package_index",
+  "files": {
+    "families": "families.json",
+    "common_schema": "common-schema.json"
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "$schema_version": "1.0.0",
+  "schema_id": "mr_friess_assignment_families",
+  "stable_families": [
+    "short_inquiry_sequence",
+    "short_project",
+    "performance_task",
+    "structured_academic_discussion",
+    "evidence_based_writing_task"
+  ],
+  "default_routing_order": [
+    "short_inquiry_sequence",
+    "evidence_based_writing_task",
+    "short_project",
+    "performance_task",
+    "structured_academic_discussion"
+  ],
+  "non_negotiables": [
+    "clear teacher/student separation",
+    "declared final evidence target before activity design",
+    "differentiated pathways aligned to the same learning goal unless different outcomes are explicitly intended",
+    "embedded supports at likely friction points",
+    "explicit checkpoint/release logic in multi-day tasks",
+    "classroom realism over novelty",
+    "engagement through meaningful task design, not decorative features"
+  ],
+  "routing_logic": {
+    "short_inquiry_sequence": {
+      "use_when": [
+        "students need to investigate",
+        "students need to compare",
+        "students need to explore",
+        "students need to make a justified decision"
+      ],
+      "primary_signals": [
+        "investigate",
+        "compare",
+        "explore",
+        "justify",
+        "decision",
+        "judge",
+        "interpret",
+        "inquiry"
+      ],
+      "supporting_signals": [
+        "evidence",
+        "multi_day",
+        "discussion",
+        "writing"
+      ],
+      "hard_constraints": [
+        "final evidence must require judgment, comparison, recommendation, or interpretation",
+        "reject inquiry builds that can be completed by fact collection only"
+      ],
+      "failure_mode": "inquiry becomes fact collection"
+    },
+    "short_project": {
+      "use_when": [
+        "students need to design something",
+        "students need to build something",
+        "students need to create something over multiple days with planning and revision"
+      ],
+      "primary_signals": [
+        "design",
+        "build",
+        "create",
+        "revise",
+        "prototype",
+        "project",
+        "product"
+      ],
+      "supporting_signals": [
+        "multi_day",
+        "criteria",
+        "rationale"
+      ],
+      "hard_constraints": [
+        "product alone is not enough",
+        "every short project must include an explanation, rationale, or defense of choices",
+        "reject product-only project structures"
+      ],
+      "failure_mode": "project becomes decoration"
+    },
+    "performance_task": {
+      "use_when": [
+        "students need authentic application",
+        "students need a role-based or public-facing task"
+      ],
+      "primary_signals": [
+        "perform",
+        "role",
+        "public",
+        "authentic",
+        "presentation",
+        "simulation",
+        "performance"
+      ],
+      "supporting_signals": [
+        "audience",
+        "oral",
+        "demonstrate"
+      ],
+      "hard_constraints": [
+        "a rehearsal or practice phase is required before final performance",
+        "do not generate performance tasks that move straight from planning to final delivery"
+      ],
+      "failure_mode": "performance becomes presentation without thinking"
+    },
+    "structured_academic_discussion": {
+      "use_when": [
+        "collaborative meaning-making through talk is central",
+        "students need to listen, respond, and build understanding together"
+      ],
+      "primary_signals": [
+        "discussion",
+        "seminar",
+        "debate",
+        "talk",
+        "collaborative_meaning_making",
+        "listen",
+        "respond"
+      ],
+      "supporting_signals": [
+        "evidence",
+        "oral",
+        "synthesis"
+      ],
+      "hard_constraints": [
+        "an evidence-readiness checkpoint is required before discussion begins",
+        "a post-discussion synthesis is required",
+        "do not treat discussion alone as sufficient final evidence"
+      ],
+      "failure_mode": "discussion becomes unstructured chat"
+    },
+    "evidence_based_writing_task": {
+      "use_when": [
+        "students need to turn evidence into written reasoning",
+        "students need explanation, interpretation, or argument in durable written form"
+      ],
+      "primary_signals": [
+        "write",
+        "writing",
+        "argument",
+        "explain",
+        "explanation",
+        "reasoning",
+        "essay",
+        "paragraph"
+      ],
+      "supporting_signals": [
+        "evidence",
+        "durable",
+        "final_response"
+      ],
+      "hard_constraints": [
+        "the writing prompt must require reasoning, interpretation, explanation, or argument",
+        "do not reduce the task to frame completion or answer in full sentences"
+      ],
+      "failure_mode": "writing becomes formula without reasoning"
+    }
+  },
+  "recommended_chains": [
+    [
+      "short_inquiry_sequence",
+      "structured_academic_discussion",
+      "evidence_based_writing_task"
+    ],
+    [
+      "short_inquiry_sequence",
+      "performance_task"
+    ],
+    [
+      "short_inquiry_sequence",
+      "short_project",
+      "evidence_based_writing_task"
+    ],
+    [
+      "structured_academic_discussion",
+      "evidence_based_writing_task"
+    ],
+    [
+      "short_inquiry_sequence",
+      "evidence_based_writing_task"
+    ]
+  ],
+  "chain_rule": "use chaining only when the second family deepens evidence quality or expands the kind of thinking students must do"
+}

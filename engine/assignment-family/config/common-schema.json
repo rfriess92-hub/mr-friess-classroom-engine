@@ -1,0 +1,36 @@
+{
+  "$schema_version": "1.0.0",
+  "schema_id": "mr_friess_assignment_common_schema",
+  "required_fields": [
+    "assignment_family",
+    "grade_subject_fit",
+    "unit_context",
+    "assignment_purpose",
+    "final_evidence_target",
+    "student_task_flow",
+    "success_criteria",
+    "supports_scaffolds",
+    "differentiation_model",
+    "checkpoint_release_logic",
+    "teacher_implementation_notes",
+    "likely_misconceptions",
+    "pacing_shape",
+    "assessment_focus"
+  ],
+  "field_purpose": {
+    "assignment_family": "Stable instructional family selected before artifact generation.",
+    "grade_subject_fit": "Why the family fits the grade and subject context.",
+    "unit_context": "Short description of topic and placement in the unit.",
+    "assignment_purpose": "What thinking and evidence the assignment is designed to produce.",
+    "final_evidence_target": "Declared final evidence target before activity design.",
+    "student_task_flow": "Ordered student-facing task logic.",
+    "success_criteria": "Visible criteria for acceptable work quality.",
+    "supports_scaffolds": "Embedded supports at likely friction points.",
+    "differentiation_model": "How aligned support/core/extension pathways are handled.",
+    "checkpoint_release_logic": "Checkpoint or release rules for multi-day tasks.",
+    "teacher_implementation_notes": "Teacher-facing use notes and management constraints.",
+    "likely_misconceptions": "Known likely misunderstandings or weak patterns.",
+    "pacing_shape": "Expected timeline or pacing contour.",
+    "assessment_focus": "Primary evidence the teacher is assessing."
+  }
+}
