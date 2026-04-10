@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os'
 import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
+import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
 function pickPython() {
@@ -37,7 +38,7 @@ function resolveSourceSection(root, sourceSection) {
   return current
 }
 
-function buildSlidePacket(pkg, route) {
+function buildSlidePacket(pkg, route, visualPlan) {
   const slides = resolveSourceSection(pkg, route.source_section)
   if (!Array.isArray(slides) || slides.length === 0) {
     console.error(`Route ${route.route_id} does not resolve to a non-empty slides array.`)
@@ -54,14 +55,15 @@ function buildSlidePacket(pkg, route) {
     lesson_label: route.day_scope?.day_label ?? null,
     theme: pkg.theme ?? 'science',
     slides,
+    visual: visualPlan ?? null,
   }
 }
 
-function renderSlides(pkg, route, outDir) {
+function renderSlides(pkg, route, visualPlan, outDir) {
   const tempDir = mkdtempSync(join(tmpdir(), 'classroom-engine-'))
   try {
     const tempLessonPath = join(tempDir, `${route.output_id}.json`)
-    writeFileSync(tempLessonPath, JSON.stringify(buildSlidePacket(pkg, route), null, 2), 'utf-8')
+    writeFileSync(tempLessonPath, JSON.stringify(buildSlidePacket(pkg, route, visualPlan), null, 2), 'utf-8')
     const result = spawnSync(process.execPath, ['engine/pptx/render-cli.mjs', '--lesson', tempLessonPath, '--out', outDir], {
       stdio: 'inherit',
       cwd: process.cwd(),
@@ -92,6 +94,14 @@ function renderPdfOutput(packagePath, route, outDir) {
   if (result.status !== 0) {
     process.exit(result.status ?? 1)
   }
+}
+
+function writeVisualSidecar(outDir, route, visualBundle) {
+  writeFileSync(
+    resolve(outDir, `${route.output_id}.visual.json`),
+    JSON.stringify(visualBundle, null, 2),
+    'utf-8',
+  )
 }
 
 const packageArg = argValue('--package')
@@ -126,8 +136,11 @@ const outDir = flatOut ? baseOutDir : resolve(baseOutDir, renderPlan.package_id 
 mkdirSync(outDir, { recursive: true })
 
 for (const route of routes) {
+  const visualBundle = buildRouteVisualPlan(pkg, route)
+  writeVisualSidecar(outDir, route, visualBundle)
+
   if (route.artifact_family === 'pptx' && route.output_type === 'slides') {
-    renderSlides(pkg, route, outDir)
+    renderSlides(pkg, route, visualBundle.visual_plan, outDir)
     continue
   }
   if (
@@ -141,4 +154,3 @@ for (const route of routes) {
 }
 
 console.log(`Rendered package ${renderPlan.package_id} to ${outDir}`)
-

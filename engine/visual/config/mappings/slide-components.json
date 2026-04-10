@@ -1,0 +1,26 @@
+{
+  "$schema_version": "1.0.0",
+  "schema_id": "mr_friess_slide_component_map",
+  "artifact_type": "slide_deck",
+  "pedagogy_to_visual_component": {
+    "lesson_slide_course_band": "CourseBand",
+    "lesson_slide_title": "SlideTitle",
+    "lesson_slide_section_label": "SectionTab",
+    "lesson_slide_launch_prompt": "PrimaryPromptBox",
+    "lesson_slide_discussion_prompt": "PrimaryPromptBox",
+    "lesson_slide_example": "ExampleBox",
+    "lesson_slide_support_cue": "SupportCueBox",
+    "lesson_slide_talk_move": "TalkMoveBox",
+    "lesson_slide_carryover": "CarryoverBox",
+    "lesson_slide_task_steps": "TaskStepBox",
+    "lesson_slide_reflection_prompt": "ReflectionPrompt",
+    "lesson_slide_footer_note": "FooterNote"
+  },
+  "page_role_defaults": {
+    "launch": "launch_open",
+    "discuss": "discuss_two_zone",
+    "model": "model_focus",
+    "task": "task_flow",
+    "reflect": "reflect_open"
+  }
+}

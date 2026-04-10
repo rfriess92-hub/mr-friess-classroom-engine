@@ -3,6 +3,7 @@ import { extname, resolve } from 'node:path'
 import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
+import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
 function extensionForArtifactFamily(family) {
@@ -28,6 +29,7 @@ function expectedArtifactsForRoutes(routes) {
         final_evidence_target: route.final_evidence_target ?? null,
         final_evidence_role: route.final_evidence_role,
         filename: `${route.output_id}${ext}`,
+        visual_sidecar: `${route.output_id}.visual.json`,
       }
     })
     .filter(Boolean)
@@ -216,6 +218,12 @@ const artifactResults = expectedArtifacts
     qa: runArtifactQa(outDir, artifact.filename),
   }))
 
+const visualResults = routes.map((route) => ({
+  route_id: route.route_id,
+  output_id: route.output_id,
+  ...buildRouteVisualPlan(pkg, route),
+}))
+
 const findings = []
 const blockers = []
 let fastScore = 0
@@ -305,6 +313,16 @@ if (variantValidation.blockers.length > 0) {
   fastScore += 2
 }
 
+const revisedVisualArtifacts = visualResults.filter((item) => item.visual_qa.judgment === 'revise')
+if (revisedVisualArtifacts.length > 0) {
+  findings.push({
+    type: 'render_logic_issue',
+    note: `Visual QA found layout/style issues in: ${revisedVisualArtifacts.map((item) => item.output_id).join(', ')}`
+  })
+} else if (visualResults.length > 0) {
+  fastScore += 2
+}
+
 if (crossPackageCollisions.length > 0) {
   findings.push({
     type: 'render_logic_issue',
@@ -344,6 +362,7 @@ emit({
   blocked_artifacts: blockedArtifacts.map((item) => item.filename),
   variant_group_count: variantValidation.group_count,
   revised_artifacts: revisedArtifacts.map((item) => item.filename),
+  revised_visual_artifacts: revisedVisualArtifacts.map((item) => item.output_id),
   primary_final_evidence_artifacts: primaryFinalEvidence.map((item) => item.filename),
   findings,
   top_3_patches: buildPatches(),
@@ -356,9 +375,14 @@ emit({
     fast_score: item.qa.fast_score,
     ship_rule: item.qa.ship_rule,
   })),
+  visual_results: visualResults.map((item) => ({
+    output_id: item.output_id,
+    artifact_type: item.visual_plan.artifact_type,
+    visual_judgment: item.visual_qa.judgment,
+    visual_findings: item.visual_qa.findings,
+  })),
 })
 
 if (hardFailure) {
   process.exit(1)
 }
-

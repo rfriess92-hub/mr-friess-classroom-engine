@@ -1,0 +1,14 @@
+{
+  "$schema_version": "1.0.0",
+  "schema_id": "mr_friess_visual_package_index",
+  "files": {
+    "tokens": "tokens.json",
+    "roles": "roles.json",
+    "components": "components.json",
+    "layouts": "layouts.json",
+    "variants": "variants.json",
+    "qa": "qa-rules.json",
+    "slide_mapping": "mappings/slide-components.json",
+    "worksheet_mapping": "mappings/worksheet-components.json"
+  }
+}
