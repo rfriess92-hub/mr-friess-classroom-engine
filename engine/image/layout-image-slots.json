@@ -1,0 +1,97 @@
+{
+  "slide_layouts": {
+    "hero": {
+      "image_slots": [
+        {
+          "slot_id": "hero_main_visual",
+          "allowed_roles": ["reference_photo", "small_illustration"],
+          "allowed_purposes": ["orient_lesson", "explain_content"],
+          "bounds": {"x": 7.85, "y": 1.75, "w": 3.95, "h": 3.15},
+          "render_mode": "cover",
+          "fallback_mode": "no_image"
+        }
+      ],
+      "default_image_intent": {"role": "reference_photo", "purpose": "orient_lesson", "required": false}
+    },
+    "prompt": {
+      "image_slots": [
+        {
+          "slot_id": "prompt_side_visual",
+          "allowed_roles": ["small_illustration", "cue_icon"],
+          "allowed_purposes": ["organize_attention", "orient_lesson"],
+          "bounds": {"x": 9.85, "y": 1.78, "w": 1.75, "h": 1.2},
+          "render_mode": "contain",
+          "fallback_mode": "no_image"
+        }
+      ],
+      "default_image_intent": {"role": "cue_icon", "purpose": "organize_attention", "required": false}
+    },
+    "two_column": {
+      "image_slots": [
+        {
+          "slot_id": "two_column_anchor",
+          "allowed_roles": ["cue_icon"],
+          "allowed_purposes": ["organize_attention"],
+          "bounds": {"x": 11.95, "y": 1.42, "w": 0.55, "h": 0.55},
+          "render_mode": "contain",
+          "fallback_mode": "no_image"
+        }
+      ],
+      "default_image_intent": {"role": "cue_icon", "purpose": "organize_attention", "required": false}
+    },
+    "prompt_card": {
+      "image_slots": [
+        {
+          "slot_id": "prompt_card_visual",
+          "allowed_roles": ["small_illustration", "cue_icon"],
+          "allowed_purposes": ["organize_attention", "explain_content"],
+          "bounds": {"x": 9.4, "y": 2.22, "w": 1.75, "h": 1.25},
+          "render_mode": "contain",
+          "fallback_mode": "no_image"
+        }
+      ],
+      "default_image_intent": {"role": "small_illustration", "purpose": "explain_content", "required": false}
+    },
+    "reflect": {
+      "image_slots": [
+        {
+          "slot_id": "reflect_light_visual",
+          "allowed_roles": ["small_illustration", "cue_icon"],
+          "allowed_purposes": ["organize_attention", "orient_lesson"],
+          "bounds": {"x": 11.45, "y": 1.32, "w": 0.7, "h": 0.7},
+          "render_mode": "contain",
+          "fallback_mode": "no_image"
+        }
+      ],
+      "default_image_intent": {"role": "cue_icon", "purpose": "organize_attention", "required": false}
+    }
+  },
+  "worksheet_layouts": {
+    "worksheet": {
+      "image_slots": [
+        {
+          "slot_id": "worksheet_header_cue",
+          "allowed_roles": ["cue_icon"],
+          "allowed_purposes": ["organize_attention"],
+          "bounds": {"x": 10.8, "y": 0.45, "w": 0.45, "h": 0.45},
+          "render_mode": "contain",
+          "fallback_mode": "no_image"
+        }
+      ]
+    }
+  },
+  "exit_ticket_layouts": {
+    "exit_ticket": {
+      "image_slots": [
+        {
+          "slot_id": "exit_ticket_cue",
+          "allowed_roles": ["cue_icon"],
+          "allowed_purposes": ["organize_attention"],
+          "bounds": {"x": 10.8, "y": 0.45, "w": 0.35, "h": 0.35},
+          "render_mode": "contain",
+          "fallback_mode": "no_image"
+        }
+      ]
+    }
+  }
+}
