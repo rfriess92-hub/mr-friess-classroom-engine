@@ -1,4 +1,5 @@
 import { loadJson, repoPath } from '../../scripts/lib.mjs'
+import { normalizeSlideLayout } from '../schema/canonical.mjs'
 import { slotsForPage } from './slots.mjs'
 
 const REGISTRY_PATH = repoPath('engine', 'image', 'asset-registry.json')
@@ -121,7 +122,7 @@ export function enrichVisualPlanWithImages(pkg, route, sourceSection, visualPlan
   const pages = safeArray(visualPlan.pages).map((page, pageIndex) => {
     const sourceNode = sourceNodeForPage(sourceSection, route.output_type, pageIndex)
     const sourceLayout = route.output_type === 'slides'
-      ? String(sourceNode?.layout ?? '').toLowerCase()
+      ? normalizeSlideLayout(String(sourceNode?.layout ?? '').toLowerCase())
       : null
     const artifactType = route.output_type === 'slides' ? 'slides' : route.output_type
     const slots = slotsForPage({ outputType: route.output_type, sourceLayout })
