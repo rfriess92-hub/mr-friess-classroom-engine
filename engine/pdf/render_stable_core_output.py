@@ -25,6 +25,7 @@ from student_pdf_shared import (
 from student_pdf_day2 import (
     task_profile,
     integrated_task_box,
+    add_day1_page2_footer,
     add_day2_footer,
     render_final_response_sheet,
 )
@@ -53,7 +54,7 @@ def styles_bundle():
     return styles
 
 
-def estimate_plain_label_block_height(lines, compact: bool = False, spacer_after: int = 6):
+def estimate_plain_label_block_height(lines: list, compact: bool = False, spacer_after: int = 6):
     normalized = normalize_self_check_items(lines)
     if normalized:
         total = 18
@@ -146,6 +147,10 @@ def build_task_block(styles, task: dict, compact=False, spacing_scale: float = 1
     return KeepTogether(flowables)
 
 
+def add_day1_page2_footer_wrapper(story, styles, _section: dict):
+    add_day1_page2_footer(styles, story)
+
+
 def add_day2_footer_wrapper(story, styles, _section: dict):
     add_day2_footer(styles, story)
 
@@ -160,6 +165,7 @@ base.plain_label_block = plain_label_block
 base.estimate_question_block_height = estimate_question_block_height
 base.worksheet_question_block = worksheet_question_block
 base.build_task_block = build_task_block
+base.add_day1_page2_footer = add_day1_page2_footer_wrapper
 base.add_day2_footer = add_day2_footer_wrapper
 base.render_final_response_sheet = render_final_response_sheet_wrapper
 
