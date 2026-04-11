@@ -29,6 +29,7 @@ from student_pdf_task_sheets import (
     add_day2_footer,
     render_final_response_sheet,
 )
+from student_pdf_short_forms import render_exit_ticket
 
 _ORIGINAL_STYLES_BUNDLE = getattr(base, '_original_styles_bundle_saved', base.styles_bundle)
 _ORIGINAL_ESTIMATE_PLAIN_LABEL_BLOCK_HEIGHT = getattr(base, '_original_estimate_plain_label_block_height', base.estimate_plain_label_block_height)
@@ -159,6 +160,10 @@ def render_final_response_sheet_wrapper(packet: dict, section: dict, out_path: P
     return render_final_response_sheet(base, styles_bundle, packet, section, out_path)
 
 
+def render_exit_ticket_wrapper(packet: dict, section: dict, out_path: Path):
+    return render_exit_ticket(base, styles_bundle, packet, section, out_path)
+
+
 base.styles_bundle = styles_bundle
 base.estimate_plain_label_block_height = estimate_plain_label_block_height
 base.plain_label_block = plain_label_block
@@ -168,6 +173,7 @@ base.build_task_block = build_task_block
 base.add_day1_page2_footer = add_day1_page2_footer_wrapper
 base.add_day2_footer = add_day2_footer_wrapper
 base.render_final_response_sheet = render_final_response_sheet_wrapper
+base.render_exit_ticket = render_exit_ticket_wrapper
 
 
 if __name__ == '__main__':
