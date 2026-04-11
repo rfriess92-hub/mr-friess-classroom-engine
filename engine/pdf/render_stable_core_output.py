@@ -14,6 +14,8 @@ if str(ARCHIVE_DIR) not in sys.path:
 
 import render_stable_core_output_base as base
 
+_ORIGINAL_STYLES_BUNDLE = base.styles_bundle
+
 SLATE_DARK = colors.HexColor('#0f172a')
 SLATE = colors.HexColor('#475569')
 SLATE_LIGHT = colors.HexColor('#94a3b8')
@@ -36,7 +38,7 @@ CUE_TONES = {
 
 
 def styles_bundle():
-    styles = base.styles_bundle()
+    styles = _ORIGINAL_STYLES_BUNDLE()
     additions = {
         'PromptLabelX': ParagraphStyle(name='PromptLabelX', parent=styles['Heading3'], fontSize=9.4, leading=10.6, textColor=SLATE_DARK, spaceAfter=2),
         'ResponseLabelX': ParagraphStyle(name='ResponseLabelX', parent=styles['Heading3'], fontSize=9.2, leading=10.4, textColor=SLATE_DARK, spaceAfter=2),
