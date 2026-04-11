@@ -21,7 +21,7 @@ const lesson = argValue('--lesson')
 const outDir = argValue('--out') ?? 'output'
 
 if (!lesson) {
-  console.error('Usage: node engine/pptx/render-cli.mjs --lesson engine/content/lesson.json --out output')
+  console.error('Usage: node engine/pptx/render-cli.mjs --lesson <path> --out <dir>')
   process.exit(1)
 }
 
@@ -33,18 +33,18 @@ if (!existsSync(lessonPath)) {
 
 const pythonCmd = pickPython()
 if (!pythonCmd) {
-  console.error('No Python interpreter found on PATH. Install Python and try again.')
+  console.error('No Python interpreter found on PATH.')
   process.exit(1)
 }
 
 mkdirSync(resolve(process.cwd(), outDir), { recursive: true })
-const scriptPath = resolve(process.cwd(), 'engine', 'pptx', 'render_pptx_image_bridge.py')
+
+// Consolidated renderer — single authoritative file
+const scriptPath = resolve(process.cwd(), 'engine', 'pptx', 'renderer.py')
 const result = spawnSync(
   pythonCmd,
   [scriptPath, '--lesson', lessonPath, '--out', resolve(process.cwd(), outDir)],
   { stdio: 'inherit' }
 )
 
-if (result.status !== 0) {
-  process.exit(result.status ?? 1)
-}
+if (result.status !== 0) process.exit(result.status ?? 1)

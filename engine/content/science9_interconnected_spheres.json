@@ -5,12 +5,12 @@
   "topic": "Interconnected Earth Spheres",
   "lesson_label": null,
   "theme": "science",
-  "big_idea": "The biosphere, geosphere, hydrosphere, and atmosphere are interconnected, as matter cycles and energy flows through them.",
+  "big_idea": "The biosphere, geosphere, hydrosphere, and atmosphere are interconnected, as matter cycles and energy flows through them",
   "time_minutes": 79,
   "class_context": {
     "chromebooks": false,
-    "mixed_ability": true,
-    "intro_lesson": true
+    "opener": null,
+    "mixed_ability": true
   },
   "learning_goals": [
     "I can describe the four main Earth spheres.",
@@ -23,31 +23,73 @@
       "title": "Interconnected Earth Spheres",
       "layout": "hero",
       "content": {
-        "subtitle": "How are Earth’s spheres connected, and why does that matter when something changes?"
+        "grade": 9,
+        "subject": "Science",
+        "lesson_label": null,
+        "subtitle": "How are Earth's spheres connected, and why does that matter when something changes?",
+        "bottom_stripe": "2563EB"
       }
     },
     {
       "type": "ENGAGE",
       "title": "One event, many parts",
-      "layout": "prompt",
+      "layout": "stat_discussion",
       "content": {
-        "scenario": "Heavy rain hits a steep hillside. Soil washes into a river. The water gets muddy. Fish habitat changes.",
+        "stat_width": 2.4,
+        "scenario_lines": [
+          {
+            "text": "Heavy rain hits a steep hillside.",
+            "bold": true,
+            "size": 18
+          },
+          {
+            "text": "Soil washes into a river. The water gets muddy. Fish habitat changes.",
+            "bold": false,
+            "size": 13,
+            "color": "6B7280"
+          },
+          {
+            "text": "What parts of Earth are involved here?",
+            "bold": true,
+            "size": 15,
+            "color": "DC2626"
+          }
+        ],
+        "tint": "FEE2E2",
+        "prompt_title": "Think first:",
         "prompts": [
           "What do you notice first?",
           "What changed?",
           "What parts of Earth seem connected?"
-        ]
+        ],
+        "item_size": 14
       }
     },
     {
       "type": "LEARN",
       "title": "What is a system?",
       "layout": "three_rows",
+      "q_ref": 1,
       "content": {
         "rows": [
-          "A system is made of parts that affect each other.",
-          "Scientists use spheres as a model to organize connected parts of Earth.",
-          "The spheres help explain how changes move through Earth systems."
+          {
+            "badge": "1",
+            "accent": "DC2626",
+            "head": "A system",
+            "body": "A system is made of parts that affect each other."
+          },
+          {
+            "badge": "2",
+            "accent": "D97706",
+            "head": "A sphere",
+            "body": "Scientists use spheres as a model to organize connected parts of Earth."
+          },
+          {
+            "badge": "3",
+            "accent": "16A34A",
+            "head": "Big idea",
+            "body": "The spheres are not separate worlds. They help us explain how changes move through Earth systems."
+          }
         ]
       }
     },
@@ -55,36 +97,76 @@
       "type": "LEARN",
       "title": "The four main spheres",
       "layout": "two_column",
+      "q_ref": 1,
       "content": {
-        "left": {
-          "title": "Atmosphere + hydrosphere",
-          "items": [
-            "Atmosphere: air, gases, weather, smoke, clouds",
-            "Hydrosphere: rivers, lakes, rain, snow, ice, groundwater"
-          ]
-        },
-        "right": {
-          "title": "Geosphere + biosphere",
-          "items": [
-            "Geosphere: rocks, soil, land, sediment, ground",
-            "Biosphere: living things such as plants, animals, and people"
-          ]
-        }
+        "columns": [
+          {
+            "title": "Atmosphere + hydrosphere",
+            "accent": "DC2626",
+            "tint": "FEE2E2",
+            "items": [
+              {
+                "bold": "Atmosphere:",
+                "rest": " air, gases, weather, smoke, clouds"
+              },
+              {
+                "bold": "Hydrosphere:",
+                "rest": " rivers, lakes, rain, snow, ice, groundwater"
+              },
+              "Water can move through the air, on land, and through living systems."
+            ]
+          },
+          {
+            "title": "Geosphere + biosphere",
+            "accent": "D97706",
+            "tint": "FEF3C7",
+            "items": [
+              {
+                "bold": "Geosphere:",
+                "rest": " rocks, soil, land, sediment, ground"
+              },
+              {
+                "bold": "Biosphere:",
+                "rest": " living things such as plants, animals, and people"
+              },
+              "One real event often involves more than one sphere at the same time."
+            ]
+          }
+        ]
       }
     },
     {
       "type": "DO",
       "title": "Sort the examples",
       "layout": "rows",
+      "q_ref": 2,
       "content": {
         "header": "Which sphere does each example fit best?",
-        "examples": [
-          "rainfall",
-          "fish",
-          "soil",
-          "smoke",
-          "groundwater",
-          "tree roots"
+        "rows": [
+          {
+            "text": "rainfall",
+            "answer_box": "ATM / HYD / GEO / BIO"
+          },
+          {
+            "text": "fish",
+            "answer_box": "ATM / HYD / GEO / BIO"
+          },
+          {
+            "text": "soil",
+            "answer_box": "ATM / HYD / GEO / BIO"
+          },
+          {
+            "text": "smoke",
+            "answer_box": "ATM / HYD / GEO / BIO"
+          },
+          {
+            "text": "groundwater",
+            "answer_box": "ATM / HYD / GEO / BIO"
+          },
+          {
+            "text": "tree roots",
+            "answer_box": "ATM / HYD / GEO / BIO"
+          }
         ]
       }
     },
@@ -92,14 +174,40 @@
       "type": "MAKE_SENSE",
       "title": "A model for interaction",
       "layout": "two_column",
+      "q_ref": 2,
       "content": {
-        "left": [
-          "Heavy rain hits a hillside and loosens soil.",
-          "The geosphere changes as the soil becomes easier to move."
-        ],
-        "right": [
-          "Loose soil moves into a river and changes the hydrosphere.",
-          "Fish habitat changes in the biosphere because the water conditions change."
+        "columns": [
+          {
+            "title": "What changed first?",
+            "accent": "16A34A",
+            "tint": "DCFCE7",
+            "items": [
+              {
+                "bold": "Heavy rain",
+                "rest": " hits a hillside and loosens soil."
+              },
+              {
+                "bold": "Geosphere",
+                "rest": " changes as the soil becomes easier to move."
+              }
+            ]
+          },
+          {
+            "title": "What changed next?",
+            "accent": "2563EB",
+            "tint": "EFF6FF",
+            "items": [
+              {
+                "bold": "Hydrosphere:",
+                "rest": " loose soil moves into a river and makes the water muddy"
+              },
+              {
+                "bold": "Biosphere:",
+                "rest": " fish habitat changes because the water conditions change"
+              },
+              "A strong science explanation traces the interaction, not just the labels."
+            ]
+          }
         ]
       }
     },
@@ -107,12 +215,27 @@
       "type": "MAKE_SENSE",
       "title": "Follow the chain",
       "layout": "three_rows",
+      "q_ref": 3,
       "content": {
-        "scenario": "Wildfire smoke fills the air. Plants are damaged. Rain later washes ash into streams.",
-        "prompts": [
-          "Which sphere changes first?",
-          "What sphere is affected next?",
-          "What happens after that?"
+        "rows": [
+          {
+            "accent": "DC2626",
+            "head": "Wildfire smoke fills the air",
+            "body": "Which sphere changes first?"
+          },
+          {
+            "accent": "D97706",
+            "head": "Plants are damaged",
+            "body": "What sphere is affected next?"
+          },
+          {
+            "accent": "2563EB",
+            "head": "Rain washes ash into streams",
+            "body": [
+              "What happens after that?",
+              "Use this language: affects, leads to, changes, because."
+            ]
+          }
         ]
       }
     },
@@ -120,14 +243,22 @@
       "type": "APPLY",
       "title": "Event analysis",
       "layout": "retrieval",
+      "q_ref": 4,
       "content": {
-        "events": [
-          "wildfire",
-          "flood",
-          "drought",
-          "melting snowpack"
-        ],
-        "task": "Identify the spheres involved and explain at least one interaction chain."
+        "prompts": [
+          {
+            "accent": "DC2626",
+            "text": "Choose one event: wildfire, flood, drought, or melting snowpack."
+          },
+          {
+            "accent": "D97706",
+            "text": "Identify the spheres involved."
+          },
+          {
+            "accent": "16A34A",
+            "text": "Explain at least one interaction chain. Do more than list the spheres."
+          }
+        ]
       }
     },
     {
@@ -136,9 +267,21 @@
       "layout": "summary_rows",
       "content": {
         "rows": [
-          "The four spheres help organize Earth systems.",
-          "Strong explanations trace how one change affects another.",
-          "Earth events are not isolated facts. They are system interactions."
+          {
+            "accent": "DC2626",
+            "bold": "Model:",
+            "text": "The four spheres help organize Earth systems."
+          },
+          {
+            "accent": "D97706",
+            "bold": "Science move:",
+            "text": "Strong explanations trace how one change affects another."
+          },
+          {
+            "accent": "16A34A",
+            "bold": "Takeaway:",
+            "text": "Earth events are not isolated facts. They are system interactions."
+          }
         ]
       }
     },
@@ -158,16 +301,21 @@
   "worksheets": {
     "supported": {
       "anchor": [
+        "Earth scientists use the words **atmosphere, hydrosphere, geosphere, and biosphere** to organize what is happening in the natural world.",
+        "",
+        "In this lesson, you are not just naming categories. You are looking for how one change can affect another part of the Earth system.",
+        "",
+        "Helpful reminder:",
         "Atmosphere = air and weather",
         "Hydrosphere = water",
         "Geosphere = land, rocks, soil",
         "Biosphere = living things"
       ],
-      "tip": "Ask: What changed first? What changed next?",
+      "tip": "When you get stuck, ask: What changed first? What changed next? Which sphere was affected?",
       "questions": [
         {
           "q_num": 1,
-          "q_text": "A hillside gets heavy rain. Soil washes into a river. Name two spheres involved and give one example for each.",
+          "q_text": "A hillside gets heavy rain. Soil washes into a river. Name two spheres involved and write one example for each.",
           "n_lines": 3,
           "slide_ref": "S4"
         },
@@ -190,23 +338,99 @@
           "slide_ref": "S8"
         }
       ],
+      "game": {
+        "title": "Extra-time chain builder",
+        "lines": [
+          "Use only after Q1–Q4 are finished.",
+          "1. Start with one event: heavy rain / wildfire / drought",
+          "2. Add one sphere that changes first.",
+          "3. Add a second sphere that changes next.",
+          "4. Finish: This matters because ..."
+        ]
+      },
       "self_check": [
-        "Did you name the four main spheres accurately?",
-        "Did you show at least one connection instead of only listing spheres?"
+        {
+          "q_num": 1,
+          "headline": "Did you name the four main spheres accurately?",
+          "hints": [
+            "air/weather",
+            "water",
+            "soil/land",
+            "living things"
+          ]
+        },
+        {
+          "q_num": 2,
+          "headline": "Can you tell when more than one sphere is involved in one event?",
+          "hints": [
+            "look for what changes first",
+            "then what changes next"
+          ]
+        },
+        {
+          "q_num": 3,
+          "headline": "Did you explain at least one connection instead of only listing spheres?",
+          "hints": [
+            "use because",
+            "use affects"
+          ]
+        },
+        {
+          "q_num": 4,
+          "headline": "Does your event answer show a real cause-and-effect link?",
+          "hints": [
+            "show the change",
+            "show the result"
+          ]
+        }
       ],
       "answer_key": [
-        "rainfall → hydrosphere",
-        "fish and tree roots → biosphere",
-        "soil → geosphere",
-        "smoke → atmosphere",
-        "groundwater → hydrosphere"
+        {
+          "q_num": 1,
+          "criterion": "Student names two relevant spheres and gives a fitting example for each.",
+          "notes": [
+            "Accept rain as atmosphere or hydrosphere depending on explanation.",
+            "Look for land/soil, water, air, or living things."
+          ]
+        },
+        {
+          "q_num": 2,
+          "criterion": "Most examples are sorted accurately enough.",
+          "notes": [
+            "rainfall → hydrosphere",
+            "fish/tree roots → biosphere",
+            "soil → geosphere",
+            "smoke → atmosphere",
+            "groundwater → hydrosphere"
+          ]
+        },
+        {
+          "q_num": 3,
+          "criterion": "Student names at least two spheres and explains how one affects another.",
+          "notes": [
+            "Simple because-language is enough here.",
+            "The answer should be more than two labels."
+          ]
+        },
+        {
+          "q_num": 4,
+          "criterion": "Student explains one plausible interaction between spheres in the chosen event.",
+          "notes": [
+            "Accept any reasonable event chain.",
+            "Stronger answers show what changed and why it mattered."
+          ]
+        }
       ]
     },
     "proficient": {
       "anchor": [
-        "A strong explanation does more than label the spheres involved in an event.",
-        "It traces how one change affects another and uses scientific reasoning to show the connection."
+        "The biosphere, geosphere, hydrosphere, and atmosphere are interconnected. Scientists use these categories to explain how matter and energy move through Earth systems.",
+        "",
+        "A strong explanation does more than label the spheres involved in an event. It traces how one change affects another and uses scientific reasoning to show the connection.",
+        "",
+        "In this lesson, you will sort examples, explain an interaction chain, and apply the model to a real or realistic event."
       ],
+      "tip": null,
       "questions": [
         {
           "q_num": 1,
@@ -222,7 +446,7 @@
         },
         {
           "q_num": 3,
-          "q_text": "Explain how heavy rain on a hillside can affect more than one sphere. Use at least two because or affects statements.",
+          "q_text": "Explain how heavy rain on a hillside can affect more than one sphere. Use at least two because/affects statements.",
           "n_lines": 4,
           "slide_ref": "S7"
         },
@@ -233,22 +457,98 @@
           "slide_ref": "S8"
         }
       ],
+      "game": {
+        "title": "Quick systems sorter",
+        "lines": [
+          "Use only after Q1–Q4 are finished.",
+          "1. Write one short event.",
+          "2. Name the first sphere affected.",
+          "3. Add a second and third linked change.",
+          "4. Circle the strongest scientific verb: affects / increases / reduces / changes."
+        ]
+      },
       "self_check": [
-        "Did you justify at least one sorting choice?",
-        "Did you explain a real cause-and-effect chain?"
+        {
+          "q_num": 1,
+          "headline": "Did you define the four spheres clearly and accurately?",
+          "hints": [
+            "keep examples concrete",
+            "do not mix up water and air"
+          ]
+        },
+        {
+          "q_num": 2,
+          "headline": "Did you justify at least one sorting choice?",
+          "hints": [
+            "show why it fits best",
+            "mention overlap only if needed"
+          ]
+        },
+        {
+          "q_num": 3,
+          "headline": "Does your explanation show a real chain of effects?",
+          "hints": [
+            "what changed first",
+            "what changed next"
+          ]
+        },
+        {
+          "q_num": 4,
+          "headline": "Does your event analysis explain a connection rather than only listing categories?",
+          "hints": [
+            "use affects or leads to",
+            "show why it matters"
+          ]
+        }
       ],
       "answer_key": [
-        "glacier melt and groundwater → hydrosphere",
-        "smoke and clouds → atmosphere",
-        "algae, fish, and tree roots → biosphere",
-        "rock and soil → geosphere"
+        {
+          "q_num": 1,
+          "criterion": "Definitions and examples match the four spheres accurately.",
+          "notes": [
+            "Atmosphere = air/gases/weather",
+            "Hydrosphere = water in liquid, ice, or vapour form",
+            "Geosphere = rocks/soil/land",
+            "Biosphere = living things"
+          ]
+        },
+        {
+          "q_num": 2,
+          "criterion": "Sorting is mostly accurate and the justification is reasonable.",
+          "notes": [
+            "glacier melt and groundwater → hydrosphere",
+            "smoke/clouds → atmosphere",
+            "algae/fish/tree roots → biosphere",
+            "rock/soil → geosphere"
+          ]
+        },
+        {
+          "q_num": 3,
+          "criterion": "Student explains how one change moves through at least two spheres.",
+          "notes": [
+            "Look for a real sequence, not separate facts.",
+            "Because-language should connect the steps."
+          ]
+        },
+        {
+          "q_num": 4,
+          "criterion": "Student identifies the spheres involved and explains at least one clear interaction chain.",
+          "notes": [
+            "Stronger answers show cause and consequence clearly.",
+            "Accept multiple reasonable chains if the science makes sense."
+          ]
+        }
       ]
     },
     "extending": {
       "anchor": [
-        "The sphere model is useful because it helps scientists explain systems, not just describe separate parts.",
-        "Real events often involve overlapping causes and multiple effects."
+        "The biosphere, geosphere, hydrosphere, and atmosphere are interconnected, as matter cycles and energy flows through them.",
+        "",
+        "The sphere model is useful because it helps scientists explain systems, not just describe separate parts. Real events often involve overlapping causes, multiple effects, and trade-offs in how we interpret what matters most.",
+        "",
+        "In this lesson, use the model critically: classify examples, explain a chain, and evaluate why the model is stronger than a simple list of observations."
       ],
+      "tip": null,
       "questions": [
         {
           "q_num": 1,
@@ -264,7 +564,7 @@
         },
         {
           "q_num": 3,
-          "q_text": "Analyze the wildfire smoke to plant damage to ash in streams example. Explain the interaction chain with precise scientific language.",
+          "q_text": "Analyze the wildfire smoke → plant damage → ash in streams example. Explain the interaction chain with precise scientific language.",
           "n_lines": 4,
           "slide_ref": "S7"
         },
@@ -275,13 +575,74 @@
           "slide_ref": "S8"
         }
       ],
+      "game": null,
       "self_check": [
-        "Did you handle an ambiguous case with a reasoned explanation?",
-        "Did you use the Big Idea wording in a meaningful way?"
+        {
+          "q_num": 1,
+          "headline": "Did you explain why the model matters, not just what the model includes?",
+          "hints": [
+            "utility matters",
+            "show the scientific benefit"
+          ]
+        },
+        {
+          "q_num": 2,
+          "headline": "Did you handle an ambiguous case with a reasoned explanation?",
+          "hints": [
+            "fit best vs overlap",
+            "justify your choice"
+          ]
+        },
+        {
+          "q_num": 3,
+          "headline": "Is your interaction chain precise and clearly sequenced?",
+          "hints": [
+            "use because or leads to",
+            "show at least two linked effects"
+          ]
+        },
+        {
+          "q_num": 4,
+          "headline": "Did you use the Big Idea wording in a meaningful way?",
+          "hints": [
+            "interconnected",
+            "matter cycles and energy flows"
+          ]
+        }
       ],
       "answer_key": [
-        "Stronger answers explain overlap without losing the best-fit classification.",
-        "Atmosphere to biosphere to hydrosphere is a common wildfire chain."
+        {
+          "q_num": 1,
+          "criterion": "Student explains that the model helps organize and explain interactions across Earth systems.",
+          "notes": [
+            "A strong answer contrasts isolated description with systems explanation.",
+            "An example should show why the model improves understanding."
+          ]
+        },
+        {
+          "q_num": 2,
+          "criterion": "Sorting is accurate enough and the ambiguous case is justified thoughtfully.",
+          "notes": [
+            "Accept good reasoning when a student notes overlap.",
+            "The final fit should still be defensible."
+          ]
+        },
+        {
+          "q_num": 3,
+          "criterion": "Student explains the wildfire example as a precise chain across multiple spheres.",
+          "notes": [
+            "Atmosphere → biosphere → hydrosphere is a common path.",
+            "Stronger answers show cause, not just sequence."
+          ]
+        },
+        {
+          "q_num": 4,
+          "criterion": "Student uses the Big Idea wording to argue that interconnected systems lead to stronger explanations.",
+          "notes": [
+            "Look for explicit use of interconnected plus matter/energy language.",
+            "This is an argument, not a definition question."
+          ]
+        }
       ]
     }
   },
@@ -295,8 +656,36 @@
           "criterion": "Scientific explanation",
           "emerging": "Names some relevant parts of the event but gives little explanation of how they connect.",
           "developing": "Identifies the spheres involved and gives a partial explanation of one interaction.",
-          "proficient": "Clearly explains at least one interaction chain using accurate sphere language and cause-and-effect reasoning.",
+          "proficient": "Clearly explains at least one interaction chain using accurate sphere language and cause-effect reasoning.",
           "extending": "Explains the interaction chain clearly and precisely, showing why the system model strengthens the explanation."
+        },
+        {
+          "criterion": "Use of evidence and clarity",
+          "emerging": "Response is vague or mostly a list.",
+          "developing": "Response includes some detail but may be uneven or partly list-like.",
+          "proficient": "Response is clear, organized, and tied to the chosen event.",
+          "extending": "Response is precise, well-structured, and uses strong scientific language throughout."
+        }
+      ]
+    },
+    {
+      "tier": "extending",
+      "title": "Q4 — Big Idea argument",
+      "question": "Using the Big Idea wording, argue why understanding Earth systems as interconnected leads to stronger scientific explanations than simply naming land, air, water, and living things.",
+      "criteria": [
+        {
+          "criterion": "Use of Big Idea",
+          "emerging": "References the idea loosely or incompletely.",
+          "developing": "Uses some of the wording but does not fully connect it to the argument.",
+          "proficient": "Uses the Big Idea accurately to support the argument.",
+          "extending": "Uses the Big Idea precisely and integrates it smoothly into a strong argument."
+        },
+        {
+          "criterion": "Quality of reasoning",
+          "emerging": "Reasoning is limited or mostly descriptive.",
+          "developing": "Reasoning shows some understanding but lacks full explanation.",
+          "proficient": "Reasoning clearly explains why interconnected systems produce stronger scientific explanations.",
+          "extending": "Reasoning is nuanced, well-supported, and clearly contrasts systems thinking with simple listing."
         }
       ]
     }
@@ -307,6 +696,10 @@
       "Students can identify when more than one sphere is involved in one event.",
       "Students can explain at least one interaction chain instead of only naming categories."
     ],
+    "observation_targets": [
+      "☐ Students move from labels to cause-and-effect explanations",
+      "☐ Students use atmosphere / hydrosphere / geosphere / biosphere accurately in discussion and writing"
+    ],
     "watch_for": [
       {
         "misconception": "Students think the spheres are separate boxes with no overlap.",
@@ -316,6 +709,9 @@
         "misconception": "Students list spheres without explaining how they interact.",
         "redirect": "Can you show the connection with affects, leads to, or because?"
       }
+    ],
+    "forward_connection": [
+      "Students can use the sphere model later when studying weather, erosion, water systems, climate, or human impacts on ecosystems."
     ]
   },
   "lesson_plan": {
@@ -324,15 +720,38 @@
       "differentiated worksheets",
       "answer keys",
       "teacher guide",
-      "projector or board"
+      "board or projector"
     ],
     "timing": [
-      {"time": "0:00–0:08", "activity": "Hook event and first noticing"},
-      {"time": "0:08–0:20", "activity": "Introduce system idea and the four spheres"},
-      {"time": "0:20–0:35", "activity": "Sort examples and check understanding"},
-      {"time": "0:35–0:50", "activity": "Model and discuss one interaction chain"},
-      {"time": "0:50–1:10", "activity": "Worksheet event analysis and guided support"},
-      {"time": "1:10–1:19", "activity": "Summary and reflection"}
+      {
+        "time": "0:00–0:08",
+        "activity": "Hook event and first noticing"
+      },
+      {
+        "time": "0:08–0:20",
+        "activity": "Introduce system idea and the four spheres"
+      },
+      {
+        "time": "0:20–0:35",
+        "activity": "Sort examples and check understanding"
+      },
+      {
+        "time": "0:35–0:50",
+        "activity": "Model and discuss one interaction chain"
+      },
+      {
+        "time": "0:50–1:10",
+        "activity": "Worksheet event analysis and guided support"
+      },
+      {
+        "time": "1:10–1:19",
+        "activity": "Close with summary and reflect"
+      }
+    ],
+    "differentiation_notes": [
+      "● Supported: smaller example set, visible reminder language, and guided chain sentence stem.",
+      "◆ Proficient: standard event-analysis response with clearer independence.",
+      "▲ Extending: stronger justification, ambiguous-case handling, and Big Idea argument."
     ],
     "teacher_notes": [
       "Keep the opening concrete. Do not start with a vocabulary dump.",
