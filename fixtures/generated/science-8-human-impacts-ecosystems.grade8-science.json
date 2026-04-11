@@ -14,18 +14,13 @@
       "I can sort examples of human impact as mostly harmful, mostly helpful, or mixed, using evidence.",
       "I can explain which human impact I think matters most and why."
     ],
-    "materials": [
-      "slide deck",
-      "ecosystem impacts worksheet",
-      "ecosystem case examples on slides",
-      "exit ticket"
-    ],
+    "materials": ["slide deck", "ecosystem impacts worksheet", "ecosystem case examples on slides", "exit ticket"],
     "timing": [
-      { "time": "0:00–0:08", "activity": "Launch with a familiar local ecosystem example and quick noticing talk." },
-      { "time": "0:08–0:18", "activity": "Teach the idea of human ecosystem impact using concrete case examples." },
-      { "time": "0:18–0:35", "activity": "Guide students through sorting examples as mostly harmful, mostly helpful, or mixed using evidence." },
-      { "time": "0:35–0:50", "activity": "Students complete the worksheet with written justifications and reflection." },
-      { "time": "0:50–0:60", "activity": "Exit ticket and quick debrief on which impact matters most." }
+      {"time": "0:00–0:08", "activity": "Launch with a familiar local ecosystem example and quick noticing talk."},
+      {"time": "0:08–0:18", "activity": "Teach the idea of human ecosystem impact using concrete case examples."},
+      {"time": "0:18–0:35", "activity": "Guide students through sorting examples as mostly harmful, mostly helpful, or mixed using evidence."},
+      {"time": "0:35–0:50", "activity": "Students complete the worksheet with written justifications and reflection."},
+      {"time": "0:50–0:60", "activity": "Exit ticket and quick debrief on which impact matters most."}
     ],
     "teacher_notes": [
       "Keep student-facing language concrete and tied to observable ecosystem effects.",
@@ -35,151 +30,47 @@
     ]
   },
   "slides": [
-    {
-      "type": "TITLE",
-      "title": "Human Impacts on Ecosystems",
-      "layout": "hero",
-      "content": {
-        "subtitle": "How do human activities change ecosystems, and how can we judge those changes using evidence?"
-      }
-    },
-    {
-      "type": "ENGAGE",
-      "title": "Start with an ecosystem",
-      "layout": "prompt",
-      "content": {
-        "scenario": "Imagine a wetland near a community. A new boardwalk is built so people can visit, learn, and avoid trampling plants. How might that change the ecosystem?",
-        "prompts": [
-          "What changes might happen?",
-          "Who or what in the ecosystem could be affected?",
-          "Could the impact be helpful, harmful, or mixed?"
-        ]
-      }
-    },
-    {
-      "type": "LEARN",
-      "title": "Judge impacts with evidence",
-      "layout": "three_rows",
-      "content": {
-        "rows": [
-          "Look for what changes in the organisms, habitat, or resources.",
-          "Use evidence to decide whether the impact is mostly harmful, mostly helpful, or mixed.",
-          "Be ready to explain why your judgment fits the ecosystem evidence."
-        ]
-      }
-    },
-    {
-      "type": "DO",
-      "title": "Try one together",
-      "layout": "two_column_compare",
-      "content": {
-        "left": "Case: trees are cleared to build more parking near a river.",
-        "right": "Choices: mostly harmful | mostly helpful | mixed",
-        "prompts": [
-          "What evidence points you toward one choice?",
-          "What part of the ecosystem is most affected?"
-        ]
-      }
-    },
-    {
-      "type": "APPLY",
-      "title": "Impact sort",
-      "layout": "retrieval",
-      "content": {
-        "task": "Use the worksheet to sort each human activity by its ecosystem impact and explain your reasoning.",
-        "prompts": [
-          "Planting native species in a damaged area",
-          "Using pesticides near a pond",
-          "Building fish ladders at a dam"
-        ]
-      }
-    },
-    {
-      "type": "REFLECT",
-      "title": "Reflect",
-      "layout": "reflect",
-      "content": {
-        "prompts": [
-          "Which human impact seems most serious to you, and why?",
-          "Which example was the hardest to judge?",
-          "Why is evidence important when we talk about ecosystem change?"
-        ]
-      }
-    }
+    {"type": "TITLE", "title": "Human Impacts on Ecosystems", "layout": "hero", "content": {"subtitle": "How do human activities change ecosystems, and how can we judge those changes using evidence?"}},
+    {"type": "ENGAGE", "title": "Start with an ecosystem", "layout": "prompt", "content": {"scenario": "Imagine a wetland near a community. A new boardwalk is built so people can visit, learn, and avoid trampling plants. How might that change the ecosystem?", "prompts": ["What changes might happen?", "Who or what in the ecosystem could be affected?", "Could the impact be helpful, harmful, or mixed?"]}},
+    {"type": "LEARN", "title": "Judge impacts with evidence", "layout": "three_rows", "content": {"rows": ["Look for what changes in the organisms, habitat, or resources.", "Use evidence to decide whether the impact is mostly harmful, mostly helpful, or mixed.", "Be ready to explain why your judgment fits the ecosystem evidence."]}},
+    {"type": "DO", "title": "Try one together", "layout": "two_column_compare", "content": {"left": "Case: trees are cleared to build more parking near a river.", "right": "Choices: mostly harmful | mostly helpful | mixed", "prompts": ["What evidence points you toward one choice?", "What part of the ecosystem is most affected?"]}},
+    {"type": "APPLY", "title": "Impact sort", "layout": "retrieval", "content": {"task": "Use the worksheet to sort each human activity by its ecosystem impact and explain your reasoning.", "prompts": ["Planting native species in a damaged area", "Using pesticides near a pond", "Building fish ladders at a dam"]}},
+    {"type": "REFLECT", "title": "Reflect", "layout": "reflect", "content": {"prompts": ["Which human impact seems most serious to you, and why?", "Which example was the hardest to judge?", "Why is evidence important when we talk about ecosystem change?"]}}
   ],
   "worksheet": {
-    "anchor": [
-      "Ecosystems include organisms, habitats, and the resources they depend on.",
-      "Strong judgments about impact use evidence from ecosystem changes.",
-      "Some human actions can have mixed effects."
-    ],
+    "anchor": ["Ecosystems include organisms, habitats, and the resources they depend on.", "Strong judgments about impact use evidence from ecosystem changes.", "Some human actions can have mixed effects."],
     "tip": "Before you decide, ask: What changed in the ecosystem, and who or what is affected?",
     "questions": [
-      { "q_num": 1, "q_text": "Sort each human activity as mostly harmful, mostly helpful, or mixed: planting native species in a damaged area, draining a wetland for development, creating a protected park area, using pesticides near a pond.", "n_lines": 6 },
-      { "q_num": 2, "q_text": "Choose two examples from Task 1 and explain what ecosystem evidence helped you decide where to place them.", "n_lines": 5 },
-      { "q_num": 3, "q_text": "Read this case: a boardwalk is built through part of a wetland so visitors stay on a path instead of walking everywhere. Is this mostly harmful, mostly helpful, or mixed? Explain your reasoning.", "n_lines": 5 },
-      { "q_num": 4, "q_text": "Which human impact do you think matters most in ecosystems today? Use one example and explain your thinking with evidence.", "n_lines": 5 }
+      {"q_num": 1, "q_text": "Sort each human activity as mostly harmful, mostly helpful, or mixed: planting native species in a damaged area, draining a wetland for development, creating a protected park area, using pesticides near a pond.", "n_lines": 6},
+      {"q_num": 2, "q_text": "Choose two examples from Task 1 and explain what ecosystem evidence helped you decide where to place them.", "n_lines": 5},
+      {"q_num": 3, "q_text": "Read this case: a boardwalk is built through part of a wetland so visitors stay on a path instead of walking everywhere. Is this mostly harmful, mostly helpful, or mixed? Explain your reasoning.", "n_lines": 5},
+      {"q_num": 4, "q_text": "Which human impact do you think matters most in ecosystems today? Use one example and explain your thinking with evidence.", "n_lines": 5}
     ],
-    "self_check": [
-      "Did I use ecosystem evidence, not just opinion?",
-      "Did I explain at least one example clearly?",
-      "Did I recognize that some impacts can be mixed?"
-    ],
-    "answer_key": [
-      "Sample judgments: planting native species -> mostly helpful; draining a wetland -> mostly harmful; creating a protected park area -> mostly helpful; using pesticides near a pond -> mostly harmful or mixed depending on evidence given."
-    ]
+    "self_check": ["Did I use ecosystem evidence, not just opinion?", "Did I explain at least one example clearly?", "Did I recognize that some impacts can be mixed?"],
+    "answer_key": ["Sample judgments: planting native species -> mostly helpful; draining a wetland -> mostly harmful; creating a protected park area -> mostly helpful; using pesticides near a pond -> mostly harmful or mixed depending on evidence given."]
   },
   "exit_ticket": {
     "prompt": "Choose one human activity that affects ecosystems and explain whether its impact is mostly harmful, mostly helpful, or mixed. Use one piece of ecosystem evidence to support your answer.",
     "n_lines": 5,
+    "render_hints": {
+      "profile": "judgment_evidence_exit_ticket"
+    },
     "success_criteria": [
       "I named one human activity clearly.",
       "I judged its impact as mostly harmful, mostly helpful, or mixed.",
       "I used ecosystem evidence to support my answer.",
       "I used the exit ticket as my final evidence location."
     ],
-    "answer_key": [
-      "Answers will vary. A strong answer names a human activity, makes a judgment, and supports it with ecosystem evidence."
-    ]
+    "answer_key": ["Answers will vary. A strong answer names a human activity, makes a judgment, and supports it with ecosystem evidence."]
   },
   "bundle": {
     "bundle_id": "science_8_human_impacts_ecosystems_bundle",
-    "declared_outputs": [
-      "teacher_guide",
-      "slides",
-      "worksheet",
-      "exit_ticket"
-    ]
+    "declared_outputs": ["teacher_guide", "slides", "worksheet", "exit_ticket"]
   },
   "outputs": [
-    {
-      "output_id": "teacher_guide_main",
-      "output_type": "teacher_guide",
-      "audience": "teacher",
-      "source_section": "teacher_guide",
-      "bundle": "science_8_human_impacts_ecosystems_bundle"
-    },
-    {
-      "output_id": "slides_main",
-      "output_type": "slides",
-      "audience": "shared_view",
-      "source_section": "slides",
-      "bundle": "science_8_human_impacts_ecosystems_bundle"
-    },
-    {
-      "output_id": "worksheet_main",
-      "output_type": "worksheet",
-      "audience": "student",
-      "source_section": "worksheet",
-      "bundle": "science_8_human_impacts_ecosystems_bundle"
-    },
-    {
-      "output_id": "exit_ticket_main",
-      "output_type": "exit_ticket",
-      "audience": "student",
-      "source_section": "exit_ticket",
-      "bundle": "science_8_human_impacts_ecosystems_bundle",
-      "final_evidence": true
-    }
+    {"output_id": "teacher_guide_main", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "science_8_human_impacts_ecosystems_bundle"},
+    {"output_id": "slides_main", "output_type": "slides", "audience": "shared_view", "source_section": "slides", "bundle": "science_8_human_impacts_ecosystems_bundle"},
+    {"output_id": "worksheet_main", "output_type": "worksheet", "audience": "student", "source_section": "worksheet", "bundle": "science_8_human_impacts_ecosystems_bundle"},
+    {"output_id": "exit_ticket_main", "output_type": "exit_ticket", "audience": "student", "source_section": "exit_ticket", "bundle": "science_8_human_impacts_ecosystems_bundle", "final_evidence": true}
   ]
 }

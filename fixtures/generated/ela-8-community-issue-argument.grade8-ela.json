@@ -19,21 +19,13 @@
       {
         "day": "Day 1",
         "focus": "Introduce the issue, study the evidence set, gather reasons and evidence, and prepare for the teacher checkpoint.",
-        "artifacts": [
-          "Slides",
-          "Task Sheet",
-          "Checkpoint Sheet"
-        ],
+        "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet"],
         "carryover": "Student planning from the task sheet continues into Day 2."
       },
       {
         "day": "Day 2",
         "focus": "Re-open planning, strengthen explanation, and write the final argument paragraph in the final response sheet.",
-        "artifacts": [
-          "Slides",
-          "Task Sheet",
-          "Final Response Sheet"
-        ],
+        "artifacts": ["Slides", "Task Sheet", "Final Response Sheet"],
         "carryover": "Day 1 planning stays available while students draft their final response."
       }
     ],
@@ -51,39 +43,14 @@
       "I can help students explain how evidence supports a reason, not just list information.",
       "I can keep final written evidence in the declared final response location."
     ],
-    "materials": [
-      "Day 1 slide deck",
-      "Day 1 task sheet",
-      "Day 1 checkpoint sheet",
-      "Day 2 slide deck",
-      "Day 2 task sheet",
-      "Day 2 final response sheet"
-    ],
+    "materials": ["Day 1 slide deck", "Day 1 task sheet", "Day 1 checkpoint sheet", "Day 2 slide deck", "Day 2 task sheet", "Day 2 final response sheet"],
     "timing": [
-      {
-        "time": "Day 1 / 0:00–0:10",
-        "activity": "Launch the community issue and clarify the purpose of the planning task sheet."
-      },
-      {
-        "time": "Day 1 / 0:10–0:20",
-        "activity": "Read the evidence set and discuss which evidence seems strongest."
-      },
-      {
-        "time": "Day 1 / 0:20–0:35",
-        "activity": "Students gather reasons, evidence, and explanation in the task sheet."
-      },
-      {
-        "time": "Day 1 / 0:35–0:50",
-        "activity": "Teacher uses the checkpoint sheet to confirm students are ready for final writing."
-      },
-      {
-        "time": "Day 2 / 0:00–0:15",
-        "activity": "Students revisit Day 1 planning, compare weak and strong explanation, and strengthen one part of their argument."
-      },
-      {
-        "time": "Day 2 / 0:15–0:45",
-        "activity": "Students draft the final argument paragraph in the final response sheet."
-      }
+      {"time": "Day 1 / 0:00–0:10", "activity": "Launch the community issue and clarify the purpose of the planning task sheet."},
+      {"time": "Day 1 / 0:10–0:20", "activity": "Read the evidence set and discuss which evidence seems strongest."},
+      {"time": "Day 1 / 0:20–0:35", "activity": "Students gather reasons, evidence, and explanation in the task sheet."},
+      {"time": "Day 1 / 0:35–0:50", "activity": "Teacher uses the checkpoint sheet to confirm students are ready for final writing."},
+      {"time": "Day 2 / 0:00–0:15", "activity": "Students revisit Day 1 planning, compare weak and strong explanation, and strengthen one part of their argument."},
+      {"time": "Day 2 / 0:15–0:45", "activity": "Students draft the final argument paragraph in the final response sheet."}
     ],
     "teacher_notes": [
       "Do not release the final response sheet on Day 1.",
@@ -113,30 +80,11 @@
   },
   "bundle": {
     "bundle_id": "ela_8_community_issue_argument_bundle",
-    "declared_outputs": [
-      "lesson_overview",
-      "teacher_guide",
-      "slides",
-      "task_sheet",
-      "checkpoint_sheet",
-      "final_response_sheet"
-    ]
+    "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "task_sheet", "checkpoint_sheet", "final_response_sheet"]
   },
   "outputs": [
-    {
-      "output_id": "lesson_overview_main",
-      "output_type": "lesson_overview",
-      "audience": "teacher",
-      "source_section": "lesson_overview",
-      "bundle": "ela_8_community_issue_argument_bundle"
-    },
-    {
-      "output_id": "teacher_guide_main",
-      "output_type": "teacher_guide",
-      "audience": "teacher",
-      "source_section": "teacher_guide",
-      "bundle": "ela_8_community_issue_argument_bundle"
-    }
+    {"output_id": "lesson_overview_main", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview", "bundle": "ela_8_community_issue_argument_bundle"},
+    {"output_id": "teacher_guide_main", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "ela_8_community_issue_argument_bundle"}
   ],
   "days": [
     {
@@ -144,165 +92,36 @@
       "day_label": "Day 1",
       "carryover_note": "Student planning continues into Day 2.",
       "slides": [
-        {
-          "type": "TITLE",
-          "title": "Writing About a Community Issue — Day 1",
-          "layout": "hero",
-          "content": {
-            "subtitle": "Launch the issue, study the evidence set, and plan your argument."
-          }
-        },
-        {
-          "type": "ENGAGE",
-          "title": "Community issue question",
-          "layout": "prompt",
-          "content": {
-            "scenario": "A school is deciding whether to make lunch periods longer. Some students say it would improve focus and reduce stress. Others say it would create scheduling problems. How could we build a clear argument about this issue?",
-            "prompts": [
-              "What opinion might someone have about this issue?",
-              "What reasons might support that opinion?",
-              "What evidence would make the argument stronger?"
-            ]
-          }
-        },
-        {
-          "type": "LEARN",
-          "title": "Evidence set: lunch period debate",
-          "layout": "two_column",
-          "content": {
-            "columns": [
-              {
-                "title": "Evidence students can use",
-                "items": [
-                  "Student survey: 68% of students said they feel rushed during lunch.",
-                  "Teacher note from school council: Longer lunch could reduce time available for electives or support blocks.",
-                  "Student wellness club feedback: Some students say a calmer lunch break helps them return to class more focused."
-                ]
-              },
-              {
-                "title": "Think like a writer",
-                "items": [
-                  "Which detail supports a longer lunch?",
-                  "Which detail supports a shorter lunch or current schedule?",
-                  "Which detail would need explanation to become strong evidence?"
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "type": "APPLY",
-          "title": "Worked model: claim + reason + evidence + explanation",
-          "layout": "planner_model",
-          "content": {
-            "model": "Claim: Our school should make lunch periods longer. Reason: A longer lunch would help students feel less rushed and more ready to learn. Evidence: In a student survey, 68% of students said they feel rushed during lunch. Explanation: This evidence matters because if many students feel rushed, they may return to class distracted or stressed instead of ready to focus.",
-            "supports": [
-              "Notice that the explanation tells why the evidence supports the reason.",
-              "The writer does more than repeat the fact.",
-              "Use this structure in your own planning."
-            ]
-          }
-        },
-        {
-          "type": "APPLY",
-          "title": "Reason and evidence planning",
-          "layout": "retrieval",
-          "content": {
-            "task": "Use your task sheet to plan your argument so you can carry strong reasoning into Day 2.",
-            "prompts": [
-              "What is your opinion?",
-              "Which reason is strongest?",
-              "Which evidence from the evidence set supports that reason?"
-            ]
-          }
-        }
+        {"type": "TITLE", "title": "Writing About a Community Issue — Day 1", "layout": "hero", "content": {"subtitle": "Launch the issue, study the evidence set, and plan your argument."}},
+        {"type": "ENGAGE", "title": "Community issue question", "layout": "prompt", "content": {"scenario": "A school is deciding whether to make lunch periods longer. Some students say it would improve focus and reduce stress. Others say it would create scheduling problems. How could we build a clear argument about this issue?", "prompts": ["What opinion might someone have about this issue?", "What reasons might support that opinion?", "What evidence would make the argument stronger?"]}},
+        {"type": "LEARN", "title": "Evidence set: lunch period debate", "layout": "two_column", "content": {"columns": [{"title": "Evidence students can use", "items": ["Student survey: 68% of students said they feel rushed during lunch.", "Teacher note from school council: Longer lunch could reduce time available for electives or support blocks.", "Student wellness club feedback: Some students say a calmer lunch break helps them return to class more focused."]}, {"title": "Think like a writer", "items": ["Which detail supports a longer lunch?", "Which detail supports a shorter lunch or current schedule?", "Which detail would need explanation to become strong evidence?"]}]}},
+        {"type": "APPLY", "title": "Worked model: claim + reason + evidence + explanation", "layout": "planner_model", "content": {"model": "Claim: Our school should make lunch periods longer. Reason: A longer lunch would help students feel less rushed and more ready to learn. Evidence: In a student survey, 68% of students said they feel rushed during lunch. Explanation: This evidence matters because if many students feel rushed, they may return to class distracted or stressed instead of ready to focus.", "supports": ["Notice that the explanation tells why the evidence supports the reason.", "The writer does more than repeat the fact.", "Use this structure in your own planning."]}},
+        {"type": "APPLY", "title": "Reason and evidence planning", "layout": "retrieval", "content": {"task": "Use your task sheet to plan your argument so you can carry strong reasoning into Day 2.", "prompts": ["What is your opinion?", "Which reason is strongest?", "Which evidence from the evidence set supports that reason?"]}}
       ],
       "task_sheet": {
         "title": "Day 1 Task Sheet",
-        "instructions": [
-          "State your opinion clearly.",
-          "Record reasons and evidence you can use again on Day 2.",
-          "Explain how the evidence supports your reason, not just what the evidence says."
-        ],
+        "instructions": ["State your opinion clearly.", "Record reasons and evidence you can use again on Day 2.", "Explain how the evidence supports your reason, not just what the evidence says."],
         "tasks": [
-          {
-            "label": "Part A",
-            "prompt": "Write the community or school issue in your own words and state your opinion clearly.",
-            "lines": 4
-          },
-          {
-            "label": "Part B",
-            "prompt": "Record two reasons that support your opinion.",
-            "lines": 4
-          },
-          {
-            "label": "Part C",
-            "prompt": "Choose at least one detail from the evidence set for each reason.",
-            "lines": 6
-          },
-          {
-            "label": "Part D",
-            "prompt": "Explain: How does this evidence support your reason?",
-            "lines": 4
-          },
-          {
-            "label": "Part E",
-            "prompt": "List one question or weak spot you still need to improve before writing your paragraph.",
-            "lines": 3
-          }
+          {"label": "Part A", "prompt": "Write the community or school issue in your own words and state your opinion clearly.", "lines": 4, "render_hints": {"profile": "day1_issue_opinion"}},
+          {"label": "Part B", "prompt": "Record two reasons that support your opinion.", "lines": 4, "render_hints": {"profile": "day1_reason_list"}},
+          {"label": "Part C", "prompt": "Choose at least one detail from the evidence set for each reason.", "lines": 6, "render_hints": {"profile": "day1_evidence_pick"}},
+          {"label": "Part D", "prompt": "Explain: How does this evidence support your reason?", "lines": 4, "render_hints": {"profile": "day1_evidence_explain"}},
+          {"label": "Part E", "prompt": "List one question or weak spot you still need to improve before writing your paragraph.", "lines": 3, "render_hints": {"profile": "day1_revision_focus"}}
         ],
-        "embedded_supports": [
-          "Sentence starter: I think ___ because ___.",
-          "Sentence starter: One important reason is ___.",
-          "Sentence starter: This evidence matters because ___.",
-          "Box the reason you think is strongest before the checkpoint."
-        ],
-        "success_criteria": [
-          "I stated a clear opinion.",
-          "I collected reasons and evidence I can use tomorrow.",
-          "I explained how my evidence supports a reason.",
-          "I kept my planning in the declared task-sheet location."
-        ]
+        "embedded_supports": ["Sentence starter: I think ___ because ___.", "Sentence starter: One important reason is ___.", "Sentence starter: This evidence matters because ___.", "Box the reason you think is strongest before the checkpoint."],
+        "success_criteria": ["I stated a clear opinion.", "I collected reasons and evidence I can use tomorrow.", "I explained how my evidence supports a reason.", "I kept my planning in the declared task-sheet location."]
       },
       "checkpoint_sheet": {
         "title": "Day 1 Checkpoint Sheet",
         "checkpoint_focus": "Teacher checkpoint before Day 2 final response release.",
-        "look_fors": [
-          "Student has a clear opinion.",
-          "Student has at least two usable reasons.",
-          "Student can point to evidence or explanation for those reasons.",
-          "Student can explain how the evidence supports the reason."
-        ],
-        "conference_prompts": [
-          "Show me the strongest reason in your planning.",
-          "What evidence makes that reason believable?",
-          "How does that evidence support your reason?",
-          "What still needs strengthening before you draft tomorrow?"
-        ],
+        "look_fors": ["Student has a clear opinion.", "Student has at least two usable reasons.", "Student can point to evidence or explanation for those reasons.", "Student can explain how the evidence supports the reason."],
+        "conference_prompts": ["Show me the strongest reason in your planning.", "What evidence makes that reason believable?", "How does that evidence support your reason?", "What still needs strengthening before you draft tomorrow?"],
         "release_rule": "Release the Day 2 final response sheet only when the student can point to usable reasons and evidence in the task sheet and explain at least one connection between evidence and reason."
       },
       "outputs": [
-        {
-          "output_id": "day1_slides",
-          "output_type": "slides",
-          "audience": "shared_view",
-          "source_section": "days.day_1.slides",
-          "bundle": "ela_8_community_issue_argument_bundle"
-        },
-        {
-          "output_id": "day1_task_sheet",
-          "output_type": "task_sheet",
-          "audience": "student",
-          "source_section": "days.day_1.task_sheet",
-          "bundle": "ela_8_community_issue_argument_bundle"
-        },
-        {
-          "output_id": "day1_checkpoint_sheet",
-          "output_type": "checkpoint_sheet",
-          "audience": "teacher",
-          "source_section": "days.day_1.checkpoint_sheet",
-          "bundle": "ela_8_community_issue_argument_bundle"
-        }
+        {"output_id": "day1_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day_1.slides", "bundle": "ela_8_community_issue_argument_bundle"},
+        {"output_id": "day1_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.day_1.task_sheet", "bundle": "ela_8_community_issue_argument_bundle"},
+        {"output_id": "day1_checkpoint_sheet", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.day_1.checkpoint_sheet", "bundle": "ela_8_community_issue_argument_bundle"}
       ]
     },
     {
@@ -310,152 +129,35 @@
       "day_label": "Day 2",
       "carryover_note": "Use Day 1 planning before drafting the final argument paragraph.",
       "slides": [
-        {
-          "type": "TITLE",
-          "title": "Writing About a Community Issue — Day 2",
-          "layout": "hero",
-          "content": {
-            "subtitle": "Revisit your planning, strengthen your explanation, and write your final paragraph."
-          }
-        },
-        {
-          "type": "ENGAGE",
-          "title": "Re-open your planning",
-          "layout": "prompt",
-          "content": {
-            "scenario": "Before you draft, look back at the reasons and evidence you carried from Day 1.",
-            "prompts": [
-              "Which reason still feels strongest?",
-              "Which piece of evidence needs clearer explanation?",
-              "How will you organize your final paragraph?"
-            ]
-          }
-        },
-        {
-          "type": "LEARN",
-          "title": "Weak vs strong explanation",
-          "layout": "two_column_compare",
-          "content": {
-            "left": "Weak: Longer lunch is better because 68% of students feel rushed.",
-            "right": "Strong: Longer lunch is better because 68% of students feel rushed during lunch, which suggests many students may return to class distracted or stressed instead of ready to focus.",
-            "prompts": [
-              "Which version explains the evidence more clearly?",
-              "What words or phrases make the stronger version better?",
-              "How can you improve your own explanation before drafting?"
-            ]
-          }
-        },
-        {
-          "type": "APPLY",
-          "title": "Revise before you draft",
-          "layout": "prompt",
-          "content": {
-            "task": "Strengthen one reason or one piece of evidence in the task sheet before you move to the final response sheet.",
-            "prompts": [
-              "Add a clearer explanation.",
-              "Choose the strongest evidence.",
-              "Make sure your final paragraph will stay in the final response sheet only."
-            ]
-          }
-        },
-        {
-          "type": "REFLECT",
-          "title": "Finish strong",
-          "layout": "reflect",
-          "content": {
-            "prompts": [
-              "Which reason made your argument strongest?",
-              "What changed between your planning and your final paragraph?",
-              "How did explanation improve your argument?"
-            ]
-          }
-        }
+        {"type": "TITLE", "title": "Writing About a Community Issue — Day 2", "layout": "hero", "content": {"subtitle": "Revisit your planning, strengthen your explanation, and write your final paragraph."}},
+        {"type": "ENGAGE", "title": "Re-open your planning", "layout": "prompt", "content": {"scenario": "Before you draft, look back at the reasons and evidence you carried from Day 1.", "prompts": ["Which reason still feels strongest?", "Which piece of evidence needs clearer explanation?", "How will you organize your final paragraph?"]}},
+        {"type": "LEARN", "title": "Weak vs strong explanation", "layout": "two_column_compare", "content": {"left": "Weak: Longer lunch is better because 68% of students feel rushed.", "right": "Strong: Longer lunch is better because 68% of students feel rushed during lunch, which suggests many students may return to class distracted or stressed instead of ready to focus.", "prompts": ["Which version explains the evidence more clearly?", "What words or phrases make the stronger version better?", "How can you improve your own explanation before drafting?"]}},
+        {"type": "APPLY", "title": "Revise before you draft", "layout": "prompt", "content": {"task": "Strengthen one reason or one piece of evidence in the task sheet before you move to the final response sheet.", "prompts": ["Add a clearer explanation.", "Choose the strongest evidence.", "Make sure your final paragraph will stay in the final response sheet only."]}},
+        {"type": "REFLECT", "title": "Finish strong", "layout": "reflect", "content": {"prompts": ["Which reason made your argument strongest?", "What changed between your planning and your final paragraph?", "How did explanation improve your argument?"]}}
       ],
       "task_sheet": {
         "title": "Day 2 Task Sheet",
-        "instructions": [
-          "Re-read your Day 1 planning before making changes.",
-          "Strengthen one reason or one piece of evidence.",
-          "Improve your explanation before drafting the final paragraph."
-        ],
+        "instructions": ["Re-read your Day 1 planning before making changes.", "Strengthen one reason or one piece of evidence.", "Improve your explanation before drafting the final paragraph."],
         "tasks": [
-          {
-            "label": "Part A",
-            "prompt": "Review your strongest reason and explain why you are keeping it in your final paragraph.",
-            "lines": 4
-          },
-          {
-            "label": "Part B",
-            "prompt": "Revise one piece of evidence or explanation so it supports your opinion more clearly.",
-            "lines": 5
-          },
-          {
-            "label": "Part C",
-            "prompt": "Write one improved explanation sentence using the frame: This evidence matters because ___.",
-            "lines": 3
-          }
+          {"label": "Part A", "prompt": "Review your strongest reason and explain why you are keeping it in your final paragraph.", "lines": 4, "render_hints": {"profile": "day2_reason_keep"}},
+          {"label": "Part B", "prompt": "Revise one piece of evidence or explanation so it supports your opinion more clearly.", "lines": 5, "render_hints": {"profile": "day2_evidence_revision"}},
+          {"label": "Part C", "prompt": "Write one improved explanation sentence using the frame: This evidence matters because ___.", "lines": 3, "render_hints": {"profile": "day2_stronger_explanation"}}
         ],
-        "embedded_supports": [
-          "Sentence starter: This matters because ___.",
-          "Underline the reason you will lead with in your final paragraph.",
-          "Keep planning work separate from your final paragraph."
-        ],
-        "success_criteria": [
-          "I improved the planning I started on Day 1.",
-          "I know which reasons and evidence belong in my final paragraph.",
-          "I improved at least one explanation before drafting.",
-          "I kept planning separate from final evidence."
-        ]
+        "embedded_supports": ["Sentence starter: This matters because ___.", "Underline the reason you will lead with in your final paragraph.", "Keep planning work separate from your final paragraph."],
+        "success_criteria": ["I improved the planning I started on Day 1.", "I know which reasons and evidence belong in my final paragraph.", "I improved at least one explanation before drafting.", "I kept planning separate from final evidence."]
       },
       "final_response_sheet": {
         "title": "Day 2 Final Response Sheet",
         "prompt": "Write one argument paragraph that states your opinion clearly, gives reasons, and uses evidence or explanation to support your thinking.",
-        "planning_reminders": [
-          "State your opinion clearly.",
-          "Use one or two strong reasons from your task sheet.",
-          "Explain why your evidence supports your argument.",
-          "Keep your final written answer on this sheet."
-        ],
-        "paragraph_support": {
-          "frame_strip": [
-            "I believe ___.",
-            "One important reason is ___.",
-            "For example, ___.",
-            "This evidence matters because ___."
-          ],
-          "reminder_box": "Claim → reason → evidence → explanation"
-        },
-        "success_criteria": [
-          "My paragraph states a clear opinion.",
-          "My paragraph uses reasons and supporting evidence.",
-          "My paragraph explains why the evidence supports my argument.",
-          "My final evidence is recorded in the declared final response location."
-        ],
+        "planning_reminders": ["State your opinion clearly.", "Use one or two strong reasons from your task sheet.", "Explain why your evidence supports your argument.", "Keep your final written answer on this sheet."],
+        "paragraph_support": {"frame_strip": ["I believe ___.", "One important reason is ___.", "For example, ___.", "This evidence matters because ___."], "reminder_box": "Claim → reason → evidence → explanation"},
+        "success_criteria": ["My paragraph states a clear opinion.", "My paragraph uses reasons and supporting evidence.", "My paragraph explains why the evidence supports my argument.", "My final evidence is recorded in the declared final response location."],
         "response_lines": 10
       },
       "outputs": [
-        {
-          "output_id": "day2_slides",
-          "output_type": "slides",
-          "audience": "shared_view",
-          "source_section": "days.day_2.slides",
-          "bundle": "ela_8_community_issue_argument_bundle"
-        },
-        {
-          "output_id": "day2_task_sheet",
-          "output_type": "task_sheet",
-          "audience": "student",
-          "source_section": "days.day_2.task_sheet",
-          "bundle": "ela_8_community_issue_argument_bundle"
-        },
-        {
-          "output_id": "day2_final_response_sheet",
-          "output_type": "final_response_sheet",
-          "audience": "student",
-          "source_section": "days.day_2.final_response_sheet",
-          "bundle": "ela_8_community_issue_argument_bundle",
-          "final_evidence": true
-        }
+        {"output_id": "day2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day_2.slides", "bundle": "ela_8_community_issue_argument_bundle"},
+        {"output_id": "day2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.day_2.task_sheet", "bundle": "ela_8_community_issue_argument_bundle"},
+        {"output_id": "day2_final_response_sheet", "output_type": "final_response_sheet", "audience": "student", "source_section": "days.day_2.final_response_sheet", "bundle": "ela_8_community_issue_argument_bundle", "final_evidence": true}
       ]
     }
   ]
