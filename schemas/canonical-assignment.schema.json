@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mr-friess-classroom-engine/schemas/canonical-assignment.schema.json",
+  "title": "Canonical Assignment Schema",
+  "type": "object",
+  "required": [
+    "assignment_family",
+    "assignment_purpose",
+    "final_evidence_target",
+    "student_task_flow",
+    "success_criteria",
+    "supports_scaffolds",
+    "differentiation_model",
+    "teacher_implementation_notes",
+    "likely_misconceptions",
+    "assessment_focus"
+  ],
+  "properties": {
+    "assignment_family": {
+      "type": "string",
+      "enum": [
+        "short_inquiry_sequence",
+        "short_project",
+        "performance_task",
+        "structured_academic_discussion",
+        "evidence_based_writing_task"
+      ]
+    },
+    "grade_subject_fit": { "type": "string" },
+    "unit_context": { "type": "string" },
+    "assignment_purpose": { "type": "string", "minLength": 1 },
+    "final_evidence_target": { "type": "string", "minLength": 1 },
+    "student_task_flow": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "oneOf": [
+          { "type": "string", "minLength": 1 },
+          {
+            "type": "object",
+            "properties": {
+              "step": { "type": "string", "minLength": 1 },
+              "label": { "type": "string" },
+              "evidence": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    },
+    "success_criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "supports_scaffolds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          { "type": "string", "minLength": 1 },
+          {
+            "type": "object",
+            "properties": {
+              "label": { "type": "string" },
+              "support": { "type": "string" },
+              "embedded": { "type": "boolean" }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    },
+    "differentiation_model": {
+      "type": "object",
+      "required": [
+        "support_pathway",
+        "core_pathway",
+        "extension_pathway"
+      ],
+      "properties": {
+        "support_pathway": { "type": "string", "minLength": 1 },
+        "core_pathway": { "type": "string", "minLength": 1 },
+        "extension_pathway": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": true
+    },
+    "checkpoint_release_logic": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "teacher_implementation_notes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "likely_misconceptions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "pacing_shape": { "type": "string" },
+    "assessment_focus": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "render_hooks": {
+      "type": "object",
+      "properties": {
+        "artifact_audience": {
+          "type": "string",
+          "enum": ["teacher", "student", "shared_view"]
+        },
+        "student_visual_tone": {
+          "type": "string",
+          "enum": ["neutral", "warm_classroom", "minimal_reference"]
+        },
+        "response_mode": {
+          "type": "string",
+          "enum": [
+            "short_response",
+            "paragraph_response",
+            "multi_part_response",
+            "compare_two",
+            "checklist",
+            "exit_reflection"
+          ]
+        },
+        "writable_priority": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "block_keep_together": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
