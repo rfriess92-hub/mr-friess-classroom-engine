@@ -4,6 +4,18 @@ Running record of architectural and structural decisions for solo operation.
 
 ---
 
+## 2026-04-11 — Workflow docs aligned to the live solo operating model
+
+**Decision:** `README.md`, `DECISIONS.md`, and `docs/stable-core-workflow-policy.md` should describe the same live workflow: lightweight solo operation, local command gates, and the stable-core package path as the acceptance route.
+
+**Decision:** `content` / `renderer` / `qa` / `tooling` remain useful intent labels for branches and PRs, but they are not a hard ceremony system.
+
+**Decision:** Until CI exists, local command execution is the real gate. Use `doctor` when repo structure or entrypoints change, then use `schema:check` → `route:plan` → `render:package` → `qa:bundle` as the stable-core acceptance path.
+
+**Decision:** Legacy direct builders remain compatibility/debugging surfaces, not stable-core acceptance proof.
+
+---
+
 ## 2026-04-10 — Content files: authoritative location is engine/content/
 
 **Decision:** `engine/content/` is the single authoritative location for lesson content JSON files. Root-level copies are not allowed.
