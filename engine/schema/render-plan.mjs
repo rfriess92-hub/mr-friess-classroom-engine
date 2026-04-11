@@ -1,3 +1,4 @@
+import { selectAssignmentFamily } from '../family/selection.mjs'
 import { validatePackage } from './preflight.mjs'
 
 function collectOutputEntries(pkg) {
@@ -73,6 +74,7 @@ function normalizeOutputEntry(pkg, entry, index) {
 
 export function normalizePackageToRenderPlan(pkg) {
   const validation = validatePackage(pkg)
+  const familySelection = selectAssignmentFamily(pkg)
   const outputEntries = collectOutputEntries(pkg)
 
   const renderPlan = {
@@ -81,6 +83,8 @@ export function normalizePackageToRenderPlan(pkg) {
     primary_architecture: pkg?.primary_architecture ?? null,
     secondary_architecture_support: pkg?.secondary_architecture_support ?? null,
     materials_control_note: pkg?.materials_control_note ?? null,
+    assignment_family: familySelection.assignment_family,
+    family_selection: familySelection,
     bundle: {
       bundle_id: pkg?.bundle?.bundle_id ?? pkg?.package_id ?? null,
       declared_output_types: pkg?.bundle?.declared_outputs ?? outputEntries
@@ -92,11 +96,15 @@ export function normalizePackageToRenderPlan(pkg) {
       valid: validation.valid,
       error_count: validation.errors.length,
       warning_count: validation.warnings.length,
+      family_selection_valid: familySelection.validation?.valid === true,
+      family_selection_error_count: familySelection.validation?.errors?.length ?? 0,
+      family_selection_warning_count: familySelection.validation?.warnings?.length ?? 0,
     },
   }
 
   return {
     validation,
+    family_selection: familySelection,
     render_plan: renderPlan,
   }
 }
