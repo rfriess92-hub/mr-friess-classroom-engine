@@ -22,7 +22,7 @@ from student_pdf_shared import (
     cue_title_for,
     checkbox_panel,
 )
-from student_pdf_day2 import (
+from student_pdf_task_sheets import (
     task_profile,
     integrated_task_box,
     add_day1_page2_footer,
