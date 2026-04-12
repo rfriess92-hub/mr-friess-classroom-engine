@@ -1,0 +1,71 @@
+name: Stable Core Acceptance
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  stable-core-acceptance:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        fixture:
+          - key: single-period
+            package: fixtures/generated/careers-8-career-clusters.grade8-careers.json
+          - key: multi-day
+            package: fixtures/generated/ela-8-community-issue-argument.variant-proof.json
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare output and qa directories
+        run: |
+          mkdir -p output
+          mkdir -p output/ci-qa/${{ matrix.fixture.key }}
+
+      - name: Run doctor
+        run: pnpm run doctor
+
+      - name: Schema check (${{ matrix.fixture.key }})
+        run: |
+          pnpm run schema:check -- --package "${{ matrix.fixture.package }}" \
+            | tee "output/ci-qa/${{ matrix.fixture.key }}/schema-check.json"
+
+      - name: Route plan (${{ matrix.fixture.key }})
+        run: |
+          pnpm run route:plan -- --package "${{ matrix.fixture.package }}" --print-routes \
+            | tee "output/ci-qa/${{ matrix.fixture.key }}/route-plan.json"
+
+      - name: Render package (${{ matrix.fixture.key }})
+        run: pnpm run render:package -- --package "${{ matrix.fixture.package }}" --out output
+
+      - name: Bundle QA (${{ matrix.fixture.key }})
+        run: |
+          pnpm run qa:bundle -- --package "${{ matrix.fixture.package }}" --out output \
+            | tee "output/ci-qa/${{ matrix.fixture.key }}/qa-bundle.json"
+
+      - name: Upload render sidecars and QA outputs (${{ matrix.fixture.key }})
+        uses: actions/upload-artifact@v4
+        with:
+          name: stable-core-${{ matrix.fixture.key }}-artifacts
+          path: |
+            output/**/*.visual.json
+            output/**/*.images.json
+            output/ci-qa/${{ matrix.fixture.key }}/*.json
+          if-no-files-found: error
