@@ -1,0 +1,67 @@
+{
+  "schema_version": "3.0.0",
+  "package_id": "qa_fixture_bad",
+  "primary_architecture": "single_period_full",
+  "theme": "not-a-theme",
+  "bundle": {
+    "bundle_id": "qa_fixture_bad_bundle",
+    "declared_outputs": [
+      "teacher_guide",
+      "worksheet",
+      "exit_ticket"
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "Deliberately bad fixture"
+  },
+  "slides": [
+    {
+      "title": "Bad kickoff",
+      "layout": "prompt",
+      "content": {
+        "scenario": "Read and discuss.",
+        "prompts": ["Notice", "Wonder"]
+      }
+    }
+  ],
+  "worksheet": {
+    "questions": [
+      { "q_num": 1, "q_text": "Show your thinking.", "n_lines": 3 }
+    ]
+  },
+  "exit_ticket": {
+    "prompt": "Final response",
+    "n_lines": 3
+  },
+  "outputs": [
+    {
+      "output_id": "teacher_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "qa_fixture_bad_bundle"
+    },
+    {
+      "output_id": "worksheet_missing_audience",
+      "output_type": "worksheet",
+      "source_section": "worksheet",
+      "bundle": "qa_fixture_bad_bundle"
+    },
+    {
+      "output_id": "exit_ticket_primary_1",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "exit_ticket",
+      "bundle": "qa_fixture_bad_bundle",
+      "final_evidence": true
+    },
+    {
+      "output_id": "exit_ticket_primary_2",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "exit_ticket",
+      "bundle": "qa_fixture_bad_bundle",
+      "final_evidence": true
+    }
+  ]
+}
