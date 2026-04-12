@@ -27,6 +27,7 @@ from student_pdf_task_sheets import (
     integrated_task_box,
     add_day1_page2_footer,
     add_day2_footer,
+    render_task_sheet,
     render_final_response_sheet,
 )
 from student_pdf_short_forms import render_exit_ticket
@@ -156,6 +157,10 @@ def add_day2_footer_wrapper(story, styles, _section: dict):
     add_day2_footer(styles, story)
 
 
+def render_task_sheet_wrapper(packet: dict, section: dict, out_path: Path):
+    return render_task_sheet(base, styles_bundle, packet, section, out_path)
+
+
 def render_final_response_sheet_wrapper(packet: dict, section: dict, out_path: Path):
     return render_final_response_sheet(base, styles_bundle, packet, section, out_path)
 
@@ -172,6 +177,7 @@ base.worksheet_question_block = worksheet_question_block
 base.build_task_block = build_task_block
 base.add_day1_page2_footer = add_day1_page2_footer_wrapper
 base.add_day2_footer = add_day2_footer_wrapper
+base.render_task_sheet = render_task_sheet_wrapper
 base.render_final_response_sheet = render_final_response_sheet_wrapper
 base.render_exit_ticket = render_exit_ticket_wrapper
 
