@@ -212,6 +212,10 @@
         "bundle": { "type": "string" },
         "is_embedded": { "type": "boolean" },
         "final_evidence": { "type": "boolean" },
+        "variant_group": { "type": "string" },
+        "variant_role": { "type": "string", "enum": ["core", "shared_core", "supported", "support", "extension"] },
+        "alignment_target": { "type": "string" },
+        "final_evidence_target": { "type": "string" },
         "image_intent": { "$ref": "#/$defs/imageIntent" },
         "embedded_support_elements": { "type": "array", "items": { "type": "object" } }
       },

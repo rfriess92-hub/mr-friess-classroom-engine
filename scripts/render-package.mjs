@@ -5,6 +5,7 @@ import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
+import { resolveSourceSection } from '../engine/schema/source-section.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
 function pickPython() {
@@ -13,29 +14,6 @@ function pickPython() {
     if (probe.status === 0) return cmd
   }
   return null
-}
-
-function resolveSourceSection(root, sourceSection) {
-  if (!sourceSection) return null
-
-  let current = root
-  for (const token of sourceSection.split('.')) {
-    if (Array.isArray(current)) {
-      current = current.find((item) => (
-        item
-        && typeof item === 'object'
-        && (item.day_id === token || item.output_id === token)
-      )) ?? null
-    } else if (current && typeof current === 'object') {
-      current = current[token] ?? null
-    } else {
-      return null
-    }
-
-    if (current == null) return null
-  }
-
-  return current
 }
 
 function buildSlidePacket(pkg, route, visualPlan) {
