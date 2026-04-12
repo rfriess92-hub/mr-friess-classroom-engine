@@ -1,0 +1,253 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers_8_technology_use_school_workplace",
+  "primary_architecture": "multi_day_sequence",
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Technology Use in School and the Workplace",
+  "theme": "careers",
+  "secondary_architecture_support": {
+    "architecture": "single_period_full",
+    "note": "A condensed version is possible, but the five-day sequence remains primary because students need time to build background, view the documentary over two classes, compare settings, and produce a final recommendation."
+  },
+  "materials_control_note": "Viewing notes, planning, and checkpoint materials remain separate from the final response sheet so students do not collapse note-taking and final evidence into one artifact.",
+  "lesson_overview": {
+    "overview": "Students explore how technology affects attention, communication, productivity, and responsibility in school and in the workplace. Across five class days, students build shared vocabulary, view The Social Dilemma over two classes, gather evidence about benefits and risks, compare school and workplace expectations, and write a final recommendation about responsible technology use.",
+    "essential_question": "How should people use technology responsibly in school and in the workplace?",
+    "sequence": [
+      {"day": "Day 1", "focus": "Launch the issue, surface assumptions about technology use, and build vocabulary for evaluating benefits, risks, and responsibilities.", "artifacts": ["Slides", "Task Sheet"], "carryover": "Students carry questions and key ideas into the documentary viewing days."},
+      {"day": "Day 2", "focus": "View the first half of The Social Dilemma and record claims, examples, and questions about how platforms shape behaviour.", "artifacts": ["Slides", "Task Sheet"], "carryover": "Students continue shared viewing notes into Day 3."},
+      {"day": "Day 3", "focus": "View the second half of The Social Dilemma and gather stronger evidence about risks, trade-offs, and responsibilities.", "artifacts": ["Slides", "Task Sheet"], "carryover": "Students use notes to compare school and workplace expectations on Day 4."},
+      {"day": "Day 4", "focus": "Compare technology expectations in school and in the workplace, sort evidence, and complete a teacher checkpoint before final writing.", "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet"], "carryover": "Students bring their strongest recommendation and evidence into Day 5."},
+      {"day": "Day 5", "focus": "Draft a final recommendation about responsible technology use in school and the workplace using evidence from the documentary and class discussion.", "artifacts": ["Slides", "Task Sheet", "Final Response Sheet"], "carryover": "Final evidence remains in the final response sheet only."}
+    ],
+    "integrity_checks": [
+      "Teacher-only checkpoint guidance stays in teacher-facing outputs.",
+      "Viewing notes and planning stay in task-sheet artifacts until the final response release point.",
+      "Final evidence stays in the final response sheet, not in note-catchers, slides, or teacher materials.",
+      "The documentary is treated as one shared source for analysis, not as the whole lesson."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "Technology use in school and in the workplace involves both opportunities and responsibilities. Students need to move beyond simple pro/con reactions and instead evaluate how digital tools affect attention, communication, decision-making, and accountability in different settings.",
+    "learning_goals": [
+      "I can guide students in analyzing how technology use affects people in school and in the workplace.",
+      "I can help students distinguish between personal preference, evidence, and recommendation.",
+      "I can use a checkpoint to ensure students are ready to make a recommendation supported by documentary and class evidence.",
+      "I can keep final written evidence in the declared final response location."
+    ],
+    "materials": [
+      "Day 1 slide deck",
+      "Day 1 task sheet",
+      "Day 2 slide deck",
+      "Day 2 task sheet",
+      "Day 3 slide deck",
+      "Day 3 task sheet",
+      "Day 4 slide deck",
+      "Day 4 task sheet",
+      "Day 4 checkpoint sheet",
+      "Day 5 slide deck",
+      "Day 5 task sheet",
+      "Day 5 final response sheet",
+      "The Social Dilemma documentary access"
+    ],
+    "timing": [
+      {"time": "Day 1 / 0:00-0:12", "activity": "Launch the issue and gather assumptions about technology use in school and jobs."},
+      {"time": "Day 1 / 0:12-0:30", "activity": "Teach key vocabulary and start sorting benefits, risks, and responsibilities."},
+      {"time": "Day 1 / 0:30-0:55", "activity": "Students complete the Day 1 task sheet and identify questions to watch for in the documentary."},
+      {"time": "Day 2 / 0:00-0:10", "activity": "Re-open the focus question and clarify what students should listen for during the documentary."},
+      {"time": "Day 2 / 0:10-0:55", "activity": "View the first half of The Social Dilemma with guided note-taking on claims, examples, and questions."},
+      {"time": "Day 3 / 0:00-0:50", "activity": "View the second half of The Social Dilemma and continue guided notes about risks, trade-offs, and responsibilities."},
+      {"time": "Day 4 / 0:00-0:18", "activity": "Compare school and workplace expectations for technology use using evidence from notes and discussion."},
+      {"time": "Day 4 / 0:18-0:40", "activity": "Students sort evidence and build a recommendation in the task sheet."},
+      {"time": "Day 4 / 0:40-0:55", "activity": "Teacher checkpoint confirms students can support a recommendation before final writing."},
+      {"time": "Day 5 / 0:00-0:15", "activity": "Students re-open their planning, strengthen one weak reason or piece of evidence, and prepare to draft."},
+      {"time": "Day 5 / 0:15-0:50", "activity": "Students write the final recommendation in the final response sheet."}
+    ],
+    "teacher_notes": [
+      "Keep the unit grounded in careers and citizenship rather than turning it into a generic media-reaction lesson.",
+      "Use the documentary as one shared source, not as unquestioned truth. Students should analyze claims and examples critically.",
+      "Keep visible distinctions between describing a documentary claim, selecting evidence, and making a recommendation.",
+      "Do not release the final response sheet before the Day 4 checkpoint is complete."
+    ],
+    "likely_misconceptions": [
+      "Students may reduce the issue to technology being either all good or all bad.",
+      "Students may focus only on school phone rules and ignore workplace expectations.",
+      "Students may repeat documentary claims without explaining why those claims matter in a school or work setting.",
+      "Students may make a recommendation without enough evidence."
+    ],
+    "look_fors": [
+      "Student can identify both benefits and risks of technology use.",
+      "Student can cite specific evidence from the documentary or class examples.",
+      "Student can compare school expectations with workplace expectations.",
+      "Student can support a recommendation with more than personal preference."
+    ],
+    "support_moves": [
+      "Ask: What exactly is the claim here, and what evidence supports it?",
+      "Ask: Would that same technology expectation make sense in a workplace? Why or why not?",
+      "Use the frame: This matters in school/work because ___."
+    ],
+    "extension_moves": [
+      "Invite students to compare two workplaces with different technology expectations.",
+      "Invite students to weigh whether a responsible-use guideline should be the same in all settings or adapted to context."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "careers_8_technology_use_school_workplace_bundle",
+    "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "task_sheet", "checkpoint_sheet", "final_response_sheet"]
+  },
+  "outputs": [
+    {"output_id": "lesson_overview_main", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview", "bundle": "careers_8_technology_use_school_workplace_bundle"},
+    {"output_id": "teacher_guide_main", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "careers_8_technology_use_school_workplace_bundle"}
+  ],
+  "days": [
+    {
+      "day_id": "day_1",
+      "day_label": "Day 1",
+      "carryover_note": "Students carry questions and key terms into the documentary viewing days.",
+      "slides": [
+        {"type": "TITLE", "title": "Technology Use in School and the Workplace - Day 1", "layout": "hero", "content": {"subtitle": "Launch the issue and build the language we need to evaluate digital habits responsibly."}},
+        {"type": "ENGAGE", "title": "Where does technology help and where does it get in the way?", "layout": "prompt", "content": {"scenario": "Think about a normal school day and a normal workday. Technology can help people communicate, organize tasks, and access information. It can also distract, pressure, or overwhelm people. How should we judge when technology use is helpful or harmful?", "prompts": ["What types of technology use feel helpful at school?", "What types of technology use could create problems at work?", "Why might expectations differ depending on the setting?"]}},
+        {"type": "LEARN", "title": "Three lenses for judging technology use", "layout": "three_rows", "content": {"rows": ["Benefit: What does the technology make easier or better?", "Risk: What problems, distractions, or harms can it create?", "Responsibility: What expectations help people use it well in a given setting?"]}},
+        {"type": "APPLY", "title": "Try a quick comparison", "layout": "two_column_compare", "content": {"left": "Using a phone to message a classmate during a lesson", "right": "Using a workplace chat app to coordinate a team task", "prompts": ["What is similar about these situations?", "What is different about the expectations?", "What would responsible use look like in each setting?"]}},
+        {"type": "APPLY", "title": "Prepare for the documentary", "layout": "retrieval", "content": {"task": "Use your task sheet to record what you already think, what evidence you would need, and what questions you should watch for in the film.", "prompts": ["Where can technology improve school or work?", "Where can technology shape attention or decision-making?", "What responsibilities should matter most?"]}}
+      ],
+      "task_sheet": {
+        "title": "Day 1 Task Sheet",
+        "instructions": ["Record your current thinking before the documentary begins.", "Separate benefits, risks, and responsibilities.", "Write questions you can carry into the documentary days."],
+        "tasks": [
+          {"label": "Part A", "prompt": "List two ways technology can help people in school or at work.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part A - Name two possible benefits", "help": "If you need it: think about communication, organization, research, or productivity.", "lines": 4, "row_height": 14}},
+          {"label": "Part B", "prompt": "List two ways technology use can create problems, distractions, or pressure.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part B - Name two possible risks", "help": "If you need it: think about distraction, attention, misinformation, pressure, or wasted time.", "lines": 4, "row_height": 14}},
+          {"label": "Part C", "prompt": "Write one question you want the documentary to help you answer about technology use.", "lines": 3, "render_hints": {"profile": "generic", "heading": "Part C - Set one viewing question", "help": "If you need it: ask what people should understand about how technology affects behaviour.", "lines": 3, "row_height": 14}}
+        ],
+        "embedded_supports": ["Sentence starter: Technology can help because ___.", "Sentence starter: Technology can create problems when ___.", "Sentence starter: I want to find out ___."],
+        "success_criteria": ["I identified possible benefits and risks.", "I wrote at least one serious viewing question.", "I separated current thinking from final judgment."]
+      },
+      "outputs": [
+        {"output_id": "day1_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day_1.slides", "bundle": "careers_8_technology_use_school_workplace_bundle"},
+        {"output_id": "day1_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.day_1.task_sheet", "bundle": "careers_8_technology_use_school_workplace_bundle"}
+      ]
+    },
+    {
+      "day_id": "day_2",
+      "day_label": "Day 2",
+      "carryover_note": "Students continue documentary claims and examples into Day 3.",
+      "slides": [
+        {"type": "TITLE", "title": "Technology Use in School and the Workplace - Day 2", "layout": "hero", "content": {"subtitle": "Watch the first half of The Social Dilemma and record claims, examples, and questions."}},
+        {"type": "ENGAGE", "title": "Watch for these patterns", "layout": "checklist", "content": {"items": ["Claims about how platforms affect attention", "Examples of how design choices shape behaviour", "Questions about whether the same issues matter in school and at work"]}},
+        {"type": "APPLY", "title": "Guided viewing focus", "layout": "prompt_card", "content": {"goal": "Do not try to write everything down. Focus on the strongest claims, examples, and questions.", "prompts": ["What is the claim?", "What example supports it?", "Why might it matter in school or work?"], "instruction": "Keep your notes short and evidence-based while watching."}}
+      ],
+      "task_sheet": {
+        "title": "Day 2 Task Sheet",
+        "instructions": ["Use this sheet as a guided note-catcher during the first part of the documentary.", "Separate claims, examples, and questions.", "Do not move into a final judgment yet."],
+        "tasks": [
+          {"label": "Part A", "prompt": "Record two important claims the documentary makes about how technology platforms affect people.", "lines": 5, "render_hints": {"profile": "generic", "heading": "Part A - Record key claims", "help": "If you need it: write the claim in plain language, not every detail from the scene.", "lines": 5, "row_height": 14}},
+          {"label": "Part B", "prompt": "Record one example or story from the film that helps illustrate one of those claims.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part B - Capture one supporting example", "help": "If you need it: note the example and what it helps show.", "lines": 4, "row_height": 14}},
+          {"label": "Part C", "prompt": "Write one question or uncertainty you still have after today's viewing.", "lines": 3, "render_hints": {"profile": "generic", "heading": "Part C - Record one open question", "help": "If you need it: ask what still needs more evidence or what might work differently in another setting.", "lines": 3, "row_height": 14}}
+        ],
+        "embedded_supports": ["Sentence starter: One claim the film makes is ___.", "Sentence starter: One example that supports this is ___.", "Sentence starter: I still wonder ___."],
+        "success_criteria": ["I recorded claims and examples separately.", "I wrote notes I can still use tomorrow.", "I stayed in note-taking mode rather than jumping to a final recommendation."]
+      },
+      "outputs": [
+        {"output_id": "day2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day_2.slides", "bundle": "careers_8_technology_use_school_workplace_bundle"},
+        {"output_id": "day2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.day_2.task_sheet", "bundle": "careers_8_technology_use_school_workplace_bundle"}
+      ]
+    },
+    {
+      "day_id": "day_3",
+      "day_label": "Day 3",
+      "carryover_note": "Students use documentary evidence to compare school and workplace expectations on Day 4.",
+      "slides": [
+        {"type": "TITLE", "title": "Technology Use in School and the Workplace - Day 3", "layout": "hero", "content": {"subtitle": "Watch the second half of The Social Dilemma and gather stronger evidence about risks, trade-offs, and responsibilities."}},
+        {"type": "LEARN", "title": "Watch for trade-offs", "layout": "three_rows", "content": {"rows": ["A tool can be useful and still create risk.", "A strong recommendation weighs both benefits and harms.", "Different settings may need different expectations for responsible use."]}},
+        {"type": "APPLY", "title": "Use your notes strategically", "layout": "prompt", "content": {"scenario": "As you watch today, focus on evidence that will help you compare school and workplace expectations later.", "prompts": ["What risks are most convincing?", "What benefits are still worth protecting?", "What responsibilities seem necessary?"]}}
+      ],
+      "task_sheet": {
+        "title": "Day 3 Task Sheet",
+        "instructions": ["Continue your documentary notes with a focus on evidence you may reuse in your recommendation.", "Separate benefits, risks, and responsibilities.", "Look for ideas that could matter differently in school and at work."],
+        "tasks": [
+          {"label": "Part A", "prompt": "Record one documentary idea that shows a real risk connected to technology use.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part A - Capture one serious risk", "help": "If you need it: focus on a risk tied to attention, pressure, mental health, misinformation, or behaviour shaping.", "lines": 4, "row_height": 14}},
+          {"label": "Part B", "prompt": "Record one idea that reminds you technology can still be useful or necessary in modern life.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part B - Capture one continuing benefit", "help": "If you need it: think about communication, collaboration, access to information, or workplace coordination.", "lines": 4, "row_height": 14}},
+          {"label": "Part C", "prompt": "Write one note about what responsible technology use might require from students or workers.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part C - Note one responsibility", "help": "If you need it: think about attention, boundaries, accountability, privacy, or communication norms.", "lines": 4, "row_height": 14}}
+        ],
+        "embedded_supports": ["Sentence starter: One major risk is ___.", "Sentence starter: One benefit worth protecting is ___.", "Sentence starter: Responsible use requires ___."],
+        "success_criteria": ["I collected evidence about risks and benefits.", "I noted at least one responsibility expectation.", "I now have evidence I can sort tomorrow."]
+      },
+      "outputs": [
+        {"output_id": "day3_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day_3.slides", "bundle": "careers_8_technology_use_school_workplace_bundle"},
+        {"output_id": "day3_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.day_3.task_sheet", "bundle": "careers_8_technology_use_school_workplace_bundle"}
+      ]
+    },
+    {
+      "day_id": "day_4",
+      "day_label": "Day 4",
+      "carryover_note": "Students bring their strongest recommendation and evidence into the final response on Day 5.",
+      "slides": [
+        {"type": "TITLE", "title": "Technology Use in School and the Workplace - Day 4", "layout": "hero", "content": {"subtitle": "Compare settings, sort your evidence, and prepare for the checkpoint."}},
+        {"type": "LEARN", "title": "School expectations versus workplace expectations", "layout": "two_column", "content": {"columns": [{"title": "School", "items": ["Attention during learning time matters.", "Safety, respect, and focus shape expectations.", "Students are still learning how to manage digital habits."]}, {"title": "Workplace", "items": ["Professional communication and productivity matter.", "Some technology use is required for the job.", "Accountability and boundaries still matter even when devices are necessary."]}]}},
+        {"type": "APPLY", "title": "Build your recommendation", "layout": "prompt", "content": {"task": "Use your task sheet to compare both settings and decide what responsible technology use should look like.", "prompts": ["What should stay similar across both settings?", "What should differ by context?", "What evidence best supports your recommendation?"]}},
+        {"type": "REFLECT", "title": "Checkpoint prep", "layout": "reflect", "content": {"prompts": ["What is your strongest recommendation so far?", "What evidence supports it best?", "What still needs clarification before you write?"]}}
+      ],
+      "task_sheet": {
+        "title": "Day 4 Task Sheet",
+        "instructions": ["Sort your strongest evidence before the checkpoint.", "Compare school and workplace expectations directly.", "Build a recommendation you can defend with evidence."],
+        "tasks": [
+          {"label": "Part A", "prompt": "Write one important expectation for responsible technology use in school and one in the workplace.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part A - Compare expectations", "help": "If you need it: write one school expectation and one workplace expectation before comparing them.", "lines": 4, "row_height": 14}},
+          {"label": "Part B", "prompt": "Choose two pieces of evidence from your notes that best support a recommendation about technology use.", "lines": 5, "render_hints": {"profile": "generic", "heading": "Part B - Select your strongest evidence", "help": "If you need it: choose evidence that helps explain both why the issue matters and what a responsible response could be.", "lines": 5, "row_height": 14}},
+          {"label": "Part C", "prompt": "Draft one recommendation sentence about how people should use technology responsibly in school and/or the workplace.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part C - Draft your recommendation", "help": "If you need it: use the frame People should ___. because ___.", "lines": 4, "row_height": 14}},
+          {"label": "Part D", "prompt": "Name one weak point you still need to strengthen before final writing.", "lines": 3, "render_hints": {"profile": "generic", "heading": "Part D - Identify one revision target", "help": "If you need it: identify whether you need stronger evidence, a clearer comparison, or a better recommendation sentence.", "lines": 3, "row_height": 14}}
+        ],
+        "embedded_supports": ["Sentence starter: In school, responsible use means ___.", "Sentence starter: In the workplace, responsible use means ___.", "Sentence starter: This evidence matters because ___."],
+        "success_criteria": ["I compared school and workplace expectations.", "I selected evidence that supports a recommendation.", "I drafted a recommendation before the checkpoint."]
+      },
+      "checkpoint_sheet": {
+        "title": "Day 4 Checkpoint Sheet",
+        "checkpoint_focus": "Teacher checkpoint before Day 5 final response release.",
+        "look_fors": ["Student can compare school and workplace expectations.", "Student can cite at least two usable pieces of evidence.", "Student can explain why the evidence matters for a recommendation.", "Student has a recommendation that is more than personal preference."],
+        "conference_prompts": ["What is your recommendation right now?", "Which evidence supports it best?", "How does this issue look different in school and in the workplace?", "What still needs strengthening before you draft tomorrow?"],
+        "release_rule": "Release the Day 5 final response sheet only when the student can compare settings, point to evidence, and explain why that evidence supports a responsible-use recommendation."
+      },
+      "outputs": [
+        {"output_id": "day4_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day_4.slides", "bundle": "careers_8_technology_use_school_workplace_bundle"},
+        {"output_id": "day4_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.day_4.task_sheet", "bundle": "careers_8_technology_use_school_workplace_bundle"},
+        {"output_id": "day4_checkpoint_sheet", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.day_4.checkpoint_sheet", "bundle": "careers_8_technology_use_school_workplace_bundle"}
+      ]
+    },
+    {
+      "day_id": "day_5",
+      "day_label": "Day 5",
+      "carryover_note": "Final evidence remains in the final response sheet only.",
+      "slides": [
+        {"type": "TITLE", "title": "Technology Use in School and the Workplace - Day 5", "layout": "hero", "content": {"subtitle": "Re-open your planning, strengthen your reasoning, and write your final recommendation."}},
+        {"type": "LEARN", "title": "What makes a strong recommendation?", "layout": "three_rows", "content": {"rows": ["It states a clear recommendation.", "It uses evidence instead of only personal opinion.", "It explains why the recommendation matters in school, work, or both."]}},
+        {"type": "APPLY", "title": "Revise before you draft", "layout": "prompt", "content": {"task": "Use the Day 5 task sheet to strengthen one weak part of your planning before moving to the final response sheet.", "prompts": ["Improve one reason.", "Clarify one piece of evidence.", "Strengthen the explanation for why your recommendation matters."]}},
+        {"type": "REFLECT", "title": "Finish strong", "layout": "reflect", "content": {"prompts": ["What recommendation are you making?", "What evidence supports it best?", "Why should someone in school or at work take your recommendation seriously?"]}}
+      ],
+      "task_sheet": {
+        "title": "Day 5 Task Sheet",
+        "instructions": ["Re-open your checkpointed planning before drafting.", "Strengthen one weak reason, evidence point, or explanation.", "Prepare one sentence you can carry directly into the final response."],
+        "tasks": [
+          {"label": "Part A", "prompt": "Review your recommendation and explain why you are keeping it for your final response.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part A - Keep your strongest recommendation", "help": "If you need it: restate the recommendation clearly and explain why it still fits your evidence.", "lines": 4, "row_height": 14}},
+          {"label": "Part B", "prompt": "Revise one piece of evidence or explanation so it supports your recommendation more clearly.", "lines": 5, "render_hints": {"profile": "generic", "heading": "Part B - Improve your evidence or explanation", "help": "If you need it: make the connection between the evidence and the recommendation more explicit.", "lines": 5, "row_height": 14}},
+          {"label": "Part C", "prompt": "Write one stronger sentence you can reuse in your final response about why responsible technology use matters.", "lines": 3, "render_hints": {"profile": "generic", "heading": "Part C - Write one stronger why-it-matters sentence", "help": "If you need it: use the frame This matters in school/work because ___.", "lines": 3, "row_height": 14}}
+        ],
+        "embedded_supports": ["Sentence starter: People should ___.", "Sentence starter: One important reason is ___.", "Sentence starter: This matters because ___."],
+        "success_criteria": ["I improved one weak part of my planning.", "I know what recommendation I will defend.", "I have a stronger explanation ready for final writing."]
+      },
+      "final_response_sheet": {
+        "title": "Day 5 Final Response Sheet",
+        "prompt": "Write one recommendation paragraph explaining how people should use technology responsibly in school and/or the workplace. Use evidence from the documentary and class learning to support your recommendation.",
+        "planning_reminders": ["State your recommendation clearly.", "Use evidence from the documentary or class discussion.", "Explain why your recommendation matters in school, the workplace, or both.", "Keep your final written answer on this sheet."],
+        "paragraph_support": {"frame_strip": ["People should ___.", "One important reason is ___.", "For example, ___.", "This matters because ___."], "reminder_box": "recommendation -> evidence -> why it matters"},
+        "success_criteria": ["My paragraph states a clear recommendation.", "My paragraph uses evidence from the unit.", "My paragraph explains why the recommendation matters in school, work, or both.", "My final evidence is recorded in the declared final response location."],
+        "response_lines": 10
+      },
+      "outputs": [
+        {"output_id": "day5_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day_5.slides", "bundle": "careers_8_technology_use_school_workplace_bundle"},
+        {"output_id": "day5_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.day_5.task_sheet", "bundle": "careers_8_technology_use_school_workplace_bundle"},
+        {"output_id": "day5_final_response_sheet", "output_type": "final_response_sheet", "audience": "student", "source_section": "days.day_5.final_response_sheet", "bundle": "careers_8_technology_use_school_workplace_bundle", "final_evidence": true}
+      ]
+    }
+  ]
+}
