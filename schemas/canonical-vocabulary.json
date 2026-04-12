@@ -37,6 +37,7 @@
   ],
   "themes": [
     "science",
+    "ela",
     "careers"
   ],
   "slide_layouts": [
@@ -82,5 +83,18 @@
     "student_task": "task_sheet",
     "checkpoint": "checkpoint_sheet",
     "overview": "lesson_overview"
-  }
+  },
+  "theme_subject_families": [
+    "science",
+    "ela",
+    "careers"
+  ],
+  "theme_visual_families": [
+    "science",
+    "careers"
+  ],
+  "theme_visual_aliases": {
+    "ela": "science"
+  },
+  "default_visual_theme": "science"
 }

@@ -6,6 +6,7 @@ import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
 import { resolveSourceSection } from '../engine/schema/source-section.mjs'
+import { normalizeTheme } from '../engine/schema/canonical.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
 function pickPython() {
@@ -31,7 +32,7 @@ function buildSlidePacket(pkg, route, visualPlan) {
       ? `${pkg.topic ?? pkg.package_id ?? 'Lesson'} — ${route.day_scope.day_label}`
       : (pkg.topic ?? pkg.package_id ?? 'Lesson'),
     lesson_label: route.day_scope?.day_label ?? null,
-    theme: pkg.theme ?? 'science',
+    theme: normalizeTheme(pkg.theme),
     slides,
     visual: visualPlan ?? null,
   }

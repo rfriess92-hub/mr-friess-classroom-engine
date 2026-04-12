@@ -15,7 +15,11 @@ export const PRIMARY_ARCHITECTURES = VOCABULARY.primary_architectures ?? []
 export const AUDIENCES = VOCABULARY.audiences ?? []
 export const CANONICAL_OUTPUT_TYPES = VOCABULARY.output_types ?? []
 export const GRADE_BANDS = VOCABULARY.grade_bands ?? []
-export const SUPPORTED_THEMES = VOCABULARY.themes ?? []
+export const SUPPORTED_THEME_SUBJECT_FAMILIES = VOCABULARY.theme_subject_families ?? VOCABULARY.themes ?? []
+export const SUPPORTED_THEME_VISUAL_FAMILIES = VOCABULARY.theme_visual_families ?? VOCABULARY.themes ?? []
+export const THEME_VISUAL_ALIASES = VOCABULARY.theme_visual_aliases ?? {}
+export const DEFAULT_VISUAL_THEME = VOCABULARY.default_visual_theme ?? 'science'
+export const SUPPORTED_THEMES = SUPPORTED_THEME_SUBJECT_FAMILIES
 export const SUPPORTED_SLIDE_LAYOUTS = VOCABULARY.slide_layouts ?? []
 export const OUTPUT_TYPE_ALIASES = VOCABULARY.aliases ?? {}
 export const SLIDE_LAYOUT_ALIASES = VOCABULARY.slide_layout_aliases ?? {}
@@ -75,7 +79,22 @@ export function isValidAudience(value) {
 }
 
 export function isSupportedTheme(value) {
-  return SUPPORTED_THEMES.includes(value)
+  return isSupportedThemeSubjectFamily(value)
+}
+
+export function isSupportedThemeSubjectFamily(value) {
+  return SUPPORTED_THEME_SUBJECT_FAMILIES.includes(value)
+}
+
+export function isSupportedThemeVisualFamily(value) {
+  return SUPPORTED_THEME_VISUAL_FAMILIES.includes(value)
+}
+
+export function normalizeTheme(value) {
+  if (!value) return DEFAULT_VISUAL_THEME
+  const aliasOrValue = THEME_VISUAL_ALIASES[value] ?? value
+  if (isSupportedThemeVisualFamily(aliasOrValue)) return aliasOrValue
+  return DEFAULT_VISUAL_THEME
 }
 
 export function isSupportedSlideLayout(value) {

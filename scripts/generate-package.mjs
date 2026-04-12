@@ -80,7 +80,7 @@ Required top-level fields:
 - subject: from brief
 - grade: integer
 - topic: short canonical topic label
-- theme: one of "science", "careers" (use "science" for most subjects, "careers" for Careers class)
+- theme: one of "science", "careers", "ela" (use subject-family values; visual mapping is normalized separately)
 - teacher_guide: object with learning_goals, big_idea, timing, teacher_notes
 - slides: array of slide objects (each with type, title, layout, content)
 - worksheet OR task_sheet: object with prompts/sections for student work

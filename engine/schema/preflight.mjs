@@ -4,6 +4,8 @@ import {
   REQUIRED_PACKAGE_FIELDS,
   SUPPORTED_SLIDE_LAYOUTS,
   SUPPORTED_THEMES,
+  SUPPORTED_THEME_VISUAL_FAMILIES,
+  normalizeTheme,
   allowedOutputTypesForArchitecture,
   expectedAudienceForOutputType,
   isCanonicalOutputType,
@@ -200,7 +202,7 @@ export function validatePackage(pkg) {
   }
 
   if (isNonEmptyString(pkg.theme) && !isSupportedTheme(pkg.theme)) {
-    pushIssue(warnings, 'unsupported_theme_value', `Theme ${pkg.theme} is not in the supported theme vocabulary (${SUPPORTED_THEMES.join(', ')}). PPTX rendering may fall back to a default theme.`, 'theme')
+    pushIssue(warnings, 'unsupported_theme_value', `Theme ${pkg.theme} is not in the supported subject theme vocabulary (${SUPPORTED_THEMES.join(', ')}). Slides will use deterministic visual fallback ${normalizeTheme(pkg.theme)} from visual theme families (${SUPPORTED_THEME_VISUAL_FAMILIES.join(', ')}).`, 'theme')
   }
 
   if (pkg.primary_architecture === 'multi_day_sequence' && !Array.isArray(pkg.days)) {
