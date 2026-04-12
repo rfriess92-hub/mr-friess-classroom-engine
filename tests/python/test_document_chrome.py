@@ -1,12 +1,16 @@
-from pathlib import Path
 import sys
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 PDF_DIR = ROOT / 'engine' / 'pdf'
 if str(PDF_DIR) not in sys.path:
     sys.path.insert(0, str(PDF_DIR))
 
-from document_chrome import TEACHER_DISPLAY_NAME, default_document_label, resolve_printable_document_label
+from document_chrome import (
+    TEACHER_DISPLAY_NAME,
+    default_document_label,
+    resolve_printable_document_label,
+)
 
 
 def test_teacher_display_name_is_locked():

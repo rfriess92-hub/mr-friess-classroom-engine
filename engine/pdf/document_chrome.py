@@ -1,15 +1,11 @@
 from __future__ import annotations
 
-from reportlab.lib import colors
-from reportlab.pdfbase.pdfmetrics import stringWidth
-from reportlab.platypus import SimpleDocTemplate
-
 TEACHER_DISPLAY_NAME = "Mr. Friess"
 
-HEADER_TEXT_COLOR = colors.HexColor('#334155')
-HEADER_RULE_COLOR = colors.HexColor('#cbd5e1')
-FOOTER_TEXT_COLOR = colors.HexColor('#475569')
-FOOTER_RULE_COLOR = colors.HexColor('#e2e8f0')
+HEADER_TEXT_COLOR = '#334155'
+HEADER_RULE_COLOR = '#cbd5e1'
+FOOTER_TEXT_COLOR = '#475569'
+FOOTER_RULE_COLOR = '#e2e8f0'
 
 _DEFAULT_DOCUMENT_LABELS = {
     'teacher_guide': 'Teacher Guide',
@@ -68,6 +64,9 @@ def resolve_printable_document_label(packet: dict | None, output_type: str | Non
 
 
 def chrome_callback(packet: dict | None, output_type: str | None, section: dict | None = None):
+    from reportlab.lib import colors
+    from reportlab.pdfbase.pdfmetrics import stringWidth
+
     left_text = TEACHER_DISPLAY_NAME
     right_text = resolve_printable_document_label(packet, output_type, section)
 
@@ -83,7 +82,7 @@ def chrome_callback(packet: dict | None, output_type: str | None, section: dict 
         footer_y = 8
 
         canvas.setFont('Helvetica', 8.5)
-        canvas.setFillColor(HEADER_TEXT_COLOR)
+        canvas.setFillColor(colors.HexColor(HEADER_TEXT_COLOR))
         canvas.drawString(left_x, header_y, left_text)
 
         right_width = stringWidth(right_text, 'Helvetica', 8.5)
@@ -92,15 +91,15 @@ def chrome_callback(packet: dict | None, output_type: str | None, section: dict 
         else:
             canvas.drawString(left_x, header_y - 10, right_text)
 
-        canvas.setStrokeColor(HEADER_RULE_COLOR)
+        canvas.setStrokeColor(colors.HexColor(HEADER_RULE_COLOR))
         canvas.setLineWidth(0.5)
         canvas.line(left_x, header_rule_y, right_x, header_rule_y)
 
-        canvas.setStrokeColor(FOOTER_RULE_COLOR)
+        canvas.setStrokeColor(colors.HexColor(FOOTER_RULE_COLOR))
         canvas.line(left_x, footer_rule_y, right_x, footer_rule_y)
 
         canvas.setFont('Helvetica', 8)
-        canvas.setFillColor(FOOTER_TEXT_COLOR)
+        canvas.setFillColor(colors.HexColor(FOOTER_TEXT_COLOR))
         canvas.drawCentredString(page_width / 2, footer_y, f'Page {canvas.getPageNumber()}')
         canvas.restoreState()
 
@@ -120,6 +119,8 @@ def build_printable_pdf(
     top_margin: int,
     bottom_margin: int,
 ) -> None:
+    from reportlab.platypus import SimpleDocTemplate
+
     doc = SimpleDocTemplate(
         str(out_path),
         pagesize=pagesize,

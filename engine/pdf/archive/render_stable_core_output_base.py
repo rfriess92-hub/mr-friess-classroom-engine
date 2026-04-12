@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 from reportlab.lib import colors
@@ -17,6 +18,10 @@ from reportlab.platypus import (
     Table,
     TableStyle,
 )
+
+PDF_DIR = Path(__file__).resolve().parent.parent
+if str(PDF_DIR) not in sys.path:
+    sys.path.insert(0, str(PDF_DIR))
 
 from document_chrome import build_printable_pdf
 
