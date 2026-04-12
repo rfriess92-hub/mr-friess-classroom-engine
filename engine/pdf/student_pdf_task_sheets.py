@@ -61,6 +61,14 @@ def _footer_table(story,left,right=None):
     footer.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),TASK_FOOTER_BG),('BOX',(0,0),(-1,-1),0.45,TASK_FOOTER_BORDER),('INNERGRID',(0,0),(-1,-1),0.3,TASK_FOOTER_BORDER),('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('VALIGN',(0,0),(-1,-1),'TOP')]))
     story.append(footer)
 
+def _add_focus_rail(styles,story,lines,compact=False):
+    items=normalize_string_list(lines)
+    if not items:return
+    body=' • '.join(items)
+    rail=Table([[[Paragraph(f'<b>Focus:</b> {body}',styles['BodyText'])]]],colWidths=[540])
+    rail.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),PROMPT_BG),('BOX',(0,0),(-1,-1),0.45,BORDER),('TOPPADDING',(0,0),(-1,-1),5 if compact else 6),('BOTTOMPADDING',(0,0),(-1,-1),5 if compact else 6),('LEFTPADDING',(0,0),(-1,-1),8),('RIGHTPADDING',(0,0),(-1,-1),8),('VALIGN',(0,0),(-1,-1),'TOP')]))
+    story.extend([rail,Spacer(1,5)])
+
 def add_day2_footer(styles,story):
     _footer_table(story,compact_list_cell(styles,'Reminder',['Keep planning on this sheet.','Move your final writing to the final response sheet.']),compact_list_cell(styles,'Check',['My recommendation is clear.','One weak part is stronger now.']))
 
@@ -122,7 +130,7 @@ def render_task_sheet(base,styles_bundle,packet,section,out_path):
     grammar=packet.get('_render_grammar',{});tasks=section.get('tasks',[]);layout=_grammar_layout(grammar,tasks);styles=styles_bundle();story=[]
     title=_display_title(base,layout['render_intent'],section.get('title','Task Sheet'));purpose=_purpose_line(layout['render_intent'],section);instructions=_instruction_lines(section,layout)
     base.title_bar(story,styles,base.packet_heading(packet));story.append(Paragraph(title,styles['SheetTitleX']));story.append(Paragraph('Name: ____________________   Date: __________',styles['MutedX']));story.append(Spacer(1,3));base.purpose_line_block(story,styles,purpose)
-    if instructions:base.plain_label_block(story,styles,'Focus',instructions,compact=layout['compact'],spacer_after=5)
+    if instructions:_add_focus_rail(styles,story,instructions,compact=layout['compact'])
     if layout['multi_page']:
         page1,page2=_split_tasks_for_multi_page(base,layout,tasks);page1_lines=_scaled_lines(layout['length_band'],len(page1),3)
         for index,(task,lines) in enumerate(zip(page1,page1_lines)):
