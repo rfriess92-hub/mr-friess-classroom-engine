@@ -64,29 +64,45 @@
     }
   ],
   "executable_checks": {
-    "flatness": {
+    "main_task_visible": {
       "fails_when": [
-        "all major components on a page use identical border_mode",
-        "all major components on a page use identical radius_token",
-        "all major components on a page use identical fill_mode"
+        "a page has more than one main_prompt region"
       ]
     },
-    "support_vs_main_contrast": {
+    "support_not_competing": {
       "fails_when": [
-        "support_cue area is equal to or larger than main_prompt area",
-        "support_cue fill contrast is equal to or stronger than main_prompt fill contrast"
+        "support_cue area is equal to or larger than main_prompt area"
       ]
     },
-    "writing_space_openness": {
+    "not_all_rectangles": {
       "fails_when": [
-        "student_response area is smaller than adjacent prompt area",
-        "student_response uses darker fill than adjacent prompt area"
+        "a page has no major component with soft/round/pill radius treatment"
+      ]
+    },
+    "writing_space_open": {
+      "fails_when": [
+        "student_response area is smaller than adjacent main_prompt area"
+      ]
+    },
+    "support_tools_vs_success_check": {
+      "fails_when": [
+        "support_tools and success_check share identical fill_mode, border_mode, and show_icon"
       ]
     },
     "slide_sequence_variety": {
       "fails_when": [
-        "five_slide_sequence uses fewer than three unique layout ids",
-        "three_or_more consecutive slides share the same region structure"
+        "five-slide sequence uses fewer than three unique layout ids",
+        "three or more consecutive slides share the same layout id"
+      ]
+    },
+    "reflection_breathing_room": {
+      "fails_when": [
+        "reflection slides use as many or more major content blocks than model/task slides on average"
+      ]
+    },
+    "accent_limit": {
+      "fails_when": [
+        "a page uses more than three unique accent roles"
       ]
     }
   }
