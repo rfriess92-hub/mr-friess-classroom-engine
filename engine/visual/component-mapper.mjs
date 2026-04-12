@@ -37,20 +37,34 @@ function estimatedLayout(componentType, visualRole, options = {}) {
       return { w: 7.0, h: 1.8 }
     case 'PageHeader':
       return { w: 10.5, h: 0.8 }
-    case 'EntryPanel':
-      return { w: 10.5, h: 1.4 }
-    case 'SectionBlock':
-      return { w: 10.5, h: 1.1 }
+    case 'EntryPanel': {
+      const itemCount = Number(options.item_count ?? 2)
+      const compact = options.compact === true
+      return { w: 10.5, h: Math.max(compact ? 0.85 : 1.0, 0.35 + (itemCount * (compact ? 0.22 : 0.28))) }
+    }
+    case 'SectionBlock': {
+      const promptLength = String(options.prompt ?? '').length
+      const promptLines = Math.max(1, Math.ceil(promptLength / 72))
+      return { w: 10.5, h: 0.55 + (promptLines * 0.22) }
+    }
     case 'WritingField': {
       const writingLines = Number(options.writing_lines ?? 3)
-      return { w: 10.5, h: Math.max(1.3, 0.55 + (writingLines * 0.32)) }
+      return { w: 10.5, h: Math.max(1.15, 0.45 + (writingLines * 0.32)) }
     }
     case 'CheckpointPanel':
-      return { w: 10.5, h: 0.9 }
+      return { w: 10.5, h: 0.8 }
     case 'SupportToolPanel':
-      return { w: 5.0, h: 1.8 }
-    case 'SuccessCheckPanel':
-      return { w: 5.0, h: 1.8 }
+    case 'SuccessCheckPanel': {
+      const itemCount = Number(options.item_count ?? 2)
+      const compact = options.compact === true
+      const fullWidth = options.full_width === true
+      const baseHeight = compact ? 0.42 : 0.5
+      const perItemHeight = compact ? 0.24 : 0.3
+      return {
+        w: fullWidth ? 10.5 : 5.0,
+        h: Math.max(compact ? 0.9 : 1.05, baseHeight + (itemCount * perItemHeight)),
+      }
+    }
     case 'FinalDraftField': {
       const writingLines = Number(options.writing_lines ?? 10)
       return { w: 10.5, h: Math.max(3.6, 0.8 + (writingLines * 0.34)) }
@@ -121,8 +135,121 @@ function mapSlideComponents(slide, index) {
   return components.map(withEstimatedLayout)
 }
 
+function taskSheetLayoutMode(route = {}, section = {}) {
+  const tasks = Array.isArray(section?.tasks) ? section.tasks : []
+  const density = route.density ?? 'medium'
+  const evidenceRole = route.evidence_role ?? 'planning_only'
+  const lengthBand = route.length_band ?? 'standard'
+  const multiPage = density === 'heavy' && tasks.length >= 5
+  const compact = multiPage || density === 'heavy' || route.render_intent === 'revision_strengthen' || route.render_intent === 'checkpoint_prep'
+  return {
+    density,
+    evidence_role: evidenceRole,
+    length_band: lengthBand,
+    multi_page: multiPage,
+    compact,
+    checkpoint_close: evidenceRole === 'checkpoint_evidence' || route.render_intent === 'checkpoint_prep',
+  }
+}
+
+function scaledTaskLines(lengthBand, count, baseLines = 4) {
+  let lines = baseLines
+  if (lengthBand === 'extended') lines += 2
+  if (lengthBand === 'short') lines = Math.max(2, lines - 1)
+  return Array.from({ length: count }, () => lines)
+}
+
+function instructionItems(section = {}, layout = {}) {
+  const items = Array.isArray(section.instructions) ? section.instructions.map((item) => String(item)) : []
+  if (layout.compact || layout.multi_page) return items.slice(0, 2)
+  return items
+}
+
+function estimateTaskVisualWeight(task = {}, renderedLines = 3) {
+  const prompt = String(task.prompt ?? '')
+  const promptLines = Math.max(1, Math.ceil(prompt.length / 72))
+  return (promptLines * 18) + (Number(renderedLines) * 20) + 36
+}
+
+function splitTasksForMultiPage(tasks = [], layout = {}) {
+  if (tasks.length <= 1) return [tasks, []]
+
+  const lineCounts = scaledTaskLines(layout.length_band, tasks.length, 3)
+  const firstPageBudget = layout.checkpoint_close ? 390 : 420
+  let currentWeight = 0
+  let splitIndex = 0
+
+  for (let index = 0; index < tasks.length - 1; index += 1) {
+    const taskWeight = estimateTaskVisualWeight(tasks[index], lineCounts[index])
+    const remainingWeight = tasks.slice(index + 1).reduce((sum, laterTask, laterIndex) => (
+      sum + estimateTaskVisualWeight(laterTask, lineCounts[index + 1 + laterIndex])
+    ), 0)
+
+    if (index >= 1 && currentWeight + taskWeight > firstPageBudget) break
+    if (index >= 1 && currentWeight + taskWeight > firstPageBudget - 24 && remainingWeight >= 170) break
+
+    currentWeight += taskWeight
+    splitIndex = index + 1
+  }
+
+  splitIndex = Math.min(Math.max(2, splitIndex), tasks.length - 1)
+  return [tasks.slice(0, splitIndex), tasks.slice(splitIndex)]
+}
+
+function footerItems(section = {}, maxSupportItems = 2, maxSuccessItems = 2) {
+  const supportItems = Array.isArray(section.embedded_supports)
+    ? section.embedded_supports.map((item) => String(item)).slice(0, maxSupportItems)
+    : []
+  const successItems = Array.isArray(section.success_criteria)
+    ? section.success_criteria.map((item) => String(item)).slice(0, maxSuccessItems)
+    : []
+  return { supportItems, successItems }
+}
+
+function mapWorksheetFooterComponents(section, pageIndex, compact = false, maxSupportItems = 2, maxSuccessItems = 2) {
+  const { supportItems, successItems } = footerItems(section, maxSupportItems, maxSuccessItems)
+  const components = []
+
+  if (supportItems.length > 0) {
+    components.push({
+      id: `page_${pageIndex + 1}_support_tools`,
+      type: 'SupportToolPanel',
+      visual_role: 'support_tools',
+      content: {
+        label: 'Helpful reminder',
+        items: supportItems,
+      },
+      options: {
+        item_count: supportItems.length,
+        compact,
+        full_width: successItems.length === 0,
+      },
+    })
+  }
+
+  if (successItems.length > 0) {
+    components.push({
+      id: `page_${pageIndex + 1}_success_check`,
+      type: 'SuccessCheckPanel',
+      visual_role: 'success_check',
+      content: {
+        label: 'Success check',
+        checklist: successItems,
+      },
+      options: {
+        item_count: successItems.length,
+        compact,
+        full_width: supportItems.length === 0,
+      },
+    })
+  }
+
+  return components
+}
+
 function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
   const checkpointMode = options.checkpoint_mode === true
+  const compact = options.compact === true
   const title = section.title ?? (pageRole === 'final_response' ? 'Final Response' : 'Task Sheet')
   const components = [
     {
@@ -148,19 +275,25 @@ function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
     })
   }
 
-  if (Array.isArray(section.instructions) && section.instructions.length > 0 && !checkpointMode) {
+  const instructionList = Array.isArray(options.instructions) ? options.instructions : []
+  if (instructionList.length > 0 && !checkpointMode) {
     components.push({
       id: `page_${pageIndex + 1}_entry`,
       type: 'EntryPanel',
       visual_role: 'secondary_prompt',
       content: {
         label: 'Before you start',
-        items: section.instructions.map((item) => String(item)),
+        items: instructionList,
+      },
+      options: {
+        item_count: instructionList.length,
+        compact,
       },
     })
   }
 
   const tasks = Array.isArray(options.tasks) ? options.tasks : (section.tasks ?? [])
+  const lineCounts = Array.isArray(options.line_counts) ? options.line_counts : scaledTaskLines(options.length_band ?? 'standard', tasks.length, compact ? 3 : 4)
   for (const [taskIndex, task] of tasks.entries()) {
     components.push({
       id: `page_${pageIndex + 1}_section_${taskIndex + 1}`,
@@ -170,40 +303,22 @@ function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
         label: task.label ?? `Part ${taskIndex + 1}`,
         prompt: task.prompt ?? '',
       },
+      options: {
+        prompt: task.prompt ?? '',
+      },
     })
     components.push({
       id: `page_${pageIndex + 1}_response_${taskIndex + 1}`,
       type: 'WritingField',
       visual_role: 'student_response',
       options: {
-        writing_lines: Number(task.lines ?? 3),
+        writing_lines: Number(lineCounts[taskIndex] ?? task.lines ?? 3),
       },
     })
   }
 
-  if (Array.isArray(section.embedded_supports) && section.embedded_supports.length > 0) {
-    components.push({
-      id: `page_${pageIndex + 1}_support_tools`,
-      type: 'SupportToolPanel',
-      visual_role: 'support_tools',
-      content: {
-        label: 'Support tools',
-        items: section.embedded_supports.map((item) => String(item)),
-      },
-    })
-  }
-
-  const successItems = Array.isArray(section.success_criteria) ? section.success_criteria.map((item) => String(item)) : []
-  if (successItems.length > 0) {
-    components.push({
-      id: `page_${pageIndex + 1}_success_check`,
-      type: 'SuccessCheckPanel',
-      visual_role: 'success_check',
-      content: {
-        label: 'Success check',
-        checklist: successItems,
-      },
-    })
+  if (pageRole !== 'final_response' && options.suppress_footer !== true) {
+    components.push(...mapWorksheetFooterComponents(section, pageIndex, compact, compact ? 2 : 2, compact ? 2 : 3))
   }
 
   if (pageRole === 'final_response') {
@@ -225,34 +340,45 @@ function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
 
 function inferTaskSheetPages(section, route = {}) {
   const tasks = Array.isArray(section?.tasks) ? section.tasks : []
-  const density = route.density ?? 'medium'
-  const evidenceRole = route.evidence_role ?? 'planning_only'
-  const multiPage = density === 'heavy' && tasks.length >= 5
+  const layout = taskSheetLayoutMode(route, section)
+  const instructions = instructionItems(section, layout)
 
-  if (!multiPage) {
+  if (!layout.multi_page) {
     return [
       {
         page_role: 'handout_page_1',
         layout_id: 'task_sheet_page_1',
         tasks,
+        line_counts: scaledTaskLines(layout.length_band, tasks.length, layout.compact ? 3 : 4),
         checkpoint_mode: false,
+        compact: layout.compact,
+        instructions,
+        suppress_footer: false,
       },
     ]
   }
 
-  const checkpointMode = evidenceRole === 'checkpoint_evidence'
+  const [page1Tasks, page2Tasks] = splitTasksForMultiPage(tasks, layout)
   return [
     {
       page_role: 'handout_page_1',
       layout_id: 'task_sheet_page_1',
-      tasks: tasks.slice(0, -1),
+      tasks: page1Tasks,
+      line_counts: scaledTaskLines(layout.length_band, page1Tasks.length, 3),
       checkpoint_mode: false,
+      compact: true,
+      instructions,
+      suppress_footer: true,
     },
     {
       page_role: 'handout_page_2',
       layout_id: 'task_sheet_page_2',
-      tasks: tasks.slice(-1),
-      checkpoint_mode: checkpointMode,
+      tasks: page2Tasks,
+      line_counts: scaledTaskLines(layout.length_band, page2Tasks.length, 3),
+      checkpoint_mode: layout.checkpoint_close,
+      compact: true,
+      instructions: [],
+      suppress_footer: layout.checkpoint_close,
     },
   ]
 }
@@ -304,26 +430,39 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
   }
 
   if (route.output_type === 'task_sheet') {
-    const pages = inferTaskSheetPages(sourceSection ?? {}, route).map((page, index) => ({
-      page_id: `${route.output_id}_page_${index + 1}`,
-      page_role: page.page_role,
-      checkpoint_mode: page.checkpoint_mode === true,
-      layout_id: page.layout_id,
-      components: mapWorksheetComponents(sourceSection ?? {}, page.page_role, index, {
-        tasks: page.tasks,
+    const pages = inferTaskSheetPages(sourceSection ?? {}, route).map((page, index) => {
+      const pageSection = page.suppress_footer ? {
+        ...(sourceSection ?? {}),
+        embedded_supports: [],
+        success_criteria: [],
+      } : (sourceSection ?? {})
+
+      return {
+        page_id: `${route.output_id}_page_${index + 1}`,
+        page_role: page.page_role,
         checkpoint_mode: page.checkpoint_mode === true,
-      }).map((component) => ({
-        ...component,
-        resolved_visual: resolveVisualStyle({
-          surfaceVariant,
-          instructionalVariant,
-          pageRole: page.page_role,
-          visualRole: component.visual_role,
-          componentType: component.type,
-          overrides: component.style ?? {},
-        }),
-      })),
-    }))
+        layout_id: page.layout_id,
+        components: mapWorksheetComponents(pageSection, page.page_role, index, {
+          tasks: page.tasks,
+          checkpoint_mode: page.checkpoint_mode === true,
+          compact: page.compact === true,
+          instructions: page.instructions,
+          line_counts: page.line_counts,
+          length_band: route.length_band,
+          suppress_footer: page.suppress_footer === true,
+        }).map((component) => ({
+          ...component,
+          resolved_visual: resolveVisualStyle({
+            surfaceVariant,
+            instructionalVariant,
+            pageRole: page.page_role,
+            visualRole: component.visual_role,
+            componentType: component.type,
+            overrides: component.style ?? {},
+          }),
+        })),
+      }
+    })
     return {
       route_id: route.route_id,
       output_id: route.output_id,
