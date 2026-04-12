@@ -1,5 +1,5 @@
 from reportlab.lib import colors
-from reportlab.platypus import KeepTogether, PageBreak, Paragraph, Spacer, Table, TableStyle, SimpleDocTemplate
+from reportlab.platypus import KeepTogether, PageBreak, Paragraph, Spacer, Table, TableStyle
 from student_pdf_shared import BORDER,CARD_BG,LIGHT_BORDER,PROMPT_BG,TASK_FOOTER_BG,TASK_FOOTER_BORDER,FINAL_FOOTER_BG,FINAL_FOOTER_BORDER,FINAL_FOOTER_GRID,compact_list_cell,normalize_string_list,clean_support_text
 
 TASK_PROFILES={
@@ -152,7 +152,18 @@ def render_task_sheet(base,styles_bundle,packet,section,out_path):
         for index,(task,lines) in enumerate(zip(tasks,line_counts)):
             story.append(base.build_task_block(styles,task,compact=False,rendered_lines=lines,show_help=_help_visible(layout,index,len(tasks),0)))
         _add_support_success_footer(styles,story,section,2,3)
-    SimpleDocTemplate(str(out_path),pagesize=base.letter,leftMargin=28,rightMargin=28,topMargin=20,bottomMargin=20).build(story)
+    base.build_printable_pdf(
+        story,
+        out_path,
+        packet=packet,
+        output_type='task_sheet',
+        section=section,
+        pagesize=base.letter,
+        left_margin=28,
+        right_margin=28,
+        top_margin=20,
+        bottom_margin=20,
+    )
 
 def draft_card(styles,story,section):
     reminders=[str(i) for i in section.get('planning_reminders',[])[:4] if str(i).strip()]
@@ -185,4 +196,15 @@ def render_final_response_sheet(base,styles_bundle,packet,section,out_path):
     base.purpose_line_block(story,styles,base.final_response_purpose_line(section));draft_card(styles,story,section)
     if assessment_weight=='high' and length_band in ('standard','extended'):section={**section,'response_lines':max(14,int(section.get('response_lines',12))+2)}
     final_writing_zone_block(base,styles,story,section);final_closing_band(styles,story,section)
-    SimpleDocTemplate(str(out_path),pagesize=base.letter,leftMargin=28,rightMargin=28,topMargin=20,bottomMargin=20).build(story)
+    base.build_printable_pdf(
+        story,
+        out_path,
+        packet=packet,
+        output_type='final_response_sheet',
+        section=section,
+        pagesize=base.letter,
+        left_margin=28,
+        right_margin=28,
+        top_margin=20,
+        bottom_margin=20,
+    )

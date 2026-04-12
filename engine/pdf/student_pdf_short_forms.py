@@ -1,5 +1,5 @@
 from reportlab.lib import colors
-from reportlab.platypus import Paragraph, Spacer, Table, TableStyle, SimpleDocTemplate
+from reportlab.platypus import Paragraph, Spacer, Table, TableStyle
 from student_pdf_shared import (
     BORDER,
     CARD_BG,
@@ -52,7 +52,6 @@ def render_exit_ticket(base, styles_bundle, packet: dict, section: dict, out_pat
     story = []
     profile = section_render_profile(section)
 
-    # High-weight exit tickets get a distinct title and slightly expanded response area
     is_final_evidence = assessment_weight == 'high' or render_intent == 'final_evidence'
     sheet_title = 'Final Exit Ticket' if is_final_evidence else 'Exit Ticket'
     base_line_count = max(5, int(section.get('n_lines', 5)))
@@ -66,10 +65,7 @@ def render_exit_ticket(base, styles_bundle, packet: dict, section: dict, out_pat
 
     prompt = str(section.get('prompt', '')).strip()
     if prompt:
-        prompt_card = Table([[[
-            Paragraph(profile['prompt_label'], styles['SectionHeadX']),
-            Paragraph(prompt, styles['BodyText']),
-        ]]], colWidths=[540])
+        prompt_card = Table([[[Paragraph(profile['prompt_label'], styles['SectionHeadX']), Paragraph(prompt, styles['BodyText'])]]], colWidths=[540])
         prompt_card.setStyle(TableStyle([
             ('BACKGROUND', (0, 0), (-1, -1), PROMPT_BG),
             ('BOX', (0, 0), (-1, -1), 0.5, BORDER),
@@ -82,12 +78,7 @@ def render_exit_ticket(base, styles_bundle, packet: dict, section: dict, out_pat
         story.append(prompt_card)
         story.append(Spacer(1, 6))
 
-    response_card = Table([[[
-        Paragraph(profile['response_label'], styles['SectionHeadX']),
-        Paragraph(profile['response_note'], styles['HintX']),
-        Spacer(1, 4),
-        base.response_line_table(line_count, row_height=18),
-    ]]], colWidths=[540])
+    response_card = Table([[[Paragraph(profile['response_label'], styles['SectionHeadX']), Paragraph(profile['response_note'], styles['HintX']), Spacer(1, 4), base.response_line_table(line_count, row_height=18)]]], colWidths=[540])
     response_card.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), CARD_BG),
         ('BOX', (0, 0), (-1, -1), 0.5, BORDER),
@@ -118,5 +109,15 @@ def render_exit_ticket(base, styles_bundle, packet: dict, section: dict, out_pat
     ]))
     story.append(footer)
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=base.letter, leftMargin=28, rightMargin=28, topMargin=20, bottomMargin=20)
-    doc.build(story)
+    base.build_printable_pdf(
+        story,
+        out_path,
+        packet=packet,
+        output_type='exit_ticket',
+        section={'title': sheet_title, **section},
+        pagesize=base.letter,
+        left_margin=28,
+        right_margin=28,
+        top_margin=20,
+        bottom_margin=20,
+    )

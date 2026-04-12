@@ -13,11 +13,12 @@ from reportlab.platypus import (
     KeepTogether,
     PageBreak,
     Paragraph,
-    SimpleDocTemplate,
     Spacer,
     Table,
     TableStyle,
 )
+
+from document_chrome import build_printable_pdf
 
 WORKSHEET_PAGE_USABLE_HEIGHT = int(letter[1] - 40)
 WORKSHEET_HEADER_HEIGHT_ESTIMATE = 60
@@ -53,11 +54,11 @@ def load_packet(path: Path) -> dict:
 def styles_bundle():
     styles = getSampleStyleSheet()
     styles.add(ParagraphStyle(name='CenterTitleX', parent=styles['Heading1'], alignment=TA_CENTER, fontSize=18, leading=22))
-    styles.add(ParagraphStyle(name='TitleBarX', parent=styles['Heading2'], alignment=TA_LEFT, fontSize=14, leading=16, textColor=colors.white, spaceAfter=0))
-    styles.add(ParagraphStyle(name='SheetTitleX', parent=styles['Heading2'], fontSize=14, leading=16, textColor=colors.HexColor('#0f172a'), spaceAfter=2))
+    styles.add(ParagraphStyle(name='TitleBarX', parent=styles['Heading2'], alignment=TA_LEFT, fontSize=14, leading=16, textColor=colors.white, spaceAfter=0, keepWithNext=True))
+    styles.add(ParagraphStyle(name='SheetTitleX', parent=styles['Heading2'], fontSize=14, leading=16, textColor=colors.HexColor('#0f172a'), spaceAfter=2, keepWithNext=True))
     styles.add(ParagraphStyle(name='PurposeLineX', parent=styles['BodyText'], fontSize=9.3, leading=10.8, textColor=colors.HexColor('#0f172a'), alignment=TA_LEFT))
-    styles.add(ParagraphStyle(name='SmallHeadX', parent=styles['Heading3'], spaceAfter=6, fontSize=12, leading=14))
-    styles.add(ParagraphStyle(name='SectionHeadX', parent=styles['Heading3'], fontSize=10.2, leading=11.6, textColor=colors.HexColor('#0f172a'), spaceAfter=3))
+    styles.add(ParagraphStyle(name='SmallHeadX', parent=styles['Heading3'], spaceAfter=6, fontSize=12, leading=14, keepWithNext=True))
+    styles.add(ParagraphStyle(name='SectionHeadX', parent=styles['Heading3'], fontSize=10.2, leading=11.6, textColor=colors.HexColor('#0f172a'), spaceAfter=3, keepWithNext=True))
     styles.add(ParagraphStyle(name='BodyTextCompactX', parent=styles['BodyText'], fontSize=8.7, leading=10.1))
     styles.add(ParagraphStyle(name='MicroX', parent=styles['BodyText'], fontSize=8.2, leading=9.4))
     styles.add(ParagraphStyle(name='MutedX', parent=styles['BodyText'], fontSize=8.8, leading=10.0, textColor=colors.HexColor('#475569')))
@@ -384,8 +385,18 @@ def render_teacher_guide(packet: dict, section: dict, out_path: Path) -> None:
     add_bullet_section(story, styles, 'Support moves', section.get('support_moves', []))
     add_bullet_section(story, styles, 'Extension moves', section.get('extension_moves', []), spacer_after=0)
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
-    doc.build(story)
+    build_printable_pdf(
+        story,
+        out_path,
+        packet=packet,
+        output_type='teacher_guide',
+        section=section,
+        pagesize=letter,
+        left_margin=36,
+        right_margin=36,
+        top_margin=36,
+        bottom_margin=36,
+    )
 
 
 def render_lesson_overview(packet: dict, section: dict, out_path: Path) -> None:
@@ -418,8 +429,18 @@ def render_lesson_overview(packet: dict, section: dict, out_path: Path) -> None:
         for item in section['integrity_checks']:
             story.append(Paragraph(f'• {item}', styles['BodyText']))
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
-    doc.build(story)
+    build_printable_pdf(
+        story,
+        out_path,
+        packet=packet,
+        output_type='lesson_overview',
+        section=section,
+        pagesize=letter,
+        left_margin=36,
+        right_margin=36,
+        top_margin=36,
+        bottom_margin=36,
+    )
 
 
 def purpose_line_for_task_sheet(section: dict) -> str:
@@ -729,8 +750,18 @@ def render_task_sheet(packet: dict, section: dict, out_path: Path) -> None:
         plain_label_block(story, styles, 'Support tools', section.get('embedded_supports', []), compact=True, spacer_after=5)
         plain_label_block(story, styles, 'Success check', section.get('success_criteria', []), compact=True, spacer_after=0)
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=28, rightMargin=28, topMargin=20, bottomMargin=20)
-    doc.build(story)
+    build_printable_pdf(
+        story,
+        out_path,
+        packet=packet,
+        output_type='task_sheet',
+        section=section,
+        pagesize=letter,
+        left_margin=28,
+        right_margin=28,
+        top_margin=20,
+        bottom_margin=20,
+    )
 
 
 def render_checkpoint_sheet(packet: dict, section: dict, out_path: Path) -> None:
@@ -757,8 +788,18 @@ def render_checkpoint_sheet(packet: dict, section: dict, out_path: Path) -> None
     if section.get('release_rule'):
         story.append(Paragraph(f"<b>Release rule</b>: {section['release_rule']}", styles['BodyText']))
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
-    doc.build(story)
+    build_printable_pdf(
+        story,
+        out_path,
+        packet=packet,
+        output_type='checkpoint_sheet',
+        section=section,
+        pagesize=letter,
+        left_margin=36,
+        right_margin=36,
+        top_margin=36,
+        bottom_margin=36,
+    )
 
 
 def render_final_response_sheet(packet: dict, section: dict, out_path: Path) -> None:
@@ -775,8 +816,18 @@ def render_final_response_sheet(packet: dict, section: dict, out_path: Path) -> 
     final_writing_zone(story, styles, int(section.get('response_lines', 10)))
     final_success_check(story, styles, section)
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=28, rightMargin=28, topMargin=20, bottomMargin=20)
-    doc.build(story)
+    build_printable_pdf(
+        story,
+        out_path,
+        packet=packet,
+        output_type='final_response_sheet',
+        section=section,
+        pagesize=letter,
+        left_margin=28,
+        right_margin=28,
+        top_margin=20,
+        bottom_margin=20,
+    )
 
 
 def render_worksheet(packet: dict, section: dict, out_path: Path) -> None:
@@ -836,8 +887,18 @@ def render_worksheet(packet: dict, section: dict, out_path: Path) -> None:
             remaining_height = WORKSHEET_PAGE_USABLE_HEIGHT - WORKSHEET_HEADER_HEIGHT_ESTIMATE
         plain_label_block(story, styles, 'Self-check', self_check_items, compact=False, spacer_after=0)
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=20, bottomMargin=20)
-    doc.build(story)
+    build_printable_pdf(
+        story,
+        out_path,
+        packet=packet,
+        output_type='worksheet',
+        section=section,
+        pagesize=letter,
+        left_margin=36,
+        right_margin=36,
+        top_margin=20,
+        bottom_margin=20,
+    )
 
 
 def render_exit_ticket(packet: dict, section: dict, out_path: Path) -> None:
@@ -856,8 +917,18 @@ def render_exit_ticket(packet: dict, section: dict, out_path: Path) -> None:
         for item in section['success_criteria']:
             story.append(Paragraph(f'• {item}', styles['BodyText']))
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
-    doc.build(story)
+    build_printable_pdf(
+        story,
+        out_path,
+        packet=packet,
+        output_type='exit_ticket',
+        section=section,
+        pagesize=letter,
+        left_margin=36,
+        right_margin=36,
+        top_margin=36,
+        bottom_margin=36,
+    )
 
 
 def main() -> None:
