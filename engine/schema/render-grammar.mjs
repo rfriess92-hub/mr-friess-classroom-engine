@@ -85,6 +85,10 @@ function explicitRenderGrammar(output = {}, sourceSection = null) {
   }
 }
 
+function corpusIncludesAny(corpus, values) {
+  return values.some((value) => corpus.includes(value))
+}
+
 function inferRenderIntent(outputType, output, sourceSection) {
   const corpus = sectionCorpus(sourceSection)
   if (output?.final_evidence === true || outputType === 'final_response_sheet') return 'final_evidence'
@@ -98,16 +102,28 @@ function inferRenderIntent(outputType, output, sourceSection) {
   }
 
   if (outputType === 'task_sheet') {
-    if (corpus.includes('guided note-catcher') || corpus.includes('guided note catcher') || corpus.includes('while watching')) {
+    if (corpusIncludesAny(corpus, ['guided note-catcher', 'guided note catcher', 'while watching'])) {
       return 'guided_note_catch'
     }
-    if (corpus.includes('revise') || corpus.includes('improve') || corpus.includes('strengthen') || corpus.includes('re-open')) {
+    if (corpusIncludesAny(corpus, ['revise', 'improve', 'strengthen', 're-open'])) {
       return 'revision_strengthen'
     }
-    if (corpus.includes('compare') || corpus.includes('sort')) {
+
+    const hasCompare = corpusIncludesAny(corpus, ['compare', 'sort'])
+    const hasRecommendation = corpusIncludesAny(corpus, ['recommendation', 'recommend'])
+    const hasEvidence = corpus.includes('evidence')
+    const hasExplanationSignal = corpusIncludesAny(corpus, ['explain', 'explanation', 'data', 'pattern', 'claim'])
+
+    if (hasCompare && hasRecommendation) {
       return 'compare_sort'
     }
-    if (corpus.includes('evidence')) {
+    if (hasEvidence && hasExplanationSignal) {
+      return 'evidence_capture'
+    }
+    if (hasCompare) {
+      return 'compare_sort'
+    }
+    if (hasEvidence) {
       return 'evidence_capture'
     }
     return 'exploratory_planning'
