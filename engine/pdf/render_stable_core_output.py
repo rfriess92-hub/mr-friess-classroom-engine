@@ -24,6 +24,7 @@ from student_pdf_shared import (
 )
 from student_pdf_task_sheets import (
     task_profile,
+    pattern_task_box,
     integrated_task_box,
     add_day1_page2_footer,
     add_day2_footer,
@@ -125,6 +126,9 @@ def worksheet_question_block(styles, question: dict):
 
 
 def build_task_block(styles, task: dict, compact=False, spacing_scale: float = 1.0, rendered_lines: int | None = None, **_kwargs):
+    patterned = pattern_task_box(base, styles, task, compact=compact, rendered_lines=rendered_lines)
+    if patterned is not None:
+        return patterned
     profile = task_profile(task)
     if compact:
         return integrated_task_box(base, styles, profile)

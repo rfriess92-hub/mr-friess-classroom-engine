@@ -19,13 +19,21 @@
       {
         "day": "Day 1",
         "focus": "Launch the enzyme problem, read the reaction-rate data, identify patterns, and prepare for a teacher checkpoint.",
-        "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet"],
+        "artifacts": [
+          "Slides",
+          "Task Sheet",
+          "Checkpoint Sheet"
+        ],
         "carryover": "Student planning and evidence from the task sheet continue into Day 2."
       },
       {
         "day": "Day 2",
         "focus": "Re-open the Day 1 planning, strengthen cause-and-effect explanation, and write a final biology response using evidence.",
-        "artifacts": ["Slides", "Task Sheet", "Final Response Sheet"],
+        "artifacts": [
+          "Slides",
+          "Task Sheet",
+          "Final Response Sheet"
+        ],
         "carryover": "Day 1 evidence and revision notes stay available while students draft the final response."
       }
     ],
@@ -52,13 +60,34 @@
       "Day 2 final response sheet"
     ],
     "timing": [
-      {"time": "Day 1 / 0:00-0:10", "activity": "Launch the enzyme question and establish what catalase activity data can show."},
-      {"time": "Day 1 / 0:10-0:22", "activity": "Study the temperature and pH data set and identify visible patterns."},
-      {"time": "Day 1 / 0:22-0:38", "activity": "Students record observations, evidence, and an initial biological explanation in the task sheet."},
-      {"time": "Day 1 / 0:38-0:50", "activity": "Teacher uses the checkpoint sheet to confirm students can link data to an enzyme explanation."},
-      {"time": "Day 2 / 0:00-0:12", "activity": "Re-open planning and compare weak versus strong biological explanation."},
-      {"time": "Day 2 / 0:12-0:28", "activity": "Students revise one weak part of their evidence or mechanism explanation in the Day 2 task sheet."},
-      {"time": "Day 2 / 0:28-0:50", "activity": "Students write the final biology response in the final response sheet."}
+      {
+        "time": "Day 1 / 0:00-0:10",
+        "activity": "Launch the enzyme question and establish what catalase activity data can show."
+      },
+      {
+        "time": "Day 1 / 0:10-0:22",
+        "activity": "Study the temperature and pH data set and identify visible patterns."
+      },
+      {
+        "time": "Day 1 / 0:22-0:38",
+        "activity": "Students record observations, evidence, and an initial biological explanation in the task sheet."
+      },
+      {
+        "time": "Day 1 / 0:38-0:50",
+        "activity": "Teacher uses the checkpoint sheet to confirm students can link data to an enzyme explanation."
+      },
+      {
+        "time": "Day 2 / 0:00-0:12",
+        "activity": "Re-open planning and compare weak versus strong biological explanation."
+      },
+      {
+        "time": "Day 2 / 0:12-0:28",
+        "activity": "Students revise one weak part of their evidence or mechanism explanation in the Day 2 task sheet."
+      },
+      {
+        "time": "Day 2 / 0:28-0:50",
+        "activity": "Students write the final biology response in the final response sheet."
+      }
     ],
     "teacher_notes": [
       "Keep the distinction visible between describing the data pattern and explaining why the pattern happens biologically.",
@@ -90,11 +119,30 @@
   },
   "bundle": {
     "bundle_id": "biology_11_enzyme_activity_factors_bundle",
-    "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "task_sheet", "checkpoint_sheet", "final_response_sheet"]
+    "declared_outputs": [
+      "lesson_overview",
+      "teacher_guide",
+      "slides",
+      "task_sheet",
+      "checkpoint_sheet",
+      "final_response_sheet"
+    ]
   },
   "outputs": [
-    {"output_id": "lesson_overview_main", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview", "bundle": "biology_11_enzyme_activity_factors_bundle"},
-    {"output_id": "teacher_guide_main", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "biology_11_enzyme_activity_factors_bundle"}
+    {
+      "output_id": "lesson_overview_main",
+      "output_type": "lesson_overview",
+      "audience": "teacher",
+      "source_section": "lesson_overview",
+      "bundle": "biology_11_enzyme_activity_factors_bundle"
+    },
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "biology_11_enzyme_activity_factors_bundle"
+    }
   ],
   "days": [
     {
@@ -102,12 +150,92 @@
       "day_label": "Day 1",
       "carryover_note": "Student evidence and planning continue into Day 2.",
       "slides": [
-        {"type": "TITLE", "title": "Enzyme Activity and Environmental Factors - Day 1", "layout": "hero", "content": {"subtitle": "Launch the question, study the data, and plan an evidence-based biology explanation."}},
-        {"type": "ENGAGE", "title": "Why do enzymes have optimal conditions?", "layout": "prompt", "content": {"scenario": "Catalase helps break down hydrogen peroxide. A Biology 11 class tests catalase activity at different temperatures and pH conditions. How can the data show which conditions support enzyme activity best?", "prompts": ["What condition do you predict will work best?", "What kind of data would count as evidence?", "How could the enzyme become less effective?"]}},
-        {"type": "LEARN", "title": "Reaction-rate data set", "layout": "two_column", "content": {"columns": [{"title": "Temperature results", "items": ["5 C -> low bubble production", "20 C -> moderate bubble production", "35 C -> highest bubble production", "60 C -> very low bubble production"]}, {"title": "pH results", "items": ["pH 3 -> very low activity", "pH 7 -> highest activity", "pH 9 -> reduced activity", "Use the pattern, not just one number, to support your claim."]}]}},
-        {"type": "APPLY", "title": "Model: observation, evidence, explanation", "layout": "planner_model", "content": {"model": "Claim: Catalase worked best near body temperature and neutral pH. Evidence: The data show the highest activity at 35 C and pH 7, while activity drops sharply at 60 C and pH 3. Explanation: This suggests catalase functions best in a moderate environment because extreme heat or pH can change the enzyme enough to reduce how well it binds with its substrate.", "supports": ["The explanation tells why the pattern happens biologically.", "The evidence names the data points clearly.", "The claim is stronger because it is tied to the evidence."]}},
-        {"type": "APPLY", "title": "Plan your explanation", "layout": "retrieval", "content": {"task": "Use your task sheet to record what the data show and what biological explanation fits the pattern.", "prompts": ["Which condition looked most effective?", "Which condition reduced activity the most?", "What mechanism could explain the drop in activity?"]}},
-        {"type": "REFLECT", "title": "Checkpoint prep", "layout": "reflect", "content": {"prompts": ["Which data point is most important for your explanation?", "What part of your biology explanation still needs work?", "How will you explain more than just the trend line?"]}}
+        {
+          "type": "TITLE",
+          "title": "Enzyme Activity and Environmental Factors - Day 1",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Launch the question, study the data, and plan an evidence-based biology explanation."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Why do enzymes have optimal conditions?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Catalase helps break down hydrogen peroxide. A Biology 11 class tests catalase activity at different temperatures and pH conditions. How can the data show which conditions support enzyme activity best?",
+            "prompts": [
+              "What condition do you predict will work best?",
+              "What kind of data would count as evidence?",
+              "How could the enzyme become less effective?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Reaction-rate data set",
+          "layout": "two_column",
+          "content": {
+            "columns": [
+              {
+                "title": "Temperature results",
+                "items": [
+                  "5 C -> low bubble production",
+                  "20 C -> moderate bubble production",
+                  "35 C -> highest bubble production",
+                  "60 C -> very low bubble production"
+                ]
+              },
+              {
+                "title": "pH results",
+                "items": [
+                  "pH 3 -> very low activity",
+                  "pH 7 -> highest activity",
+                  "pH 9 -> reduced activity",
+                  "Use the pattern, not just one number, to support your claim."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Model: observation, evidence, explanation",
+          "layout": "planner_model",
+          "content": {
+            "model": "Claim: Catalase worked best near body temperature and neutral pH. Evidence: The data show the highest activity at 35 C and pH 7, while activity drops sharply at 60 C and pH 3. Explanation: This suggests catalase functions best in a moderate environment because extreme heat or pH can change the enzyme enough to reduce how well it binds with its substrate.",
+            "supports": [
+              "The explanation tells why the pattern happens biologically.",
+              "The evidence names the data points clearly.",
+              "The claim is stronger because it is tied to the evidence."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Plan your explanation",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your task sheet to record what the data show and what biological explanation fits the pattern.",
+            "prompts": [
+              "Which condition looked most effective?",
+              "Which condition reduced activity the most?",
+              "What mechanism could explain the drop in activity?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Checkpoint prep",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Which data point is most important for your explanation?",
+              "What part of your biology explanation still needs work?",
+              "How will you explain more than just the trend line?"
+            ]
+          }
+        }
       ],
       "task_sheet": {
         "title": "Day 1 Task Sheet",
@@ -117,11 +245,66 @@
           "Prepare one biological explanation to take into the checkpoint."
         ],
         "tasks": [
-          {"label": "Part A", "prompt": "Summarize the strongest pattern you notice in the enzyme data set.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part A - Describe the main data pattern", "help": "If you need it: name the condition with the highest activity and one condition where activity dropped.", "lines": 4, "row_height": 14}},
-          {"label": "Part B", "prompt": "Choose one temperature or pH condition that best supports your claim and record the evidence.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part B - Choose your best evidence", "help": "If you need it: use at least one specific condition and the observed activity level.", "lines": 4, "row_height": 14}},
-          {"label": "Part C", "prompt": "Explain how the data suggest enzyme activity changed under that condition.", "lines": 5, "render_hints": {"profile": "generic", "heading": "Part C - Connect the evidence to enzyme function", "help": "If you need it: explain whether shape, denaturation, or reduced effective collisions could help account for the pattern.", "lines": 5, "row_height": 14}},
-          {"label": "Part D", "prompt": "Compare one optimal condition with one poor condition and state what the comparison tells you.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part D - Compare strong and weak conditions", "help": "If you need it: use a contrast sentence such as At ___ the enzyme worked better than at ___ because ___.", "lines": 4, "row_height": 14}},
-          {"label": "Part E", "prompt": "List one part of your explanation that still feels weak before the checkpoint.", "lines": 3, "render_hints": {"profile": "generic", "heading": "Part E - Name one revision target", "help": "If you need it: identify the idea you still need to explain more clearly before Day 2.", "lines": 3, "row_height": 14}}
+          {
+            "label": "Part A",
+            "prompt": "Summarize the strongest pattern you notice in the enzyme data set.",
+            "lines": 4,
+            "render_hints": {
+              "profile": "classification_table",
+              "heading": "Part A - Describe the main data pattern",
+              "help": "If you need it: name the condition with the highest activity and one condition where activity dropped.",
+              "lines": 4,
+              "row_height": 14
+            }
+          },
+          {
+            "label": "Part B",
+            "prompt": "Choose one temperature or pH condition that best supports your claim and record the evidence.",
+            "lines": 4,
+            "render_hints": {
+              "profile": "match-and-justify",
+              "heading": "Part B - Choose your best evidence",
+              "help": "If you need it: use at least one specific condition and the observed activity level.",
+              "lines": 4,
+              "row_height": 14
+            }
+          },
+          {
+            "label": "Part C",
+            "prompt": "Explain how the data suggest enzyme activity changed under that condition.",
+            "lines": 5,
+            "render_hints": {
+              "profile": "ranking_grid",
+              "heading": "Part C - Connect the evidence to enzyme function",
+              "help": "If you need it: explain whether shape, denaturation, or reduced effective collisions could help account for the pattern.",
+              "lines": 5,
+              "row_height": 14
+            }
+          },
+          {
+            "label": "Part D",
+            "prompt": "Compare one optimal condition with one poor condition and state what the comparison tells you.",
+            "lines": 4,
+            "render_hints": {
+              "profile": "generic",
+              "heading": "Part D - Compare strong and weak conditions",
+              "help": "If you need it: use a contrast sentence such as At ___ the enzyme worked better than at ___ because ___.",
+              "lines": 4,
+              "row_height": 14
+            }
+          },
+          {
+            "label": "Part E",
+            "prompt": "List one part of your explanation that still feels weak before the checkpoint.",
+            "lines": 3,
+            "render_hints": {
+              "profile": "generic",
+              "heading": "Part E - Name one revision target",
+              "help": "If you need it: identify the idea you still need to explain more clearly before Day 2.",
+              "lines": 3,
+              "row_height": 14
+            }
+          }
         ],
         "embedded_supports": [
           "Sentence starter: The data show that ___.",
@@ -134,7 +317,10 @@
           "I used at least one specific piece of evidence.",
           "I connected the evidence to enzyme function.",
           "I kept my planning in the declared task-sheet location."
-        ]
+        ],
+        "render_hints": {
+          "pattern": "scenario_panel"
+        }
       },
       "checkpoint_sheet": {
         "title": "Day 1 Checkpoint Sheet",
@@ -154,9 +340,27 @@
         "release_rule": "Release the Day 2 final response sheet only when the student can point to specific data and explain at least one biological reason why enzyme activity changed."
       },
       "outputs": [
-        {"output_id": "day1_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day_1.slides", "bundle": "biology_11_enzyme_activity_factors_bundle"},
-        {"output_id": "day1_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.day_1.task_sheet", "bundle": "biology_11_enzyme_activity_factors_bundle"},
-        {"output_id": "day1_checkpoint_sheet", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.day_1.checkpoint_sheet", "bundle": "biology_11_enzyme_activity_factors_bundle"}
+        {
+          "output_id": "day1_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_1.slides",
+          "bundle": "biology_11_enzyme_activity_factors_bundle"
+        },
+        {
+          "output_id": "day1_task_sheet",
+          "output_type": "task_sheet",
+          "audience": "student",
+          "source_section": "days.day_1.task_sheet",
+          "bundle": "biology_11_enzyme_activity_factors_bundle"
+        },
+        {
+          "output_id": "day1_checkpoint_sheet",
+          "output_type": "checkpoint_sheet",
+          "audience": "teacher",
+          "source_section": "days.day_1.checkpoint_sheet",
+          "bundle": "biology_11_enzyme_activity_factors_bundle"
+        }
       ]
     },
     {
@@ -164,12 +368,87 @@
       "day_label": "Day 2",
       "carryover_note": "Use Day 1 planning before drafting the final biology explanation.",
       "slides": [
-        {"type": "TITLE", "title": "Enzyme Activity and Environmental Factors - Day 2", "layout": "hero", "content": {"subtitle": "Re-open your planning, strengthen the mechanism explanation, and write your final biology response."}},
-        {"type": "ENGAGE", "title": "Re-open your evidence", "layout": "prompt", "content": {"scenario": "Before you write, look back at the data and explanation you built on Day 1.", "prompts": ["Which evidence still feels strongest?", "Which explanation is still too vague?", "What biology idea must be clearer in your final response?"]}},
-        {"type": "LEARN", "title": "Weak versus strong enzyme explanation", "layout": "two_column_compare", "content": {"left": "Weak: The enzyme worked less well at 60 C because the number got smaller.", "right": "Strong: The enzyme showed very low activity at 60 C, which suggests the enzyme was no longer functioning normally under high heat, likely because the enzyme's shape changed enough to reduce effective binding with the substrate.", "prompts": ["Which version explains the biology more clearly?", "What makes the stronger explanation more convincing?", "How can you revise your own explanation before drafting?"]}},
-        {"type": "APPLY", "title": "Revise one weak point", "layout": "prompt", "content": {"task": "Strengthen one evidence or mechanism explanation in your task sheet before you move to the final response sheet.", "prompts": ["Add a clearer cause-and-effect explanation.", "Use one more precise data point.", "Make sure your final answer stays in the final response sheet only."]}},
-        {"type": "APPLY", "title": "Check your final structure", "layout": "three_rows", "content": {"rows": [{"head": "Claim", "body": "State which condition best supported enzyme activity."}, {"head": "Evidence", "body": "Name at least one clear data point or condition comparison."}, {"head": "Explanation", "body": "Explain biologically why activity increased or decreased under those conditions."}]}},
-        {"type": "REFLECT", "title": "Finish the biology explanation", "layout": "reflect", "content": {"prompts": ["Which condition best supports your final claim?", "How did your explanation improve between Day 1 and Day 2?", "What biology idea made your final response stronger?"]}}
+        {
+          "type": "TITLE",
+          "title": "Enzyme Activity and Environmental Factors - Day 2",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Re-open your planning, strengthen the mechanism explanation, and write your final biology response."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Re-open your evidence",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Before you write, look back at the data and explanation you built on Day 1.",
+            "prompts": [
+              "Which evidence still feels strongest?",
+              "Which explanation is still too vague?",
+              "What biology idea must be clearer in your final response?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Weak versus strong enzyme explanation",
+          "layout": "two_column_compare",
+          "content": {
+            "left": "Weak: The enzyme worked less well at 60 C because the number got smaller.",
+            "right": "Strong: The enzyme showed very low activity at 60 C, which suggests the enzyme was no longer functioning normally under high heat, likely because the enzyme's shape changed enough to reduce effective binding with the substrate.",
+            "prompts": [
+              "Which version explains the biology more clearly?",
+              "What makes the stronger explanation more convincing?",
+              "How can you revise your own explanation before drafting?"
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Revise one weak point",
+          "layout": "prompt",
+          "content": {
+            "task": "Strengthen one evidence or mechanism explanation in your task sheet before you move to the final response sheet.",
+            "prompts": [
+              "Add a clearer cause-and-effect explanation.",
+              "Use one more precise data point.",
+              "Make sure your final answer stays in the final response sheet only."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Check your final structure",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              {
+                "head": "Claim",
+                "body": "State which condition best supported enzyme activity."
+              },
+              {
+                "head": "Evidence",
+                "body": "Name at least one clear data point or condition comparison."
+              },
+              {
+                "head": "Explanation",
+                "body": "Explain biologically why activity increased or decreased under those conditions."
+              }
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Finish the biology explanation",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Which condition best supports your final claim?",
+              "How did your explanation improve between Day 1 and Day 2?",
+              "What biology idea made your final response stronger?"
+            ]
+          }
+        }
       ],
       "task_sheet": {
         "title": "Day 2 Task Sheet",
@@ -179,9 +458,42 @@
           "Prepare one final cause-and-effect sentence before drafting."
         ],
         "tasks": [
-          {"label": "Part A", "prompt": "Review the condition you now think best supports enzyme activity and explain why you are keeping it in your final response.", "lines": 4, "render_hints": {"profile": "generic", "heading": "Part A - Keep your strongest enzyme claim", "help": "If you need it: state the condition first, then explain why it remains your best claim.", "lines": 4, "row_height": 14}},
-          {"label": "Part B", "prompt": "Revise one piece of evidence or one mechanism explanation so it supports your claim more clearly.", "lines": 5, "render_hints": {"profile": "generic", "heading": "Part B - Improve your evidence or mechanism explanation", "help": "If you need it: make the connection between the data and enzyme function more explicit.", "lines": 5, "row_height": 14}},
-          {"label": "Part C", "prompt": "Write one stronger cause-and-effect sentence you can reuse in your final response.", "lines": 3, "render_hints": {"profile": "generic", "heading": "Part C - Write one stronger cause-and-effect sentence", "help": "If you need it: use the frame This data suggests enzyme activity changed because ___.", "lines": 3, "row_height": 14}}
+          {
+            "label": "Part A",
+            "prompt": "Review the condition you now think best supports enzyme activity and explain why you are keeping it in your final response.",
+            "lines": 4,
+            "render_hints": {
+              "profile": "generic",
+              "heading": "Part A - Keep your strongest enzyme claim",
+              "help": "If you need it: state the condition first, then explain why it remains your best claim.",
+              "lines": 4,
+              "row_height": 14
+            }
+          },
+          {
+            "label": "Part B",
+            "prompt": "Revise one piece of evidence or one mechanism explanation so it supports your claim more clearly.",
+            "lines": 5,
+            "render_hints": {
+              "profile": "generic",
+              "heading": "Part B - Improve your evidence or mechanism explanation",
+              "help": "If you need it: make the connection between the data and enzyme function more explicit.",
+              "lines": 5,
+              "row_height": 14
+            }
+          },
+          {
+            "label": "Part C",
+            "prompt": "Write one stronger cause-and-effect sentence you can reuse in your final response.",
+            "lines": 3,
+            "render_hints": {
+              "profile": "generic",
+              "heading": "Part C - Write one stronger cause-and-effect sentence",
+              "help": "If you need it: use the frame This data suggests enzyme activity changed because ___.",
+              "lines": 3,
+              "row_height": 14
+            }
+          }
         ],
         "embedded_supports": [
           "Sentence starter: This condition supported enzyme activity because ___.",
@@ -223,9 +535,28 @@
         "response_lines": 10
       },
       "outputs": [
-        {"output_id": "day2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day_2.slides", "bundle": "biology_11_enzyme_activity_factors_bundle"},
-        {"output_id": "day2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.day_2.task_sheet", "bundle": "biology_11_enzyme_activity_factors_bundle"},
-        {"output_id": "day2_final_response_sheet", "output_type": "final_response_sheet", "audience": "student", "source_section": "days.day_2.final_response_sheet", "bundle": "biology_11_enzyme_activity_factors_bundle", "final_evidence": true}
+        {
+          "output_id": "day2_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_2.slides",
+          "bundle": "biology_11_enzyme_activity_factors_bundle"
+        },
+        {
+          "output_id": "day2_task_sheet",
+          "output_type": "task_sheet",
+          "audience": "student",
+          "source_section": "days.day_2.task_sheet",
+          "bundle": "biology_11_enzyme_activity_factors_bundle"
+        },
+        {
+          "output_id": "day2_final_response_sheet",
+          "output_type": "final_response_sheet",
+          "audience": "student",
+          "source_section": "days.day_2.final_response_sheet",
+          "bundle": "biology_11_enzyme_activity_factors_bundle",
+          "final_evidence": true
+        }
       ]
     }
   ]

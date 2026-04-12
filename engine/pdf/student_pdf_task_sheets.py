@@ -26,6 +26,27 @@ TASK_PROFILES = {
     'day2_stronger_explanation': {'heading': 'Part C - Try one stronger explanation', 'help': 'If you need it: use the frame This evidence matters because ___. Keep it to one clear sentence.', 'lines': 2, 'row_height': 15},
 }
 
+TASK_RENDER_PATTERNS = {
+    'classification_table',
+    'match-and-justify',
+    'ranking_grid',
+    'scenario_panel',
+}
+
+
+def section_render_pattern(section: dict) -> str:
+    hints = section.get('render_hints') if isinstance(section.get('render_hints'), dict) else {}
+    return str(hints.get('pattern') or section.get('pattern') or '').strip().lower()
+
+
+def task_render_pattern(task: dict, section_pattern: str = '') -> str:
+    hints = task.get('render_hints') if isinstance(task.get('render_hints'), dict) else {}
+    profile = str(hints.get('profile', '')).strip().lower()
+    if profile in TASK_RENDER_PATTERNS:
+        return profile
+    explicit = str(hints.get('pattern') or task.get('pattern') or task.get('_section_pattern') or section_pattern or '').strip().lower()
+    return explicit if explicit in TASK_RENDER_PATTERNS else ''
+
 
 def _task_profile_from_hints(task: dict):
     hints = task.get('render_hints') if isinstance(task.get('render_hints'), dict) else {}
@@ -84,6 +105,110 @@ def integrated_task_box(base, styles, profile: dict):
     table = Table([[inner]], colWidths=[540])
     table.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), CARD_BG), ('BOX', (0, 0), (-1, -1), 0.5, BORDER), ('TOPPADDING', (0, 0), (-1, -1), 7), ('BOTTOMPADDING', (0, 0), (-1, -1), 7), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8), ('VALIGN', (0, 0), (-1, -1), 'TOP')]))
     return KeepTogether([table, Spacer(1, 6)])
+
+
+def _pattern_heading(task: dict, profile: dict) -> str:
+    return str(profile.get('heading') or task.get('label') or 'Task').strip()
+
+
+def _prompt_text(task: dict, profile: dict) -> str:
+    return str(profile.get('instruction') or task.get('prompt') or '').strip()
+
+
+def _items(task: dict) -> list:
+    items = task.get('items')
+    if isinstance(items, list):
+        return [str(item).strip() for item in items if str(item).strip()]
+    return []
+
+
+def classification_table_primitive(base, styles, task: dict, profile: dict, line_total: int):
+    prompt = _prompt_text(task, profile)
+    rows = max(3, line_total)
+    headers = ['Category', 'Example', 'Evidence']
+    grid = [headers] + [['', '', ''] for _ in range(rows)]
+    table_grid = Table(grid, colWidths=[170, 170, 170], rowHeights=[18] + [16] * rows)
+    table_grid.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), PROMPT_BG),
+        ('BOX', (0, 0), (-1, -1), 0.45, BORDER),
+        ('INNERGRID', (0, 0), (-1, -1), 0.35, LIGHT_BORDER),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('FONTSIZE', (0, 0), (-1, 0), 8.5),
+        ('LEFTPADDING', (0, 0), (-1, -1), 6),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 6),
+        ('TOPPADDING', (0, 0), (-1, -1), 3),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+    ]))
+    flow = [Paragraph(_pattern_heading(task, profile), styles['SectionHeadX']), Paragraph(prompt, styles['BodyText']), Spacer(1, 4), table_grid]
+    return KeepTogether([Table([[flow]], colWidths=[540], style=[('BACKGROUND', (0, 0), (-1, -1), CARD_BG), ('BOX', (0, 0), (-1, -1), 0.5, BORDER), ('TOPPADDING', (0, 0), (-1, -1), 7), ('BOTTOMPADDING', (0, 0), (-1, -1), 7), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8)]), Spacer(1, 6)])
+
+
+def match_and_justify_primitive(base, styles, task: dict, profile: dict, line_total: int):
+    prompt = _prompt_text(task, profile)
+    rows = max(3, line_total)
+    pairs = Table([['Match', 'Why it fits']] + [['', ''] for _ in range(rows)], colWidths=[200, 310], rowHeights=[18] + [18] * rows)
+    pairs.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), PROMPT_BG),
+        ('BOX', (0, 0), (-1, -1), 0.45, BORDER),
+        ('INNERGRID', (0, 0), (-1, -1), 0.35, LIGHT_BORDER),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('FONTSIZE', (0, 0), (-1, 0), 8.5),
+        ('LEFTPADDING', (0, 0), (-1, -1), 6),
+        ('TOPPADDING', (0, 0), (-1, -1), 3),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+    ]))
+    flow = [Paragraph(_pattern_heading(task, profile), styles['SectionHeadX']), Paragraph(prompt, styles['BodyText']), Spacer(1, 4), pairs]
+    return KeepTogether([Table([[flow]], colWidths=[540], style=[('BACKGROUND', (0, 0), (-1, -1), CARD_BG), ('BOX', (0, 0), (-1, -1), 0.5, BORDER), ('TOPPADDING', (0, 0), (-1, -1), 7), ('BOTTOMPADDING', (0, 0), (-1, -1), 7), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8)]), Spacer(1, 6)])
+
+
+def ranking_grid_primitive(base, styles, task: dict, profile: dict, line_total: int):
+    prompt = _prompt_text(task, profile)
+    labels = _items(task)[:4] or ['Option 1', 'Option 2', 'Option 3']
+    rows = [['Option', 'Rank', 'Why']] + [[label, '', ''] for label in labels]
+    grid = Table(rows, colWidths=[170, 70, 270], rowHeights=[18] + [18] * len(labels))
+    grid.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), PROMPT_BG),
+        ('BOX', (0, 0), (-1, -1), 0.45, BORDER),
+        ('INNERGRID', (0, 0), (-1, -1), 0.35, LIGHT_BORDER),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('FONTSIZE', (0, 0), (-1, 0), 8.5),
+        ('LEFTPADDING', (0, 0), (-1, -1), 6),
+        ('TOPPADDING', (0, 0), (-1, -1), 3),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+    ]))
+    flow = [Paragraph(_pattern_heading(task, profile), styles['SectionHeadX']), Paragraph(prompt, styles['BodyText']), Spacer(1, 4), grid]
+    if line_total > len(labels):
+        flow += [Spacer(1, 4), Paragraph('Additional justification', styles['InlineHelpX']), base.response_line_table(max(2, line_total - len(labels)), row_height=14)]
+    return KeepTogether([Table([[flow]], colWidths=[540], style=[('BACKGROUND', (0, 0), (-1, -1), CARD_BG), ('BOX', (0, 0), (-1, -1), 0.5, BORDER), ('TOPPADDING', (0, 0), (-1, -1), 7), ('BOTTOMPADDING', (0, 0), (-1, -1), 7), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8)]), Spacer(1, 6)])
+
+
+def scenario_panel_primitive(base, styles, task: dict, profile: dict, line_total: int):
+    stem = str(task.get('stem') or '').strip()
+    prompt = _prompt_text(task, profile)
+    flow = [Paragraph(_pattern_heading(task, profile), styles['SectionHeadX'])]
+    if stem:
+        panel = Table([[Paragraph(stem, styles['BodyText'])]], colWidths=[520])
+        panel.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), PROMPT_BG), ('BOX', (0, 0), (-1, -1), 0.45, LIGHT_BORDER), ('TOPPADDING', (0, 0), (-1, -1), 6), ('BOTTOMPADDING', (0, 0), (-1, -1), 6), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8)]))
+        flow += [Paragraph('Scenario', styles['ResponseLabelX']), panel, Spacer(1, 4)]
+    flow += [Paragraph(prompt, styles['BodyText']), Spacer(1, 4), base.response_line_table(max(3, line_total), row_height=15)]
+    return KeepTogether([Table([[flow]], colWidths=[540], style=[('BACKGROUND', (0, 0), (-1, -1), CARD_BG), ('BOX', (0, 0), (-1, -1), 0.5, BORDER), ('TOPPADDING', (0, 0), (-1, -1), 7), ('BOTTOMPADDING', (0, 0), (-1, -1), 7), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8)]), Spacer(1, 6)])
+
+
+def pattern_task_box(base, styles, task: dict, compact: bool = False, rendered_lines: int | None = None):
+    pattern = task_render_pattern(task)
+    if not pattern:
+        return None
+    profile = task_profile(task)
+    line_total = int(rendered_lines if rendered_lines is not None else profile.get('lines', task.get('lines', 4)))
+    if pattern == 'classification_table':
+        return classification_table_primitive(base, styles, task, profile, line_total)
+    if pattern == 'match-and-justify':
+        return match_and_justify_primitive(base, styles, task, profile, line_total)
+    if pattern == 'ranking_grid':
+        return ranking_grid_primitive(base, styles, task, profile, line_total)
+    if pattern == 'scenario_panel':
+        return scenario_panel_primitive(base, styles, task, profile, line_total)
+    return None
 
 
 def add_day2_footer(styles, story):
@@ -170,6 +295,7 @@ def _display_title(base, render_intent: str, raw_title: str) -> str:
 def render_task_sheet(base, styles_bundle, packet: dict, section: dict, out_path):
     grammar = packet.get('_render_grammar', {})
     tasks = section.get('tasks', [])
+    section_pattern = section_render_pattern(section)
     layout = _grammar_layout(grammar, tasks)
 
     styles = styles_bundle()
@@ -188,7 +314,8 @@ def render_task_sheet(base, styles_bundle, packet: dict, section: dict, out_path
     if layout['multi_page']:
         line_counts = _scaled_lines(layout['length_band'], len(tasks) - 1, base_lines=3)
         for task, lc in zip(tasks[:-1], line_counts):
-            story.append(base.build_task_block(styles, task, compact=True, spacing_scale=0.58,
+            task_payload = {**task, '_section_pattern': section_pattern}
+            story.append(base.build_task_block(styles, task_payload, compact=True, spacing_scale=0.58,
                                                rendered_lines=lc, line_style='MicroX',
                                                prompt_style='BodyTextCompactX', vertical_padding=3.5))
         story.append(PageBreak())
@@ -200,7 +327,7 @@ def render_task_sheet(base, styles_bundle, packet: dict, section: dict, out_path
         story.append(Paragraph(page2_title, styles['SheetTitleX']))
         story.append(Paragraph(page2_subtitle, styles['MutedX']))
         story.append(Spacer(1, 3))
-        story.append(base.build_task_block(styles, tasks[-1], compact=True, spacing_scale=0.72,
+        story.append(base.build_task_block(styles, {**tasks[-1], '_section_pattern': section_pattern}, compact=True, spacing_scale=0.72,
                                            rendered_lines=3, line_style='MicroX',
                                            prompt_style='BodyTextCompactX', vertical_padding=4.5))
         base.add_day1_page2_footer(story, styles, section)
@@ -208,7 +335,8 @@ def render_task_sheet(base, styles_bundle, packet: dict, section: dict, out_path
     elif layout['compact']:
         line_counts = _scaled_lines(layout['length_band'], len(tasks), base_lines=4)
         for task, lc in zip(tasks, line_counts):
-            story.append(base.build_task_block(styles, task, compact=True, spacing_scale=0.8,
+            task_payload = {**task, '_section_pattern': section_pattern}
+            story.append(base.build_task_block(styles, task_payload, compact=True, spacing_scale=0.8,
                                                rendered_lines=lc, line_style='MicroX',
                                                prompt_style='BodyTextCompactX', vertical_padding=4.5))
         if layout['checkpoint_close']:
@@ -222,7 +350,8 @@ def render_task_sheet(base, styles_bundle, packet: dict, section: dict, out_path
     else:
         line_counts = _scaled_lines(layout['length_band'], len(tasks), base_lines=4)
         for task, lc in zip(tasks, line_counts):
-            story.append(base.build_task_block(styles, task, compact=False, rendered_lines=lc))
+            task_payload = {**task, '_section_pattern': section_pattern}
+            story.append(base.build_task_block(styles, task_payload, compact=False, rendered_lines=lc))
         base.plain_label_block(story, styles, 'Support tools', section.get('embedded_supports', []),
                                compact=True, spacer_after=5)
         base.plain_label_block(story, styles, 'Success check', section.get('success_criteria', []),

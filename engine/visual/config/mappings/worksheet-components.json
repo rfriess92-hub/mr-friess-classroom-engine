@@ -11,7 +11,11 @@
     "worksheet_checkpoint_panel": "CheckpointPanel",
     "worksheet_support_tools": "SupportToolPanel",
     "worksheet_success_check": "SuccessCheckPanel",
-    "worksheet_final_draft_field": "FinalDraftField"
+    "worksheet_final_draft_field": "FinalDraftField",
+    "worksheet_classification_table": "ClassificationTable",
+    "worksheet_match_and_justify": "MatchAndJustify",
+    "worksheet_ranking_grid": "RankingGrid",
+    "worksheet_scenario_panel": "ScenarioPanel"
   },
   "page_role_defaults": {
     "handout_page_1": "task_sheet_page_1",
