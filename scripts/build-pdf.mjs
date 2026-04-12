@@ -1,0 +1,17 @@
+import { argValue, repoPath, ensureExists } from './lib.mjs'
+
+const lesson = argValue('--lesson')
+const outDir = argValue('--out') ?? 'output'
+
+if (!lesson) {
+  console.error('Usage: node scripts/build-pdf.mjs --lesson engine/content/your_lesson.json --out output')
+  process.exit(1)
+}
+
+console.warn('[deprecated] build:pdf is a legacy direct-lesson surface and is not the authoritative stable-core acceptance workflow.')
+console.warn('[deprecated] For stable-core packages use: schema:check -> route:plan -> render:package -> qa:bundle')
+
+ensureExists(repoPath(lesson), lesson)
+console.log(`Legacy PDF build stub ready for ${lesson}`)
+console.log(`Requested output directory: ${outDir}`)
+console.log('Direct lesson-to-PDF rendering is still transitional. Use the stable-core package path for acceptance proof.')
