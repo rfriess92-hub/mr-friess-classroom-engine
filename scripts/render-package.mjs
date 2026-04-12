@@ -86,6 +86,10 @@ function writeVisualSidecar(outDir, route, visualBundle) {
 function writeImageSidecar(outDir, route, visualBundle) {
   const imagePayload = {
     output_id: route.output_id,
+    requested_surface_variant: visualBundle.requested_surface_variant ?? null,
+    surface_variant: visualBundle.surface_variant ?? 'baseline',
+    instructional_variant: visualBundle.instructional_variant ?? 'core',
+    token_set: visualBundle.token_set ?? 'baseline_default',
     image_qa: visualBundle.image_qa ?? null,
     pages: (visualBundle.visual_plan?.pages ?? []).map((page) => ({
       page_id: page.page_id,
@@ -101,7 +105,7 @@ function writeImageSidecar(outDir, route, visualBundle) {
   )
 }
 
-function writeGrammarSidecar(outDir, route) {
+function writeGrammarSidecar(outDir, route, visualBundle) {
   const grammarPayload = {
     output_id: route.output_id,
     artifact_family: route.artifact_family,
@@ -110,6 +114,10 @@ function writeGrammarSidecar(outDir, route) {
     assessment_weight: route.assessment_weight,
     density: route.density,
     length_band: route.length_band,
+    requested_surface_variant: visualBundle?.requested_surface_variant ?? null,
+    surface_variant: visualBundle?.surface_variant ?? 'baseline',
+    instructional_variant: visualBundle?.instructional_variant ?? 'core',
+    token_set: visualBundle?.token_set ?? 'baseline_default',
   }
   writeFileSync(
     resolve(outDir, `${route.output_id}.grammar.json`),
@@ -153,7 +161,7 @@ for (const route of routes) {
   const visualBundle = buildRouteVisualPlan(pkg, route)
   writeVisualSidecar(outDir, route, visualBundle)
   writeImageSidecar(outDir, route, visualBundle)
-  writeGrammarSidecar(outDir, route)
+  writeGrammarSidecar(outDir, route, visualBundle)
 
   if (route.renderer_family === 'pptx' && route.output_type === 'slides') {
     renderSlides(pkg, route, visualBundle.visual_plan, outDir)

@@ -70,6 +70,9 @@ function normalizeOutputEntry(pkg, entry, index) {
     variant_role: output.variant_role ?? null,
     alignment_target: output.alignment_target ?? null,
     final_evidence_target: output.final_evidence_target ?? null,
+    visual: {
+      surface_variant: output.visual?.surface_variant ?? pkg?.visual?.surface_variant ?? null,
+    },
     declared_bundle: output.bundle ?? pkg.bundle?.bundle_id ?? null,
     artifact_family: renderGrammar.artifact_family,
     render_intent: renderGrammar.render_intent,

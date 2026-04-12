@@ -67,6 +67,23 @@ export function resolveSurfaceVariant(surfaceVariant = 'baseline') {
   return config.variants.surface_variants?.[surfaceVariant] ?? config.variants.surface_variants?.baseline ?? { token_set: 'baseline_default' }
 }
 
+export function resolveSurfaceVariantSelection(surfaceVariant = 'baseline') {
+  const config = loadVisualConfig()
+  const requestedVariant = typeof surfaceVariant === 'string' && surfaceVariant.trim().length > 0
+    ? surfaceVariant.trim()
+    : 'baseline'
+  const resolvedVariant = config.variants.surface_variants?.[requestedVariant]
+    ? requestedVariant
+    : 'baseline'
+  const definition = resolveSurfaceVariant(requestedVariant)
+  return {
+    requested_variant: requestedVariant,
+    resolved_variant: resolvedVariant,
+    definition,
+    token_set: definition.token_set ?? 'baseline_default',
+  }
+}
+
 export function resolveInstructionalVariant(instructionalVariant = 'core') {
   const config = loadVisualConfig()
   return config.variants.instructional_variants?.[instructionalVariant] ?? config.variants.instructional_variants?.core ?? {}

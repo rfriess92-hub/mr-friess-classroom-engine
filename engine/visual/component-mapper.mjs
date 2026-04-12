@@ -1,4 +1,5 @@
 import { resolveVisualStyle } from './style-resolver.mjs'
+import { resolveSurfaceVariantSelection } from './load-config.mjs'
 
 function inferSlidePageRole(slide = {}) {
   const type = String(slide.type ?? '').toUpperCase()
@@ -254,7 +255,12 @@ function inferTaskSheetPages(section, route = {}) {
 }
 
 export function buildVisualArtifactPlan(pkg, route, sourceSection) {
-  const surfaceVariant = 'baseline'
+  const requestedSurfaceVariant = route.visual?.surface_variant
+    ?? pkg?.visual?.surface_variant
+    ?? 'baseline'
+  const surfaceSelection = resolveSurfaceVariantSelection(requestedSurfaceVariant)
+  const surfaceVariant = surfaceSelection.resolved_variant
+  const tokenSet = surfaceSelection.token_set
   const instructionalVariant = normalizeInstructionalVariant(route.variant_role)
 
   if (route.output_type === 'slides') {
@@ -292,9 +298,10 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
       output_id: route.output_id,
       output_type: route.output_type,
       artifact_type: 'slide_deck',
+      requested_surface_variant: surfaceSelection.requested_variant,
       surface_variant: surfaceVariant,
       instructional_variant: instructionalVariant,
-      token_set: resolveVisualStyle({ surfaceVariant }).token_set,
+      token_set: tokenSet,
       pages,
     }
   }
@@ -323,9 +330,10 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
       artifact_type: 'worksheet',
       render_intent: route.render_intent,
       density: route.density,
+      requested_surface_variant: surfaceSelection.requested_variant,
       surface_variant: surfaceVariant,
       instructional_variant: instructionalVariant,
-      token_set: resolveVisualStyle({ surfaceVariant }).token_set,
+      token_set: tokenSet,
       pages,
     }
   }
@@ -337,9 +345,10 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
       output_id: route.output_id,
       output_type: route.output_type,
       artifact_type: 'worksheet',
+      requested_surface_variant: surfaceSelection.requested_variant,
       surface_variant: surfaceVariant,
       instructional_variant: instructionalVariant,
-      token_set: resolveVisualStyle({ surfaceVariant }).token_set,
+      token_set: tokenSet,
       pages: [
         {
           page_id: `${route.output_id}_page_1`,
@@ -366,9 +375,10 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
     output_id: route.output_id,
     output_type: route.output_type,
     artifact_type: route.renderer_family === 'pptx' ? 'slide_deck' : 'worksheet',
+    requested_surface_variant: surfaceSelection.requested_variant,
     surface_variant: surfaceVariant,
     instructional_variant: instructionalVariant,
-    token_set: resolveVisualStyle({ surfaceVariant }).token_set,
+    token_set: tokenSet,
     pages: [],
   }
 }

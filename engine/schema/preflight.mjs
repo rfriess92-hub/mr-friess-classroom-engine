@@ -91,6 +91,17 @@ function isNonEmptyArray(value) {
   return Array.isArray(value) && value.length > 0
 }
 
+function validateVisualSelection(errors, path, visual) {
+  if (visual == null) return
+  if (typeof visual !== 'object' || Array.isArray(visual)) {
+    pushIssue(errors, 'invalid_visual_config', 'visual must be an object when present.', path)
+    return
+  }
+  if ('surface_variant' in visual && !isNonEmptyString(visual.surface_variant)) {
+    pushIssue(errors, 'invalid_visual_surface_variant', 'visual.surface_variant must be a non-empty string when present.', `${path}.surface_variant`)
+  }
+}
+
 function validateSlideShape(errors, warnings, slide, path) {
   if (!slide || typeof slide !== 'object' || Array.isArray(slide)) {
     pushIssue(errors, 'invalid_slide_entry', 'Each slide must be an object.', path)
@@ -217,6 +228,8 @@ export function validatePackage(pkg) {
   const declaredBundleOutputs = new Set(pkg?.bundle?.declared_outputs ?? [])
   let finalEvidenceCount = 0
 
+  validateVisualSelection(errors, 'visual', pkg.visual)
+
   for (const entry of outputEntries) {
     const output = entry.output ?? {}
     const rawOutputType = output.output_type
@@ -256,6 +269,8 @@ export function validatePackage(pkg) {
     if (output.embedded_support_elements && output.is_embedded !== true) {
       pushIssue(errors, 'embedded_support_not_marked_embedded', 'Outputs carrying embedded_support_elements must be marked is_embedded=true.', `${entry.path}.is_embedded`)
     }
+
+    validateVisualSelection(errors, `${entry.path}.visual`, output.visual)
 
     if (output.final_evidence === true) {
       finalEvidenceCount += 1

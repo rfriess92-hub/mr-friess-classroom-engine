@@ -39,7 +39,8 @@
     "task_sheet": { "$ref": "#/$defs/taskSheetSection" },
     "final_response_sheet": { "$ref": "#/$defs/finalResponseSection" },
     "exit_ticket": { "$ref": "#/$defs/exitTicketSection" },
-    "days": { "type": "array", "items": { "$ref": "#/$defs/day" } }
+    "days": { "type": "array", "items": { "$ref": "#/$defs/day" } },
+    "visual": { "$ref": "#/$defs/visualConfig" }
   },
   "allOf": [
     {
@@ -216,8 +217,16 @@
         "variant_role": { "type": "string", "enum": ["core", "shared_core", "supported", "support", "extension"] },
         "alignment_target": { "type": "string" },
         "final_evidence_target": { "type": "string" },
+        "visual": { "$ref": "#/$defs/visualConfig" },
         "image_intent": { "$ref": "#/$defs/imageIntent" },
         "embedded_support_elements": { "type": "array", "items": { "type": "object" } }
+      },
+      "additionalProperties": true
+    },
+    "visualConfig": {
+      "type": "object",
+      "properties": {
+        "surface_variant": { "type": "string", "minLength": 1 }
       },
       "additionalProperties": true
     },

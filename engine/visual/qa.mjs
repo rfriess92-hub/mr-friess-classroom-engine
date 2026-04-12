@@ -1,3 +1,5 @@
+import { loadVisualConfig } from './load-config.mjs'
+
 function majorComponents(page) {
   return (page.components ?? []).filter((component) => !['course_band', 'title', 'teacher_note'].includes(component.visual_role))
 }
@@ -13,9 +15,64 @@ function componentArea(component) {
   return width * height
 }
 
+function parseHexColor(value) {
+  if (typeof value !== 'string') return null
+  const normalized = value.trim()
+  const match = normalized.match(/^#([0-9a-f]{6})$/i)
+  if (!match) return null
+  const hex = match[1]
+  return {
+    r: Number.parseInt(hex.slice(0, 2), 16),
+    g: Number.parseInt(hex.slice(2, 4), 16),
+    b: Number.parseInt(hex.slice(4, 6), 16),
+  }
+}
+
+function relativeLuminance(rgb) {
+  const channels = [rgb.r, rgb.g, rgb.b].map((value) => {
+    const c = value / 255
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4
+  })
+  return (0.2126 * channels[0]) + (0.7152 * channels[1]) + (0.0722 * channels[2])
+}
+
+function contrastRatio(hexA, hexB) {
+  const a = parseHexColor(hexA)
+  const b = parseHexColor(hexB)
+  if (!a || !b) return null
+  const l1 = relativeLuminance(a)
+  const l2 = relativeLuminance(b)
+  const lighter = Math.max(l1, l2)
+  const darker = Math.min(l1, l2)
+  return (lighter + 0.05) / (darker + 0.05)
+}
+
 export function runVisualQaOnPlan(visualPlan) {
   const findings = []
   const pages = Array.isArray(visualPlan.pages) ? visualPlan.pages : []
+  const surfaceVariant = visualPlan.surface_variant ?? 'baseline'
+  const tokenSetId = visualPlan.token_set ?? 'baseline_default'
+
+  if (surfaceVariant !== 'baseline') {
+    const config = loadVisualConfig()
+    const tokenSet = config.resolvedTokenSets?.[tokenSetId] ?? {}
+    const colors = tokenSet.color ?? {}
+    const readabilityContrast = contrastRatio(colors.ink_primary, colors.paper)
+    const panelContrast = contrastRatio(colors.ink_primary, colors.panel)
+
+    if (readabilityContrast != null && readabilityContrast < 4.5) {
+      findings.push({
+        type: 'variant_readability_contrast',
+        note: `Variant ${surfaceVariant} token_set ${tokenSetId} has low text/paper contrast (${readabilityContrast.toFixed(2)}:1).`,
+      })
+    }
+    if (panelContrast != null && panelContrast < 3.5) {
+      findings.push({
+        type: 'variant_panel_contrast',
+        note: `Variant ${surfaceVariant} token_set ${tokenSetId} has low text/panel contrast (${panelContrast.toFixed(2)}:1).`,
+      })
+    }
+  }
 
   for (const page of pages) {
     const components = majorComponents(page)
