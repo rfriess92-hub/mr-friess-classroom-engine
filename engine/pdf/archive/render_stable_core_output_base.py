@@ -54,7 +54,7 @@ def styles_bundle():
     styles = getSampleStyleSheet()
     styles.add(ParagraphStyle(name='CenterTitleX', parent=styles['Heading1'], alignment=TA_CENTER, fontSize=18, leading=22))
     styles.add(ParagraphStyle(name='TitleBarX', parent=styles['Heading2'], alignment=TA_LEFT, fontSize=14, leading=16, textColor=colors.white, spaceAfter=0))
-    styles.add(ParagraphStyle(name='SheetTitleX', parent=styles['Heading2'], fontSize=14, leading=16, textColor=colors.HexColor('#0f172a'), spaceAfter=2))
+    styles.add(ParagraphStyle(name='SheetTitleX', parent=styles['Heading2'], fontSize=14, leading=16, textColor=colors.HexColor('#1F355E'), spaceAfter=2))
     styles.add(ParagraphStyle(name='PurposeLineX', parent=styles['BodyText'], fontSize=9.3, leading=10.8, textColor=colors.HexColor('#0f172a'), alignment=TA_LEFT))
     styles.add(ParagraphStyle(name='SmallHeadX', parent=styles['Heading3'], spaceAfter=6, fontSize=12, leading=14))
     styles.add(ParagraphStyle(name='SectionHeadX', parent=styles['Heading3'], fontSize=10.2, leading=11.6, textColor=colors.HexColor('#0f172a'), spaceAfter=3))
@@ -126,7 +126,7 @@ def response_line_table(count: int, col_width: int = 520, row_height: int = WORK
         ('RIGHTPADDING', (0, 0), (-1, -1), 0),
     ]
     for row_index in range(len(rows)):
-        styles.append(('LINEBELOW', (0, row_index), (0, row_index), 0.7, colors.HexColor('#64748b')))
+        styles.append(('LINEBELOW', (0, row_index), (0, row_index), 0.7, colors.HexColor('#A09890')))
     table.setStyle(TableStyle(styles))
     return table
 
@@ -441,7 +441,7 @@ def final_response_purpose_line(section: dict) -> str:
 def title_bar(story, styles, text: str):
     bar = Table([[Paragraph(text, styles['TitleBarX'])]], colWidths=[540])
     bar.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#1e3a5f')),
+        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#1F355E')),
         ('BOX', (0, 0), (-1, -1), 0, colors.white),
         ('TOPPADDING', (0, 0), (-1, -1), 6),
         ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
