@@ -317,7 +317,7 @@ function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
     })
   }
 
-  if (pageRole !== 'final_response') {
+  if (pageRole !== 'final_response' && options.suppress_footer !== true) {
     components.push(...mapWorksheetFooterComponents(section, pageIndex, compact, compact ? 2 : 2, compact ? 2 : 3))
   }
 
@@ -353,6 +353,7 @@ function inferTaskSheetPages(section, route = {}) {
         checkpoint_mode: false,
         compact: layout.compact,
         instructions,
+        suppress_footer: false,
       },
     ]
   }
@@ -377,6 +378,7 @@ function inferTaskSheetPages(section, route = {}) {
       checkpoint_mode: layout.checkpoint_close,
       compact: true,
       instructions: [],
+      suppress_footer: layout.checkpoint_close,
     },
   ]
 }
@@ -447,6 +449,7 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
           instructions: page.instructions,
           line_counts: page.line_counts,
           length_band: route.length_band,
+          suppress_footer: page.suppress_footer === true,
         }).map((component) => ({
           ...component,
           resolved_visual: resolveVisualStyle({
