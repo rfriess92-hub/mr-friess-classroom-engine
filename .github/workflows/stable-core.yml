@@ -1,0 +1,66 @@
+name: stable-core
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  stable-core:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install Node dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
+
+      - name: Repo doctor
+        run: pnpm run doctor
+
+      - name: Contract tests
+        run: pnpm test
+
+      - name: Schema check benchmark fixture
+        run: pnpm run schema:check -- --fixture benchmark1
+
+      - name: Route plan benchmark fixture
+        run: pnpm run route:plan -- --fixture benchmark1 --print-routes
+
+      - name: Render benchmark fixture bundle
+        run: pnpm run render:package -- --fixture benchmark1 --out output
+
+      - name: Bundle QA benchmark fixture
+        run: pnpm run qa:bundle -- --fixture benchmark1 --out output
+
+      - name: Schema check multi-day fixture
+        run: pnpm run schema:check -- --fixture challenge7
+
+      - name: Route plan multi-day fixture
+        run: pnpm run route:plan -- --fixture challenge7 --print-routes
+
+      - name: Upload rendered bundle evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stable-core-output
+          path: output
+          if-no-files-found: ignore
