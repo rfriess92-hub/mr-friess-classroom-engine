@@ -124,12 +124,13 @@ def worksheet_question_block(styles, question: dict):
     return KeepTogether([Paragraph(label, styles['SectionHeadX']), prompt_card, Spacer(1, 5), response_card, Spacer(1, base.WORKSHEET_QUESTION_BLOCK_SPACER)])
 
 
-def build_task_block(styles, task: dict, compact=False, spacing_scale: float = 1.0, rendered_lines: int | None = None, **_kwargs):
+def build_task_block(styles, task: dict, compact=False, spacing_scale: float = 1.0, rendered_lines: int | None = None, show_help: bool = True, **_kwargs):
     profile = task_profile(task)
+    line_total = int(rendered_lines if rendered_lines is not None else task.get('lines', profile.get('lines', 4)))
     if compact:
-        return integrated_task_box(base, styles, profile)
+        spacer_after = max(2, int(round(5 * spacing_scale)))
+        return integrated_task_box(base, styles, profile, line_total=line_total, show_help=show_help, spacer_after=spacer_after)
     from reportlab.platypus import Paragraph, Spacer, Table, TableStyle, KeepTogether
-    line_total = int(rendered_lines if rendered_lines is not None else task.get('lines', 4))
     prompt_card = Table([[[Paragraph(profile['heading'], styles['SectionHeadX']), Paragraph(profile['instruction'], styles['BodyText'])]]], colWidths=[540])
     prompt_card.setStyle(TableStyle([
         ('TOPPADDING', (0, 0), (-1, -1), 0), ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
@@ -143,7 +144,7 @@ def build_task_block(styles, task: dict, compact=False, spacing_scale: float = 1
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
     ]))
     flowables = [prompt_card]
-    if profile['help']:
+    if show_help and profile['help']:
         flowables += [Spacer(1, 3), Paragraph(profile['help'], styles['InlineHelpX'])]
     flowables += [Spacer(1, 4), response_card, Spacer(1, max(2, int(round(4 * spacing_scale))))]
     return KeepTogether(flowables)
