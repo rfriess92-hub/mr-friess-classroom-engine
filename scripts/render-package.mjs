@@ -158,12 +158,12 @@ for (const route of routes) {
   writeVisualSidecar(outDir, route, visualBundle)
   writeImageSidecar(outDir, route, visualBundle)
 
-  if (route.artifact_family === 'pptx' && route.output_type === 'slides') {
+  if (route.renderer_family === 'pptx' && route.output_type === 'slides') {
     renderSlides(pkg, route, visualBundle.visual_plan, outDir)
     continue
   }
   if (
-    route.artifact_family === 'pdf'
+    route.renderer_family === 'pdf'
     && ['teacher_guide', 'lesson_overview', 'worksheet', 'task_sheet', 'checkpoint_sheet', 'exit_ticket', 'final_response_sheet'].includes(route.output_type)
   ) {
     renderPdfOutput(packagePath, route, outDir)

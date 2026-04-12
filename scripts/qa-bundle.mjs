@@ -6,7 +6,7 @@ import { planPackageRoutes } from '../engine/planner/output-router.mjs'
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
-function extensionForArtifactFamily(family) {
+function extensionForRendererFamily(family) {
   if (family === 'pptx') return '.pptx'
   if (family === 'pdf') return '.pdf'
   return null
@@ -15,7 +15,7 @@ function extensionForArtifactFamily(family) {
 function expectedArtifactsForRoutes(routes) {
   return routes
     .map((route) => {
-      const ext = extensionForArtifactFamily(route.artifact_family)
+      const ext = extensionForRendererFamily(route.renderer_family)
       if (!ext) return null
       return {
         route_id: route.route_id,

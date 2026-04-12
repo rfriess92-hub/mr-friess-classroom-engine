@@ -24,7 +24,7 @@ function rendererKeyFor(outputType) {
   }
 }
 
-function artifactFamilyFor(outputType) {
+function rendererFamilyFor(outputType) {
   switch (outputType) {
     case 'slides':
       return 'pptx'
@@ -64,7 +64,13 @@ export function routeRenderPlan(renderPlan) {
       audience: output.audience,
       audience_bucket: audienceBucketFor(output.audience),
       renderer_key: rendererKeyFor(normalizedOutputType),
-      artifact_family: artifactFamilyFor(normalizedOutputType),
+      renderer_family: rendererFamilyFor(normalizedOutputType),
+      artifact_family: output.artifact_family,
+      render_intent: output.render_intent,
+      evidence_role: output.evidence_role,
+      assessment_weight: output.assessment_weight,
+      density: output.density,
+      length_band: output.length_band,
       bundle_id: output.bundle_id,
       declared_bundle: output.declared_bundle,
       primary_architecture: output.primary_architecture,

@@ -361,7 +361,7 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
     route_id: route.route_id,
     output_id: route.output_id,
     output_type: route.output_type,
-    artifact_type: route.artifact_family === 'pptx' ? 'slide_deck' : 'worksheet',
+    artifact_type: route.renderer_family === 'pptx' ? 'slide_deck' : 'worksheet',
     surface_variant: surfaceVariant,
     instructional_variant: instructionalVariant,
     token_set: resolveVisualStyle({ surfaceVariant }).token_set,
