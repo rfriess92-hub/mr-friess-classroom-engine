@@ -231,24 +231,27 @@ function inferTaskSheetPages(section, route = {}) {
   if (!multiPage) {
     return [
       {
-        page_role: 'handout',
+        page_role: 'handout_page_1',
         layout_id: 'task_sheet_page_1',
         tasks,
+        checkpoint_mode: false,
       },
     ]
   }
 
-  const page2Role = evidenceRole === 'checkpoint_evidence' ? 'handout_page_2_checkpoint' : 'handout_page_2'
+  const checkpointMode = evidenceRole === 'checkpoint_evidence'
   return [
     {
-      page_role: 'handout',
+      page_role: 'handout_page_1',
       layout_id: 'task_sheet_page_1',
       tasks: tasks.slice(0, -1),
+      checkpoint_mode: false,
     },
     {
-      page_role: page2Role,
+      page_role: 'handout_page_2',
       layout_id: 'task_sheet_page_2',
       tasks: tasks.slice(-1),
+      checkpoint_mode: checkpointMode,
     },
   ]
 }
@@ -303,6 +306,7 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
     const pages = inferTaskSheetPages(sourceSection ?? {}, route).map((page, index) => ({
       page_id: `${route.output_id}_page_${index + 1}`,
       page_role: page.page_role,
+      checkpoint_mode: page.checkpoint_mode === true,
       layout_id: page.layout_id,
       components: mapWorksheetComponents(sourceSection ?? {}, page.page_role, index, { tasks: page.tasks }).map((component) => ({
         ...component,

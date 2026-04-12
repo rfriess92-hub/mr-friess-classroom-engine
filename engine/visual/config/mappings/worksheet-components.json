@@ -2,6 +2,7 @@
   "$schema_version": "1.0.0",
   "schema_id": "mr_friess_worksheet_component_map",
   "artifact_type": "worksheet",
+  "canonical_page_roles_source": "engine/visual/config/layouts.json#page_roles.worksheet",
   "pedagogy_to_visual_component": {
     "worksheet_page_header": "PageHeader",
     "worksheet_before_you_start": "EntryPanel",

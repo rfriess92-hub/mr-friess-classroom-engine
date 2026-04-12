@@ -10,7 +10,8 @@
       "reflect"
     ],
     "worksheet": [
-      "handout",
+      "handout_page_1",
+      "handout_page_2",
       "final_response"
     ]
   },
@@ -97,7 +98,7 @@
   "worksheet_layouts": {
     "task_sheet_page_1": {
       "page_roles": [
-        "handout"
+        "handout_page_1"
       ],
       "regions": [
         "page_header",
@@ -112,7 +113,7 @@
     },
     "task_sheet_page_2": {
       "page_roles": [
-        "handout"
+        "handout_page_2"
       ],
       "regions": [
         "page_header",
