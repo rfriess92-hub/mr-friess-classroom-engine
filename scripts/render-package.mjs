@@ -61,9 +61,10 @@ function renderPdfOutput(packagePath, route, outDir) {
     process.exit(1)
   }
 
+  const grammarPath = resolve(outDir, `${route.output_id}.grammar.json`)
   const result = spawnSync(
     pythonCmd,
-    ['engine/pdf/render_stable_core_output.py', '--package', packagePath, '--output-id', route.output_id, '--out', outDir],
+    ['engine/pdf/render_stable_core_output.py', '--package', packagePath, '--output-id', route.output_id, '--out', outDir, '--grammar', grammarPath],
     {
       stdio: 'inherit',
       cwd: process.cwd(),
@@ -96,6 +97,23 @@ function writeImageSidecar(outDir, route, visualBundle) {
   writeFileSync(
     resolve(outDir, `${route.output_id}.images.json`),
     JSON.stringify(imagePayload, null, 2),
+    'utf-8',
+  )
+}
+
+function writeGrammarSidecar(outDir, route) {
+  const grammarPayload = {
+    output_id: route.output_id,
+    artifact_family: route.artifact_family,
+    render_intent: route.render_intent,
+    evidence_role: route.evidence_role,
+    assessment_weight: route.assessment_weight,
+    density: route.density,
+    length_band: route.length_band,
+  }
+  writeFileSync(
+    resolve(outDir, `${route.output_id}.grammar.json`),
+    JSON.stringify(grammarPayload, null, 2),
     'utf-8',
   )
 }
@@ -135,6 +153,7 @@ for (const route of routes) {
   const visualBundle = buildRouteVisualPlan(pkg, route)
   writeVisualSidecar(outDir, route, visualBundle)
   writeImageSidecar(outDir, route, visualBundle)
+  writeGrammarSidecar(outDir, route)
 
   if (route.renderer_family === 'pptx' && route.output_type === 'slides') {
     renderSlides(pkg, route, visualBundle.visual_plan, outDir)

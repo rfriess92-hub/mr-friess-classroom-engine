@@ -39,6 +39,9 @@ def parse_args() -> argparse.Namespace:
     p.add_argument('--package', required=True)
     p.add_argument('--output-id', required=True)
     p.add_argument('--out', required=True)
+    p.add_argument('--grammar', required=False, default=None,
+                   help='Path to .grammar.json sidecar written by the JS render pipeline. '
+                        'When present, grammar fields are injected into the packet as _render_grammar.')
     return p.parse_args()
 
 
@@ -860,6 +863,13 @@ def render_exit_ticket(packet: dict, section: dict, out_path: Path) -> None:
 def main() -> None:
     args = parse_args()
     packet = load_packet(Path(args.package))
+
+    if args.grammar:
+        grammar_path = Path(args.grammar)
+        if grammar_path.exists():
+            with grammar_path.open('r', encoding='utf-8') as f:
+                packet['_render_grammar'] = json.load(f)
+
     output = find_output(packet, args.output_id)
     if not output:
         raise SystemExit(f'Output id not found: {args.output_id}')

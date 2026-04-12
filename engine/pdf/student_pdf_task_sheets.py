@@ -156,14 +156,33 @@ def final_closing_band(styles, story, section: dict):
 
 
 def render_final_response_sheet(base, styles_bundle, packet: dict, section: dict, out_path):
+    grammar = packet.get('_render_grammar', {})
+    assessment_weight = grammar.get('assessment_weight', 'standard')
+    length_band = grammar.get('length_band', 'standard')
+
     styles = styles_bundle()
     story = []
     base.title_bar(story, styles, base.packet_heading(packet))
-    story.append(Paragraph(section.get('title', 'Day 2 Final Response Sheet'), styles['SheetTitleX']))
+    story.append(Paragraph(section.get('title', 'Final Response Sheet'), styles['SheetTitleX']))
     story.append(Paragraph('Name: ____________________   Date: __________', styles['MutedX']))
-    story.append(Spacer(1, 3))
+
+    if assessment_weight == 'high':
+        story.append(Spacer(1, 5))
+        story.append(Paragraph(
+            'This is your final assessed response. Write your best, most complete answer.',
+            styles['PurposeLineX'],
+        ))
+    else:
+        story.append(Spacer(1, 3))
+
     base.purpose_line_block(story, styles, base.final_response_purpose_line(section))
     draft_card(styles, story, section)
+
+    # High-stakes responses get more writing lines to signal seriousness
+    if assessment_weight == 'high' and length_band in ('standard', 'extended'):
+        response_lines = max(14, int(section.get('response_lines', 12)) + 2)
+        section = {**section, 'response_lines': response_lines}
+
     final_writing_zone_block(base, styles, story, section)
     final_closing_band(styles, story, section)
     doc = SimpleDocTemplate(str(out_path), pagesize=base.letter, leftMargin=28, rightMargin=28, topMargin=20, bottomMargin=20)
