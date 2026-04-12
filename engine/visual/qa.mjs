@@ -1,3 +1,5 @@
+import { loadVisualConfig } from './load-config.mjs'
+
 function majorComponents(page) {
   return (page.components ?? []).filter((component) => !['course_band', 'title', 'teacher_note'].includes(component.visual_role))
 }
@@ -16,8 +18,31 @@ function componentArea(component) {
 export function runVisualQaOnPlan(visualPlan) {
   const findings = []
   const pages = Array.isArray(visualPlan.pages) ? visualPlan.pages : []
+  const config = loadVisualConfig()
+  const artifactType = visualPlan.artifact_type
+  const knownPageRoles = new Set(config.layouts.page_roles?.[artifactType] ?? [])
+  const knownLayouts = artifactType === 'slide_deck'
+    ? (config.layouts.slide_layouts ?? {})
+    : (config.layouts.worksheet_layouts ?? {})
 
   for (const page of pages) {
+    if (knownPageRoles.size > 0 && !knownPageRoles.has(page.page_role)) {
+      findings.push({
+        type: 'unknown_page_role',
+        page_id: page.page_id,
+        note: `Unknown page_role ${page.page_role} for artifact_type ${artifactType}.`,
+      })
+    }
+
+    const layoutDefinition = knownLayouts[page.layout_id]
+    if (layoutDefinition?.page_roles && !layoutDefinition.page_roles.includes(page.page_role)) {
+      findings.push({
+        type: 'layout_page_role_mismatch',
+        page_id: page.page_id,
+        note: `Layout ${page.layout_id} does not allow page_role ${page.page_role}.`,
+      })
+    }
+
     const components = majorComponents(page)
     const fills = uniqueValues(components.map((component) => component.resolved_visual?.style?.fill_mode))
     const borders = uniqueValues(components.map((component) => component.resolved_visual?.style?.border_mode))

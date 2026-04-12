@@ -122,6 +122,7 @@ function mapSlideComponents(slide, index) {
 }
 
 function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
+  const checkpointMode = options.checkpoint_mode === true
   const title = section.title ?? (pageRole === 'final_response' ? 'Final Response' : 'Task Sheet')
   const components = [
     {
@@ -135,7 +136,7 @@ function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
     },
   ]
 
-  if (pageRole === 'handout_page_2') {
+  if (checkpointMode) {
     components.push({
       id: `page_${pageIndex + 1}_checkpoint`,
       type: 'CheckpointPanel',
@@ -147,7 +148,7 @@ function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
     })
   }
 
-  if (Array.isArray(section.instructions) && section.instructions.length > 0 && pageRole !== 'handout_page_2') {
+  if (Array.isArray(section.instructions) && section.instructions.length > 0 && !checkpointMode) {
     components.push({
       id: `page_${pageIndex + 1}_entry`,
       type: 'EntryPanel',
@@ -231,24 +232,27 @@ function inferTaskSheetPages(section, route = {}) {
   if (!multiPage) {
     return [
       {
-        page_role: 'handout',
+        page_role: 'handout_page_1',
         layout_id: 'task_sheet_page_1',
         tasks,
+        checkpoint_mode: false,
       },
     ]
   }
 
-  const page2Role = evidenceRole === 'checkpoint_evidence' ? 'handout_page_2_checkpoint' : 'handout_page_2'
+  const checkpointMode = evidenceRole === 'checkpoint_evidence'
   return [
     {
-      page_role: 'handout',
+      page_role: 'handout_page_1',
       layout_id: 'task_sheet_page_1',
       tasks: tasks.slice(0, -1),
+      checkpoint_mode: false,
     },
     {
-      page_role: page2Role,
+      page_role: 'handout_page_2',
       layout_id: 'task_sheet_page_2',
       tasks: tasks.slice(-1),
+      checkpoint_mode: checkpointMode,
     },
   ]
 }
@@ -303,8 +307,12 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
     const pages = inferTaskSheetPages(sourceSection ?? {}, route).map((page, index) => ({
       page_id: `${route.output_id}_page_${index + 1}`,
       page_role: page.page_role,
+      checkpoint_mode: page.checkpoint_mode === true,
       layout_id: page.layout_id,
-      components: mapWorksheetComponents(sourceSection ?? {}, page.page_role, index, { tasks: page.tasks }).map((component) => ({
+      components: mapWorksheetComponents(sourceSection ?? {}, page.page_role, index, {
+        tasks: page.tasks,
+        checkpoint_mode: page.checkpoint_mode === true,
+      }).map((component) => ({
         ...component,
         resolved_visual: resolveVisualStyle({
           surfaceVariant,
