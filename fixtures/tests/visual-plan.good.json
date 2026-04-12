@@ -1,0 +1,32 @@
+{
+  "artifact_type": "worksheet",
+  "pages": [
+    {
+      "page_id": "good-1",
+      "page_role": "handout_page_1",
+      "layout_id": "task_sheet_page_1",
+      "components": [
+        {
+          "visual_role": "main_prompt",
+          "layout": { "w": 8, "h": 3 },
+          "resolved_visual": { "style": { "fill_mode": "solid", "border_mode": "line", "radius_token": "md", "show_icon": false } }
+        },
+        {
+          "visual_role": "support_cue",
+          "layout": { "w": 2, "h": 1 },
+          "resolved_visual": { "style": { "fill_mode": "accent_tint", "border_mode": "line", "radius_token": "soft", "show_icon": true, "accent_role": "cue" } }
+        },
+        {
+          "visual_role": "student_response",
+          "layout": { "w": 10, "h": 4 },
+          "resolved_visual": { "style": { "fill_mode": "none", "border_mode": "line", "radius_token": "round", "show_icon": false } }
+        },
+        {
+          "visual_role": "support_tools",
+          "layout": { "w": 3, "h": 2 },
+          "resolved_visual": { "style": { "fill_mode": "tint", "border_mode": "line", "radius_token": "soft", "show_icon": true, "accent_role": "tool" } }
+        }
+      ]
+    }
+  ]
+}

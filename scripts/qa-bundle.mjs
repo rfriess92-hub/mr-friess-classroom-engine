@@ -4,6 +4,7 @@ import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
+import { deriveBundleJudgment } from './bundle-judgment.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
 function extensionForRendererFamily(family) {
@@ -341,10 +342,7 @@ if (undeclaredArtifacts.length > 0) {
 }
 
 fastScore = Math.max(0, Math.min(20, fastScore))
-const hardFailure = blockers.length > 0
-const softFailure = findings.length > 0
-const judgment = hardFailure ? 'block' : softFailure ? 'revise' : 'pass'
-const shipRule = hardFailure ? 'rebuild_before_shipping' : judgment === 'pass' ? 'ship' : 'patch_then_ship'
+const { hardFailure, judgment, shipRule } = deriveBundleJudgment({ blockers, findings })
 
 emit({
   package_id: renderPlan.package_id,
