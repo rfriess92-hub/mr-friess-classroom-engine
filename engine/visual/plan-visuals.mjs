@@ -1,9 +1,9 @@
 import { resolveSourceSectionForRoute } from './source-section.mjs'
 import { buildVisualArtifactPlan } from './component-mapper.mjs'
 import { runVisualQaOnPlan } from './qa.mjs'
+import { validateVisualPlanPageRoles } from './validate-plan.mjs'
 import { enrichVisualPlanWithImages } from '../image/resolve.mjs'
 import { runImageQaOnPlan } from '../image/qa.mjs'
-import { validateVisualPlanPageRoles } from '../schema/preflight.mjs'
 
 export function buildRouteVisualPlan(pkg, route) {
   const sourceSection = resolveSourceSectionForRoute(pkg, route.source_section)
