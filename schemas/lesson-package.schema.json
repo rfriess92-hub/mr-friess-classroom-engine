@@ -24,6 +24,7 @@
     },
     "materials_control_note": { "type": "string" },
     "materials_control_note_required": { "type": "boolean" },
+    "surface_variant": { "type": "string", "minLength": 1 },
     "bundle": {
       "type": "object",
       "required": ["bundle_id", "declared_outputs"],
@@ -216,6 +217,7 @@
         "variant_role": { "type": "string", "enum": ["core", "shared_core", "supported", "support", "extension"] },
         "alignment_target": { "type": "string" },
         "final_evidence_target": { "type": "string" },
+        "surface_variant": { "type": "string", "minLength": 1 },
         "image_intent": { "$ref": "#/$defs/imageIntent" },
         "embedded_support_elements": { "type": "array", "items": { "type": "object" } }
       },

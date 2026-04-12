@@ -258,7 +258,7 @@ function inferTaskSheetPages(section, route = {}) {
 }
 
 export function buildVisualArtifactPlan(pkg, route, sourceSection) {
-  const surfaceVariant = 'baseline'
+  const surfaceVariant = route.surface_variant ?? pkg?.surface_variant ?? 'baseline'
   const instructionalVariant = normalizeInstructionalVariant(route.variant_role)
 
   if (route.output_type === 'slides') {

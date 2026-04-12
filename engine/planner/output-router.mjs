@@ -86,6 +86,7 @@ export function routeRenderPlan(renderPlan) {
       variant_role: output.variant_role,
       alignment_target: output.alignment_target,
       final_evidence_target: output.final_evidence_target,
+      surface_variant: output.surface_variant ?? 'baseline',
     }
   })
 }

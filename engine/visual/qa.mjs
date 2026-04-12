@@ -15,6 +15,39 @@ function componentArea(component) {
   return width * height
 }
 
+function parseHexColor(hex) {
+  const normalized = String(hex ?? '').trim().replace('#', '')
+  if (!/^[0-9a-fA-F]{6}$/.test(normalized)) return null
+  return {
+    r: Number.parseInt(normalized.slice(0, 2), 16),
+    g: Number.parseInt(normalized.slice(2, 4), 16),
+    b: Number.parseInt(normalized.slice(4, 6), 16),
+  }
+}
+
+function channelToLinear(value) {
+  const srgb = value / 255
+  return srgb <= 0.04045 ? srgb / 12.92 : ((srgb + 0.055) / 1.055) ** 2.4
+}
+
+function relativeLuminance(hex) {
+  const rgb = parseHexColor(hex)
+  if (!rgb) return null
+  const r = channelToLinear(rgb.r)
+  const g = channelToLinear(rgb.g)
+  const b = channelToLinear(rgb.b)
+  return (0.2126 * r) + (0.7152 * g) + (0.0722 * b)
+}
+
+function contrastRatio(foreground, background) {
+  const l1 = relativeLuminance(foreground)
+  const l2 = relativeLuminance(background)
+  if (l1 == null || l2 == null) return null
+  const lighter = Math.max(l1, l2)
+  const darker = Math.min(l1, l2)
+  return (lighter + 0.05) / (darker + 0.05)
+}
+
 export function runVisualQaOnPlan(visualPlan) {
   const findings = []
   const pages = Array.isArray(visualPlan.pages) ? visualPlan.pages : []
@@ -107,6 +140,39 @@ export function runVisualQaOnPlan(visualPlan) {
           type: 'writing_space_open',
           page_id: page.page_id,
           note: 'Student writing area resolves smaller than prompt area.',
+        })
+      }
+    }
+
+    if ((visualPlan.surface_variant ?? 'baseline') !== 'baseline') {
+      const referenceTokens = components.find((component) => component.resolved_visual?.tokens)?.resolved_visual?.tokens ?? {}
+      const colors = referenceTokens.color ?? {}
+      const type = referenceTokens.type ?? {}
+      const bodySize = Number(type.body_size ?? 0)
+
+      if (bodySize > 0 && bodySize < 12) {
+        findings.push({
+          type: 'readability_guardrail_body_size',
+          page_id: page.page_id,
+          note: `Body type size ${bodySize}px is below readability minimum (12px).`,
+        })
+      }
+
+      const mainContrast = contrastRatio(colors.ink_primary, colors.paper)
+      if (mainContrast != null && mainContrast < 4.5) {
+        findings.push({
+          type: 'readability_guardrail_primary_contrast',
+          page_id: page.page_id,
+          note: `ink_primary vs paper contrast ratio ${mainContrast.toFixed(2)} is below 4.5.`,
+        })
+      }
+
+      const panelContrast = contrastRatio(colors.ink_secondary, colors.panel)
+      if (panelContrast != null && panelContrast < 4.5) {
+        findings.push({
+          type: 'readability_guardrail_panel_contrast',
+          page_id: page.page_id,
+          note: `ink_secondary vs panel contrast ratio ${panelContrast.toFixed(2)} is below 4.5.`,
         })
       }
     }

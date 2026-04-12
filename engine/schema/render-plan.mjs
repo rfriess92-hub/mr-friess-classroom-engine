@@ -48,6 +48,7 @@ function normalizeOutputEntry(pkg, entry, index) {
   const outputType = output.output_type
   const audience = output.audience
   const renderGrammar = normalizeOutputRenderGrammar(pkg, output)
+  const surfaceVariant = output.surface_variant ?? pkg.surface_variant ?? 'baseline'
 
   return {
     output_id: output.output_id ?? `${outputType ?? 'output'}_${index + 1}`,
@@ -70,6 +71,7 @@ function normalizeOutputEntry(pkg, entry, index) {
     variant_role: output.variant_role ?? null,
     alignment_target: output.alignment_target ?? null,
     final_evidence_target: output.final_evidence_target ?? null,
+    surface_variant: surfaceVariant,
     declared_bundle: output.bundle ?? pkg.bundle?.bundle_id ?? null,
     artifact_family: renderGrammar.artifact_family,
     render_intent: renderGrammar.render_intent,
@@ -91,6 +93,7 @@ export function normalizePackageToRenderPlan(pkg) {
     primary_architecture: pkg?.primary_architecture ?? null,
     secondary_architecture_support: pkg?.secondary_architecture_support ?? null,
     materials_control_note: pkg?.materials_control_note ?? null,
+    surface_variant: pkg?.surface_variant ?? 'baseline',
     assignment_family: familySelection.assignment_family,
     family_selection: familySelection,
     bundle: {
