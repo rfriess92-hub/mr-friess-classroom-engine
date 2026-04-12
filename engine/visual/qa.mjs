@@ -50,7 +50,7 @@ export function runVisualQaOnPlan(visualPlan) {
 
     if (components.length >= 3 && fills.length <= 1 && borders.length <= 1 && radii.length <= 1) {
       findings.push({
-        type: 'flatness',
+        type: 'not_all_rectangles',
         page_id: page.page_id,
         note: 'Page components resolve to nearly identical fill, border, and radius treatments.',
       })
@@ -90,7 +90,7 @@ export function runVisualQaOnPlan(visualPlan) {
       const mainArea = componentArea(mainPrompt)
       if (supportArea > 0 && mainArea > 0 && supportArea >= mainArea) {
         findings.push({
-          type: 'support_vs_main_contrast',
+          type: 'support_not_competing',
           page_id: page.page_id,
           note: 'Support cue area is equal to or larger than main prompt area.',
         })
@@ -109,6 +109,15 @@ export function runVisualQaOnPlan(visualPlan) {
           note: 'Student writing area resolves smaller than prompt area.',
         })
       }
+    }
+
+    const accentRoles = uniqueValues(components.map((component) => component.resolved_visual?.style?.accent_role))
+    if (accentRoles.length > 3) {
+      findings.push({
+        type: 'accent_limit',
+        page_id: page.page_id,
+        note: `Page uses ${accentRoles.length} accent roles (${accentRoles.join(', ')}); maximum is 3.`,
+      })
     }
   }
 
@@ -136,6 +145,27 @@ export function runVisualQaOnPlan(visualPlan) {
         }
       } else {
         consecutive = 1
+      }
+    }
+  }
+
+  if (visualPlan.artifact_type === 'slide_deck') {
+    const referenceBlockCounts = pages
+      .filter((page) => page.page_role === 'model' || page.page_role === 'task')
+      .map((page) => majorComponents(page).length)
+      .filter((count) => count > 0)
+
+    if (referenceBlockCounts.length > 0) {
+      const minimumReferenceCount = Math.min(...referenceBlockCounts)
+      for (const reflectionPage of pages.filter((page) => page.page_role === 'reflect')) {
+        const reflectionBlockCount = majorComponents(reflectionPage).length
+        if (reflectionBlockCount >= minimumReferenceCount) {
+          findings.push({
+            type: 'reflection_breathing_room',
+            page_id: reflectionPage.page_id,
+            note: `Reflection page uses ${reflectionBlockCount} content blocks; it must be fewer than model/task slides (minimum ${minimumReferenceCount}).`,
+          })
+        }
       }
     }
   }

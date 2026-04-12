@@ -64,20 +64,20 @@
     }
   ],
   "executable_checks": {
-    "flatness": {
+    "not_all_rectangles": {
       "fails_when": [
         "all major components on a page use identical border_mode",
         "all major components on a page use identical radius_token",
         "all major components on a page use identical fill_mode"
       ]
     },
-    "support_vs_main_contrast": {
+    "support_not_competing": {
       "fails_when": [
         "support_cue area is equal to or larger than main_prompt area",
         "support_cue fill contrast is equal to or stronger than main_prompt fill contrast"
       ]
     },
-    "writing_space_openness": {
+    "writing_space_open": {
       "fails_when": [
         "student_response area is smaller than adjacent prompt area",
         "student_response uses darker fill than adjacent prompt area"
@@ -87,6 +87,16 @@
       "fails_when": [
         "five_slide_sequence uses fewer than three unique layout ids",
         "three_or_more consecutive slides share the same region structure"
+      ]
+    },
+    "reflection_breathing_room": {
+      "fails_when": [
+        "a reflect page has the same or more content blocks than model/task pages in the same deck"
+      ]
+    },
+    "accent_limit": {
+      "fails_when": [
+        "a page resolves to more than three unique accent_role values"
       ]
     }
   }
