@@ -122,6 +122,7 @@ function mapSlideComponents(slide, index) {
 }
 
 function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
+  const checkpointMode = options.checkpoint_mode === true
   const title = section.title ?? (pageRole === 'final_response' ? 'Final Response' : 'Task Sheet')
   const components = [
     {
@@ -135,7 +136,7 @@ function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
     },
   ]
 
-  if (pageRole === 'handout_page_2') {
+  if (checkpointMode) {
     components.push({
       id: `page_${pageIndex + 1}_checkpoint`,
       type: 'CheckpointPanel',
@@ -147,7 +148,7 @@ function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
     })
   }
 
-  if (Array.isArray(section.instructions) && section.instructions.length > 0 && pageRole !== 'handout_page_2') {
+  if (Array.isArray(section.instructions) && section.instructions.length > 0 && !checkpointMode) {
     components.push({
       id: `page_${pageIndex + 1}_entry`,
       type: 'EntryPanel',
@@ -308,7 +309,10 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
       page_role: page.page_role,
       checkpoint_mode: page.checkpoint_mode === true,
       layout_id: page.layout_id,
-      components: mapWorksheetComponents(sourceSection ?? {}, page.page_role, index, { tasks: page.tasks }).map((component) => ({
+      components: mapWorksheetComponents(sourceSection ?? {}, page.page_role, index, {
+        tasks: page.tasks,
+        checkpoint_mode: page.checkpoint_mode === true,
+      }).map((component) => ({
         ...component,
         resolved_visual: resolveVisualStyle({
           surfaceVariant,
