@@ -1,13 +1,30 @@
 import { resolveVisualStyle } from './style-resolver.mjs'
+import { loadVisualConfig } from './load-config.mjs'
 
-function inferSlidePageRole(slide = {}) {
+function inferSlidePattern(slide = {}) {
+  const explicitPattern = String(slide.pattern ?? '').trim().toLowerCase()
+  if (explicitPattern.length > 0) return explicitPattern
+
   const type = String(slide.type ?? '').toUpperCase()
   const layout = String(slide.layout ?? '').toLowerCase()
   if (type === 'REFLECT' || layout === 'reflect') return 'reflect'
   if (type === 'APPLY') return 'task'
-  if (type === 'LEARN') return 'model'
+  if (type === 'LEARN' || type === 'DO') return 'thinking'
   if (type === 'ENGAGE') return 'launch'
+  return 'thinking'
+}
+
+function inferSlidePageRole(slide = {}) {
+  const config = loadVisualConfig()
+  const pattern = inferSlidePattern(slide)
+  const patternRole = config.slideMapping?.pattern_to_page_role?.[pattern]
+  if (patternRole) return patternRole
+  if (pattern === 'reflect') return 'reflect'
   return 'discuss'
+}
+
+function isReflectionPattern(pattern) {
+  return pattern === 'reflection' || pattern === 'reflect'
 }
 
 function normalizeInstructionalVariant(routeVariantRole) {
@@ -73,6 +90,11 @@ function withEstimatedLayout(component) {
 function mapSlideComponents(slide, index) {
   const title = slide.title ?? `Slide ${index + 1}`
   const content = slide.content ?? {}
+  const config = loadVisualConfig()
+  const slidePattern = inferSlidePattern(slide)
+  const componentHints = config.slideMapping?.pattern_to_component_hints?.[slidePattern] ?? {}
+  const taskStepVisualRole = componentHints.task_steps_visual_role ?? (isReflectionPattern(slidePattern) ? 'reflection' : 'task_step')
+  const taskStepLabel = componentHints.task_steps_label ?? (taskStepVisualRole === 'reflection' ? 'Reflect' : 'Next steps')
   const components = [
     {
       id: `slide_${index + 1}_title`,
@@ -98,9 +120,9 @@ function mapSlideComponents(slide, index) {
     components.push({
       id: `slide_${index + 1}_task_steps`,
       type: 'TaskStepBox',
-      visual_role: inferSlidePageRole(slide) === 'reflect' ? 'reflection' : 'task_step',
+      visual_role: taskStepVisualRole,
       content: {
-        label: inferSlidePageRole(slide) === 'reflect' ? 'Reflect' : 'Next steps',
+        label: taskStepLabel,
         items: content.prompts.map((item) => String(item)),
       },
     })
@@ -256,18 +278,15 @@ function inferTaskSheetPages(section, route = {}) {
 export function buildVisualArtifactPlan(pkg, route, sourceSection) {
   const surfaceVariant = 'baseline'
   const instructionalVariant = normalizeInstructionalVariant(route.variant_role)
+  const config = loadVisualConfig()
 
   if (route.output_type === 'slides') {
     const slides = Array.isArray(sourceSection) ? sourceSection : []
     const pages = slides.map((slide, index) => {
       const pageRole = inferSlidePageRole(slide)
-      const layoutIdByRole = {
-        launch: 'launch_open',
-        discuss: 'discuss_two_zone',
-        model: 'model_focus',
-        task: 'task_flow',
-        reflect: 'reflect_open',
-      }
+      const slidePattern = inferSlidePattern(slide)
+      const layoutIdByPattern = config.slideMapping?.pattern_to_layout_id ?? {}
+      const layoutIdByRole = config.slideMapping?.page_role_defaults ?? {}
       const components = mapSlideComponents(slide, index).map((component) => ({
         ...component,
         resolved_visual: resolveVisualStyle({
@@ -282,7 +301,7 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
       return {
         page_id: `${route.output_id}_page_${index + 1}`,
         page_role: pageRole,
-        layout_id: layoutIdByRole[pageRole] ?? 'discuss_two_zone',
+        layout_id: layoutIdByPattern[slidePattern] ?? layoutIdByRole[pageRole] ?? 'discuss_two_zone',
         components,
       }
     })

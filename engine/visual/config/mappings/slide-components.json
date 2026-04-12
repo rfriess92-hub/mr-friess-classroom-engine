@@ -22,5 +22,35 @@
     "model": "model_focus",
     "task": "task_flow",
     "reflect": "reflect_open"
+  },
+  "pattern_to_page_role": {
+    "launch": "launch",
+    "thinking": "model",
+    "task": "task",
+    "reflection": "reflect"
+  },
+  "pattern_to_layout_id": {
+    "launch": "launch_open",
+    "thinking": "model_focus",
+    "task": "task_flow",
+    "reflection": "reflect_open"
+  },
+  "pattern_to_component_hints": {
+    "launch": {
+      "task_steps_visual_role": "task_step",
+      "task_steps_label": "Next steps"
+    },
+    "thinking": {
+      "task_steps_visual_role": "task_step",
+      "task_steps_label": "Thinking steps"
+    },
+    "task": {
+      "task_steps_visual_role": "task_step",
+      "task_steps_label": "Do now"
+    },
+    "reflection": {
+      "task_steps_visual_role": "reflection",
+      "task_steps_label": "Reflect"
+    }
   }
 }

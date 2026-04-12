@@ -196,6 +196,7 @@
         "type": { "type": "string" },
         "title": { "type": "string" },
         "layout": { "type": "string" },
+        "pattern": { "type": "string" },
         "content": { "type": "object" },
         "image_intent": { "$ref": "#/$defs/imageIntent" }
       },

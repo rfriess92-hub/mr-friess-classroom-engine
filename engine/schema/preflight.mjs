@@ -176,6 +176,37 @@ function validateSlideShape(errors, warnings, slide, path) {
   }
 }
 
+function inferSlideSequenceRole(slide = {}) {
+  const explicitPattern = String(slide.pattern ?? '').trim().toLowerCase()
+  if (explicitPattern === 'launch') return 'launch'
+  if (explicitPattern === 'thinking') return 'thinking'
+  if (explicitPattern === 'task') return 'task'
+  if (explicitPattern === 'reflection' || explicitPattern === 'reflect') return 'reflection'
+
+  const type = String(slide.type ?? '').trim().toUpperCase()
+  const layout = String(slide.layout ?? '').trim().toLowerCase()
+  if (type === 'ENGAGE') return 'launch'
+  if (type === 'LEARN' || type === 'DO') return 'thinking'
+  if (type === 'APPLY') return 'task'
+  if (type === 'REFLECT' || layout === 'reflect') return 'reflection'
+  return null
+}
+
+function validateStandardDeckSequenceCoverage(errors, slides, path) {
+  if (!Array.isArray(slides) || slides.length < 5) return
+  const requiredRoles = ['launch', 'thinking', 'task', 'reflection']
+  const seen = new Set(slides.map((slide) => inferSlideSequenceRole(slide)).filter(Boolean))
+  const missing = requiredRoles.filter((role) => !seen.has(role))
+  if (missing.length > 0) {
+    pushIssue(
+      errors,
+      'standard_deck_missing_sequence_coverage',
+      `Standard slide decks (5+ slides) must cover launch, thinking, task, and reflection. Missing: ${missing.join(', ')}.`,
+      path,
+    )
+  }
+}
+
 export function validatePackage(pkg) {
   const errors = []
   const warnings = []
@@ -291,6 +322,13 @@ export function validatePackage(pkg) {
 
   for (const entry of slideEntries) {
     validateSlideShape(errors, warnings, entry.slide, entry.path)
+  }
+
+  validateStandardDeckSequenceCoverage(errors, pkg.slides, 'slides')
+  if (Array.isArray(pkg.days)) {
+    for (let dayIndex = 0; dayIndex < pkg.days.length; dayIndex += 1) {
+      validateStandardDeckSequenceCoverage(errors, pkg.days[dayIndex]?.slides, `days[${dayIndex}].slides`)
+    }
   }
 
   if (declaredBundleOutputs.size > 0) {
