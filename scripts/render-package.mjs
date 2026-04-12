@@ -6,7 +6,7 @@ import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
 import { resolveSourceSection } from '../engine/schema/source-section.mjs'
-import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
+import { argValue, fail, hasFlag, loadJson, printFixtureList, repoPath, resolvePackageTargets } from './lib.mjs'
 
 function pickPython() {
   for (const cmd of ['python', 'python3', 'py']) {
@@ -120,53 +120,60 @@ function writeGrammarSidecar(outDir, route) {
 
 const packageArg = argValue('--package')
 const fixtureArg = argValue('--fixture')
+const fixturePatternArg = argValue('--fixture-pattern')
 const outArg = argValue('--out') ?? 'output'
-const flatOut = process.argv.includes('--flat-out')
-const resolvedPackageArg = resolvePackageArg(packageArg, fixtureArg)
+const flatOut = hasFlag('--flat-out')
+const listFixtures = hasFlag('--list-fixtures')
 
-if (!resolvedPackageArg) {
-  console.log('Stable-core package renderer is present.')
-  console.log('Usage: pnpm run render:package -- --fixture benchmark1 --out output [--flat-out]')
-  console.log('Default behavior writes artifacts to output/<package_id>/ to isolate bundles.')
-  console.log(`Fixture shortcuts: ${Object.keys(FIXTURE_MAP).map((key) => `--fixture ${key}`).join(' | ')}`)
+if (listFixtures) {
+  printFixtureList()
   process.exit(0)
 }
 
-const packagePath = repoPath(resolvedPackageArg)
-if (!existsSync(packagePath)) {
-  console.error(`Package file not found: ${resolvedPackageArg}`)
-  process.exit(1)
+const targets = resolvePackageTargets(packageArg, fixtureArg, fixturePatternArg)
+
+if (targets.length === 0) {
+  console.log('Stable-core package renderer is present.')
+  console.log('Usage: pnpm run render:package -- (--package <path> | --fixture <key> | --fixture-pattern <glob>) --out output [--flat-out] [--list-fixtures]')
+  console.log('Default behavior writes artifacts to output/<package_id>/ to isolate bundles.')
+  process.exit(0)
 }
 
-const pkg = loadJson(packagePath)
-const { validation, render_plan: renderPlan, routes } = planPackageRoutes(pkg)
-if (!validation.valid) {
-  console.error('Package validation failed. Run schema:check first.')
-  process.exit(1)
-}
+for (const target of targets) {
+  const packagePath = repoPath(target.path)
+  if (!existsSync(packagePath)) fail(`Package file not found: ${target.path}`)
 
-const baseOutDir = repoPath(outArg)
-const outDir = flatOut ? baseOutDir : resolve(baseOutDir, renderPlan.package_id ?? 'package')
-mkdirSync(outDir, { recursive: true })
+  const pkg = loadJson(packagePath)
+  const { validation, render_plan: renderPlan, routes } = planPackageRoutes(pkg)
+  if (!validation.valid) fail(`Package validation failed for ${target.path}. Run schema:check first.`)
 
-for (const route of routes) {
-  const visualBundle = buildRouteVisualPlan(pkg, route)
-  writeVisualSidecar(outDir, route, visualBundle)
-  writeImageSidecar(outDir, route, visualBundle)
-  writeGrammarSidecar(outDir, route)
+  const baseOutDir = repoPath(outArg)
+  const outDir = flatOut ? baseOutDir : resolve(baseOutDir, renderPlan.package_id ?? 'package')
+  mkdirSync(outDir, { recursive: true })
 
-  if (route.renderer_family === 'pptx' && route.output_type === 'slides') {
-    renderSlides(pkg, route, visualBundle.visual_plan, outDir)
-    continue
+  if (targets.length > 1) {
+    console.log(`\n=== Rendering fixture: ${target.label} (${target.path}) ===`)
   }
-  if (
-    route.renderer_family === 'pdf'
-    && ['teacher_guide', 'lesson_overview', 'worksheet', 'task_sheet', 'checkpoint_sheet', 'exit_ticket', 'final_response_sheet'].includes(route.output_type)
-  ) {
-    renderPdfOutput(packagePath, route, outDir)
-    continue
-  }
-  console.log(`Skipping unsupported first-pass route: ${route.route_id}`)
-}
 
-console.log(`Rendered package ${renderPlan.package_id} to ${outDir}`)
+  for (const route of routes) {
+    const visualBundle = buildRouteVisualPlan(pkg, route)
+    writeVisualSidecar(outDir, route, visualBundle)
+    writeImageSidecar(outDir, route, visualBundle)
+    writeGrammarSidecar(outDir, route)
+
+    if (route.renderer_family === 'pptx' && route.output_type === 'slides') {
+      renderSlides(pkg, route, visualBundle.visual_plan, outDir)
+      continue
+    }
+    if (
+      route.renderer_family === 'pdf'
+      && ['teacher_guide', 'lesson_overview', 'worksheet', 'task_sheet', 'checkpoint_sheet', 'exit_ticket', 'final_response_sheet'].includes(route.output_type)
+    ) {
+      renderPdfOutput(packagePath, route, outDir)
+      continue
+    }
+    console.log(`Skipping unsupported first-pass route: ${route.route_id}`)
+  }
+
+  console.log(`Rendered package ${renderPlan.package_id} to ${outDir}`)
+}

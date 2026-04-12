@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs'
 import process from 'node:process'
 import { normalizeOutputType } from '../engine/schema/canonical.mjs'
-import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
+import { argValue, fail, hasFlag, loadJson, printFixtureList, repoPath, resolvePackageTargets } from './lib.mjs'
 
 function pushIssue(collection, severity, code, message, path = null) {
   collection.push({ severity, code, message, path })
@@ -207,50 +207,60 @@ function emit(result) {
 
 const packageArg = argValue('--package')
 const fixtureArg = argValue('--fixture')
-const resolvedPackageArg = resolvePackageArg(packageArg, fixtureArg)
+const fixturePatternArg = argValue('--fixture-pattern')
+const listFixtures = hasFlag('--list-fixtures')
 
-if (!resolvedPackageArg) {
-  console.log('Pedagogy variant QA is present.')
-  console.log('Usage: node scripts/qa-pedagogy-variants.mjs --package fixtures/generated/ela-8-community-issue-argument.variant-proof.json')
-  console.log(`Fixture shortcuts: ${Object.keys(FIXTURE_MAP).map((key) => `--fixture ${key}`).join(' | ')}`)
+if (listFixtures) {
+  printFixtureList()
   process.exit(0)
 }
 
-const packagePath = repoPath(resolvedPackageArg)
-if (!existsSync(packagePath)) {
-  console.error(`Package file not found: ${resolvedPackageArg}`)
-  process.exit(1)
+const targets = resolvePackageTargets(packageArg, fixtureArg, fixturePatternArg)
+
+if (targets.length === 0) {
+  console.log('Pedagogy variant QA is present.')
+  console.log('Usage: node scripts/qa-pedagogy-variants.mjs (--package <path> | --fixture <key> | --fixture-pattern <glob>) [--list-fixtures]')
+  process.exit(0)
 }
 
-const pkg = loadJson(packagePath)
-const outputEntries = collectOutputEntries(pkg)
-const issues = []
+let hasFailure = false
+for (const target of targets) {
+  const packagePath = repoPath(target.path)
+  if (!existsSync(packagePath)) fail(`Package file not found: ${target.path}`)
 
-for (const entry of outputEntries) {
-  const output = entry.output ?? {}
-  if (!isStudentPlanningOutput(output)) continue
+  const pkg = loadJson(packagePath)
+  const outputEntries = collectOutputEntries(pkg)
+  const issues = []
 
-  const section = resolveSourceSection(pkg, output.source_section ?? null)
-  checkStudentFacingSection(section, entry, issues)
+  for (const entry of outputEntries) {
+    const output = entry.output ?? {}
+    if (!isStudentPlanningOutput(output)) continue
+
+    const section = resolveSourceSection(pkg, output.source_section ?? null)
+    checkStudentFacingSection(section, entry, issues)
+  }
+
+  const groups = summarizeVariantGroups(outputEntries)
+  checkVariantGroups(groups, issues)
+
+  const errors = issues.filter((issue) => issue.severity === 'error')
+  const warnings = issues.filter((issue) => issue.severity === 'warning')
+
+  if (targets.length > 1) {
+    console.log(`\n=== Pedagogy QA fixture: ${target.label} (${target.path}) ===`)
+  }
+  emit({
+    package_id: pkg.package_id ?? null,
+    package_path: target.path,
+    variant_group_count: groups.size,
+    student_planning_output_count: outputEntries.filter((entry) => isStudentPlanningOutput(entry.output ?? {})).length,
+    judgment: errors.length > 0 ? 'block' : warnings.length > 0 ? 'revise' : 'pass',
+    error_count: errors.length,
+    warning_count: warnings.length,
+    issues,
+  })
+
+  if (errors.length > 0) hasFailure = true
 }
 
-const groups = summarizeVariantGroups(outputEntries)
-checkVariantGroups(groups, issues)
-
-const errors = issues.filter((issue) => issue.severity === 'error')
-const warnings = issues.filter((issue) => issue.severity === 'warning')
-
-emit({
-  package_id: pkg.package_id ?? null,
-  package_path: resolvedPackageArg,
-  variant_group_count: groups.size,
-  student_planning_output_count: outputEntries.filter((entry) => isStudentPlanningOutput(entry.output ?? {})).length,
-  judgment: errors.length > 0 ? 'block' : warnings.length > 0 ? 'revise' : 'pass',
-  error_count: errors.length,
-  warning_count: warnings.length,
-  issues,
-})
-
-if (errors.length > 0) {
-  process.exit(1)
-}
+if (hasFailure) process.exit(1)

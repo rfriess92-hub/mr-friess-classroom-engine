@@ -1,53 +1,64 @@
 import { existsSync } from 'node:fs'
 import process from 'node:process'
 import { normalizePackageToRenderPlan } from '../engine/schema/render-plan.mjs'
-import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
+import { argValue, fail, hasFlag, loadJson, printFixtureList, repoPath, resolvePackageTargets } from './lib.mjs'
 
 const packageArg = argValue('--package')
 const fixtureArg = argValue('--fixture')
-const printPlan = process.argv.includes('--print-plan')
+const fixturePatternArg = argValue('--fixture-pattern')
+const printPlan = hasFlag('--print-plan')
+const listFixtures = hasFlag('--list-fixtures')
 
 if (!existsSync(repoPath('schemas', 'canonical-vocabulary.json')) || !existsSync(repoPath('schemas', 'lesson-package.schema.json'))) {
   console.error('Missing stable-core schemas under /schemas.')
   process.exit(1)
 }
 
-const resolvedPackageArg = resolvePackageArg(packageArg, fixtureArg)
+if (listFixtures) {
+  printFixtureList()
+  process.exit(0)
+}
 
-if (!resolvedPackageArg) {
+const targets = resolvePackageTargets(packageArg, fixtureArg, fixturePatternArg)
+
+if (targets.length === 0) {
   console.log('Stable-core Schema v2.1 pipeline scaffold is present.')
-  console.log('Usage: pnpm run schema:check -- --package fixtures/core/benchmark-1.grade2-math.json [--print-plan]')
-  console.log(`Fixture shortcuts: ${Object.keys(FIXTURE_MAP).map((key) => `--fixture ${key}`).join(' | ')}`)
+  console.log('Usage: pnpm run schema:check -- (--package <path> | --fixture <key> | --fixture-pattern <glob>) [--print-plan] [--list-fixtures]')
   console.log('Canonical schema sources: /schemas/canonical-vocabulary.json and /schemas/lesson-package.schema.json')
   process.exit(0)
 }
 
-const packagePath = repoPath(resolvedPackageArg)
-if (!existsSync(packagePath)) {
-  console.error(`Package file not found: ${resolvedPackageArg}`)
-  process.exit(1)
+let hasFailure = false
+for (const target of targets) {
+  const packagePath = repoPath(target.path)
+  if (!existsSync(packagePath)) fail(`Package file not found: ${target.path}`)
+
+  const pkg = loadJson(packagePath)
+  const { validation, render_plan: renderPlan } = normalizePackageToRenderPlan(pkg)
+
+  if (targets.length > 1) {
+    console.log(`\n=== Fixture: ${target.label} (${target.path}) ===`)
+  }
+  console.log(`Package: ${renderPlan.package_id ?? '(missing package_id)'}`)
+  console.log(`Architecture: ${renderPlan.primary_architecture ?? '(missing primary_architecture)'}`)
+  console.log(`Outputs discovered: ${renderPlan.outputs.length}`)
+  console.log(`Validation status: ${validation.valid ? 'PASS' : 'FAIL'}`)
+  console.log(`Errors: ${validation.errors.length}`)
+  console.log(`Warnings: ${validation.warnings.length}`)
+
+  for (const error of validation.errors) {
+    console.log(`ERROR [${error.code}] ${error.message}${error.path ? ` @ ${error.path}` : ''}`)
+  }
+  for (const warning of validation.warnings) {
+    console.log(`WARN  [${warning.code}] ${warning.message}${warning.path ? ` @ ${warning.path}` : ''}`)
+  }
+
+  if (printPlan) {
+    console.log('\n--- render_plan ---')
+    console.log(JSON.stringify(renderPlan, null, 2))
+  }
+
+  if (!validation.valid) hasFailure = true
 }
 
-const pkg = loadJson(packagePath)
-const { validation, render_plan: renderPlan } = normalizePackageToRenderPlan(pkg)
-
-console.log(`Package: ${renderPlan.package_id ?? '(missing package_id)'}`)
-console.log(`Architecture: ${renderPlan.primary_architecture ?? '(missing primary_architecture)'}`)
-console.log(`Outputs discovered: ${renderPlan.outputs.length}`)
-console.log(`Validation status: ${validation.valid ? 'PASS' : 'FAIL'}`)
-console.log(`Errors: ${validation.errors.length}`)
-console.log(`Warnings: ${validation.warnings.length}`)
-
-for (const error of validation.errors) {
-  console.log(`ERROR [${error.code}] ${error.message}${error.path ? ` @ ${error.path}` : ''}`)
-}
-for (const warning of validation.warnings) {
-  console.log(`WARN  [${warning.code}] ${warning.message}${warning.path ? ` @ ${warning.path}` : ''}`)
-}
-
-if (printPlan) {
-  console.log('\n--- render_plan ---')
-  console.log(JSON.stringify(renderPlan, null, 2))
-}
-
-process.exit(validation.valid ? 0 : 1)
+process.exit(hasFailure ? 1 : 0)
