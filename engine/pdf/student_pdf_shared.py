@@ -26,6 +26,19 @@ def normalize_string_list(items):
     return [str(item).strip() for item in (items or []) if str(item).strip()]
 
 
+def clean_support_text(text):
+    cleaned = str(text or '').strip()
+    if not cleaned:
+        return ''
+    lowered = cleaned.lower()
+    if lowered.startswith('if you need it:'):
+        cleaned = cleaned[len('If you need it:'):].strip()
+    lowered = cleaned.lower()
+    if lowered.startswith('sentence starter:'):
+        cleaned = cleaned[len('Sentence starter:'):].strip()
+    return ' '.join(cleaned.split())
+
+
 def normalize_self_check_items(items):
     normalized = []
     for item in items or []:
@@ -44,13 +57,13 @@ def normalize_self_check_items(items):
 def cue_title_for(title: str):
     lowered = str(title or '').strip().lower()
     if 'anchor' in lowered:
-        return 'Helpful reminders', 'support'
+        return 'Reminders', 'support'
     if lowered == 'tip':
-        return 'If you need it', 'tip'
+        return 'Support', 'tip'
     if 'self-check' in lowered or 'success check' in lowered:
-        return 'Before you hand it in', 'check'
+        return 'Check', 'check'
     if 'support tools' in lowered:
-        return 'Helpful reminder', 'tip'
+        return 'Support', 'tip'
     return str(title), 'neutral'
 
 

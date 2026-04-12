@@ -106,7 +106,7 @@ def worksheet_question_block(styles, question: dict):
         ('LEFTPADDING', (0, 0), (-1, -1), 10), ('RIGHTPADDING', (0, 0), (-1, -1), 10),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
     ]))
-    response_flowables = [Paragraph('Write here', styles['ResponseLabelX']), Spacer(1, 2)]
+    response_flowables = []
     for index, section in enumerate(sections):
         if section.get('label'):
             response_flowables += [Paragraph(section['label'], styles['ResponseLabelX']), Spacer(1, 2)]
@@ -136,7 +136,7 @@ def build_task_block(styles, task: dict, compact=False, spacing_scale: float = 1
         ('TOPPADDING', (0, 0), (-1, -1), 0), ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
         ('LEFTPADDING', (0, 0), (-1, -1), 0), ('RIGHTPADDING', (0, 0), (-1, -1), 0),
     ]))
-    response_card = Table([[[Paragraph('Write here', styles['ResponseLabelX']), Spacer(1, 2), base.response_line_table(max(2, line_total), row_height=16)]]], colWidths=[540])
+    response_card = Table([[[base.response_line_table(max(2, line_total), row_height=16)]]], colWidths=[540])
     response_card.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), colors.white), ('BOX', (0, 0), (-1, -1), 0.55, BORDER),
         ('TOPPADDING', (0, 0), (-1, -1), 6), ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
