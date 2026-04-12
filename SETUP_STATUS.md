@@ -1,25 +1,32 @@
 # Setup status
 
-## Loaded into repo / starter pack
+## Stable-core reality (current)
 
-- `engine/content/science9_interconnected_spheres.json`
-- `engine/content/careers8_goal_setting.json`
-- starter README and repo config
-- basic script stubs in `scripts/`
-- one basic Python repo-layout test
+- Stable-core schemas are active and enforced:
+  - `schemas/canonical-vocabulary.json`
+  - `schemas/lesson-package.schema.json`
+- Planner routing is active via:
+  - `engine/planner/output-router.mjs`
+  - `scripts/route-plan.mjs`
+- Renderer wrappers are active via:
+  - `engine/pptx/renderer.py` (public PPTX entrypoint)
+  - `engine/pdf/render_stable_core_output.py` (stable-core PDF wrapper)
+  - `scripts/render-package.mjs`
+- QA and workflow checks are active via:
+  - `scripts/doctor.mjs`
+  - `scripts/schema-check.mjs`
+  - `scripts/qa-render.mjs`
+  - `scripts/qa-bundle.mjs`
 
-## Not loaded yet
+## Canonical workflow sources
 
-- real `engine/pptx/` builder implementation
-- real `engine/pdf/` builder implementation
-- real `engine/schema/` files
-- complete package/toolchain wiring
+Use these as the canonical workflow references, in order:
+
+1. `README.md`
+2. `docs/stable-core-workflow-policy.md`
+3. `DECISIONS.md`
 
 ## Practical meaning
 
-This repo now preserves the lesson content layer and starter scaffolding.
-It is not yet the full runnable engine.
-
-## Best next step
-
-Add the real `engine/` builder files, then wire the stubs to the actual build path.
+This repository is an actively runnable stable-core package pipeline with local command gates.
+Legacy direct-lesson builders remain available for compatibility/debugging, but stable-core acceptance is package-first (`schema:check` → `route:plan` → `render:package` → `qa:bundle`).

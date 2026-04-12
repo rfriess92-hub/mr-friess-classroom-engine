@@ -1,4 +1,4 @@
-import { existsSync, readdirSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { repoPath, ensureExists } from './lib.mjs'
 
 const required = [
@@ -61,6 +61,31 @@ for (const file of deadRenderers) {
     console.error(`[FAIL] Archived renderer at active path: ${file}`)
     console.error(`       Authoritative renderer is engine/pptx/renderer.py`)
     passed = false
+  }
+}
+
+const staleDocPhrases = [
+  {
+    file: 'SETUP_STATUS.md',
+    phrases: [
+      '## Not loaded yet',
+      'It is not yet the full runnable engine.',
+      'starter pack',
+      'basic script stubs in `scripts/`',
+    ],
+  },
+]
+
+for (const { file, phrases } of staleDocPhrases) {
+  const filePath = repoPath(file)
+  ensureExists(filePath, file)
+  const content = readFileSync(filePath, 'utf-8')
+  for (const phrase of phrases) {
+    if (content.includes(phrase)) {
+      console.error(`[FAIL] Stale doc phrase found in ${file}: "${phrase}"`)
+      console.error('       Update setup/workflow docs to match stable-core reality.')
+      passed = false
+    }
   }
 }
 
