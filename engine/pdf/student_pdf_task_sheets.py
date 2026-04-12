@@ -1,5 +1,5 @@
 from reportlab.lib import colors
-from reportlab.platypus import KeepTogether, Paragraph, Spacer, Table, TableStyle, SimpleDocTemplate
+from reportlab.platypus import KeepTogether, PageBreak, Paragraph, Spacer, Table, TableStyle, SimpleDocTemplate
 from student_pdf_shared import (
     BORDER,
     CARD_BG,
@@ -108,6 +108,129 @@ def add_day1_page2_footer(styles, story):
     footer = Table([[left, right]], colWidths=[265, 265])
     footer.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), TASK_FOOTER_BG), ('BOX', (0, 0), (-1, -1), 0.5, TASK_FOOTER_BORDER), ('INNERGRID', (0, 0), (-1, -1), 0.35, TASK_FOOTER_BORDER), ('TOPPADDING', (0, 0), (-1, -1), 5), ('BOTTOMPADDING', (0, 0), (-1, -1), 5), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8), ('VALIGN', (0, 0), (-1, -1), 'TOP')]))
     story.append(footer)
+
+
+_INTENT_PURPOSE_LINES = {
+    'guided_note_catch': 'Use this sheet to capture key ideas as you watch and listen.',
+    'revision_strengthen': 'Use this sheet to review and strengthen your earlier thinking.',
+    'compare_sort': 'Use this sheet to compare and sort your ideas before writing.',
+    'evidence_capture': 'Use this sheet to record and explain the evidence you are using.',
+    'checkpoint_prep': 'Use this sheet to prepare for your checkpoint conversation.',
+    'exploratory_planning': 'Use this sheet to build and test your thinking.',
+}
+
+_INTENT_TITLE_SUFFIX = {
+    'guided_note_catch': '— Note Catcher',
+    'revision_strengthen': '— Revision',
+    'checkpoint_prep': '— Checkpoint Prep',
+}
+
+
+def _grammar_layout(grammar: dict, tasks: list) -> dict:
+    render_intent = grammar.get('render_intent', 'exploratory_planning')
+    density = grammar.get('density', 'medium')
+    evidence_role = grammar.get('evidence_role', 'planning_only')
+    length_band = grammar.get('length_band', 'standard')
+    multi_page = density == 'heavy' and len(tasks) >= 5
+    compact = multi_page or density == 'heavy' or render_intent in ('revision_strengthen', 'checkpoint_prep')
+    return {
+        'render_intent': render_intent,
+        'density': density,
+        'evidence_role': evidence_role,
+        'length_band': length_band,
+        'multi_page': multi_page,
+        'compact': compact,
+        'checkpoint_close': evidence_role in ('checkpoint_evidence',) or render_intent == 'checkpoint_prep',
+    }
+
+
+def _scaled_lines(length_band: str, count: int, base_lines: int = 4) -> list:
+    if length_band == 'extended':
+        lines = base_lines + 2
+    elif length_band == 'short':
+        lines = max(2, base_lines - 1)
+    else:
+        lines = base_lines
+    return [lines] * count
+
+
+def _purpose_line(render_intent: str, section: dict) -> str:
+    explicit = str(section.get('purpose_line', '')).strip()
+    return explicit or _INTENT_PURPOSE_LINES.get(render_intent, 'Use this sheet to develop your thinking.')
+
+
+def _display_title(base, render_intent: str, raw_title: str) -> str:
+    neutralized = base.neutralize_student_task_title(raw_title) if raw_title else 'Task Sheet'
+    suffix = _INTENT_TITLE_SUFFIX.get(render_intent, '')
+    if suffix and suffix.lower().replace('— ', '') not in neutralized.lower():
+        return f'{neutralized} {suffix}'
+    return neutralized
+
+
+def render_task_sheet(base, styles_bundle, packet: dict, section: dict, out_path):
+    grammar = packet.get('_render_grammar', {})
+    tasks = section.get('tasks', [])
+    layout = _grammar_layout(grammar, tasks)
+
+    styles = styles_bundle()
+    story = []
+    title = _display_title(base, layout['render_intent'], section.get('title', 'Task Sheet'))
+    purpose = _purpose_line(layout['render_intent'], section)
+
+    base.title_bar(story, styles, base.packet_heading(packet))
+    story.append(Paragraph(title, styles['SheetTitleX']))
+    story.append(Paragraph('Name: ____________________   Date: __________', styles['MutedX']))
+    story.append(Spacer(1, 3))
+    base.purpose_line_block(story, styles, purpose)
+    base.plain_label_block(story, styles, 'Before you start', section.get('instructions', []),
+                           compact=layout['compact'], spacer_after=5)
+
+    if layout['multi_page']:
+        line_counts = _scaled_lines(layout['length_band'], len(tasks) - 1, base_lines=3)
+        for task, lc in zip(tasks[:-1], line_counts):
+            story.append(base.build_task_block(styles, task, compact=True, spacing_scale=0.58,
+                                               rendered_lines=lc, line_style='MicroX',
+                                               prompt_style='BodyTextCompactX', vertical_padding=3.5))
+        story.append(PageBreak())
+        base.title_bar(story, styles, base.packet_heading(packet))
+        page2_subtitle = 'Use this page to name what still needs work before the checkpoint.' \
+            if layout['checkpoint_close'] else 'Continue your work on this page.'
+        page2_title = f"{base.neutralize_student_task_title(section.get('title', 'Task Sheet'))} — Checkpoint Prep" \
+            if layout['checkpoint_close'] else f"{base.neutralize_student_task_title(section.get('title', 'Task Sheet'))} — Continued"
+        story.append(Paragraph(page2_title, styles['SheetTitleX']))
+        story.append(Paragraph(page2_subtitle, styles['MutedX']))
+        story.append(Spacer(1, 3))
+        story.append(base.build_task_block(styles, tasks[-1], compact=True, spacing_scale=0.72,
+                                           rendered_lines=3, line_style='MicroX',
+                                           prompt_style='BodyTextCompactX', vertical_padding=4.5))
+        base.add_day1_page2_footer(story, styles, section)
+
+    elif layout['compact']:
+        line_counts = _scaled_lines(layout['length_band'], len(tasks), base_lines=4)
+        for task, lc in zip(tasks, line_counts):
+            story.append(base.build_task_block(styles, task, compact=True, spacing_scale=0.8,
+                                               rendered_lines=lc, line_style='MicroX',
+                                               prompt_style='BodyTextCompactX', vertical_padding=4.5))
+        if layout['checkpoint_close']:
+            base.add_day2_footer(story, styles, section)
+        else:
+            base.plain_label_block(story, styles, 'Support tools', section.get('embedded_supports', []),
+                                   compact=True, spacer_after=5)
+            base.plain_label_block(story, styles, 'Success check', section.get('success_criteria', []),
+                                   compact=True, spacer_after=0)
+
+    else:
+        line_counts = _scaled_lines(layout['length_band'], len(tasks), base_lines=4)
+        for task, lc in zip(tasks, line_counts):
+            story.append(base.build_task_block(styles, task, compact=False, rendered_lines=lc))
+        base.plain_label_block(story, styles, 'Support tools', section.get('embedded_supports', []),
+                               compact=True, spacer_after=5)
+        base.plain_label_block(story, styles, 'Success check', section.get('success_criteria', []),
+                               compact=True, spacer_after=0)
+
+    doc = SimpleDocTemplate(str(out_path), pagesize=base.letter,
+                            leftMargin=28, rightMargin=28, topMargin=20, bottomMargin=20)
+    doc.build(story)
 
 
 def draft_card(styles, story, section: dict):

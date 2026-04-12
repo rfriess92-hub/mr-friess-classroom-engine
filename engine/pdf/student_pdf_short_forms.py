@@ -44,12 +44,22 @@ def section_render_profile(section: dict):
 
 
 def render_exit_ticket(base, styles_bundle, packet: dict, section: dict, out_path):
+    grammar = packet.get('_render_grammar', {})
+    assessment_weight = grammar.get('assessment_weight', 'standard')
+    render_intent = grammar.get('render_intent', 'reflection_closure')
+
     styles = styles_bundle()
     story = []
     profile = section_render_profile(section)
 
+    # High-weight exit tickets get a distinct title and slightly expanded response area
+    is_final_evidence = assessment_weight == 'high' or render_intent == 'final_evidence'
+    sheet_title = 'Final Exit Ticket' if is_final_evidence else 'Exit Ticket'
+    base_line_count = max(5, int(section.get('n_lines', 5)))
+    line_count = base_line_count + 2 if is_final_evidence else base_line_count
+
     base.title_bar(story, styles, base.packet_heading(packet))
-    story.append(Paragraph('Exit Ticket', styles['SheetTitleX']))
+    story.append(Paragraph(sheet_title, styles['SheetTitleX']))
     story.append(Paragraph('Name: ____________________   Date: __________', styles['MutedX']))
     story.append(Spacer(1, 3))
     base.purpose_line_block(story, styles, profile['purpose_line'])
@@ -72,7 +82,6 @@ def render_exit_ticket(base, styles_bundle, packet: dict, section: dict, out_pat
         story.append(prompt_card)
         story.append(Spacer(1, 6))
 
-    line_count = max(5, int(section.get('n_lines', 5)))
     response_card = Table([[[
         Paragraph(profile['response_label'], styles['SectionHeadX']),
         Paragraph(profile['response_note'], styles['HintX']),
