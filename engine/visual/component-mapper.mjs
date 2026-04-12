@@ -222,12 +222,13 @@ function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
   return components.map(withEstimatedLayout)
 }
 
-function inferTaskSheetPages(section) {
-  const title = String(section?.title ?? '').toLowerCase()
+function inferTaskSheetPages(section, route = {}) {
   const tasks = Array.isArray(section?.tasks) ? section.tasks : []
-  const day1MultiPage = title.includes('day 1') && tasks.length >= 5
+  const density = route.density ?? 'medium'
+  const evidenceRole = route.evidence_role ?? 'planning_only'
+  const multiPage = density === 'heavy' && tasks.length >= 5
 
-  if (!day1MultiPage) {
+  if (!multiPage) {
     return [
       {
         page_role: 'handout',
@@ -237,6 +238,7 @@ function inferTaskSheetPages(section) {
     ]
   }
 
+  const page2Role = evidenceRole === 'checkpoint_evidence' ? 'handout_page_2_checkpoint' : 'handout_page_2'
   return [
     {
       page_role: 'handout',
@@ -244,7 +246,7 @@ function inferTaskSheetPages(section) {
       tasks: tasks.slice(0, -1),
     },
     {
-      page_role: 'handout_page_2',
+      page_role: page2Role,
       layout_id: 'task_sheet_page_2',
       tasks: tasks.slice(-1),
     },
@@ -298,7 +300,7 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
   }
 
   if (route.output_type === 'task_sheet') {
-    const pages = inferTaskSheetPages(sourceSection ?? {}).map((page, index) => ({
+    const pages = inferTaskSheetPages(sourceSection ?? {}, route).map((page, index) => ({
       page_id: `${route.output_id}_page_${index + 1}`,
       page_role: page.page_role,
       layout_id: page.layout_id,
@@ -319,6 +321,8 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
       output_id: route.output_id,
       output_type: route.output_type,
       artifact_type: 'worksheet',
+      render_intent: route.render_intent,
+      density: route.density,
       surface_variant: surfaceVariant,
       instructional_variant: instructionalVariant,
       token_set: resolveVisualStyle({ surfaceVariant }).token_set,
