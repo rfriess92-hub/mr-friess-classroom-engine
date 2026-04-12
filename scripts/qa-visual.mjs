@@ -29,6 +29,6 @@ const results = routes.map((route) => ({
   ...buildRouteVisualPlan(pkg, route),
 }))
 
-const hardFailure = results.some((item) => item.visual_qa.judgment === 'revise')
+const hardFailure = results.some((item) => item.visual_qa.judgment !== 'pass')
 console.log(JSON.stringify({ visual_qa: { results } }, null, 2))
 if (hardFailure) process.exit(1)
