@@ -12,6 +12,7 @@ import {
   isValidAudience,
   normalizeOutputType,
 } from './canonical.mjs'
+import { resolveSourceSection } from './source-section.mjs'
 
 function pushIssue(collection, code, message, path = null) {
   collection.push({ code, message, path })
@@ -80,29 +81,6 @@ function collectSlideEntries(pkg) {
   }
 
   return entries
-}
-
-function resolveSourceSection(root, sourceSection) {
-  if (!sourceSection) return null
-
-  let current = root
-  for (const token of sourceSection.split('.')) {
-    if (Array.isArray(current)) {
-      current = current.find((item) => (
-        item
-        && typeof item === 'object'
-        && (item.day_id === token || item.output_id === token)
-      )) ?? null
-    } else if (current && typeof current === 'object') {
-      current = current[token] ?? null
-    } else {
-      return null
-    }
-
-    if (current == null) return null
-  }
-
-  return current
 }
 
 function isNonEmptyString(value) {

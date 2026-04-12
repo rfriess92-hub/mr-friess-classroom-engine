@@ -1,4 +1,5 @@
 import { normalizeOutputType } from './canonical.mjs'
+import { resolveSourceSection } from './source-section.mjs'
 
 export const ARTIFACT_FAMILIES = [
   'teacher_guide',
@@ -53,29 +54,6 @@ function collectStrings(value, output = []) {
     for (const entry of Object.values(value)) collectStrings(entry, output)
   }
   return output
-}
-
-function resolveSourceSection(root, sourceSection) {
-  if (!sourceSection) return null
-
-  let current = root
-  for (const token of sourceSection.split('.')) {
-    if (Array.isArray(current)) {
-      current = current.find((item) => (
-        item
-        && typeof item === 'object'
-        && (item.day_id === token || item.output_id === token)
-      )) ?? null
-    } else if (current && typeof current === 'object') {
-      current = current[token] ?? null
-    } else {
-      return null
-    }
-
-    if (current == null) return null
-  }
-
-  return current
 }
 
 function normalizeEnum(value, allowed, fallback) {
