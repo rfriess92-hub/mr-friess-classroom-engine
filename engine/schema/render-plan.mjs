@@ -1,5 +1,6 @@
 import { selectAssignmentFamily } from '../family/selection.mjs'
 import { validatePackage } from './preflight.mjs'
+import { normalizeOutputRenderGrammar } from './render-grammar.mjs'
 
 function collectOutputEntries(pkg) {
   const entries = []
@@ -46,6 +47,7 @@ function normalizeOutputEntry(pkg, entry, index) {
   const output = entry.output ?? {}
   const outputType = output.output_type
   const audience = output.audience
+  const renderGrammar = normalizeOutputRenderGrammar(pkg, output)
 
   return {
     output_id: output.output_id ?? `${outputType ?? 'output'}_${index + 1}`,
@@ -69,6 +71,12 @@ function normalizeOutputEntry(pkg, entry, index) {
     alignment_target: output.alignment_target ?? null,
     final_evidence_target: output.final_evidence_target ?? null,
     declared_bundle: output.bundle ?? pkg.bundle?.bundle_id ?? null,
+    artifact_family: renderGrammar.artifact_family,
+    render_intent: renderGrammar.render_intent,
+    evidence_role: renderGrammar.evidence_role,
+    assessment_weight: renderGrammar.assessment_weight,
+    density: renderGrammar.density,
+    length_band: renderGrammar.length_band,
   }
 }
 
