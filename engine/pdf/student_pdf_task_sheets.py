@@ -45,7 +45,13 @@ def _task_profile_from_hints(task: dict):
 def task_profile(task: dict):
     explicit = _task_profile_from_hints(task)
     if explicit is not None:
-        return {'heading': explicit['heading'], 'instruction': str(task.get('prompt', '')).strip(), 'help': explicit.get('help', ''), 'lines': explicit.get('lines', max(2, int(task.get('lines', 4)))), 'row_height': explicit.get('row_height', 16)}
+        return {
+            'heading': explicit['heading'],
+            'instruction': str(task.get('prompt', '')).strip(),
+            'help': explicit.get('help', ''),
+            'lines': explicit.get('lines', max(2, int(task.get('lines', 4)))),
+            'row_height': explicit.get('row_height', 16),
+        }
 
     label = str(task.get('label', '')).strip()
     prompt = str(task.get('prompt', '')).strip()
@@ -72,42 +78,74 @@ def task_profile(task: dict):
         profile['heading'] = label or profile['heading']
         profile['lines'] = max(2, int(task.get('lines', profile['lines'])))
 
-    return {'heading': profile['heading'], 'instruction': prompt, 'help': profile.get('help', ''), 'lines': profile.get('lines', max(2, int(task.get('lines', 4)))), 'row_height': profile.get('row_height', 16)}
+    return {
+        'heading': profile['heading'],
+        'instruction': prompt,
+        'help': profile.get('help', ''),
+        'lines': profile.get('lines', max(2, int(task.get('lines', 4)))),
+        'row_height': profile.get('row_height', 16),
+    }
 
 
-def integrated_task_box(base, styles, profile: dict):
-    response = base.response_line_table(profile['lines'], row_height=profile['row_height'])
+def integrated_task_box(base, styles, profile: dict, line_total: int | None = None, show_help: bool = True, spacer_after: int = 6):
+    resolved_lines = max(2, int(line_total if line_total is not None else profile['lines']))
+    response = base.response_line_table(resolved_lines, row_height=profile['row_height'])
     inner = [Paragraph(profile['heading'], styles['SectionHeadX']), Paragraph(profile['instruction'], styles['BodyText'])]
-    if profile['help']:
-        inner += [Spacer(1, 3), Paragraph(profile['help'], styles['InlineHelpX'])]
-    inner += [Spacer(1, 5), response]
+    if show_help and profile['help']:
+        inner += [Spacer(1, 2), Paragraph(profile['help'], styles['InlineHelpX'])]
+    inner += [Spacer(1, 4), response]
     table = Table([[inner]], colWidths=[540])
-    table.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), CARD_BG), ('BOX', (0, 0), (-1, -1), 0.5, BORDER), ('TOPPADDING', (0, 0), (-1, -1), 7), ('BOTTOMPADDING', (0, 0), (-1, -1), 7), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8), ('VALIGN', (0, 0), (-1, -1), 'TOP')]))
-    return KeepTogether([table, Spacer(1, 6)])
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), CARD_BG),
+        ('BOX', (0, 0), (-1, -1), 0.5, BORDER),
+        ('TOPPADDING', (0, 0), (-1, -1), 6),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+        ('LEFTPADDING', (0, 0), (-1, -1), 8),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 8),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+    ]))
+    return KeepTogether([table, Spacer(1, spacer_after)])
+
+
+def _footer_table(story, left, right=None):
+    rows = [[left, right]] if right is not None else [[left]]
+    col_widths = [265, 265] if right is not None else [540]
+    footer = Table(rows, colWidths=col_widths)
+    footer.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), TASK_FOOTER_BG),
+        ('BOX', (0, 0), (-1, -1), 0.45, TASK_FOOTER_BORDER),
+        ('INNERGRID', (0, 0), (-1, -1), 0.3, TASK_FOOTER_BORDER),
+        ('TOPPADDING', (0, 0), (-1, -1), 4),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
+        ('LEFTPADDING', (0, 0), (-1, -1), 7),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 7),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+    ]))
+    story.append(footer)
 
 
 def add_day2_footer(styles, story):
-    left = [Paragraph('Helpful reminder', styles['SectionHeadX'])]
-    for item in ['Keep planning work on this page.', 'Your final paragraph goes on the final response sheet.']:
-        left.append(Paragraph(f'- {item}', styles['MicroX']))
-    right = compact_list_cell(styles, 'Quick check-in', ['I know which reason I will keep.', 'I improved one weak part.', 'I am ready to draft my final paragraph.'])
-    footer = Table([[left, right]], colWidths=[265, 265])
-    footer.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), TASK_FOOTER_BG), ('BOX', (0, 0), (-1, -1), 0.5, TASK_FOOTER_BORDER), ('INNERGRID', (0, 0), (-1, -1), 0.35, TASK_FOOTER_BORDER), ('TOPPADDING', (0, 0), (-1, -1), 6), ('BOTTOMPADDING', (0, 0), (-1, -1), 6), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8), ('VALIGN', (0, 0), (-1, -1), 'TOP')]))
-    story.append(footer)
+    left = compact_list_cell(styles, 'Helpful reminder', [
+        'Keep planning work on this page.',
+        'Your final paragraph goes on the final response sheet.',
+    ])
+    right = compact_list_cell(styles, 'Quick check-in', [
+        'I know which reason I will keep.',
+        'I improved one weak part.',
+    ])
+    _footer_table(story, left, right)
 
 
 def add_day1_page2_footer(styles, story):
-    reminder = Table([[compact_list_cell(styles, 'Checkpoint reminder', ['Use Part E to name the one area you want to strengthen before the checkpoint.'])]], colWidths=[540])
-    reminder.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), PROMPT_BG), ('BOX', (0, 0), (-1, -1), 0.45, LIGHT_BORDER), ('TOPPADDING', (0, 0), (-1, -1), 4), ('BOTTOMPADDING', (0, 0), (-1, -1), 4), ('LEFTPADDING', (0, 0), (-1, -1), 6), ('RIGHTPADDING', (0, 0), (-1, -1), 6), ('VALIGN', (0, 0), (-1, -1), 'TOP')]))
-    story.append(reminder)
-    story.append(Spacer(1, 3))
-    left = [Paragraph('Helpful reminder', styles['SectionHeadX'])]
-    for item in ['Keep your planning here until the checkpoint.', 'Bring your strongest reason and evidence into Day 2.']:
-        left.append(Paragraph(f'- {item}', styles['MicroX']))
-    right = compact_list_cell(styles, 'Quick check-in', ['I have a clear opinion.', 'I found reasons and evidence I can reuse.', 'I know one part I still need to improve.'])
-    footer = Table([[left, right]], colWidths=[265, 265])
-    footer.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), TASK_FOOTER_BG), ('BOX', (0, 0), (-1, -1), 0.5, TASK_FOOTER_BORDER), ('INNERGRID', (0, 0), (-1, -1), 0.35, TASK_FOOTER_BORDER), ('TOPPADDING', (0, 0), (-1, -1), 5), ('BOTTOMPADDING', (0, 0), (-1, -1), 5), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8), ('VALIGN', (0, 0), (-1, -1), 'TOP')]))
-    story.append(footer)
+    left = compact_list_cell(styles, 'Checkpoint reminder', [
+        'Name the one area you want to strengthen before the checkpoint.',
+        'Keep planning on this page rather than drafting the final answer here.',
+    ])
+    right = compact_list_cell(styles, 'Quick check-in', [
+        'I have a clear opinion.',
+        'I know one part I still need to improve.',
+    ])
+    _footer_table(story, left, right)
 
 
 _INTENT_PURPOSE_LINES = {
@@ -167,6 +205,84 @@ def _display_title(base, render_intent: str, raw_title: str) -> str:
     return neutralized
 
 
+def _instruction_lines(section: dict, layout: dict):
+    instructions = normalize_string_list(section.get('instructions', []))
+    if layout['compact'] or layout['multi_page']:
+        return instructions[:2]
+    return instructions
+
+
+def _help_visible(layout: dict, task_index: int, page_task_count: int, page_index: int = 0) -> bool:
+    if page_task_count <= 1:
+        return True
+    if layout['checkpoint_close'] and page_index > 0:
+        return task_index == 0
+    if layout['compact'] or layout['multi_page']:
+        return task_index == 0
+    if layout['density'] == 'medium':
+        return task_index < 2
+    return True
+
+
+def _estimate_task_block_height(base, task: dict, compact: bool, rendered_lines: int | None = None, show_help: bool = True) -> int:
+    profile = task_profile(task)
+    line_total = max(2, int(rendered_lines if rendered_lines is not None else profile['lines']))
+    heading_lines = max(1, base.estimate_wrapped_lines(profile['heading'], 70))
+    instruction_lines = max(1, base.estimate_wrapped_lines(profile['instruction'], 84 if compact else 82))
+    help_lines = max(1, base.estimate_wrapped_lines(profile['help'], 86)) if show_help and profile['help'] else 0
+    response_height = line_total * max(14, int(profile.get('row_height', 16)))
+    text_height = (heading_lines * 12) + (instruction_lines * (10 if compact else 12)) + (help_lines * 9)
+    chrome_height = 42 if compact else 58
+    return text_height + response_height + chrome_height
+
+
+def _split_tasks_for_multi_page(base, layout: dict, tasks: list):
+    if len(tasks) <= 1:
+        return tasks, []
+
+    line_counts = _scaled_lines(layout['length_band'], len(tasks), base_lines=3)
+    first_page_budget = 420 if layout['checkpoint_close'] else 445
+    current_height = 0
+    split_index = 0
+
+    for index, task in enumerate(tasks[:-1]):
+        show_help = _help_visible(layout, index, len(tasks), page_index=0)
+        task_height = _estimate_task_block_height(base, task, compact=True, rendered_lines=line_counts[index], show_help=show_help)
+        remaining_height = 0
+        for later_index, later_task in enumerate(tasks[index + 1:], start=index + 1):
+            later_show_help = _help_visible(layout, later_index - (index + 1), len(tasks[index + 1:]), page_index=1)
+            remaining_height += _estimate_task_block_height(base, later_task, compact=True, rendered_lines=line_counts[later_index], show_help=later_show_help)
+
+        if index >= 1 and current_height + task_height > first_page_budget:
+            break
+        if index >= 1 and current_height + task_height > first_page_budget - 28 and remaining_height >= 170:
+            break
+
+        current_height += task_height
+        split_index = index + 1
+
+    split_index = min(max(2, split_index), len(tasks) - 1)
+    return tasks[:split_index], tasks[split_index:]
+
+
+def _add_support_success_footer(styles, story, section: dict, max_support_items: int = 2, max_success_items: int = 3):
+    support_items = normalize_string_list(section.get('embedded_supports', []))[:max_support_items]
+    success_items = normalize_string_list(section.get('success_criteria', []))[:max_success_items]
+
+    if support_items and success_items:
+        left = compact_list_cell(styles, 'Helpful reminder', support_items)
+        right = compact_list_cell(styles, 'Success check', success_items)
+        _footer_table(story, left, right)
+        return
+
+    if support_items:
+        _footer_table(story, compact_list_cell(styles, 'Helpful reminder', support_items))
+        return
+
+    if success_items:
+        _footer_table(story, compact_list_cell(styles, 'Success check', success_items))
+
+
 def render_task_sheet(base, styles_bundle, packet: dict, section: dict, out_path):
     grammar = packet.get('_render_grammar', {})
     tasks = section.get('tasks', [])
@@ -182,54 +298,83 @@ def render_task_sheet(base, styles_bundle, packet: dict, section: dict, out_path
     story.append(Paragraph('Name: ____________________   Date: __________', styles['MutedX']))
     story.append(Spacer(1, 3))
     base.purpose_line_block(story, styles, purpose)
-    base.plain_label_block(story, styles, 'Before you start', section.get('instructions', []),
-                           compact=layout['compact'], spacer_after=5)
+    base.plain_label_block(story, styles, 'Before you start', _instruction_lines(section, layout), compact=layout['compact'], spacer_after=5)
 
     if layout['multi_page']:
-        line_counts = _scaled_lines(layout['length_band'], len(tasks) - 1, base_lines=3)
-        for task, lc in zip(tasks[:-1], line_counts):
-            story.append(base.build_task_block(styles, task, compact=True, spacing_scale=0.58,
-                                               rendered_lines=lc, line_style='MicroX',
-                                               prompt_style='BodyTextCompactX', vertical_padding=3.5))
+        page1_tasks, page2_tasks = _split_tasks_for_multi_page(base, layout, tasks)
+        page1_lines = _scaled_lines(layout['length_band'], len(page1_tasks), base_lines=3)
+        for index, (task, rendered_lines) in enumerate(zip(page1_tasks, page1_lines)):
+            story.append(base.build_task_block(
+                styles,
+                task,
+                compact=True,
+                spacing_scale=0.52,
+                rendered_lines=rendered_lines,
+                show_help=_help_visible(layout, index, len(page1_tasks), page_index=0),
+                line_style='MicroX',
+                prompt_style='BodyTextCompactX',
+                vertical_padding=3.5,
+            ))
+
         story.append(PageBreak())
         base.title_bar(story, styles, base.packet_heading(packet))
-        page2_subtitle = 'Use this page to name what still needs work before the checkpoint.' \
-            if layout['checkpoint_close'] else 'Continue your work on this page.'
-        page2_title = f"{base.neutralize_student_task_title(section.get('title', 'Task Sheet'))} — Checkpoint Prep" \
-            if layout['checkpoint_close'] else f"{base.neutralize_student_task_title(section.get('title', 'Task Sheet'))} — Continued"
+        page2_subtitle = 'Use this page to name what still needs work before the checkpoint.' if layout['checkpoint_close'] else 'Continue your work on this page.'
+        page2_title = f"{base.neutralize_student_task_title(section.get('title', 'Task Sheet'))} — Checkpoint Prep" if layout['checkpoint_close'] else f"{base.neutralize_student_task_title(section.get('title', 'Task Sheet'))} — Continued"
         story.append(Paragraph(page2_title, styles['SheetTitleX']))
         story.append(Paragraph(page2_subtitle, styles['MutedX']))
         story.append(Spacer(1, 3))
-        story.append(base.build_task_block(styles, tasks[-1], compact=True, spacing_scale=0.72,
-                                           rendered_lines=3, line_style='MicroX',
-                                           prompt_style='BodyTextCompactX', vertical_padding=4.5))
-        base.add_day1_page2_footer(story, styles, section)
+
+        page2_lines = _scaled_lines(layout['length_band'], len(page2_tasks), base_lines=3)
+        for index, (task, rendered_lines) in enumerate(zip(page2_tasks, page2_lines)):
+            story.append(base.build_task_block(
+                styles,
+                task,
+                compact=True,
+                spacing_scale=0.6,
+                rendered_lines=rendered_lines,
+                show_help=_help_visible(layout, index, len(page2_tasks), page_index=1),
+                line_style='MicroX',
+                prompt_style='BodyTextCompactX',
+                vertical_padding=4.0,
+            ))
+
+        if layout['checkpoint_close']:
+            base.add_day1_page2_footer(story, styles, section)
+        else:
+            _add_support_success_footer(styles, story, section, max_support_items=2, max_success_items=2)
 
     elif layout['compact']:
         line_counts = _scaled_lines(layout['length_band'], len(tasks), base_lines=4)
-        for task, lc in zip(tasks, line_counts):
-            story.append(base.build_task_block(styles, task, compact=True, spacing_scale=0.8,
-                                               rendered_lines=lc, line_style='MicroX',
-                                               prompt_style='BodyTextCompactX', vertical_padding=4.5))
+        for index, (task, rendered_lines) in enumerate(zip(tasks, line_counts)):
+            story.append(base.build_task_block(
+                styles,
+                task,
+                compact=True,
+                spacing_scale=0.72,
+                rendered_lines=rendered_lines,
+                show_help=_help_visible(layout, index, len(tasks), page_index=0),
+                line_style='MicroX',
+                prompt_style='BodyTextCompactX',
+                vertical_padding=4.0,
+            ))
         if layout['checkpoint_close']:
             base.add_day2_footer(story, styles, section)
         else:
-            base.plain_label_block(story, styles, 'Support tools', section.get('embedded_supports', []),
-                                   compact=True, spacer_after=5)
-            base.plain_label_block(story, styles, 'Success check', section.get('success_criteria', []),
-                                   compact=True, spacer_after=0)
+            _add_support_success_footer(styles, story, section, max_support_items=2, max_success_items=2)
 
     else:
         line_counts = _scaled_lines(layout['length_band'], len(tasks), base_lines=4)
-        for task, lc in zip(tasks, line_counts):
-            story.append(base.build_task_block(styles, task, compact=False, rendered_lines=lc))
-        base.plain_label_block(story, styles, 'Support tools', section.get('embedded_supports', []),
-                               compact=True, spacer_after=5)
-        base.plain_label_block(story, styles, 'Success check', section.get('success_criteria', []),
-                               compact=True, spacer_after=0)
+        for index, (task, rendered_lines) in enumerate(zip(tasks, line_counts)):
+            story.append(base.build_task_block(
+                styles,
+                task,
+                compact=False,
+                rendered_lines=rendered_lines,
+                show_help=_help_visible(layout, index, len(tasks), page_index=0),
+            ))
+        _add_support_success_footer(styles, story, section, max_support_items=2, max_success_items=3)
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=base.letter,
-                            leftMargin=28, rightMargin=28, topMargin=20, bottomMargin=20)
+    doc = SimpleDocTemplate(str(out_path), pagesize=base.letter, leftMargin=28, rightMargin=28, topMargin=20, bottomMargin=20)
     doc.build(story)
 
 
@@ -291,17 +436,13 @@ def render_final_response_sheet(base, styles_bundle, packet: dict, section: dict
 
     if assessment_weight == 'high':
         story.append(Spacer(1, 5))
-        story.append(Paragraph(
-            'This is your final assessed response. Write your best, most complete answer.',
-            styles['PurposeLineX'],
-        ))
+        story.append(Paragraph('This is your final assessed response. Write your best, most complete answer.', styles['PurposeLineX']))
     else:
         story.append(Spacer(1, 3))
 
     base.purpose_line_block(story, styles, base.final_response_purpose_line(section))
     draft_card(styles, story, section)
 
-    # High-stakes responses get more writing lines to signal seriousness
     if assessment_weight == 'high' and length_band in ('standard', 'extended'):
         response_lines = max(14, int(section.get('response_lines', 12)) + 2)
         section = {**section, 'response_lines': response_lines}
