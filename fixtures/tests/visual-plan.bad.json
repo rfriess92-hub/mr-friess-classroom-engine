@@ -1,10 +1,10 @@
 {
-  "artifact_type": "slide_deck",
+  "artifact_type": "worksheet",
   "pages": [
     {
       "page_id": "bad-1",
-      "page_role": "launch",
-      "layout_id": "slide_title_with_prompt",
+      "page_role": "handout_page_1",
+      "layout_id": "task_sheet_page_1",
       "components": [
         {
           "visual_role": "main_prompt",
@@ -19,6 +19,11 @@
         {
           "visual_role": "support_cue",
           "layout": { "w": 5, "h": 5 },
+          "resolved_visual": { "style": { "fill_mode": "solid", "border_mode": "line", "radius_token": "md", "show_icon": false } }
+        },
+        {
+          "visual_role": "student_response",
+          "layout": { "w": 2, "h": 2 },
           "resolved_visual": { "style": { "fill_mode": "solid", "border_mode": "line", "radius_token": "md", "show_icon": false } }
         },
         {

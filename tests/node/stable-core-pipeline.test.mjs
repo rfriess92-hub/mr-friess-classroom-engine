@@ -64,13 +64,21 @@ test('visual QA rule outputs are deterministic for good vs intentionally bad pla
   const goodQa = runVisualQaOnPlan(goodVisualPlan)
   assert.equal(goodQa.judgment, 'pass')
   assert.equal(goodQa.findings.length, 0)
+  assert.equal(goodQa.missing_required_rule_implementations.length, 0)
 
   const badQa = runVisualQaOnPlan(badVisualPlan)
   assert.equal(badQa.judgment, 'revise')
+  assert.equal(badQa.missing_required_rule_implementations.length, 0)
   const findingTypes = new Set(badQa.findings.map((finding) => finding.type))
   assert.deepEqual(
     findingTypes,
-    new Set(['flatness', 'support_tools_vs_success_check', 'main_task_visible', 'support_vs_main_contrast']),
+    new Set([
+      'main_task_visible',
+      'support_not_competing',
+      'not_all_rectangles',
+      'writing_space_open',
+      'support_tools_vs_success_check',
+    ]),
   )
 })
 
