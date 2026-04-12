@@ -16,6 +16,8 @@ from student_pdf_shared import (
     SLATE_DARK,
     SLATE,
     PROMPT_BG,
+    PROMPT_BORDER,
+    PROMPT_ACCENT,
     BORDER,
     normalize_string_list,
     normalize_self_check_items,
@@ -49,6 +51,7 @@ def styles_bundle():
         'HintX': ParagraphStyle(name='HintX', parent=styles['BodyText'], fontSize=8.5, leading=9.6, textColor=SLATE),
         'InlineHelpX': ParagraphStyle(name='InlineHelpX', parent=styles['BodyText'], fontSize=8.4, leading=9.6, textColor=SLATE),
         'CheckInX': ParagraphStyle(name='CheckInX', parent=styles['BodyText'], fontSize=8.2, leading=9.2, textColor=SLATE_DARK),
+        'SectionHeadX': ParagraphStyle(name='SectionHeadX', parent=styles['Heading3'], fontSize=10.4, leading=12.0, textColor=colors.HexColor('#1F355E'), spaceAfter=3),
     }
     for name, style in additions.items():
         if name not in styles:
@@ -98,12 +101,15 @@ def worksheet_question_block(styles, question: dict):
     sections = base.question_response_sections(question)
 
     from reportlab.platypus import Paragraph, Spacer, Table, TableStyle, KeepTogether
-    prompt_card = Table([[[Paragraph('Prompt', styles['PromptLabelX']), Paragraph(prompt, styles['BodyText'])]]], colWidths=[540])
+    bar = 5
+    prompt_card = Table([['', [Paragraph('Prompt', styles['PromptLabelX']), Paragraph(prompt, styles['BodyText'])]]], colWidths=[bar, 540 - bar])
     prompt_card.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, -1), PROMPT_BG),
-        ('BOX', (0, 0), (-1, -1), 0.55, BORDER),
+        ('BACKGROUND', (0, 0), (0, -1), PROMPT_ACCENT),
+        ('BACKGROUND', (1, 0), (1, -1), PROMPT_BG),
+        ('BOX', (0, 0), (-1, -1), 0.75, PROMPT_BORDER),
         ('TOPPADDING', (0, 0), (-1, -1), 8), ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
-        ('LEFTPADDING', (0, 0), (-1, -1), 10), ('RIGHTPADDING', (0, 0), (-1, -1), 10),
+        ('LEFTPADDING', (0, 0), (0, -1), 0), ('RIGHTPADDING', (0, 0), (0, -1), 0),
+        ('LEFTPADDING', (1, 0), (1, -1), 10), ('RIGHTPADDING', (1, 0), (1, -1), 10),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
     ]))
     response_flowables = []
@@ -131,10 +137,17 @@ def build_task_block(styles, task: dict, compact=False, spacing_scale: float = 1
         spacer_after = max(2, int(round(5 * spacing_scale)))
         return integrated_task_box(base, styles, profile, line_total=line_total, show_help=show_help, spacer_after=spacer_after)
     from reportlab.platypus import Paragraph, Spacer, Table, TableStyle, KeepTogether
-    prompt_card = Table([[[Paragraph(profile['heading'], styles['SectionHeadX']), Paragraph(profile['instruction'], styles['BodyText'])]]], colWidths=[540])
+    bar = 5
+    prompt_inner = [Paragraph(profile['heading'], styles['SectionHeadX']), Paragraph(profile['instruction'], styles['BodyText'])]
+    prompt_card = Table([['', prompt_inner]], colWidths=[bar, 540 - bar])
     prompt_card.setStyle(TableStyle([
-        ('TOPPADDING', (0, 0), (-1, -1), 0), ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
-        ('LEFTPADDING', (0, 0), (-1, -1), 0), ('RIGHTPADDING', (0, 0), (-1, -1), 0),
+        ('BACKGROUND', (0, 0), (0, -1), PROMPT_ACCENT),
+        ('BACKGROUND', (1, 0), (1, -1), PROMPT_BG),
+        ('BOX', (0, 0), (-1, -1), 0.75, PROMPT_BORDER),
+        ('TOPPADDING', (0, 0), (-1, -1), 8), ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+        ('LEFTPADDING', (0, 0), (0, -1), 0), ('RIGHTPADDING', (0, 0), (0, -1), 0),
+        ('LEFTPADDING', (1, 0), (1, -1), 10), ('RIGHTPADDING', (1, 0), (1, -1), 10),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
     ]))
     response_card = Table([[[base.response_line_table(max(2, line_total), row_height=16)]]], colWidths=[540])
     response_card.setStyle(TableStyle([

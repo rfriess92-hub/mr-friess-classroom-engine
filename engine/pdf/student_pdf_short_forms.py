@@ -4,11 +4,15 @@ from student_pdf_shared import (
     BORDER,
     CARD_BG,
     PROMPT_BG,
+    PROMPT_BORDER,
+    PROMPT_ACCENT,
+    SUCCESS_ACCENT,
     FINAL_FOOTER_BG,
     FINAL_FOOTER_BORDER,
     FINAL_FOOTER_GRID,
     compact_list_cell,
     normalize_string_list,
+    task_card_with_bar,
 )
 
 SHORT_FORM_PROFILES = {
@@ -66,19 +70,8 @@ def render_exit_ticket(base, styles_bundle, packet: dict, section: dict, out_pat
 
     prompt = str(section.get('prompt', '')).strip()
     if prompt:
-        prompt_card = Table([[[
-            Paragraph(profile['prompt_label'], styles['SectionHeadX']),
-            Paragraph(prompt, styles['BodyText']),
-        ]]], colWidths=[540])
-        prompt_card.setStyle(TableStyle([
-            ('BACKGROUND', (0, 0), (-1, -1), PROMPT_BG),
-            ('BOX', (0, 0), (-1, -1), 0.5, BORDER),
-            ('TOPPADDING', (0, 0), (-1, -1), 7),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 7),
-            ('LEFTPADDING', (0, 0), (-1, -1), 8),
-            ('RIGHTPADDING', (0, 0), (-1, -1), 8),
-            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ]))
+        prompt_inner = [Paragraph(profile['prompt_label'], styles['SectionHeadX']), Paragraph(prompt, styles['BodyText'])]
+        prompt_card = task_card_with_bar(prompt_inner, accent_color=PROMPT_ACCENT, bg_color=PROMPT_BG, border_color=PROMPT_BORDER)
         story.append(prompt_card)
         story.append(Spacer(1, 6))
 
@@ -90,11 +83,11 @@ def render_exit_ticket(base, styles_bundle, packet: dict, section: dict, out_pat
     ]]], colWidths=[540])
     response_card.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), CARD_BG),
-        ('BOX', (0, 0), (-1, -1), 0.5, BORDER),
-        ('TOPPADDING', (0, 0), (-1, -1), 7),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 7),
-        ('LEFTPADDING', (0, 0), (-1, -1), 8),
-        ('RIGHTPADDING', (0, 0), (-1, -1), 8),
+        ('BOX', (0, 0), (-1, -1), 0.75, BORDER),
+        ('TOPPADDING', (0, 0), (-1, -1), 8),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+        ('LEFTPADDING', (0, 0), (-1, -1), 10),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 10),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
     ]))
     story.append(response_card)
@@ -102,16 +95,15 @@ def render_exit_ticket(base, styles_bundle, packet: dict, section: dict, out_pat
 
     success = normalize_string_list(section.get('success_criteria', []))
     split = max(1, (len(success) + 1) // 2)
-    checkbox_color = colors.HexColor('#a7b8aa')
-    left = compact_list_cell(styles, 'Before you hand it in', success[:split], box_color=checkbox_color)
-    right = compact_list_cell(styles, 'Quick check-in', profile['quick_check_items'], box_color=checkbox_color)
+    left = compact_list_cell(styles, 'Before you hand it in', success[:split], box_color=SUCCESS_ACCENT)
+    right = compact_list_cell(styles, 'Quick check-in', profile['quick_check_items'], box_color=SUCCESS_ACCENT)
     footer = Table([[left, right]], colWidths=[265, 265])
     footer.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), FINAL_FOOTER_BG),
-        ('BOX', (0, 0), (-1, -1), 0.4, FINAL_FOOTER_BORDER),
-        ('INNERGRID', (0, 0), (-1, -1), 0.28, FINAL_FOOTER_GRID),
-        ('TOPPADDING', (0, 0), (-1, -1), 5),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
+        ('BOX', (0, 0), (-1, -1), 0.55, FINAL_FOOTER_BORDER),
+        ('INNERGRID', (0, 0), (-1, -1), 0.35, FINAL_FOOTER_GRID),
+        ('TOPPADDING', (0, 0), (-1, -1), 6),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
         ('LEFTPADDING', (0, 0), (-1, -1), 8),
         ('RIGHTPADDING', (0, 0), (-1, -1), 8),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),

@@ -1,6 +1,14 @@
 from reportlab.lib import colors
 from reportlab.platypus import KeepTogether, PageBreak, Paragraph, Spacer, Table, TableStyle, SimpleDocTemplate
-from student_pdf_shared import BORDER,CARD_BG,LIGHT_BORDER,PROMPT_BG,TASK_FOOTER_BG,TASK_FOOTER_BORDER,FINAL_FOOTER_BG,FINAL_FOOTER_BORDER,FINAL_FOOTER_GRID,compact_list_cell,normalize_string_list,clean_support_text
+from student_pdf_shared import (
+    BORDER, CARD_BG, LIGHT_BORDER,
+    PROMPT_BG, PROMPT_BORDER, PROMPT_ACCENT,
+    SUCCESS_BG, SUCCESS_BORDER, SUCCESS_ACCENT,
+    SUPPORT_BG, SUPPORT_BORDER, SUPPORT_ACCENT,
+    TASK_FOOTER_BG, TASK_FOOTER_BORDER,
+    FINAL_FOOTER_BG, FINAL_FOOTER_BORDER, FINAL_FOOTER_GRID,
+    compact_list_cell, normalize_string_list, clean_support_text, task_card_with_bar,
+)
 
 TASK_PROFILES={
 'generic':{'heading':'Task','help':'','lines':4,'row_height':16},
@@ -50,30 +58,40 @@ def task_profile(task):
 
 def integrated_task_box(base,styles,profile,line_total=None,show_help=True,spacer_after=6):
     lines=max(2,int(line_total if line_total is not None else profile['lines']));response=base.response_line_table(lines,row_height=profile['row_height'])
-    inner=[Paragraph(profile['heading'],styles['SectionHeadX']),Paragraph(profile['instruction'],styles['BodyText'])]
-    if show_help and profile['help']:inner+=[Spacer(1,2),Paragraph(profile['help'],styles['InlineHelpX'])]
-    inner+=[Spacer(1,4),response]
-    table=Table([[inner]],colWidths=[540]);table.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),CARD_BG),('BOX',(0,0),(-1,-1),0.5,BORDER),('TOPPADDING',(0,0),(-1,-1),6),('BOTTOMPADDING',(0,0),(-1,-1),6),('LEFTPADDING',(0,0),(-1,-1),8),('RIGHTPADDING',(0,0),(-1,-1),8),('VALIGN',(0,0),(-1,-1),'TOP')]))
-    return KeepTogether([table,Spacer(1,spacer_after)])
+    prompt_inner=[Paragraph(profile['heading'],styles['SectionHeadX']),Paragraph(profile['instruction'],styles['BodyText'])]
+    if show_help and profile['help']:prompt_inner+=[Spacer(1,2),Paragraph(profile['help'],styles['InlineHelpX'])]
+    prompt_card=task_card_with_bar(prompt_inner,accent_color=PROMPT_ACCENT,bg_color=PROMPT_BG,border_color=PROMPT_BORDER)
+    response_inner=[Paragraph('Write here',styles['SectionHeadX']),Spacer(1,3),response]
+    response_card=Table([[response_inner]],colWidths=[540]);response_card.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),CARD_BG),('BOX',(0,0),(-1,-1),0.65,BORDER),('TOPPADDING',(0,0),(-1,-1),6),('BOTTOMPADDING',(0,0),(-1,-1),6),('LEFTPADDING',(0,0),(-1,-1),8),('RIGHTPADDING',(0,0),(-1,-1),8),('VALIGN',(0,0),(-1,-1),'TOP')]))
+    return KeepTogether([prompt_card,Spacer(1,3),response_card,Spacer(1,spacer_after)])
 
-def _footer_table(story,left,right=None):
-    footer=Table([[left,right]] if right is not None else [[left]],colWidths=[265,265] if right is not None else [540])
-    footer.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),TASK_FOOTER_BG),('BOX',(0,0),(-1,-1),0.45,TASK_FOOTER_BORDER),('INNERGRID',(0,0),(-1,-1),0.3,TASK_FOOTER_BORDER),('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('VALIGN',(0,0),(-1,-1),'TOP')]))
+def _footer_table(story,left,right=None,left_bg=None,right_bg=None,border_color=None):
+    lb=left_bg or SUPPORT_BG;rb=right_bg or SUCCESS_BG;bc=border_color or SUPPORT_BORDER
+    if right is not None:
+        left_card=Table([[left]],colWidths=[265]);left_card.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),lb),('BOX',(0,0),(-1,-1),0.45,bc),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('VALIGN',(0,0),(-1,-1),'TOP')]))
+        right_card=Table([[right]],colWidths=[265]);right_card.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),rb),('BOX',(0,0),(-1,-1),0.45,SUCCESS_BORDER),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('VALIGN',(0,0),(-1,-1),'TOP')]))
+        footer=Table([[left_card,right_card]],colWidths=[270,270])
+        footer.setStyle(TableStyle([('TOPPADDING',(0,0),(-1,-1),0),('BOTTOMPADDING',(0,0),(-1,-1),0),('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(0,-1),4),('RIGHTPADDING',(1,0),(1,-1),0),('VALIGN',(0,0),(-1,-1),'TOP')]))
+    else:
+        footer=Table([[left]],colWidths=[540]);footer.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),lb),('BOX',(0,0),(-1,-1),0.45,bc),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('VALIGN',(0,0),(-1,-1),'TOP')]))
     story.append(footer)
 
 def _add_focus_rail(styles,story,lines,compact=False):
     items=normalize_string_list(lines)
     if not items:return
     body=' • '.join(items)
-    rail=Table([[[Paragraph(f'<b>Focus:</b> {body}',styles['BodyText'])]]],colWidths=[540])
-    rail.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),PROMPT_BG),('BOX',(0,0),(-1,-1),0.45,BORDER),('TOPPADDING',(0,0),(-1,-1),5 if compact else 6),('BOTTOMPADDING',(0,0),(-1,-1),5 if compact else 6),('LEFTPADDING',(0,0),(-1,-1),8),('RIGHTPADDING',(0,0),(-1,-1),8),('VALIGN',(0,0),(-1,-1),'TOP')]))
+    rail=Table([[[Paragraph(f'<b>Before you start:</b> {body}',styles['BodyText'])]]],colWidths=[540])
+    rail.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),PROMPT_BG),('BOX',(0,0),(-1,-1),0.55,PROMPT_BORDER),('TOPPADDING',(0,0),(-1,-1),5 if compact else 6),('BOTTOMPADDING',(0,0),(-1,-1),5 if compact else 6),('LEFTPADDING',(0,0),(-1,-1),8),('RIGHTPADDING',(0,0),(-1,-1),8),('VALIGN',(0,0),(-1,-1),'TOP')]))
     story.extend([rail,Spacer(1,5)])
 
 def add_day2_footer(styles,story):
-    _footer_table(story,compact_list_cell(styles,'Reminder',['Keep planning on this sheet.','Move your final writing to the final response sheet.']),compact_list_cell(styles,'Check',['My recommendation is clear.','One weak part is stronger now.']))
+    _footer_table(story,compact_list_cell(styles,'Helpful reminder',['Keep planning on this sheet.','Move your final writing to the final response sheet.'],box_color=SUPPORT_ACCENT),compact_list_cell(styles,'Quick check-in',['My recommendation is clear.','One weak part is stronger now.'],box_color=SUCCESS_ACCENT))
 
 def add_day1_page2_footer(styles,story):
-    _footer_table(story,compact_list_cell(styles,'Checkpoint',['Name one part you still need to strengthen.','Keep planning here rather than drafting the final answer.']),compact_list_cell(styles,'Check',['My claim is clear.','I know what to improve next.']))
+    checkpoint_inner=[Paragraph('Checkpoint reminder',styles['SectionHeadX']),Paragraph('Name one part you still need to strengthen before the checkpoint.',styles['MicroX'])]
+    story.append(task_card_with_bar(checkpoint_inner,accent_color=PROMPT_ACCENT,bg_color=PROMPT_BG,border_color=PROMPT_BORDER))
+    story.append(Spacer(1,4))
+    _footer_table(story,compact_list_cell(styles,'Helpful reminder',['Keep planning here until the checkpoint.','Bring your strongest reason and evidence into Day 2.'],box_color=SUPPORT_ACCENT),compact_list_cell(styles,'Quick check-in',['My claim is clear.','I know what to improve next.'],box_color=SUCCESS_ACCENT))
 
 def _grammar_layout(grammar,tasks):
     intent=grammar.get('render_intent','exploratory_planning');density=grammar.get('density','medium');evidence=grammar.get('evidence_role','planning_only');band=grammar.get('length_band','standard')
@@ -122,9 +140,9 @@ def _split_tasks_for_multi_page(base,layout,tasks):
 
 def _add_support_success_footer(styles,story,section,max_support_items=2,max_success_items=3):
     raw=normalize_string_list(section.get('embedded_supports',[]))[:max_support_items];support=[clean_support_text(i) for i in raw];success=normalize_string_list(section.get('success_criteria',[]))[:max_success_items]
-    if support and success:_footer_table(story,compact_list_cell(styles,_support_footer_title(raw),support),compact_list_cell(styles,'Check',success));return
-    if support:_footer_table(story,compact_list_cell(styles,_support_footer_title(raw),support));return
-    if success:_footer_table(story,compact_list_cell(styles,'Check',success))
+    if support and success:_footer_table(story,compact_list_cell(styles,_support_footer_title(raw),support,box_color=SUPPORT_ACCENT),compact_list_cell(styles,'Quick check-in',success,box_color=SUCCESS_ACCENT));return
+    if support:_footer_table(story,compact_list_cell(styles,_support_footer_title(raw),support,box_color=SUPPORT_ACCENT),right_bg=None);return
+    if success:_footer_table(story,compact_list_cell(styles,'Quick check-in',success,box_color=SUCCESS_ACCENT),left_bg=SUCCESS_BG,border_color=SUCCESS_BORDER)
 
 def render_task_sheet(base,styles_bundle,packet,section,out_path):
     grammar=packet.get('_render_grammar',{});tasks=section.get('tasks',[]);layout=_grammar_layout(grammar,tasks);styles=styles_bundle();story=[]
@@ -157,9 +175,10 @@ def render_task_sheet(base,styles_bundle,packet,section,out_path):
 def draft_card(styles,story,section):
     reminders=[str(i) for i in section.get('planning_reminders',[])[:4] if str(i).strip()]
     if not reminders:return
-    flow=[Paragraph('Planning notes',styles['SectionHeadX'])]
-    for item in reminders:flow.append(Paragraph(f'- {item}',styles['MicroX']))
-    card=Table([[flow]],colWidths=[540]);card.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),PROMPT_BG),('BOX',(0,0),(-1,-1),0.4,LIGHT_BORDER),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7)]));story+=[card,Spacer(1,6)]
+    flow=[Paragraph('Helpful reminder',styles['SectionHeadX'])]
+    for item in reminders:flow.append(Paragraph(f'→ {item}',styles['MicroX']))
+    card=task_card_with_bar(flow,accent_color=SUPPORT_ACCENT,bg_color=SUPPORT_BG,border_color=SUPPORT_BORDER)
+    story+=[card,Spacer(1,6)]
 
 def final_support_text(section):
     ps=section.get('paragraph_support',{}) if isinstance(section.get('paragraph_support'),dict) else {}
@@ -167,15 +186,15 @@ def final_support_text(section):
     return f'{text} • {reminder}'.strip(' •') if reminder else text
 
 def final_writing_zone_block(base,styles,story,section):
-    response_lines=max(12,int(section.get('response_lines',10))+3);support_text=final_support_text(section);inner=[Paragraph('Final response',styles['SectionHeadX']),Paragraph('Write your final response on this page only.',styles['HintX'])]
+    response_lines=max(12,int(section.get('response_lines',10))+3);support_text=final_support_text(section);inner=[Paragraph('Write your final paragraph',styles['SectionHeadX']),Paragraph('This is the page that counts as your final written response.',styles['HintX'])]
     if support_text:inner+=[Spacer(1,3),Paragraph(support_text,styles['InlineHelpX'])]
     inner+=[Spacer(1,5),base.response_line_table(response_lines,row_height=18)]
-    zone=Table([[inner]],colWidths=[540]);zone.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),CARD_BG),('BOX',(0,0),(-1,-1),0.4,BORDER),('TOPPADDING',(0,0),(-1,-1),7),('BOTTOMPADDING',(0,0),(-1,-1),7),('LEFTPADDING',(0,0),(-1,-1),8),('RIGHTPADDING',(0,0),(-1,-1),8),('VALIGN',(0,0),(-1,-1),'TOP')]));story+=[zone,Spacer(1,7)]
+    zone=Table([[inner]],colWidths=[540]);zone.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),CARD_BG),('BOX',(0,0),(-1,-1),0.75,BORDER),('TOPPADDING',(0,0),(-1,-1),8),('BOTTOMPADDING',(0,0),(-1,-1),8),('LEFTPADDING',(0,0),(-1,-1),10),('RIGHTPADDING',(0,0),(-1,-1),10),('VALIGN',(0,0),(-1,-1),'TOP')]));story+=[zone,Spacer(1,7)]
 
 def final_closing_band(styles,story,section):
-    success=normalize_string_list(section.get('success_criteria',[]));split=max(1,(len(success)+1)//2);box_color=colors.HexColor('#a7b8aa')
-    left=compact_list_cell(styles,'Check',success[:split],box_color=box_color);right=compact_list_cell(styles,'Status',['Ready to hand in','Mostly there','Need help with one part'],box_color=box_color)
-    footer=Table([[left,right]],colWidths=[265,265]);footer.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),FINAL_FOOTER_BG),('BOX',(0,0),(-1,-1),0.4,FINAL_FOOTER_BORDER),('INNERGRID',(0,0),(-1,-1),0.28,FINAL_FOOTER_GRID),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),('LEFTPADDING',(0,0),(-1,-1),8),('RIGHTPADDING',(0,0),(-1,-1),8),('VALIGN',(0,0),(-1,-1),'TOP')]));story.append(footer)
+    success=normalize_string_list(section.get('success_criteria',[]));split=max(1,(len(success)+1)//2)
+    left=compact_list_cell(styles,'Before you hand it in',success[:split],box_color=SUCCESS_ACCENT);right=compact_list_cell(styles,'Quick check-in',['Ready to hand in','Mostly there','Need help with one part'],box_color=SUCCESS_ACCENT)
+    footer=Table([[left,right]],colWidths=[265,265]);footer.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),FINAL_FOOTER_BG),('BOX',(0,0),(-1,-1),0.55,FINAL_FOOTER_BORDER),('INNERGRID',(0,0),(-1,-1),0.35,FINAL_FOOTER_GRID),('TOPPADDING',(0,0),(-1,-1),6),('BOTTOMPADDING',(0,0),(-1,-1),6),('LEFTPADDING',(0,0),(-1,-1),8),('RIGHTPADDING',(0,0),(-1,-1),8),('VALIGN',(0,0),(-1,-1),'TOP')]));story.append(footer)
 
 def render_final_response_sheet(base,styles_bundle,packet,section,out_path):
     grammar=packet.get('_render_grammar',{});assessment_weight=grammar.get('assessment_weight','standard');length_band=grammar.get('length_band','standard');styles=styles_bundle();story=[]

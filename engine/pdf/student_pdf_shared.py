@@ -1,25 +1,81 @@
 from reportlab.lib import colors
 from reportlab.platypus import Paragraph, Spacer, Table, TableStyle
 
-SLATE_DARK = colors.HexColor('#0f172a')
+# Brand / structural
+INK_PRIMARY = colors.HexColor('#1F355E')    # brand navy
+SLATE_DARK = colors.HexColor('#1F355E')     # alias
 SLATE = colors.HexColor('#475569')
 SLATE_LIGHT = colors.HexColor('#94a3b8')
-BORDER = colors.HexColor('#cbd5e1')
-LIGHT_BORDER = colors.HexColor('#e2e8f0')
+PAPER = colors.HexColor('#FCFBF8')          # warm paper
+
+# Default card / borders (warm grey, from token 'line')
+BORDER = colors.HexColor('#C8C2B8')
+LIGHT_BORDER = colors.HexColor('#E2E0DA')
 CARD_BG = colors.white
-PROMPT_BG = colors.HexColor('#f8fafc')
-TASK_FOOTER_BG = colors.HexColor('#f8fafc')
-TASK_FOOTER_BORDER = colors.HexColor('#e2e8f0')
-FINAL_FOOTER_BG = colors.HexColor('#fbfcfb')
-FINAL_FOOTER_BORDER = colors.HexColor('#dbe7dc')
-FINAL_FOOTER_GRID = colors.HexColor('#e8f1e9')
+
+# Prompt / task zone — warm amber (from token 'support': #D98B3A)
+PROMPT_BG = colors.HexColor('#FEF9EE')
+PROMPT_BORDER = colors.HexColor('#F0C47A')
+PROMPT_ACCENT = colors.HexColor('#D98B3A')
+
+# Success zone — green (from token 'success': #7A8A5B)
+SUCCESS_BG = colors.HexColor('#EDFAF3')
+SUCCESS_BORDER = colors.HexColor('#86EFAC')
+SUCCESS_ACCENT = colors.HexColor('#7A8A5B')
+
+# Support tools zone — teal (from token 'reflection': #6D9C95)
+SUPPORT_BG = colors.HexColor('#EFF9F7')
+SUPPORT_BORDER = colors.HexColor('#A7D8D3')
+SUPPORT_ACCENT = colors.HexColor('#6D9C95')
+
+# Footer / closing bands
+TASK_FOOTER_BG = colors.HexColor('#F7F4EF')
+TASK_FOOTER_BORDER = colors.HexColor('#E2E0DA')
+FINAL_FOOTER_BG = colors.HexColor('#EDFAF3')
+FINAL_FOOTER_BORDER = colors.HexColor('#A7D8D3')
+FINAL_FOOTER_GRID = colors.HexColor('#D1F0EC')
 
 CUE_TONES = {
-    'neutral': {'bg': colors.HexColor('#f8fafc'), 'border': colors.HexColor('#cbd5e1')},
-    'support': {'bg': colors.HexColor('#eef6ff'), 'border': colors.HexColor('#bfdbfe')},
-    'tip': {'bg': colors.HexColor('#fff7ed'), 'border': colors.HexColor('#fdba74')},
-    'check': {'bg': colors.HexColor('#f0fdf4'), 'border': colors.HexColor('#86efac')},
+    'neutral': {'bg': PAPER, 'border': BORDER},
+    'support': {'bg': colors.HexColor('#EFF6FF'), 'border': colors.HexColor('#BFDBFE')},
+    'tip': {'bg': PROMPT_BG, 'border': PROMPT_BORDER},
+    'check': {'bg': SUCCESS_BG, 'border': SUCCESS_BORDER},
 }
+
+
+def task_card_with_bar(flowables, accent_color=None, bg_color=None, border_color=None, width=540):
+    """Card with optional left accent bar. accent_color adds a 5pt colored left stripe."""
+    if bg_color is None:
+        bg_color = PROMPT_BG
+    if border_color is None:
+        border_color = PROMPT_BORDER
+    if accent_color is not None:
+        bar = 5
+        table = Table([['', flowables]], colWidths=[bar, width - bar])
+        table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (0, -1), accent_color),
+            ('BACKGROUND', (1, 0), (1, -1), bg_color),
+            ('BOX', (0, 0), (-1, -1), 0.75, border_color),
+            ('TOPPADDING', (0, 0), (-1, -1), 8),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+            ('LEFTPADDING', (0, 0), (0, -1), 0),
+            ('RIGHTPADDING', (0, 0), (0, -1), 0),
+            ('LEFTPADDING', (1, 0), (1, -1), 10),
+            ('RIGHTPADDING', (1, 0), (1, -1), 10),
+            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ]))
+    else:
+        table = Table([[flowables]], colWidths=[width])
+        table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, -1), bg_color),
+            ('BOX', (0, 0), (-1, -1), 0.75, border_color),
+            ('TOPPADDING', (0, 0), (-1, -1), 8),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+            ('LEFTPADDING', (0, 0), (-1, -1), 10),
+            ('RIGHTPADDING', (0, 0), (-1, -1), 10),
+            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ]))
+    return table
 
 
 def normalize_string_list(items):
