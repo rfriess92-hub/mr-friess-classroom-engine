@@ -7,7 +7,8 @@ function buildVariantFixture(overrides = {}) {
   return {
     schema_version: '2.1.0',
     package_id: 'variant-contract-fixture',
-    primary_architecture: 'single_period_full',
+    primary_architecture: 'multi_day_sequence',
+    days: [],
     bundle: {
       bundle_id: 'variant-contract-fixture',
       declared_outputs: ['task_sheet', 'final_response_sheet'],

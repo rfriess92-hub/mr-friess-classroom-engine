@@ -8,7 +8,7 @@ This document defines the current status of the direct lesson builder surfaces s
 
 Legacy direct builders still exist only as compatibility/debugging surfaces.
 
-They are **not** acceptance proof for stable-core package work.
+They are **not the stable-core package acceptance path** for repo acceptance work.
 
 The authoritative acceptance path remains:
 
@@ -51,7 +51,7 @@ A successful direct-builder run does **not** prove that:
 
 One of these futures should be chosen explicitly:
 
-### Option 1 — keep them as compatibility/debugging shims
+### Option 1 â€” keep them as compatibility/debugging shims
 
 If kept:
 
@@ -59,7 +59,7 @@ If kept:
 - keep them outside the acceptance path
 - avoid presenting them as equivalent to stable-core rendering
 
-### Option 2 — formally deprecate and remove them
+### Option 2 â€” formally deprecate and remove them
 
 If removed:
 
