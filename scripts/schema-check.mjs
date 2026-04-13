@@ -1,6 +1,9 @@
 import { existsSync } from 'node:fs'
 import process from 'node:process'
-import { summarizeAssignmentFamilyValidation } from '../engine/assignment-family/schema-check-report.mjs'
+import {
+  shouldBlockSchemaCheckOnAssignmentFamily,
+  summarizeAssignmentFamilyValidation,
+} from '../engine/assignment-family/schema-check-report.mjs'
 import { normalizePackageToRenderPlan } from '../engine/schema/render-plan.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
@@ -33,6 +36,7 @@ const pkg = loadJson(packagePath)
 const { validation, render_plan: renderPlan } = normalizePackageToRenderPlan(pkg)
 const assignmentFamilyReport = summarizeAssignmentFamilyValidation(pkg)
 const assignmentFamilyFieldTotal = assignmentFamilyReport.present_required_fields.length + assignmentFamilyReport.missing_required_fields.length
+const assignmentFamilyBlocksSchemaCheck = shouldBlockSchemaCheckOnAssignmentFamily(assignmentFamilyReport)
 
 console.log(`Package: ${renderPlan.package_id ?? '(missing package_id)'}`)
 console.log(`Architecture: ${renderPlan.primary_architecture ?? '(missing primary_architecture)'}`)
@@ -42,6 +46,7 @@ console.log(`Errors: ${validation.errors.length}`)
 console.log(`Warnings: ${validation.warnings.length}`)
 console.log(`Assignment-family validation: ${String(assignmentFamilyReport.judgment).toUpperCase()} (${assignmentFamilyReport.evaluation_status})`)
 console.log(`Assignment-family fields present: ${assignmentFamilyReport.present_required_fields.length}/${assignmentFamilyFieldTotal}`)
+console.log(`Assignment-family hard gate: ${assignmentFamilyReport.hard_gate_applies ? (assignmentFamilyBlocksSchemaCheck ? 'BLOCK' : 'PASS') : 'TRANSITIONAL'}`)
 if (assignmentFamilyReport.note) {
   console.log(`Assignment-family note: ${assignmentFamilyReport.note}`)
 }
@@ -53,7 +58,7 @@ for (const warning of validation.warnings) {
   console.log(`WARN  [${warning.code}] ${warning.message}${warning.path ? ` @ ${warning.path}` : ''}`)
 }
 for (const blocker of assignmentFamilyReport.blockers) {
-  console.log(`AF BLOCKER [${blocker}] reported during transitional assignment-family validation`)
+  console.log(`AF BLOCKER [${blocker}] ${assignmentFamilyReport.hard_gate_applies ? 'counts toward schema-check exit status' : 'reported during transitional assignment-family validation'}`)
 }
 for (const finding of assignmentFamilyReport.findings) {
   console.log(`AF FINDING [${finding.type}${finding.code ? `:${finding.code}` : ''}] ${finding.note}`)
@@ -64,4 +69,4 @@ if (printPlan) {
   console.log(JSON.stringify(renderPlan, null, 2))
 }
 
-process.exit(validation.valid ? 0 : 1)
+process.exit(validation.valid && !assignmentFamilyBlocksSchemaCheck ? 0 : 1)

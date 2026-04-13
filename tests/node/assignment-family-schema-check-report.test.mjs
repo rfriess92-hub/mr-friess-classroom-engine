@@ -1,7 +1,10 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
-import { summarizeAssignmentFamilyValidation } from '../../engine/assignment-family/schema-check-report.mjs'
+import {
+  shouldBlockSchemaCheckOnAssignmentFamily,
+  summarizeAssignmentFamilyValidation,
+} from '../../engine/assignment-family/schema-check-report.mjs'
 
 const completeWritingFixture = {
   assignment_family: 'evidence_based_writing_task',
@@ -31,6 +34,9 @@ test('assignment-family schema-check report returns not_evaluated when no family
   assert.equal(result.judgment, 'not_evaluated')
   assert.equal(result.present_required_fields.length, 0)
   assert.ok(result.missing_required_fields.length > 0)
+  assert.equal(result.hard_gate_applies, false)
+  assert.equal(result.hard_gate_blocks, false)
+  assert.equal(shouldBlockSchemaCheckOnAssignmentFamily(result), false)
 })
 
 test('assignment-family schema-check report returns partial_metadata when only some fields are present', () => {
@@ -44,6 +50,9 @@ test('assignment-family schema-check report returns partial_metadata when only s
   assert.equal(result.judgment, 'block')
   assert.ok(result.missing_required_fields.length > 0)
   assert.ok(result.blockers.includes('missing_required_field_grade_subject_fit'))
+  assert.equal(result.hard_gate_applies, false)
+  assert.equal(result.hard_gate_blocks, false)
+  assert.equal(shouldBlockSchemaCheckOnAssignmentFamily(result), false)
 })
 
 test('assignment-family schema-check report returns evaluated when full metadata is present', () => {
@@ -52,4 +61,21 @@ test('assignment-family schema-check report returns evaluated when full metadata
   assert.equal(result.evaluation_status, 'evaluated')
   assert.equal(result.judgment, 'pass')
   assert.equal(result.missing_required_fields.length, 0)
+  assert.equal(result.hard_gate_applies, true)
+  assert.equal(result.hard_gate_blocks, false)
+  assert.equal(shouldBlockSchemaCheckOnAssignmentFamily(result), false)
+})
+
+test('assignment-family schema-check hard gate blocks evaluated packages that still fail family validation', () => {
+  const result = summarizeAssignmentFamilyValidation({
+    ...completeWritingFixture,
+    assignment_family: 'not_a_real_family',
+  })
+
+  assert.equal(result.evaluation_status, 'evaluated')
+  assert.equal(result.judgment, 'block')
+  assert.ok(result.blockers.includes('invalid_assignment_family'))
+  assert.equal(result.hard_gate_applies, true)
+  assert.equal(result.hard_gate_blocks, true)
+  assert.equal(shouldBlockSchemaCheckOnAssignmentFamily(result), true)
 })
