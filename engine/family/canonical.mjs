@@ -1,37 +1,75 @@
-export const ASSIGNMENT_FAMILIES = [
-  'short_inquiry_sequence',
-  'short_project',
-  'performance_task',
-  'structured_academic_discussion',
-  'evidence_based_writing_task',
-]
+import {
+  ARTIFACT_AUDIENCES,
+  FAMILY_CONFIDENCE_VALUES,
+  RESPONSE_MODES,
+  STUDENT_VISUAL_TONES,
+  WRITABLE_PRIORITIES,
+  defaultFamilySelectionSkeleton,
+  getDefaultFamilyRoutingOrder,
+  getRecommendedChains,
+  getStableAssignmentFamilies,
+  isAssignmentFamily,
+} from '../assignment-family/live-contract.mjs'
 
-export const FAMILY_CONFIDENCE_VALUES = ['high', 'medium', 'low']
+export const ASSIGNMENT_FAMILIES = getStableAssignmentFamilies()
 
-export const DEFAULT_FAMILY_ROUTING_ORDER = [
-  'short_inquiry_sequence',
-  'evidence_based_writing_task',
-  'short_project',
-  'performance_task',
-  'structured_academic_discussion',
-]
+export const DEFAULT_FAMILY_ROUTING_ORDER = getDefaultFamilyRoutingOrder()
 
-export const ARTIFACT_AUDIENCES = ['teacher', 'student', 'shared_view']
-export const STUDENT_VISUAL_TONES = ['neutral', 'warm_classroom', 'minimal_reference']
-export const RESPONSE_MODES = ['short_response', 'paragraph_response', 'multi_part_response', 'compare_two', 'checklist', 'exit_reflection', 'table', 'diagram_space', 'annotation', 'checklist_completion', 'ranking']
-export const WRITABLE_PRIORITIES = ['low', 'medium', 'high']
+export const DEFAULT_CHAIN_RECOMMENDATIONS = getRecommendedChains().map((recommended_chain) => ({
+  recommended_chain,
+  chain_reason: 'Recommended chain sourced from assignment-family authority.',
+}))
 
-export function isAssignmentFamily(value) {
-  return ASSIGNMENT_FAMILIES.includes(value)
+export {
+  ARTIFACT_AUDIENCES,
+  FAMILY_CONFIDENCE_VALUES,
+  RESPONSE_MODES,
+  STUDENT_VISUAL_TONES,
+  WRITABLE_PRIORITIES,
+  defaultFamilySelectionSkeleton,
+  isAssignmentFamily,
 }
 
-export function defaultFamilySelectionSkeleton() {
+export function isFamilyConfidence(value) {
+  return FAMILY_CONFIDENCE_VALUES.includes(value)
+}
+
+export function isArtifactAudience(value) {
+  return ARTIFACT_AUDIENCES.includes(value)
+}
+
+export function isStudentVisualTone(value) {
+  return STUDENT_VISUAL_TONES.includes(value)
+}
+
+export function isResponseMode(value) {
+  return RESPONSE_MODES.includes(value)
+}
+
+export function isWritablePriority(value) {
+  return WRITABLE_PRIORITIES.includes(value)
+}
+
+export function defaultCanonicalAssignmentSkeleton() {
   return {
-    assignment_family: 'short_inquiry_sequence',
-    family_confidence: 'low',
-    secondary_candidate_families: [],
-    recommended_chain: ['short_inquiry_sequence'],
-    family_selection_reason: '',
+    assignment_family: '',
+    grade_subject_fit: '',
+    unit_context: '',
+    assignment_purpose: '',
+    final_evidence_target: '',
+    student_task_flow: [],
+    success_criteria: [],
+    supports_scaffolds: [],
+    differentiation_model: {
+      support_pathway: '',
+      core_pathway: '',
+      extension_pathway: '',
+    },
+    checkpoint_release_logic: [],
+    teacher_implementation_notes: [],
+    likely_misconceptions: [],
+    pacing_shape: '',
+    assessment_focus: [],
   }
 }
 
