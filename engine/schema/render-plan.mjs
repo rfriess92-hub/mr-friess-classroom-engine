@@ -1,4 +1,4 @@
-import { selectAssignmentFamily } from '../family/selection.mjs'
+import { selectAssignmentFamilyFromPackage } from '../assignment-family/package-selector.mjs'
 import { validatePackage } from './preflight.mjs'
 import { normalizeOutputRenderGrammar } from './render-grammar.mjs'
 
@@ -82,7 +82,7 @@ function normalizeOutputEntry(pkg, entry, index) {
 
 export function normalizePackageToRenderPlan(pkg) {
   const validation = validatePackage(pkg)
-  const familySelection = selectAssignmentFamily(pkg)
+  const familySelection = selectAssignmentFamilyFromPackage(pkg)
   const outputEntries = collectOutputEntries(pkg)
 
   const renderPlan = {
