@@ -62,7 +62,7 @@
           {
             "label": "Part 1: Extract the numbers",
             "prompt": "Read or listen to the client brief. Record every number you find.\n\nBudget per planter: $___________________\nMaximum space available: ___ m × ___ m (or ___ cm × ___ cm)\nNumber of planters needed: ___________________\nTimeline (weeks): ___________________\nAny other numbers I found: ___________________",
-            "lines": 5,
+            "lines": 0,
             "activity_type": "close_reading",
             "render_hints": {
               "heading": "Numbers from the Brief",
@@ -72,7 +72,7 @@
           {
             "label": "Part 2: Budget breakdown thinking",
             "prompt": "The total budget is $_____ per planter.\n\nBefore we calculate real costs, estimate how much each category might cost:\n\nWood / lumber: about $___\nScrews and hardware: about $___\nSoil: about $___\nPlants or seeds: about $___\n\nTotal estimate: $___\n\nIs this more or less than the budget? (circle)   MORE   LESS   ABOUT THE SAME",
-            "lines": 5,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "help": "These are guesses — real prices come later. The goal is to think about where the money goes."
@@ -81,7 +81,7 @@
           {
             "label": "Part 3: My Day 1 estimate vs. today",
             "prompt": "On Day 1, I estimated the space was about _____ cm wide and _____ cm long.\n\nDoes the brief give us any size limits for the planter? Y / N\nIf yes, what are they? ___________________\n\nDo my Day 1 estimates seem reasonable for that space? Y / N\nWhy or why not? ___________________",
-            "lines": 3,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "help": "Check your Day 1 worksheet. Compare your estimate to any size information in the brief."
@@ -118,7 +118,7 @@
           {
             "label": "Part 1: Record dimensions",
             "prompt": "Find the length (L), width (W), and height (H) for each design.\n\nDesign A: L = _____ cm   W = _____ cm   H = _____ cm\nDesign B: L = _____ cm   W = _____ cm   H = _____ cm\nDesign C: L = _____ cm   W = _____ cm   H = _____ cm\n\nWhich is the tallest? Design ___\nWhich is the longest? Design ___",
-            "lines": 5,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "heading": "Design Dimensions",
@@ -128,7 +128,7 @@
           {
             "label": "Part 2: Calculate area",
             "prompt": "Calculate the planting surface area (A = L × W) for each design.\n\nDesign A: A = _____ × _____ = __________ cm²\nDesign B: A = _____ × _____ = __________ cm²\nDesign C: A = _____ × _____ = __________ cm²\n\nLargest area: Design ___ with __________ cm²\nSmallest area: Design ___ with __________ cm²\nDifference between largest and smallest: __________ cm²",
-            "lines": 6,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "help": "Area = Length × Width. Answer is always in cm² (square centimetres). Use your calculator."
@@ -137,7 +137,7 @@
           {
             "label": "Part 3: Best fit for the budget",
             "prompt": "More area usually means more materials and higher cost.\n\nBased on area alone, which design gives the client the most planting space? Design ___\n\nBut does a bigger design always mean better value? Circle: YES   NO   DEPENDS\n\nExplain in one sentence: ___________________",
-            "lines": 2,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "help": "Think: a bigger planter costs more to fill with soil and more wood to build. Is it always worth it?"
@@ -174,7 +174,7 @@
           {
             "label": "Part 1: Confirm the dimensions",
             "prompt": "Chosen design: Design ___\n\nL = __________ cm\nW = __________ cm\nH = __________ cm\n\nArea (L × W) = __________ × __________ = __________ cm²\n\nDoes this match your Day 3 calculation? Y / N",
-            "lines": 5,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "heading": "Our Design — Key Numbers",
@@ -184,7 +184,7 @@
           {
             "label": "Part 2: Calculate volume",
             "prompt": "Volume tells us how much soil fits inside the planter.\n\nFormula: V = L × W × H\n\nV = __________ × __________ × __________ = __________ cm³\n\nConvert to litres: __________ cm³ ÷ 1000 = __________ litres\n\nDoes this volume seem reasonable for a planter box? Y / N",
-            "lines": 4,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "help": "Formula: V = L × W × H. Then divide by 1000 to get litres. 1000 cm³ = 1 litre."
@@ -193,7 +193,7 @@
           {
             "label": "Part 3: Estimate soil bags",
             "prompt": "One standard bag of potting soil holds about 20 litres.\n\nLitres needed: __________ L\n÷ 20 litres per bag = __________ bags\nRound UP to: __________ bags\n\nIf one bag costs $8.50:\nTotal soil cost = __________ bags × $8.50 = $__________\n\nExtension (WM10): What percent of the $250 budget does soil take up?\n$__________ ÷ $250 × 100 = __________%",
-            "lines": 5,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "help": "Always round UP for bags — you cannot buy half a bag. WM10 extension: percent = (part ÷ whole) × 100."
@@ -230,7 +230,7 @@
           {
             "label": "Part 1: Complete the measurement record",
             "prompt": "Fill in everything we know about our chosen design.\n\nChosen design: Design ___\n\nLength:  __________ cm\nWidth:   __________ cm\nHeight:  __________ cm\n\nArea (L × W):           __________ cm²\nVolume (L × W × H):    __________ cm³\nVolume in litres:        __________ L\nSoil bags needed:        __________ bags (rounded up)\nEstimated soil cost:     $__________",
-            "lines": 8,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "heading": "Week 1 Measurement Record",
@@ -240,7 +240,7 @@
           {
             "label": "Part 2: Check your calculations",
             "prompt": "Check each answer by asking: does this make sense?\n\nArea of __________ cm² — does this seem like a reasonable planter surface? Y / N\nVolume of __________ cm³ — is this more or less than 50 000 cm³? (circle)  MORE   LESS\nSoil bags: __________ — a standard planter usually needs 3–8 bags. Are we in range? Y / N\n\nOne number I want to recheck: ___________________",
-            "lines": 3,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "help": "Reasonableness check: typical planter dimensions 60–120 cm long, 30–60 cm wide, 20–40 cm tall."
@@ -249,7 +249,7 @@
           {
             "label": "Part 3: What do we still need to measure?",
             "prompt": "We calculated from the design card. Next week we measure the REAL space.\n\nList two measurements you want to take of the actual site next week:\n\n1. ___________________\n2. ___________________\n\nWhat tool will you use? (circle)   ruler   tape measure   metre stick   steps",
-            "lines": 3,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "help": "Think: does the design fit the space? What do we need to verify with real measurements?"

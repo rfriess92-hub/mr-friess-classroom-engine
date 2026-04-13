@@ -62,7 +62,7 @@
           {
             "label": "Part 1: Find the five Ws",
             "prompt": "Use the client brief to fill in each line.\n\nWHO is the client? ___________________\nWHAT do they want? ___________________\nWHERE will it go? ___________________\nWHEN does it need to be done? ___________________\nHOW MUCH is the budget? $___________________",
-            "lines": 5,
+            "lines": 0,
             "activity_type": "close_reading",
             "render_hints": {
               "heading": "The Five Ws",
@@ -72,7 +72,7 @@
           {
             "label": "Part 2: Vocabulary check",
             "prompt": "Circle any of these words that appear in the client brief:\n\nclient   planter box   materials   dimensions   budget   location   maintain   deliver\n\nChoose ONE word you circled. Write or say what it means in your own words.\n\nWord: ___________________\nMeans: ___________________",
-            "lines": 2,
+            "lines": 0,
             "activity_type": "close_reading",
             "render_hints": {
               "help": "Check the vocabulary strip on your desk if you need a definition."
@@ -118,7 +118,7 @@
           {
             "label": "Part 1: First impressions",
             "prompt": "Look at the three designs. For each one, circle ONE word that describes it.\n\nDesign A: small  large  simple  fancy  tall  flat  wooden  metal\nDesign B: small  large  simple  fancy  tall  flat  wooden  metal\nDesign C: small  large  simple  fancy  tall  flat  wooden  metal\n\nWhich design caught your eye first? Design ___ — because ___________________",
-            "lines": 2,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "heading": "First Impressions",
@@ -128,7 +128,7 @@
           {
             "label": "Part 2: Use comparison words",
             "prompt": "Use these comparison words to write three sentences about the designs.\n\nComparison words: bigger than   smaller than   the same as   easier to build   harder to maintain   more suitable for   better for\n\n1. Design A is ___ Design B.\n2. Design C is ___ Design A.\n3. Overall, Design ___ is the most suitable because ___________________",
-            "lines": 4,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "help": "Level A: fill in the blanks using the comparison words above. Level C: write the sentences without the frames."
@@ -137,7 +137,7 @@
           {
             "label": "Part 3: My recommendation",
             "prompt": "Based on what you see and what the client needs, which design would you recommend?\n\nI recommend Design ___ because ___________________.\n\nOne reason this design does NOT work for the client: ___________________",
-            "lines": 4,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "help": "Connect your reason to the client's needs: budget, location, or purpose."
@@ -174,7 +174,7 @@
           {
             "label": "Part 1: Record the decision",
             "prompt": "Fill in the class decision:\n\nThe class chose: Design ___\nThe dimensions are: ___ cm × ___ cm × ___ cm\nThe main reason we chose it: ___________________\nOne design we did NOT choose: Design ___   Reason: ___________________",
-            "lines": 4,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "heading": "The Class Decision",
@@ -193,7 +193,7 @@
           {
             "label": "Part 3: What comes next?",
             "prompt": "For the English stream, Week 2 is about planning and communicating. What do you think you will be writing or saying next week?\n\nCircle what you think is coming:\nwork order   email to client   materials list   build plan   planting schedule\n\nI think Week 2 will involve ___________________",
-            "lines": 2,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "help": "Look at the anchor chart preview from today's slides."
@@ -230,7 +230,7 @@
           {
             "label": "Part 1: Vocabulary check",
             "prompt": "Match each word to its meaning. Draw a line or write the letter.\n\nWORDS: client   planter box   dimensions   materials   budget\n\nMEANINGS:\nA. the size of something: length, width, height\nB. the person or group who gave us the job\nC. the amount of money available to spend\nD. what something is made from\nE. a container used to grow plants\n\nBonus: use one of these words in a sentence about OUR project.",
-            "lines": 3,
+            "lines": 1,
             "activity_type": "write_response",
             "render_hints": {
               "heading": "Vocabulary Check",
@@ -249,7 +249,7 @@
           {
             "label": "Part 3: My one question",
             "prompt": "Write or say one question you still have about the project or about next week.\n\nMy question: ___________________\n\nWho could answer it? (circle)   teacher   classmate   client   I can find out myself",
-            "lines": 2,
+            "lines": 0,
             "activity_type": "write_response",
             "render_hints": {
               "help": "Good questions start with: How will we... / What happens when... / Who decides..."

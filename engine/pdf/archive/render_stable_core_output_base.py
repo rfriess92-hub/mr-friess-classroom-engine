@@ -498,22 +498,28 @@ def build_task_block(
     prompt_style: str = 'BodyTextCompactX',
     vertical_padding: float = 4.5,
 ):
-    body_style = styles[prompt_style] if compact else styles['BodyText']
-    line_par_style = styles[line_style] if compact else styles['BodyText']
+    line_total = rendered_lines if rendered_lines is not None else task.get('lines', 4)
+    if line_total == 0:
+        body_style = styles['BodyText']
+        line_par_style = styles['BodyText']
+        actual_v_padding = 12
+    else:
+        body_style = styles[prompt_style] if compact else styles['BodyText']
+        line_par_style = styles[line_style] if compact else styles['BodyText']
+        actual_v_padding = vertical_padding if compact else 8
     flowables = [
         Paragraph(task.get('label', 'Task'), styles['SectionHeadX']),
         Paragraph(task.get('prompt', ''), body_style),
         Spacer(1, max(1, int(round(2 * spacing_scale)))),
     ]
-    line_total = rendered_lines if rendered_lines is not None else task.get('lines', 4)
     for _ in range(line_total):
         flowables.append(Paragraph('______________________________________________________________', line_par_style))
     block = Table([[flowables]], colWidths=[540])
     block.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), colors.white),
         ('BOX', (0, 0), (-1, -1), 0.55 if compact else 0.75, colors.HexColor('#cbd5e1')),
-        ('TOPPADDING', (0, 0), (-1, -1), vertical_padding if compact else 8),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), vertical_padding if compact else 8),
+        ('TOPPADDING', (0, 0), (-1, -1), actual_v_padding),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), actual_v_padding),
         ('LEFTPADDING', (0, 0), (-1, -1), 7 if compact else 10),
         ('RIGHTPADDING', (0, 0), (-1, -1), 7 if compact else 10),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
