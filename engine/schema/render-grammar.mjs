@@ -10,6 +10,8 @@ export const ARTIFACT_FAMILIES = [
   'checkpoint_sheet',
   'exit_ticket',
   'final_response_sheet',
+  'graphic_organizer',
+  'discussion_prep_sheet',
 ]
 
 export const RENDER_INTENTS = [
@@ -95,9 +97,10 @@ function inferRenderIntent(outputType, output, sourceSection) {
   if (outputType === 'checkpoint_sheet') return 'checkpoint_prep'
   if (outputType === 'exit_ticket') return 'reflection_closure'
   if (outputType === 'teacher_guide' || outputType === 'lesson_overview') return 'operational_reference'
+  if (outputType === 'graphic_organizer') return 'compare_sort'
+  if (outputType === 'discussion_prep_sheet') return 'exploratory_planning'
 
   if (outputType === 'slides') {
-    if (corpus.includes('reflect')) return 'reflection_closure'
     return 'launch'
   }
 
@@ -112,7 +115,7 @@ function inferRenderIntent(outputType, output, sourceSection) {
     const hasCompare = corpusIncludesAny(corpus, ['compare', 'sort'])
     const hasRecommendation = corpusIncludesAny(corpus, ['recommendation', 'recommend'])
     const hasEvidence = corpus.includes('evidence')
-    const hasExplanationSignal = corpusIncludesAny(corpus, ['explain', 'explanation', 'data', 'pattern', 'claim'])
+    const hasExplanationSignal = corpusIncludesAny(corpus, ['explain', 'explanation', 'data', 'pattern', 'claim', 'calculate', 'solve', 'equation', 'formula', 'measure', 'observe', 'record', 'result', 'problem', 'solution', 'graph', 'analysis', 'analyze'])
 
     if (hasCompare && hasRecommendation) {
       return 'compare_sort'
@@ -155,6 +158,7 @@ function inferAssessmentWeight(outputType, output) {
 function inferDensity(outputType, sourceSection) {
   if (outputType === 'lesson_overview' || outputType === 'teacher_guide') return 'heavy'
   if (outputType === 'slides' || outputType === 'exit_ticket') return 'light'
+  if (outputType === 'graphic_organizer' || outputType === 'discussion_prep_sheet') return 'medium'
 
   const taskCount = safeArray(sourceSection?.tasks).length
   const questionCount = safeArray(sourceSection?.questions).length

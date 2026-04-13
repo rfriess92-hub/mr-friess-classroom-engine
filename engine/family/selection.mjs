@@ -264,6 +264,31 @@ function scoreFamilySignals(pkg) {
     addScore(scores, reasons, 'short_inquiry_sequence', 2, 'Learning goals explicitly target exploration, comparison, or narrowing choices.')
   }
 
+  // session_count signal — longer packages are more likely to need multi-day evidence sequences
+  const sessionCount = typeof pkg.session_count === 'number' ? pkg.session_count : null
+  if (sessionCount !== null) {
+    if (sessionCount === 1) {
+      addScore(scores, reasons, 'short_inquiry_sequence', 2, 'Single-session package favors a focused inquiry-to-conclusion structure.')
+    } else if (sessionCount >= 4) {
+      addScore(scores, reasons, 'short_project', 3, 'Extended session count suggests a project or product-oriented sequence.')
+      addScore(scores, reasons, 'evidence_based_writing_task', 1, 'Multi-day pacing supports staged evidence-building toward a written product.')
+    } else if (sessionCount >= 2) {
+      addScore(scores, reasons, 'evidence_based_writing_task', 2, 'Multi-session pacing supports staged evidence-based writing structure.')
+    }
+  }
+
+  // Architecture signal — architecture choice informs family likelihood
+  const arch = pkg.primary_architecture ?? ''
+  if (arch === 'seminar') {
+    addScore(scores, reasons, 'structured_academic_discussion', 4, 'Seminar architecture is discussion-centered by design.')
+  } else if (arch === 'lab_investigation') {
+    addScore(scores, reasons, 'short_inquiry_sequence', 3, 'Lab investigation architecture is inquiry-centered.')
+  } else if (arch === 'project_sprint') {
+    addScore(scores, reasons, 'short_project', 4, 'Project sprint architecture maps directly to a product-focused family.')
+  } else if (arch === 'workshop_session') {
+    addScore(scores, reasons, 'evidence_based_writing_task', 2, 'Workshop sessions typically serve writing-release or revision work.')
+  }
+
   return { scores, reasons }
 }
 

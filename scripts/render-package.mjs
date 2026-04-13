@@ -161,7 +161,7 @@ for (const route of routes) {
   }
   if (
     route.renderer_family === 'pdf'
-    && ['teacher_guide', 'lesson_overview', 'worksheet', 'task_sheet', 'checkpoint_sheet', 'exit_ticket', 'final_response_sheet'].includes(route.output_type)
+    && ['teacher_guide', 'lesson_overview', 'worksheet', 'task_sheet', 'checkpoint_sheet', 'exit_ticket', 'final_response_sheet', 'graphic_organizer', 'discussion_prep_sheet'].includes(route.output_type)
   ) {
     renderPdfOutput(packagePath, route, outDir)
     continue

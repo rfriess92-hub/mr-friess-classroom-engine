@@ -203,8 +203,9 @@ export function validatePackage(pkg) {
     pushIssue(warnings, 'unsupported_theme_value', `Theme ${pkg.theme} is not in the supported theme vocabulary (${SUPPORTED_THEMES.join(', ')}). PPTX rendering may fall back to a default theme.`, 'theme')
   }
 
-  if (pkg.primary_architecture === 'multi_day_sequence' && !Array.isArray(pkg.days)) {
-    pushIssue(errors, 'missing_days', 'multi_day_sequence packages must declare a days array.', 'days')
+  const MULTI_DAY_ARCHITECTURES = new Set(['multi_day_sequence', 'three_day_sequence', 'project_sprint'])
+  if (MULTI_DAY_ARCHITECTURES.has(pkg.primary_architecture) && !Array.isArray(pkg.days)) {
+    pushIssue(errors, 'missing_days', `${pkg.primary_architecture} packages must declare a days array.`, 'days')
   }
 
   if (!Array.isArray(pkg.outputs) && !Array.isArray(pkg.days)) {
@@ -321,7 +322,7 @@ export function validatePackage(pkg) {
     }
   }
 
-  if (pkg.primary_architecture === 'multi_day_sequence' && Array.isArray(pkg.days)) {
+  if (MULTI_DAY_ARCHITECTURES.has(pkg.primary_architecture) && Array.isArray(pkg.days)) {
     for (let dayIndex = 0; dayIndex < pkg.days.length; dayIndex += 1) {
       const day = pkg.days[dayIndex]
       if (!day?.day_id) {

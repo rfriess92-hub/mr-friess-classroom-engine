@@ -7,7 +7,20 @@
   "properties": {
     "schema_version": { "type": "string", "pattern": "^2\\.1" },
     "package_id": { "type": "string", "minLength": 1 },
-    "primary_architecture": { "type": "string", "enum": ["single_period_full", "multi_day_sequence"] },
+    "primary_architecture": {
+      "type": "string",
+      "enum": [
+        "single_period_full",
+        "multi_day_sequence",
+        "three_day_sequence",
+        "workshop_session",
+        "lab_investigation",
+        "seminar",
+        "project_sprint",
+        "station_rotation"
+      ]
+    },
+    "session_count": { "type": "integer", "minimum": 1, "description": "Number of class sessions this package is designed for." },
     "secondary_architecture_support": {
       "oneOf": [
         { "type": "string", "minLength": 1 },
@@ -39,11 +52,21 @@
     "task_sheet": { "$ref": "#/$defs/taskSheetSection" },
     "final_response_sheet": { "$ref": "#/$defs/finalResponseSection" },
     "exit_ticket": { "$ref": "#/$defs/exitTicketSection" },
+    "graphic_organizer": { "$ref": "#/$defs/graphicOrganizerSection" },
+    "discussion_prep_sheet": { "$ref": "#/$defs/discussionPrepSection" },
     "days": { "type": "array", "items": { "$ref": "#/$defs/day" } }
   },
   "allOf": [
     {
       "if": { "properties": { "primary_architecture": { "const": "multi_day_sequence" } } },
+      "then": { "required": ["days"] }
+    },
+    {
+      "if": { "properties": { "primary_architecture": { "const": "three_day_sequence" } } },
+      "then": { "required": ["days"] }
+    },
+    {
+      "if": { "properties": { "primary_architecture": { "const": "project_sprint" } } },
       "then": { "required": ["days"] }
     }
   ],
@@ -51,7 +74,18 @@
     "audience": { "type": "string", "enum": ["teacher", "student", "shared_view"] },
     "outputType": {
       "type": "string",
-      "enum": ["teacher_guide", "lesson_overview", "slides", "worksheet", "task_sheet", "checkpoint_sheet", "exit_ticket", "final_response_sheet"]
+      "enum": [
+        "teacher_guide",
+        "lesson_overview",
+        "slides",
+        "worksheet",
+        "task_sheet",
+        "checkpoint_sheet",
+        "exit_ticket",
+        "final_response_sheet",
+        "graphic_organizer",
+        "discussion_prep_sheet"
+      ]
     },
     "imageRole": {
       "type": "string",
@@ -141,6 +175,11 @@
         "label": { "type": "string" },
         "prompt": { "type": "string" },
         "lines": { "type": "integer", "minimum": 1 },
+        "activity_type": {
+          "type": "string",
+          "enum": ["write_response", "think_pair_share", "gallery_walk", "close_reading", "lab_procedure", "card_sort", "debate_prep", "peer_review", "station_task"],
+          "description": "The activity structure for this task. Informs render intent and layout hints."
+        },
         "render_hints": { "$ref": "#/$defs/studentPdfTaskRenderHints" }
       },
       "additionalProperties": true
@@ -190,6 +229,37 @@
       },
       "additionalProperties": true
     },
+    "graphicOrganizerSection": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "organizer_type": {
+          "type": "string",
+          "enum": ["t_chart", "three_column", "four_square", "timeline", "concept_web"],
+          "description": "Layout variant for the organizer."
+        },
+        "columns": { "type": "array", "items": { "type": "string" }, "description": "Column header labels." },
+        "rows": { "type": "integer", "minimum": 1, "description": "Number of content rows." },
+        "prompt": { "type": "string", "description": "Framing prompt or question students work from." },
+        "success_criteria": { "type": "array", "items": { "type": "string" } },
+        "render_hints": { "$ref": "#/$defs/studentPdfSectionRenderHints" }
+      },
+      "additionalProperties": true
+    },
+    "discussionPrepSection": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "discussion_prompt": { "type": "string", "description": "The central question or topic students prepare for." },
+        "position_label": { "type": "string", "description": "Label for the position/claim box. Default: 'My position'." },
+        "evidence_count": { "type": "integer", "minimum": 1, "maximum": 4, "description": "Number of evidence boxes (1-4)." },
+        "include_question": { "type": "boolean", "description": "Include a box for a student-generated question." },
+        "include_counterargument": { "type": "boolean", "description": "Include a counterargument/steelman box." },
+        "success_criteria": { "type": "array", "items": { "type": "string" } },
+        "render_hints": { "$ref": "#/$defs/studentPdfSectionRenderHints" }
+      },
+      "additionalProperties": true
+    },
     "slideNode": {
       "type": "object",
       "properties": {
@@ -233,6 +303,8 @@
         "task_sheet": { "$ref": "#/$defs/taskSheetSection" },
         "final_response_sheet": { "$ref": "#/$defs/finalResponseSection" },
         "exit_ticket": { "$ref": "#/$defs/exitTicketSection" },
+        "graphic_organizer": { "$ref": "#/$defs/graphicOrganizerSection" },
+        "discussion_prep_sheet": { "$ref": "#/$defs/discussionPrepSection" },
         "outputs": { "type": "array", "items": { "$ref": "#/$defs/output" } }
       },
       "additionalProperties": true

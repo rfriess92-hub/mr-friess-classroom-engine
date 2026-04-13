@@ -26,6 +26,8 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'slides',
     'worksheet',
     'exit_ticket',
+    'graphic_organizer',
+    'discussion_prep_sheet',
   ],
   multi_day_sequence: [
     'lesson_overview',
@@ -34,6 +36,52 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'task_sheet',
     'checkpoint_sheet',
     'final_response_sheet',
+    'exit_ticket',
+    'graphic_organizer',
+  ],
+  three_day_sequence: [
+    'lesson_overview',
+    'teacher_guide',
+    'slides',
+    'task_sheet',
+    'checkpoint_sheet',
+    'final_response_sheet',
+    'exit_ticket',
+    'graphic_organizer',
+  ],
+  workshop_session: [
+    'teacher_guide',
+    'task_sheet',
+    'exit_ticket',
+    'graphic_organizer',
+    'discussion_prep_sheet',
+  ],
+  lab_investigation: [
+    'teacher_guide',
+    'slides',
+    'task_sheet',
+    'exit_ticket',
+    'graphic_organizer',
+  ],
+  seminar: [
+    'teacher_guide',
+    'slides',
+    'discussion_prep_sheet',
+    'exit_ticket',
+  ],
+  project_sprint: [
+    'lesson_overview',
+    'teacher_guide',
+    'task_sheet',
+    'checkpoint_sheet',
+    'final_response_sheet',
+    'graphic_organizer',
+  ],
+  station_rotation: [
+    'teacher_guide',
+    'task_sheet',
+    'exit_ticket',
+    'graphic_organizer',
   ],
 }
 
@@ -42,6 +90,8 @@ export const STUDENT_FACING_OUTPUT_TYPES = new Set([
   'task_sheet',
   'exit_ticket',
   'final_response_sheet',
+  'graphic_organizer',
+  'discussion_prep_sheet',
 ])
 
 export const TEACHER_FACING_OUTPUT_TYPES = new Set([

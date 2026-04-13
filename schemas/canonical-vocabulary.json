@@ -2,7 +2,13 @@
   "schema_version_prefix": "2.1",
   "primary_architectures": [
     "single_period_full",
-    "multi_day_sequence"
+    "multi_day_sequence",
+    "three_day_sequence",
+    "workshop_session",
+    "lab_investigation",
+    "seminar",
+    "project_sprint",
+    "station_rotation"
   ],
   "grade_bands": [
     "K-2",
@@ -18,7 +24,9 @@
     "task_sheet",
     "checkpoint_sheet",
     "exit_ticket",
-    "final_response_sheet"
+    "final_response_sheet",
+    "graphic_organizer",
+    "discussion_prep_sheet"
   ],
   "audiences": [
     "teacher",
@@ -37,7 +45,12 @@
   ],
   "themes": [
     "science",
-    "careers"
+    "careers",
+    "mathematics",
+    "humanities",
+    "english_language_arts",
+    "social_science",
+    "health_science"
   ],
   "slide_layouts": [
     "hero",

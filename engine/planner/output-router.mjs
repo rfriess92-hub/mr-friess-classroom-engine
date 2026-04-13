@@ -35,6 +35,8 @@ function rendererFamilyFor(outputType) {
     case 'checkpoint_sheet':
     case 'exit_ticket':
     case 'final_response_sheet':
+    case 'graphic_organizer':
+    case 'discussion_prep_sheet':
       return 'pdf'
     default:
       return 'unknown'
