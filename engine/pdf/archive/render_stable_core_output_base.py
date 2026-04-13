@@ -10,6 +10,7 @@ from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.platypus import (
+    HRFlowable,
     KeepTogether,
     PageBreak,
     Paragraph,
@@ -55,14 +56,14 @@ def styles_bundle():
     styles.add(ParagraphStyle(name='CenterTitleX', parent=styles['Heading1'], alignment=TA_CENTER, fontSize=18, leading=22))
     styles.add(ParagraphStyle(name='TitleBarX', parent=styles['Heading2'], alignment=TA_LEFT, fontSize=14, leading=16, textColor=colors.white, spaceAfter=0, keepWithNext=True))
     styles.add(ParagraphStyle(name='SheetTitleX', parent=styles['Heading2'], fontSize=14, leading=16, textColor=colors.HexColor('#0f172a'), spaceAfter=2, keepWithNext=True))
-    styles.add(ParagraphStyle(name='PurposeLineX', parent=styles['BodyText'], fontSize=9.3, leading=10.8, textColor=colors.HexColor('#0f172a'), alignment=TA_LEFT))
-    styles.add(ParagraphStyle(name='SmallHeadX', parent=styles['Heading3'], spaceAfter=6, fontSize=12, leading=14))
-    styles.add(ParagraphStyle(name='SectionHeadX', parent=styles['Heading3'], fontSize=10.2, leading=11.6, textColor=colors.HexColor('#0f172a'), spaceAfter=3))
-    styles.add(ParagraphStyle(name='BodyTextCompactX', parent=styles['BodyText'], fontSize=8.7, leading=10.1))
-    styles.add(ParagraphStyle(name='MicroX', parent=styles['BodyText'], fontSize=8.2, leading=9.4))
-    styles.add(ParagraphStyle(name='MutedX', parent=styles['BodyText'], fontSize=8.8, leading=10.0, textColor=colors.HexColor('#475569')))
-    styles['BodyText'].fontSize = 10
-    styles['BodyText'].leading = 12
+    styles.add(ParagraphStyle(name='PurposeLineX', parent=styles['BodyText'], fontSize=12, leading=14, textColor=colors.HexColor('#0f172a'), alignment=TA_LEFT))
+    styles.add(ParagraphStyle(name='SmallHeadX', parent=styles['Heading3'], spaceAfter=6, fontSize=14, leading=16))
+    styles.add(ParagraphStyle(name='SectionHeadX', parent=styles['Heading3'], fontSize=13, leading=15, textColor=colors.HexColor('#0f172a'), spaceAfter=4))
+    styles.add(ParagraphStyle(name='BodyTextCompactX', parent=styles['BodyText'], fontSize=12, leading=14))
+    styles.add(ParagraphStyle(name='MicroX', parent=styles['BodyText'], fontSize=12, leading=14))
+    styles.add(ParagraphStyle(name='MutedX', parent=styles['BodyText'], fontSize=12, leading=14, textColor=colors.HexColor('#475569')))
+    styles['BodyText'].fontSize = 12
+    styles['BodyText'].leading = 14
     return styles
 
 
@@ -509,22 +510,16 @@ def build_task_block(
         actual_v_padding = vertical_padding if compact else 8
     flowables = [
         Paragraph(task.get('label', 'Task'), styles['SectionHeadX']),
+        Spacer(1, 4),
         Paragraph(task.get('prompt', ''), body_style),
-        Spacer(1, max(1, int(round(2 * spacing_scale)))),
+        Spacer(1, max(4, int(round(4 * spacing_scale)))),
     ]
     for _ in range(line_total):
         flowables.append(Paragraph('______________________________________________________________', line_par_style))
-    block = Table([[flowables]], colWidths=[540])
-    block.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, -1), colors.white),
-        ('BOX', (0, 0), (-1, -1), 0.55 if compact else 0.75, colors.HexColor('#cbd5e1')),
-        ('TOPPADDING', (0, 0), (-1, -1), actual_v_padding),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), actual_v_padding),
-        ('LEFTPADDING', (0, 0), (-1, -1), 7 if compact else 10),
-        ('RIGHTPADDING', (0, 0), (-1, -1), 7 if compact else 10),
-        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-    ]))
-    return KeepTogether([block, Spacer(1, max(2, int(round(4 * spacing_scale))))])
+    if line_total > 0:
+        flowables.append(Spacer(1, 4))
+    flowables.append(HRFlowable(width='100%', thickness=0.5, color=colors.HexColor('#cbd5e1'), spaceAfter=12))
+    return KeepTogether(flowables)
 
 
 def compact_list_cell(styles, title: str, items: list[str]):
