@@ -1,51 +1,33 @@
-export const ASSIGNMENT_FAMILIES = [
-  'short_inquiry_sequence',
-  'short_project',
-  'performance_task',
-  'structured_academic_discussion',
-  'evidence_based_writing_task',
-]
+import {
+  ARTIFACT_AUDIENCES,
+  FAMILY_CONFIDENCE_VALUES,
+  RESPONSE_MODES,
+  STUDENT_VISUAL_TONES,
+  WRITABLE_PRIORITIES,
+  defaultFamilySelectionSkeleton,
+  getDefaultFamilyRoutingOrder,
+  getRecommendedChains,
+  getStableAssignmentFamilies,
+  isAssignmentFamily,
+} from '../assignment-family/live-contract.mjs'
 
-export const FAMILY_CONFIDENCE_VALUES = ['high', 'medium', 'low']
+export const ASSIGNMENT_FAMILIES = getStableAssignmentFamilies()
 
-export const DEFAULT_FAMILY_ROUTING_ORDER = [
-  'short_inquiry_sequence',
-  'evidence_based_writing_task',
-  'short_project',
-  'performance_task',
-  'structured_academic_discussion',
-]
+export const DEFAULT_FAMILY_ROUTING_ORDER = getDefaultFamilyRoutingOrder()
 
-export const DEFAULT_CHAIN_RECOMMENDATIONS = [
-  {
-    recommended_chain: ['short_inquiry_sequence', 'structured_academic_discussion', 'evidence_based_writing_task'],
-    chain_reason: 'Inquiry builds options and evidence, discussion deepens understanding, and writing makes final thinking durable.',
-  },
-  {
-    recommended_chain: ['short_inquiry_sequence', 'performance_task'],
-    chain_reason: 'Inquiry builds evidence and performance creates applied demonstration.',
-  },
-  {
-    recommended_chain: ['short_inquiry_sequence', 'short_project', 'evidence_based_writing_task'],
-    chain_reason: 'Inquiry informs design work, and writing captures rationale and reflection.',
-  },
-  {
-    recommended_chain: ['structured_academic_discussion', 'evidence_based_writing_task'],
-    chain_reason: 'Discussion develops ideas that writing turns into assessable reasoning.',
-  },
-  {
-    recommended_chain: ['short_inquiry_sequence', 'evidence_based_writing_task'],
-    chain_reason: 'Inquiry builds evidence and writing secures the final reasoning product.',
-  },
-]
+export const DEFAULT_CHAIN_RECOMMENDATIONS = getRecommendedChains().map((recommended_chain) => ({
+  recommended_chain,
+  chain_reason: 'Recommended chain sourced from assignment-family authority.',
+}))
 
-export const ARTIFACT_AUDIENCES = ['teacher', 'student', 'shared_view']
-export const STUDENT_VISUAL_TONES = ['neutral', 'warm_classroom', 'minimal_reference']
-export const RESPONSE_MODES = ['short_response', 'paragraph_response', 'multi_part_response', 'compare_two', 'checklist', 'exit_reflection']
-export const WRITABLE_PRIORITIES = ['low', 'medium', 'high']
-
-export function isAssignmentFamily(value) {
-  return ASSIGNMENT_FAMILIES.includes(value)
+export {
+  ARTIFACT_AUDIENCES,
+  FAMILY_CONFIDENCE_VALUES,
+  RESPONSE_MODES,
+  STUDENT_VISUAL_TONES,
+  WRITABLE_PRIORITIES,
+  defaultFamilySelectionSkeleton,
+  isAssignmentFamily,
 }
 
 export function isFamilyConfidence(value) {
@@ -66,16 +48,6 @@ export function isResponseMode(value) {
 
 export function isWritablePriority(value) {
   return WRITABLE_PRIORITIES.includes(value)
-}
-
-export function defaultFamilySelectionSkeleton() {
-  return {
-    assignment_family: 'short_inquiry_sequence',
-    family_confidence: 'low',
-    secondary_candidate_families: [],
-    recommended_chain: ['short_inquiry_sequence'],
-    family_selection_reason: '',
-  }
 }
 
 export function defaultCanonicalAssignmentSkeleton() {
