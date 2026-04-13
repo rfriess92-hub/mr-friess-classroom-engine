@@ -1,0 +1,316 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_day1_launch",
+  "primary_architecture": "single_period_full",
+  "session_count": 1,
+  "grade_band": "8-12",
+  "subject": "Cross-Curricular — Project Launch",
+  "grade": null,
+  "topic": "Plan, Build, Grow — Day 1: Meet the Project",
+  "theme": "careers",
+  "lesson_overview": {
+    "overview": "Day 1 is a shared whole-class launch. Every student — regardless of subject enrollment — experiences the same opening: they meet the client, understand the real job, see the space, and commit to a role. All students have K designations. Oral response is full evidence. Teacher reads aloud before anyone writes. The second half of the session splits into subject-streamed tasks, but the debrief brings everyone back together. The goal today is engagement, not content mastery.",
+    "essential_question": "What does our team need to do — and why does it matter?",
+    "big_idea": "Every real project starts with someone who needs something. Our job is to understand what they need, plan it carefully, and make it happen.",
+    "session_arc": [
+      { "time": "0:00–0:08", "phase": "Settle and orient", "description": "Visual agenda on board. Teacher names what is happening today in plain language." },
+      { "time": "0:08–0:18", "phase": "See the space", "description": "Teacher shows photos or takes class to the actual site. Students draw or describe what they see." },
+      { "time": "0:18–0:35", "phase": "Meet the client", "description": "Teacher reads the client brief aloud twice. Students mark key words on their sheet." },
+      { "time": "0:35–0:50", "phase": "The job breakdown", "description": "Class discusses: what do we need to plan? build? grow? record? Teacher scribes on board." },
+      { "time": "0:50–1:10", "phase": "Subject-streamed task", "description": "Students work on a short subject-specific first look. English: vocabulary and questions. Math: site sketch and first estimates." },
+      { "time": "1:10–1:17", "phase": "Team share", "description": "Each student or pair shares one thing. Teacher records responses on the class anchor chart." },
+      { "time": "1:17–1:19", "phase": "Commitment card and exit", "description": "Each student completes or dictates their project commitment card." }
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "Today is about belonging to the project. Every student needs to leave knowing: what we are doing, why it matters, and that they have a real role in it. This session does not assess — it invites.",
+    "learning_goals": [
+      "Every student can say (in any form) what this project is and who the client is.",
+      "Every student has identified one thing they will contribute.",
+      "English-stream students have met the project vocabulary and the client brief.",
+      "Math-stream students have made a first estimate of the space and identified what they will measure."
+    ],
+    "k_designation_notes": [
+      "Read the client brief aloud twice before students see it on paper. First read: they just listen. Second read: they follow along.",
+      "The site visit or site photos are essential — many students need the physical reality before the task makes sense.",
+      "Accept all forms of response today: oral, drawn, pointed to, scribed by teacher or EA, or tapped out.",
+      "Spotty attendance means today's commitment card is a re-entry tool too — any student who missed Day 1 can complete it on Day 2.",
+      "Do not rush the settle phase. Students with K designations often need longer to regulate before they can engage."
+    ],
+    "materials": [
+      "Site photos printed or displayed on screen (or access to the actual outdoor space)",
+      "Client brief printed one per student (large print available)",
+      "Day 1 student launch packet — one per student",
+      "Pencils, markers, and highlighters at every table",
+      "Class anchor chart paper and markers (teacher-managed)",
+      "Sentence frame strips posted visibly in room",
+      "Camera or phone for students to photograph the site (optional)",
+      "EA support: scribe station available"
+    ],
+    "timing": [
+      { "time": "0:00–0:08", "activity": "Visual agenda: show today's plan on the board as pictures + words. Say it aloud: 'Today we are meeting our project. We will see the space, read a letter from the client, and decide what our job is.'" },
+      { "time": "0:08–0:18", "activity": "Site visit or photo tour. Ask: what do you notice? what is already there? what is missing? Students sketch the space on their launch packet. Accept any marks on paper." },
+      { "time": "0:18–0:28", "activity": "First read of the client brief — teacher reads aloud while students listen. No writing yet. Then say: 'I'm going to read it again. This time, circle or underline anything that tells us what they want.'" },
+      { "time": "0:28–0:35", "activity": "Second read — students follow on their own copy. Teacher pauses at key sentences. Class discusses: who is the client? what do they need? where will it go?" },
+      { "time": "0:35–0:50", "activity": "Job breakdown: teacher draws the project on the board as a simple diagram (plan → build → plant → record → report). Students help name what goes in each box. Scribe all responses." },
+      { "time": "0:50–1:10", "activity": "Subject-streamed task. Students open to their subject page in the launch packet. English-stream: vocabulary and what I noticed. Math-stream: site sketch with labels and first estimates. Teacher and EA circulate." },
+      { "time": "1:10–1:17", "activity": "Share: each student says or shows one thing they recorded or drew. Teacher adds it to the class anchor chart. No wrong answers." },
+      { "time": "1:17–1:19", "activity": "Commitment card: each student writes, draws, or dictates one thing they will do or contribute to this project. Teacher collects or photographs." }
+    ],
+    "teacher_notes": [
+      "If the outdoor space is not available, use three or four good photos of the planned location — projected large.",
+      "The client brief can be the real school administrator or teacher who requested the project. A real face and name makes a significant difference for engagement.",
+      "Some students will not write a word today. That is fine. Their oral participation and their sketch count.",
+      "Post the sentence frames before students arrive: 'The client is ___.' / 'The job is ___.' / 'I am going to ___.'",
+      "The class anchor chart stays on the wall for the duration of the project — it is the class memory for students with attendance gaps.",
+      "If an EA is present, assign them to the scribe station during the streamed task phase."
+    ],
+    "sentence_frames_to_post": [
+      "The client is ___.",
+      "The job is to ___.",
+      "The planter will go ___.",
+      "I can help by ___.",
+      "I want to know ___."
+    ],
+    "flex_if_running_short": "If time is tight, cut the streamed task phase and do only the commitment card. The job breakdown is the essential moment — do not cut it.",
+    "flex_if_running_long": "If energy is high and time allows, let students take photos of the space on a phone or tablet. These become reference images for the whole project."
+  },
+  "slides": [
+    {
+      "type": "LAUNCH",
+      "title": "Plan, Build, Grow",
+      "layout": "hero",
+      "content": {
+        "subtitle": "Day 1 — Meet the project, meet the client, understand the job."
+      }
+    },
+    {
+      "type": "ENGAGE",
+      "title": "Today's plan",
+      "layout": "rows",
+      "content": {
+        "rows": [
+          "1. See the space — where our planter will go",
+          "2. Read a letter from the client",
+          "3. Figure out: what is the job?",
+          "4. Decide what we each will do",
+          "5. Make a commitment"
+        ]
+      }
+    },
+    {
+      "type": "ENGAGE",
+      "title": "See the space",
+      "layout": "prompt",
+      "content": {
+        "scenario": "This is where the planter box will go. Look carefully.",
+        "prompts": [
+          "What do you notice?",
+          "What is already there?",
+          "What is missing?"
+        ]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "The client brief",
+      "layout": "prompt",
+      "content": {
+        "scenario": "Someone at this school has asked us to build something. They wrote us a letter. Listen while I read it.",
+        "prompts": [
+          "Who is asking us to do this?",
+          "What do they want us to build?",
+          "Where will it go?"
+        ]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "What is our job?",
+      "layout": "three_rows",
+      "content": {
+        "rows": [
+          "PLAN — choose the right design and figure out what we need",
+          "BUILD — construct the planter box safely and carefully",
+          "GROW — plant, water, and track what happens"
+        ]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "And then — REPORT",
+      "layout": "prompt",
+      "content": {
+        "scenario": "When the project is done, we tell the client what we did and what happened. We show them the evidence.",
+        "prompts": [
+          "What did we build?",
+          "How did the plants grow?",
+          "Was it worth it?"
+        ]
+      }
+    },
+    {
+      "type": "TASK",
+      "title": "Subject streams — your first look",
+      "layout": "rows",
+      "content": {
+        "rows": [
+          "English 10 / 11 / 12 → open to Page 2: vocabulary and client questions",
+          "Math 8 → open to Page 3: sketch the space and estimate",
+          "Workplace Math 10 → open to Page 3: sketch the space and estimate",
+          "Use the sentence frames on the wall if you need them.",
+          "You have about 20 minutes. Ask for help anytime."
+        ]
+      }
+    },
+    {
+      "type": "TASK",
+      "title": "Share time",
+      "layout": "reflect",
+      "content": {
+        "prompts": [
+          "What is one thing you wrote, drew, or noticed today?",
+          "One question you have about the project:",
+          "One thing you think you can help with:"
+        ]
+      }
+    },
+    {
+      "type": "REFLECT",
+      "title": "Commitment card",
+      "layout": "reflect",
+      "content": {
+        "prompts": [
+          "My name: ___",
+          "One thing I will do on this project: ___",
+          "I am most interested in: plan / build / grow / report (circle one)"
+        ]
+      }
+    }
+  ],
+  "worksheet": {
+    "title": "Day 1 Launch Packet — Plan, Build, Grow",
+    "instructions": [
+      "Page 1 is for everyone. Your teacher will read the client brief aloud.",
+      "Page 2 is for English students.",
+      "Page 3 is for Math students.",
+      "You can write, draw, circle, or ask someone to scribe for you."
+    ],
+    "tasks": [
+      {
+        "label": "Page 1 — For Everyone: The Site",
+        "prompt": "Look at the space where our planter box will go.\n\nDraw what you see:\n\n[drawing space]\n\nCircle words that describe the space:\nbig   small   sunny   shady   near a wall   in the open   on concrete   on grass   indoors   outdoors",
+        "lines": 6,
+        "render_hints": {
+          "heading": "What does the space look like?",
+          "drawing_space": true,
+          "help": "You can draw, label, or just circle words. All three are great."
+        }
+      },
+      {
+        "label": "Page 1 — For Everyone: The Client Brief",
+        "prompt": "Your teacher will read the client brief aloud. As you listen, circle or underline:\n\n→ WHO is asking us to do this?\n→ WHAT do they want?\n→ WHERE will it go?\n\nAfter the second read, write or draw your answers:\n\nThe client is: ___________________\nThey want us to: ___________________\nIt will go: ___________________",
+        "lines": 3,
+        "render_hints": {
+          "help": "Sentence frames: The client is ___. The job is to ___ . It will go ___.",
+          "oral_ok": true
+        }
+      },
+      {
+        "label": "Page 2 — English Stream: Project Vocabulary",
+        "prompt": "These words will come up a lot in this project. Read them with your teacher.\n\nclient — the person who gave us the job\nplanter box — a container for growing plants\nmaterials — what we use to build it (wood, screws, soil)\ndimensions — the size: length, width, and height\nreport — telling the client what we did and what happened\n\nChoose TWO words. Write or say a sentence using each one.",
+        "lines": 4,
+        "render_hints": {
+          "heading": "English — Vocabulary First Look",
+          "help": "Example: 'The client is Ms. Chen. She gave us the job.' Try your own!"
+        }
+      },
+      {
+        "label": "Page 2 — English Stream: Questions for the Client",
+        "prompt": "A good team asks questions before they start. What would you want to ask the client?\n\nMy question 1: ___________________\nMy question 2: ___________________\n\nCircle what matters most to you right now:\nwhat it looks like   how big it is   how much it costs   who will use it   what we plant in it",
+        "lines": 4,
+        "render_hints": {
+          "help": "Question starters: Can you tell me... / How big should it be... / What do you want planted..."
+        }
+      },
+      {
+        "label": "Page 2 — English Stream: What I Noticed",
+        "prompt": "In one or two sentences, describe what you noticed about the space today.\n\nSentence frame: I noticed that the space is ___. I think this means we will need to ___.\n\nYou can also draw your observation instead.",
+        "lines": 3,
+        "render_hints": {
+          "oral_ok": true,
+          "drawing_space": false
+        }
+      },
+      {
+        "label": "Page 3 — Math Stream: Sketch the Space",
+        "prompt": "Draw a simple top-down sketch of the space where the planter will go.\n\n[drawing space — top view]\n\nLabel what you can:\n→ A wall or fence (if there is one)\n→ Which direction is sunny\n→ How many steps wide the space looks to you",
+        "lines": 6,
+        "render_hints": {
+          "heading": "Math — First Look at the Space",
+          "drawing_space": true,
+          "help": "Top view means you are looking down from above, like a map. Just do your best estimate."
+        }
+      },
+      {
+        "label": "Page 3 — Math Stream: First Estimates",
+        "prompt": "Without measuring yet — just estimate.\n\nI think the space is about _______ steps wide.\nI think the space is about _______ steps long.\nIf I turned my steps into centimetres, 1 step ≈ 70 cm.\n\nEstimated width: _______ steps × 70 cm = _______ cm\nEstimated length: _______ steps × 70 cm = _______ cm\n\nDo these seem like reasonable planter box dimensions? Y / N\nWhy or why not? ___________________",
+        "lines": 4,
+        "render_hints": {
+          "help": "Estimates are guesses based on what you can see. There is no wrong answer here — we will measure properly next week."
+        }
+      },
+      {
+        "label": "Page 3 — Math Stream: Budget Thinking",
+        "prompt": "Before we know exact costs, let's think about money.\n\nCircle your best guess for the total project budget:\n$50   $100   $200   $500   $1000   more than $1000\n\nWhat costs the most when you build something? Circle:\nwood   screws   soil   plants   tools   labour\n\nWhy did you choose that? ___________________",
+        "lines": 2,
+        "render_hints": {
+          "help": "This is a prediction — you will find out the real budget in the client brief."
+        }
+      },
+      {
+        "label": "Page 4 — For Everyone: Commitment Card",
+        "prompt": "My name: ___________________\n\nOne thing I will do on this project:\n___________________\n\nI am most interested in (circle one):\nPLAN     BUILD     GROW     REPORT\n\nOne question I have:\n___________________",
+        "lines": 4,
+        "render_hints": {
+          "heading": "My Project Commitment",
+          "help": "You can write, draw, dictate, or point. Every answer counts.",
+          "oral_ok": true
+        }
+      }
+    ],
+    "embedded_supports": [
+      "Sentence frames posted in room: The client is ___. The job is ___. I can help by ___.",
+      "All tasks accept oral, drawn, or written response",
+      "Teacher or EA scribing available throughout",
+      "Vocabulary words remain visible on the board for the full session",
+      "Circling/pointing is a valid response for every question that includes choice words"
+    ],
+    "success_criteria": [
+      "I know who the client is.",
+      "I know what we are building and where it will go.",
+      "I have made one contribution to the class anchor chart.",
+      "I completed my commitment card in any format."
+    ]
+  },
+  "exit_ticket": {
+    "title": "Day 1 Exit Check",
+    "prompt": "Tell me (say, write, draw, or point):\n\n1. Who is the client?\n2. What are we building?\n3. One thing you will do on this project.",
+    "n_lines": 3,
+    "success_criteria": [
+      "Student can identify the client in any form.",
+      "Student can describe the project in any form.",
+      "Student has named one contribution they will make."
+    ],
+    "teacher_notes": "Exit check can be done as a group check-out question at the door — student answers verbally as they leave. No written response required if the session was full. Commitment card can substitute."
+  },
+  "bundle": {
+    "bundle_id": "pbg_day1_launch_bundle",
+    "declared_outputs": ["teacher_guide", "slides", "exit_ticket"]
+  },
+  "outputs": [
+    { "output_id": "d1_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "pbg_day1_launch_bundle" },
+    { "output_id": "d1_slides", "output_type": "slides", "audience": "shared_view", "source_section": "slides", "bundle": "pbg_day1_launch_bundle" },
+    { "output_id": "d1_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "exit_ticket", "bundle": "pbg_day1_launch_bundle" }
+  ]
+}

@@ -1,0 +1,1164 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_english12",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 10,
+  "grade_band": "9-12",
+  "subject": "English Language Arts",
+  "grade": 12,
+  "topic": "Plan, Build, Grow — Professional Communication and Evidence-Based Recommendation",
+  "theme": "careers",
+  "lesson_overview": {
+    "overview": "Students act as junior project leads on a school grounds team across 10 project weeks. They analyze complex client documentation, compose professional multi-section reports, make decisions using evidence, and present a formal recommendation to a client audience. English 12 outcomes emphasize independent professional writing at a near-workplace level: formal reports, structured arguments, multi-source evidence synthesis, and polished oral delivery. Weeks 4 and 8 are flex weeks for revision and depth.",
+    "essential_question": "How do professional communicators use evidence, analysis, and structured writing to influence decisions?",
+    "big_idea": "The most effective professional communication is purposeful, specific, and built on evidence — not opinion.",
+    "sequence": [
+      { "day": "Week 1", "focus": "Analyze a client brief and project scope. Write a project objectives statement.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Week 2", "focus": "Evaluate three design options against client criteria. Write a formal design rationale.", "artifacts": ["Slides", "Graphic Organizer", "Exit Ticket"] },
+      { "day": "Week 3", "focus": "Complete a full project proposal including work order, timeline, and budget summary.", "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet", "Exit Ticket"] },
+      { "day": "Week 4", "focus": "Flex week. Proposal revision, professional register practice, or criteria deepening.", "artifacts": ["Slides", "Task Sheet"] },
+      { "day": "Week 5", "focus": "Write a build progress report. Document deviations and propose corrective actions.", "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet"] },
+      { "day": "Week 6", "focus": "Write a technical planting report with annotated diagram and care plan.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Week 7", "focus": "Analyze growth data. Write an evidence-based interim report for the client.", "artifacts": ["Slides", "Graphic Organizer", "Discussion Prep Sheet"] },
+      { "day": "Week 8", "focus": "Flex week. Revise interim report, deepen analysis, or extend data collection.", "artifacts": ["Slides", "Task Sheet", "Graphic Organizer"] },
+      { "day": "Week 9", "focus": "Synthesize all project data into a structured final recommendation draft.", "artifacts": ["Slides", "Graphic Organizer", "Task Sheet"] },
+      { "day": "Week 10", "focus": "Deliver a formal oral presentation to the client. Submit the final project report.", "artifacts": ["Slides", "Discussion Prep Sheet", "Final Response Sheet", "Checkpoint Sheet"] }
+    ],
+    "differentiation_note": "Three levels embedded throughout. Level A: detailed structural scaffolds, sentence frames, model excerpts to complete. Level B: partial structures, vocabulary cues, guided planning tools. Level C: open-format tasks with professional models to analyze and exceed, including extension into formal memo and executive summary formats.",
+    "integrity_checks": [
+      "All writing tasks develop a coherent project record across 10 weeks.",
+      "The final report synthesizes evidence from all prior writing — students should reference earlier documents.",
+      "Oral delivery is a complete form of evidence; conferenced reports are equivalent to written ones.",
+      "Flex weeks are targeted toward the most cognitively demanding writing tasks.",
+      "Professional register is modeled explicitly before students are asked to use it."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "English 12 students producing a real project proposal, interim report, and formal recommendation are doing professional communication work that transfers directly to post-secondary and workplace contexts.",
+    "learning_goals": [
+      "Analyze professional documents (brief, proposal, report) to extract requirements, constraints, and criteria.",
+      "Compose multi-section professional documents including proposals, progress reports, and formal recommendations.",
+      "Use evidence from multiple project sources (design data, growth records, budget) to support a written argument.",
+      "Revise writing for clarity, specificity, and professional register.",
+      "Deliver a structured formal oral presentation with an evidence-backed recommendation."
+    ],
+    "materials": [
+      "Client brief and project scope document (Week 1)",
+      "Design evaluation matrix (Week 2 graphic organizer)",
+      "Project proposal template (Week 3 task sheet)",
+      "Build progress report template (Week 5 task sheet)",
+      "Technical planting report (Week 6 task sheet)",
+      "Growth analysis organizer and interim report prep (Week 7)",
+      "Final report planning organizer (Week 9)",
+      "Oral presentation cue card and final report (Week 10)"
+    ],
+    "timing": [
+      { "time": "0:00–0:08", "activity": "Settle, agenda, and connect to the professional context of the week." },
+      { "time": "0:08–0:20", "activity": "Direct instruction. Analyze a model professional document. Identify structural conventions." },
+      { "time": "0:20–0:32", "activity": "Collaborative analysis or guided planning before independent writing." },
+      { "time": "0:32–1:02", "activity": "Extended independent writing time. Teacher holds conferences. Peer review is available." },
+      { "time": "1:02–1:12", "activity": "Targeted small-group revision session. Focus on one improvement per student." },
+      { "time": "1:12–1:17", "activity": "One student reads a strong sentence aloud. Class names what makes it effective." },
+      { "time": "1:17–1:19", "activity": "Exit ticket and cleanup." }
+    ],
+    "teacher_notes": [
+      "Model professional documents are essential at every stage — show before you ask.",
+      "Grade 12 students should be revising at least once for every major document. Build revision time in.",
+      "Conference notes are assessment. The writing conference is the most valuable instructional moment.",
+      "By Week 7, students should be able to select their own evidence. Resist scaffolding this choice.",
+      "The final report and oral delivery are the two summative artifacts — both must demonstrate independent professional communication.",
+      "Extension: students who finish early can format their recommendation as an executive summary or formal memo."
+    ],
+    "flex_week_options": {
+      "week_4": ["Revise project proposal using teacher feedback", "Analyze and annotate a real-world project proposal", "Compare two versions of the same professional email — rank and justify", "Complete criteria deepening: what makes a design 'best'?", "Catch up Week 3 if proposal was incomplete"],
+      "week_8": ["Revise interim report with focus on evidence specificity", "Deepen growth analysis using additional data points", "Practice oral report with peer feedback protocol", "Write an alternate opening for the interim report", "Draft the final report introduction"]
+    }
+  },
+  "bundle": {
+    "bundle_id": "pbg_english12_bundle",
+    "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "task_sheet", "checkpoint_sheet", "final_response_sheet", "exit_ticket", "graphic_organizer", "discussion_prep_sheet"]
+  },
+  "outputs": [
+    { "output_id": "pbg_e12_overview", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview" },
+    { "output_id": "pbg_e12_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide" }
+  ],
+  "days": [
+    {
+      "day_id": "week1",
+      "day_label": "Week 1: Analyze the Brief and Define Project Objectives",
+      "carryover_note": "Project objectives statement is the authorizing document for all subsequent design decisions.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Plan, Build, Grow — Week 1",
+          "layout": "hero",
+          "content": { "subtitle": "This week: analyze the client brief and project scope. Write a project objectives statement." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Starting with the brief",
+          "layout": "prompt",
+          "content": {
+            "scenario": "You have been assigned as project lead on a school grounds initiative. You have received a client brief and a project scope document. Before any design work begins, you need to define the project objectives precisely.",
+            "prompts": ["What is the purpose of defining objectives before designing?", "What is the difference between a requirement and an objective?", "What happens if different team members have different objectives?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Brief vs. Scope vs. Objectives",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Brief: what the client wants — written from the client's perspective.",
+              "Scope: what the project covers — defines the boundaries of work.",
+              "Objectives: what the team will achieve — measurable, time-bound, specific."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "SMART objectives",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Specific — names exactly what will be done",
+              "Measurable — includes a number, date, or quantity",
+              "Achievable — realistic within project constraints",
+              "Relevant — directly connected to the client's requirement",
+              "Time-bound — has a deadline or completion point"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Draft your first objective",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Draft one SMART objective for this project in one sentence.",
+              "Test it: is it specific enough that a new team member could follow it?",
+              "What constraint from the brief must be reflected in this objective?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 1 Task Sheet — Brief Analysis and Project Objectives",
+        "instructions": [
+          "Read the client brief and scope document thoroughly.",
+          "Complete Parts 1 and 2 below.",
+          "Your objectives statement will be used as the reference document for Weeks 2–10."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Document analysis",
+            "prompt": "Annotate the brief. Then record:\n\nKey requirement (what the client wants delivered): ___________________\nScope boundary (what is NOT included): ___________________\nPrimary constraint (budget, timeline, or location): ___________________\nSuccess criterion (how will the client know it worked?): ___________________",
+            "lines": 4,
+            "activity_type": "close_reading",
+            "render_hints": { "heading": "Brief Analysis", "help": "Annotate as you read: underline requirements, box constraints, circle the success criterion." }
+          },
+          {
+            "label": "Part 2: Project objectives statement",
+            "prompt": "Write a formal project objectives statement (3–4 sentences). Include: project name, primary objective, key constraint, and one measurable success criterion.\n\nLevel B: This project will deliver ___ by ___. The primary constraint is ___. Success will be measured by ___.\nLevel C: Write a formal objectives statement with all four SMART elements demonstrated.",
+            "lines": 6,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Project Objectives Statement", "help": "Every sentence does one job. Test: is each sentence specific enough to be verified?" }
+          }
+        ],
+        "embedded_supports": [
+          "SMART checklist printed on student sheet",
+          "Level A: four fill-in-the-blank sentences, one per SMART element",
+          "Vocabulary: objective, requirement, scope, constraint, deliverable, criterion, measurable"
+        ],
+        "success_criteria": [
+          "I identified the requirement, scope boundary, and constraint from the brief.",
+          "My objectives statement includes a specific, measurable success criterion.",
+          "Every sentence in my objectives statement is verifiable."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 1 Exit Check",
+        "prompt": "Write one SMART project objective for this project. It must be specific, measurable, and time-bound.",
+        "n_lines": 3,
+        "success_criteria": [
+          "My objective is specific.",
+          "It includes a number or measurable outcome.",
+          "It references a timeline or deadline."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w1_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week1.slides" },
+        { "output_id": "w1_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week1.task_sheet" },
+        { "output_id": "w1_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week1.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week2",
+      "day_label": "Week 2: Evaluate Designs and Write a Formal Rationale",
+      "carryover_note": "Design rationale is attached to the project proposal in Week 3.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 2: Design Evaluation",
+          "layout": "hero",
+          "content": { "subtitle": "This week: evaluate three designs against project criteria and write a formal design rationale." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Objectives check",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your Week 1 objectives statement.",
+            "prompts": ["What is the measurable success criterion?", "What is the primary constraint?", "Which design criterion matters most to this client?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Formal design evaluation",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "A formal evaluation scores each option against defined criteria — not personal preference.",
+              "Criteria come from the client's brief and project objectives, not from the evaluator's taste.",
+              "A rationale explains the decision and acknowledges the trade-offs of the rejected options."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Evaluation vocabulary",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "criteria — the standards by which options are judged (singular: criterion)",
+              "weighted — giving more importance to one criterion than another",
+              "trade-off — accepting a drawback in one area to gain in another",
+              "rejected option — the designs not chosen, and why",
+              "rationale — the reasoning that justifies a decision"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Toward the rationale",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Which design best satisfies the client's measurable success criterion?",
+              "What is the strongest argument against your chosen design?",
+              "What would you say to a client who preferred one of the rejected designs?"
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "organizer_type": "three_column",
+        "title": "Design Evaluation Matrix — Options A, B, C",
+        "columns": ["Design A", "Design B", "Design C"],
+        "rows": [
+          "Meets primary requirement?",
+          "Within budget constraint?",
+          "Meets dimension specification?",
+          "Ease of maintenance (1–3)",
+          "Planting surface area (cm²)",
+          "Alignment with success criterion",
+          "Overall score / ranking"
+        ],
+        "prompt": "Score each design against the criteria from your objectives statement. Use evidence from the design cards.",
+        "success_criteria": [
+          "I scored every design against every criterion.",
+          "My scores are based on data, not preference.",
+          "I can explain the trade-off of my chosen design."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 2 Exit Check",
+        "prompt": "Write the opening sentence of your design rationale. It must name your chosen design and reference the most important criterion.",
+        "n_lines": 3,
+        "success_criteria": [
+          "I named the chosen design.",
+          "I referenced a specific criterion from the project objectives."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week2.slides" },
+        { "output_id": "w2_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week2.graphic_organizer" },
+        { "output_id": "w2_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week2.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week3",
+      "day_label": "Week 3: Write the Project Proposal",
+      "carryover_note": "The approved proposal is the baseline document for all progress reports and the final recommendation.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 3: Project Proposal",
+          "layout": "hero",
+          "content": { "subtitle": "This week: compose a complete project proposal with work order, timeline, and budget summary." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Documents assembled so far",
+          "layout": "retrieval",
+          "content": {
+            "task": "Gather your Week 1 objectives and Week 2 evaluation matrix.",
+            "prompts": ["What design are you proposing?", "What is the budget constraint from the brief?", "What is the timeline for project completion?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Project proposal structure",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Executive summary: 2–3 sentences stating what is being proposed and why.",
+              "Work plan: design selected, dimensions, materials, timeline, and roles.",
+              "Budget summary: estimated costs by category with a total and any contingency."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Budget summary language",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "contingency — a budget reserve for unexpected costs (typically 10%)",
+              "line item — one category in the budget with its cost",
+              "total estimated cost — the sum of all line items",
+              "within budget — the total does not exceed the approved limit",
+              "variance — the difference between estimated and actual cost"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Proposal quality check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Would a new reader understand the entire project from your executive summary alone?",
+              "Is every line item in the budget specific enough to verify?",
+              "What is the strongest part of your proposal? What would you revise?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 3 Task Sheet — Project Proposal",
+        "instructions": [
+          "Write all three sections of the proposal.",
+          "Include specific numbers in the work plan and budget.",
+          "Every section must be complete before submission."
+        ],
+        "tasks": [
+          {
+            "label": "Section 1: Executive Summary",
+            "prompt": "Write 2–3 sentences summarizing: what is being built, which design was selected and why, and the expected completion date.\n\nLevel B: This proposal recommends the construction of ___ using Design ___. This design was selected because ___. Completion is expected by ___.\nLevel C: Write your own executive summary — do not use the Level B template.",
+            "lines": 5,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Executive Summary", "help": "Executive summary rule: a senior manager should understand the whole project in 30 seconds." }
+          },
+          {
+            "label": "Section 2: Work Plan",
+            "prompt": "Complete the work plan:\n\nDesign selected: ___________________\nDimensions (L × W × H): ___ × ___ × ___ cm\nMaterials: ___________________\nTimeline:\n  Week 5 — Build: ___________________\n  Week 6 — Plant: ___________________\n  Week 7–9 — Monitor: ___________________\n  Week 10 — Report: ___________________\nTeam roles: ___________________",
+            "lines": 8,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Work Plan", "help": "Be specific about what happens in each phase. Vague entries like 'do the work' are not acceptable." }
+          },
+          {
+            "label": "Section 3: Budget Summary",
+            "prompt": "Complete the budget table:\n\nItem | Quantity | Unit cost | Total\nLumber | | | $\nHardware | | | $\nSoil | | | $\nPlants/seeds | | | $\nContingency (10%) | | | $\nTotal estimated cost: $______\nApproved budget: $______\nWithin budget: Y / N",
+            "lines": 7,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Budget Summary", "help": "Contingency = 10% of the subtotal before contingency. Always include it." }
+          }
+        ],
+        "embedded_supports": [
+          "Proposal template with labeled sections for Level A",
+          "Executive summary checklist: what / which design / why / when",
+          "Budget reminder: subtotal → +10% contingency → total"
+        ],
+        "success_criteria": [
+          "My executive summary covers what, why, and when in 2–3 sentences.",
+          "My work plan has specific tasks for each project phase.",
+          "My budget includes all line items, a contingency, and a total within the approved budget."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 3 Checkpoint — Proposal Review",
+        "prompts": [
+          "Executive summary: complete and self-contained in 2–3 sentences: Y / N",
+          "Work plan: specific tasks listed for each phase: Y / N",
+          "Budget: all line items present, contingency included, total within budget: Y / N",
+          "Conference note (optional):"
+        ],
+        "teacher_notes": "The most common issue is an executive summary that is too vague — students often write 'We will build a planter box.' Coach them toward specificity: which design, why that design, when it will be done."
+      },
+      "exit_ticket": {
+        "title": "Week 3 Exit Check",
+        "prompt": "What is a contingency in a budget, and why is it included? Answer in one or two sentences.",
+        "n_lines": 2,
+        "success_criteria": [
+          "I defined contingency correctly.",
+          "I explained why it is professional practice to include one."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w3_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week3.slides" },
+        { "output_id": "w3_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week3.task_sheet" },
+        { "output_id": "w3_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week3.checkpoint_sheet" },
+        { "output_id": "w3_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week3.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week4",
+      "day_label": "Week 4: Flex Week — Proposal Revision and Register Practice",
+      "carryover_note": "Flex week. Use to revise the proposal or deepen professional register skills.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 4: Flex Week",
+          "layout": "hero",
+          "content": { "subtitle": "This week: revise, deepen, or extend your proposal and professional writing skills." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What is professional register?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Register is the level of formality in language. Professional register is what you use in business and workplace documents — precise, impersonal, confident, and specific.",
+            "prompts": ["What makes language formal or informal?", "Who is the audience for our proposal?", "What would change about your writing if you were writing for a close friend instead of a client?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Register markers in professional writing",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Formal: third person or first person plural ('The team recommends...' / 'We propose...')",
+              "Precise: specific nouns and numbers rather than vague general language.",
+              "Impersonal: avoid emotional appeals, focus on evidence and reasoning."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Flex options",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Option 1: Revise your proposal executive summary using teacher feedback.",
+              "Option 2: Rewrite three informal passages from a sample proposal in formal professional register.",
+              "Option 3: Analyze a real proposal document — annotate its register choices.",
+              "Option 4: Catch up on any missing sections of the Week 3 proposal.",
+              "Option 5: Draft an alternate executive summary positioning the project differently."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Register self-check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Find one sentence in your proposal that is too informal. Rewrite it here.",
+              "Find one sentence that is too vague. Make it specific.",
+              "A sentence I am confident in — and why: ___."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 4 Task Sheet — Flex Writing Activities",
+        "instructions": [
+          "Your teacher will direct you to one or two activities.",
+          "All revisions should be marked clearly.",
+          "Aim for at least three improvements to your proposal."
+        ],
+        "tasks": [
+          {
+            "label": "Activity A: Register revision",
+            "prompt": "Revise these informal passages into formal professional register:\n\n1. 'We think Design B is the best one because it looks bigger and easier to use.'\n   Revised: ___________________\n\n2. 'We\\'re going to need some wood and stuff. Budget is probably around $200.'\n   Revised: ___________________",
+            "lines": 6,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Replace: vague words → specific nouns; informal contractions → full forms; 'think/feel' → 'recommend/propose'." }
+          },
+          {
+            "label": "Activity B: Proposal revision",
+            "prompt": "Using teacher feedback, revise the weakest section of your Week 3 proposal. Identify which section you are revising and what you changed.\n\nSection revised: ___________________\nChanges made: ___________________\n\nRevised text:",
+            "lines": 8,
+            "activity_type": "write_response",
+            "render_hints": { "help": "One targeted revision is more valuable than a general re-read." }
+          }
+        ],
+        "embedded_supports": [
+          "Register swap list: 'think' → 'recommend'; 'a lot' → specify the number; 'stuff' → list items",
+          "Formal opener options: 'This proposal recommends...' / 'The project team proposes...' / 'Based on a review of...'"
+        ],
+        "success_criteria": [
+          "My revised sentences use precise, formal professional language.",
+          "I identified and improved the weakest section of my proposal.",
+          "I can explain the register choice in each of my revisions."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w4_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week4.slides" },
+        { "output_id": "w4_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week4.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "week5",
+      "day_label": "Week 5: Write a Build Progress Report",
+      "carryover_note": "Progress report and deviation log are referenced in the final recommendation.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 5: Build Progress Report",
+          "layout": "hero",
+          "content": { "subtitle": "This week: report on build progress, document any deviations from the plan, and propose corrective actions." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Why progress reports matter",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Every professional project has a progress reporting requirement. A progress report compares what was planned against what actually happened — and recommends what to do next.",
+            "prompts": ["What is the difference between reporting and complaining?", "What should you do if you discover a deviation from the plan?", "Why does the client care about deviations?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Progress report structure",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Status summary: what was planned vs. what was completed — are we on track?",
+              "Deviation log: any differences from the plan — what changed, why, and what impact it has.",
+              "Corrective action: what the team will do to address each deviation and return to plan."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Deviation reporting language",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "on track — progress is as planned",
+              "deviation — any difference from the approved plan",
+              "impact — how the deviation affects cost, timeline, or quality",
+              "corrective action — a specific step to address the deviation",
+              "variance — the measurable difference between planned and actual"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Honest reporting",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "What is the professional obligation to report a deviation, even when it is embarrassing?",
+              "How is 'the board was cut 5 cm short' different from 'there was a small problem'?",
+              "What would happen to a professional who concealed a deviation in their report?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 5 Task Sheet — Build Progress Report",
+        "instructions": [
+          "Complete all three sections: status, deviations, and corrective actions.",
+          "Use specific measurements and dates.",
+          "If no deviations occurred, state this explicitly — do not leave the section blank."
+        ],
+        "tasks": [
+          {
+            "label": "Section 1: Status Summary",
+            "prompt": "Compare plan vs. actual:\n\nPlanned tasks for this week: ___________________\nCompleted tasks: ___________________\nOn track: Y / N\nStatus statement (one sentence): ___________________",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Status Summary", "help": "On track means you completed what the proposal committed to completing this week." }
+          },
+          {
+            "label": "Section 2: Deviation Log",
+            "prompt": "Record any deviations from the approved plan:\n\nDeviation 1: ___________________\nImpact: ___________________\n\nDeviation 2 (if applicable): ___________________\nImpact: ___________________\n\nNo deviations occurred: Y / N",
+            "lines": 6,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Deviations can be positive (ahead of schedule) or negative. Report both." }
+          },
+          {
+            "label": "Section 3: Corrective Actions",
+            "prompt": "For each deviation, propose a corrective action:\n\nDeviation: ___________________\nCorrective action: ___________________\nResponsible party: ___________________\nDeadline: ___________________",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Corrective actions must be specific, not general. 'Be more careful' is not a corrective action." }
+          }
+        ],
+        "embedded_supports": [
+          "Status statement template: 'As of [date], the team has completed ___ and is [on / behind / ahead of] schedule.'",
+          "Corrective action model: 'To address ___, the team will ___ by ___. [Name] is responsible.'",
+          "Level A: fill-in templates for all three sections"
+        ],
+        "success_criteria": [
+          "My status summary compares planned vs. actual with a clear on-track statement.",
+          "Each deviation is described with its specific impact.",
+          "Each corrective action is specific, has a deadline, and names a responsible party."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 5 Checkpoint — Progress Report Quality Check",
+        "prompts": [
+          "Status summary: planned vs. actual comparison is explicit: Y / N",
+          "Deviation log: complete with impact for each deviation: Y / N",
+          "Corrective actions: specific, with deadline and responsible party: Y / N",
+          "Professional register maintained throughout: Y / N",
+          "Conference note (optional):"
+        ],
+        "teacher_notes": "The most common gap is vague corrective actions. Push students to name a specific action, not a general intention. The baseline comparison (planned vs. actual) is also often skipped."
+      },
+      "outputs": [
+        { "output_id": "w5_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week5.slides" },
+        { "output_id": "w5_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week5.task_sheet" },
+        { "output_id": "w5_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week5.checkpoint_sheet" }
+      ]
+    },
+    {
+      "day_id": "week6",
+      "day_label": "Week 6: Technical Planting Report with Care Plan",
+      "carryover_note": "Technical planting report becomes an appendix to the final project report in Week 10.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 6: Technical Planting Report",
+          "layout": "hero",
+          "content": { "subtitle": "This week: write a technical planting report with an annotated diagram and 10-week care plan." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What makes writing technical?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Technical writing prioritizes precision and usability over style. Anyone who reads a technical planting report should be able to replicate the planting exactly. There is no room for vague language.",
+            "prompts": ["What does 'plant 3 seeds 2 cm deep, 10 cm apart' tell you that 'plant some seeds' does not?", "Who might use this report after the project is done?", "What is the difference between a technical report and a narrative?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Technical report conventions",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Numbered sections: organize the report for a reader who needs to find specific information fast.",
+              "Imperative or passive voice for procedures: 'Plant seeds 2 cm deep' or 'Seeds were planted at 2 cm depth.'",
+              "All measurements explicitly labeled: depth, spacing, quantity, date, and frequency."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Care plan structure",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Watering: frequency, quantity, and method.",
+              "Sunlight: hours per day, position relative to window or exterior.",
+              "Soil: pH range, moisture level, amendment schedule.",
+              "Inspection: frequency, what to look for, who is responsible.",
+              "Contingency: what to do if a plant shows disease or fails to sprout."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Testing your report",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Could someone replicate your planting exactly using only your report?",
+              "Is there any point in your care plan where 'it depends' is an acceptable answer?",
+              "What is one thing in this report that you want to be precise about?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 6 Task Sheet — Technical Planting Report",
+        "instructions": [
+          "Section 1: Complete the planting record in full.",
+          "Section 2: Annotate the diagram with at least five technical labels.",
+          "Section 3: Write the 10-week care plan."
+        ],
+        "tasks": [
+          {
+            "label": "Section 1: Planting Record",
+            "prompt": "Date: _________  Location: ___________________\nPlant variety/species: ___________________\nSource: ___________________\nQuantity planted: _______\nPlanting depth: _______ cm\nSpacing between plants: _______ cm\nSoil type used: ___________________\nPlanting method (seed / seedling / cutting): ___________________\nInitial condition of plants: ___________________",
+            "lines": 9,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Section 1: Planting Record", "help": "Every field requires a specific answer. Ask your teacher if you do not have the information." }
+          },
+          {
+            "label": "Section 2: Annotated Diagram",
+            "prompt": "Annotate the planter diagram with five or more technical labels. Each label must use a noun phrase and include a measurement where applicable.\n\nLabels recorded:\n1. ___________________\n2. ___________________\n3. ___________________\n4. ___________________\n5. ___________________",
+            "lines": 5,
+            "activity_type": "annotation",
+            "render_hints": { "help": "Technical labels: 'potting mix (pH 6.5)' not 'some dirt'." }
+          },
+          {
+            "label": "Section 3: Care Plan",
+            "prompt": "Write the 10-week care plan:\n\nWatering: every ___ days / ___ ml per plant\nSunlight: ___ hours per day\nInspection schedule: every ___ days — check for ___________________\nContingency if plant fails to sprout: ___________________\nResponsible parties: ___________________",
+            "lines": 5,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Section 3: Care Plan", "help": "Quantities and frequencies must be specific numbers, not ranges." }
+          }
+        ],
+        "embedded_supports": [
+          "Numbered section template for Level A",
+          "Technical annotation guide: arrow + label + measurement",
+          "Care plan vocabulary: frequency, irrigation, pH, contingency, inspection interval"
+        ],
+        "success_criteria": [
+          "My planting record is complete with specific measurements.",
+          "My annotated diagram has five or more precise technical labels.",
+          "My care plan specifies frequencies, quantities, and a contingency."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 6 Exit Check",
+        "prompt": "What is the difference between a technical annotation and a general label? Give one example of each for a planter box diagram.",
+        "n_lines": 3,
+        "success_criteria": [
+          "I explained the difference between technical and general labels.",
+          "My technical example includes a measurement or specification."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w6_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week6.slides" },
+        { "output_id": "w6_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week6.task_sheet" },
+        { "output_id": "w6_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week6.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week7",
+      "day_label": "Week 7: Analyze Growth Data and Write an Interim Report",
+      "carryover_note": "Interim report and growth analysis feed directly into the Week 9 final recommendation.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 7: Interim Report",
+          "layout": "hero",
+          "content": { "subtitle": "This week: analyze plant growth data and write a professional interim project report for the client." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What is an interim report?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "An interim report is a formal mid-project update. It tells the client what has been achieved, what the data shows, and whether the project is on track to deliver the promised outcome.",
+            "prompts": ["What is the key question an interim report must answer?", "What data do we have available to draw from?", "What would the client be most concerned to learn at this point?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Interim report structure",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Project status: is the project on track against the proposal timeline and objectives?",
+              "Data findings: what does the evidence show? Lead with the most significant finding.",
+              "Outlook: what do you expect in the remaining weeks, and is there anything the client should know or decide?"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Evidence selection for a report",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Choose evidence that directly answers what the client cares about.",
+              "Two strong, specific data points are more persuasive than six vague ones.",
+              "Acknowledge anything unexpected — hiding surprises damages credibility.",
+              "Quantify wherever possible: '4 cm of growth in 3 weeks' not 'the plant grew well'.",
+              "Connect findings to the original success criterion."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Evidence selection",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The single most important data point I will include: ___.",
+              "Does this data show we are on track to meet the success criterion?",
+              "Is there anything unexpected I need to flag for the client?"
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "organizer_type": "t_chart",
+        "title": "Growth Data — Evidence Selection Organizer",
+        "columns": ["Data Point (with measurement)", "Why It Matters to the Client"],
+        "rows": ["Finding 1", "Finding 2", "Finding 3 (if applicable)", "Unexpected finding (if any)"],
+        "prompt": "Select and evaluate your strongest pieces of evidence before writing the interim report.",
+        "success_criteria": [
+          "I selected data points that answer what the client cares about.",
+          "Each data point includes a specific measurement.",
+          "I identified any unexpected finding honestly."
+        ]
+      },
+      "discussion_prep_sheet": {
+        "discussion_prompt": "Write and deliver a structured interim report to the client. The report must address project status, two key data findings, and outlook for the remaining weeks.",
+        "position_label": "Project status statement (one sentence)",
+        "evidence_count": 2,
+        "include_question": false,
+        "include_counterargument": false,
+        "success_criteria": [
+          "I opened with a clear project status statement.",
+          "I presented two specific data findings with measurements.",
+          "I flagged any unexpected finding honestly.",
+          "I provided an outlook for the remaining project weeks.",
+          "My language is formal and precise throughout."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w7_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week7.slides" },
+        { "output_id": "w7_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week7.graphic_organizer" },
+        { "output_id": "w7_discussion_prep", "output_type": "discussion_prep_sheet", "audience": "student", "source_section": "days.week7.discussion_prep_sheet" }
+      ]
+    },
+    {
+      "day_id": "week8",
+      "day_label": "Week 8: Flex Week — Interim Report Revision",
+      "carryover_note": "Flex week. Deepen interim report, extend growth analysis, or draft the final report introduction.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 8: Flex Week",
+          "layout": "hero",
+          "content": { "subtitle": "This week: revise your interim report, extend your analysis, or draft the final report opening." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What separates good from excellent professional writing?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "We have now produced six professional documents across this project. In this flex week, we focus on what distinguishes competent professional writing from excellent professional writing.",
+            "prompts": ["What makes a recommendation credible vs. merely confident?", "What does 'showing your work' look like in a written report?", "What is one document from this project you would want in a professional portfolio?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "From competent to excellent",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Competent: answers the question. Excellent: anticipates follow-up questions and addresses them.",
+              "Competent: includes evidence. Excellent: explains why the evidence matters for this client's decision.",
+              "Competent: correct register. Excellent: precise, economical, and unambiguous in every sentence."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Flex options",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Option 1: Revise your interim report to excellent — use the three-level framework.",
+              "Option 2: Add new growth data points and extend your analysis.",
+              "Option 3: Draft the opening paragraph of your final report.",
+              "Option 4: Write an alternate version of your most important evidence sentence.",
+              "Option 5: Analyze a peer's interim report using the competent / excellent framework."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Approaching the final",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The evidence I am most confident in for my final recommendation: ___.",
+              "The document from this project I am most proud of: ___.",
+              "One thing I want my final report to do that my interim report did not: ___."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 8 Task Sheet — Revision and Extension",
+        "instructions": [
+          "Choose the activity that will most improve your project record.",
+          "All revisions should be marked with revision notes.",
+          "Any new data should be recorded with dates and units."
+        ],
+        "tasks": [
+          {
+            "label": "Activity A: Excellent revision",
+            "prompt": "Select one paragraph from your interim report. Revise it from competent to excellent.\n\nOriginal paragraph:\n_____________________________________\n\nWhat makes it competent: ___________________\nWhat would make it excellent: ___________________\n\nRevised paragraph:",
+            "lines": 10,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Excellent: anticipates follow-up questions + explains why evidence matters + precise, economical language." }
+          },
+          {
+            "label": "Activity B: Final report draft opening",
+            "prompt": "Draft the opening paragraph of your final project report. It should introduce the project, state the original objective, and lead into your recommendation.\n\nOpening paragraph draft:",
+            "lines": 6,
+            "activity_type": "write_response",
+            "render_hints": { "help": "The opening paragraph sets the stage for the entire final report. It should be polished." }
+          }
+        ],
+        "embedded_supports": [
+          "Competent/Excellent comparison guide with worked examples",
+          "Final report opener frame: 'This report presents the findings and recommendation of the ___ project, completed in [timeframe]. The project was commissioned by ___ to ___. Based on [evidence], the project team recommends ___.'",
+          "Revision protocol: read aloud, identify the weakest sentence, improve it, test again."
+        ],
+        "success_criteria": [
+          "My revised paragraph is more precise and anticipatory than the original.",
+          "My final report opening introduces the project and leads into a clear recommendation.",
+          "I can explain what changed and why each change was an improvement."
+        ]
+      },
+      "graphic_organizer": {
+        "organizer_type": "t_chart",
+        "title": "Competent vs. Excellent — Sentence Revision Log",
+        "columns": ["Competent (original)", "Excellent (revised)"],
+        "rows": ["Evidence sentence 1", "Evidence sentence 2", "Status statement", "Closing/outlook sentence"],
+        "prompt": "Record your original and revised sentences. Use this as a revision reference for the final report.",
+        "success_criteria": [
+          "Each revised sentence is more precise and specific than the original.",
+          "At least three sentences have been improved."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w8_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week8.slides" },
+        { "output_id": "w8_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week8.task_sheet" },
+        { "output_id": "w8_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week8.graphic_organizer" }
+      ]
+    },
+    {
+      "day_id": "week9",
+      "day_label": "Week 9: Synthesize and Draft the Final Report",
+      "carryover_note": "Final report draft is revised and delivered in Week 10.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 9: Final Report Draft",
+          "layout": "hero",
+          "content": { "subtitle": "This week: synthesize evidence from all project documents into a structured final report draft." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Document inventory",
+          "layout": "retrieval",
+          "content": {
+            "task": "Gather all documents from Weeks 1–8.",
+            "prompts": ["What is your recommendation in one sentence?", "Which three pieces of evidence most strongly support it?", "What limitation or caveat must you acknowledge?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Final report structure",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Executive summary (2–3 sentences): recommendation, primary evidence, and next step.",
+              "Evidence section: three to four evidence points, each with source, data, and interpretation.",
+              "Recommendation and limitations: formal recommendation with one limitation and one next step for the client."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Multi-source synthesis",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Each piece of evidence must reference its source document (proposal, progress report, growth log).",
+              "Evidence from different sources is stronger than evidence from one source.",
+              "Interpretation follows every data point: what does this number mean for the client?",
+              "Contradictory evidence must be acknowledged and resolved, not hidden.",
+              "The recommendation must be traceable — a reader must be able to follow your reasoning."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Is your recommendation traceable?",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Can you point to three pieces of evidence from three different documents?",
+              "Is there any contradictory evidence you need to address?",
+              "Read your recommendation to someone. Do they immediately understand your reasoning?"
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "organizer_type": "three_column",
+        "title": "Evidence Synthesis Organizer",
+        "columns": ["Source Document", "Evidence (with data)", "What It Means for the Client"],
+        "rows": ["Evidence 1", "Evidence 2", "Evidence 3", "Contradictory finding (if any)"],
+        "prompt": "Plan your final report evidence before writing. Each row must reference a different source document.",
+        "success_criteria": [
+          "I have evidence from at least two different project documents.",
+          "Each data point is interpreted — I explain what it means, not just what it is.",
+          "I have addressed any contradictory or unexpected evidence."
+        ]
+      },
+      "task_sheet": {
+        "title": "Week 9 Task Sheet — Final Report Draft",
+        "instructions": [
+          "Use your synthesis organizer to draft the full final report.",
+          "Include all three sections: executive summary, evidence, recommendation.",
+          "Minimum 6–8 sentences total."
+        ],
+        "tasks": [
+          {
+            "label": "Final Report Draft",
+            "prompt": "Write your complete final report draft below.\n\nSection 1 — Executive Summary (2–3 sentences):\n\nSection 2 — Evidence and Findings (3–4 sentences, each with source):\n\nSection 3 — Recommendation and Limitations (2–3 sentences):",
+            "lines": 14,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Final Project Report — Draft", "help": "Every evidence sentence must cite its source document (e.g., 'As recorded in the Week 7 growth log...')." }
+          }
+        ],
+        "embedded_supports": [
+          "Three-section template with sentence count guidance for Level A and B",
+          "Source citation format: 'As noted in [document name] (Week ___), ...'",
+          "Recommendation template: 'Based on the evidence presented, the project team recommends ___ because ___. However, ___ remains a limitation. The team advises the client to ___.'",
+          "Level C: format the final report as a formal memo with header, numbered sections, and executive summary."
+        ],
+        "success_criteria": [
+          "My executive summary contains the recommendation and primary evidence in 2–3 sentences.",
+          "Each evidence point cites its source document.",
+          "My recommendation section acknowledges one limitation and ends with a client action step."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w9_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week9.slides" },
+        { "output_id": "w9_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week9.graphic_organizer" },
+        { "output_id": "w9_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week9.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "week10",
+      "day_label": "Week 10: Formal Presentation and Final Report Submission",
+      "carryover_note": "Final project. Oral presentation and written report are the summative artifacts.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 10: Final Presentation",
+          "layout": "hero",
+          "content": { "subtitle": "This week: deliver a formal oral presentation and submit the final project report." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Project record",
+          "layout": "retrieval",
+          "content": {
+            "task": "Collect all documents from Weeks 1–9.",
+            "prompts": ["What is your recommendation?", "What are your three strongest evidence points?", "What one limitation will you acknowledge in the presentation?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Formal presentation structure",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Opening (15–20 sec): identify yourself, the project, and the purpose of this report.",
+              "Body (60–70 sec): state the recommendation, then present two to three evidence points with interpretation.",
+              "Closing (15–20 sec): acknowledge the key limitation, state the client's recommended next action, and close formally."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Presentation delivery standards",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Eye contact: speak to the client, not your notes. Cue card only.",
+              "Specificity: every claim needs a number or document reference.",
+              "Confidence: do not hedge with 'maybe', 'I think', 'kind of'. State your findings.",
+              "Timing: 90 seconds is a discipline. Practice aloud before you present.",
+              "Closing line: 'Thank you for the opportunity to present this report.'"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Professional retrospective",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The professional communication skill I am most confident in now: ___.",
+              "The skill I want to continue developing: ___.",
+              "The document from this project that best represents my capabilities: ___."
+            ]
+          }
+        }
+      ],
+      "discussion_prep_sheet": {
+        "discussion_prompt": "Deliver a 90-second formal oral presentation to the client. Present the project outcome, your recommendation, and the evidence supporting it.",
+        "position_label": "Recommendation (one precise sentence)",
+        "evidence_count": 3,
+        "include_question": false,
+        "include_counterargument": true,
+        "success_criteria": [
+          "I opened with project name, my role, and the report's purpose.",
+          "I stated my recommendation clearly within the first 20 seconds.",
+          "I presented three evidence points, each with a source document reference.",
+          "I acknowledged one limitation with specificity.",
+          "I gave the client a clear, actionable next step.",
+          "I maintained formal register and spoke without reading from a script."
+        ]
+      },
+      "final_response_sheet": {
+        "title": "Final Project Report — English 12",
+        "prompt": "Submit your complete final project report. Include all three sections: executive summary, evidence and findings, and recommendation with limitations. Reference at least three source documents from the project.",
+        "final_evidence": true,
+        "response_mode": "multi_part_response",
+        "success_criteria": [
+          "Executive summary presents the recommendation and primary evidence in 2–3 sentences.",
+          "Evidence section references at least three distinct source documents.",
+          "Each data point is interpreted — its significance to the client is explained.",
+          "The recommendation section includes a limitation and a client action step.",
+          "Professional register is maintained throughout with no informal language."
+        ],
+        "embedded_supports": [
+          "Level A: three-section template with scaffolded sentence frames.",
+          "Level B: section headers and evidence citation format provided; composition is independent.",
+          "Level C: format as a formal project report memo with numbered sections, headers, and executive summary page."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 10 Checkpoint — Summative Assessment",
+        "prompts": [
+          "Written report: executive summary complete and self-contained: Y / N",
+          "Written report: three evidence points with source document references: Y / N",
+          "Written report: limitation acknowledged with specificity: Y / N",
+          "Written report: professional register maintained throughout: Y / N",
+          "Oral presentation: recommendation within first 20 seconds: Y / N",
+          "Oral presentation: evidence-based, not opinion-based: Y / N",
+          "Oral presentation: formal, confident delivery without reading a script: Y / N",
+          "Conference / portfolio note:"
+        ],
+        "teacher_notes": "This is the summative assessment for English 12 professional communication. Both the written report and oral presentation must demonstrate independent professional communication. The oral report can be conferenced one-on-one, recorded, or presented to a panel. Level C students should be evaluated against the formal memo and formal presentation standards."
+      },
+      "outputs": [
+        { "output_id": "w10_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week10.slides" },
+        { "output_id": "w10_discussion_prep", "output_type": "discussion_prep_sheet", "audience": "student", "source_section": "days.week10.discussion_prep_sheet" },
+        { "output_id": "w10_final_response", "output_type": "final_response_sheet", "audience": "student", "source_section": "days.week10.final_response_sheet" },
+        { "output_id": "w10_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week10.checkpoint_sheet" }
+      ]
+    }
+  ]
+}

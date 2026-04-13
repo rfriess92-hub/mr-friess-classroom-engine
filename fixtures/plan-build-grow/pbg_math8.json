@@ -1,0 +1,1187 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_math8",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 10,
+  "grade_band": "6-9",
+  "subject": "Mathematics",
+  "grade": 8,
+  "topic": "Plan, Build, Grow — Measurement, Area, Volume, and Data",
+  "theme": "mathematics",
+  "lesson_overview": {
+    "overview": "Students act as a junior school grounds team across 10 project weeks. They measure planter box dimensions, calculate area and volume, estimate material quantities, record and graph plant growth data, and use their data to make a justified recommendation. Math 8 outcomes focus on measurement in context, area and volume calculations, data collection and graphing, and simple ratio reasoning. Weeks 4 and 8 are built-in flex weeks for pacing.",
+    "essential_question": "How can measuring, calculating, and graphing help us make better decisions about our planter box?",
+    "big_idea": "Mathematics gives us tools to compare options, estimate costs, track change over time, and support our decisions with evidence.",
+    "sequence": [
+      { "day": "Week 1", "focus": "Identify what to measure. Label dimensions on a diagram. Review length, width, and height.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Week 2", "focus": "Measure or read three planter designs. Record dimensions in a comparison table.", "artifacts": ["Slides", "Graphic Organizer", "Exit Ticket"] },
+      { "day": "Week 3", "focus": "Calculate the area of the planting surface. Compare planter designs by area.", "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet", "Exit Ticket"] },
+      { "day": "Week 4", "focus": "Flex week. Ruler review, area catch-up, or problem practice.", "artifacts": ["Slides", "Task Sheet"] },
+      { "day": "Week 5", "focus": "Calculate volume. Estimate how many bags of soil each planter needs.", "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet"] },
+      { "day": "Week 6", "focus": "Tally materials needed. Organize quantities in a table. Review units.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Week 7", "focus": "Record plant growth measurements. Begin a line graph.", "artifacts": ["Slides", "Graphic Organizer", "Exit Ticket"] },
+      { "day": "Week 8", "focus": "Flex week. Extend graph, review data accuracy, or catch up.", "artifacts": ["Slides", "Task Sheet", "Graphic Organizer"] },
+      { "day": "Week 9", "focus": "Analyze growth trends. Describe what the graph shows.", "artifacts": ["Slides", "Graphic Organizer", "Task Sheet"] },
+      { "day": "Week 10", "focus": "Use calculations and data to make a justified recommendation.", "artifacts": ["Slides", "Task Sheet", "Final Response Sheet", "Checkpoint Sheet"] }
+    ],
+    "differentiation_note": "Three support levels are embedded throughout. Level A: pre-labeled diagrams, fill-in calculations with steps provided, graphing on pre-plotted axes. Level B: formula reminders, partially completed tables, labeled graph templates. Level C: open-format recording, multi-step problems, extension comparisons.",
+    "integrity_checks": [
+      "All calculations are set in the real context of the planter project.",
+      "Formula reminders are visible on student materials — memorization is not the goal.",
+      "Measurement units are explicitly labeled in every task.",
+      "Flex weeks give time to revisit area or volume before moving to data.",
+      "Final recommendation must reference at least one number from the project."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "Math 8 students are measuring and calculating in a real context: the planter box is their manipulative, their data set, and their real-world application at the same time.",
+    "learning_goals": [
+      "Identify and measure length, width, and height of a rectangular prism.",
+      "Calculate the area of a rectangle using A = L × W.",
+      "Calculate the volume of a rectangular prism using V = L × W × H.",
+      "Collect, organize, and graph data in a line graph.",
+      "Use measurements and graph data to support a simple recommendation."
+    ],
+    "materials": [
+      "Tape measures and rulers",
+      "Planter box dimension cards (three design options)",
+      "Area and volume formula reference cards",
+      "Graph paper or pre-printed graph templates",
+      "Calculator (all students)",
+      "Measurement comparison table (Week 2 graphic organizer)",
+      "Growth log table and graphing sheet (Week 7–9 graphic organizers)",
+      "Final recommendation card (Week 10 final response sheet)"
+    ],
+    "timing": [
+      { "time": "0:00–0:08", "activity": "Settle, agenda, quick review of last week's measurement concept." },
+      { "time": "0:08–0:20", "activity": "Direct instruction and worked example. Teacher models calculation or graph step on board." },
+      { "time": "0:20–0:32", "activity": "Guided practice — class completes one example together before independent work." },
+      { "time": "0:32–1:02", "activity": "Supported work time. Teacher circulates. Level A students may receive pre-labeled templates." },
+      { "time": "1:02–1:12", "activity": "Teacher checkpoint or small-group problem solving." },
+      { "time": "1:12–1:17", "activity": "Sharing: one student reads their answer aloud. Class checks." },
+      { "time": "1:17–1:19", "activity": "Exit ticket and cleanup." }
+    ],
+    "teacher_notes": [
+      "Always model the full calculation before students attempt it.",
+      "Units matter every time. Circle or underline units in every answer during modeling.",
+      "Calculators are available throughout — the math goal is setting up the problem, not mental arithmetic.",
+      "For graphing: pre-plot axis labels with students before any data is entered.",
+      "Flex weeks can be used to re-run area or volume if students struggled.",
+      "If physical measurements aren't available, use the dimension cards provided.",
+      "The final recommendation must include at least one number — encourage students to quote their own data."
+    ],
+    "flex_week_options": {
+      "week_4": ["Re-measure planter options using rulers", "Redo area calculations with new dimensions", "Complete an area/perimeter extension problem", "Practice unit conversion (cm to m)", "Catch up missing comparison tables"],
+      "week_8": ["Add more data points to the growth graph", "Re-graph using a different scale", "Review how to read and describe a trend line", "Revisit volume if soil estimates were unclear", "Catch up missing growth log entries"]
+    }
+  },
+  "bundle": {
+    "bundle_id": "pbg_math8_bundle",
+    "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "task_sheet", "checkpoint_sheet", "final_response_sheet", "exit_ticket", "graphic_organizer"]
+  },
+  "outputs": [
+    { "output_id": "pbg_m8_overview", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview" },
+    { "output_id": "pbg_m8_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide" }
+  ],
+  "days": [
+    {
+      "day_id": "week1",
+      "day_label": "Week 1: Measuring Matters",
+      "carryover_note": "Labeled diagram from Week 1 is used as a reference in Weeks 2–5.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Plan, Build, Grow — Week 1",
+          "layout": "hero",
+          "content": { "subtitle": "This week: identify what to measure and label the dimensions of a planter box." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What do we need to know?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Before we can build a planter box, we need measurements. We need to know how long, how wide, and how tall it should be.",
+            "prompts": ["What does length mean?", "What does width mean?", "What does height mean?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Length, Width, Height",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Length (L) — the longest horizontal side of a shape",
+              "Width (W) — the shorter horizontal side of a shape",
+              "Height (H) — how tall the shape is, measured vertically"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Units of measurement",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "centimetre (cm) — for small measurements, like a pencil",
+              "metre (m) — for larger measurements, like a planter box",
+              "millimetre (mm) — for very precise measurements",
+              "1 metre = 100 centimetres",
+              "Always write the unit next to your number: e.g., 45 cm, not just 45"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Quick check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The length of a planter box is the ___ side.",
+              "We measure height using a ___ .",
+              "If a planter is 60 cm long and 30 cm wide, the ___ is longer."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 1 Task Sheet — Label the Dimensions",
+        "instructions": [
+          "Study the planter box diagram on your sheet.",
+          "Label the length, width, and height using the arrows shown.",
+          "Answer the questions below using the correct units."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Label the diagram",
+            "prompt": "Use the word bank to label the three arrows on the planter box diagram.\n\nWord bank: Length (L)  Width (W)  Height (H)",
+            "lines": 0,
+            "render_hints": { "heading": "Planter Box Diagram", "help": "Level A: arrows are pre-labelled — check each one. Level B: match each arrow to the word bank. Level C: label without the word bank." }
+          },
+          {
+            "label": "Part 2: Read and record",
+            "prompt": "Use the dimension card for Planter A to answer these questions:\n\nLength of Planter A = ________ cm\nWidth of Planter A = ________ cm\nHeight of Planter A = ________ cm\nWhich dimension is the largest? ________",
+            "lines": 4,
+            "render_hints": { "help": "Remember to write the unit (cm) after every number." }
+          },
+          {
+            "label": "Part 3: Explain",
+            "prompt": "Why does it matter that we know all three dimensions before we build?\n\nLevel B: Knowing the ___, ___, and ___ helps us because ___.\nLevel C: Write your own answer in one or two sentences.",
+            "lines": 3,
+            "render_hints": { "help": "Think: what would happen if we only knew one dimension?" }
+          }
+        ],
+        "embedded_supports": [
+          "Word bank: length, width, height, centimetres, metres, measure",
+          "Sentence frame: The three dimensions are ___, ___, and ___.",
+          "Level A: dimension labels are printed on the diagram for reference."
+        ],
+        "success_criteria": [
+          "I can label length, width, and height on a diagram.",
+          "I can read a measurement and write it with the correct unit.",
+          "I can explain why we need all three dimensions."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 1 Exit Check",
+        "prompt": "A planter box is 80 cm long, 40 cm wide, and 25 cm tall. Write: L = ___ W = ___ H = ___. Which dimension is the smallest?",
+        "n_lines": 2,
+        "success_criteria": [
+          "I wrote all three dimensions with units.",
+          "I identified the smallest dimension."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w1_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week1.slides" },
+        { "output_id": "w1_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week1.task_sheet" },
+        { "output_id": "w1_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week1.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week2",
+      "day_label": "Week 2: Compare Planter Designs",
+      "carryover_note": "Dimension table from Week 2 is used for area calculations in Week 3.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 2: Compare Planter Designs",
+          "layout": "hero",
+          "content": { "subtitle": "This week: read dimensions for three planter options and record them in a comparison table." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Dimension review",
+          "layout": "retrieval",
+          "content": {
+            "task": "Quick recall from Week 1.",
+            "prompts": ["What does L stand for?", "What unit are we using this project?", "Which dimension tells us how tall the planter is?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Reading a comparison table",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "A comparison table has rows (across) and columns (down).",
+              "Each row is one planter option. Each column is one measurement.",
+              "Read the dimension card, find the right cell, and record the number with its unit."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Comparing vocabulary",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "greater than (>) — one value is larger",
+              "less than (<) — one value is smaller",
+              "equal to (=) — two values are the same",
+              "difference — how far apart two values are (subtract)",
+              "largest / smallest — comparing all options"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Predict before you calculate",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Without calculating, which planter looks biggest to you?",
+              "How could we check which planter is actually the largest?",
+              "What information do we need to compare them fairly?"
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "organizer_type": "three_column",
+        "title": "Planter Comparison Table",
+        "columns": ["Planter A", "Planter B", "Planter C"],
+        "rows": [
+          "Length (cm)",
+          "Width (cm)",
+          "Height (cm)",
+          "Which is the longest?",
+          "Which is the widest?",
+          "Which is the tallest?"
+        ],
+        "prompt": "Use the three dimension cards to complete the table. Record all measurements with units.",
+        "success_criteria": [
+          "I recorded all three dimensions for each planter.",
+          "I wrote the correct units after every number.",
+          "I can identify which planter has the largest dimension for each row."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 2 Exit Check",
+        "prompt": "Circle the correct answer: Planter B is 90 cm long. Planter C is 75 cm long. Planter ___ is longer. The difference is ___ cm.",
+        "n_lines": 2,
+        "success_criteria": [
+          "I identified which planter is longer.",
+          "I calculated the difference correctly."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week2.slides" },
+        { "output_id": "w2_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week2.graphic_organizer" },
+        { "output_id": "w2_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week2.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week3",
+      "day_label": "Week 3: Calculate Area",
+      "carryover_note": "Area calculations from Week 3 feed into soil estimation in Week 5.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 3: Calculate Area",
+          "layout": "hero",
+          "content": { "subtitle": "This week: use the formula A = L × W to find the planting surface area of each planter." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Dimensions check",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your comparison table from Week 2.",
+            "prompts": ["What were the dimensions of Planter A?", "Which planter was the widest?", "What formula do we use to find area?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Area of a rectangle",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Area = Length × Width",
+              "Area is measured in square units: cm² or m²",
+              "Area tells us how much planting surface the planter has."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Worked example",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Planter A: L = 80 cm, W = 40 cm",
+              "A = 80 × 40",
+              "A = 3200 cm²",
+              "This means Planter A has 3200 square centimetres of planting surface."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Why area matters",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "A planter with more area can hold ___ plants.",
+              "Which of our planters has the most planting surface?",
+              "If the client wants to grow many plants, which planter should we recommend?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 3 Task Sheet — Area Calculations",
+        "instructions": [
+          "Use the formula A = L × W.",
+          "Show your work in the calculation box.",
+          "Write your answer with units (cm²)."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Calculate area for each planter",
+            "prompt": "Use your Week 2 dimension table.\n\nPlanter A: A = ___ × ___ = _____ cm²\nPlanter B: A = ___ × ___ = _____ cm²\nPlanter C: A = ___ × ___ = _____ cm²",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Area Calculations", "help": "Formula: A = L × W. Use your calculator." }
+          },
+          {
+            "label": "Part 2: Compare",
+            "prompt": "Answer these questions using your calculations:\n\nWhich planter has the largest area? ________\nWhich planter has the smallest area? ________\nDifference between largest and smallest: _____ cm²",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "help": "To find the difference, subtract the smallest area from the largest." }
+          },
+          {
+            "label": "Part 3: Explain your choice",
+            "prompt": "Based on area only, which planter would you recommend to the client? Explain using your numbers.\n\nLevel B: I would recommend Planter ___ because it has an area of ___ cm², which is ___ than the others.\nLevel C: Write your own explanation using at least two numbers.",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Use the words: largest, area, cm², recommend." }
+          }
+        ],
+        "embedded_supports": [
+          "Formula card: A = L × W (area = length × width)",
+          "Units reminder: area is always written in cm² or m²",
+          "Sentence frame: I would recommend ___ because its area is ___ cm²."
+        ],
+        "success_criteria": [
+          "I used A = L × W to calculate the area of each planter.",
+          "I wrote my answer with cm².",
+          "I can say which planter has the most planting surface."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 3 Checkpoint — Area Check",
+        "prompts": [
+          "Write the formula for area: A = ___ × ___",
+          "Calculate: L = 60 cm, W = 35 cm. Area = _____ cm²",
+          "A planter has an area of 2500 cm². Another has 3100 cm². Which is bigger? How do you know?"
+        ],
+        "teacher_notes": "Use this checkpoint to identify students who need the area formula revisited in Week 4 flex. Students showing unit errors should redo the label step."
+      },
+      "exit_ticket": {
+        "title": "Week 3 Exit Check",
+        "prompt": "A planter is 70 cm long and 30 cm wide. What is its area? Show your work: A = ___ × ___ = _____ cm².",
+        "n_lines": 2,
+        "success_criteria": [
+          "I used the formula correctly.",
+          "I wrote the answer with cm²."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w3_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week3.slides" },
+        { "output_id": "w3_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week3.task_sheet" },
+        { "output_id": "w3_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week3.checkpoint_sheet" },
+        { "output_id": "w3_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week3.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week4",
+      "day_label": "Week 4: Flex Week — Measurement Review",
+      "carryover_note": "Flex week. Use to address gaps in area, measurement, or unit understanding before moving to volume.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 4: Flex Week",
+          "layout": "hero",
+          "content": { "subtitle": "This week: review, catch up, or extend your area and measurement work." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Where are we in the project?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "We have identified dimensions and calculated areas. Next week we move to volume. This is our chance to fill any gaps.",
+            "prompts": ["What is area?", "What formula did we use?", "What is the difference between area and volume?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Preview: Volume",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Volume = Length × Width × Height",
+              "Volume tells us how much space is inside the planter.",
+              "Volume is measured in cubic units: cm³"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Flex options",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Option 1: Re-measure planter dimensions and check your table.",
+              "Option 2: Redo area calculations with a different set of dimensions.",
+              "Option 3: Try the volume formula preview problem.",
+              "Option 4: Complete any missing work from Weeks 1–3.",
+              "Option 5: Create your own rectangle with a given area."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Self-check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "I feel confident about area: Yes / Almost / Not yet.",
+              "One thing I want to review before Week 5: ___.",
+              "One math word I can now use in a sentence: ___."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 4 Task Sheet — Flex Activities",
+        "instructions": [
+          "Your teacher will tell you which activity to do today.",
+          "Show all work and label your units.",
+          "If you finish early, try the extension problem."
+        ],
+        "tasks": [
+          {
+            "label": "Activity A: Area catch-up",
+            "prompt": "Calculate the area of these two rectangles:\n\nRectangle 1: L = 55 cm, W = 25 cm → A = _____ cm²\nRectangle 2: L = 1.2 m, W = 0.6 m → A = _____ m²",
+            "lines": 2,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Formula: A = L × W" }
+          },
+          {
+            "label": "Activity B: Volume preview",
+            "prompt": "A planter is 80 cm × 40 cm × 30 cm. Try to calculate its volume.\n\nV = L × W × H = ___ × ___ × ___ = _____ cm³\n\nWhat does this number represent?",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Think of volume as how many centimetre cubes fit inside." }
+          }
+        ],
+        "embedded_supports": [
+          "Formula reference: A = L × W and V = L × W × H",
+          "Units reminder: area = cm², volume = cm³"
+        ],
+        "success_criteria": [
+          "I completed at least one flex activity.",
+          "I used the correct formula and wrote units.",
+          "I can tell the difference between area and volume."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w4_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week4.slides" },
+        { "output_id": "w4_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week4.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "week5",
+      "day_label": "Week 5: Calculate Volume and Estimate Soil",
+      "carryover_note": "Volume calculation and soil estimate carry forward to Week 6 materials tally.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 5: Volume and Soil Estimation",
+          "layout": "hero",
+          "content": { "subtitle": "This week: calculate volume and estimate how many bags of soil we need to fill our planter." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Area review",
+          "layout": "retrieval",
+          "content": {
+            "task": "Quick recall before we add the height dimension.",
+            "prompts": ["What is the formula for area?", "What units do we use for area?", "What is the area of our chosen planter?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Volume of a rectangular prism",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Volume = Length × Width × Height",
+              "Volume is measured in cubic units: cm³ or m³",
+              "Volume tells us how much soil fits inside the planter."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Estimating soil bags",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Calculate volume in cm³: V = L × W × H",
+              "Convert: 1000 cm³ ≈ 1 litre of soil",
+              "Each standard bag of potting soil holds about 20 litres.",
+              "Number of bags = total litres ÷ 20",
+              "Round up to the nearest whole bag (you cannot buy a half bag)."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Connection to the project",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Why do we need to know the volume before we buy soil?",
+              "What happens if we buy too little soil? Too much?",
+              "Which planter design would need the most soil?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 5 Task Sheet — Volume and Soil Estimation",
+        "instructions": [
+          "Use the formula V = L × W × H.",
+          "Show every step of your calculation.",
+          "Round up your bag estimate — always buy a little extra."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Calculate volume",
+            "prompt": "Use your planter's dimensions to calculate volume:\n\nL = ________ cm\nW = ________ cm\nH = ________ cm\n\nV = ___ × ___ × ___ = __________ cm³",
+            "lines": 5,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Volume Calculation", "help": "Find your planter's dimensions on your Week 2 table." }
+          },
+          {
+            "label": "Part 2: Estimate soil bags",
+            "prompt": "Convert your volume to litres and estimate bags:\n\nVolume in cm³: __________\n÷ 1000 = __________ litres\n÷ 20 (litres per bag) = __________ bags\nRounded up = __________ bags",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Always round up — you need whole bags." }
+          },
+          {
+            "label": "Part 3: Compare planters",
+            "prompt": "Would the other two planter designs need more or fewer bags of soil?\n\nPlanter A would need approximately ___ bags.\nPlanter B would need approximately ___ bags.\nPlanter C would need approximately ___ bags.\n\nWhich uses the most soil? _______",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Repeat the volume calculation with each planter's dimensions." }
+          }
+        ],
+        "embedded_supports": [
+          "Formula card: V = L × W × H",
+          "Conversion: 1000 cm³ = 1 litre; 1 bag = 20 litres",
+          "Level A: calculation steps are pre-printed — fill in the numbers only."
+        ],
+        "success_criteria": [
+          "I used V = L × W × H correctly.",
+          "I converted cm³ to litres.",
+          "I estimated the number of soil bags needed."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 5 Checkpoint — Volume Check",
+        "prompts": [
+          "Write the formula for volume: V = ___ × ___ × ___",
+          "A planter is 60 cm × 30 cm × 25 cm. Calculate V = _____ cm³",
+          "How many litres of soil does that planter need? _____ L",
+          "How many 20-litre bags? Round up: _____ bags"
+        ],
+        "teacher_notes": "Students who struggle with the conversion chain should be flagged for small-group support. The key misconception is forgetting to round up."
+      },
+      "outputs": [
+        { "output_id": "w5_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week5.slides" },
+        { "output_id": "w5_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week5.task_sheet" },
+        { "output_id": "w5_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week5.checkpoint_sheet" }
+      ]
+    },
+    {
+      "day_id": "week6",
+      "day_label": "Week 6: Materials Tally",
+      "carryover_note": "Materials table from Week 6 feeds into cost estimation in Week 9 and the final recommendation.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 6: Count What We Need",
+          "layout": "hero",
+          "content": { "subtitle": "This week: tally the materials needed to build and plant our planter box." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What goes into a planter box?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Before we can shop for materials, we need to know exactly what we need and how many. A good materials list tells us item, quantity, and unit.",
+            "prompts": ["What materials does our planter need?", "How do we know how many boards to buy?", "Why is a tally important?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Reading a materials list",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Item — what the material is (lumber, screws, soil)",
+              "Quantity — how many or how much",
+              "Unit — what we are counting (boards, bags, boxes, kg)"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Tallying tips",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Count each category separately — do not mix lumber and screws.",
+              "Write both a tally mark and a total number.",
+              "Check your count by counting backwards from your total.",
+              "Use the correct unit: bags of soil, not 'soils'.",
+              "Round up on quantities — you cannot use half a board."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Estimation check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "We estimated ___ bags of soil last week. Does that match our list?",
+              "What would happen if we ran out of screws on build day?",
+              "Is it better to buy too much or too little? Why?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 6 Task Sheet — Materials Tally",
+        "instructions": [
+          "Count each type of material from the build plan.",
+          "Record the quantity and unit in the table.",
+          "Check your soil bag estimate against your Week 5 calculation."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Complete the materials table",
+            "prompt": "Fill in the materials table:\n\nItem | Tally | Total | Unit\nLumber boards | | | boards\nCorner screws | | | screws\nPotting soil | | | bags\nPlants or seeds | | | packets\nLandscape fabric | | | pieces",
+            "lines": 5,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Materials Tally Table", "help": "Count from your build plan. Ask your teacher for the materials list if needed." }
+          },
+          {
+            "label": "Part 2: Soil check",
+            "prompt": "My Week 5 soil estimate was _____ bags.\nMy tally today shows _____ bags.\nDo they match? ______\nIf they are different, explain why: _______________________",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "help": "It is okay if they are different — explain the difference." }
+          }
+        ],
+        "embedded_supports": [
+          "Unit reminder: bags (soil), boards (lumber), screws (hardware)",
+          "Level A: pre-filled table with quantities to circle",
+          "Sentence frame: We need ___ ___ (unit) of ___ (item)."
+        ],
+        "success_criteria": [
+          "I listed all required materials with quantities and units.",
+          "I connected my tally to my soil estimate from Week 5.",
+          "I used the correct unit for each item."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 6 Exit Check",
+        "prompt": "We need 3 boards, 24 screws, and 4 bags of soil. Which item do we need the most of? _______ How many items in total? _______",
+        "n_lines": 2,
+        "success_criteria": [
+          "I identified the item with the highest quantity.",
+          "I calculated the correct total."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w6_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week6.slides" },
+        { "output_id": "w6_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week6.task_sheet" },
+        { "output_id": "w6_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week6.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week7",
+      "day_label": "Week 7: Record Plant Growth",
+      "carryover_note": "Growth data from Week 7 is used in the Week 9 graph and trend analysis.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 7: Measure and Record Growth",
+          "layout": "hero",
+          "content": { "subtitle": "This week: measure your plants, record the data, and begin a line graph." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What do we need to track?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Plants change over time. We can use math to track that change. We will measure plant height each week and plot the data on a line graph to see the growth pattern.",
+            "prompts": ["What unit should we use to measure plant height?", "Why do we record measurements — not just look?", "What does a line graph show that a table cannot?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Reading and plotting a line graph",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "The x-axis (horizontal) shows time — in our case, the week number.",
+              "The y-axis (vertical) shows height in centimetres.",
+              "Each data point is a dot. Connect the dots with a straight line."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Measurement tip",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Measure from the soil surface to the tallest leaf tip.",
+              "Record to the nearest centimetre — do not estimate mm.",
+              "If a plant has not sprouted yet, record 0 cm.",
+              "Measure the same plant each week for consistency.",
+              "Write today's date next to the measurement."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Interpreting the graph",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "A line going upward means the plant is ___.",
+              "A flat line means the plant ___.",
+              "What would a sudden jump in height mean?"
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "organizer_type": "timeline",
+        "title": "Plant Growth Log — Weeks 1–10",
+        "prompt": "Record your plant height measurement each week. Then plot each value on the line graph below.",
+        "rows": [
+          "Week 1 — Height: _____ cm — Date: _________",
+          "Week 2 — Height: _____ cm — Date: _________",
+          "Week 3 — Height: _____ cm — Date: _________",
+          "Week 4 — Height: _____ cm — Date: _________",
+          "Week 5 — Height: _____ cm — Date: _________",
+          "Week 6 — Height: _____ cm — Date: _________",
+          "Week 7 — Height: _____ cm — Date: _________",
+          "Week 8 — Height: _____ cm — Date: _________",
+          "Week 9 — Height: _____ cm — Date: _________",
+          "Week 10 — Height: _____ cm — Date: _________"
+        ],
+        "success_criteria": [
+          "I recorded height in cm for each week with data.",
+          "I wrote the date beside each measurement.",
+          "I plotted the data points on the graph."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 7 Exit Check",
+        "prompt": "My plant's height this week is _____ cm. Compared to last week (_____ cm), it grew _____ cm. Is this more or less than I expected?",
+        "n_lines": 3,
+        "success_criteria": [
+          "I recorded today's height with a unit.",
+          "I calculated the change from last week."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w7_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week7.slides" },
+        { "output_id": "w7_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week7.graphic_organizer" },
+        { "output_id": "w7_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week7.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week8",
+      "day_label": "Week 8: Flex Week — Data Review",
+      "carryover_note": "Flex week. Use to extend graph, review data accuracy, or catch up growth log entries.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 8: Flex Week",
+          "layout": "hero",
+          "content": { "subtitle": "This week: review your growth data, extend your graph, and prepare for trend analysis." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Data quality check",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Before we can analyze trends, we need clean, complete data. This week we check our growth log, fill in any gaps, and review our graph.",
+            "prompts": ["Do you have measurements for every week so far?", "Did you measure the same plant each time?", "Does your graph match your data table?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Describing a trend",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Increasing trend: values go up over time.",
+              "Decreasing trend: values go down over time.",
+              "No trend (flat): values stay the same."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Flex options",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Option 1: Fill in any missing weeks on your growth log.",
+              "Option 2: Re-plot your graph more accurately.",
+              "Option 3: Calculate the average growth per week so far.",
+              "Option 4: Compare your plant's growth to a classmate's.",
+              "Option 5: Write one sentence describing the trend in your data."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Self-check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "My data is complete: Yes / No.",
+              "My graph is accurate: Yes / Needs fixing.",
+              "The trend I can see so far is: ___."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 8 Task Sheet — Data Review",
+        "instructions": [
+          "Check your growth log is complete.",
+          "Choose one or two flex activities.",
+          "Write a one-sentence description of your data trend."
+        ],
+        "tasks": [
+          {
+            "label": "Activity A: Average growth",
+            "prompt": "Add up all height values recorded so far: _______ cm total\nDivide by number of weeks with data: ÷ ___ weeks\nAverage height per week = _______ cm\n\nWhat does this average tell you?",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Average = total ÷ count" }
+          },
+          {
+            "label": "Activity B: Trend description",
+            "prompt": "Look at your line graph. Describe the trend in one or two sentences.\n\nLevel B: My plant's height has been ___ (increasing/decreasing/staying flat). Between Week ___ and Week ___, the growth was the fastest.\nLevel C: Write your own description using numbers from your graph.",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Use: increasing, decreasing, steepest, fastest, slowest, change." }
+          }
+        ],
+        "embedded_supports": [
+          "Trend vocabulary: increasing, decreasing, flat, steep, gradual, sudden",
+          "Average reminder: add all values, then divide by how many there are."
+        ],
+        "success_criteria": [
+          "My growth log has data for every available week.",
+          "I can describe the trend using at least one number.",
+          "I completed at least one flex activity."
+        ]
+      },
+      "graphic_organizer": {
+        "organizer_type": "t_chart",
+        "title": "Growth Comparison — My Plant vs. Class Plant",
+        "columns": ["My Plant Height (cm)", "Class Average Height (cm)"],
+        "rows": ["Week 5", "Week 6", "Week 7", "Week 8"],
+        "prompt": "Compare your plant's growth to the class average for the past four weeks.",
+        "success_criteria": [
+          "I recorded both sets of measurements.",
+          "I can identify which grew more each week."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w8_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week8.slides" },
+        { "output_id": "w8_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week8.task_sheet" },
+        { "output_id": "w8_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week8.graphic_organizer" }
+      ]
+    },
+    {
+      "day_id": "week9",
+      "day_label": "Week 9: Analyze Growth Trends",
+      "carryover_note": "Trend analysis and max/min findings from Week 9 feed directly into the Week 10 recommendation.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 9: Analyze Your Data",
+          "layout": "hero",
+          "content": { "subtitle": "This week: read your graph to find trends, maximums, minimums, and the biggest change." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Graph review",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your Week 7 growth log and graph.",
+            "prompts": ["What is the highest value on your graph?", "In which week did your plant grow the most?", "What trend does the overall line show?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Reading a line graph for analysis",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Maximum value: the highest point on the graph.",
+              "Minimum value: the lowest point — could be 0 cm (no growth yet).",
+              "Greatest change: the steepest section of the line."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Analysis vocabulary",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "trend — the general direction of data over time",
+              "maximum — the highest recorded value",
+              "minimum — the lowest recorded value",
+              "range — maximum minus minimum",
+              "rate of change — how fast the value is changing per week"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "What the data tells us",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "If I were to present this graph to the client, I would say: ___.",
+              "The most interesting thing about my data is ___.",
+              "One thing I would do differently next time: ___."
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "organizer_type": "t_chart",
+        "title": "Data Analysis — Growth Summary",
+        "columns": ["Statistic", "Value (with units)"],
+        "rows": [
+          "Maximum height recorded",
+          "Minimum height recorded",
+          "Range (max − min)",
+          "Week of fastest growth",
+          "Amount of growth that week",
+          "Overall trend (describe)"
+        ],
+        "prompt": "Use your growth log to complete this analysis table. Write units with every measurement.",
+        "success_criteria": [
+          "I identified the max and min values from my graph.",
+          "I calculated the range.",
+          "I described the overall trend in words."
+        ]
+      },
+      "task_sheet": {
+        "title": "Week 9 Task Sheet — Explain Your Data",
+        "instructions": [
+          "Use your growth analysis table to answer these questions.",
+          "Write at least one number in every answer.",
+          "Level B: use the sentence frames provided."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Describe the data",
+            "prompt": "Describe what happened to your plant over the 10 weeks.\n\nLevel B: My plant started at ___ cm and grew to a maximum of ___ cm. The biggest growth happened in Week ___.\nLevel C: Write a detailed description with at least three data points.",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Quote at least two numbers from your growth log." }
+          },
+          {
+            "label": "Part 2: Recommendation setup",
+            "prompt": "Based on your data, what would you tell the client about how well the planter supported plant growth?\n\nLevel B: The planter worked ___ because the plant grew ___ cm over ___ weeks.\nLevel C: Write your own recommendation sentence.",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Sentence starter: Based on my data, I would tell the client that..." }
+          }
+        ],
+        "embedded_supports": [
+          "Vocabulary: trend, maximum, minimum, range, rate of change",
+          "Sentence frame: My data shows that the plant grew from ___ cm to ___ cm over ___ weeks.",
+          "Level A: circle the trend description (increasing / decreasing / flat)."
+        ],
+        "success_criteria": [
+          "I used data from my graph in my written answer.",
+          "I quoted at least two numbers with units.",
+          "I described the overall trend in words."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w9_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week9.slides" },
+        { "output_id": "w9_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week9.graphic_organizer" },
+        { "output_id": "w9_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week9.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "week10",
+      "day_label": "Week 10: Data-Supported Recommendation",
+      "carryover_note": "Final project. Growth data, area, volume, and materials tally all converge here.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 10: Final Recommendation",
+          "layout": "hero",
+          "content": { "subtitle": "This week: use your math data to write and share a justified recommendation for the client." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Project recap",
+          "layout": "retrieval",
+          "content": {
+            "task": "Look back at all your work from the project.",
+            "prompts": ["What was the area of our chosen planter?", "How many bags of soil did we use?", "What trend did the growth graph show?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "What makes a strong recommendation?",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "State your recommendation clearly: 'I recommend...' or 'Based on the data...'",
+              "Include at least one number to support your recommendation.",
+              "Explain what the number means for the client's decision."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Recommendation sentence frames",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "The planter worked because the plant grew ___ cm over ___ weeks.",
+              "The area of ___ cm² was enough for ___ plants.",
+              "We used ___ bags of soil, which fit the budget.",
+              "I recommend this planter because ___.",
+              "One thing I would change is ___ because ___."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Celebrate the data",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The most important number from our project is ___ because ___.",
+              "Mathematics helped us by ___.",
+              "Something I learned about measurement that I will use again: ___."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 10 Task Sheet — Build Your Recommendation",
+        "instructions": [
+          "Gather your data from Weeks 2, 3, 5, 6, and 9.",
+          "Complete each section of the recommendation builder.",
+          "Transfer your key points to the Final Recommendation Card."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Project data summary",
+            "prompt": "Record key numbers from the project:\n\nPlanter chosen: _________\nArea of planting surface: _____ cm²\nVolume: _____ cm³\nSoil bags used: _____\nMaximum plant height: _____ cm\nTotal growth (weeks 1–10): _____ cm",
+            "lines": 6,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "My Project Data Summary", "help": "Use your worksheets from Weeks 2–9." }
+          },
+          {
+            "label": "Part 2: Recommendation draft",
+            "prompt": "Write a short recommendation using your data:\n\nLevel B: I recommend the ___ planter because it has an area of ___ cm² and the plant grew ___ cm over the project.\nLevel C: Write a complete recommendation (2–3 sentences) that references both the planter design and the growth outcome.",
+            "lines": 5,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Include: planter choice, area, growth data, one reason." }
+          }
+        ],
+        "embedded_supports": [
+          "Sentence starters: I recommend... / Based on my data... / The plant grew...",
+          "Level A: fill in the blanks on the pre-built recommendation sentence.",
+          "Data reference: pull numbers from Weeks 2, 3, 5, 6, and 9."
+        ],
+        "success_criteria": [
+          "I included at least two numbers in my recommendation.",
+          "I named the planter I recommend.",
+          "I explained what the numbers mean for the client."
+        ]
+      },
+      "final_response_sheet": {
+        "title": "Final Recommendation Card — Math 8",
+        "prompt": "Based on your data from this project, write your final recommendation to the client. Include at least two measurements.",
+        "final_evidence": true,
+        "response_mode": "paragraph_response",
+        "success_criteria": [
+          "I stated which planter I recommend.",
+          "I used at least two measurements (area, volume, or growth height).",
+          "I explained what the numbers mean for the client's decision."
+        ],
+        "embedded_supports": [
+          "Level A: circle: I recommend Planter ___. It has an area of ___ cm² and the plant grew ___ cm.",
+          "Level B: I recommend the ___ planter. Its area is ___ cm². The plant grew ___ cm.",
+          "Level C: Write your own formal recommendation with at least two pieces of evidence."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 10 Checkpoint — Final Evidence Check",
+        "prompts": [
+          "Student included at least two measurements in their recommendation: Y / N",
+          "Calculations are accurate and units are labeled: Y / N",
+          "Student can explain what their recommendation means for the client: Y / N",
+          "Conference note (optional):"
+        ],
+        "teacher_notes": "This is the summative assessment moment. Oral explanation is valid evidence for all students. The final recommendation card is the primary artifact."
+      },
+      "outputs": [
+        { "output_id": "w10_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week10.slides" },
+        { "output_id": "w10_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week10.task_sheet" },
+        { "output_id": "w10_final_response", "output_type": "final_response_sheet", "audience": "student", "source_section": "days.week10.final_response_sheet" },
+        { "output_id": "w10_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week10.checkpoint_sheet" }
+      ]
+    }
+  ]
+}

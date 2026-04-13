@@ -1,0 +1,1179 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_workplace_math10",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 10,
+  "grade_band": "9-12",
+  "subject": "Workplace Mathematics",
+  "grade": 10,
+  "topic": "Plan, Build, Grow — Applied Measurement, Costing, and Data",
+  "theme": "mathematics",
+  "lesson_overview": {
+    "overview": "Students act as junior members of a school grounds team across 10 project weeks. They apply workplace math skills directly to the planter box project: reading a scale diagram, calculating area and surface area, estimating material quantities, working with a budget, comparing costs, and reporting on financial decisions. Workplace Math 10 emphasizes applied and functional numeracy — all calculations are grounded in real project decisions, and all answers must make sense in context. Weeks 4 and 8 are built-in flex weeks.",
+    "essential_question": "How does applying math to a real project help us make better decisions and stay within budget?",
+    "big_idea": "Workplace math is decision math. Every number you calculate either helps you move forward or tells you to change course.",
+    "sequence": [
+      { "day": "Week 1", "focus": "Read a scale diagram. Identify and record planter dimensions. Use a ruler.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Week 2", "focus": "Calculate the area of three planter options. Compare surface areas using a table.", "artifacts": ["Slides", "Graphic Organizer", "Exit Ticket"] },
+      { "day": "Week 3", "focus": "Calculate surface area for the build. Determine how much material covers each face.", "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet", "Exit Ticket"] },
+      { "day": "Week 4", "focus": "Flex week. Area or surface area catch-up, unit review, or problem practice.", "artifacts": ["Slides", "Task Sheet"] },
+      { "day": "Week 5", "focus": "Estimate volume and soil cost. Compare cost per bag and per litre.", "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet"] },
+      { "day": "Week 6", "focus": "Build a materials cost estimate. Organize a budget table. Identify savings.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Week 7", "focus": "Track plant growth. Use ratio and percent to describe growth change.", "artifacts": ["Slides", "Graphic Organizer", "Exit Ticket"] },
+      { "day": "Week 8", "focus": "Flex week. Extend data, review percent, or catch up budget work.", "artifacts": ["Slides", "Task Sheet", "Graphic Organizer"] },
+      { "day": "Week 9", "focus": "Analyze cost vs. outcome. Decide if the project delivered value for money.", "artifacts": ["Slides", "Graphic Organizer", "Task Sheet"] },
+      { "day": "Week 10", "focus": "Present a cost summary and final recommendation to the client.", "artifacts": ["Slides", "Task Sheet", "Final Response Sheet", "Checkpoint Sheet"] }
+    ],
+    "differentiation_note": "Three levels embedded throughout. Level A: pre-structured tables, formula reminders printed on sheet, calculators always available, focus on reading and interpreting. Level B: formula reference, partially set-up calculations, comparison tasks. Level C: open problems, multi-step applications, cost optimization extension.",
+    "integrity_checks": [
+      "Calculators are expected for all calculations — numeracy focus is on setup and interpretation, not mental arithmetic.",
+      "All costs and measurements are in context — there are no decontextualized drills.",
+      "Estimation is explicitly valued: students should be able to check whether an answer is reasonable.",
+      "Units are reinforced at every stage — unit errors are treated as significant, not cosmetic.",
+      "Flex weeks are available to revisit area/surface area before moving to costing."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "Workplace Math 10 students building cost estimates and budget tables for a real project are developing financial numeracy that transfers directly to trades, construction, and business contexts.",
+    "learning_goals": [
+      "Read a scale diagram and identify real-world dimensions.",
+      "Calculate area and surface area of rectangular prisms.",
+      "Estimate material quantities and calculate total cost from unit prices.",
+      "Build and interpret a budget table using addition, multiplication, and percent.",
+      "Use data and cost comparisons to support a project recommendation."
+    ],
+    "materials": [
+      "Scale diagram cards for three planter options",
+      "Ruler (for reading scale diagrams)",
+      "Calculator (all students, always)",
+      "Unit price list (lumber per metre, soil per bag, hardware per piece)",
+      "Budget table template (Week 6)",
+      "Growth measurement log (Week 7)",
+      "Cost vs. outcome comparison organizer (Week 9)",
+      "Final recommendation card (Week 10)"
+    ],
+    "timing": [
+      { "time": "0:00–0:08", "activity": "Settle, agenda, connect to last week's calculation. Review one answer from previous week." },
+      { "time": "0:08–0:20", "activity": "Direct instruction with a worked example. Teacher models full calculation on board, including units." },
+      { "time": "0:20–0:32", "activity": "Guided practice — class sets up one calculation together before going independent." },
+      { "time": "0:32–1:02", "activity": "Supported work time. Teacher circulates. Level A students work from pre-structured templates." },
+      { "time": "1:02–1:12", "activity": "Teacher checkpoint or targeted small-group support." },
+      { "time": "1:12–1:17", "activity": "Class shares: does this answer make sense? Use estimation to verify." },
+      { "time": "1:17–1:19", "activity": "Exit ticket and cleanup." }
+    ],
+    "teacher_notes": [
+      "Model the full calculation including units before students touch the problem. Units are content, not formatting.",
+      "Teach estimation every week: before calculating, ask 'what answer would you expect?' After calculating, ask 'does this make sense?'",
+      "Calculators are for all students at all times in Workplace Math 10.",
+      "Surface area is the biggest new concept — spend extra time if students are confusing it with area.",
+      "Budget table in Week 6 is a major practical milestone. If students get here, they are doing real workplace math.",
+      "The cost vs. outcome analysis in Week 9 is the most cognitively demanding task — do not rush it.",
+      "Level C students can extend into cost optimization: what would they cut to save 15% without affecting quality?"
+    ],
+    "flex_week_options": {
+      "week_4": ["Redo area calculations with different planter dimensions", "Surface area warmup with a cardboard box hands-on activity", "Unit conversion practice: cm to m and back", "Catch up any incomplete Week 3 surface area problems", "Extension: calculate perimeter and discuss when perimeter matters vs. area"],
+      "week_8": ["Add more growth data and recalculate percent change", "Revisit Week 6 budget table with updated actual costs", "Practice reading and interpreting a unit price list", "Catch up any missing cost estimates", "Extension: calculate cost per plant grown using total cost and plant count"]
+    }
+  },
+  "bundle": {
+    "bundle_id": "pbg_workplace_math10_bundle",
+    "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "task_sheet", "checkpoint_sheet", "final_response_sheet", "exit_ticket", "graphic_organizer"]
+  },
+  "outputs": [
+    { "output_id": "pbg_wm10_overview", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview" },
+    { "output_id": "pbg_wm10_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide" }
+  ],
+  "days": [
+    {
+      "day_id": "week1",
+      "day_label": "Week 1: Reading a Scale Diagram",
+      "carryover_note": "Dimensions recorded in Week 1 are used in area, surface area, and cost calculations through Week 9.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Plan, Build, Grow — Week 1",
+          "layout": "hero",
+          "content": { "subtitle": "This week: read a scale diagram and record real-world planter dimensions." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Why read a scale diagram?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "On a construction site, you cannot always walk around and measure the real thing. Builders use scale diagrams. A scale diagram shows a smaller version of a real object with a ratio that lets you calculate actual size.",
+            "prompts": ["What does a scale of 1:20 mean?", "Why do professionals use scale diagrams?", "What tools do you need to read a scale diagram?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Reading a scale diagram",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Find the scale: it tells you the ratio of the diagram to real size (e.g., 1:20 means 1 cm on paper = 20 cm in real life).",
+              "Measure the diagram dimension using your ruler.",
+              "Multiply by the scale factor to get the real-world measurement."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Scale calculation steps",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Step 1: Read the scale ratio (e.g., 1:20).",
+              "Step 2: Measure the diagram with your ruler in cm.",
+              "Step 3: Multiply the measured value by the scale factor.",
+              "Step 4: Write the real-world measurement with units.",
+              "Example: diagram = 4.5 cm, scale = 1:20 → real = 4.5 × 20 = 90 cm"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Sanity check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Does your calculated dimension seem like a reasonable size for a planter box?",
+              "If the real length works out to 0.5 cm, something went wrong. What might it be?",
+              "Why is it important to write units every time?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 1 Task Sheet — Reading the Scale Diagram",
+        "instructions": [
+          "Use your ruler to measure each dimension on the scale diagram.",
+          "Apply the scale factor to find the real-world measurement.",
+          "Write your answer with the correct unit."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Read and calculate",
+            "prompt": "Scale on diagram: 1 : ______\n\nMeasure and calculate:\n\nDiagram length = _______ cm → Real length = _______ cm\nDiagram width = _______ cm → Real width = _______ cm\nDiagram height = _______ cm → Real height = _______ cm",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Scale Diagram Calculations", "help": "Real measurement = diagram measurement × scale factor." }
+          },
+          {
+            "label": "Part 2: Reasonableness check",
+            "prompt": "Look at your calculated dimensions. Do they make sense for a garden planter?\n\nLength of _______ cm — Reasonable? Y / N — Why? ___________________\nWidth of _______ cm — Reasonable? Y / N — Why? ___________________\nHeight of _______ cm — Reasonable? Y / N — Why? ___________________",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "help": "A typical garden planter is 60–120 cm long, 30–60 cm wide, and 20–40 cm tall." }
+          },
+          {
+            "label": "Part 3: Quick calculation",
+            "prompt": "A scale diagram shows a dimension of 3.5 cm. The scale is 1:25. What is the real-world measurement?\n\nCalculation: 3.5 × ___ = _____ cm",
+            "lines": 1,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Same steps: measure × scale factor = real measurement." }
+          }
+        ],
+        "embedded_supports": [
+          "Formula reminder: real measurement = diagram measurement × scale factor",
+          "Unit reminder: always write cm after every measurement",
+          "Level A: scale factor printed on the sheet — just multiply"
+        ],
+        "success_criteria": [
+          "I measured all three dimensions using the scale diagram.",
+          "I applied the scale factor correctly and wrote units.",
+          "I checked whether my answers are reasonable."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 1 Exit Check",
+        "prompt": "A scale diagram uses 1:10. A measurement on the diagram is 6 cm. What is the real size? Show your work.",
+        "n_lines": 2,
+        "success_criteria": [
+          "I multiplied by the scale factor correctly.",
+          "I wrote the answer with units."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w1_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week1.slides" },
+        { "output_id": "w1_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week1.task_sheet" },
+        { "output_id": "w1_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week1.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week2",
+      "day_label": "Week 2: Compare Planter Areas",
+      "carryover_note": "Area comparison from Week 2 informs the design recommendation in Week 3 and cost estimate in Week 5.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 2: Compare Areas",
+          "layout": "hero",
+          "content": { "subtitle": "This week: calculate the planting surface area of each option and record them in a comparison table." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Dimensions check",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your Week 1 scale diagram measurements.",
+            "prompts": ["What was the length of Planter A?", "Which planter was the widest?", "What formula do we use for area?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Area in a workplace context",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Area = Length × Width (for a rectangle)",
+              "Area is measured in square units: cm² or m²",
+              "In a workplace setting, area tells us: how much soil surface, how much paint, how much liner."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Comparing areas for a decision",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "More area = more planting space = potentially more plants and more value.",
+              "More area can also mean more materials and higher cost.",
+              "The client's budget may make the largest area impractical.",
+              "A comparison table lets you see all options at once.",
+              "Circle the option that best balances area and cost."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Area and decision",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Which planter has the most growing space?",
+              "If the budget is limited, should we always choose the largest planter? Why or why not?",
+              "What other factor besides area might affect which planter we recommend?"
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "organizer_type": "three_column",
+        "title": "Planter Area Comparison",
+        "columns": ["Planter A", "Planter B", "Planter C"],
+        "rows": [
+          "Length (cm)",
+          "Width (cm)",
+          "Area = L × W (cm²)",
+          "More or less area than Planter A?",
+          "Good match for budget? (Y/N/Maybe)"
+        ],
+        "prompt": "Use your scale diagram dimensions to complete the table. Calculate area using A = L × W.",
+        "success_criteria": [
+          "I calculated the correct area for all three planters.",
+          "I wrote cm² with every area answer.",
+          "I can say which planter offers the most growing space."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 2 Exit Check",
+        "prompt": "Planter B: L = 90 cm, W = 45 cm. Area = _____ cm². Planter C: L = 75 cm, W = 35 cm. Area = _____ cm². Which has more growing space?",
+        "n_lines": 3,
+        "success_criteria": [
+          "Both area calculations are correct.",
+          "I identified which planter has more area."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week2.slides" },
+        { "output_id": "w2_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week2.graphic_organizer" },
+        { "output_id": "w2_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week2.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week3",
+      "day_label": "Week 3: Calculate Surface Area",
+      "carryover_note": "Surface area from Week 3 determines the amount of lumber and liner needed in the Week 6 cost estimate.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 3: Surface Area",
+          "layout": "hero",
+          "content": { "subtitle": "This week: calculate the total surface area of the planter box — including every face we need to cover." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Area review",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your Week 2 comparison table.",
+            "prompts": ["What was the area of your recommended planter?", "What is the formula for area?", "If we need to paint ALL sides, do we use area or something else?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Surface area of a rectangular prism",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "A rectangular box has six faces. For a planter box (open top), we calculate five faces.",
+              "Bottom: L × W. Two long sides: L × H each. Two short sides: W × H each.",
+              "Total surface area = (L × W) + 2(L × H) + 2(W × H)"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Why surface area matters at work",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Painting and sealing: cost depends on how many cm² you need to cover.",
+              "Liner or waterproofing: must cover all interior surfaces.",
+              "Lumber or sheet material: must cover all exterior surfaces.",
+              "Underestimating means you run out. Overestimating wastes money.",
+              "Both are costly. Get the calculation right."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Does your answer make sense?",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Surface area must be larger than area. Is yours?",
+              "If L = 80 cm, W = 40 cm, H = 30 cm — roughly how large would surface area be?",
+              "Why do we not include the top face for a planter box?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 3 Task Sheet — Surface Area Calculations",
+        "instructions": [
+          "Use the formula: SA = (L × W) + 2(L × H) + 2(W × H).",
+          "Calculate area for each face separately, then add.",
+          "Show every step. Write cm² with every answer."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Face-by-face calculation",
+            "prompt": "For your chosen planter:\nL = _____ cm   W = _____ cm   H = _____ cm\n\nBottom face: L × W = ___ × ___ = _____ cm²\nLong side 1: L × H = ___ × ___ = _____ cm²\nLong side 2: L × H = ___ × ___ = _____ cm²\nShort side 1: W × H = ___ × ___ = _____ cm²\nShort side 2: W × H = ___ × ___ = _____ cm²\n\nTotal surface area = _____ cm²",
+            "lines": 7,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Surface Area Calculation", "help": "Add up all five face areas at the end. Do not include the open top." }
+          },
+          {
+            "label": "Part 2: Reasonableness check",
+            "prompt": "Your surface area is _____ cm². Your base area was _____ cm².\nIs the surface area larger than the base area? Y / N (it must be).\nAbout how many times larger? _____ times.",
+            "lines": 2,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Surface area of a typical planter is 3–5 times the base area." }
+          },
+          {
+            "label": "Part 3: Liner estimate",
+            "prompt": "The inside of the planter needs a waterproof liner that covers all 5 interior surfaces. You calculated the total surface area as _____ cm². Convert to m²:\n\n_____ cm² ÷ 10 000 = _____ m²\n\nThe liner comes in 0.5 m² sheets. How many sheets do you need (round up)? _____ sheets",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "help": "1 m² = 10 000 cm². Always round up for materials — you cannot buy a fraction of a sheet." }
+          }
+        ],
+        "embedded_supports": [
+          "Formula card: SA = (L × W) + 2(L × H) + 2(W × H)",
+          "Face diagram with labels for Level A",
+          "Conversion reminder: cm² → m²: divide by 10 000"
+        ],
+        "success_criteria": [
+          "I calculated the area of all five faces separately.",
+          "My total surface area is larger than the base area.",
+          "I estimated how many liner sheets I need and rounded up."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 3 Checkpoint — Surface Area Check",
+        "prompts": [
+          "Write the formula for surface area (open-top box): SA = ___",
+          "L = 70 cm, W = 35 cm, H = 25 cm. Calculate SA = _____ cm²",
+          "Convert to m²: _____ m²",
+          "Round up to nearest 0.5 m² sheet: _____ sheets"
+        ],
+        "teacher_notes": "Surface area is the largest conceptual jump so far. The most common errors are: forgetting to double the long and short sides, and including the top face. Use the flex week to address these before moving to costing."
+      },
+      "exit_ticket": {
+        "title": "Week 3 Exit Check",
+        "prompt": "A planter is 80 × 40 × 30 cm. Calculate the surface area of the 5 faces. Show all five face calculations.",
+        "n_lines": 5,
+        "success_criteria": [
+          "I calculated all five faces.",
+          "I added them correctly.",
+          "I wrote cm² in my answer."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w3_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week3.slides" },
+        { "output_id": "w3_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week3.task_sheet" },
+        { "output_id": "w3_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week3.checkpoint_sheet" },
+        { "output_id": "w3_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week3.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week4",
+      "day_label": "Week 4: Flex Week — Measurement Catch-Up",
+      "carryover_note": "Flex week. Address gaps in area or surface area before costing begins in Week 5.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 4: Flex Week",
+          "layout": "hero",
+          "content": { "subtitle": "This week: review area and surface area, catch up, or extend." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Before we cost — let's check the math",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Starting next week we will use our area and surface area numbers to estimate costs. If our measurements are wrong, our entire budget will be wrong. This week is our quality check.",
+            "prompts": ["What is the difference between area and surface area?", "When would a builder need area? When would they need surface area?", "What does 'reasonable estimate' mean?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Area vs. Surface area",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Area: how much flat space something covers. Used for soil, paint, or liner on one surface.",
+              "Surface area: the total area of all faces of a 3D object. Used for total liner, paint, or cladding.",
+              "Volume: how much space is inside. Used for soil fill."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Flex options",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Option 1: Redo the surface area calculation with a different planter's dimensions.",
+              "Option 2: Use a cardboard box to measure all faces and calculate surface area by hand.",
+              "Option 3: Convert a surface area from cm² to m² and back.",
+              "Option 4: Catch up any missing Week 2 or Week 3 work.",
+              "Option 5: Extension — calculate the surface area of the outside AND inside and find the difference."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Ready to cost?",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "I feel confident about: area / surface area / both / neither.",
+              "One concept I want to review before next week: ___.",
+              "One real-world job where calculating surface area matters: ___."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 4 Task Sheet — Flex Activities",
+        "instructions": [
+          "Complete the activity your teacher assigns.",
+          "Show all working. Write units with every answer.",
+          "If you finish early, try the extension problem."
+        ],
+        "tasks": [
+          {
+            "label": "Activity A: Surface area redo",
+            "prompt": "Calculate the surface area (5 faces) for a planter with these dimensions:\n\nL = 100 cm,  W = 50 cm,  H = 35 cm\n\nBottom: ___ × ___ = _____ cm²\nLong sides (×2): ___ × ___ × 2 = _____ cm²\nShort sides (×2): ___ × ___ × 2 = _____ cm²\nTotal SA = _____ cm²",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Show the calculation for each face group, then add." }
+          },
+          {
+            "label": "Activity B: Unit conversion",
+            "prompt": "Convert these surface areas:\n\na) 8500 cm² = _______ m²\nb) 1.2 m² = _______ cm²\nc) 12 750 cm² = _______ m²\n\nReminder: 1 m² = 10 000 cm²",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "help": "To convert cm² to m²: divide by 10 000. To convert m² to cm²: multiply by 10 000." }
+          }
+        ],
+        "embedded_supports": [
+          "Formula reference card: Area = L × W; SA = (L×W) + 2(L×H) + 2(W×H); 1 m² = 10 000 cm²",
+          "Level A: calculation steps are pre-printed — fill in the numbers only"
+        ],
+        "success_criteria": [
+          "I calculated surface area correctly and showed all face calculations.",
+          "I converted between cm² and m² correctly.",
+          "I can explain when to use area vs. surface area in a real project."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w4_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week4.slides" },
+        { "output_id": "w4_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week4.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "week5",
+      "day_label": "Week 5: Estimate Volume and Soil Cost",
+      "carryover_note": "Soil cost from Week 5 is the largest single line item in the Week 6 budget.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 5: Volume and Soil Cost",
+          "layout": "hero",
+          "content": { "subtitle": "This week: calculate how much soil we need and what it will cost." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Surface area check",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your Week 3 surface area calculation.",
+            "prompts": ["What was the total surface area of your planter?", "How many liner sheets did we estimate?", "What formula do we use for volume?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Volume and soil estimation",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Volume = L × W × H (measured in cm³)",
+              "1000 cm³ = 1 litre of soil",
+              "Unit cost: cost per litre or cost per bag × number of bags = total soil cost"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Cost per unit and total cost",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Unit cost: the price of one unit (one bag, one board, one litre).",
+              "Quantity: how many units you need.",
+              "Total cost = unit cost × quantity.",
+              "Compare: buying in bulk may lower the unit cost.",
+              "Always round up quantities — you cannot buy partial bags."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Soil cost check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "If a bag of soil is $8 and we need 5 bags, the soil cost is ___.",
+              "If we found a bulk deal — 8 bags for $50 — is that a better deal? How do you calculate it?",
+              "Would buying extra soil 'just in case' affect the budget? By how much?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 5 Task Sheet — Volume and Soil Cost Estimation",
+        "instructions": [
+          "Calculate volume, convert to litres, then estimate bags and total cost.",
+          "Show every step with units.",
+          "Compare two soil options to find the better value."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Volume calculation",
+            "prompt": "Use your planter's dimensions:\nL = _____ cm  W = _____ cm  H = _____ cm\n\nV = L × W × H = ___ × ___ × ___ = __________ cm³\n\nConvert to litres: __________ cm³ ÷ 1000 = __________ L",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Volume and Soil Calculation", "help": "Formula: V = L × W × H. Then divide by 1000 to get litres." }
+          },
+          {
+            "label": "Part 2: Bags needed",
+            "prompt": "Soil bag size: _______ L per bag\n\nBags needed = __________ L ÷ _______ L per bag = __________ bags\nRounded up = __________ bags",
+            "lines": 2,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Always round up — you cannot fill your planter with a fraction of a bag." }
+          },
+          {
+            "label": "Part 3: Compare soil options",
+            "prompt": "Option A: $8.50 per bag. Total cost: _____ bags × $8.50 = $_______\n\nOption B: Bulk pack of 10 bags for $72.00.\nUnit cost of Option B: $72.00 ÷ 10 = $_______ per bag.\n\nBetter value: Option ___ because _______________________",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Compare unit costs. The lower cost per bag is the better value — but check if you need the extra bags." }
+          }
+        ],
+        "embedded_supports": [
+          "Formula card: V = L × W × H; unit cost = total cost ÷ quantity",
+          "Conversion: 1000 cm³ = 1 L",
+          "Level A: calculation chain printed step-by-step — fill in the numbers"
+        ],
+        "success_criteria": [
+          "I calculated the volume and converted it to litres.",
+          "I estimated the number of bags needed and rounded up.",
+          "I calculated unit cost and identified the better value option."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 5 Checkpoint — Volume and Cost Check",
+        "prompts": [
+          "V = L × W × H: fill in the formula for this planter: ___",
+          "Volume = _____ cm³ → _____ L",
+          "Bags needed (20 L/bag): _____ bags (rounded up)",
+          "Total soil cost at $8.50/bag: $_______"
+        ],
+        "teacher_notes": "Watch for the rounding-up error — students often round down. Also check that unit costs are being calculated correctly: total ÷ quantity, not the reverse."
+      },
+      "outputs": [
+        { "output_id": "w5_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week5.slides" },
+        { "output_id": "w5_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week5.task_sheet" },
+        { "output_id": "w5_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week5.checkpoint_sheet" }
+      ]
+    },
+    {
+      "day_id": "week6",
+      "day_label": "Week 6: Build the Full Cost Estimate",
+      "carryover_note": "Complete cost estimate from Week 6 is the financial baseline for the final recommendation in Week 10.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 6: Full Cost Estimate",
+          "layout": "hero",
+          "content": { "subtitle": "This week: compile all material costs into a complete project budget table." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Every dollar matters",
+          "layout": "prompt",
+          "content": {
+            "scenario": "The client has a budget. We need to know if our project fits inside it. A budget table organizes every cost in one place so we can see the total and make decisions if we need to cut spending.",
+            "prompts": ["What happens if you present a client with a project that costs $200 over budget?", "What is the easiest type of cost to reduce without hurting quality?", "What is the difference between an estimated cost and an actual cost?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Budget table structure",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Line items: each material is its own row with quantity, unit cost, and total.",
+              "Subtotal: add all line items before tax or contingency.",
+              "Total: subtotal + any applicable tax + contingency (if included)."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Finding savings",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Check: is any item more expensive than expected? Can we substitute?",
+              "Check: are we buying more than we need? Can we reduce the quantity?",
+              "Check: is there a bulk purchase that reduces unit cost?",
+              "Priority: never cut safety or structural materials to save money.",
+              "Report: if the total is over budget, explain how much and what you would cut."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Are we within budget?",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Our total estimated cost is $ ___. The budget is $ ___.",
+              "Are we over or under budget? By how much?",
+              "If we need to cut costs, what is the first thing you would look at?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 6 Task Sheet — Budget Table",
+        "instructions": [
+          "Fill in every row of the budget table.",
+          "Calculate the total for each line: quantity × unit cost.",
+          "Add up all totals to find the project cost."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Complete the budget table",
+            "prompt": "Item | Qty | Unit | Unit Cost | Total\nLumber (planks) | ___ | boards | $_____ | $_____\nScrews/hardware | ___ | box | $_____ | $_____\nPotting soil | ___ | bags | $_____ | $_____\nPlants/seeds | ___ | packets | $_____ | $_____\nLiner/waterproofing | ___ | sheets | $_____ | $_____\nTools/consumables | 1 | lot | $_____ | $_____\n\nSubtotal: $_______\nApproved budget: $_______",
+            "lines": 8,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Project Budget Table", "help": "Total for each row = quantity × unit cost. Use your calculations from Weeks 3–5." }
+          },
+          {
+            "label": "Part 2: Budget check",
+            "prompt": "Are we within budget?\n\nSubtotal: $_______ Budget: $_______\nOver / Under (circle one) by: $_______\n\nIf over budget, what one change would you make to bring the cost down? Explain.",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": { "help": "If you are over budget, look at the largest line item first." }
+          }
+        ],
+        "embedded_supports": [
+          "Formula: row total = quantity × unit cost",
+          "Unit price list provided (lumber per board, soil per bag, etc.)",
+          "Level A: quantities pre-filled — calculate unit costs and totals only"
+        ],
+        "success_criteria": [
+          "Every row in the budget table is complete.",
+          "Each row total = quantity × unit cost.",
+          "I compared my subtotal to the budget and identified any difference."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 6 Exit Check",
+        "prompt": "Lumber costs $12 per board. We need 8 boards. What is the lumber total? If the total project budget is $180 and lumber alone is that cost, how much is left for other materials?",
+        "n_lines": 3,
+        "success_criteria": [
+          "I calculated the lumber total correctly.",
+          "I subtracted correctly to find the remaining budget."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w6_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week6.slides" },
+        { "output_id": "w6_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week6.task_sheet" },
+        { "output_id": "w6_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week6.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week7",
+      "day_label": "Week 7: Track Growth — Ratio and Percent",
+      "carryover_note": "Growth data and percent change feed into the cost-per-outcome analysis in Week 9.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 7: Growth Data and Percent Change",
+          "layout": "hero",
+          "content": { "subtitle": "This week: measure plant growth and use ratio and percent to describe how much it changed." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Why percent for growth?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Two plants both grew 5 cm. But one started at 10 cm and the other started at 2 cm. Which grew more significantly? Percent change tells us growth relative to starting size.",
+            "prompts": ["What does 'percent change' mean?", "When is percent more useful than a raw number?", "Which 5 cm growth represents a bigger change — from 10 cm or from 2 cm?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Calculating percent change",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Percent change = (change ÷ original value) × 100",
+              "Change = new value − original value",
+              "Example: plant was 8 cm, now 11 cm → change = 3 cm → 3 ÷ 8 × 100 = 37.5% increase"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Interpreting percent change in context",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "37.5% growth means the plant grew to 137.5% of its original height.",
+              "A high percent change in early weeks is normal — small starting values.",
+              "A zero percent change might mean the plant stopped growing or measurement was missed.",
+              "Percent change helps compare plants of different starting heights.",
+              "Always state both the percent change AND the original value for context."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Choosing the right number",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Plant A grew from 4 cm to 7 cm. Plant B grew from 20 cm to 23 cm. Which had a higher percent change?",
+              "If you reported only the 3 cm growth for both plants, what information would be missing?",
+              "When would you report cm growth and when would you report percent change?"
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "organizer_type": "t_chart",
+        "title": "Plant Growth Log — Measurement and Percent Change",
+        "columns": ["Height (cm) and Date", "Percent Change from Previous Week"],
+        "rows": ["Week 5", "Week 6", "Week 7", "Week 8", "Week 9"],
+        "prompt": "Record height measurements and calculate the percent change from the previous week for each entry.",
+        "success_criteria": [
+          "I have a height recorded for every available week.",
+          "I calculated percent change using the correct formula.",
+          "I can identify which week showed the greatest percent change."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 7 Exit Check",
+        "prompt": "A plant was 6 cm tall. This week it is 9 cm. Calculate the percent change. Show your work.",
+        "n_lines": 3,
+        "success_criteria": [
+          "I used the correct formula: (change ÷ original) × 100.",
+          "My answer includes the % sign."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w7_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week7.slides" },
+        { "output_id": "w7_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week7.graphic_organizer" },
+        { "output_id": "w7_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week7.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week8",
+      "day_label": "Week 8: Flex Week — Data and Budget Catch-Up",
+      "carryover_note": "Flex week. Extend growth log, review budget accuracy, or practice percent change.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 8: Flex Week",
+          "layout": "hero",
+          "content": { "subtitle": "This week: review growth data, check budget accuracy, or extend your percent change analysis." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Preparing for Week 9",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Next week we analyze whether the project delivered value for money. We will compare what we spent to what we got. This week we make sure our data and budget are accurate.",
+            "prompts": ["Is your growth log complete for every week?", "Do you know your total estimated project cost?", "What does 'value for money' mean in a project context?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Actual vs. estimated cost",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Estimated cost: what you calculated before buying anything.",
+              "Actual cost: what was really spent.",
+              "Variance = actual − estimated. A positive variance means you went over budget."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Flex options",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Option 1: Add missing growth data and recalculate percent change.",
+              "Option 2: Update the budget table with any actual costs you know.",
+              "Option 3: Calculate the cost per plant grown: total cost ÷ number of live plants.",
+              "Option 4: Catch up any missing surface area or volume work.",
+              "Option 5: Extension — if we reduced the planter by 10%, how much would the cost change?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Self-check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "My total estimated project cost is: $___.",
+              "My growth log is complete: Y / N.",
+              "The piece of math I feel most confident about in this project: ___."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 8 Task Sheet — Flex Activities",
+        "instructions": [
+          "Complete the activity your teacher assigns.",
+          "Update any calculations with new data.",
+          "Record actual costs if you have them."
+        ],
+        "tasks": [
+          {
+            "label": "Activity A: Cost per outcome",
+            "prompt": "Calculate the cost per plant grown:\n\nTotal estimated project cost: $_______\nNumber of plants actively growing: _______\n\nCost per plant = $_______ ÷ _______ = $_______ per plant\n\nIs this good value? Compare to buying a plant at a garden centre ($5–$15 each).",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": { "help": "This is a real comparison businesses and schools make when deciding whether a project was worth it." }
+          },
+          {
+            "label": "Activity B: Actual vs. estimated",
+            "prompt": "Record any actual costs you know:\n\nItem | Estimated $ | Actual $ | Variance $\n___________ | _____ | _____ | _____\n___________ | _____ | _____ | _____\n\nTotal variance so far: $_______ (over / under)",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Variance = actual − estimated. Positive = over budget. Negative = under budget." }
+          }
+        ],
+        "embedded_supports": [
+          "Cost per unit formula: total ÷ quantity",
+          "Variance formula: actual − estimated",
+          "Level A: tables are pre-formatted — fill in the numbers"
+        ],
+        "success_criteria": [
+          "I calculated cost per plant and compared it to a market rate.",
+          "I identified any variance between estimated and actual costs.",
+          "My growth log is complete with all available data."
+        ]
+      },
+      "graphic_organizer": {
+        "organizer_type": "t_chart",
+        "title": "Estimated vs. Actual Cost",
+        "columns": ["Estimated Cost ($)", "Actual Cost ($)"],
+        "rows": ["Lumber", "Hardware", "Soil", "Plants/seeds", "Liner", "Total"],
+        "prompt": "Record your estimated costs from Week 6 and any actual costs you now know. Calculate the variance for each row.",
+        "success_criteria": [
+          "I have estimated costs recorded for every line item.",
+          "I calculated the total variance.",
+          "I can explain what the variance means for the project."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w8_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week8.slides" },
+        { "output_id": "w8_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week8.task_sheet" },
+        { "output_id": "w8_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week8.graphic_organizer" }
+      ]
+    },
+    {
+      "day_id": "week9",
+      "day_label": "Week 9: Cost vs. Outcome Analysis",
+      "carryover_note": "Value analysis feeds into the final recommendation and justification in Week 10.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 9: Was It Worth It?",
+          "layout": "hero",
+          "content": { "subtitle": "This week: compare what the project cost to what it delivered and form a value judgment." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Project cost and outcome recap",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your Week 6 budget table and Week 7–8 growth log.",
+            "prompts": ["What was the total estimated project cost?", "How many plants are growing successfully?", "What was the percent growth between your first and most recent measurement?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Value for money in a workplace context",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Value = outcome received relative to cost paid.",
+              "A project is good value if it achieved its goals within or near budget.",
+              "A project can be under budget but still poor value if the outcome was not achieved."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Cost-per-outcome calculations",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Cost per plant grown = total cost ÷ number of live plants",
+              "Cost per cm² of planting surface = total cost ÷ surface area",
+              "Percent of budget used = (actual spend ÷ budget) × 100",
+              "Percent growth achieved = (final height ÷ initial height × 100) − 100",
+              "Combine these to build a case for your recommendation."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Building the recommendation",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Our project cost $___. The budget was $___. We used ___% of the budget.",
+              "Our plants grew ___%. That is [strong / moderate / weak] growth.",
+              "Based on cost and outcome, I would rate this project: good / acceptable / poor value. Because ___."
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "organizer_type": "four_square",
+        "title": "Cost vs. Outcome Analysis",
+        "columns": ["Financial Performance", "Growth Performance", "Value Assessment", "Recommendation"],
+        "rows": ["Summary"],
+        "prompt": "Complete one box at a time. Each box must include at least one number.",
+        "success_criteria": [
+          "I used a calculation in each box.",
+          "My value assessment connects financial performance to growth performance.",
+          "My recommendation follows logically from the analysis."
+        ]
+      },
+      "task_sheet": {
+        "title": "Week 9 Task Sheet — Value Analysis",
+        "instructions": [
+          "Complete the four calculations.",
+          "Use the results to write your value statement.",
+          "Every sentence in your analysis must include at least one number."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Key project metrics",
+            "prompt": "Calculate these metrics:\n\n1. Total cost: $_______  Budget: $_______\n   % of budget used: _______ ÷ _______ × 100 = _______ %\n\n2. Cost per plant grown: $_______ ÷ _______ plants = $_______ per plant\n\n3. Total plant height growth: _______ cm (from Week 5 to now)\n   Percent growth: (_____ − _____) ÷ _____ × 100 = _______ %",
+            "lines": 6,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Project Metrics", "help": "Show the formula and the numbers for each calculation." }
+          },
+          {
+            "label": "Part 2: Value statement",
+            "prompt": "Write a 2–3 sentence statement evaluating whether this project delivered value for money.\n\nLevel B: This project used ___% of the budget. The plants grew ___%. Based on this, I rate the project as ___ value because ___.\nLevel C: Write your own value statement using at least three calculated metrics.",
+            "lines": 5,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Connect financial result to the growth outcome. A project can be under budget but still poor value." }
+          }
+        ],
+        "embedded_supports": [
+          "Metric formulas: % budget used = actual ÷ budget × 100; cost per plant = total cost ÷ plants; % growth = change ÷ original × 100",
+          "Sentence frame: This project cost $___. That represents ___% of the approved budget. The plants grew ___% in ___ weeks.",
+          "Level A: all three formulas pre-set with blanks for the numbers"
+        ],
+        "success_criteria": [
+          "I calculated all three key metrics with correct formulas.",
+          "My value statement references at least two calculated metrics.",
+          "I made a clear value judgment (good / acceptable / poor) and justified it with numbers."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w9_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week9.slides" },
+        { "output_id": "w9_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week9.graphic_organizer" },
+        { "output_id": "w9_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week9.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "week10",
+      "day_label": "Week 10: Present the Cost Summary and Final Recommendation",
+      "carryover_note": "Final project. Cost summary and recommendation are the summative artifacts.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 10: Final Cost Report",
+          "layout": "hero",
+          "content": { "subtitle": "This week: present your cost summary and final recommendation to the client." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Numbers ready",
+          "layout": "retrieval",
+          "content": {
+            "task": "Pull your budget table, growth log, and value analysis.",
+            "prompts": ["What was the total project cost?", "What percent of the budget did you use?", "What was the final growth percent?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Presenting numbers to a client",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Lead with the recommendation — don't make the client wait.",
+              "Present your two or three most important numbers. Not all of them.",
+              "Interpret every number: 'We used 92% of the budget, which means we stayed within target.'"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Recommendation sentence frames",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Based on our data, this project delivered [good / acceptable / poor] value for the investment.",
+              "Total cost was $___. That is ___% of the approved budget.",
+              "The plants grew ___% over ___ weeks, which shows [strong / moderate / weak] results.",
+              "Cost per plant grown was $___. Comparable plants cost $___–$___ at retail.",
+              "Recommendation: [repeat this project / adjust the budget / change the design]."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Final reflection",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The calculation I am most proud of from this project: ___.",
+              "One workplace math skill I will use again: ___.",
+              "If I ran this project again, one thing I would do differently: ___."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 10 Task Sheet — Final Cost Summary",
+        "instructions": [
+          "Complete the cost summary table from your Week 6 budget.",
+          "Write your final recommendation using your Week 9 value analysis.",
+          "Transfer your recommendation to the Final Recommendation Card."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Cost summary",
+            "prompt": "Final project cost summary:\n\nLumber: $_______\nHardware: $_______\nSoil: $_______\nPlants/seeds: $_______\nLiner: $_______\nTools/consumables: $_______\n\nTotal: $_______ out of $_______ budget\n% of budget used: _______% ",
+            "lines": 8,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Final Cost Summary", "help": "Use your Week 6 budget table. Update with any actual costs from Week 8." }
+          },
+          {
+            "label": "Part 2: Final recommendation",
+            "prompt": "Write your final recommendation using your cost and growth data:\n\nLevel B: This project cost $___. That is ___% of the budget. The plants grew ___%. I recommend ___ because ___.\nLevel C: Write a complete recommendation with financial data, growth data, and a client action.",
+            "lines": 6,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Your recommendation must reference both a cost figure and a growth figure." }
+          }
+        ],
+        "embedded_supports": [
+          "Budget table from Week 6 should be stapled to this sheet for reference",
+          "Sentence frame: This project cost $___ (___ % of the approved budget). The plants grew ___%. Based on this, I recommend ___.",
+          "Level A: fill in the blanks in the pre-written recommendation"
+        ],
+        "success_criteria": [
+          "My cost summary table is complete and totals are accurate.",
+          "I calculated the percent of budget used.",
+          "My recommendation references both a cost figure and a growth figure."
+        ]
+      },
+      "final_response_sheet": {
+        "title": "Final Recommendation Card — Workplace Math 10",
+        "prompt": "Write your final recommendation for the client. Include: total project cost, percent of budget used, growth result, and your value assessment. Use your project calculations as evidence.",
+        "final_evidence": true,
+        "response_mode": "paragraph_response",
+        "success_criteria": [
+          "I stated my recommendation clearly in the first sentence.",
+          "I included the total cost and percent of budget used.",
+          "I referenced growth data (cm or %).",
+          "I made a clear value judgment (good / acceptable / poor) and supported it with numbers."
+        ],
+        "embedded_supports": [
+          "Level A: This project cost $___. We used ___% of our budget. The plants grew ___%. This project was ___ value because ___.",
+          "Level B: Write one sentence each for: cost, budget percent, growth result, and value judgment.",
+          "Level C: Write a formal cost summary with all four elements plus one improvement recommendation."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 10 Checkpoint — Summative Evidence Check",
+        "prompts": [
+          "Cost summary table: complete with accurate totals: Y / N",
+          "Percent of budget used: calculated correctly: Y / N",
+          "Recommendation: includes total cost and a growth metric: Y / N",
+          "Recommendation: value judgment is supported by calculations: Y / N",
+          "Conference note (optional):"
+        ],
+        "teacher_notes": "The key Workplace Math 10 standard is using math to support a real decision. Oral explanation of the cost summary and recommendation is fully valid evidence. The final recommendation card is the primary artifact — it must contain at least one cost figure and one growth figure."
+      },
+      "outputs": [
+        { "output_id": "w10_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week10.slides" },
+        { "output_id": "w10_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week10.task_sheet" },
+        { "output_id": "w10_final_response", "output_type": "final_response_sheet", "audience": "student", "source_section": "days.week10.final_response_sheet" },
+        { "output_id": "w10_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week10.checkpoint_sheet" }
+      ]
+    }
+  ]
+}
