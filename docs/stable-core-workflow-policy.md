@@ -2,36 +2,29 @@
 
 ## Purpose
 
-This document describes the current solo-operated workflow for the stable-core package pipeline.
+This document describes the current workflow for the stable-core package pipeline and the assignment-family contract that now sits upstream of it.
 
 Its job is to keep the repo honest about:
 
-- what the acceptance path actually is
+- what the stable-core acceptance path actually is
 - which commands are the real gates
+- where the upstream pedagogy/authoring contract now lives
 - how to make bounded changes without reintroducing workflow theater
-- how to review package/render work without confusing content, renderer, QA, and tooling intent
+- how to review package/render work without confusing content, renderer, QA, tooling, and authoring-contract intent
 
 It does not authorize pedagogy invention or lesson redesign unless a task is explicitly content-authoring work.
 
 ---
 
-## Current repo reality
+## Architectural contract
 
-The repo is currently operated by one person.
-There is no CI gate on the stable-core path yet.
-The live enforcement surface is local command execution plus manual review.
+The repo now distinguishes between two different but connected contracts.
 
-That means:
+### 1. Stable-core package = live render contract
 
-- `doctor` protects basic repo layout assumptions
-- `schema:check`, `route:plan`, `render:package`, and `qa:bundle` are the real acceptance path
-- lightweight branches and PRs are useful, but heavy PR-class ceremony is not the operating model
+The stable-core package is still the machine-facing contract that the render path consumes directly.
 
----
-
-## Source-of-truth acceptance path
-
-For stable-core package work, use this sequence:
+The authoritative stable-core acceptance path is still:
 
 1. `pnpm run doctor` when repo structure, scripts, or renderer entrypoints changed
 2. `pnpm run schema:check -- --package <path>`
@@ -41,8 +34,41 @@ For stable-core package work, use this sequence:
 
 Use `qa:render` as a drill-down tool for a single artifact, not as the primary acceptance step.
 
-`build:all` is not the stable-core acceptance path.
-It remains available only for legacy compatibility/debugging work.
+### 2. Assignment-family layer = authoritative upstream pedagogy/authoring contract
+
+The assignment-family layer is now the authoritative upstream contract for:
+
+- family selection
+- family chain recommendations
+- required upstream assignment metadata
+- family integrity expectations
+- authoring-time validation before render work begins
+
+This means the repo should move toward one family source of truth under `engine/assignment-family/`.
+
+### 3. Transition rule
+
+During cleanup, docs must distinguish clearly between:
+
+- **live today** — what the stable-core render path actually uses right now
+- **authoritative target** — what the repo is migrating toward
+- **compatibility-only** — temporary shims kept so the live path does not break during cutover
+
+---
+
+## Current repo reality
+
+The repo is still primarily operated by one person.
+CI now exists for stable-core smoke coverage, but local command execution and direct review still matter.
+
+Current reality, stated plainly:
+
+- `schema:check`, `route:plan`, `render:package`, and `qa:bundle` are still the real stable-core acceptance path
+- `engine/schema/render-plan.mjs` still reads family selection from `engine/family/*` today
+- `engine/assignment-family/*` already exists as the newer authoring/validation surface
+- the current cleanup goal is to move live family truth into `engine/assignment-family/*` and shrink `engine/family/*` into a temporary compatibility layer before removal
+
+That means the architectural decision is ahead of the full code cutover, on purpose.
 
 ---
 
@@ -56,7 +82,9 @@ A branch may still contain more than one file if the files are part of one coher
 ### 2. Name the intent clearly
 
 `content`, `renderer`, `qa`, and `tooling` are still useful labels for describing what kind of change you are making.
-They are intent labels, not hard PR classes that require ceremony before every fix.
+`assignment-family` is now also a meaningful intent label for upstream pedagogy-contract work.
+
+These are intent labels, not hard PR classes that require ceremony before every fix.
 
 ### 3. Use lightweight branches and PRs when the diff matters
 
@@ -67,7 +95,13 @@ That preserves history and makes rollback easier.
 
 If the question is whether a stable-core package is valid, the answer must come from the package workflow, not from ad hoc direct builders.
 
-### 5. Keep teacher/student separation explicit
+### 5. Do not blur live stable-core behavior and upstream assignment-family decisions
+
+The stable-core package path decides what renders today.
+The assignment-family layer decides what upstream family contract should exist before generation/rendering.
+Keep those distinct until the cutover is complete.
+
+### 6. Keep teacher/student separation explicit
 
 Do not fix renderer or workflow issues by silently collapsing teacher-facing and student-facing artifact logic.
 
@@ -81,6 +115,7 @@ The following prefixes are still useful because they make intent obvious:
 - `renderer/<slug>`
 - `qa/<slug>`
 - `tooling/<slug>`
+- `assignment-family/<slug>`
 
 Likewise, these PR title prefixes remain useful:
 
@@ -88,31 +123,22 @@ Likewise, these PR title prefixes remain useful:
 - `Renderer:`
 - `QA:`
 - `Tooling:`
+- `Assignment-family:`
 
 These are recommendations for clarity, not a strict ceremony system.
 
 ---
 
-## Defect labels
-
-The following labels remain useful when discussing a bug:
-
-- `content_problem`
-- `renderer_problem`
-- `repo_tooling_problem`
-
-Use them when they add clarity.
-Do not treat defect labeling as a mandatory ritual before every small edit.
-
-A simple decision rule still works:
-
-1. If the source package itself is wrong, it is probably a `content_problem`.
-2. If the package is reasonable but the artifact renders badly, it is probably a `renderer_problem`.
-3. If execution, routing, output paths, or command behavior are the source of confusion, it is probably a `repo_tooling_problem`.
-
----
-
 ## Review expectations by change type
+
+### Assignment-family / authoring-contract changes
+
+Expected:
+
+- identify whether the change affects live stable-core behavior or only upstream authoring surfaces
+- classify touched paths as live, compatibility-only, or dead
+- show where the authoritative family rule now lives
+- avoid destructive cleanup before the live import chain is confirmed
 
 ### Content-shaped changes
 
@@ -173,6 +199,8 @@ Until semantic QA grows, some of this remains manual by design.
 - Stable-core package rendering writes package-scoped output directories by default.
 - Legacy direct builders remain compatibility/debugging surfaces, not stable-core acceptance proof.
 - `DECISIONS.md` is the active decisions log for repo structure and operating rules.
+- `engine/family/*` is still part of the live render-plan path today.
+- `engine/assignment-family/*` is the intended authoritative upstream family surface.
 
 ---
 
@@ -180,7 +208,9 @@ Until semantic QA grows, some of this remains manual by design.
 
 Revisit this guide when one of these becomes true:
 
-- CI is added and becomes a real gate
+- assignment-family cutover is complete and `engine/family/*` is no longer live
+- family validation becomes part of the real stable-core acceptance gate
+- CI becomes the dominant gate rather than local review plus smoke coverage
 - the PPTX implementation is truly consolidated
 - legacy direct builders are formally deprecated or removed
 - package generation moves to a different provider abstraction or integrated authoring flow
