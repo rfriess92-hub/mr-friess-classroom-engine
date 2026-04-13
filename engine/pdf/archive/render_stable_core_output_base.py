@@ -860,6 +860,34 @@ def render_exit_ticket(packet: dict, section: dict, out_path: Path) -> None:
     doc.build(story)
 
 
+def render_graphic_organizer(packet: dict, section: dict, out_path: Path) -> None:
+    """Base stub — overridden by render_stable_core_output.py wrapper layer."""
+    styles = styles_bundle()
+    story = [
+        Paragraph(packet_heading(packet), styles['CenterTitleX']),
+        Paragraph('Graphic Organizer', styles['Heading2']),
+        Paragraph('Name: ____________________', styles['BodyText']),
+        Spacer(1, 8),
+        Paragraph(section.get('prompt', ''), styles['BodyText']),
+    ]
+    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
+    doc.build(story)
+
+
+def render_discussion_prep_sheet(packet: dict, section: dict, out_path: Path) -> None:
+    """Base stub — overridden by render_stable_core_output.py wrapper layer."""
+    styles = styles_bundle()
+    story = [
+        Paragraph(packet_heading(packet), styles['CenterTitleX']),
+        Paragraph('Discussion Prep', styles['Heading2']),
+        Paragraph('Name: ____________________', styles['BodyText']),
+        Spacer(1, 8),
+        Paragraph(section.get('discussion_prompt', ''), styles['BodyText']),
+    ]
+    doc = SimpleDocTemplate(str(out_path), pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
+    doc.build(story)
+
+
 def main() -> None:
     args = parse_args()
     packet = load_packet(Path(args.package))
@@ -894,6 +922,10 @@ def main() -> None:
         render_exit_ticket(packet, source_section or packet.get('exit_ticket', {}), out_path)
     elif output_type == 'final_response_sheet':
         render_final_response_sheet(packet, source_section or {}, out_path)
+    elif output_type == 'graphic_organizer':
+        render_graphic_organizer(packet, source_section or packet.get('graphic_organizer', {}), out_path)
+    elif output_type == 'discussion_prep_sheet':
+        render_discussion_prep_sheet(packet, source_section or packet.get('discussion_prep_sheet', {}), out_path)
     else:
         raise SystemExit(f'Unsupported PDF output type: {output_type}')
 
