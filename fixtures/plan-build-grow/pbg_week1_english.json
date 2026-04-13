@@ -1,0 +1,285 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_week1_english",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 4,
+  "grade_band": "9-12",
+  "subject": "English Language Arts",
+  "grade": null,
+  "topic": "Plan, Build, Grow — Week 1, Days 2–5: English Stream",
+  "theme": "careers",
+  "lesson_overview": {
+    "overview": "English-stream students complete four task sheets across Days 2–5 of Week 1. All tasks use the same client brief and design cards the whole class is working with. The English focus is: reading a functional document, using subject vocabulary accurately, making comparisons in writing, and writing a short evidence-based explanation. All tasks accept oral, written, or drawn responses.",
+    "essential_question": "How does a professional communicate clearly about what a client needs and what was decided?",
+    "big_idea": "Reading carefully and writing clearly are the skills that help a team make good decisions and keep everyone on the same page.",
+    "sequence": [
+      { "day": "Day 2", "focus": "Read the client brief. Identify who, what, where, when, and budget. Practise vocabulary.", "artifacts": ["Task Sheet"] },
+      { "day": "Day 3", "focus": "Compare three design options using comparison language. Recommend one with a reason.", "artifacts": ["Task Sheet"] },
+      { "day": "Day 4", "focus": "Write a short explanation of the class design choice. Describe next steps.", "artifacts": ["Task Sheet"] },
+      { "day": "Day 5", "focus": "Vocabulary checkpoint. Write one summary sentence about the chosen design.", "artifacts": ["Task Sheet", "Exit Ticket"] }
+    ],
+    "differentiation_note": "Three support levels in every task. Level A: circle from word lists, fill sentence frames, scribed responses accepted. Level B: word banks, partial sentence frames, short written answers. Level C: independent written responses, extend to a second sentence or a question for the client."
+  },
+  "teacher_guide": {
+    "big_idea": "English-stream students are building functional communication skills through real work. Every task this week is grounded in the actual project — no decontextualised grammar exercises.",
+    "learning_goals": [
+      "Read a short functional document and extract five key pieces of information.",
+      "Use comparison language to describe two or more design options.",
+      "Write a short explanation (one to three sentences) that states a choice and gives a reason.",
+      "Use five project vocabulary words accurately in speech or writing."
+    ],
+    "materials": ["Client brief — one per student", "Design cards A, B, C — available for reference", "Vocabulary word wall or strip (posted or on desk)"],
+    "timing": [{ "time": "0:30–1:00", "activity": "English-stream task time. Teacher circulates. EA scribes for students who need it." }],
+    "teacher_notes": [
+      "Read the task sheet instructions aloud before students begin each day.",
+      "Day 2: model how to annotate the client brief before students attempt it independently.",
+      "Day 3: say the comparison words aloud ('bigger than', 'better for', 'similar to') before students write.",
+      "Day 4: the design explanation is the first real English-stream writing artifact — take time to model a sentence.",
+      "Day 5: vocabulary check is conversational — students can say definitions aloud rather than write them."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "pbg_week1_english_bundle",
+    "declared_outputs": ["lesson_overview", "teacher_guide", "task_sheet", "exit_ticket"]
+  },
+  "outputs": [
+    { "output_id": "w1e_overview", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview" },
+    { "output_id": "w1e_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide" }
+  ],
+  "days": [
+    {
+      "day_id": "day2",
+      "day_label": "Day 2 — Read the Client Brief (English Stream)",
+      "carryover_note": "Day 1 commitment card is a reference. Client brief is the main text today.",
+      "task_sheet": {
+        "title": "Day 2 — Read the Client Brief",
+        "instructions": [
+          "Your teacher will read the client brief aloud first.",
+          "Follow along on your copy.",
+          "Complete each section below. You can write, circle, or ask someone to scribe."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Find the five Ws",
+            "prompt": "Use the client brief to fill in each line.\n\nWHO is the client? ___________________\nWHAT do they want? ___________________\nWHERE will it go? ___________________\nWHEN does it need to be done? ___________________\nHOW MUCH is the budget? $___________________",
+            "lines": 5,
+            "activity_type": "close_reading",
+            "render_hints": {
+              "heading": "The Five Ws",
+              "help": "Level A: circle the correct answer from the word bank below. Level B: fill in the blanks. Level C: write your answers without looking at the brief."
+            }
+          },
+          {
+            "label": "Part 2: Vocabulary check",
+            "prompt": "Circle any of these words that appear in the client brief:\n\nclient   planter box   materials   dimensions   budget   location   maintain   deliver\n\nChoose ONE word you circled. Write or say what it means in your own words.\n\nWord: ___________________\nMeans: ___________________",
+            "lines": 2,
+            "activity_type": "close_reading",
+            "render_hints": {
+              "help": "Check the vocabulary strip on your desk if you need a definition."
+            }
+          },
+          {
+            "label": "Part 3: Write a response",
+            "prompt": "Write one sentence confirming that you understand the client's request.\n\nLevel A: The client is ___ and they want us to build ___.\nLevel B: I understand that ___ needs a ___ placed at ___ by ___.\nLevel C: Write your own confirmation sentence in a professional tone.",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "A confirmation sentence tells the client: yes, I understand what you need."
+            }
+          }
+        ],
+        "embedded_supports": [
+          "Word bank for Level A: client name, planter box, school grounds, $250, [timeline from brief]",
+          "Sentence frames posted on wall: The client is ___. They want us to ___. The budget is ___.",
+          "Oral response always accepted — teacher or EA scribes"
+        ],
+        "success_criteria": [
+          "I can say who the client is and what they want.",
+          "I used at least one vocabulary word correctly.",
+          "I wrote or said one sentence confirming I understood the brief."
+        ]
+      },
+      "outputs": [
+        { "output_id": "d2e_task", "output_type": "task_sheet", "audience": "student", "source_section": "days.day2.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "day3",
+      "day_label": "Day 3 — Compare the Designs (English Stream)",
+      "carryover_note": "Day 2 brief notes are a reference. Design cards A, B, C must be visible.",
+      "task_sheet": {
+        "title": "Day 3 — Compare the Designs",
+        "instructions": [
+          "Look at design cards A, B, and C.",
+          "Use comparison words to describe what you see.",
+          "Recommend one design and give a reason."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: First impressions",
+            "prompt": "Look at the three designs. For each one, circle ONE word that describes it.\n\nDesign A: small  large  simple  fancy  tall  flat  wooden  metal\nDesign B: small  large  simple  fancy  tall  flat  wooden  metal\nDesign C: small  large  simple  fancy  tall  flat  wooden  metal\n\nWhich design caught your eye first? Design ___ — because ___________________",
+            "lines": 2,
+            "activity_type": "write_response",
+            "render_hints": {
+              "heading": "First Impressions",
+              "help": "You can circle more than one word for each design."
+            }
+          },
+          {
+            "label": "Part 2: Use comparison words",
+            "prompt": "Use these comparison words to write three sentences about the designs.\n\nComparison words: bigger than   smaller than   the same as   easier to build   harder to maintain   more suitable for   better for\n\n1. Design A is ___ Design B.\n2. Design C is ___ Design A.\n3. Overall, Design ___ is the most suitable because ___________________",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "Level A: fill in the blanks using the comparison words above. Level C: write the sentences without the frames."
+            }
+          },
+          {
+            "label": "Part 3: My recommendation",
+            "prompt": "Based on what you see and what the client needs, which design would you recommend?\n\nI recommend Design ___ because ___________________.\n\nOne reason this design does NOT work for the client: ___________________",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "Connect your reason to the client's needs: budget, location, or purpose."
+            }
+          }
+        ],
+        "embedded_supports": [
+          "Comparison word bank printed on sheet",
+          "Design cards visible at all times",
+          "Sentence frame: I recommend Design ___ because it is ___ and it fits the client's need for ___."
+        ],
+        "success_criteria": [
+          "I used at least two comparison words in my answers.",
+          "I recommended one design and gave a specific reason.",
+          "My reason connects to what the client actually needs."
+        ]
+      },
+      "outputs": [
+        { "output_id": "d3e_task", "output_type": "task_sheet", "audience": "student", "source_section": "days.day3.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "day4",
+      "day_label": "Day 4 — Explain the Class Decision (English Stream)",
+      "carryover_note": "The class has just voted on a design. Students use that decision as their writing subject.",
+      "task_sheet": {
+        "title": "Day 4 — Write About the Decision",
+        "instructions": [
+          "The class chose Design ___. (Your teacher will confirm.)",
+          "Today you will write a short explanation of that decision.",
+          "You will also describe what comes next."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Record the decision",
+            "prompt": "Fill in the class decision:\n\nThe class chose: Design ___\nThe dimensions are: ___ cm × ___ cm × ___ cm\nThe main reason we chose it: ___________________\nOne design we did NOT choose: Design ___   Reason: ___________________",
+            "lines": 4,
+            "activity_type": "write_response",
+            "render_hints": {
+              "heading": "The Class Decision",
+              "help": "Get the dimensions from the design card or anchor chart."
+            }
+          },
+          {
+            "label": "Part 2: Write the explanation",
+            "prompt": "Write 2–3 sentences explaining the class decision to someone who was not in the room.\n\nLevel A: Our class chose Design ___. We chose it because ___. It will go ___.\nLevel B: Use the Level A frame as a starting point, then add one more sentence.\nLevel C: Write your own explanation using at least two vocabulary words.",
+            "lines": 5,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "Vocabulary to try: dimensions, client, suitable, materials, location."
+            }
+          },
+          {
+            "label": "Part 3: What comes next?",
+            "prompt": "For the English stream, Week 2 is about planning and communicating. What do you think you will be writing or saying next week?\n\nCircle what you think is coming:\nwork order   email to client   materials list   build plan   planting schedule\n\nI think Week 2 will involve ___________________",
+            "lines": 2,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "Look at the anchor chart preview from today's slides."
+            }
+          }
+        ],
+        "embedded_supports": [
+          "Anchor chart with the chosen design visible in the room",
+          "Design card available for reference",
+          "Vocabulary wall: client, dimensions, suitable, materials, deliver, location"
+        ],
+        "success_criteria": [
+          "I recorded the chosen design and its dimensions.",
+          "I wrote 2–3 sentences explaining the decision.",
+          "I used at least two vocabulary words from the word wall."
+        ]
+      },
+      "outputs": [
+        { "output_id": "d4e_task", "output_type": "task_sheet", "audience": "student", "source_section": "days.day4.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "day5",
+      "day_label": "Day 5 — Week 1 Wrap (English Stream)",
+      "carryover_note": "Students bring all four task sheets from the week. This is a review day.",
+      "task_sheet": {
+        "title": "Day 5 — Week 1 Vocabulary and Summary",
+        "instructions": [
+          "Today we review what you learned this week.",
+          "Work through Parts 1 and 2. Use your task sheets from Days 2–4 if you need them.",
+          "This is not a test — it is a chance to show what you know."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Vocabulary check",
+            "prompt": "Match each word to its meaning. Draw a line or write the letter.\n\nWORDS: client   planter box   dimensions   materials   budget\n\nMEANINGS:\nA. the size of something: length, width, height\nB. the person or group who gave us the job\nC. the amount of money available to spend\nD. what something is made from\nE. a container used to grow plants\n\nBonus: use one of these words in a sentence about OUR project.",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": {
+              "heading": "Vocabulary Check",
+              "help": "Level A: answers are: client=B, planter box=E, dimensions=A, materials=D, budget=C — write the letters only."
+            }
+          },
+          {
+            "label": "Part 2: Design summary sentence",
+            "prompt": "Write one sentence that describes the design your class chose and why.\n\nIt must include:\n→ the design name (A, B, or C)\n→ one dimension (length, width, or height)\n→ one reason connected to what the client needs\n\nLevel A: Our class chose Design ___. It is ___ cm long. We chose it because ___.\nLevel C: Write a full professional summary sentence on your own.",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "A strong sentence sounds like: 'Our class selected Design B, which is 90 cm long, because it fits within the client's budget and the available outdoor space.'"
+            }
+          },
+          {
+            "label": "Part 3: My one question",
+            "prompt": "Write or say one question you still have about the project or about next week.\n\nMy question: ___________________\n\nWho could answer it? (circle)   teacher   classmate   client   I can find out myself",
+            "lines": 2,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "Good questions start with: How will we... / What happens when... / Who decides..."
+            }
+          }
+        ],
+        "embedded_supports": [
+          "Task sheets from Days 2–4 available as reference",
+          "Vocabulary word wall remains posted",
+          "Oral matching is accepted for Part 1"
+        ],
+        "success_criteria": [
+          "I matched all five vocabulary words correctly (or said them aloud).",
+          "My summary sentence includes a design name, one dimension, and one reason.",
+          "I wrote or said one genuine question about the project."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Day 5 Exit Check — English Stream",
+        "prompt": "Say or write:\n\nThis week I learned that ___________________.\nNext week in English, I will ___________________.",
+        "n_lines": 3,
+        "success_criteria": [
+          "Student names something specific they learned (not just 'about the project').",
+          "Student can name one English-stream task coming in Week 2."
+        ]
+      },
+      "outputs": [
+        { "output_id": "d5e_task", "output_type": "task_sheet", "audience": "student", "source_section": "days.day5.task_sheet" },
+        { "output_id": "d5e_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.day5.exit_ticket" }
+      ]
+    }
+  ]
+}
