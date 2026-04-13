@@ -7,6 +7,7 @@
 // remaining external callers that still import the historical validation
 // surface directly. Prefer engine/assignment-family/* for all new work.
 
+import { validateAssignmentBuild } from '../assignment-family/validate-build.mjs'
 import {
   ASSIGNMENT_FAMILIES,
   ARTIFACT_AUDIENCES,
@@ -19,24 +20,35 @@ import {
   isAssignmentFamily,
 } from './canonical.mjs'
 
+const LEGACY_FAMILY_INTEGRITY_COMPAT = {
+  inquiry_fact_collection_risk: {
+    failure_mode: 'inquiry becomes fact collection',
+    warning: 'short_inquiry_sequence should end in judgment, comparison, recommendation, or interpretation rather than fact collection alone.',
+  },
+  project_decoration_risk: {
+    failure_mode: 'project becomes decoration',
+    warning: 'short_project should include rationale, explanation, or defense, not only product completion.',
+  },
+  performance_no_rehearsal_risk: {
+    failure_mode: 'performance becomes presentation without thinking',
+    warning: 'performance_task should include rehearsal or practice before final performance.',
+  },
+  discussion_no_evidence_checkpoint_risk: {
+    failure_mode: 'discussion becomes unstructured chat',
+    warning: 'structured_academic_discussion should include an evidence-readiness checkpoint.',
+  },
+  discussion_no_synthesis_risk: {
+    failure_mode: 'discussion becomes unstructured chat',
+    warning: 'structured_academic_discussion should include a post-discussion synthesis step.',
+  },
+  writing_formula_risk: {
+    failure_mode: 'writing becomes formula without reasoning',
+    warning: 'evidence_based_writing_task should require explanation, argument, interpretation, or justification.',
+  },
+}
+
 function safeArray(value) {
   return Array.isArray(value) ? value : []
-}
-
-function textFromStep(step) {
-  if (typeof step === 'string') return step
-  if (step && typeof step === 'object') {
-    return [step.label, step.step, step.evidence].filter(Boolean).join(' ')
-  }
-  return ''
-}
-
-function joinedText(values) {
-  return safeArray(values).map((value) => (typeof value === 'string' ? value : JSON.stringify(value))).join(' ').toLowerCase()
-}
-
-function containsAny(text, needles) {
-  return needles.some((needle) => text.includes(needle))
 }
 
 function push(collection, message) {
@@ -179,64 +191,21 @@ export function validateCanonicalAssignment(assignment = {}, options = {}) {
 
 export function validateFamilyIntegrity(assignment = {}) {
   const result = defaultFamilyIntegrityResult()
-  const family = assignment.assignment_family
-  const taskText = safeArray(assignment.student_task_flow).map(textFromStep).join(' ').toLowerCase()
-  const successText = joinedText(assignment.success_criteria)
-  const evidenceText = String(assignment.final_evidence_target || '').toLowerCase()
-  const checkpointText = joinedText(assignment.checkpoint_release_logic)
-  const allText = [taskText, successText, evidenceText, checkpointText].join(' ')
+  const validation = validateAssignmentBuild(assignment)
 
-  const reasoningSignals = ['justify', 'reason', 'reasoning', 'explain', 'argument', 'argue', 'compare', 'interpret', 'recommend', 'defend']
-  const prepSignals = ['prep', 'prepare', 'plan', 'readiness', 'outline', 'evidence plan']
-  const synthesisSignals = ['synthesis', 'write', 'reflection', 'reflect', 'exit', 'conclusion', 'summary']
-  const rehearsalSignals = ['rehearsal', 'rehearse', 'practice', 'trial run']
-  const rationaleSignals = ['rationale', 'explain', 'justify', 'defend', 'why']
+  for (const finding of safeArray(validation.findings)) {
+    if (finding.type !== 'family_integrity_risk') continue
 
-  switch (family) {
-    case 'short_inquiry_sequence':
-      if (!containsAny(allText, reasoningSignals)) {
-        result.family_integrity_status = 'revise'
-        result.failure_modes_detected.push('inquiry becomes fact collection')
-        result.warnings.push('short_inquiry_sequence should end in judgment, comparison, recommendation, or interpretation rather than fact collection alone.')
-      }
-      break
-    case 'short_project':
-      if (!containsAny(allText, rationaleSignals)) {
-        result.family_integrity_status = 'revise'
-        result.failure_modes_detected.push('project becomes decoration')
-        result.warnings.push('short_project should include rationale, explanation, or defense, not only product completion.')
-      }
-      break
-    case 'performance_task':
-      if (!containsAny(allText, rehearsalSignals)) {
-        result.family_integrity_status = 'revise'
-        result.failure_modes_detected.push('performance becomes presentation without thinking')
-        result.warnings.push('performance_task should include rehearsal or practice before final performance.')
-      }
-      break
-    case 'structured_academic_discussion':
-      if (!containsAny(allText, prepSignals)) {
-        result.family_integrity_status = 'revise'
-        result.failure_modes_detected.push('discussion becomes unstructured chat')
-        result.warnings.push('structured_academic_discussion should include an individual prep stage.')
-      }
-      if (!containsAny(allText, synthesisSignals)) {
-        result.family_integrity_status = 'revise'
-        if (!result.failure_modes_detected.includes('discussion becomes unstructured chat')) {
-          result.failure_modes_detected.push('discussion becomes unstructured chat')
-        }
-        result.warnings.push('structured_academic_discussion should include a post-discussion synthesis step.')
-      }
-      break
-    case 'evidence_based_writing_task':
-      if (!containsAny(allText, reasoningSignals)) {
-        result.family_integrity_status = 'revise'
-        result.failure_modes_detected.push('writing becomes formula without reasoning')
-        result.warnings.push('evidence_based_writing_task should require explanation, argument, interpretation, or justification.')
-      }
-      break
-    default:
-      break
+    const compat = LEGACY_FAMILY_INTEGRITY_COMPAT[finding.code]
+    if (!compat) continue
+
+    result.family_integrity_status = 'revise'
+    if (!result.failure_modes_detected.includes(compat.failure_mode)) {
+      result.failure_modes_detected.push(compat.failure_mode)
+    }
+    if (!result.warnings.includes(compat.warning)) {
+      result.warnings.push(compat.warning)
+    }
   }
 
   return result
