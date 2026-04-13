@@ -7,6 +7,10 @@ function isPresent(value) {
   return typeof value === 'string' ? value.trim().length > 0 : value != null
 }
 
+export function shouldBlockSchemaCheckOnAssignmentFamily(report = {}) {
+  return report.evaluation_status === 'evaluated' && report.judgment === 'block'
+}
+
 export function summarizeAssignmentFamilyValidation(pkg = {}) {
   const config = loadAssignmentFamilyConfig()
   const requiredFields = config.commonSchema.required_fields ?? []
@@ -15,7 +19,7 @@ export function summarizeAssignmentFamilyValidation(pkg = {}) {
   const hasAnyFamilyMetadata = isPresent(pkg.assignment_family) || presentRequiredFields.length > 0
 
   if (!hasAnyFamilyMetadata) {
-    return {
+    const report = {
       evaluation_status: 'not_evaluated',
       judgment: 'not_evaluated',
       present_required_fields: [],
@@ -24,12 +28,17 @@ export function summarizeAssignmentFamilyValidation(pkg = {}) {
       findings: [],
       note: 'Package does not yet include assignment-family metadata.',
     }
+    return {
+      ...report,
+      hard_gate_applies: false,
+      hard_gate_blocks: shouldBlockSchemaCheckOnAssignmentFamily(report),
+    }
   }
 
   const result = validateAssignmentBuild(pkg)
 
   if (missingRequiredFields.length > 0) {
-    return {
+    const report = {
       evaluation_status: 'partial_metadata',
       judgment: result.judgment,
       present_required_fields: presentRequiredFields,
@@ -38,9 +47,14 @@ export function summarizeAssignmentFamilyValidation(pkg = {}) {
       findings: result.findings,
       note: 'Package includes some assignment-family metadata but not the full upstream contract yet. Results are reported for transition visibility only.',
     }
+    return {
+      ...report,
+      hard_gate_applies: false,
+      hard_gate_blocks: shouldBlockSchemaCheckOnAssignmentFamily(report),
+    }
   }
 
-  return {
+  const report = {
     evaluation_status: 'evaluated',
     judgment: result.judgment,
     present_required_fields: presentRequiredFields,
@@ -48,5 +62,11 @@ export function summarizeAssignmentFamilyValidation(pkg = {}) {
     blockers: result.blockers,
     findings: result.findings,
     note: 'Package includes the full assignment-family metadata contract.',
+  }
+
+  return {
+    ...report,
+    hard_gate_applies: true,
+    hard_gate_blocks: shouldBlockSchemaCheckOnAssignmentFamily(report),
   }
 }
