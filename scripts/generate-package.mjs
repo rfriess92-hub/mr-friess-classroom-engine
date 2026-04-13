@@ -71,6 +71,8 @@ Hard requirements:
 8. Do not invent contradictory lesson structures.
 9. Use clear, classroom-realistic language appropriate for the declared grade level.
 10. Prefer minimal sufficient structure over bloated structure.
+11. Include canonical assignment metadata so assignment-family intent is explicit upstream.
+12. Infer assignment_family conservatively from the task structure when the brief does not name it directly.
 
 Required top-level fields:
 - schema_version: "2.1.0"
@@ -87,6 +89,20 @@ Required top-level fields:
 - exit_ticket OR final_response_sheet: object for final evidence
 - bundle: { bundle_id, declared_outputs: [...] }
 - outputs: array of output routing objects
+- assignment_family
+- grade_subject_fit
+- unit_context
+- assignment_purpose
+- final_evidence_target
+- student_task_flow
+- success_criteria
+- supports_scaffolds
+- differentiation_model
+- checkpoint_release_logic
+- teacher_implementation_notes
+- likely_misconceptions
+- pacing_shape
+- assessment_focus
 
 Each output object must include:
 - output_id: snake_case identifier
@@ -188,6 +204,7 @@ async function generatePackage() {
   console.log(`\nPackage written: ${outPath}`)
   console.log(`Package ID: ${packageId}`)
   console.log(`Architecture: ${pkg.primary_architecture}`)
+  console.log(`Assignment family: ${pkg.assignment_family ?? '(missing assignment_family)'}`)
   console.log(`Outputs declared: ${pkg.outputs?.length ?? '?'}`)
 
   console.log('\nRunning schema:check...')
