@@ -7,6 +7,51 @@
   "grade": 8,
   "topic": "Exploring Career Clusters",
   "theme": "careers",
+  "assignment_family": "short_inquiry_sequence",
+  "grade_subject_fit": "Fits Grade 8 Careers exploration by helping students sort, compare, and interpret possible career pathways through broad cluster categories.",
+  "unit_context": "Introductory career exploration task focused on organizing jobs into clusters and connecting those clusters to student interests, strengths, and curiosities.",
+  "assignment_purpose": "Students investigate sample jobs, compare likely cluster fits, and make a justified recommendation about which career cluster currently connects most strongly to their own interests and strengths.",
+  "final_evidence_target": "An exit-ticket recommendation that names one career cluster, compares it to another cluster, and justifies the decision with personal evidence.",
+  "student_task_flow": [
+    "Learn what career clusters are and how jobs can be grouped by shared skills, work contexts, and interests.",
+    "Sort sample jobs into the best-fitting career clusters using evidence from what the work involves.",
+    "Compare possible cluster fits and explain why one cluster is the stronger match for selected jobs and personal interests.",
+    "Write an exit-ticket recommendation about the career cluster that currently seems like the best fit."
+  ],
+  "success_criteria": [
+    "I sorted jobs into clusters using evidence about the work, skills, and setting.",
+    "I compared at least one cluster choice clearly instead of only naming an answer.",
+    "I justified my final recommendation with interests, strengths, or curiosities that connect to the cluster."
+  ],
+  "supports_scaffolds": [
+    "Anchor statements define what a career cluster is and how good sorting works.",
+    "A worksheet tip prompts students to think about what the person mainly does, what skills they use, and where the work happens.",
+    "Slide examples model how to compare job examples to cluster categories before independent work."
+  ],
+  "differentiation_model": {
+    "support_pathway": "Use the anchor statements, guided examples, and teacher check-ins to support one clear cluster comparison before independent reflection.",
+    "core_pathway": "Sort the sample jobs, justify cluster matches with evidence, and recommend the cluster that feels most relevant right now.",
+    "extension_pathway": "Compare two plausible cluster fits for one job or explain why a cluster fits better than another using more precise reasoning."
+  },
+  "checkpoint_release_logic": [
+    "Students complete at least one guided cluster sort with evidence before moving into independent job justifications and personal cluster reflection."
+  ],
+  "teacher_implementation_notes": [
+    "Keep the tone exploratory rather than pressuring students to choose one future path immediately.",
+    "Push students to compare cluster fits with evidence instead of relying on stereotypes or surface familiarity.",
+    "Use the guided sort to check whether students understand that clusters are broad pathways rather than single jobs."
+  ],
+  "likely_misconceptions": [
+    "Students may sort jobs by popularity or stereotype instead of by the actual work, skills, and setting.",
+    "Students may treat a career cluster like a single job title instead of a broader pathway category.",
+    "Students may describe personal interest without comparing why one cluster fits better than another."
+  ],
+  "pacing_shape": "single_period_inquiry_release",
+  "assessment_focus": [
+    "Accuracy of cluster sorting using evidence",
+    "Quality of comparison and recommendation reasoning",
+    "Personal justification grounded in interests, strengths, or curiosities"
+  ],
   "teacher_guide": {
     "big_idea": "Career clusters help students organize many different jobs into meaningful groups based on common interests, skills, and workplace contexts.",
     "learning_goals": [
