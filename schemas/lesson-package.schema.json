@@ -140,7 +140,52 @@
         "heading": { "type": "string" },
         "help": { "type": "string" },
         "lines": { "type": "integer", "minimum": 1 },
-        "row_height": { "type": "integer", "minimum": 1 }
+        "row_height": { "type": "integer", "minimum": 1 },
+        "response_pattern": {
+          "type": "string",
+          "enum": ["open_response", "compact_checkpoint", "paired_choice", "matching", "record_fields", "calculation_workspace"]
+        },
+        "choice_pairs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["left", "right"],
+            "properties": {
+              "label": { "type": "string" },
+              "left": { "type": "string", "minLength": 1 },
+              "right": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": true
+          }
+        },
+        "matching_columns": {
+          "type": "object",
+          "properties": {
+            "left_label": { "type": "string" },
+            "right_label": { "type": "string" },
+            "left_items": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+            "right_items": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+          },
+          "additionalProperties": true
+        },
+        "record_fields": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "type": "string", "minLength": 1 },
+              {
+                "type": "object",
+                "required": ["label"],
+                "properties": {
+                  "label": { "type": "string", "minLength": 1 }
+                },
+                "additionalProperties": true
+              }
+            ]
+          }
+        },
+        "answer_label": { "type": "string" },
+        "workspace_rows": { "type": "integer", "minimum": 2 }
       },
       "additionalProperties": true
     },
