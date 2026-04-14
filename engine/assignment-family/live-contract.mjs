@@ -1,17 +1,22 @@
+import { loadJson, repoPath } from '../../scripts/lib.mjs'
 import { loadAssignmentFamilyConfig } from './load-config.mjs'
 
+const CANONICAL_ASSIGNMENT_SCHEMA = loadJson(repoPath('schemas', 'canonical-assignment.schema.json'))
+const CANONICAL_ASSIGNMENT_PROPERTIES = CANONICAL_ASSIGNMENT_SCHEMA.properties ?? {}
+const CANONICAL_RENDER_HOOKS = CANONICAL_ASSIGNMENT_PROPERTIES.render_hooks?.properties ?? {}
+
 export const FAMILY_CONFIDENCE_VALUES = ['high', 'medium', 'low']
-export const ARTIFACT_AUDIENCES = ['teacher', 'student', 'shared_view']
-export const STUDENT_VISUAL_TONES = ['neutral', 'warm_classroom', 'minimal_reference']
-export const RESPONSE_MODES = ['short_response', 'paragraph_response', 'multi_part_response', 'compare_two', 'checklist', 'exit_reflection', 'table', 'diagram_space', 'annotation', 'checklist_completion', 'ranking']
-export const WRITABLE_PRIORITIES = ['low', 'medium', 'high']
+export const ARTIFACT_AUDIENCES = [...(CANONICAL_RENDER_HOOKS.artifact_audience?.enum ?? [])]
+export const STUDENT_VISUAL_TONES = [...(CANONICAL_RENDER_HOOKS.student_visual_tone?.enum ?? [])]
+export const RESPONSE_MODES = [...(CANONICAL_RENDER_HOOKS.response_mode?.enum ?? [])]
+export const WRITABLE_PRIORITIES = [...(CANONICAL_RENDER_HOOKS.writable_priority?.enum ?? [])]
 
 function familyConfig() {
   return loadAssignmentFamilyConfig().families ?? {}
 }
 
 export function getStableAssignmentFamilies() {
-  return [...(familyConfig().stable_families ?? [])]
+  return [...(CANONICAL_ASSIGNMENT_PROPERTIES.assignment_family?.enum ?? [])]
 }
 
 export function getDefaultFamilyRoutingOrder() {

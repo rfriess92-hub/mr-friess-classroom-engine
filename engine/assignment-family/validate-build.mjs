@@ -1,4 +1,5 @@
 import { loadAssignmentFamilyConfig } from './load-config.mjs'
+import { getStableAssignmentFamilies } from './live-contract.mjs'
 
 function isPresent(value) {
   if (Array.isArray(value)) return value.length > 0
@@ -21,7 +22,7 @@ function includesAny(text, keywords) {
 export function validateAssignmentBuild(build = {}) {
   const config = loadAssignmentFamilyConfig()
   const requiredFields = config.commonSchema.required_fields ?? []
-  const stableFamilies = new Set(config.families.stable_families ?? [])
+  const stableFamilies = new Set(getStableAssignmentFamilies())
   const findings = []
   const blockers = []
 
