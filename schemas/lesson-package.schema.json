@@ -152,8 +152,8 @@
             "required": ["left", "right"],
             "properties": {
               "label": { "type": "string" },
-              "left": { "type": "string" },
-              "right": { "type": "string" }
+              "left": { "type": "string", "minLength": 1 },
+              "right": { "type": "string", "minLength": 1 }
             },
             "additionalProperties": true
           }
@@ -163,8 +163,8 @@
           "properties": {
             "left_label": { "type": "string" },
             "right_label": { "type": "string" },
-            "left_items": { "type": "array", "items": { "type": "string" } },
-            "right_items": { "type": "array", "items": { "type": "string" } }
+            "left_items": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+            "right_items": { "type": "array", "items": { "type": "string", "minLength": 1 } }
           },
           "additionalProperties": true
         },
