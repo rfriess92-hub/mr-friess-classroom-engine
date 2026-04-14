@@ -29,6 +29,7 @@ from student_pdf_task_sheets import (
     integrated_task_box,
     add_day1_page2_footer,
     add_day2_footer,
+    build_task_block as task_sheet_build_task_block,
     render_task_sheet,
     render_final_response_sheet,
 )
@@ -131,37 +132,17 @@ def worksheet_question_block(styles, question: dict):
     return KeepTogether([Paragraph(label, styles['SectionHeadX']), prompt_card, Spacer(1, 5), response_card, Spacer(1, base.WORKSHEET_QUESTION_BLOCK_SPACER)])
 
 
-def build_task_block(styles, task: dict, compact=False, spacing_scale: float = 1.0, rendered_lines: int | None = None, show_help: bool = True, **_kwargs):
-    profile = task_profile(task)
-    line_total = int(rendered_lines if rendered_lines is not None else task.get('lines', profile.get('lines', 4)))
-    if compact:
-        spacer_after = max(2, int(round(5 * spacing_scale)))
-        return integrated_task_box(base, styles, profile, line_total=line_total, show_help=show_help, spacer_after=spacer_after)
-    from reportlab.platypus import Paragraph, Spacer, Table, TableStyle, KeepTogether
-    bar = 5
-    prompt_inner = [Paragraph(profile['heading'], styles['SectionHeadX']), Paragraph(profile['instruction'], styles['BodyText'])]
-    prompt_card = Table([['', prompt_inner]], colWidths=[bar, 540 - bar])
-    prompt_card.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (0, -1), PROMPT_ACCENT),
-        ('BACKGROUND', (1, 0), (1, -1), PROMPT_BG),
-        ('BOX', (0, 0), (-1, -1), 0.75, PROMPT_BORDER),
-        ('TOPPADDING', (0, 0), (-1, -1), 8), ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
-        ('LEFTPADDING', (0, 0), (0, -1), 0), ('RIGHTPADDING', (0, 0), (0, -1), 0),
-        ('LEFTPADDING', (1, 0), (1, -1), 10), ('RIGHTPADDING', (1, 0), (1, -1), 10),
-        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-    ]))
-    response_card = Table([[[base.response_line_table(max(2, line_total), row_height=16)]]], colWidths=[540])
-    response_card.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, -1), colors.white), ('BOX', (0, 0), (-1, -1), 0.55, BORDER),
-        ('TOPPADDING', (0, 0), (-1, -1), 6), ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
-        ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8),
-        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-    ]))
-    flowables = [prompt_card]
-    if show_help and profile['help']:
-        flowables += [Spacer(1, 3), Paragraph(profile['help'], styles['InlineHelpX'])]
-    flowables += [Spacer(1, 4), response_card, Spacer(1, max(2, int(round(4 * spacing_scale))))]
-    return KeepTogether(flowables)
+def build_task_block(styles, task: dict, compact=False, spacing_scale: float = 1.0, rendered_lines: int | None = None, show_help: bool = True, **kwargs):
+    return task_sheet_build_task_block(
+        base,
+        styles,
+        task,
+        compact=compact,
+        spacing_scale=spacing_scale,
+        rendered_lines=rendered_lines,
+        show_help=show_help,
+        **kwargs,
+    )
 
 
 def add_day1_page2_footer_wrapper(story, styles, _section: dict):
