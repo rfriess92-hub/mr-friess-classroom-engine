@@ -1,0 +1,121 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "task_sheet_response_patterns_workshop",
+  "primary_architecture": "workshop_session",
+  "grade_band": "6-8",
+  "subject": "Mathematics",
+  "grade": 6,
+  "topic": "Measure and compare package options",
+  "theme": "mathematics",
+  "bundle": {
+    "bundle_id": "task_sheet_response_patterns_workshop_bundle",
+    "declared_outputs": ["task_sheet"]
+  },
+  "task_sheet": {
+    "title": "Measurement and Selection Record",
+    "instructions": [
+      "Use the sheet as a working record, not a paragraph worksheet.",
+      "Keep each response in the space that matches the task type.",
+      "Record only the values and selections you actually need."
+    ],
+    "tasks": [
+      {
+        "label": "Part A",
+        "prompt": "Choose one option in each pair.",
+        "lines": 1,
+        "activity_type": "card_sort",
+        "render_hints": {
+          "response_pattern": "paired_choice",
+          "heading": "Choose one in each row",
+          "help": "Treat each pair as a compact selection, not a written response.",
+          "choice_pairs": [
+            { "label": "Size", "left": "small", "right": "large" },
+            { "label": "Style", "left": "simple", "right": "fancy" },
+            { "label": "Shape", "left": "tall", "right": "flat" },
+            { "label": "Material", "left": "wooden", "right": "metal" }
+          ]
+        }
+      },
+      {
+        "label": "Part B",
+        "prompt": "Match each measurement word to the best definition.",
+        "lines": 1,
+        "activity_type": "card_sort",
+        "render_hints": {
+          "response_pattern": "matching",
+          "heading": "Match the words and definitions",
+          "matching_columns": {
+            "left_label": "Words",
+            "right_label": "Definitions",
+            "left_items": ["perimeter", "area", "volume"],
+            "right_items": [
+              "space inside a solid figure",
+              "distance around a flat figure",
+              "space inside a flat figure"
+            ]
+          }
+        }
+      },
+      {
+        "label": "Part C",
+        "prompt": "Record the values you need from the measurement brief.",
+        "lines": 1,
+        "activity_type": "station_task",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Record the measurement brief",
+          "record_fields": [
+            "Length (cm)",
+            "Width (cm)",
+            "Height (cm)",
+            "Area (cm²)",
+            "Volume (cm³)",
+            "Bags needed"
+          ]
+        }
+      },
+      {
+        "label": "Part D",
+        "prompt": "Show your calculation and state the final number of bags needed.",
+        "lines": 6,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "calculation_workspace",
+          "heading": "Show your calculation",
+          "answer_label": "Final bags needed",
+          "workspace_rows": 6
+        }
+      },
+      {
+        "label": "Part E",
+        "prompt": "In one short checkpoint response, say which package option seems strongest right now.",
+        "lines": 2,
+        "activity_type": "think_pair_share",
+        "render_hints": {
+          "response_pattern": "compact_checkpoint",
+          "heading": "Quick checkpoint",
+          "help": "Keep this to one or two short lines."
+        }
+      }
+    ],
+    "embedded_supports": [
+      "Choose or record only what the task asks for.",
+      "Keep calculations in the workspace instead of writing them as prose.",
+      "Use the checkpoint space for a short response only."
+    ],
+    "success_criteria": [
+      "I kept selections compact and readable.",
+      "I recorded values in labeled fields.",
+      "I used the calculation space for working, not prose."
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "task_sheet_main",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "task_sheet_response_patterns_workshop_bundle"
+    }
+  ]
+}
