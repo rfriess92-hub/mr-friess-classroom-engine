@@ -19,6 +19,10 @@ function rendererKeyFor(outputType) {
       return 'render_exit_ticket'
     case 'final_response_sheet':
       return 'render_final_response_sheet'
+    case 'graphic_organizer':
+      return 'render_graphic_organizer'
+    case 'discussion_prep_sheet':
+      return 'render_discussion_prep_sheet'
     default:
       return 'render_unknown_output'
   }
