@@ -63,6 +63,15 @@ jobs:
       - name: Route plan evaluated assignment-family fixture
         run: pnpm run route:plan -- --package fixtures/generated/careers-8-career-clusters.grade8-careers.json --print-routes
 
+      - name: Schema check task-sheet response-pattern fixture
+        run: pnpm run schema:check -- --package fixtures/tests/task-sheet-response-patterns.workshop-session.json
+
+      - name: Route plan task-sheet response-pattern fixture
+        run: pnpm run route:plan -- --package fixtures/tests/task-sheet-response-patterns.workshop-session.json --print-routes
+
+      - name: Render task-sheet response-pattern fixture
+        run: pnpm run render:package -- --package fixtures/tests/task-sheet-response-patterns.workshop-session.json --out output
+
       - name: Upload rendered bundle evidence
         if: always()
         uses: actions/upload-artifact@v4
