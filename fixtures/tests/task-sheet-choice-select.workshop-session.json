@@ -1,0 +1,84 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "task_sheet_choice_select_workshop",
+  "primary_architecture": "workshop_session",
+  "grade_band": "6-8",
+  "subject": "Mathematics",
+  "grade": 6,
+  "topic": "Choose the most efficient package option",
+  "theme": "mathematics",
+  "bundle": {
+    "bundle_id": "task_sheet_choice_select_workshop_bundle",
+    "declared_outputs": ["task_sheet"]
+  },
+  "task_sheet": {
+    "title": "Option Selection Record",
+    "instructions": [
+      "Use compact selection marks, not full prose.",
+      "Choose the single best option where the task asks for one choice."
+    ],
+    "tasks": [
+      {
+        "label": "Part A",
+        "prompt": "Select the package option that seems most efficient right now.",
+        "lines": 1,
+        "activity_type": "station_task",
+        "render_hints": {
+          "response_pattern": "choice_select",
+          "heading": "Choose one package option",
+          "help": "Mark only one choice.",
+          "choice_options": [
+            "Small package",
+            "Large package",
+            "Simple package",
+            "Fancy package",
+            "Wooden package",
+            "Metal package"
+          ]
+        }
+      },
+      {
+        "label": "Part B",
+        "prompt": "Choose one option in each comparison row.",
+        "lines": 1,
+        "activity_type": "card_sort",
+        "render_hints": {
+          "response_pattern": "paired_choice",
+          "heading": "Choose one option in each row",
+          "choice_pairs": [
+            { "label": "Size", "left": "small", "right": "large" },
+            { "label": "Style", "left": "simple", "right": "fancy" }
+          ]
+        }
+      },
+      {
+        "label": "Part C",
+        "prompt": "Give one brief checkpoint response about why your selected option seems strongest.",
+        "lines": 2,
+        "activity_type": "think_pair_share",
+        "render_hints": {
+          "response_pattern": "compact_checkpoint",
+          "heading": "Quick checkpoint",
+          "help": "Keep this to one or two short lines."
+        }
+      }
+    ],
+    "embedded_supports": [
+      "Use the selector rows for choices, not explanations.",
+      "Use the checkpoint only for a brief reason."
+    ],
+    "success_criteria": [
+      "I marked one clear option.",
+      "I kept my checkpoint response brief."
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "task_sheet_main",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "task_sheet_choice_select_workshop_bundle"
+    }
+  ]
+}
