@@ -21,7 +21,7 @@ TASK_PROFILES={
 'day2_evidence_revision':{'heading':'Part B - Improve your evidence or explanation','help':'Add one detail that makes the example more specific, or explain why the example supports your opinion.','lines':4,'row_height':14},
 'day2_stronger_explanation':{'heading':'Part C - Try one stronger explanation','help':'Use the frame This evidence matters because ___. Keep it to one clear sentence.','lines':2,'row_height':15},
 }
-TASK_RESPONSE_PATTERNS={'open_response','compact_checkpoint','paired_choice','matching','record_fields','calculation_workspace'}
+TASK_RESPONSE_PATTERNS={'open_response','fill_in_blank','compact_checkpoint','paired_choice','matching','record_fields','calculation_workspace'}
 _INTENT_PURPOSE_LINES={'guided_note_catch':'Record key ideas as you watch and listen.','revision_strengthen':'Strengthen one weak part before you draft.','compare_sort':'Compare evidence from each setting and build a recommendation.','evidence_capture':'Record the evidence you plan to use.','checkpoint_prep':'Prepare for the checkpoint.','exploratory_planning':'Build your thinking before you draft.'}
 _INTENT_TITLE_SUFFIX={'guided_note_catch':'— Note Catcher','revision_strengthen':'— Revision','checkpoint_prep':'— Checkpoint'}
 
@@ -63,6 +63,12 @@ def _task_render_hints(task):
 def _string_value(value):
     return str(value or '').strip()
 
+def _blank_prompts(task):
+    value=_task_render_hints(task).get('blank_prompts')
+    if not isinstance(value,list):
+        return []
+    return normalize_string_list(value)
+
 def _choice_pairs(task):
     pairs=[]
     for index,item in enumerate(_task_render_hints(task).get('choice_pairs',[]) if isinstance(_task_render_hints(task).get('choice_pairs',[]),list) else []):
@@ -98,6 +104,8 @@ def task_response_pattern(task):
     explicit=_string_value(hints.get('response_pattern'))
     if explicit in TASK_RESPONSE_PATTERNS:
         return explicit
+    if _blank_prompts(task):
+        return 'fill_in_blank'
     if _choice_pairs(task):
         return 'paired_choice'
     if _matching_columns(task):
@@ -125,6 +133,28 @@ def _framed_flow_card(flowables,width=540,bg_color=CARD_BG,border_color=BORDER,p
     card.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),bg_color),('BOX',(0,0),(-1,-1),0.65,border_color),('TOPPADDING',(0,0),(-1,-1),padding),('BOTTOMPADDING',(0,0),(-1,-1),padding),('LEFTPADDING',(0,0),(-1,-1),padding+2),('RIGHTPADDING',(0,0),(-1,-1),padding+2),('VALIGN',(0,0),(-1,-1),'TOP')]))
     return card
 
+def _fill_blank_row(styles,prompt,width=520):
+    row=Table([[Paragraph(prompt,styles['MicroX']), '']],colWidths=[width-150,150])
+    row.setStyle(TableStyle([
+        ('LINEBELOW',(1,0),(1,0),0.75,BORDER),
+        ('TOPPADDING',(0,0),(-1,-1),3),('BOTTOMPADDING',(0,0),(-1,-1),5),
+        ('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(-1,-1),0),
+        ('VALIGN',(0,0),(-1,-1),'BOTTOM'),
+    ]))
+    return row
+
+def _matching_letter(index):
+    return chr(65+index) if index<26 else str(index+1)
+
+def build_fill_in_blank_block(styles,task,prompts,show_help=True,spacer_after=6):
+    profile=task_profile(task)
+    rows=[Paragraph('Fill in each short value',styles['ResponseLabelX']),Spacer(1,2)]
+    for prompt in prompts:
+        rows.extend([_fill_blank_row(styles,prompt),Spacer(1,3)])
+    if rows:
+        rows.pop()
+    return KeepTogether([_task_prompt_card(styles,profile,show_help=show_help,compact=True),Spacer(1,4),_framed_flow_card(rows,bg_color=CARD_BG,border_color=BORDER,padding=6),Spacer(1,spacer_after)])
+
 def build_paired_choice_block(styles,task,pairs,show_help=True,spacer_after=6):
     profile=task_profile(task)
     rows=[[Paragraph('Item',styles['PromptLabelX']),Paragraph('Option A',styles['PromptLabelX']),Paragraph('Option B',styles['PromptLabelX'])]]
@@ -139,12 +169,12 @@ def build_paired_choice_block(styles,task,pairs,show_help=True,spacer_after=6):
     return KeepTogether([_task_prompt_card(styles,profile,show_help=show_help,compact=True),Spacer(1,4),_framed_flow_card([grid],bg_color=CARD_BG,border_color=BORDER,padding=6),Spacer(1,spacer_after)])
 
 def build_matching_block(styles,task,matching,show_help=True,spacer_after=6):
-    profile=task_profile(task);right_items=matching['right_items'];left_items=matching['left_items'];rows=[[Paragraph(matching['left_label'],styles['PromptLabelX']),Paragraph('Match',styles['PromptLabelX']),Paragraph(matching['right_label'],styles['PromptLabelX'])]]
+    profile=task_profile(task);right_items=matching['right_items'];left_items=matching['left_items'];rows=[[Paragraph(matching['left_label'],styles['PromptLabelX']),Paragraph('Letter',styles['PromptLabelX']),Paragraph(matching['right_label'],styles['PromptLabelX'])]]
     row_count=max(len(left_items),len(right_items))
     for index in range(row_count):
         left=Paragraph(left_items[index],styles['MicroX']) if index<len(left_items) else Paragraph('',styles['MicroX'])
         match=Paragraph('____',styles['MicroX']) if index<len(left_items) else Paragraph('',styles['MicroX'])
-        marker=f"{chr(65+index)}. " if index<26 else f"{index+1}. "
+        marker=f"{_matching_letter(index)}. " if index<26 else f"{index+1}. "
         right=Paragraph(f"{marker}{right_items[index]}",styles['MicroX']) if index<len(right_items) else Paragraph('',styles['MicroX'])
         rows.append([left,match,right])
     grid=Table(rows,colWidths=[180,60,300])
@@ -174,7 +204,7 @@ def _workspace_grid(rows,width=540,cols=6):
 def build_calculation_workspace_block(base,styles,task,show_help=True,spacer_after=6):
     profile=task_profile(task);hints=_task_render_hints(task);answer_label=_string_value(hints.get('answer_label')) or 'Final answer';workspace_rows=max(2,int(hints.get('workspace_rows',6) or 6))
     answer_card=_framed_flow_card([Paragraph(answer_label,styles['ResponseLabelX']),Spacer(1,2),base.response_line_table(1,row_height=14)],width=540,bg_color=CARD_BG,border_color=LIGHT_BORDER,padding=6)
-    workspace_card=_framed_flow_card([Paragraph('Work space',styles['ResponseLabelX']),Spacer(1,3),_workspace_grid(workspace_rows)],width=540,bg_color=CARD_BG,border_color=BORDER,padding=6)
+    workspace_card=_framed_flow_card([Paragraph('Show your working',styles['ResponseLabelX']),Spacer(1,3),_workspace_grid(workspace_rows)],width=540,bg_color=CARD_BG,border_color=BORDER,padding=6)
     return KeepTogether([_task_prompt_card(styles,profile,show_help=show_help,compact=True),Spacer(1,4),answer_card,Spacer(1,4),workspace_card,Spacer(1,spacer_after)])
 
 def build_compact_checkpoint_block(base,styles,task,rendered_lines=None,show_help=True,spacer_after=6):
@@ -248,6 +278,8 @@ def _help_visible(layout,task_index,page_task_count,page_index=0):
 def _estimate_structured_task_height(task,compact):
     pattern=task_response_pattern(task)
     base_height=112 if compact else 132
+    if pattern=='fill_in_blank':
+        return base_height+(max(1,len(_blank_prompts(task)))*22)
     if pattern=='paired_choice':
         return base_height+(max(1,len(_choice_pairs(task)))+1)*24
     if pattern=='matching':
@@ -353,6 +385,10 @@ def render_final_response_sheet(base,styles_bundle,packet,section,out_path):
 
 def build_task_block(base,styles,task,compact=False,spacing_scale: float = 1.0,rendered_lines: int | None = None,show_help: bool = True,**_kwargs):
     pattern=task_response_pattern(task);spacer_after=max(2,int(round((5 if compact else 6)*spacing_scale)))
+    if pattern=='fill_in_blank':
+        prompts=_blank_prompts(task)
+        if prompts:
+            return build_fill_in_blank_block(styles,task,prompts,show_help=show_help,spacer_after=spacer_after)
     if pattern=='paired_choice':
         pairs=_choice_pairs(task)
         if pairs:

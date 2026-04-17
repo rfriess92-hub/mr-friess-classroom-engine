@@ -1,0 +1,82 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "task_sheet_fill_in_blank_workshop",
+  "primary_architecture": "workshop_session",
+  "grade_band": "6-8",
+  "subject": "Mathematics",
+  "grade": 6,
+  "topic": "Use short value records during comparison work",
+  "theme": "mathematics",
+  "bundle": {
+    "bundle_id": "task_sheet_fill_in_blank_workshop_bundle",
+    "declared_outputs": ["task_sheet"]
+  },
+  "task_sheet": {
+    "title": "Short Value Fill-In Record",
+    "instructions": [
+      "Use short values and selections, not full prose responses.",
+      "Fill in each missing value only where the sheet asks for it."
+    ],
+    "tasks": [
+      {
+        "label": "Part A",
+        "prompt": "Fill in the missing short values from the comparison notes.",
+        "lines": 1,
+        "activity_type": "station_task",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "heading": "Fill in the missing values",
+          "help": "Use short values only, not full sentences.",
+          "blank_prompts": [
+            "The small package is ___ cm wide.",
+            "The fancy package is ___ cm tall.",
+            "The wooden package needs ___ bags.",
+            "The metal package costs ___ dollars."
+          ]
+        }
+      },
+      {
+        "label": "Part B",
+        "prompt": "Choose one option in each comparison row.",
+        "lines": 1,
+        "activity_type": "card_sort",
+        "render_hints": {
+          "response_pattern": "paired_choice",
+          "heading": "Choose one option in each row",
+          "choice_pairs": [
+            { "label": "Size", "left": "small", "right": "large" },
+            { "label": "Style", "left": "simple", "right": "fancy" }
+          ]
+        }
+      },
+      {
+        "label": "Part C",
+        "prompt": "Give one brief checkpoint response about which option seems most efficient.",
+        "lines": 2,
+        "activity_type": "think_pair_share",
+        "render_hints": {
+          "response_pattern": "compact_checkpoint",
+          "heading": "Quick checkpoint",
+          "help": "Keep this to one or two short lines."
+        }
+      }
+    ],
+    "embedded_supports": [
+      "Keep values short and precise.",
+      "Use the checkpoint space only for a brief response."
+    ],
+    "success_criteria": [
+      "I used short value fills instead of prose.",
+      "I kept my comparison choices readable."
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "task_sheet_main",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "task_sheet_fill_in_blank_workshop_bundle"
+    }
+  ]
+}
