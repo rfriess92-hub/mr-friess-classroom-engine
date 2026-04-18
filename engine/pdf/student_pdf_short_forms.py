@@ -1,10 +1,7 @@
 from reportlab.lib import colors
-from reportlab.platypus import Paragraph, Spacer, Table, TableStyle, SimpleDocTemplate
+from reportlab.platypus import Paragraph, Spacer, Table, TableStyle
 from student_pdf_shared import (
-    INK_PRIMARY,
-    SLATE,
     BORDER,
-    LIGHT_BORDER,
     CARD_BG,
     PROMPT_BG,
     PROMPT_BORDER,
@@ -78,8 +75,19 @@ def render_exit_ticket(base, styles_bundle, packet: dict, section: dict, out_pat
 
     prompt = str(section.get('prompt', '')).strip()
     if prompt:
-        prompt_inner = [Paragraph(profile['prompt_label'], styles['SectionHeadX']), Paragraph(prompt, styles['BodyText'])]
-        prompt_card = task_card_with_bar(prompt_inner, accent_color=PROMPT_ACCENT, bg_color=PROMPT_BG, border_color=PROMPT_BORDER)
+        prompt_card = Table([[[
+            Paragraph(profile['prompt_label'], styles['SectionHeadX']),
+            Paragraph(prompt, styles['BodyText']),
+        ]]], colWidths=[540])
+        prompt_card.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, -1), PROMPT_BG),
+            ('BOX', (0, 0), (-1, -1), 0.5, BORDER),
+            ('TOPPADDING', (0, 0), (-1, -1), 7),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 7),
+            ('LEFTPADDING', (0, 0), (-1, -1), 8),
+            ('RIGHTPADDING', (0, 0), (-1, -1), 8),
+            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ]))
         story.append(prompt_card)
         story.append(Spacer(1, 6))
 
@@ -91,11 +99,11 @@ def render_exit_ticket(base, styles_bundle, packet: dict, section: dict, out_pat
     ]]], colWidths=[540])
     response_card.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), CARD_BG),
-        ('BOX', (0, 0), (-1, -1), 0.75, BORDER),
-        ('TOPPADDING', (0, 0), (-1, -1), 8),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
-        ('LEFTPADDING', (0, 0), (-1, -1), 10),
-        ('RIGHTPADDING', (0, 0), (-1, -1), 10),
+        ('BOX', (0, 0), (-1, -1), 0.5, BORDER),
+        ('TOPPADDING', (0, 0), (-1, -1), 7),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 7),
+        ('LEFTPADDING', (0, 0), (-1, -1), 8),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 8),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
     ]))
     story.append(response_card)
@@ -103,23 +111,34 @@ def render_exit_ticket(base, styles_bundle, packet: dict, section: dict, out_pat
 
     success = normalize_string_list(section.get('success_criteria', []))
     split = max(1, (len(success) + 1) // 2)
-    left = compact_list_cell(styles, 'Before you hand it in', success[:split], box_color=SUCCESS_ACCENT)
-    right = compact_list_cell(styles, 'Quick check-in', profile['quick_check_items'], box_color=SUCCESS_ACCENT)
+    checkbox_color = colors.HexColor('#a7b8aa')
+    left = compact_list_cell(styles, 'Before you hand it in', success[:split], box_color=checkbox_color)
+    right = compact_list_cell(styles, 'Quick check-in', profile['quick_check_items'], box_color=checkbox_color)
     footer = Table([[left, right]], colWidths=[265, 265])
     footer.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), FINAL_FOOTER_BG),
-        ('BOX', (0, 0), (-1, -1), 0.55, FINAL_FOOTER_BORDER),
-        ('INNERGRID', (0, 0), (-1, -1), 0.35, FINAL_FOOTER_GRID),
-        ('TOPPADDING', (0, 0), (-1, -1), 6),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+        ('BOX', (0, 0), (-1, -1), 0.4, FINAL_FOOTER_BORDER),
+        ('INNERGRID', (0, 0), (-1, -1), 0.28, FINAL_FOOTER_GRID),
+        ('TOPPADDING', (0, 0), (-1, -1), 5),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
         ('LEFTPADDING', (0, 0), (-1, -1), 8),
         ('RIGHTPADDING', (0, 0), (-1, -1), 8),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
     ]))
     story.append(footer)
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=base.letter, leftMargin=28, rightMargin=28, topMargin=20, bottomMargin=20)
-    doc.build(story)
+    base.build_printable_pdf(
+        story,
+        out_path,
+        packet=packet,
+        output_type='exit_ticket',
+        section={'title': sheet_title, **section},
+        pagesize=base.letter,
+        left_margin=28,
+        right_margin=28,
+        top_margin=20,
+        bottom_margin=20,
+    )
 
 
 def render_discussion_prep_sheet(base, styles_bundle, packet: dict, section: dict, out_path):
@@ -148,7 +167,6 @@ def render_discussion_prep_sheet(base, styles_bundle, packet: dict, section: dic
         story.append(prompt_card)
         story.append(Spacer(1, 7))
 
-    # Position / claim box
     position_card = Table([[[
         Paragraph(position_label, styles['SectionHeadX']),
         Paragraph('Write your claim or initial position in 1-2 sentences.', styles['HintX']),
@@ -165,7 +183,6 @@ def render_discussion_prep_sheet(base, styles_bundle, packet: dict, section: dic
     story.append(position_card)
     story.append(Spacer(1, 6))
 
-    # Evidence boxes
     for i in range(evidence_count):
         ev_inner = [
             Paragraph(f'Evidence {i + 1}', styles['SectionHeadX']),
@@ -182,7 +199,6 @@ def render_discussion_prep_sheet(base, styles_bundle, packet: dict, section: dic
         story.append(ev_card)
         story.append(Spacer(1, 5))
 
-    # Question box
     if include_question:
         q_card = Table([[[
             Paragraph('My question for discussion', styles['SectionHeadX']),
@@ -200,7 +216,6 @@ def render_discussion_prep_sheet(base, styles_bundle, packet: dict, section: dic
         story.append(q_card)
         story.append(Spacer(1, 5))
 
-    # Counterargument box
     if include_counter:
         counter_inner = [
             Paragraph('A counterargument I need to address', styles['SectionHeadX']),
@@ -231,5 +246,16 @@ def render_discussion_prep_sheet(base, styles_bundle, packet: dict, section: dic
         ]))
         story.append(footer)
 
-    doc = SimpleDocTemplate(str(out_path), pagesize=base.letter, leftMargin=28, rightMargin=28, topMargin=20, bottomMargin=20)
-    doc.build(story)
+    base.build_printable_pdf(
+        story,
+        out_path,
+        packet=packet,
+        output_type='discussion_prep_sheet',
+        section=section,
+        pagesize=base.letter,
+        left_margin=28,
+        right_margin=28,
+        top_margin=20,
+        bottom_margin=20,
+    )
+
