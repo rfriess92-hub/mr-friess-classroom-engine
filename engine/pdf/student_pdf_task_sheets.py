@@ -21,7 +21,7 @@ TASK_PROFILES={
 'day2_evidence_revision':{'heading':'Part B - Improve your evidence or explanation','help':'Add one detail that makes the example more specific, or explain why the example supports your opinion.','lines':4,'row_height':14},
 'day2_stronger_explanation':{'heading':'Part C - Try one stronger explanation','help':'Use the frame This evidence matters because ___. Keep it to one clear sentence.','lines':2,'row_height':15},
 }
-TASK_RESPONSE_PATTERNS={'open_response','fill_in_blank','compact_checkpoint','paired_choice','matching','record_fields','calculation_workspace'}
+TASK_RESPONSE_PATTERNS={'open_response','fill_in_blank','compact_checkpoint','choice_select','paired_choice','matching','record_fields','calculation_workspace'}
 _INTENT_PURPOSE_LINES={'guided_note_catch':'Record key ideas as you watch and listen.','revision_strengthen':'Strengthen one weak part before you draft.','compare_sort':'Compare evidence from each setting and build a recommendation.','evidence_capture':'Record the evidence you plan to use.','checkpoint_prep':'Prepare for the checkpoint.','exploratory_planning':'Build your thinking before you draft.'}
 _INTENT_TITLE_SUFFIX={'guided_note_catch':'— Note Catcher','revision_strengthen':'— Revision','checkpoint_prep':'— Checkpoint'}
 
@@ -69,6 +69,20 @@ def _blank_prompts(task):
         return []
     return normalize_string_list(value)
 
+def _choice_options(task):
+    value=_task_render_hints(task).get('choice_options')
+    if not isinstance(value,list):
+        return []
+    normalized=[]
+    for item in value:
+        if isinstance(item,dict):
+            label=_string_value(item.get('label'))
+        else:
+            label=_string_value(item)
+        if label:
+            normalized.append(label)
+    return normalized
+
 def _choice_pairs(task):
     pairs=[]
     for index,item in enumerate(_task_render_hints(task).get('choice_pairs',[]) if isinstance(_task_render_hints(task).get('choice_pairs',[]),list) else []):
@@ -106,6 +120,8 @@ def task_response_pattern(task):
         return explicit
     if _blank_prompts(task):
         return 'fill_in_blank'
+    if _choice_options(task):
+        return 'choice_select'
     if _choice_pairs(task):
         return 'paired_choice'
     if _matching_columns(task):
@@ -143,6 +159,9 @@ def _fill_blank_row(styles,prompt,width=520):
     ]))
     return row
 
+def _choice_option_flow(styles,text,width):
+    return checkbox_row(width,[Paragraph(text,styles['MicroX'])],compact=True)
+
 def _matching_letter(index):
     return chr(65+index) if index<26 else str(index+1)
 
@@ -154,6 +173,22 @@ def build_fill_in_blank_block(styles,task,prompts,show_help=True,spacer_after=6)
     if rows:
         rows.pop()
     return KeepTogether([_task_prompt_card(styles,profile,show_help=show_help,compact=True),Spacer(1,4),_framed_flow_card(rows,bg_color=CARD_BG,border_color=BORDER,padding=6),Spacer(1,spacer_after)])
+
+def build_choice_select_block(styles,task,options,show_help=True,spacer_after=6):
+    profile=task_profile(task)
+    if len(options) <= 4:
+        rows=[[ _choice_option_flow(styles, option, 500) ] for option in options]
+        grid=Table(rows,colWidths=[520])
+    else:
+        rows=[]
+        for index in range(0,len(options),2):
+            left=_choice_option_flow(styles, options[index], 228)
+            right=_choice_option_flow(styles, options[index+1], 228) if index+1 < len(options) else Paragraph('',styles['MicroX'])
+            rows.append([left,right])
+        grid=Table(rows,colWidths=[250,250])
+    grid.setStyle(TableStyle([('TOPPADDING',(0,0),(-1,-1),2),('BOTTOMPADDING',(0,0),(-1,-1),2),('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(-1,-1),0),('VALIGN',(0,0),(-1,-1),'TOP')]))
+    inner=[Paragraph('Select one option',styles['ResponseLabelX']),Spacer(1,3),grid]
+    return KeepTogether([_task_prompt_card(styles,profile,show_help=show_help,compact=True),Spacer(1,4),_framed_flow_card(inner,bg_color=CARD_BG,border_color=BORDER,padding=6),Spacer(1,spacer_after)])
 
 def build_paired_choice_block(styles,task,pairs,show_help=True,spacer_after=6):
     profile=task_profile(task)
@@ -280,6 +315,9 @@ def _estimate_structured_task_height(task,compact):
     base_height=112 if compact else 132
     if pattern=='fill_in_blank':
         return base_height+(max(1,len(_blank_prompts(task)))*22)
+    if pattern=='choice_select':
+        rows=(max(1,len(_choice_options(task)))+1)//2 if len(_choice_options(task)) > 4 else max(1,len(_choice_options(task)))
+        return base_height+(rows*22)
     if pattern=='paired_choice':
         return base_height+(max(1,len(_choice_pairs(task)))+1)*24
     if pattern=='matching':
@@ -389,6 +427,10 @@ def build_task_block(base,styles,task,compact=False,spacing_scale: float = 1.0,r
         prompts=_blank_prompts(task)
         if prompts:
             return build_fill_in_blank_block(styles,task,prompts,show_help=show_help,spacer_after=spacer_after)
+    if pattern=='choice_select':
+        options=_choice_options(task)
+        if options:
+            return build_choice_select_block(styles,task,options,show_help=show_help,spacer_after=spacer_after)
     if pattern=='paired_choice':
         pairs=_choice_pairs(task)
         if pairs:

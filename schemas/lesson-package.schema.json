@@ -9,30 +9,13 @@
     "package_id": { "type": "string", "minLength": 1 },
     "primary_architecture": {
       "type": "string",
-      "enum": [
-        "single_period_full",
-        "multi_day_sequence",
-        "three_day_sequence",
-        "workshop_session",
-        "lab_investigation",
-        "seminar",
-        "project_sprint",
-        "station_rotation"
-      ]
+      "enum": ["single_period_full","multi_day_sequence","three_day_sequence","workshop_session","lab_investigation","seminar","project_sprint","station_rotation"]
     },
     "session_count": { "type": "integer", "minimum": 1, "description": "Number of class sessions this package is designed for." },
     "secondary_architecture_support": {
       "oneOf": [
         { "type": "string", "minLength": 1 },
-        {
-          "type": "object",
-          "required": ["note"],
-          "properties": {
-            "architecture": { "type": "string" },
-            "note": { "type": "string", "minLength": 1 }
-          },
-          "additionalProperties": true
-        }
+        {"type": "object","required": ["note"],"properties": {"architecture": { "type": "string" },"note": { "type": "string", "minLength": 1 }},"additionalProperties": true}
       ]
     },
     "materials_control_note": { "type": "string" },
@@ -52,15 +35,7 @@
     "pacing_shape": { "$ref": "canonical-assignment.schema.json#/properties/pacing_shape" },
     "assessment_focus": { "$ref": "canonical-assignment.schema.json#/properties/assessment_focus" },
     "render_hooks": { "$ref": "canonical-assignment.schema.json#/properties/render_hooks" },
-    "bundle": {
-      "type": "object",
-      "required": ["bundle_id", "declared_outputs"],
-      "properties": {
-        "bundle_id": { "type": "string" },
-        "declared_outputs": { "type": "array", "items": { "$ref": "#/$defs/outputType" } }
-      },
-      "additionalProperties": true
-    },
+    "bundle": {"type": "object","required": ["bundle_id", "declared_outputs"],"properties": {"bundle_id": { "type": "string" },"declared_outputs": { "type": "array", "items": { "$ref": "#/$defs/outputType" } }},"additionalProperties": true},
     "outputs": { "type": "array", "items": { "$ref": "#/$defs/output" } },
     "slides": { "type": "array", "items": { "$ref": "#/$defs/slideNode" } },
     "worksheet": { "$ref": "#/$defs/worksheetSection" },
@@ -72,67 +47,19 @@
     "days": { "type": "array", "items": { "$ref": "#/$defs/day" } }
   },
   "allOf": [
-    {
-      "if": { "properties": { "primary_architecture": { "const": "multi_day_sequence" } } },
-      "then": { "required": ["days"] }
-    },
-    {
-      "if": { "properties": { "primary_architecture": { "const": "three_day_sequence" } } },
-      "then": { "required": ["days"] }
-    },
-    {
-      "if": { "properties": { "primary_architecture": { "const": "project_sprint" } } },
-      "then": { "required": ["days"] }
-    }
+    {"if": { "properties": { "primary_architecture": { "const": "multi_day_sequence" } } },"then": { "required": ["days"] }},
+    {"if": { "properties": { "primary_architecture": { "const": "three_day_sequence" } } },"then": { "required": ["days"] }},
+    {"if": { "properties": { "primary_architecture": { "const": "project_sprint" } } },"then": { "required": ["days"] }}
   ],
   "$defs": {
     "audience": { "type": "string", "enum": ["teacher", "student", "shared_view"] },
-    "outputType": {
-      "type": "string",
-      "enum": [
-        "teacher_guide",
-        "lesson_overview",
-        "slides",
-        "worksheet",
-        "task_sheet",
-        "checkpoint_sheet",
-        "exit_ticket",
-        "final_response_sheet",
-        "graphic_organizer",
-        "discussion_prep_sheet"
-      ]
-    },
-    "imageRole": {
-      "type": "string",
-      "enum": ["cue_icon", "small_illustration", "reference_photo", "example_visual", "instructional_diagram"]
-    },
-    "imagePurpose": {
-      "type": "string",
-      "enum": ["orient_lesson", "explain_content", "organize_attention"]
-    },
-    "imageIntent": {
-      "type": "object",
-      "properties": {
-        "role": { "$ref": "#/$defs/imageRole" },
-        "purpose": { "$ref": "#/$defs/imagePurpose" },
-        "required": { "type": "boolean" },
-        "disallow_images": { "type": "boolean" },
-        "preferred_asset_tags": { "type": "array", "items": { "type": "string" } }
-      },
-      "additionalProperties": true
-    },
-    "worksheetResponseMode": {
-      "type": "string",
-      "enum": ["generic", "two_choice_explanations", "two_reasons", "example_explanation", "judgment_reasoning"]
-    },
-    "studentPdfTaskProfile": {
-      "type": "string",
-      "enum": ["generic", "day1_issue_opinion", "day1_reason_list", "day1_evidence_pick", "day1_evidence_explain", "day1_revision_focus", "day2_reason_keep", "day2_evidence_revision", "day2_stronger_explanation"]
-    },
-    "studentPdfShortFormProfile": {
-      "type": "string",
-      "enum": ["generic", "judgment_evidence_exit_ticket"]
-    },
+    "outputType": {"type": "string","enum": ["teacher_guide","lesson_overview","slides","worksheet","task_sheet","checkpoint_sheet","exit_ticket","final_response_sheet","graphic_organizer","discussion_prep_sheet"]},
+    "imageRole": {"type": "string","enum": ["cue_icon","small_illustration","reference_photo","example_visual","instructional_diagram"]},
+    "imagePurpose": {"type": "string","enum": ["orient_lesson","explain_content","organize_attention"]},
+    "imageIntent": {"type": "object","properties": {"role": { "$ref": "#/$defs/imageRole" },"purpose": { "$ref": "#/$defs/imagePurpose" },"required": { "type": "boolean" },"disallow_images": { "type": "boolean" },"preferred_asset_tags": { "type": "array", "items": { "type": "string" } }},"additionalProperties": true},
+    "worksheetResponseMode": {"type": "string","enum": ["generic","two_choice_explanations","two_reasons","example_explanation","judgment_reasoning"]},
+    "studentPdfTaskProfile": {"type": "string","enum": ["generic","day1_issue_opinion","day1_reason_list","day1_evidence_pick","day1_evidence_explain","day1_revision_focus","day2_reason_keep","day2_evidence_revision","day2_stronger_explanation"]},
+    "studentPdfShortFormProfile": {"type": "string","enum": ["generic","judgment_evidence_exit_ticket"]},
     "studentPdfTaskRenderHints": {
       "type": "object",
       "properties": {
@@ -141,238 +68,30 @@
         "help": { "type": "string" },
         "lines": { "type": "integer", "minimum": 1 },
         "row_height": { "type": "integer", "minimum": 1 },
-        "response_pattern": {
-          "type": "string",
-          "enum": ["open_response", "fill_in_blank", "compact_checkpoint", "paired_choice", "matching", "record_fields", "calculation_workspace"]
-        },
-        "blank_prompts": {
-          "type": "array",
-          "items": { "type": "string", "minLength": 1 }
-        },
-        "choice_pairs": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": ["left", "right"],
-            "properties": {
-              "label": { "type": "string" },
-              "left": { "type": "string", "minLength": 1 },
-              "right": { "type": "string", "minLength": 1 }
-            },
-            "additionalProperties": true
-          }
-        },
-        "matching_columns": {
-          "type": "object",
-          "properties": {
-            "left_label": { "type": "string" },
-            "right_label": { "type": "string" },
-            "left_items": { "type": "array", "items": { "type": "string", "minLength": 1 } },
-            "right_items": { "type": "array", "items": { "type": "string", "minLength": 1 } }
-          },
-          "additionalProperties": true
-        },
-        "record_fields": {
-          "type": "array",
-          "items": {
-            "oneOf": [
-              { "type": "string", "minLength": 1 },
-              {
-                "type": "object",
-                "required": ["label"],
-                "properties": {
-                  "label": { "type": "string", "minLength": 1 }
-                },
-                "additionalProperties": true
-              }
-            ]
-          }
-        },
+        "response_pattern": {"type": "string","enum": ["open_response","fill_in_blank","compact_checkpoint","choice_select","paired_choice","matching","record_fields","calculation_workspace"]},
+        "blank_prompts": {"type": "array","items": { "type": "string", "minLength": 1 }},
+        "choice_options": {"type": "array","items": {"oneOf": [{ "type": "string", "minLength": 1 },{"type": "object","required": ["label"],"properties": {"label": { "type": "string", "minLength": 1 }},"additionalProperties": true}] }},
+        "choice_pairs": {"type": "array","items": {"type": "object","required": ["left", "right"],"properties": {"label": { "type": "string" },"left": { "type": "string", "minLength": 1 },"right": { "type": "string", "minLength": 1 }},"additionalProperties": true}},
+        "matching_columns": {"type": "object","properties": {"left_label": { "type": "string" },"right_label": { "type": "string" },"left_items": { "type": "array", "items": { "type": "string", "minLength": 1 } },"right_items": { "type": "array", "items": { "type": "string", "minLength": 1 } }},"additionalProperties": true},
+        "record_fields": {"type": "array","items": {"oneOf": [{ "type": "string", "minLength": 1 },{"type": "object","required": ["label"],"properties": {"label": { "type": "string", "minLength": 1 }},"additionalProperties": true}] }},
         "answer_label": { "type": "string" },
         "workspace_rows": { "type": "integer", "minimum": 2 }
       },
       "additionalProperties": true
     },
-    "studentPdfSectionRenderHints": {
-      "type": "object",
-      "properties": {
-        "profile": {
-          "oneOf": [
-            { "$ref": "#/$defs/studentPdfShortFormProfile" },
-            { "type": "string", "minLength": 1 }
-          ]
-        },
-        "purpose_line": { "type": "string" },
-        "prompt_label": { "type": "string" },
-        "response_label": { "type": "string" },
-        "response_note": { "type": "string" },
-        "quick_check_items": { "type": "array", "items": { "type": "string" } }
-      },
-      "additionalProperties": true
-    },
-    "worksheetQuestion": {
-      "type": "object",
-      "properties": {
-        "q_num": { "oneOf": [{ "type": "integer" }, { "type": "string", "minLength": 1 }] },
-        "q_text": { "type": "string" },
-        "n_lines": { "type": "integer", "minimum": 1 },
-        "response_mode": { "$ref": "#/$defs/worksheetResponseMode" },
-        "response_labels": { "type": "array", "items": { "type": "string", "minLength": 1 } }
-      },
-      "additionalProperties": true
-    },
-    "worksheetSection": {
-      "type": "object",
-      "properties": {
-        "title": { "type": "string" },
-        "anchor": { "type": "array", "items": { "type": "string" } },
-        "tip": { "type": "string" },
-        "questions": { "type": "array", "items": { "$ref": "#/$defs/worksheetQuestion" } },
-        "self_check": { "type": "array", "items": { "type": "string" } },
-        "answer_key": { "type": "array", "items": { "type": "string" } }
-      },
-      "additionalProperties": true
-    },
-    "taskSheetTask": {
-      "type": "object",
-      "properties": {
-        "label": { "type": "string" },
-        "prompt": { "type": "string" },
-        "lines": { "type": "integer", "minimum": 1 },
-        "activity_type": {
-          "type": "string",
-          "enum": ["write_response", "think_pair_share", "gallery_walk", "close_reading", "lab_procedure", "card_sort", "debate_prep", "peer_review", "station_task"],
-          "description": "The activity structure for this task. Informs render intent and layout hints."
-        },
-        "render_hints": { "$ref": "#/$defs/studentPdfTaskRenderHints" }
-      },
-      "additionalProperties": true
-    },
-    "taskSheetSection": {
-      "type": "object",
-      "properties": {
-        "title": { "type": "string" },
-        "instructions": { "type": "array", "items": { "type": "string" } },
-        "tasks": { "type": "array", "items": { "$ref": "#/$defs/taskSheetTask" } },
-        "embedded_supports": { "type": "array", "items": { "type": "string" } },
-        "success_criteria": { "type": "array", "items": { "type": "string" } },
-        "render_hints": { "$ref": "#/$defs/studentPdfSectionRenderHints" }
-      },
-      "additionalProperties": true
-    },
-    "paragraphSupport": {
-      "type": "object",
-      "properties": {
-        "frame_strip": { "type": "array", "items": { "type": "string" } },
-        "reminder_box": { "type": "string" }
-      },
-      "additionalProperties": true
-    },
-    "finalResponseSection": {
-      "type": "object",
-      "properties": {
-        "title": { "type": "string" },
-        "prompt": { "type": "string" },
-        "planning_reminders": { "type": "array", "items": { "type": "string" } },
-        "paragraph_support": { "$ref": "#/$defs/paragraphSupport" },
-        "success_criteria": { "type": "array", "items": { "type": "string" } },
-        "response_lines": { "type": "integer", "minimum": 1 },
-        "render_hints": { "$ref": "#/$defs/studentPdfSectionRenderHints" }
-      },
-      "additionalProperties": true
-    },
-    "exitTicketSection": {
-      "type": "object",
-      "properties": {
-        "title": { "type": "string" },
-        "prompt": { "type": "string" },
-        "n_lines": { "type": "integer", "minimum": 1 },
-        "success_criteria": { "type": "array", "items": { "type": "string" } },
-        "answer_key": { "type": "array", "items": { "type": "string" } },
-        "render_hints": { "$ref": "#/$defs/studentPdfSectionRenderHints" }
-      },
-      "additionalProperties": true
-    },
-    "graphicOrganizerSection": {
-      "type": "object",
-      "properties": {
-        "title": { "type": "string" },
-        "organizer_type": {
-          "type": "string",
-          "enum": ["t_chart", "three_column", "four_square", "timeline", "concept_web"],
-          "description": "Layout variant for the organizer."
-        },
-        "columns": { "type": "array", "items": { "type": "string" }, "description": "Column header labels." },
-        "rows": { "type": "integer", "minimum": 1, "description": "Number of content rows." },
-        "prompt": { "type": "string", "description": "Framing prompt or question students work from." },
-        "success_criteria": { "type": "array", "items": { "type": "string" } },
-        "render_hints": { "$ref": "#/$defs/studentPdfSectionRenderHints" }
-      },
-      "additionalProperties": true
-    },
-    "discussionPrepSection": {
-      "type": "object",
-      "properties": {
-        "title": { "type": "string" },
-        "discussion_prompt": { "type": "string", "description": "The central question or topic students prepare for." },
-        "position_label": { "type": "string", "description": "Label for the position/claim box. Default: 'My position'." },
-        "evidence_count": { "type": "integer", "minimum": 1, "maximum": 4, "description": "Number of evidence boxes (1-4)." },
-        "include_question": { "type": "boolean", "description": "Include a box for a student-generated question." },
-        "include_counterargument": { "type": "boolean", "description": "Include a counterargument/steelman box." },
-        "success_criteria": { "type": "array", "items": { "type": "string" } },
-        "render_hints": { "$ref": "#/$defs/studentPdfSectionRenderHints" }
-      },
-      "additionalProperties": true
-    },
-    "slideNode": {
-      "type": "object",
-      "properties": {
-        "type": { "type": "string" },
-        "title": { "type": "string" },
-        "layout": { "type": "string" },
-        "content": { "type": "object" },
-        "image_intent": { "$ref": "#/$defs/imageIntent" }
-      },
-      "additionalProperties": true
-    },
-    "output": {
-      "type": "object",
-      "required": ["output_id", "output_type", "audience"],
-      "properties": {
-        "output_id": { "type": "string" },
-        "output_type": { "$ref": "#/$defs/outputType" },
-        "audience": { "$ref": "#/$defs/audience" },
-        "source_section": { "type": "string" },
-        "bundle": { "type": "string" },
-        "is_embedded": { "type": "boolean" },
-        "final_evidence": { "type": "boolean" },
-        "variant_group": { "type": "string" },
-        "variant_role": { "type": "string", "enum": ["core", "shared_core", "supported", "support", "extension"] },
-        "alignment_target": { "type": "string" },
-        "final_evidence_target": { "type": "string" },
-        "image_intent": { "$ref": "#/$defs/imageIntent" },
-        "embedded_support_elements": { "type": "array", "items": { "type": "object" } }
-      },
-      "additionalProperties": true
-    },
-    "day": {
-      "type": "object",
-      "required": ["day_id", "day_label", "outputs"],
-      "properties": {
-        "day_id": { "type": "string" },
-        "day_label": { "type": "string" },
-        "carryover_note": { "type": "string" },
-        "slides": { "type": "array", "items": { "$ref": "#/$defs/slideNode" } },
-        "worksheet": { "$ref": "#/$defs/worksheetSection" },
-        "task_sheet": { "$ref": "#/$defs/taskSheetSection" },
-        "final_response_sheet": { "$ref": "#/$defs/finalResponseSection" },
-        "exit_ticket": { "$ref": "#/$defs/exitTicketSection" },
-        "graphic_organizer": { "$ref": "#/$defs/graphicOrganizerSection" },
-        "discussion_prep_sheet": { "$ref": "#/$defs/discussionPrepSection" },
-        "outputs": { "type": "array", "items": { "$ref": "#/$defs/output" } }
-      },
-      "additionalProperties": true
-    }
+    "studentPdfSectionRenderHints": {"type": "object","properties": {"profile": {"oneOf": [{ "$ref": "#/$defs/studentPdfShortFormProfile" },{ "type": "string", "minLength": 1 }]},"purpose_line": { "type": "string" },"prompt_label": { "type": "string" },"response_label": { "type": "string" },"response_note": { "type": "string" },"quick_check_items": { "type": "array", "items": { "type": "string" } }},"additionalProperties": true},
+    "worksheetQuestion": {"type": "object","properties": {"q_num": { "oneOf": [{ "type": "integer" }, { "type": "string", "minLength": 1 }] },"q_text": { "type": "string" },"n_lines": { "type": "integer", "minimum": 1 },"response_mode": { "$ref": "#/$defs/worksheetResponseMode" },"response_labels": { "type": "array", "items": { "type": "string", "minLength": 1 } }},"additionalProperties": true},
+    "worksheetSection": {"type": "object","properties": {"title": { "type": "string" },"anchor": { "type": "array", "items": { "type": "string" } },"tip": { "type": "string" },"questions": { "type": "array", "items": { "$ref": "#/$defs/worksheetQuestion" } },"self_check": { "type": "array", "items": { "type": "string" } },"answer_key": { "type": "array", "items": { "type": "string" } }},"additionalProperties": true},
+    "taskSheetTask": {"type": "object","properties": {"label": { "type": "string" },"prompt": { "type": "string" },"lines": { "type": "integer", "minimum": 1 },"activity_type": {"type": "string","enum": ["write_response","think_pair_share","gallery_walk","close_reading","lab_procedure","card_sort","debate_prep","peer_review","station_task"],"description": "The activity structure for this task. Informs render intent and layout hints."},"render_hints": { "$ref": "#/$defs/studentPdfTaskRenderHints" }},"additionalProperties": true},
+    "taskSheetSection": {"type": "object","properties": {"title": { "type": "string" },"instructions": { "type": "array", "items": { "type": "string" } },"tasks": { "type": "array", "items": { "$ref": "#/$defs/taskSheetTask" } },"embedded_supports": { "type": "array", "items": { "type": "string" } },"success_criteria": { "type": "array", "items": { "type": "string" } },"render_hints": { "$ref": "#/$defs/studentPdfSectionRenderHints" }},"additionalProperties": true},
+    "paragraphSupport": {"type": "object","properties": {"frame_strip": { "type": "array", "items": { "type": "string" } },"reminder_box": { "type": "string" }},"additionalProperties": true},
+    "finalResponseSection": {"type": "object","properties": {"title": { "type": "string" },"prompt": { "type": "string" },"planning_reminders": { "type": "array", "items": { "type": "string" } },"paragraph_support": { "$ref": "#/$defs/paragraphSupport" },"success_criteria": { "type": "array", "items": { "type": "string" } },"response_lines": { "type": "integer", "minimum": 1 },"render_hints": { "$ref": "#/$defs/studentPdfSectionRenderHints" }},"additionalProperties": true},
+    "exitTicketSection": {"type": "object","properties": {"title": { "type": "string" },"prompt": { "type": "string" },"n_lines": { "type": "integer", "minimum": 1 },"success_criteria": { "type": "array", "items": { "type": "string" } },"answer_key": { "type": "array", "items": { "type": "string" } },"render_hints": { "$ref": "#/$defs/studentPdfSectionRenderHints" }},"additionalProperties": true},
+    "graphicOrganizerSection": {"type": "object","properties": {"title": { "type": "string" },"organizer_type": {"type": "string","enum": ["t_chart", "three_column", "four_square", "timeline", "concept_web"],"description": "Layout variant for the organizer."},"columns": { "type": "array", "items": { "type": "string" }, "description": "Column header labels." },"rows": { "type": "integer", "minimum": 1, "description": "Number of content rows." },"prompt": { "type": "string", "description": "Framing prompt or question students work from." },"success_criteria": { "type": "array", "items": { "type": "string" } },"render_hints": { "$ref": "#/$defs/studentPdfSectionRenderHints" }},"additionalProperties": true},
+    "discussionPrepSection": {"type": "object","properties": {"title": { "type": "string" },"discussion_prompt": { "type": "string", "description": "The central question or topic students prepare for." },"position_label": { "type": "string", "description": "Label for the position/claim box. Default: 'My position'." },"evidence_count": { "type": "integer", "minimum": 1, "maximum": 4, "description": "Number of evidence boxes (1-4)." },"include_question": { "type": "boolean", "description": "Include a box for a student-generated question." },"include_counterargument": { "type": "boolean", "description": "Include a counterargument/steelman box." },"success_criteria": { "type": "array", "items": { "type": "string" } },"render_hints": { "$ref": "#/$defs/studentPdfSectionRenderHints" }},"additionalProperties": true},
+    "slideNode": {"type": "object","properties": {"type": { "type": "string" },"title": { "type": "string" },"layout": { "type": "string" },"content": { "type": "object" },"image_intent": { "$ref": "#/$defs/imageIntent" }},"additionalProperties": true},
+    "output": {"type": "object","required": ["output_id", "output_type", "audience"],"properties": {"output_id": { "type": "string" },"output_type": { "$ref": "#/$defs/outputType" },"audience": { "$ref": "#/$defs/audience" },"source_section": { "type": "string" },"bundle": { "type": "string" },"is_embedded": { "type": "boolean" },"final_evidence": { "type": "boolean" },"variant_group": { "type": "string" },"variant_role": { "type": "string", "enum": ["core", "shared_core", "supported", "support", "extension"] },"alignment_target": { "type": "string" },"final_evidence_target": { "type": "string" },"image_intent": { "$ref": "#/$defs/imageIntent" },"embedded_support_elements": { "type": "array", "items": { "type": "object" } }},"additionalProperties": true},
+    "day": {"type": "object","required": ["day_id", "day_label", "outputs"],"properties": {"day_id": { "type": "string" },"day_label": { "type": "string" },"carryover_note": { "type": "string" },"slides": { "type": "array", "items": { "$ref": "#/$defs/slideNode" } },"worksheet": { "$ref": "#/$defs/worksheetSection" },"task_sheet": { "$ref": "#/$defs/taskSheetSection" },"final_response_sheet": { "$ref": "#/$defs/finalResponseSection" },"exit_ticket": { "$ref": "#/$defs/exitTicketSection" },"graphic_organizer": { "$ref": "#/$defs/graphicOrganizerSection" },"discussion_prep_sheet": { "$ref": "#/$defs/discussionPrepSection" },"outputs": { "type": "array", "items": { "$ref": "#/$defs/output" } }},"additionalProperties": true}
   },
   "additionalProperties": true
 }
