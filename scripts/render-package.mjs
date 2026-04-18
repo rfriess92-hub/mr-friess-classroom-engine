@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os'
 import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
+import { buildArtifactTrace } from '../engine/render/artifact-classifier.mjs'
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
 import { resolveSourceSection } from '../engine/schema/source-section.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
@@ -118,6 +119,36 @@ function writeGrammarSidecar(outDir, route) {
   )
 }
 
+function writeTraceSidecar(outDir, route, trace) {
+  writeFileSync(
+    resolve(outDir, `${route.output_id}.trace.json`),
+    JSON.stringify(trace, null, 2),
+    'utf-8',
+  )
+}
+
+function logTrace(trace) {
+  const confidence = typeof trace.classification_confidence === 'number'
+    ? trace.classification_confidence.toFixed(2)
+    : '0.00'
+  const fallback = trace.fallback_reason ? ` fallback_reason="${trace.fallback_reason}"` : ''
+  console.log(
+    `[render-trace] route=${trace.route_id} artifact_class=${trace.artifact_class} mode=${trace.mode} confidence=${confidence}${fallback}`,
+  )
+}
+
+const DOC_OUTPUT_TYPES = new Set([
+  'teacher_guide',
+  'lesson_overview',
+  'worksheet',
+  'task_sheet',
+  'checkpoint_sheet',
+  'exit_ticket',
+  'final_response_sheet',
+  'graphic_organizer',
+  'discussion_prep_sheet',
+])
+
 const packageArg = argValue('--package')
 const fixtureArg = argValue('--fixture')
 const outArg = argValue('--out') ?? 'output'
@@ -150,23 +181,35 @@ const outDir = flatOut ? baseOutDir : resolve(baseOutDir, renderPlan.package_id 
 mkdirSync(outDir, { recursive: true })
 
 for (const route of routes) {
+  const trace = buildArtifactTrace(pkg, route)
+  writeTraceSidecar(outDir, route, trace)
+  logTrace(trace)
+
   const visualBundle = buildRouteVisualPlan(pkg, route)
   writeVisualSidecar(outDir, route, visualBundle)
   writeImageSidecar(outDir, route, visualBundle)
   writeGrammarSidecar(outDir, route)
 
-  if (route.renderer_family === 'pptx' && route.output_type === 'slides') {
+  if (trace.mode === 'slide_mode') {
+    if (!(route.renderer_family === 'pptx' && route.output_type === 'slides')) {
+      console.error(`Slide-mode route ${route.route_id} does not map to the legal PPTX slide renderer path.`)
+      process.exit(1)
+    }
     renderSlides(pkg, route, visualBundle.visual_plan, outDir)
     continue
   }
-  if (
-    route.renderer_family === 'pdf'
-    && ['teacher_guide', 'lesson_overview', 'worksheet', 'task_sheet', 'checkpoint_sheet', 'exit_ticket', 'final_response_sheet', 'graphic_organizer', 'discussion_prep_sheet'].includes(route.output_type)
-  ) {
-    renderPdfOutput(packagePath, route, outDir)
+
+  if (trace.mode === 'doc_mode') {
+    if (route.renderer_family === 'pdf' && DOC_OUTPUT_TYPES.has(route.output_type)) {
+      renderPdfOutput(packagePath, route, outDir)
+      continue
+    }
+    console.log(`Skipping unsupported doc-mode route: ${route.route_id}`)
     continue
   }
-  console.log(`Skipping unsupported first-pass route: ${route.route_id}`)
+
+  console.error(`Unsupported render mode '${trace.mode}' for route ${route.route_id}`)
+  process.exit(1)
 }
 
 console.log(`Rendered package ${renderPlan.package_id} to ${outDir}`)
