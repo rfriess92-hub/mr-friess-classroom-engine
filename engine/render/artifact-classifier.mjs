@@ -62,7 +62,7 @@ export function classifyArtifactRoute(pkg, route) {
   return {
     artifact_class: 'generic_doc',
     classification_confidence: 0.35,
-    fallback_reason: `No specialized artifact class match for output_type '${outputType}'.`,
+    fallback_reason: `Explicit generic_doc fallback: no specialized artifact class match for output_type '${outputType}'.`,
     classifier_basis: [`output_type:${outputType}`, 'explicit generic_doc fallback'],
   }
 }
