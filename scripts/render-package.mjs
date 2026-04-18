@@ -5,6 +5,7 @@ import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
 import { buildArtifactTrace } from '../engine/render/artifact-classifier.mjs'
+import { buildTypedLayoutBlocks, countBlocksByType, validateTypedLayoutBlocks } from '../engine/render/typed-blocks.mjs'
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
 import { resolveSourceSection } from '../engine/schema/source-section.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
@@ -76,12 +77,12 @@ function renderPdfOutput(packagePath, route, outDir) {
   }
 }
 
+function writeJsonSidecar(outDir, outputId, suffix, payload) {
+  writeFileSync(resolve(outDir, `${outputId}.${suffix}.json`), JSON.stringify(payload, null, 2), 'utf-8')
+}
+
 function writeVisualSidecar(outDir, route, visualBundle) {
-  writeFileSync(
-    resolve(outDir, `${route.output_id}.visual.json`),
-    JSON.stringify(visualBundle, null, 2),
-    'utf-8',
-  )
+  writeJsonSidecar(outDir, route.output_id, 'visual', visualBundle)
 }
 
 function writeImageSidecar(outDir, route, visualBundle) {
@@ -95,11 +96,7 @@ function writeImageSidecar(outDir, route, visualBundle) {
       image_plan: page.image_plan ?? { judgment: 'no_image', slots: [] },
     })),
   }
-  writeFileSync(
-    resolve(outDir, `${route.output_id}.images.json`),
-    JSON.stringify(imagePayload, null, 2),
-    'utf-8',
-  )
+  writeJsonSidecar(outDir, route.output_id, 'images', imagePayload)
 }
 
 function writeGrammarSidecar(outDir, route) {
@@ -112,19 +109,22 @@ function writeGrammarSidecar(outDir, route) {
     density: route.density,
     length_band: route.length_band,
   }
-  writeFileSync(
-    resolve(outDir, `${route.output_id}.grammar.json`),
-    JSON.stringify(grammarPayload, null, 2),
-    'utf-8',
-  )
+  writeJsonSidecar(outDir, route.output_id, 'grammar', grammarPayload)
 }
 
 function writeTraceSidecar(outDir, route, trace) {
-  writeFileSync(
-    resolve(outDir, `${route.output_id}.trace.json`),
-    JSON.stringify(trace, null, 2),
-    'utf-8',
-  )
+  writeJsonSidecar(outDir, route.output_id, 'trace', trace)
+}
+
+function writeBlocksSidecar(outDir, route, payload) {
+  writeJsonSidecar(outDir, route.output_id, 'blocks', payload)
+}
+
+function formatBlockCounts(blockCounts) {
+  return Object.entries(blockCounts)
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([type, count]) => `${type}:${count}`)
+    .join(',')
 }
 
 function logTrace(trace) {
@@ -132,8 +132,9 @@ function logTrace(trace) {
     ? trace.classification_confidence.toFixed(2)
     : '0.00'
   const fallback = trace.fallback_reason ? ` fallback_reason="${trace.fallback_reason}"` : ''
+  const blockCounts = trace.block_counts_by_type ? ` block_counts=${formatBlockCounts(trace.block_counts_by_type)}` : ''
   console.log(
-    `[render-trace] route=${trace.route_id} artifact_class=${trace.artifact_class} mode=${trace.mode} confidence=${confidence}${fallback}`,
+    `[render-trace] route=${trace.route_id} artifact_class=${trace.artifact_class} mode=${trace.mode} confidence=${confidence}${fallback}${blockCounts}`,
   )
 }
 
@@ -181,8 +182,30 @@ const outDir = flatOut ? baseOutDir : resolve(baseOutDir, renderPlan.package_id 
 mkdirSync(outDir, { recursive: true })
 
 for (const route of routes) {
-  const trace = buildArtifactTrace(pkg, route)
+  const typedBlocks = buildTypedLayoutBlocks(pkg, route)
+  const blockValidation = validateTypedLayoutBlocks(typedBlocks)
+  if (!blockValidation.valid) {
+    console.error(`Typed block validation failed for route ${route.route_id}.`)
+    for (const error of blockValidation.errors) {
+      console.error(` - ${error}`)
+    }
+    process.exit(1)
+  }
+  const blockCountsByType = countBlocksByType(typedBlocks)
+  const trace = {
+    ...buildArtifactTrace(pkg, route),
+    block_total: typedBlocks.length,
+    block_counts_by_type: blockCountsByType,
+  }
   writeTraceSidecar(outDir, route, trace)
+  writeBlocksSidecar(outDir, route, {
+    output_id: route.output_id,
+    route_id: route.route_id,
+    artifact_class: trace.artifact_class,
+    block_total: typedBlocks.length,
+    block_counts_by_type: blockCountsByType,
+    blocks: typedBlocks,
+  })
   logTrace(trace)
 
   const visualBundle = buildRouteVisualPlan(pkg, route)
