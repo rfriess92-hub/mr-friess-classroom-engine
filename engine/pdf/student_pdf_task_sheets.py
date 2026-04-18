@@ -149,18 +149,25 @@ def _framed_flow_card(flowables,width=540,bg_color=CARD_BG,border_color=BORDER,p
     card.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),bg_color),('BOX',(0,0),(-1,-1),0.65,border_color),('TOPPADDING',(0,0),(-1,-1),padding),('BOTTOMPADDING',(0,0),(-1,-1),padding),('LEFTPADDING',(0,0),(-1,-1),padding+2),('RIGHTPADDING',(0,0),(-1,-1),padding+2),('VALIGN',(0,0),(-1,-1),'TOP')]))
     return card
 
+def _selector_option_cell(styles,text,width=240):
+    inner=checkbox_row(max(120,width-18),[Paragraph(text,styles['MicroX'])],compact=True)
+    return _framed_flow_card([inner],width=width,bg_color=colors.whitesmoke,border_color=LIGHT_BORDER,padding=5)
+
 def _fill_blank_row(styles,prompt,width=520):
-    row=Table([[Paragraph(prompt,styles['MicroX']), '']],colWidths=[width-150,150])
+    prompt_text=' '.join(prompt.replace('___','').split())
+    blank_box=Table([['']],colWidths=[132],rowHeights=[18])
+    blank_box.setStyle(TableStyle([
+        ('BACKGROUND',(0,0),(-1,-1),colors.whitesmoke),
+        ('BOX',(0,0),(-1,-1),0.7,LIGHT_BORDER),
+        ('LINEBELOW',(0,0),(-1,-1),1.0,BORDER),
+    ]))
+    row=Table([[Paragraph(prompt_text,styles['MicroX']), blank_box]],colWidths=[width-150,150])
     row.setStyle(TableStyle([
-        ('LINEBELOW',(1,0),(1,0),0.75,BORDER),
         ('TOPPADDING',(0,0),(-1,-1),3),('BOTTOMPADDING',(0,0),(-1,-1),5),
         ('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(-1,-1),0),
-        ('VALIGN',(0,0),(-1,-1),'BOTTOM'),
+        ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
     ]))
     return row
-
-def _choice_option_flow(styles,text,width):
-    return checkbox_row(width,[Paragraph(text,styles['MicroX'])],compact=True)
 
 def _matching_letter(index):
     return chr(65+index) if index<26 else str(index+1)
@@ -169,7 +176,7 @@ def build_fill_in_blank_block(styles,task,prompts,show_help=True,spacer_after=6)
     profile=task_profile(task)
     rows=[Paragraph('Fill in each short value',styles['ResponseLabelX']),Spacer(1,2)]
     for prompt in prompts:
-        rows.extend([_fill_blank_row(styles,prompt),Spacer(1,3)])
+        rows.extend([_fill_blank_row(styles,prompt),Spacer(1,4)])
     if rows:
         rows.pop()
     return KeepTogether([_task_prompt_card(styles,profile,show_help=show_help,compact=True),Spacer(1,4),_framed_flow_card(rows,bg_color=CARD_BG,border_color=BORDER,padding=6),Spacer(1,spacer_after)])
@@ -177,13 +184,13 @@ def build_fill_in_blank_block(styles,task,prompts,show_help=True,spacer_after=6)
 def build_choice_select_block(styles,task,options,show_help=True,spacer_after=6):
     profile=task_profile(task)
     if len(options) <= 4:
-        rows=[[ _choice_option_flow(styles, option, 500) ] for option in options]
+        rows=[[_selector_option_cell(styles,option,500)] for option in options]
         grid=Table(rows,colWidths=[520])
     else:
         rows=[]
         for index in range(0,len(options),2):
-            left=_choice_option_flow(styles, options[index], 228)
-            right=_choice_option_flow(styles, options[index+1], 228) if index+1 < len(options) else Paragraph('',styles['MicroX'])
+            left=_selector_option_cell(styles,options[index],244)
+            right=_selector_option_cell(styles,options[index+1],244) if index+1 < len(options) else Paragraph('',styles['MicroX'])
             rows.append([left,right])
         grid=Table(rows,colWidths=[250,250])
     grid.setStyle(TableStyle([('TOPPADDING',(0,0),(-1,-1),2),('BOTTOMPADDING',(0,0),(-1,-1),2),('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(-1,-1),0),('VALIGN',(0,0),(-1,-1),'TOP')]))
@@ -196,10 +203,10 @@ def build_paired_choice_block(styles,task,pairs,show_help=True,spacer_after=6):
     for pair in pairs:
         rows.append([
             Paragraph(pair['label'],styles['MicroX']),
-            checkbox_row(168,[Paragraph(pair['left'],styles['MicroX'])],compact=True),
-            checkbox_row(168,[Paragraph(pair['right'],styles['MicroX'])],compact=True),
+            _selector_option_cell(styles,pair['left'],198),
+            _selector_option_cell(styles,pair['right'],198),
         ])
-    grid=Table(rows,colWidths=[120,210,210])
+    grid=Table(rows,colWidths=[110,205,205])
     grid.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),PROMPT_BG),('BOX',(0,0),(-1,-1),0.5,LIGHT_BORDER),('INNERGRID',(0,0),(-1,-1),0.35,LIGHT_BORDER),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),('LEFTPADDING',(0,0),(-1,-1),6),('RIGHTPADDING',(0,0),(-1,-1),6),('VALIGN',(0,0),(-1,-1),'TOP')]))
     return KeepTogether([_task_prompt_card(styles,profile,show_help=show_help,compact=True),Spacer(1,4),_framed_flow_card([grid],bg_color=CARD_BG,border_color=BORDER,padding=6),Spacer(1,spacer_after)])
 
@@ -312,14 +319,15 @@ def _help_visible(layout,task_index,page_task_count,page_index=0):
 
 def _estimate_structured_task_height(task,compact):
     pattern=task_response_pattern(task)
-    base_height=112 if compact else 132
+    base_height=118 if compact else 138
     if pattern=='fill_in_blank':
-        return base_height+(max(1,len(_blank_prompts(task)))*22)
+        return base_height+(max(1,len(_blank_prompts(task)))*26)
     if pattern=='choice_select':
-        rows=(max(1,len(_choice_options(task)))+1)//2 if len(_choice_options(task)) > 4 else max(1,len(_choice_options(task)))
-        return base_height+(rows*22)
+        option_count=max(1,len(_choice_options(task)))
+        rows=option_count if option_count <= 4 else (option_count+1)//2
+        return base_height+(rows*32)
     if pattern=='paired_choice':
-        return base_height+(max(1,len(_choice_pairs(task)))+1)*24
+        return base_height+(max(1,len(_choice_pairs(task)))+1)*30
     if pattern=='matching':
         matching=_matching_columns(task);row_count=max(len(matching['left_items']),len(matching['right_items'])) if matching else 3
         return base_height+(row_count+1)*22
