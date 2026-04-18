@@ -1,0 +1,100 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "task_sheet_affordance_polish_workshop",
+  "primary_architecture": "workshop_session",
+  "grade_band": "6-8",
+  "subject": "Mathematics",
+  "grade": 6,
+  "topic": "Compare package options with compact records",
+  "theme": "mathematics",
+  "bundle": {
+    "bundle_id": "task_sheet_affordance_polish_workshop_bundle",
+    "declared_outputs": ["task_sheet"]
+  },
+  "task_sheet": {
+    "title": "Compact Comparison Record",
+    "instructions": [
+      "Use short marks and short values, not paragraph responses.",
+      "Choose or fill only where the sheet gives you a target."
+    ],
+    "tasks": [
+      {
+        "label": "Part A",
+        "prompt": "Fill in the missing short values from the comparison notes.",
+        "lines": 1,
+        "activity_type": "station_task",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "heading": "Fill in the missing values",
+          "help": "Use short values only.",
+          "blank_prompts": [
+            "The small package is ___ cm wide.",
+            "The large package holds ___ items.",
+            "The wooden package needs ___ bags."
+          ]
+        }
+      },
+      {
+        "label": "Part B",
+        "prompt": "Select the package option that seems most efficient right now.",
+        "lines": 1,
+        "activity_type": "station_task",
+        "render_hints": {
+          "response_pattern": "choice_select",
+          "heading": "Choose one package option",
+          "help": "Mark only one choice.",
+          "choice_options": [
+            "Small package",
+            "Large package",
+            "Simple package",
+            "Fancy package"
+          ]
+        }
+      },
+      {
+        "label": "Part C",
+        "prompt": "Choose one option in each comparison row.",
+        "lines": 1,
+        "activity_type": "card_sort",
+        "render_hints": {
+          "response_pattern": "paired_choice",
+          "heading": "Choose one option in each row",
+          "choice_pairs": [
+            { "label": "Size", "left": "small", "right": "large" },
+            { "label": "Style", "left": "simple", "right": "fancy" },
+            { "label": "Material", "left": "wooden", "right": "metal" }
+          ]
+        }
+      },
+      {
+        "label": "Part D",
+        "prompt": "Give one brief checkpoint response about which option seems strongest so far.",
+        "lines": 2,
+        "activity_type": "think_pair_share",
+        "render_hints": {
+          "response_pattern": "compact_checkpoint",
+          "heading": "Quick checkpoint",
+          "help": "Keep this to one or two short lines."
+        }
+      }
+    ],
+    "embedded_supports": [
+      "Use selector boxes for choices, not explanations.",
+      "Use the fill targets for short values only."
+    ],
+    "success_criteria": [
+      "I kept selections clear and compact.",
+      "I filled only the short value targets.",
+      "I kept the checkpoint brief."
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "task_sheet_main",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "task_sheet_affordance_polish_workshop_bundle"
+    }
+  ]
+}
