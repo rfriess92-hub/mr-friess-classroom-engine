@@ -199,7 +199,8 @@ function buildGraphicOrganizerBlocks(route, section) {
   pushTextBlock(blocks, route, 'title', section.title, { priority: 'high', source_key: 'title' })
   pushTextBlock(blocks, route, 'intro', section.prompt, { priority: 'high', source_key: 'prompt' })
   if (Array.isArray(section.columns) && section.columns.length > 0) {
-    blocks.push(makeBlock(route, 'table', { priority: 'high', source_key: 'columns', label: section.columns.join(' | '), estimated_lines: Math.max(3, Number(section.rows ?? 1) + 1) }))
+    const rowCount = Array.isArray(section.rows) ? section.rows.length : Number(section.rows ?? 1)
+    blocks.push(makeBlock(route, 'table', { priority: 'high', source_key: 'columns', label: section.columns.join(' | '), estimated_lines: Math.max(3, rowCount + 1) }))
   }
   pushListBlock(blocks, route, 'checklist', section.success_criteria, { priority: 'normal', source_key: 'success_criteria', label: 'success_criteria' })
   return blocks
