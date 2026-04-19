@@ -5,6 +5,7 @@ import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
 import { buildArtifactTrace } from '../engine/render/artifact-classifier.mjs'
+import { resolveTemplateRoute } from '../engine/render/template-router.mjs'
 import { buildTypedLayoutBlocks, countBlocksByType, validateTypedLayoutBlocks } from '../engine/render/typed-blocks.mjs'
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
 import { resolveSourceSection } from '../engine/schema/source-section.mjs'
@@ -48,9 +49,7 @@ function renderSlides(pkg, route, visualPlan, outDir) {
       stdio: 'inherit',
       cwd: process.cwd(),
     })
-    if (result.status !== 0) {
-      process.exit(result.status ?? 1)
-    }
+    if (result.status !== 0) process.exit(result.status ?? 1)
   } finally {
     rmSync(tempDir, { recursive: true, force: true })
   }
@@ -67,14 +66,9 @@ function renderPdfOutput(packagePath, route, outDir) {
   const result = spawnSync(
     pythonCmd,
     ['engine/pdf/render_stable_core_output.py', '--package', packagePath, '--output-id', route.output_id, '--out', outDir, '--grammar', grammarPath],
-    {
-      stdio: 'inherit',
-      cwd: process.cwd(),
-    }
+    { stdio: 'inherit', cwd: process.cwd() },
   )
-  if (result.status !== 0) {
-    process.exit(result.status ?? 1)
-  }
+  if (result.status !== 0) process.exit(result.status ?? 1)
 }
 
 function writeJsonSidecar(outDir, outputId, suffix, payload) {
@@ -99,7 +93,7 @@ function writeImageSidecar(outDir, route, visualBundle) {
   writeJsonSidecar(outDir, route.output_id, 'images', imagePayload)
 }
 
-function writeGrammarSidecar(outDir, route) {
+function writeGrammarSidecar(outDir, route, trace, templateRoute) {
   const grammarPayload = {
     output_id: route.output_id,
     artifact_family: route.artifact_family,
@@ -108,6 +102,11 @@ function writeGrammarSidecar(outDir, route) {
     assessment_weight: route.assessment_weight,
     density: route.density,
     length_band: route.length_band,
+    artifact_class: trace.artifact_class,
+    page_roles: trace.page_roles ?? [],
+    template_family: templateRoute.template_family,
+    selected_template: templateRoute.selected_template,
+    template_sequence: templateRoute.template_sequence,
   }
   writeJsonSidecar(outDir, route.output_id, 'grammar', grammarPayload)
 }
@@ -121,35 +120,19 @@ function writeBlocksSidecar(outDir, route, payload) {
 }
 
 function formatBlockCounts(blockCounts) {
-  return Object.entries(blockCounts)
-    .sort(([left], [right]) => left.localeCompare(right))
-    .map(([type, count]) => `${type}:${count}`)
-    .join(',')
+  return Object.entries(blockCounts).sort(([l], [r]) => l.localeCompare(r)).map(([t, c]) => `${t}:${c}`).join(',')
 }
 
 function logTrace(trace) {
-  const confidence = typeof trace.classification_confidence === 'number'
-    ? trace.classification_confidence.toFixed(2)
-    : '0.00'
+  const confidence = typeof trace.classification_confidence === 'number' ? trace.classification_confidence.toFixed(2) : '0.00'
   const fallback = trace.fallback_reason ? ` fallback_reason="${trace.fallback_reason}"` : ''
   const blockCounts = trace.block_counts_by_type ? ` block_counts=${formatBlockCounts(trace.block_counts_by_type)}` : ''
   const pageRoles = Array.isArray(trace.page_roles) && trace.page_roles.length > 0 ? ` page_roles=${trace.page_roles.join('|')}` : ''
-  console.log(
-    `[render-trace] route=${trace.route_id} artifact_class=${trace.artifact_class} mode=${trace.mode} confidence=${confidence}${fallback}${blockCounts}${pageRoles}`,
-  )
+  const template = trace.template_family ? ` template_family=${trace.template_family} selected_template=${trace.selected_template}` : ''
+  console.log(`[render-trace] route=${trace.route_id} artifact_class=${trace.artifact_class} mode=${trace.mode} confidence=${confidence}${fallback}${blockCounts}${pageRoles}${template}`)
 }
 
-const DOC_OUTPUT_TYPES = new Set([
-  'teacher_guide',
-  'lesson_overview',
-  'worksheet',
-  'task_sheet',
-  'checkpoint_sheet',
-  'exit_ticket',
-  'final_response_sheet',
-  'graphic_organizer',
-  'discussion_prep_sheet',
-])
+const DOC_OUTPUT_TYPES = new Set(['teacher_guide', 'lesson_overview', 'worksheet', 'task_sheet', 'checkpoint_sheet', 'exit_ticket', 'final_response_sheet', 'graphic_organizer', 'discussion_prep_sheet'])
 
 const packageArg = argValue('--package')
 const fixtureArg = argValue('--fixture')
@@ -187,14 +170,15 @@ for (const route of routes) {
   const blockValidation = validateTypedLayoutBlocks(typedBlocks)
   if (!blockValidation.valid) {
     console.error(`Typed block validation failed for route ${route.route_id}.`)
-    for (const error of blockValidation.errors) {
-      console.error(` - ${error}`)
-    }
+    for (const error of blockValidation.errors) console.error(` - ${error}`)
     process.exit(1)
   }
   const blockCountsByType = countBlocksByType(typedBlocks)
+  const artifactTrace = buildArtifactTrace(pkg, route, typedBlocks)
+  const templateRoute = resolveTemplateRoute(artifactTrace)
   const trace = {
-    ...buildArtifactTrace(pkg, route, typedBlocks),
+    ...artifactTrace,
+    ...templateRoute,
     block_total: typedBlocks.length,
     block_counts_by_type: blockCountsByType,
   }
@@ -204,6 +188,9 @@ for (const route of routes) {
     route_id: route.route_id,
     artifact_class: trace.artifact_class,
     page_roles: trace.page_roles ?? [],
+    template_family: trace.template_family,
+    selected_template: trace.selected_template,
+    template_sequence: trace.template_sequence,
     block_total: typedBlocks.length,
     block_counts_by_type: blockCountsByType,
     blocks: typedBlocks,
@@ -213,7 +200,7 @@ for (const route of routes) {
   const visualBundle = buildRouteVisualPlan(pkg, route)
   writeVisualSidecar(outDir, route, visualBundle)
   writeImageSidecar(outDir, route, visualBundle)
-  writeGrammarSidecar(outDir, route)
+  writeGrammarSidecar(outDir, route, trace, templateRoute)
 
   if (trace.mode === 'slide_mode') {
     if (!(route.renderer_family === 'pptx' && route.output_type === 'slides')) {
