@@ -5,6 +5,7 @@ import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
 import { buildArtifactTrace } from '../engine/render/artifact-classifier.mjs'
+import { runMultipageArtifactQa } from '../engine/render/multipage-artifact-qa.mjs'
 import { resolveTemplateRoute } from '../engine/render/template-router.mjs'
 import { buildTypedLayoutBlocks, countBlocksByType, validateTypedLayoutBlocks } from '../engine/render/typed-blocks.mjs'
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
@@ -119,6 +120,10 @@ function writeBlocksSidecar(outDir, route, payload) {
   writeJsonSidecar(outDir, route.output_id, 'blocks', payload)
 }
 
+function writeQaSidecar(outDir, route, payload) {
+  writeJsonSidecar(outDir, route.output_id, 'qa', payload)
+}
+
 function formatBlockCounts(blockCounts) {
   return Object.entries(blockCounts).sort(([l], [r]) => l.localeCompare(r)).map(([t, c]) => `${t}:${c}`).join(',')
 }
@@ -196,11 +201,23 @@ for (const route of routes) {
     blocks: typedBlocks,
   })
   logTrace(trace)
+  writeGrammarSidecar(outDir, route, trace, templateRoute)
+
+  const multipageQa = runMultipageArtifactQa({ route, trace, typedBlocks })
+  if (multipageQa) {
+    writeQaSidecar(outDir, route, multipageQa)
+    if (multipageQa.judgment === 'block') {
+      console.error(`Artifact QA failed for route ${route.route_id}.`)
+      for (const check of multipageQa.checks.filter((entry) => entry.status !== 'pass')) {
+        console.error(` - ${check.check_id}: ${check.detail}`)
+      }
+      process.exit(1)
+    }
+  }
 
   const visualBundle = buildRouteVisualPlan(pkg, route)
   writeVisualSidecar(outDir, route, visualBundle)
   writeImageSidecar(outDir, route, visualBundle)
-  writeGrammarSidecar(outDir, route, trace, templateRoute)
 
   if (trace.mode === 'slide_mode') {
     if (!(route.renderer_family === 'pptx' && route.output_type === 'slides')) {
