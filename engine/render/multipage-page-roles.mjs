@@ -12,13 +12,17 @@ function uniquePush(target, value) {
 }
 
 function blockSignalText(block) {
-  return `${block?.source_key ?? ''} ${block?.label ?? ''}`.trim().toLowerCase()
+  return `${block?.source_key ?? ''} ${block?.label ?? ''}`
+    .replace(/[._-]+/g, ' ')
+    .trim()
+    .toLowerCase()
 }
 
 function detectStudentPacketSignals(blocks) {
-  const signals = (Array.isArray(blocks) ? blocks : []).map(blockSignalText)
+  const blockList = Array.isArray(blocks) ? blocks : []
+  const signals = blockList.map(blockSignalText)
   const matches = []
-  if (signals.some((text) => includesAny(text, ['before watching', 'while watching', 'after watching', 'follow-along', 'follow along', 'movie', 'film']))) {
+  if (signals.some((text) => includesAny(text, ['before watching', 'while watching', 'after watching', 'follow along', 'movie', 'film']))) {
     matches.push('follow_along')
   }
   if (signals.some((text) => includesAny(text, ['matching bank', 'topic bank', 'reference bank', 'bank', 'match one risk topic']))) {
@@ -27,31 +31,47 @@ function detectStudentPacketSignals(blocks) {
   if (signals.some((text) => includesAny(text, ['research planner', 'project planner', 'research', 'project']))) {
     matches.push('research_planner')
   }
-  if (signals.some((text) => includesAny(text, ['checklist', 'final check', 'completion']))) {
+  if (
+    blockList.some((block) => block.block_type === 'checklist')
+    || signals.some((text) => includesAny(text, ['checklist', 'final check', 'completion', 'success criteria']))
+  ) {
     matches.push('completion_check')
   }
-  if (signals.some((text) => includesAny(text, ['post-film', 'post film', 'discussion', 'continue your notes', 'continuation']))) {
+  if (signals.some((text) => includesAny(text, ['post film', 'discussion', 'continue your notes', 'continuation']))) {
     matches.push('continuation_notes')
   }
   return matches
 }
 
 function detectTeacherGuideSignals(blocks) {
-  const signals = (Array.isArray(blocks) ? blocks : []).map(blockSignalText)
+  const blockList = Array.isArray(blocks) ? blocks : []
+  const signals = blockList.map(blockSignalText)
   const matches = []
   if (signals.some((text) => includesAny(text, ['overview', 'big idea', 'essential question', 'unit overview', 'opening frame', 'frame line']))) {
     matches.push('overview')
   }
-  if (signals.some((text) => includesAny(text, ['timing', 'sequence', 'class 1', 'class 2', 'class 3', 'workflow']))) {
+  if (
+    blockList.some((block) => block.block_type === 'workflow_section')
+    || signals.some((text) => includesAny(text, ['timing', 'sequence', 'class 1', 'class 2', 'class 3', 'workflow']))
+  ) {
     matches.push('sequence_map')
   }
-  if (signals.some((text) => includesAny(text, ['project prompt', 'matching bank', 'materials', 'tool']))) {
+  if (
+    blockList.some((block) => block.block_type === 'quick_tool')
+    || signals.some((text) => includesAny(text, ['project prompt', 'matching bank', 'materials', 'tool']))
+  ) {
     matches.push('project_tools')
   }
-  if (signals.some((text) => includesAny(text, ['teacher model', 'model']))) {
+  if (
+    blockList.some((block) => block.block_type === 'exemplar')
+    || signals.some((text) => includesAny(text, ['teacher model', 'model']))
+  ) {
     matches.push('teacher_model')
   }
-  if (signals.some((text) => includesAny(text, ['assessment focus', 'assessment', 'look-fors', 'look fors']))) {
+  if (
+    blockList.some((block) => block.block_type === 'assessment_note')
+    || signals.some((text) => includesAny(text, ['assessment focus', 'assessment', 'look fors']))
+  ) {
     matches.push('assessment_reference')
   }
   return matches
