@@ -14,7 +14,7 @@ function loadFixture(path) {
   return JSON.parse(readFileSync(resolve(process.cwd(), path), 'utf-8'))
 }
 
-function runQa(pkg, outputId) {
+function buildQaContext(pkg, outputId) {
   const route = planPackageRoutes(pkg).routes.find((entry) => entry.output_id === outputId)
   const typedBlocks = buildTypedLayoutBlocks(pkg, route)
   const artifactTrace = buildArtifactTrace(pkg, route, typedBlocks)
@@ -22,7 +22,11 @@ function runQa(pkg, outputId) {
     ...artifactTrace,
     ...resolveTemplateRoute(artifactTrace),
   }
-  return runMultipageArtifactQa({ route, trace, typedBlocks })
+  return { route, trace, typedBlocks }
+}
+
+function runQa(pkg, outputId) {
+  return runMultipageArtifactQa(buildQaContext(pkg, outputId))
 }
 
 test('multi-page classifier proof fixture stays route-valid', () => {
@@ -66,6 +70,36 @@ test('artifact trace upgrades teacher guide proof route to teacher_guide_multi_p
   assert.ok(trace.page_roles.includes('assessment_reference'))
 })
 
+test('artifact trace keeps sparse PBG task sheet in task_sheet when only reference-bank and checklist signals are present', () => {
+  const pkg = loadFixture('fixtures/plan-build-grow/pbg_math8.json')
+  const route = planPackageRoutes(pkg).routes.find((entry) => entry.output_id === 'w1_task_sheet')
+  const typedBlocks = buildTypedLayoutBlocks(pkg, route)
+  const trace = buildArtifactTrace(pkg, route, typedBlocks)
+
+  assert.equal(trace.artifact_class, 'task_sheet')
+  assert.deepEqual(trace.page_roles, [])
+})
+
+test('artifact trace keeps generic project plan task sheet in task_sheet when it lacks packet phase progression', () => {
+  const pkg = loadFixture('fixtures/plan-build-grow/pbg_english12.json')
+  const route = planPackageRoutes(pkg).routes.find((entry) => entry.output_id === 'w3_task_sheet')
+  const typedBlocks = buildTypedLayoutBlocks(pkg, route)
+  const trace = buildArtifactTrace(pkg, route, typedBlocks)
+
+  assert.equal(trace.artifact_class, 'task_sheet')
+  assert.deepEqual(trace.page_roles, [])
+})
+
+test('artifact trace keeps follow-along revision sheet in task_sheet when it lacks phase-two retrieval', () => {
+  const pkg = loadFixture('fixtures/generated/careers-8-technology-use-school-workplace.grade8-careers.json')
+  const route = planPackageRoutes(pkg).routes.find((entry) => entry.output_id === 'day2_task_sheet')
+  const typedBlocks = buildTypedLayoutBlocks(pkg, route)
+  const trace = buildArtifactTrace(pkg, route, typedBlocks)
+
+  assert.equal(trace.artifact_class, 'task_sheet')
+  assert.deepEqual(trace.page_roles, [])
+})
+
 test('multipage artifact QA passes for the current proof fixture', () => {
   const pkg = loadFixture('fixtures/tests/multipage-classifier-page-roles.proof.json')
 
@@ -80,21 +114,16 @@ test('multipage artifact QA passes for the current proof fixture', () => {
 
 test('student packet QA blocks when visible phase progression disappears', () => {
   const pkg = loadFixture('fixtures/tests/multipage-classifier-page-roles.proof.json')
-  pkg.task_sheet.instructions = [
-    'Start with the matching bank.',
-    'Use the project planner to get organized.',
-    'Finish by checking your readiness before drafting.',
-  ]
-  pkg.task_sheet.tasks = [
-    { label: 'Part A', prompt: 'Matching bank: match one risk topic to a career pathway in B.C.', lines: 2 },
-    { label: 'Part B', prompt: 'Research planner: choose a project topic and list two questions you need to investigate.', lines: 4 },
-    { label: 'Part C', prompt: 'Project planner: add one source or support you still need.', lines: 3 },
-    { label: 'Part D', prompt: 'Reference bank: note one pathway connection that still fits your topic.', lines: 3 },
-    { label: 'Part E', prompt: 'Research planner: record one final planning step before drafting.', lines: 4 },
-  ]
-  pkg.task_sheet.embedded_supports = []
-
-  const qa = runQa(pkg, 'student_packet_main')
+  const { route, trace, typedBlocks } = buildQaContext(pkg, 'student_packet_main')
+  const qa = runMultipageArtifactQa({
+    route,
+    trace: {
+      ...trace,
+      page_roles: trace.page_roles.filter((role) => role !== 'follow_along'),
+      template_sequence: trace.template_sequence.filter((templateId) => templateId !== 'SP_OPEN_FOLLOW_ALONG'),
+    },
+    typedBlocks,
+  })
 
   assert.equal(qa?.judgment, 'block')
   assert.equal(qa?.checks.find((check) => check.check_id === 'student.phase_progression_visible')?.status, 'block')
@@ -102,9 +131,16 @@ test('student packet QA blocks when visible phase progression disappears', () =>
 
 test('student packet QA blocks when the checklist close disappears', () => {
   const pkg = loadFixture('fixtures/tests/multipage-classifier-page-roles.proof.json')
-  delete pkg.task_sheet.success_criteria
-
-  const qa = runQa(pkg, 'student_packet_main')
+  const { route, trace, typedBlocks } = buildQaContext(pkg, 'student_packet_main')
+  const qa = runMultipageArtifactQa({
+    route,
+    trace: {
+      ...trace,
+      page_roles: trace.page_roles.filter((role) => role !== 'completion_check'),
+      template_sequence: trace.template_sequence.filter((templateId) => templateId !== 'SP_CHECKLIST_CLOSE'),
+    },
+    typedBlocks: typedBlocks.filter((block) => !(block.block_type === 'checklist' && block.source_key === 'success_criteria')),
+  })
 
   assert.equal(qa?.judgment, 'block')
   assert.equal(qa?.checks.find((check) => check.check_id === 'student.completion_close_present')?.status, 'block')
