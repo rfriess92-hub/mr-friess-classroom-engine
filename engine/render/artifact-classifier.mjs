@@ -1,6 +1,7 @@
 import { resolveSourceSection } from '../schema/source-section.mjs'
 import { buildTypedLayoutBlocks } from './typed-blocks.mjs'
 import { deriveMultipageArtifactClass, derivePageRoles } from './multipage-page-roles.mjs'
+import { deriveWeekSequenceContract } from './week-sequence-contract.mjs'
 
 const TASK_SHEET_OUTPUTS = new Set(['task_sheet'])
 const SLIDE_OUTPUTS = new Set(['slides'])
@@ -64,6 +65,20 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
   const outputType = route.output_type
   const section = resolveSourceSection(pkg, route.source_section)
   const blocks = typedBlocks ?? buildTypedLayoutBlocks(pkg, route)
+  const weekSequence = deriveWeekSequenceContract(pkg, route)
+
+  if (weekSequence) {
+    return {
+      artifact_class: weekSequence.artifact_class,
+      classification_confidence: weekSequence.classification_confidence,
+      fallback_reason: null,
+      classifier_basis: [`output_type:${outputType}`, ...weekSequence.classifier_basis_extension],
+      package_contract_family: weekSequence.package_contract_family,
+      package_system_role: weekSequence.package_system_role,
+      page_roles: weekSequence.page_roles,
+      resolved_render_intent: weekSequence.resolved_render_intent,
+    }
+  }
 
   if (TASK_SHEET_OUTPUTS.has(outputType) && taskSheetSignals(section)) {
     const multipage = deriveMultipageArtifactClass(route, blocks, 'task_sheet')
@@ -72,6 +87,10 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
       classification_confidence: multipage.classification_confidence ?? 0.99,
       fallback_reason: null,
       classifier_basis: ['output_type:task_sheet', 'section.tasks present', ...multipage.classifier_basis_extension],
+      package_contract_family: null,
+      package_system_role: null,
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? null,
     }
   }
 
@@ -81,6 +100,10 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
       classification_confidence: 0.99,
       fallback_reason: null,
       classifier_basis: ['output_type:slides', 'slides array present'],
+      package_contract_family: null,
+      package_system_role: null,
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? null,
     }
   }
 
@@ -91,6 +114,10 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
       classification_confidence: multipage.classification_confidence ?? 0.9,
       fallback_reason: null,
       classifier_basis: [`output_type:${outputType}`, 'teacher audience', 'teacher-pack section signals present', ...multipage.classifier_basis_extension],
+      package_contract_family: null,
+      package_system_role: null,
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? null,
     }
   }
 
@@ -100,6 +127,10 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
       classification_confidence: 0.92,
       fallback_reason: null,
       classifier_basis: ['output_type:worksheet', 'section.questions present'],
+      package_contract_family: null,
+      package_system_role: null,
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? null,
     }
   }
 
@@ -109,6 +140,10 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
       classification_confidence: 0.92,
       fallback_reason: null,
       classifier_basis: ['output_type:exit_ticket', 'section prompt/n_lines present'],
+      package_contract_family: null,
+      package_system_role: null,
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? null,
     }
   }
 
@@ -118,6 +153,10 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
       classification_confidence: 0.92,
       fallback_reason: null,
       classifier_basis: ['output_type:graphic_organizer', 'section organizer_type/columns present'],
+      package_contract_family: null,
+      package_system_role: null,
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? null,
     }
   }
 
@@ -127,6 +166,10 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
       classification_confidence: 0.92,
       fallback_reason: null,
       classifier_basis: ['output_type:discussion_prep_sheet', 'section discussion_prompt/position_label present'],
+      package_contract_family: null,
+      package_system_role: null,
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? null,
     }
   }
 
@@ -136,6 +179,10 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
       classification_confidence: 0.92,
       fallback_reason: null,
       classifier_basis: ['output_type:final_response_sheet', 'section.prompt present'],
+      package_contract_family: null,
+      package_system_role: null,
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? null,
     }
   }
 
@@ -145,6 +192,10 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
       classification_confidence: 0.92,
       fallback_reason: null,
       classifier_basis: ['output_type:checkpoint_sheet', 'section look_fors/checkpoint_focus present'],
+      package_contract_family: null,
+      package_system_role: null,
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? null,
     }
   }
 
@@ -153,14 +204,18 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
     classification_confidence: 0.35,
     fallback_reason: `Explicit generic_doc fallback: no specialized artifact class match for output_type '${outputType}'.`,
     classifier_basis: [`output_type:${outputType}`, 'explicit generic_doc fallback'],
+    package_contract_family: null,
+    package_system_role: null,
+    page_roles: null,
+    resolved_render_intent: route.render_intent ?? null,
   }
 }
 
 export function resolveRenderMode(classification) {
-  if (classification.artifact_class === 'mini_lesson_slides') {
+  if (['mini_lesson_slides', 'week_sequence_day_slides'].includes(classification.artifact_class)) {
     return {
       mode: 'slide_mode',
-      mode_reason: 'mini_lesson_slides routes through the slide composition pipeline.',
+      mode_reason: `${classification.artifact_class} routes through the slide composition pipeline.`,
     }
   }
 
@@ -174,17 +229,33 @@ export function buildArtifactTrace(pkg, route, typedBlocks = null) {
   const blocks = typedBlocks ?? buildTypedLayoutBlocks(pkg, route)
   const classification = classifyArtifactRoute(pkg, route, blocks)
   const mode = resolveRenderMode(classification)
-  const page_roles = derivePageRoles(route, classification.artifact_class, blocks)
+  const page_roles = Array.isArray(classification.page_roles) && classification.page_roles.length > 0
+    ? classification.page_roles
+    : derivePageRoles(route, classification.artifact_class, blocks)
   return {
     route_id: route.route_id,
     output_id: route.output_id,
     output_type: route.output_type,
     renderer_family: route.renderer_family,
     audience: route.audience,
+    artifact_family: route.artifact_family,
+    architecture_role: route.architecture_role,
+    day_scope: route.day_scope ?? null,
+    evidence_role: route.evidence_role ?? null,
+    final_evidence_role: route.final_evidence_role ?? null,
+    declared_render_intent: route.render_intent ?? null,
+    render_intent: classification.resolved_render_intent ?? route.render_intent ?? null,
+    assessment_weight: route.assessment_weight ?? null,
+    density: route.density ?? null,
+    length_band: route.length_band ?? null,
+    alignment_target: route.alignment_target ?? null,
+    final_evidence_target: route.final_evidence_target ?? null,
     artifact_class: classification.artifact_class,
     classification_confidence: classification.classification_confidence,
     fallback_reason: classification.fallback_reason,
     classifier_basis: classification.classifier_basis,
+    package_contract_family: classification.package_contract_family ?? null,
+    package_system_role: classification.package_system_role ?? null,
     mode: mode.mode,
     mode_reason: mode.mode_reason,
     page_roles,

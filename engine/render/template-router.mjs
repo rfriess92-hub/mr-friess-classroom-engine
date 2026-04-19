@@ -38,6 +38,24 @@ function guideTemplateSequence(pageRoles) {
   return { template_family: 'TG_MULTIPAGE_GUIDE', template_sequence: sequence, rejected_templates: rejected }
 }
 
+function weekSequenceSlideTemplate(pageRoles) {
+  const phaseRole = Array.isArray(pageRoles) ? pageRoles[0] : null
+  const roleMap = {
+    launch_frame: 'WSD_LAUNCH_FRAME',
+    activity_explore: 'WSD_ACTIVITY_DISCUSSION',
+    checkpoint_prep: 'WSD_CHECKPOINT_PREP',
+    synthesis_share: 'WSD_SYNTHESIS_SHARE',
+  }
+  const selected = roleMap[phaseRole] ?? 'WSD_ACTIVITY_DISCUSSION'
+  return {
+    template_family: 'WEEK_SEQUENCE_DAY_SLIDES',
+    template_sequence: [selected],
+    selected_template: selected,
+    rejected_templates: Object.values(roleMap).filter((templateId) => templateId !== selected),
+    template_reason: 'week_sequence_day_slides routes through an explicit day-phase slide family.',
+  }
+}
+
 export function resolveTemplateRoute(trace) {
   const pageRoles = Array.isArray(trace?.page_roles) ? trace.page_roles : []
 
@@ -56,6 +74,60 @@ export function resolveTemplateRoute(trace) {
       ...resolved,
       selected_template: resolved.template_sequence[0],
       template_reason: 'teacher_guide_multi_page routes through the workflow-oriented teacher guide template family.',
+    }
+  }
+
+  if (trace?.artifact_class === 'week_sequence_packet') {
+    return {
+      template_family: 'WEEK_SEQUENCE_PACKET',
+      template_sequence: ['WSP_STAGED_WORKFLOW'],
+      selected_template: 'WSP_STAGED_WORKFLOW',
+      rejected_templates: [],
+      template_reason: 'week_sequence_packet routes through an explicit staged weekly packet contract.',
+    }
+  }
+
+  if (trace?.artifact_class === 'teacher_checkpoint_gate') {
+    return {
+      template_family: 'WEEK_SEQUENCE_CHECKPOINT_GATE',
+      template_sequence: ['WSC_RELEASE_GATE'],
+      selected_template: 'WSC_RELEASE_GATE',
+      rejected_templates: [],
+      template_reason: 'teacher_checkpoint_gate routes through an explicit teacher-facing checkpoint contract.',
+    }
+  }
+
+  if (trace?.artifact_class === 'week_sequence_day_slides') {
+    return weekSequenceSlideTemplate(pageRoles)
+  }
+
+  if (trace?.artifact_class === 'week_sequence_overview') {
+    return {
+      template_family: 'WEEK_SEQUENCE_TEACHER_SUPPORT',
+      template_sequence: ['WTS_OVERVIEW_FRAME'],
+      selected_template: 'WTS_OVERVIEW_FRAME',
+      rejected_templates: ['WTS_GUIDE_SEQUENCE'],
+      template_reason: 'week_sequence_overview routes through an explicit package-sequence overview contract.',
+    }
+  }
+
+  if (trace?.artifact_class === 'week_sequence_teacher_guide') {
+    return {
+      template_family: 'WEEK_SEQUENCE_TEACHER_SUPPORT',
+      template_sequence: ['WTS_GUIDE_SEQUENCE'],
+      selected_template: 'WTS_GUIDE_SEQUENCE',
+      rejected_templates: ['WTS_OVERVIEW_FRAME'],
+      template_reason: 'week_sequence_teacher_guide routes through an explicit package-sequence teacher guide contract.',
+    }
+  }
+
+  if (trace?.artifact_class === 'week_sequence_final_response') {
+    return {
+      template_family: 'WEEK_SEQUENCE_FINAL_RESPONSE',
+      template_sequence: ['WSF_SINGLE_EVIDENCE'],
+      selected_template: 'WSF_SINGLE_EVIDENCE',
+      rejected_templates: [],
+      template_reason: 'week_sequence_final_response routes through an explicit single-evidence final response contract.',
     }
   }
 

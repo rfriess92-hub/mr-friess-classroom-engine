@@ -36,11 +36,28 @@ test('render-package emits a passing package contract QA sidecar for the live We
     )
 
     const packageQa = JSON.parse(readFileSync(resolve(outDir, 'package.qa.json'), 'utf-8'))
+    const weeklyPacketTrace = JSON.parse(readFileSync(resolve(outDir, 'weekly_task_sheet.trace.json'), 'utf-8'))
+    const checkpointTrace = JSON.parse(readFileSync(resolve(outDir, 'day4_checkpoint_sheet.trace.json'), 'utf-8'))
+    const day1SlidesTrace = JSON.parse(readFileSync(resolve(outDir, 'day1_slides.trace.json'), 'utf-8'))
+    const finalResponseTrace = JSON.parse(readFileSync(resolve(outDir, 'day5_final_response_sheet.trace.json'), 'utf-8'))
 
     assert.equal(packageQa.qa_scope, 'package_contract')
     assert.equal(packageQa.package_contract_family, 'week_sequence_packet_system')
     assert.equal(packageQa.judgment, 'pass')
-    assert.equal(packageQa.check_count, 5)
+    assert.equal(packageQa.check_count, 10)
+
+    assert.equal(weeklyPacketTrace.artifact_class, 'week_sequence_packet')
+    assert.equal(weeklyPacketTrace.template_family, 'WEEK_SEQUENCE_PACKET')
+
+    assert.equal(checkpointTrace.artifact_class, 'teacher_checkpoint_gate')
+    assert.equal(checkpointTrace.template_family, 'WEEK_SEQUENCE_CHECKPOINT_GATE')
+
+    assert.equal(day1SlidesTrace.artifact_class, 'week_sequence_day_slides')
+    assert.equal(day1SlidesTrace.render_intent, 'launch_frame')
+    assert.deepEqual(day1SlidesTrace.page_roles, ['launch_frame'])
+
+    assert.equal(finalResponseTrace.artifact_class, 'week_sequence_final_response')
+    assert.equal(finalResponseTrace.template_family, 'WEEK_SEQUENCE_FINAL_RESPONSE')
   } finally {
     rmSync(outDir, { recursive: true, force: true })
   }

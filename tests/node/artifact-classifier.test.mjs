@@ -1,7 +1,10 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 
 import { buildArtifactTrace, classifyArtifactRoute, resolveRenderMode } from '../../engine/render/artifact-classifier.mjs'
+import { planPackageRoutes } from '../../engine/planner/output-router.mjs'
 
 const basePackage = {
   package_id: 'artifact-classifier-fixture',
@@ -44,6 +47,10 @@ const basePackage = {
     timing: '79 min',
     teacher_notes: 'Watch for misconceptions.',
   },
+}
+
+function loadFixture(path) {
+  return JSON.parse(readFileSync(resolve(process.cwd(), path), 'utf-8'))
 }
 
 test('artifact classifier resolves task_sheet with high confidence', () => {
@@ -138,6 +145,35 @@ test('artifact classifier resolves checkpoint_sheet to student_checkpoint', () =
   const trace = buildArtifactTrace(basePackage, route)
   assert.equal(trace.artifact_class, 'student_checkpoint')
   assert.equal(trace.fallback_reason, null)
+})
+
+test('artifact classifier resolves week-sequence packet system routes with explicit package-aware classes', () => {
+  const pkg = loadFixture('fixtures/generated/careers-8-mosaic-week-1-know-yourself.grade8-careers.json')
+  const routes = planPackageRoutes(pkg).routes
+
+  const weeklyPacket = buildArtifactTrace(pkg, routes.find((route) => route.output_id === 'weekly_task_sheet'))
+  const checkpoint = buildArtifactTrace(pkg, routes.find((route) => route.output_id === 'day4_checkpoint_sheet'))
+  const day1Slides = buildArtifactTrace(pkg, routes.find((route) => route.output_id === 'day1_slides'))
+  const day5Final = buildArtifactTrace(pkg, routes.find((route) => route.output_id === 'day5_final_response_sheet'))
+  const teacherGuide = buildArtifactTrace(pkg, routes.find((route) => route.output_id === 'teacher_guide_main'))
+
+  assert.equal(weeklyPacket.artifact_class, 'week_sequence_packet')
+  assert.equal(weeklyPacket.package_contract_family, 'week_sequence_packet_system')
+  assert.equal(weeklyPacket.render_intent, 'staged_week_workflow')
+
+  assert.equal(checkpoint.artifact_class, 'teacher_checkpoint_gate')
+  assert.equal(checkpoint.package_system_role, 'teacher_release_gate')
+
+  assert.equal(day1Slides.artifact_class, 'week_sequence_day_slides')
+  assert.equal(day1Slides.mode, 'slide_mode')
+  assert.deepEqual(day1Slides.page_roles, ['launch_frame'])
+
+  assert.equal(day5Final.artifact_class, 'week_sequence_final_response')
+  assert.equal(day5Final.final_evidence_role, 'primary')
+  assert.equal(day5Final.render_intent, 'single_final_evidence')
+
+  assert.equal(teacherGuide.artifact_class, 'week_sequence_teacher_guide')
+  assert.equal(teacherGuide.package_system_role, 'teacher_sequence_guide')
 })
 
 test('artifact classifier uses generic_doc fallback for unknown output type', () => {
