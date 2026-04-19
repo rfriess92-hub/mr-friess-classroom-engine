@@ -1,16 +1,16 @@
-# Mr. Friess Classroom Engine — Stable-Core Workflow Guide
+# Mr. Friess Classroom Engine - Stable-Core Workflow Guide
 
 ## Purpose
 
-This document describes the current workflow for the stable-core package pipeline and the assignment-family contract that now sits upstream of it.
+This document describes the current workflow for the stable-core package pipeline and the assignment-family contract that sits upstream of it.
 
 Its job is to keep the repo honest about:
 
 - what the stable-core acceptance path actually is
 - which commands are the real gates
-- where the upstream pedagogy/authoring contract now lives
+- where the upstream pedagogy and authoring contract now lives
 - how to make bounded changes without reintroducing workflow theater
-- how to review package/render work without confusing content, renderer, QA, tooling, and authoring-contract intent
+- how to review package, render, QA, tooling, and authoring-contract work without blurring their intent
 
 It does not authorize pedagogy invention or lesson redesign unless a task is explicitly content-authoring work.
 
@@ -18,13 +18,13 @@ It does not authorize pedagogy invention or lesson redesign unless a task is exp
 
 ## Architectural contract
 
-The repo now distinguishes between two different but connected contracts.
+The repo distinguishes between two connected contracts.
 
 ### 1. Stable-core package = live render contract
 
-The stable-core package is still the machine-facing contract that the render path consumes directly.
+The stable-core package remains the machine-facing contract that the render path consumes directly.
 
-The authoritative stable-core acceptance path is still:
+The authoritative stable-core acceptance path is:
 
 1. `pnpm run doctor` when repo structure, scripts, or renderer entrypoints changed
 2. `pnpm run schema:check -- --package <path>`
@@ -34,9 +34,9 @@ The authoritative stable-core acceptance path is still:
 
 Use `qa:render` as a drill-down tool for a single artifact, not as the primary acceptance step.
 
-### 2. Assignment-family layer = authoritative upstream pedagogy/authoring contract
+### 2. Assignment-family layer = authoritative upstream pedagogy and authoring contract
 
-The assignment-family layer is now the authoritative upstream contract for:
+The assignment-family layer is the authoritative upstream contract for:
 
 - family selection
 - family chain recommendations
@@ -44,31 +44,34 @@ The assignment-family layer is now the authoritative upstream contract for:
 - family integrity expectations
 - authoring-time validation before render work begins
 
-This means the repo should move toward one family source of truth under `engine/assignment-family/`.
+The live stable-core render-plan path already reads family selection from `engine/assignment-family/package-selector.mjs`.
 
 ### 3. Transition rule
 
-During cleanup, docs must distinguish clearly between:
+Docs should distinguish clearly between:
 
-- **live today** — what the stable-core render path actually uses right now
-- **authoritative target** — what the repo is migrating toward
-- **compatibility-only** — temporary shims kept so the live path does not break during cutover
+- **live today** - what the stable-core render path actually uses now
+- **upstream tooling** - authoring and validation surfaces used before render work
+- **compatibility-only** - temporary residue kept so the live path does not break during cleanup
 
 ---
 
 ## Current repo reality
 
-The repo is still primarily operated by one person.
-CI now exists for stable-core smoke coverage, but local command execution and direct review still matter.
-
 Current reality, stated plainly:
 
-- `schema:check`, `route:plan`, `render:package`, and `qa:bundle` are still the real stable-core acceptance path
-- `engine/schema/render-plan.mjs` still reads family selection from `engine/family/*` today
-- `engine/assignment-family/*` already exists as the newer authoring/validation surface
-- the current cleanup goal is to move live family truth into `engine/assignment-family/*` and shrink `engine/family/*` into a temporary compatibility layer before removal
+- `schema:check`, `route:plan`, `render:package`, and `qa:bundle` remain the stable-core acceptance path
+- `engine/schema/render-plan.mjs` already imports `engine/assignment-family/package-selector.mjs` for live family selection
+- `engine/family/*` remains compatibility-only residue during cleanup
+- `pnpm test` runs Node tests only
+- `.github/workflows/ci.yml` runs the Node test command plus `pytest tests/python`
+- `.github/workflows/stable-core.yml` runs `pnpm test` plus stable-core fixture schema, route, and render smoke coverage
+- `stable-core.yml` installs Python renderer dependencies for render steps, but it does not invoke `pytest`
+- legacy direct builders remain compatibility and debugging surfaces, not acceptance proof
+- `package.json` does not currently expose `build:all`, `build:pptx`, or `build:pdf`
+- the remaining direct-builder scripts are callable with `node scripts/...`, not through `pnpm run build:*`
 
-That means the architectural decision is ahead of the full code cutover, on purpose.
+That means the family-authority cutover already happened in live code, while compatibility reduction, docs cleanup, and direct-builder cleanup are still in progress.
 
 ---
 
@@ -81,10 +84,10 @@ A branch may still contain more than one file if the files are part of one coher
 
 ### 2. Name the intent clearly
 
-`content`, `renderer`, `qa`, and `tooling` are still useful labels for describing what kind of change you are making.
-`assignment-family` is now also a meaningful intent label for upstream pedagogy-contract work.
+`content`, `renderer`, `qa`, and `tooling` remain useful labels for describing change intent.
+`assignment-family` is also a meaningful intent label for upstream pedagogy-contract work.
 
-These are intent labels, not hard PR classes that require ceremony before every fix.
+These are intent labels, not a PR ceremony system.
 
 ### 3. Use lightweight branches and PRs when the diff matters
 
@@ -93,45 +96,23 @@ That preserves history and makes rollback easier.
 
 ### 4. Do not use legacy direct builders as acceptance proof
 
-If the question is whether a stable-core package is valid, the answer must come from the package workflow, not from ad hoc direct builders.
+If the question is whether a stable-core package is valid, the answer must come from the package workflow, not from direct-builder residue.
 
 ### 5. Do not blur live stable-core behavior and upstream assignment-family decisions
 
 The stable-core package path decides what renders today.
-The assignment-family layer decides what upstream family contract should exist before generation/rendering.
-Keep those distinct until the cutover is complete.
+The assignment-family layer decides what upstream family contract should exist before generation and rendering.
+Keep those distinct until the compatibility residue is removed.
 
-### 6. Keep teacher/student separation explicit
+### 6. Keep teacher and student separation explicit
 
 Do not fix renderer or workflow issues by silently collapsing teacher-facing and student-facing artifact logic.
 
 ---
 
-## Recommended naming
-
-The following prefixes are still useful because they make intent obvious:
-
-- `content/<slug>`
-- `renderer/<slug>`
-- `qa/<slug>`
-- `tooling/<slug>`
-- `assignment-family/<slug>`
-
-Likewise, these PR title prefixes remain useful:
-
-- `Content:`
-- `Renderer:`
-- `QA:`
-- `Tooling:`
-- `Assignment-family:`
-
-These are recommendations for clarity, not a strict ceremony system.
-
----
-
 ## Review expectations by change type
 
-### Assignment-family / authoring-contract changes
+### Assignment-family or authoring-contract changes
 
 Expected:
 
@@ -194,13 +175,14 @@ Until semantic QA grows, some of this remains manual by design.
 
 ## Repo truths to preserve
 
+- `engine/schema/render-plan.mjs` reads family selection from `engine/assignment-family/package-selector.mjs`.
+- `engine/family/*` is compatibility-only residue.
 - `engine/pptx/renderer.py` is the public PPTX entrypoint, but the implementation is still transitional and archive-backed.
 - `engine/pdf/render_stable_core_output.py` is the active PDF renderer wrapper.
 - Stable-core package rendering writes package-scoped output directories by default.
-- Legacy direct builders remain compatibility/debugging surfaces, not stable-core acceptance proof.
+- Legacy direct builders remain compatibility and debugging surfaces, not stable-core acceptance proof.
 - `DECISIONS.md` is the active decisions log for repo structure and operating rules.
-- `engine/family/*` is still part of the live render-plan path today.
-- `engine/assignment-family/*` is the intended authoritative upstream family surface.
+- `pnpm test` is node-only, while Python tests run separately in `.github/workflows/ci.yml`.
 
 ---
 
@@ -208,9 +190,9 @@ Until semantic QA grows, some of this remains manual by design.
 
 Revisit this guide when one of these becomes true:
 
-- assignment-family cutover is complete and `engine/family/*` is no longer live
+- compatibility residue under `engine/family/*` is removed
 - family validation becomes part of the real stable-core acceptance gate
-- CI becomes the dominant gate rather than local review plus smoke coverage
+- stable-core CI expands to cover the newer proof fixtures
 - the PPTX implementation is truly consolidated
-- legacy direct builders are formally deprecated or removed
+- legacy direct builders are formally wired or removed
 - package generation moves to a different provider abstraction or integrated authoring flow

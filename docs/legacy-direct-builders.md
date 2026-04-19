@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document defines the current status of the direct lesson builder surfaces so repo/build work does not confuse them with the stable-core package acceptance path.
+This document defines the current status of the direct lesson builder surfaces so repo and build work does not confuse them with the stable-core package acceptance path.
 
 ## Current status
 
@@ -25,17 +25,25 @@ The authoritative acceptance path remains:
 - `scripts/build-pdf.mjs`
 
 These are intentionally transitional.
-They should be treated as operator aids for narrow debugging cases, not as the main pipeline.
+They should be treated as operator aids or debugging residue, not as the main pipeline.
 
-## How to invoke them today
+## What is true today
 
-Until package-level script wiring is refreshed, call them directly with Node:
+- `package.json` does not define `pnpm run build:all`, `pnpm run build:pptx`, or `pnpm run build:pdf`.
+- The direct-builder files remain callable with `node scripts/...`.
+- They remain deprecated compatibility/debugging surfaces rather than stable-core acceptance commands.
+
+## How to inspect them today
+
+If you need to inspect the remaining direct-builder surfaces, call the individual script files directly with Node:
 
 ```bash
 node scripts/build-all.mjs --lesson engine/content/science9_interconnected_spheres.json --out output
 node scripts/build-pptx.mjs --lesson engine/content/science9_interconnected_spheres.json --out output
 node scripts/build-pdf.mjs --lesson engine/content/science9_interconnected_spheres.json --out output
 ```
+
+Do not present these as equivalent to the stable-core package path.
 
 ## What they do not prove
 
@@ -44,14 +52,14 @@ A successful direct-builder run does **not** prove that:
 - a stable-core package is schema-valid
 - routes are correct
 - bundle composition is correct
-- teacher/student audience boundaries are preserved
+- teacher and student audience boundaries are preserved
 - visual or artifact QA passed
 
 ## Cleanup direction
 
 One of these futures should be chosen explicitly:
 
-### Option 1 â€” keep them as compatibility/debugging shims
+### Option 1 - keep them as compatibility/debugging shims
 
 If kept:
 
@@ -59,7 +67,7 @@ If kept:
 - keep them outside the acceptance path
 - avoid presenting them as equivalent to stable-core rendering
 
-### Option 2 â€” formally deprecate and remove them
+### Option 2 - formally deprecate and remove them
 
 If removed:
 
@@ -69,4 +77,5 @@ If removed:
 
 ## Current recommendation
 
-Keep the direct builders only as narrow compatibility/debugging shims until the stale README/workflow docs are rewritten. After that, either wire them deliberately or deprecate them formally.
+Keep the direct builders only as narrow compatibility/debugging surfaces until their future is decided explicitly.
+Do not advertise `pnpm run build:*` commands while package script wiring is absent.
