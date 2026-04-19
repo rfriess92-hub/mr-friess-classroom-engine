@@ -1,0 +1,842 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers_8_mosaic_week_4_technology_and_identity",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 4,
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Career 8 Mosaic - Week 4 Technology and Identity",
+  "theme": "careers",
+  "secondary_architecture_support": {
+    "architecture": "single_period_full",
+    "note": "The inquiry can be compressed into a shorter sequence, but the staged packet, Day 3 checkpoint, and Day 4 final synthesis still need the full flow."
+  },
+  "materials_control_note": "The weekly packet holds film follow-along notes, risk/affected/respond organizer work, research notes, and final product planning only. The Day 3 checkpoint sheet stays teacher-facing. The single primary evidence artifact for the week stays in the Day 4 final response sheet.",
+  "assignment_family": "short_inquiry_sequence",
+  "grade_subject_fit": "Fits BC Career Education 8 by centering digital responsibility, public identity, technology risks, who is affected, and realistic career connections to fields that help respond in BC contexts.",
+  "unit_context": "Week 4 of a six-week Career 8 Mosaic unit. This week builds on Week 1 self-knowledge, Week 2 decision-making, and Week 3 contribution by asking how technology shapes learning, work, identity, and responsibility, and by highlighting careers and fields that help respond when digital systems create problems.",
+  "assignment_purpose": "Students investigate digital risks through The Social Dilemma and related inquiry tasks, compare possible response roles, and then create a Digital Risk, Real Careers product that connects one digital risk to one realistic career or field, explains how that role helps respond, interprets why the match is realistic, includes one BC connection, and reflects on possible personal fit.",
+  "final_evidence_target": "A Day 4 Digital Risk, Real Careers product in the final response sheet that names one clear digital risk, identifies one realistic responding career or field, explains how the role responds, interprets why the role is a strong match, includes one BC connection, and includes a personal-fit reflection.",
+  "student_task_flow": [
+    {
+      "step": "Observe digital risks, effects, and response questions during the film",
+      "label": "Day 1",
+      "evidence": "Students use a follow-along sheet to notice risks, who is affected, and who might help respond."
+    },
+    {
+      "step": "Build a risk / affected / respond bridge",
+      "label": "Day 2",
+      "evidence": "Students move from naming a problem to explaining who is affected and which roles or fields help respond."
+    },
+    {
+      "step": "Research one realistic risk-to-career chain",
+      "label": "Day 3",
+      "evidence": "Students compare possible fields, reject weak pairings, gather BC-relevant notes, and conference for release."
+    },
+    {
+      "step": "Complete the final synthesis product",
+      "label": "Day 4",
+      "evidence": "Students complete the Digital Risk, Real Careers final response in the Day 4 final response sheet only."
+    }
+  ],
+  "success_criteria": [
+    "I can explain one clear digital risk without using vague fear language.",
+    "I can identify who is affected by that risk.",
+    "I can name one realistic career or field that helps respond and explain what that role does.",
+    "I can include one BC-relevant connection that makes the issue or role feel real here.",
+    "I can complete a clear Day 4 final product on the final response sheet."
+  ],
+  "supports_scaffolds": [
+    {
+      "label": "Movie follow-along document",
+      "support": "Students record risks, affected groups, and response questions while watching instead of reacting only from memory.",
+      "embedded": true
+    },
+    {
+      "label": "Risk / Who is affected / Who helps respond organizer",
+      "support": "Students practice the full logic chain instead of stopping at the problem statement.",
+      "embedded": true
+    },
+    {
+      "label": "Risk-to-career matching bank",
+      "support": "The packet and class modelling steer students toward realistic response roles instead of random pairings.",
+      "embedded": true
+    },
+    {
+      "label": "Teacher model of one full chain",
+      "support": "Students see a concrete example that includes the risk, who is affected, the responding field, a BC connection, and a short fit reflection.",
+      "embedded": true
+    },
+    {
+      "label": "Research notes organizer",
+      "support": "Students gather targeted notes on one risk and one field before final writing.",
+      "embedded": true
+    },
+    {
+      "label": "Sentence frames",
+      "support": "Frames help students explain how a role responds and why the match is realistic.",
+      "embedded": true
+    },
+    {
+      "label": "Product checklist",
+      "support": "Students can verify that their final response includes all required parts before handing it in.",
+      "embedded": true
+    },
+    {
+      "label": "Choice in final structure",
+      "support": "Students may present the final response in labeled bullet clusters or short structured explanation blocks suited to Chromebook use.",
+      "embedded": true
+    }
+  ],
+  "differentiation_model": {
+    "support_pathway": "Use the follow-along sheet, organizer, matching bank, sentence frames, and teacher check-ins to help students move from broad reactions to one specific risk-response chain.",
+    "core_pathway": "Move through the weekly packet, test one realistic digital risk and response field, and complete a clear final product with a BC connection and fit reflection.",
+    "extension_pathway": "Push students to compare more than one affected group, explain tradeoffs in a response system, or distinguish between a primary responding role and a supporting role."
+  },
+  "checkpoint_release_logic": [
+    "Keep the weekly packet as planning-only evidence until Day 3.",
+    "Release the Day 4 final response sheet only after the teacher checkpoint confirms the student has one clear digital risk, one realistic career or field match, one valid explanation of who is affected and how the role responds, and one concrete BC connection."
+  ],
+  "teacher_implementation_notes": [
+    "Keep the week balanced and inquiry-based. Technology is not the villain; the focus is on risk, effect, response, and responsibility.",
+    "Do not let students stop at naming harms. Keep returning to the question: who is affected, and who helps respond?",
+    "Treat the packet as one staged workflow across the four days, not as disconnected media-literacy activities.",
+    "Keep the career link realistic. Weak or random risk-to-career matches should be redirected before final product release.",
+    "Use BC-facing examples so the response roles feel local and real instead of decorative."
+  ],
+  "likely_misconceptions": [
+    "Students may think the point of the week is simply that phones or social media are bad.",
+    "Students may think only technology workers respond to digital problems.",
+    "Students may think any job can be connected to any digital risk if they explain it creatively enough.",
+    "Students may think public identity only matters for celebrities or adults and not for students, schools, or future workplaces.",
+    "Students may treat the BC connection as an extra detail instead of part of the actual response chain."
+  ],
+  "pacing_shape": "four_day_film_to_risk_response_project",
+  "assessment_focus": [
+    "Clarity of the student's digital risk statement",
+    "Accuracy and realism of the student's risk-to-career pairing",
+    "Strength of the explanation of who is affected and how the role responds",
+    "Specificity of the BC connection and personal-fit reflection"
+  ],
+  "lesson_overview": {
+    "overview": "Week 4 of the six-week Career 8 Mosaic unit focuses on digital life, public identity, technology risks, and the roles people play when digital systems create problems. Across four days, students use The Social Dilemma and related inquiry tasks to notice risks, identify affected groups, test realistic responding fields, and build one BC-relevant career connection. The week ends with a Digital Risk, Real Careers product that explains one digital risk, one realistic career or field, how that role responds, one BC connection, and whether that role might fit the student.",
+    "essential_question": "How does technology shape learning, work, and public identity, and what kinds of careers help solve the problems technology creates?",
+    "sequence": [
+      {
+        "day": "Day 1",
+        "focus": "Film framing, observation, and first noticing.",
+        "artifacts": ["Slides", "Weekly Packet"],
+        "carryover": "Students begin noticing digital risks while tracking who is affected and who might help respond."
+      },
+      {
+        "day": "Day 2",
+        "focus": "Risk / affected / respond bridge activity and project launch.",
+        "artifacts": ["Slides", "Weekly Packet"],
+        "carryover": "Students move from naming a problem to building a realistic risk-response chain."
+      },
+      {
+        "day": "Day 3",
+        "focus": "Guided research and realistic risk-to-career matching.",
+        "artifacts": ["Slides", "Weekly Packet", "Checkpoint Sheet"],
+        "carryover": "Students prepare one specific, plausible risk-to-career product idea before final writing."
+      },
+      {
+        "day": "Day 4",
+        "focus": "Final synthesis, selected sharing, and reflection.",
+        "artifacts": ["Slides", "Final Response Sheet"],
+        "carryover": "The final evidence remains in the Day 4 final response sheet only."
+      }
+    ],
+    "integrity_checks": [
+      "The weekly packet remains one coherent staged workflow instead of disconnected film notes and project pages.",
+      "The Day 3 checkpoint sheet stays teacher-facing and supports release logic rather than student practice.",
+      "The Day 4 final response sheet is the single primary evidence artifact for the week.",
+      "The technology lens stays balanced and inquiry-based rather than anti-technology.",
+      "The career connection stays explicit, realistic, and BC-relevant."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "Technology creates opportunities and risks. In Week 4, students examine how digital tools shape learning, work, and public identity, while also learning that different roles and fields help respond when digital systems create problems.",
+    "learning_goals": [
+      "I can frame the film and discussion work as inquiry rather than anti-technology messaging.",
+      "I can help students move from naming a digital risk to identifying who is affected and who helps respond.",
+      "I can guard against weak or random risk-to-career matches by insisting on realistic response roles.",
+      "I can use the Day 3 checkpoint to confirm whether students have enough concrete material to build a strong Day 4 final product."
+    ],
+    "materials": [
+      "One weekly Career Mosaic packet for Week 4",
+      "Four day slide sets",
+      "The Social Dilemma or approved teacher-selected excerpts",
+      "Optional printed risk-to-career matching bank",
+      "Optional BC-facing research links or local examples",
+      "Day 3 checkpoint sheet",
+      "Day 4 final response sheet",
+      "Chromebooks or classroom devices for Day 3 research and Day 4 writing"
+    ],
+    "timing": [
+      {
+        "time": "Day 1 / 0:00-0:08",
+        "activity": "Frame the week with the sentence: Technology is not the villain here. The question is: when digital tools create problems, who notices, who gets affected, and who helps fix them?"
+      },
+      {
+        "time": "Day 1 / 0:08-0:35",
+        "activity": "Watch The Social Dilemma or approved clips while students complete the follow-along organizer in the packet."
+      },
+      {
+        "time": "Day 1 / 0:35-0:50",
+        "activity": "Begin a short debrief focused on risks, affected groups, and early questions about who helps respond."
+      },
+      {
+        "time": "Day 2 / 0:00-0:12",
+        "activity": "Re-open the film ideas and launch the risk / affected / respond bridge activity."
+      },
+      {
+        "time": "Day 2 / 0:12-0:30",
+        "activity": "Use sorting, partner talk, or class examples to test which careers or fields realistically respond to different digital risks."
+      },
+      {
+        "time": "Day 2 / 0:30-0:50",
+        "activity": "Students complete the organizer and choose one risk-response direction for deeper research."
+      },
+      {
+        "time": "Day 3 / 0:00-0:10",
+        "activity": "Model one full chain from digital risk to affected group to responding field to BC connection."
+      },
+      {
+        "time": "Day 3 / 0:10-0:35",
+        "activity": "Students use the matching bank and guided notes organizer to research one realistic pairing."
+      },
+      {
+        "time": "Day 3 / 0:35-0:50",
+        "activity": "Teacher conferences with the checkpoint sheet to confirm clear risk, realistic field match, affected group, response logic, and BC connection."
+      },
+      {
+        "time": "Day 4 / 0:00-0:10",
+        "activity": "Re-open the final product checklist and model the tone of a concise, evidence-based Digital Risk, Real Careers response."
+      },
+      {
+        "time": "Day 4 / 0:10-0:35",
+        "activity": "Students complete the final product using packet notes and structured response labels."
+      },
+      {
+        "time": "Day 4 / 0:35-0:50",
+        "activity": "Students share selected examples and reflect on one risk and the roles that help respond to it."
+      }
+    ],
+    "teacher_notes": [
+      "Do not let the week collapse into generic anti-phone or anti-social-media messaging.",
+      "Keep asking what makes a response role realistic. A strong match is a role that would actually do something about the selected risk.",
+      "Use BC-facing examples such as schools, public services, local media, community mental-health supports, legal or policy settings, or technology workplaces students could realistically encounter here.",
+      "Treat the packet as a build. The Day 4 final response should feel earned by the earlier organizer and research work."
+    ],
+    "likely_misconceptions": [
+      "Students may think the film proves technology itself is the main problem instead of showing how systems and design choices create risks.",
+      "Students may think the people affected are only the users and miss families, schools, workplaces, or communities.",
+      "Students may think a responding role only counts if it is a coder or app designer.",
+      "Students may choose flashy jobs with no real connection to the selected risk."
+    ],
+    "likely_hesitations": [
+      "Some students may have strong opinions about phones or social media but struggle to move into evidence-based explanation.",
+      "Some students may avoid choosing a single risk because several feel relevant.",
+      "Some students may find the BC connection harder than the risk itself unless given local prompts."
+    ],
+    "teacher_moves": [
+      "Use the frame: The point is not just to name a problem. The point is to understand who is affected and who helps respond.",
+      "Ask: What would this person or field actually do in response to the risk?",
+      "Ask: If that role disappeared, who would still have to deal with the problem?",
+      "Ask: What makes this connection real in BC and not just technically possible somewhere?"
+    ],
+    "model_reflection_language": [
+      "One digital risk I notice is misinformation because people can make decisions using false or manipulated content.",
+      "People affected might include students, families, voters, or community members who depend on trustworthy information.",
+      "One realistic responding field is journalism because journalists verify sources, investigate claims, and help the public sort fact from manipulation.",
+      "A BC connection could be local news, public-information work, or schools and communities needing accurate information here.",
+      "This role might fit me if I like research, asking careful questions, and helping people make better decisions."
+    ],
+    "look_fors": [
+      "Student can state one digital risk clearly and specifically.",
+      "Student can explain who is affected by that risk.",
+      "Student can name one realistic responding field and explain what it actually does.",
+      "Student can include one BC connection that feels concrete and relevant.",
+      "Student is building enough material to complete a clear Day 4 final product."
+    ],
+    "support_moves": [
+      "Ask: Who is affected besides the obvious first group?",
+      "Ask: What kind of work would actually help respond here?",
+      "Ask: Is this a strong pairing, or just a job name placed next to the risk?",
+      "Offer sentence frames and allow labeled bullet planning before final writing."
+    ],
+    "future_pathway_connection": [
+      "If students are ready, extend the inquiry by comparing more than one responding field connected to the same risk.",
+      "Keep the extension optional. The core outcome for this week is one clear, realistic risk-to-response chain."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "careers_8_mosaic_week_4_technology_and_identity_bundle",
+    "declared_outputs": [
+      "lesson_overview",
+      "teacher_guide",
+      "slides",
+      "task_sheet",
+      "checkpoint_sheet",
+      "final_response_sheet"
+    ]
+  },
+  "task_sheet": {
+    "title": "Week 4 Career Mosaic Packet - Technology and Identity",
+    "purpose_line": "Use this packet across the week to move from film observations to one clear Digital Risk, Real Careers product.",
+    "instructions": [
+      "Move through the packet across the week. Each section builds the next one.",
+      "Use partner talk before longer writing, then keep your own notes on this sheet.",
+      "You may use short phrases or bullets in the packet. Save the polished final product for the Day 4 final response sheet. It is the only final evidence sheet for Week 4."
+    ],
+    "tasks": [
+      {
+        "label": "Day 1 / Part A",
+        "prompt": "Before the film, record one opportunity you see in digital tools and one question you want to keep in mind while watching.",
+        "lines": 1,
+        "activity_type": "think_pair_share",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 1 - Pre-film frame",
+          "help": "The goal is not to start with technology as the villain. The goal is to notice risk, effect, and response more clearly.",
+          "record_fields": [
+            "A digital tool or platform I use for learning, life, or entertainment",
+            "One opportunity it creates",
+            "One risk or question I want to watch for",
+            "The question I will keep asking: who is affected, and who helps respond?"
+          ]
+        }
+      },
+      {
+        "label": "Day 1 / Part B",
+        "prompt": "Use this follow-along organizer during or after the film to capture one strong risk-response chain.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 1 - Film follow-along",
+          "help": "Use short notes. You are collecting a strong example, not summarizing the whole film.",
+          "record_fields": [
+            "One digital risk I noticed in the film",
+            "Who seemed affected by it",
+            "One example or scene that made the risk feel real",
+            "Who might help respond to that risk",
+            "One question I still have"
+          ]
+        }
+      },
+      {
+        "label": "Day 1 / Part C",
+        "prompt": "Complete the debrief frames using what you noticed from the film and class discussion.",
+        "lines": 4,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "heading": "Day 1 - First noticing",
+          "help": "Keep the balanced frame. The point is not just to name a problem. The point is to understand who is affected and who helps respond.",
+          "blank_prompts": [
+            "Technology is not the villain here because ___.",
+            "One digital risk that felt real to me was ___.",
+            "People affected by that risk could include ___.",
+            "A role or field that might help respond is ___."
+          ]
+        }
+      },
+      {
+        "label": "Day 2 / Part A",
+        "prompt": "Use one risk from class to build the full bridge from problem to affected group to response role.",
+        "lines": 1,
+        "activity_type": "scenario_sort",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 2 - Risk / Affected / Respond bridge",
+          "help": "Do not stop at the risk. Keep the whole logic visible.",
+          "record_fields": [
+            "The digital risk I am focusing on",
+            "Who is affected by it",
+            "How the risk can affect learning, work, identity, or community life",
+            "Who helps respond",
+            "Why that response role matters"
+          ]
+        }
+      },
+      {
+        "label": "Day 2 / Part B",
+        "prompt": "Use the matching bank to test which career or field is a strong match for your selected risk.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 2 - Risk-to-career matching bank",
+          "help": "Bank ideas: privacy and data tracking -> cybersecurity, privacy law, digital policy; cyberbullying -> counselling, youth work, school leadership; misinformation -> journalism, teaching, communications; algorithm bias -> software testing, policy, data ethics; digital footprint or reputation -> education, counselling, communications, HR; deepfakes or AI manipulation -> digital forensics, journalism, law. Choose a role that would actually respond to the problem.",
+          "record_fields": [
+            "The risk I want to keep",
+            "A strong responding career or field from the bank",
+            "Why this is a realistic match",
+            "One weak or random match I ruled out and why"
+          ]
+        }
+      },
+      {
+        "label": "Day 3 / Part A",
+        "prompt": "Use guided research notes to build one strong digital risk and response chain.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 3 - Research notes organizer",
+          "help": "Keep your notes targeted to the final product. You do not need a full report.",
+          "record_fields": [
+            "My chosen digital risk",
+            "My chosen career or field",
+            "What the role actually does to help respond",
+            "Who is affected by the risk",
+            "One source detail, example, or real-world note that strengthens the explanation"
+          ]
+        }
+      },
+      {
+        "label": "Day 3 / Part B",
+        "prompt": "Add the BC connection and a short personal-fit note before the checkpoint.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 3 - BC connection and fit",
+          "help": "The BC connection should feel real here: local media, schools, public services, community supports, technology workplaces, or public-facing systems in the province.",
+          "record_fields": [
+            "One BC connection that makes this risk or role feel real here",
+            "Why the BC connection matters",
+            "One reason this role might fit me",
+            "One reason I still need to think more about the fit"
+          ]
+        }
+      },
+      {
+        "label": "Day 3 / Part C",
+        "prompt": "Complete the final product planner so you are ready for the checkpoint and Day 4 final writing.",
+        "lines": 4,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "heading": "Day 3 - Ready for Day 4",
+          "help": "This is planning only. Move the polished final product to the Day 4 final response sheet.",
+          "blank_prompts": [
+            "The digital risk I will explain is ___.",
+            "The career or field I will connect to it is ___.",
+            "This role helps respond by ___.",
+            "My BC connection is ___.",
+            "This role might fit me because ___."
+          ]
+        }
+      },
+      {
+        "label": "Day 4 / Part A",
+        "prompt": "Use this checklist to make sure your final product has every required part before you transfer it to the final response sheet.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 4 - Product checklist and transfer plan",
+          "help": "Choose the clearest structure for Chromebook writing: labeled bullets or short explanation blocks. The final evidence still belongs on the Day 4 final response sheet.",
+          "record_fields": [
+            "My structure choice: labeled bullets or short explanation blocks",
+            "My risk statement is ready",
+            "My career or field match is realistic",
+            "My BC connection is concrete",
+            "My personal-fit reflection is specific"
+          ]
+        }
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "lesson_overview_main",
+      "output_type": "lesson_overview",
+      "audience": "teacher",
+      "source_section": "lesson_overview",
+      "bundle": "careers_8_mosaic_week_4_technology_and_identity_bundle"
+    },
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "careers_8_mosaic_week_4_technology_and_identity_bundle"
+    },
+    {
+      "output_id": "weekly_task_sheet",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "careers_8_mosaic_week_4_technology_and_identity_bundle",
+      "alignment_target": "week4_digital_risk_chain_build",
+      "final_evidence_target": "day4_digital_risk_real_careers"
+    }
+  ],
+  "days": [
+    {
+      "day_id": "day_1",
+      "day_label": "Day 1",
+      "carryover_note": "Students begin noticing digital risks, affected groups, and response questions while watching the film and starting the debrief.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 4, Day 1",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Technology and Identity: what digital tools make possible, and what happens when they create problems."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Opening frame",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Technology is not the villain here. The question is: when digital tools create problems, who notices, who gets affected, and who helps fix them?",
+            "prompts": [
+              "What opportunity do digital tools create in your life right now?",
+              "What risk or pressure comes with that opportunity?",
+              "Who else might be affected besides the person using the tool?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Watch-for questions during the film",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "What digital risk is being described?",
+              "Who is affected by that risk?",
+              "Who should help respond, and what might they actually do?"
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Post-film debrief starter",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your packet notes to name one risk, one affected group, and one possible response role before the class debrief.",
+            "prompts": [
+              "What stood out most?",
+              "Who seemed most affected?",
+              "What response role feels realistic so far?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Keep the point clear",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Why is it not enough to just say technology causes problems?",
+              "What new question do you want to carry into tomorrow?"
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "output_id": "day1_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_1.slides",
+          "bundle": "careers_8_mosaic_week_4_technology_and_identity_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_2",
+      "day_label": "Day 2",
+      "carryover_note": "Students move from general film reactions into clearer risk / affected / respond chains and launch the project with stronger career matching.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 4, Day 2",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Risk, who is affected, and who helps respond."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Bridge activity",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Choose one digital risk from yesterday: privacy and data tracking, cyberbullying, misinformation, algorithm bias, screen addiction or attention, mental health and social media, digital footprint or reputation, or AI manipulation and deepfakes.",
+            "prompts": [
+              "Who is affected by it?",
+              "What makes the impact real in school, work, or public life?",
+              "Who could help respond in a realistic way?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "The point is not just to name a problem",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "A strong response starts with a clear digital risk.",
+              "It also explains who is affected and why the impact matters.",
+              "Then it identifies a realistic field or role that actually helps respond."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Teacher model of one full chain",
+          "layout": "planner_model",
+          "content": {
+            "model": "Digital risk: misinformation. Who is affected: students, families, and community members who need accurate information. Responding field: journalism. How the field responds: journalists verify sources, investigate claims, and help the public sort fact from manipulation. BC connection: local and provincial news still matters when people need trustworthy information close to home. Personal fit: this field could fit someone who likes research, asking careful questions, and helping others make informed decisions.",
+            "supports": [
+              "The match is realistic because the role would actually do something about the problem.",
+              "The BC connection is not decorative. It shows where the issue and the response matter here.",
+              "The fit reflection stays short and specific."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Launch the project",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Which risk are you most ready to explain clearly?",
+              "Which response field feels realistic, not random?"
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "output_id": "day2_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_2.slides",
+          "bundle": "careers_8_mosaic_week_4_technology_and_identity_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_3",
+      "day_label": "Day 3",
+      "carryover_note": "Students research one realistic risk-to-career chain and conference before the final Day 4 product is released.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 4, Day 3",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Guided research and realistic matching."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What makes a match realistic?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "A strong match is not just a cool job name beside a risk. It is a role that would actually respond to the problem in a meaningful way.",
+            "prompts": [
+              "What would this person or field really do?",
+              "Who would still be affected if the role disappeared?",
+              "Does the connection make sense in a BC setting?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Strong match checklist",
+          "layout": "checklist",
+          "content": {
+            "items": [
+              "The digital risk is clear and specific.",
+              "The affected group is named clearly.",
+              "The career or field would realistically help respond.",
+              "The BC connection feels concrete, not decorative."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Research focus",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use the packet and matching bank to build one strong chain before the checkpoint.",
+            "prompts": [
+              "What risk are you keeping?",
+              "What field will you research?",
+              "What is your BC connection?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Get ready for the checkpoint",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "What makes your match stronger than a random pairing?",
+              "What do you still need to clarify before Day 4?"
+            ]
+          }
+        }
+      ],
+      "checkpoint_sheet": {
+        "title": "Day 3 Checkpoint Sheet",
+        "checkpoint_focus": "Teacher checkpoint before Day 4 Digital Risk, Real Careers release.",
+        "look_fors": [
+          "Student can state one clear digital risk.",
+          "Student can identify who is affected by the risk.",
+          "Student can name one realistic career or field that helps respond.",
+          "Student can explain how the role responds and provide one BC connection.",
+          "Student is ready to move from packet planning to a cleaner Day 4 final product."
+        ],
+        "conference_prompts": [
+          "What digital risk are you focusing on, and why is it specific enough?",
+          "Who is affected by this risk?",
+          "What would your chosen role or field actually do in response?",
+          "Why is this a strong match instead of a random pairing?",
+          "What is your BC connection?"
+        ],
+        "release_rule": "Release the Day 4 final response sheet only when the student can explain one clear digital risk, one realistic responding field, how the role responds, and one concrete BC connection."
+      },
+      "outputs": [
+        {
+          "output_id": "day3_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_3.slides",
+          "bundle": "careers_8_mosaic_week_4_technology_and_identity_bundle"
+        },
+        {
+          "output_id": "day3_checkpoint_sheet",
+          "output_type": "checkpoint_sheet",
+          "audience": "teacher",
+          "source_section": "days.day_3.checkpoint_sheet",
+          "bundle": "careers_8_mosaic_week_4_technology_and_identity_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_4",
+      "day_label": "Day 4",
+      "carryover_note": "Final evidence stays in the Day 4 Digital Risk, Real Careers product only.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 4, Day 4",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Digital Risk, Real Careers: show the risk, the effect, the response, and the BC connection."
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "What the final product needs",
+          "layout": "checklist",
+          "content": {
+            "items": [
+              "One clear digital risk",
+              "Who is affected",
+              "One realistic career or field",
+              "How that role responds",
+              "One BC connection",
+              "One personal-fit reflection"
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Model the structure, not the exact answer",
+          "layout": "planner_model",
+          "content": {
+            "model": "Digital risk: digital footprint and reputation. Who is affected: students, job applicants, and people whose online identity can affect opportunities. Career or field: education and counselling. How the role responds: teachers and counsellors help students understand digital choices, reputation, and how to protect future options. BC connection: this matters in BC schools and workplaces where public identity can affect school culture, hiring, and trust. Personal fit: this kind of role might fit me if I like helping people make better decisions and think ahead about real consequences.",
+            "supports": [
+              "Keep the risk statement clear and concrete.",
+              "Make sure the role actually helps respond to the selected problem.",
+              "Keep the personal-fit reflection short and specific."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Before you write",
+          "layout": "prompt_card",
+          "content": {
+            "goal": "Turn your packet notes into one clear final product.",
+            "prompts": [
+              "Use labeled bullets or short explanation blocks.",
+              "Keep the BC connection visible.",
+              "Show why the role matters, not just its name."
+            ],
+            "instruction": "Use the Day 4 final response sheet. It is the only final evidence sheet for Week 4."
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Selected sharing",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "What is one digital risk you understand more clearly now?",
+              "What is one role or field you respect more after this week?"
+            ]
+          }
+        }
+      ],
+      "final_response_sheet": {
+        "title": "Day 4 Digital Risk, Real Careers",
+        "prompt": "Complete your final product in clear labeled lines or bullet clusters. Explain one digital risk, identify one realistic career or field connected to that risk, explain how that role helps respond, include one BC connection, and include a short reflection on whether the role might fit you.",
+        "planning_reminders": [
+          "Use labels such as Digital risk, Who is affected, Career or field, How the role responds, BC connection, and Personal-fit reflection.",
+          "Choose one risk and one response field you can explain clearly instead of naming several loosely.",
+          "Make sure the field would realistically respond to the selected risk.",
+          "Write the polished final product here. This is the only final evidence sheet for Week 4."
+        ],
+        "paragraph_support": {
+          "frame_strip": [
+            "Digital risk: ___",
+            "Who is affected: ___",
+            "Career or field: ___",
+            "How the role responds: ___",
+            "BC connection: ___",
+            "Personal-fit reflection: ___"
+          ],
+          "reminder_box": "show the risk, the affected group, the response role, the BC connection, and the fit reflection"
+        },
+        "success_criteria": [
+          "My final product explains one clear digital risk.",
+          "I identify one realistic career or field connected to that risk.",
+          "I explain how that role helps respond.",
+          "I include one BC connection and one personal-fit reflection.",
+          "My final evidence is recorded only on this sheet."
+        ],
+        "response_lines": 16
+      },
+      "outputs": [
+        {
+          "output_id": "day4_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_4.slides",
+          "bundle": "careers_8_mosaic_week_4_technology_and_identity_bundle"
+        },
+        {
+          "output_id": "day4_final_response_sheet",
+          "output_type": "final_response_sheet",
+          "audience": "student",
+          "source_section": "days.day_4.final_response_sheet",
+          "bundle": "careers_8_mosaic_week_4_technology_and_identity_bundle",
+          "final_evidence": true
+        }
+      ]
+    }
+  ]
+}
