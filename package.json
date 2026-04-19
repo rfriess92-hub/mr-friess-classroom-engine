@@ -11,12 +11,9 @@
     "qa:render": "node scripts/qa-render.mjs",
     "qa:bundle": "node scripts/qa-bundle.mjs",
     "qa:visual": "node scripts/qa-visual.mjs",
+    "qa:pedagogy-variants": "node scripts/qa-pedagogy-variants.mjs",
     "select:assignment-family": "node scripts/select-assignment-family.mjs",
     "qa:assignment-family": "node scripts/validate-assignment-build.mjs",
-    "generate:package": "node scripts/generate-package.mjs",
-    "pdf:build": "node scripts/build-pdf-html.mjs"
-  },
-  "devDependencies": {
-    "playwright": "^1.52.0"
+    "generate:package": "node scripts/generate-package.mjs"
   }
 }
