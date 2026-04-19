@@ -1,7 +1,7 @@
 {
   "schema_version": "2.1.0",
   "package_id": "multipage_classifier_page_roles_proof",
-  "primary_architecture": "single_period_full",
+  "primary_architecture": "workshop_session",
   "grade_band": "6-8",
   "subject": "Careers",
   "grade": 8,
