@@ -279,15 +279,14 @@ def render_hero(slide, packet: dict, slide_spec: dict, accent: RGBColor) -> None
 
 
 def render_prompt(slide, content: dict, theme: dict):
-    accent = theme["secondary"]
     scenario = content.get("scenario") or content.get("task") or ""
     if scenario:
-        add_card(slide, 0.85, 1.80, 11.5, 1.65, "Start here", accent, theme["tints"]["secondary"])
-        add_textbox(slide, 1.15, 2.35, 10.8, 0.75, scenario, font_size=18, color=NAVY)
+        notes_tf = slide.notes_slide.notes_text_frame
+        notes_tf.text = f"Teacher context: {scenario}"
     prompts = [str(x) for x in content.get("prompts", [])]
     if prompts:
-        add_card(slide, 0.85, 3.70, 11.5, 2.30, "Discuss", theme["primary"], theme["tints"]["primary"])
-        add_card_bullets(slide, 1.12, 4.25, 10.8, 1.35, prompts, font_size=17)
+        add_card(slide, 0.85, 1.80, 11.5, 4.20, "Discuss", theme["primary"], theme["tints"]["primary"])
+        add_card_bullets(slide, 1.12, 2.35, 10.8, 3.50, prompts, font_size=20)
 
 
 def render_stat_discussion(slide, content: dict, theme: dict) -> None:

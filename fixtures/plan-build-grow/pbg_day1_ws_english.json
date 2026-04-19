@@ -1,0 +1,89 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_day1_ws_english",
+  "primary_architecture": "single_period_full",
+  "session_count": 1,
+  "grade_band": "9-12",
+  "subject": "English Language Arts",
+  "grade": null,
+  "topic": "Plan, Build, Grow — Day 1: English Stream Worksheet",
+  "theme": "careers",
+  "teacher_guide": {
+    "big_idea": "English-stream students are using this project as their real-world communication context. Day 1 establishes vocabulary and gets them reading a functional document — the client brief — for the first time.",
+    "learning_goals": [
+      "Identify the key information in a client brief: who, what, where.",
+      "Use at least two project vocabulary words accurately.",
+      "Write or dictate one question for the client."
+    ],
+    "materials": ["Client brief (read aloud by teacher first)", "This worksheet — one per English-stream student", "Vocabulary word wall or sentence frame strip"],
+    "timing": [
+      { "time": "0:50–1:10", "activity": "Students work through this worksheet independently or with EA support. Teacher circulates." }
+    ],
+    "teacher_notes": [
+      "Read the vocabulary anchor aloud before students begin any questions.",
+      "Q1–Q2 can be answered orally and scribed — accept any response form.",
+      "Q4 (the question for the client) is the most important English outcome today.",
+      "Students who finish early can write a second question or try a full sentence using two vocabulary words."
+    ]
+  },
+  "worksheet": {
+    "anchor": [
+      "client — the person who gave us the job",
+      "planter box — a container for growing plants",
+      "materials — what we use to build it",
+      "dimensions — the size: length, width, height",
+      "report — telling the client what we did"
+    ],
+    "tip": "You can write, draw, circle, or ask someone to scribe. All three count.",
+    "questions": [
+      {
+        "q_num": 1,
+        "q_text": "Who is the client? What do they want?\n\nThe client is: ___________________\nThey want us to: ___________________\nIt will go: ___________________",
+        "n_lines": 3
+      },
+      {
+        "q_num": 2,
+        "q_text": "Circle the words that describe what you heard in the client brief:\n\nbig   small   wooden   metal   outdoor   indoor   simple   fancy   urgent   flexible\n\nNow circle TWO vocabulary words from the anchor above that connect to what the client wants.",
+        "n_lines": 2
+      },
+      {
+        "q_num": 3,
+        "q_text": "What did you notice about the space when you saw it?\n\nSentence frame: I noticed that the space is ___. This means we will probably need to ___.",
+        "n_lines": 3
+      },
+      {
+        "q_num": 4,
+        "q_text": "Write ONE question you would ask the client before the team starts building.\n\nQuestion starter ideas: How big should...   Can you tell us...   What do you want planted...\n\nMy question: ___________________",
+        "n_lines": 3
+      },
+      {
+        "q_num": 5,
+        "q_text": "Commitment card — what will YOU do on this project? Circle one:\n\nPLAN the design     WRITE the reports     RECORD the growth     PRESENT to the client\n\nIn one sentence (or out loud): I am going to ___________________",
+        "n_lines": 2
+      }
+    ],
+    "self_check": [
+      "I know who the client is and what they want.",
+      "I used at least one vocabulary word from the anchor.",
+      "I wrote or said one question for the client."
+    ]
+  },
+  "exit_ticket": {
+    "title": "Day 1 Exit Check — English Stream",
+    "prompt": "Write or say one sentence that uses TWO vocabulary words from today.\n\nExample: The client needs a planter box with the right dimensions for the space.\n\nYour sentence:",
+    "n_lines": 3,
+    "success_criteria": [
+      "Student used two vocabulary words correctly.",
+      "Sentence connects to the project."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "pbg_day1_ws_english_bundle",
+    "declared_outputs": ["teacher_guide", "worksheet", "exit_ticket"]
+  },
+  "outputs": [
+    { "output_id": "d1e_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "pbg_day1_ws_english_bundle" },
+    { "output_id": "d1e_worksheet", "output_type": "worksheet", "audience": "student", "source_section": "worksheet", "bundle": "pbg_day1_ws_english_bundle" },
+    { "output_id": "d1e_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "exit_ticket", "bundle": "pbg_day1_ws_english_bundle" }
+  ]
+}

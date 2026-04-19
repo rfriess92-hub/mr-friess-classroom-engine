@@ -1,0 +1,338 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_week1_shared",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 4,
+  "grade_band": "8-12",
+  "subject": "Cross-Curricular — Shared Slides",
+  "grade": null,
+  "topic": "Plan, Build, Grow — Week 1, Days 2–5",
+  "theme": "careers",
+  "lesson_overview": {
+    "overview": "Days 2–5 of Week 1 build on the Day 1 project launch. Students move from 'what is this project?' to 'what does our team need to know and decide?' By Day 5 they have read and understood the client brief, seen three design options, made a class decision on the design, and completed a Week 1 checkpoint. English-stream and Math-stream students work from the same slides but on different task sheets.",
+    "essential_question": "What does our team need to understand and decide before we can build anything?",
+    "big_idea": "Good projects start with good questions. This week we ask: what does the client actually need, what are our options, and which one is the right choice?",
+    "sequence": [
+      { "day": "Day 2", "focus": "Read the client brief carefully. Understand what the client actually needs.", "artifacts": ["Slides", "English Task Sheet", "Math Task Sheet"] },
+      { "day": "Day 3", "focus": "See three design options. Compare them. Understand what makes a design work.", "artifacts": ["Slides", "English Task Sheet", "Math Task Sheet"] },
+      { "day": "Day 4", "focus": "The class chooses a design. Each stream begins planning their role.", "artifacts": ["Slides", "English Task Sheet", "Math Task Sheet"] },
+      { "day": "Day 5", "focus": "Week 1 wrap. What do we know? What's next? Checkpoint.", "artifacts": ["Slides", "English Task Sheet", "Math Task Sheet", "Exit Ticket"] }
+    ],
+    "differentiation_note": "Slides are shared for all students. English-stream students focus on vocabulary, reading comprehension, and written communication. Math-stream students focus on measurement, estimation, and numerical reasoning. Both streams work on the same real project.",
+    "integrity_checks": [
+      "All slides are read aloud by the teacher before students write anything.",
+      "Sentence frames are posted visibly throughout the week.",
+      "Oral response is always valid — teacher or EA scribes as needed.",
+      "The class anchor chart is updated each day and stays on the wall."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "This week completes the foundation. By Day 5, every student knows the client, knows the chosen design, and understands what their subject stream contributes to the project. That shared knowledge is what makes the rest of the 10 weeks work.",
+    "learning_goals": [
+      "All students can describe the client's brief in their own words.",
+      "All students have seen and compared three design options.",
+      "The class has made a collective design decision.",
+      "English-stream students can use five project vocabulary words accurately.",
+      "Math-stream students have recorded and calculated the dimensions of the chosen design."
+    ],
+    "materials": [
+      "Class anchor chart from Day 1 — keep on wall all week",
+      "Printed client brief — one per student, large print available",
+      "Three design cards (A, B, C) — printed or projected, with dimensions listed",
+      "Sentence frame strips — same ones from Day 1",
+      "Tape measure and metre stick — for Math stream (Days 3–4)",
+      "Calculator — for Math stream (all days)",
+      "English task sheets — one per English-stream student per day",
+      "Math task sheets — one per Math-stream student per day"
+    ],
+    "timing": [
+      { "time": "0:00–0:08", "activity": "Settle, visual agenda on board, connect to yesterday. Teacher points to anchor chart: 'Here is what we know so far.'" },
+      { "time": "0:08–0:20", "activity": "Shared slides — teacher-led whole-class instruction. Read every slide aloud." },
+      { "time": "0:20–0:30", "activity": "Guided discussion or class activity from the day's TASK slide. Scribe student responses on the board." },
+      { "time": "0:30–1:00", "activity": "Subject-streamed task time. English and Math students work on their own sheets. Teacher and EA circulate." },
+      { "time": "1:00–1:12", "activity": "Share: each student says or shows one thing. Teacher adds to anchor chart." },
+      { "time": "1:12–1:17", "activity": "Exit ticket or quick oral check (Day 5 has a formal checkpoint)." },
+      { "time": "1:17–1:19", "activity": "Cleanup and preview of tomorrow." }
+    ],
+    "teacher_notes": [
+      "Design cards (A, B, C) can be real photos of planter options, printed cards, or drawn sketches — whatever you have access to. The key is that each has labelled dimensions.",
+      "Day 3 class vote: make it real. Write choices on the board, count hands, record the winning design on the anchor chart.",
+      "Day 4: announce the chosen design at the start and keep it visible. Both streams need to know it.",
+      "Day 5: use the checkpoint as a conversation, not a test. Walk around and have each student show you one thing they know.",
+      "If a student missed one or more days: the anchor chart is their catch-up tool. Point them to it before starting their task sheet."
+    ],
+    "flex_notes": "If Day 3 vote generates strong disagreement, let it play out briefly — then make the decision as the teacher. The math of comparing designs is the learning, not the politics of the vote.",
+    "anchor_chart_additions": {
+      "day2": ["The client is: ___", "They need: ___", "Budget: $___", "Location: ___"],
+      "day3": ["Design A: ___ × ___ × ___ cm", "Design B: ___ × ___ × ___ cm", "Design C: ___ × ___ × ___ cm"],
+      "day4": ["We chose: Design ___", "Because: ___"],
+      "day5": ["This week we learned: ___", "Next week we will: ___"]
+    }
+  },
+  "bundle": {
+    "bundle_id": "pbg_week1_shared_bundle",
+    "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "exit_ticket"]
+  },
+  "outputs": [
+    { "output_id": "w1s_overview", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview" },
+    { "output_id": "w1s_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide" }
+  ],
+  "days": [
+    {
+      "day_id": "day2",
+      "day_label": "Day 2 — Read the Brief",
+      "carryover_note": "Students bring their Day 1 commitment card. Client brief is introduced today in detail.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Day 2 — Read the Brief",
+          "layout": "hero",
+          "content": { "subtitle": "Yesterday you met the project. Today we understand exactly what the client is asking for." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "What we know so far",
+          "layout": "retrieval",
+          "content": {
+            "task": "Look at the anchor chart from Day 1.",
+            "prompts": ["Who is the client?", "What are we building?", "Where will it go?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "What a client brief tells us",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "WHO — who is asking, and who will use it",
+              "WHAT — exactly what they want delivered",
+              "WHERE / WHEN / HOW MUCH — location, timeline, and budget"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Read the brief — together",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Your teacher will read the client brief aloud. Follow along on your copy. Listen for: who, what, where, when, and how much.",
+            "prompts": ["Circle the client's name.", "Underline what they want built.", "Put a box around the budget number."]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Check your understanding",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The client is ___ and they need ___.",
+              "The budget is $___.",
+              "One thing I still want to know: ___."
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        { "output_id": "d2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day2.slides" }
+      ]
+    },
+    {
+      "day_id": "day3",
+      "day_label": "Day 3 — See the Design Options",
+      "carryover_note": "Bring completed Day 2 sheets. Design cards A, B, C need to be available (printed or projected).",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Day 3 — Compare the Designs",
+          "layout": "hero",
+          "content": { "subtitle": "We know what the client wants. Now we look at three options and decide which one fits best." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Three designs",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Here are three planter box designs. Each one is different. Each one has its own size, shape, and cost.",
+            "prompts": ["What is the first thing you notice about each one?", "Which looks easiest to build?", "Which looks like it would fit in our space?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "What makes a design work?",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Fits the space — dimensions match what the site can hold",
+              "Fits the budget — estimated cost is within $250 per planter",
+              "Fits the purpose — enough room to grow plants, easy to water and maintain"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Compare — your task",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "English stream → Page 2: use comparison words to describe each design",
+              "Math stream → Page 3: record the dimensions and calculate the area of each",
+              "Use the design cards in front of you",
+              "You have about 25 minutes"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Share your thinking",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "I would recommend Design ___ because ___.",
+              "Design ___ does NOT work because ___.",
+              "One number or word that helped me decide: ___."
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        { "output_id": "d3_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day3.slides" }
+      ]
+    },
+    {
+      "day_id": "day4",
+      "day_label": "Day 4 — We Decide",
+      "carryover_note": "Design comparison sheets from Day 3 are used in the class vote. Teacher announces the chosen design at the start.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Day 4 — We Choose",
+          "layout": "hero",
+          "content": { "subtitle": "Today the class makes a decision. Then we start planning what comes next." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "The class vote",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Based on your comparison work yesterday, it is time to decide which design our team will build.",
+            "prompts": ["Raise your hand for Design A.", "Raise your hand for Design B.", "Raise your hand for Design C."]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "We chose Design ___",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Write the chosen design on your sheet and on the anchor chart.",
+              "English stream: write one reason why this design was chosen.",
+              "Math stream: record the exact dimensions and calculate the area."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Now — plan your part",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "English stream → explain the choice and describe what comes next",
+              "Math stream → dimensions, area, volume estimate, and soil bags needed",
+              "This is your first real project document — make it accurate",
+              "You have about 25 minutes"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Commitment check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The design we chose is ___ because ___.",
+              "My job in this project is ___.",
+              "The next thing I need to find out is ___."
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        { "output_id": "d4_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day4.slides" }
+      ]
+    },
+    {
+      "day_id": "day5",
+      "day_label": "Day 5 — Week 1 Wrap",
+      "carryover_note": "All Week 1 sheets are brought to class. This is a review and checkpoint day.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Day 5 — What Do We Know?",
+          "layout": "hero",
+          "content": { "subtitle": "Last day of Week 1. Let's look at everything we learned and get ready for what comes next." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Week 1 anchor chart review",
+          "layout": "retrieval",
+          "content": {
+            "task": "Look at the full anchor chart. Answer these from memory if you can.",
+            "prompts": ["Who is the client and what do they need?", "Which design did we choose?", "What are the dimensions of our chosen design?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "What comes next — Week 2",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "English: we will complete a work order and confirm the plan with the client",
+              "Math: we will take real measurements of the space and calculate exact materials",
+              "Both streams: we start building in Week 3"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Week 1 checkpoint",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "English stream → vocabulary check and design summary sentence",
+              "Math stream → dimensions record and area check",
+              "This is not a test — it is a chance to show what you know",
+              "Oral answers count"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Week 1 complete",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "This week I learned ___.",
+              "I am most excited about ___.",
+              "One question I still have: ___."
+            ]
+          }
+        }
+      ],
+      "exit_ticket": {
+        "title": "Week 1 Exit Check — Shared",
+        "prompt": "Answer these three questions in any form (say, write, draw, or point):\n\n1. Who is the client and what do they want?\n2. Which design did we choose?\n3. One thing YOUR stream will do next week.",
+        "n_lines": 3,
+        "success_criteria": [
+          "Student can identify the client and the deliverable.",
+          "Student knows the chosen design.",
+          "Student can name one next step for their subject stream."
+        ],
+        "teacher_notes": "Can be done as a group oral check at the door. Student answers as they leave. No written response required if the conversation was strong."
+      },
+      "outputs": [
+        { "output_id": "d5_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.day5.slides" },
+        { "output_id": "d5_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.day5.exit_ticket" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1141 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_english11",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 10,
+  "grade_band": "9-12",
+  "subject": "English Language Arts",
+  "grade": 11,
+  "topic": "Plan, Build, Grow — Workplace Communication and Functional Writing",
+  "theme": "careers",
+  "lesson_overview": {
+    "overview": "Students act as junior members of a school grounds team across 10 project weeks. They read client documentation, complete professional workplace forms, write short formal communications, track and interpret a growth log, and deliver a short structured update to a client. English 11 outcomes build on grade 10 functional literacy toward more independent written communication: composing a full work order, writing a professional email, and presenting a structured oral recommendation. Weeks 4 and 8 are built-in flex weeks.",
+    "essential_question": "How do skilled workers communicate professionally in writing and speech across every stage of a project?",
+    "big_idea": "Clear, purposeful communication — from reading a brief to writing a report — is what makes a project work.",
+    "sequence": [
+      { "day": "Week 1", "focus": "Analyze a client brief. Identify key requirements. Respond using professional language.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Week 2", "focus": "Compare three design options. Make a supported recommendation. Write a design rationale.", "artifacts": ["Slides", "Graphic Organizer", "Exit Ticket"] },
+      { "day": "Week 3", "focus": "Complete a full work order form. Write a professional email to the client confirming the plan.", "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet", "Exit Ticket"] },
+      { "day": "Week 4", "focus": "Flex week. Email revision, vocabulary deepening, or form-writing practice.", "artifacts": ["Slides", "Task Sheet"] },
+      { "day": "Week 5", "focus": "Document build process. Write a site log entry. Communicate a problem to a supervisor.", "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet"] },
+      { "day": "Week 6", "focus": "Write a planting report. Follow a technical instruction sequence. Annotate a diagram.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Week 7", "focus": "Interpret growth data. Write a short client update using evidence from the log.", "artifacts": ["Slides", "Graphic Organizer", "Discussion Prep Sheet"] },
+      { "day": "Week 8", "focus": "Flex week. Continue growth data, revise client update, or catch up on prior writing.", "artifacts": ["Slides", "Task Sheet", "Graphic Organizer"] },
+      { "day": "Week 9", "focus": "Analyze what the data shows. Draft a short formal recommendation using evidence.", "artifacts": ["Slides", "Graphic Organizer", "Task Sheet"] },
+      { "day": "Week 10", "focus": "Deliver a structured oral client report. Complete a final written recommendation.", "artifacts": ["Slides", "Discussion Prep Sheet", "Final Response Sheet", "Checkpoint Sheet"] }
+    ],
+    "differentiation_note": "Three levels are embedded. Level A: sentence frames, guided forms with labeled sections, fill-in structures. Level B: partial models, prompts with structural cues, word banks. Level C: open-format writing tasks, professional models to analyze and exceed.",
+    "integrity_checks": [
+      "All writing tasks are grounded in real project context — there is no decontextualized grammar drill.",
+      "Oral communication is treated as a full form of evidence throughout.",
+      "Professional tone is modeled before students write in it.",
+      "Flex weeks allow email and work order writing to be deepened if needed.",
+      "The final recommendation is the anchor assessment artifact."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "English 11 students are writing and speaking for a real purpose: their client exists, their planter gets built, and their words matter to the outcome.",
+    "learning_goals": [
+      "Read and analyze a client brief to identify key requirements.",
+      "Complete professional workplace documents including work orders, site logs, and planting reports.",
+      "Write short formal communications in a professional tone, including emails and status updates.",
+      "Use evidence from a growth log to support a written recommendation.",
+      "Deliver a structured oral client update with a clear claim and supporting detail."
+    ],
+    "materials": [
+      "Client brief (Week 1 task sheet)",
+      "Design comparison organizer (Week 2 graphic organizer)",
+      "Work order form and email template (Week 3 task sheet)",
+      "Site log and supervisor communication form (Week 5 task sheet)",
+      "Planting report template (Week 6 task sheet)",
+      "Growth log and client update cue card (Week 7 graphic organizer + discussion prep sheet)",
+      "Recommendation draft organizer (Week 9)",
+      "Final recommendation card and oral cue card (Week 10)"
+    ],
+    "timing": [
+      { "time": "0:00–0:08", "activity": "Settle, agenda, and connect to last week's professional context." },
+      { "time": "0:08–0:20", "activity": "Direct instruction. Analyze a model document or email. Identify structural features." },
+      { "time": "0:20–0:32", "activity": "Guided practice — class completes one section of the form or writing task together." },
+      { "time": "0:32–1:02", "activity": "Independent or supported writing time. Teacher circulates and conferences." },
+      { "time": "1:02–1:12", "activity": "Peer review or teacher small-group conference." },
+      { "time": "1:12–1:17", "activity": "Share one sentence or phrase that worked well. Name what made it professional." },
+      { "time": "1:17–1:19", "activity": "Exit ticket and cleanup." }
+    ],
+    "teacher_notes": [
+      "Always show a model email or form before asking students to write one.",
+      "Professional tone is taught, not assumed — highlight specific word choices that signal it.",
+      "Conference notes count as oral evidence. Scribe for students who need it.",
+      "The work order and email in Week 3 are the first complex writing moment — plan time to model them slowly.",
+      "By Week 7, students should be making their own choices about what to include in the client update.",
+      "Oral recommendation in Week 10 can be done as a class presentation or as a 90-second teacher conference."
+    ],
+    "flex_week_options": {
+      "week_4": ["Re-draft the Week 3 email with teacher feedback", "Deepen work order vocabulary", "Practice tone: compare formal vs informal versions of the same message", "Catch up any missing work orders", "Practice annotating a professional document"],
+      "week_8": ["Revise Week 7 client update draft", "Add new data points to growth log", "Practice oral recommendation with a peer", "Review paragraph structure using the recommendation draft", "Catch up planting report if delayed"]
+    }
+  },
+  "bundle": {
+    "bundle_id": "pbg_english11_bundle",
+    "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "task_sheet", "checkpoint_sheet", "final_response_sheet", "exit_ticket", "graphic_organizer", "discussion_prep_sheet"]
+  },
+  "outputs": [
+    { "output_id": "pbg_e11_overview", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview" },
+    { "output_id": "pbg_e11_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide" }
+  ],
+  "days": [
+    {
+      "day_id": "week1",
+      "day_label": "Week 1: Read and Respond to a Client Brief",
+      "carryover_note": "Brief analysis notes carry forward to Week 2 design comparison.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Plan, Build, Grow — Week 1",
+          "layout": "hero",
+          "content": { "subtitle": "This week: read a client brief and identify what the client needs, expects, and values." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What is a client brief?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "A school administrator has sent a project brief asking the grounds team to design and build a planter box. Before the team can act, they need to understand exactly what the brief requires.",
+            "prompts": ["What is the purpose of a client brief?", "What information should a brief always include?", "What do you do when a brief is unclear?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Analyzing a document",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Purpose: Why was this document written? What does the author want?",
+              "Requirements: What must the team do? Look for must, need, require, expect.",
+              "Constraints: What limits the work? Look for budget, timeline, and location."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Professional vocabulary",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "brief — a short document that states a project's requirements",
+              "stakeholder — anyone who has an interest in the project",
+              "requirement — something that must be done or included",
+              "constraint — a limit on what can be done (budget, time, space)",
+              "deliverable — the specific product or outcome the client expects"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Annotate and respond",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The most important requirement in this brief is ___.",
+              "One constraint that will affect our work is ___.",
+              "One question I would ask the client to clarify is ___."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 1 Task Sheet — Client Brief Analysis",
+        "instructions": [
+          "Read the client brief carefully. Annotate as you read.",
+          "Complete each section of the analysis below.",
+          "Use professional language in your responses."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Brief annotation",
+            "prompt": "Circle or underline: one requirement, one constraint, and the deliverable described in the brief. Then record each one below.\n\nRequirement: ___________________\nConstraint: ___________________\nDeliverable: ___________________",
+            "lines": 3,
+            "activity_type": "close_reading",
+            "render_hints": { "heading": "Client Brief Analysis", "help": "Requirement = must do. Constraint = limit. Deliverable = what we produce." }
+          },
+          {
+            "label": "Part 2: Professional response",
+            "prompt": "Write a short professional response (2–3 sentences) confirming that you understand the brief. Use at least two of the vocabulary words from the slide.\n\nLevel B: We have reviewed the brief. The key requirement is ___. Our team will ___.\nLevel C: Write a formal acknowledgment in your own words.",
+            "lines": 5,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Professional tone: clear, direct, no slang. No contractions in formal writing." }
+          },
+          {
+            "label": "Part 3: Clarifying question",
+            "prompt": "Write one professional clarifying question you would send to the client.\n\nLevel B: Could you please clarify ___?\nLevel C: Frame a full professional question with a reason for asking.",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Good clarifying questions are specific and explain why you need the information." }
+          }
+        ],
+        "embedded_supports": [
+          "Vocabulary: brief, requirement, constraint, deliverable, stakeholder",
+          "Sentence frame: The brief requires us to ___ by ___ with a budget of ___.",
+          "Level A: circle the words in the brief that match each category on a support strip."
+        ],
+        "success_criteria": [
+          "I identified the requirement, constraint, and deliverable from the brief.",
+          "I wrote a professional response using accurate vocabulary.",
+          "I composed a specific, professional clarifying question."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 1 Exit Check",
+        "prompt": "In one professional sentence, state what this client wants and one constraint on the project.",
+        "n_lines": 3,
+        "success_criteria": [
+          "I stated the client's key requirement.",
+          "I named one constraint.",
+          "I used professional language."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w1_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week1.slides" },
+        { "output_id": "w1_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week1.task_sheet" },
+        { "output_id": "w1_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week1.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week2",
+      "day_label": "Week 2: Compare Options and Write a Design Rationale",
+      "carryover_note": "Design choice and rationale carry forward to the Week 3 work order.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 2: Compare and Recommend",
+          "layout": "hero",
+          "content": { "subtitle": "This week: compare three planter designs and write a short design rationale." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Brief recap",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your Week 1 brief analysis.",
+            "prompts": ["What is the key requirement from the brief?", "What constraint must we keep in mind?", "What are we delivering to the client?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "What is a design rationale?",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "A design rationale explains why you chose one option over others.",
+              "It connects the choice to the client's requirements and constraints.",
+              "A strong rationale cites specific features, not just general opinions."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Comparison vocabulary",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "meets the requirement — satisfies what the client asked for",
+              "exceeds the constraint — goes over the limit (budget, size)",
+              "trade-off — giving up one benefit to gain another",
+              "rationale — the reasons behind a decision",
+              "criteria — the standards used to evaluate options"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Toward the rationale",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Design ___ best meets the client's requirements because ___.",
+              "Design ___ does not work because ___.",
+              "The most important criterion for this client is ___."
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "organizer_type": "three_column",
+        "title": "Design Comparison — Planter Options A, B, and C",
+        "columns": ["Design A", "Design B", "Design C"],
+        "rows": [
+          "Dimensions (L × W × H)",
+          "Meets location constraint?",
+          "Estimated cost",
+          "Planting surface area",
+          "Ease of maintenance",
+          "Best feature",
+          "Biggest drawback"
+        ],
+        "prompt": "Use the design cards to complete the comparison table. Then circle the design you recommend.",
+        "success_criteria": [
+          "I evaluated each design against the client's requirements.",
+          "I identified at least one trade-off.",
+          "I chose a design and can explain why."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 2 Exit Check",
+        "prompt": "Write one sentence recommending a design. Include the name of the design and one specific reason connected to the client's requirements.",
+        "n_lines": 3,
+        "success_criteria": [
+          "I named the design I recommend.",
+          "I connected my reason to a client requirement."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week2.slides" },
+        { "output_id": "w2_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week2.graphic_organizer" },
+        { "output_id": "w2_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week2.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week3",
+      "day_label": "Week 3: Complete a Work Order and Write a Confirmation Email",
+      "carryover_note": "Work order and email carry forward as the project's official authorization documents.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 3: Work Order and Client Email",
+          "layout": "hero",
+          "content": { "subtitle": "This week: complete a formal work order and write a professional email confirming the plan." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Design choice review",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your Week 2 comparison organizer.",
+            "prompts": ["Which design did you recommend?", "What was your main reason?", "What dimensions will the work order need?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Anatomy of a work order",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Work orders have a header (who, what, when) and a body (steps, materials, budget).",
+              "Every field must be complete — blank fields delay project approval.",
+              "Work orders are legal documents. Use accurate, specific language."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Professional email structure",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Subject line — clear, specific (e.g., 'Planter Box Plan — Confirmation')",
+              "Greeting — formal (e.g., 'Dear Ms. Chen,' not 'Hey')",
+              "Body paragraph — state purpose, summarize the plan, note next steps",
+              "Closing — formal (e.g., 'Sincerely,' not 'Thanks bye')",
+              "Signature — full name and role"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Tone check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "What is the difference between formal and informal writing?",
+              "Rewrite this informal sentence formally: 'Hey, just so you know we picked Design B.'",
+              "What makes a subject line effective?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 3 Task Sheet — Work Order and Email",
+        "instructions": [
+          "Part 1: Complete all fields on the work order.",
+          "Part 2: Use the email structure to write a professional confirmation.",
+          "Check: No blank fields. No informal language."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Work Order",
+            "prompt": "Complete the work order:\n\nProject name: ___________________\nClient name: ___________________\nLocation: ___________________\nDesign selected: ___________________\nDimensions (L × W × H): ___ × ___ × ___ cm\nMaterials required: ___________________\nEstimated completion date: ___________________\nTeam lead: ___________________",
+            "lines": 8,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Work Order Form", "help": "Every field must be completed. Use specific language, not 'stuff' or 'things'." }
+          },
+          {
+            "label": "Part 2: Confirmation email",
+            "prompt": "Write a professional email to the client confirming the work order.\n\nSubject: ___________________\nDear ___,\n\n[Body: 3–4 sentences. State what you confirmed. Reference the design. Note next steps.]\n\nSincerely,\n___________________",
+            "lines": 10,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Level B: fill in the template. Level C: compose your own while maintaining all structural elements." }
+          }
+        ],
+        "embedded_supports": [
+          "Email template with labeled sections provided for Level A and B",
+          "Work order checklist: name, location, design, dimensions, materials, date",
+          "Sentence starter: We are pleased to confirm that the grounds team will proceed with Design ___."
+        ],
+        "success_criteria": [
+          "I completed all fields on the work order accurately.",
+          "My email uses a formal tone throughout.",
+          "I included the design choice, key details, and next steps in the email."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 3 Checkpoint — Document Quality Check",
+        "prompts": [
+          "Work order: all fields complete with specific language: Y / N",
+          "Email: formal greeting and closing present: Y / N",
+          "Email: design choice and next steps are mentioned: Y / N",
+          "Conference note (optional):"
+        ],
+        "teacher_notes": "Focus on specificity in the work order — vague entries like 'wood' instead of 'pine lumber boards' are the most common gap. Email tone is the second common issue."
+      },
+      "exit_ticket": {
+        "title": "Week 3 Exit Check",
+        "prompt": "Write the subject line and first sentence of a professional email telling a client that construction will begin on Monday.",
+        "n_lines": 3,
+        "success_criteria": [
+          "Subject line is specific and professional.",
+          "First sentence is formal and states the purpose."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w3_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week3.slides" },
+        { "output_id": "w3_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week3.task_sheet" },
+        { "output_id": "w3_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week3.checkpoint_sheet" },
+        { "output_id": "w3_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week3.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week4",
+      "day_label": "Week 4: Flex Week — Professional Writing Practice",
+      "carryover_note": "Flex week. Use to revise email, deepen work order vocabulary, or practice document reading.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 4: Flex Week",
+          "layout": "hero",
+          "content": { "subtitle": "This week: revise, practice, or extend your professional writing work." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What makes professional writing effective?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "We have produced a work order and a confirmation email. Before we build, let's review what professional writing does well — and what it avoids.",
+            "prompts": ["What is one thing your email does well?", "What would you change if you could revise it now?", "What is the difference between being specific and being wordy?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Strong vs. weak professional writing",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Weak: 'We are going to maybe do the thing soon.' → vague, uncertain, informal.",
+              "Strong: 'Construction will begin on April 14 as per the approved work order.' → specific, formal, confident.",
+              "Rule: every sentence should do a job. Remove sentences that repeat or add nothing."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Flex options",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Option 1: Revise your Week 3 email using feedback.",
+              "Option 2: Rewrite three informal sentences in formal professional language.",
+              "Option 3: Annotate a model professional document — identify what each section does.",
+              "Option 4: Catch up on any incomplete work order or brief analysis.",
+              "Option 5: Write a second brief scenario email from a different project scenario."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Writing self-assessment",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "One professional writing habit I have developed: ___.",
+              "One thing I still find challenging: ___.",
+              "A sentence I wrote this week that I am proud of: ___."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 4 Task Sheet — Flex Writing Activities",
+        "instructions": [
+          "Your teacher will direct you to one or two activities.",
+          "Show revision marks clearly.",
+          "Write in complete sentences for all written activities."
+        ],
+        "tasks": [
+          {
+            "label": "Activity A: Sentence revision",
+            "prompt": "Rewrite each sentence in formal professional language:\n\n1. 'Hey so we picked the big box thing for the garden.'\n   Revised: ___________________\n\n2. 'Dunno if it'll be done but maybe next week?'\n   Revised: ___________________\n\n3. 'The client needs it to not be too expensive.'\n   Revised: ___________________",
+            "lines": 6,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Remove slang. Add specifics. Use a formal, confident tone." }
+          },
+          {
+            "label": "Activity B: Email revision",
+            "prompt": "Using teacher feedback on your Week 3 email, revise the body paragraph. Write your revised version below.\n\nRevised body paragraph:",
+            "lines": 6,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Focus on: specificity, formal tone, and completeness of the next-steps sentence." }
+          }
+        ],
+        "embedded_supports": [
+          "Formal alternatives: instead of 'hey' → 'Dear [name]'; instead of 'stuff' → list the specific items",
+          "Sentence frame for revision: In accordance with ___, the team will proceed to ___ by ___."
+        ],
+        "success_criteria": [
+          "I revised informal language to formal in all three sentences.",
+          "My revised email paragraph is specific and uses professional tone throughout."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w4_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week4.slides" },
+        { "output_id": "w4_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week4.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "week5",
+      "day_label": "Week 5: Document the Build",
+      "carryover_note": "Site log and supervisor message carry forward as project records.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 5: Site Log and Problem Communication",
+          "layout": "hero",
+          "content": { "subtitle": "This week: record the build process in a site log and write a professional message about a problem." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Why document the build?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Professional teams keep records. A site log shows what was done, who did it, and when. If something goes wrong, the log helps the team solve it.",
+            "prompts": ["What information belongs in a site log?", "What should you do if you discover a problem mid-project?", "Why is a written record more reliable than memory?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Site log format",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Date and time: always include when you worked.",
+              "Tasks completed: list specific actions taken, not general descriptions.",
+              "Issues and next steps: note problems and what you plan to do next."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Communicating a problem",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "State the problem clearly — what it is, where, and when it was found.",
+              "Explain the impact — how does it affect the project?",
+              "Propose a solution — what do you recommend?",
+              "Request a response — what do you need from the supervisor?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Professional problem solving",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "A board split during assembly. How would you write about this professionally?",
+              "Who do you need to inform? What do you need them to decide?",
+              "What is the difference between explaining a problem and complaining about it?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 5 Task Sheet — Site Log and Problem Message",
+        "instructions": [
+          "Part 1: Complete today's site log entry.",
+          "Part 2: Use the problem scenario to write a professional message to a supervisor.",
+          "Use specific language throughout."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Site log entry",
+            "prompt": "Complete today's site log entry:\n\nDate: ___________\nTime: ___________\nTeam members present: ___________________\nTasks completed today:\n  1. ___________________\n  2. ___________________\n  3. ___________________\nIssues noted: ___________________\nNext steps: ___________________",
+            "lines": 9,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Site Log — Build Day", "help": "Be specific: 'attached three boards to the frame' not 'did some building'." }
+          },
+          {
+            "label": "Part 2: Problem message",
+            "prompt": "Scenario: During assembly, you discover that two boards are the wrong length. Write a professional message to your supervisor.\n\nLevel B: Dear ___, I am writing to inform you that [problem]. This affects [impact]. I recommend [solution]. Please [request].\nLevel C: Write your own professional message with all four elements.",
+            "lines": 8,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Four elements: problem, impact, solution, request." }
+          }
+        ],
+        "embedded_supports": [
+          "Site log template with labeled sections for Level A",
+          "Four-element message structure: problem → impact → solution → request",
+          "Vocabulary: incident, rectify, advise, proceed, approve"
+        ],
+        "success_criteria": [
+          "My site log entry is complete with all fields filled accurately.",
+          "My problem message includes all four professional elements.",
+          "I used formal language throughout both documents."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 5 Checkpoint — Documentation Check",
+        "prompts": [
+          "Site log: specific tasks listed, not vague descriptions: Y / N",
+          "Problem message: all four elements present: Y / N",
+          "Formal tone maintained throughout both documents: Y / N",
+          "Conference note (optional):"
+        ],
+        "teacher_notes": "The most common gap is vague task descriptions in site logs. Coach students toward verb + object + detail: 'Drilled six pilot holes into the long side boards.'"
+      },
+      "outputs": [
+        { "output_id": "w5_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week5.slides" },
+        { "output_id": "w5_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week5.task_sheet" },
+        { "output_id": "w5_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week5.checkpoint_sheet" }
+      ]
+    },
+    {
+      "day_id": "week6",
+      "day_label": "Week 6: Write the Planting Report",
+      "carryover_note": "Planting report is the official project record that the client will review.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 6: Planting Report",
+          "layout": "hero",
+          "content": { "subtitle": "This week: follow technical planting instructions, annotate a diagram, and write a planting report." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What is a technical report?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Now that the planter is built, we plant. After planting, we document what we did. A planting report is a technical record — it says what was planted, where, and when.",
+            "prompts": ["What information must a planting report include?", "Why does the client need this record?", "What does 'annotating a diagram' mean?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Annotating a diagram",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Annotation means adding labels and notes that explain a diagram.",
+              "Each label points to a specific part with a short, precise description.",
+              "Annotations are written in noun phrases, not full sentences."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Planting report structure",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Date and location: when and where planting occurred.",
+              "Plants/seeds used: variety, quantity, and supplier.",
+              "Planting method: spacing, depth, orientation.",
+              "Care instructions: watering, sunlight, schedule.",
+              "Observations: anything notable during planting."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Technical precision",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Why does 'plant 3 seeds 2 cm deep' give more information than 'plant some seeds'?",
+              "Who else might read this planting report besides the client?",
+              "What detail from today's planting is most important to record?"
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 6 Task Sheet — Planting Report",
+        "instructions": [
+          "Complete all sections of the planting report.",
+          "Annotate the planter diagram with at least four labels.",
+          "Use precise, specific language throughout."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Diagram annotation",
+            "prompt": "Annotate the planter diagram with at least four labels. Each label should be a noun phrase (not a full sentence).\n\nExample: 'potting soil (5 cm depth)' not 'the soil is 5 cm deep'\n\nLabels added:\n1. ___________________\n2. ___________________\n3. ___________________\n4. ___________________",
+            "lines": 4,
+            "activity_type": "annotation",
+            "render_hints": { "heading": "Annotated Planter Diagram", "help": "Label what was planted, where, and at what depth." }
+          },
+          {
+            "label": "Part 2: Planting report",
+            "prompt": "Complete the planting report:\n\nDate: ___________  Location: ___________________\nPlants/seeds used: ___________________\nQuantity per variety: ___________________\nPlanting depth: ___ cm  Spacing: ___ cm\nCare schedule: water every ___ days\nSunlight requirement: ___________________\nObservations: ___________________",
+            "lines": 7,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Every field must be specific. 'Unknown' is not acceptable — ask your teacher." }
+          }
+        ],
+        "embedded_supports": [
+          "Annotation guide: label → arrow → specific noun phrase",
+          "Report template with labeled fields for Level A",
+          "Vocabulary: variety, spacing, depth, orientation, cultivation"
+        ],
+        "success_criteria": [
+          "I annotated the diagram with at least four precise labels.",
+          "All planting report fields are complete with specific information.",
+          "I used technical language accurately."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 6 Exit Check",
+        "prompt": "Name the five sections of a planting report and explain in one sentence why this document matters.",
+        "n_lines": 3,
+        "success_criteria": [
+          "I named all five sections.",
+          "My explanation connects the document to a real audience or purpose."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w6_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week6.slides" },
+        { "output_id": "w6_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week6.task_sheet" },
+        { "output_id": "w6_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week6.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week7",
+      "day_label": "Week 7: Interpret Growth Data and Write a Client Update",
+      "carryover_note": "Client update draft carries forward to Week 9 recommendation.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 7: Growth Data and Client Update",
+          "layout": "hero",
+          "content": { "subtitle": "This week: read a growth log, interpret the data, and write a short structured update to the client." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What does the data say?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Several weeks have passed since planting. We have been recording plant heights. Today we interpret that data and communicate our findings to the client professionally.",
+            "prompts": ["What trend can you see in the growth log?", "How do you translate numbers into useful information for a client?", "What does the client actually need to know?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Interpreting data for a non-technical audience",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "State the key finding first: what is the most important thing the data shows?",
+              "Use one or two numbers — do not list everything. Choose what matters.",
+              "Connect the finding to what the client cares about: the plant's health and growth."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Client update vocabulary",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "growth trend — whether heights are increasing, flat, or decreasing",
+              "as of [date] — making clear when the data was recorded",
+              "on track — progressing as expected",
+              "concern — something worth flagging but not yet a problem",
+              "recommend — to advise a specific course of action"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Toward the update",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The most important finding from the growth log is ___.",
+              "One number I will include in the update: ___.",
+              "Is there anything the client needs to act on? ___."
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "organizer_type": "t_chart",
+        "title": "Growth Log — Weeks 5–9",
+        "columns": ["Week and Date", "Height (cm)"],
+        "rows": ["Week 5", "Week 6", "Week 7", "Week 8", "Week 9"],
+        "prompt": "Record height measurements for each week. Then identify the trend and the week of fastest growth.",
+        "success_criteria": [
+          "I have a height recorded for every week with available data.",
+          "I can identify which week showed the most growth.",
+          "I can describe the overall trend in words."
+        ]
+      },
+      "discussion_prep_sheet": {
+        "discussion_prompt": "Write a short structured update to the client summarizing plant growth progress to date.",
+        "position_label": "Key finding to lead with",
+        "evidence_count": 2,
+        "include_question": false,
+        "include_counterargument": false,
+        "success_criteria": [
+          "My update states the key finding in the first sentence.",
+          "I included two specific measurements from the growth log.",
+          "I used professional language appropriate for a client audience.",
+          "I noted whether the project is on track and why."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w7_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week7.slides" },
+        { "output_id": "w7_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week7.graphic_organizer" },
+        { "output_id": "w7_discussion_prep", "output_type": "discussion_prep_sheet", "audience": "student", "source_section": "days.week7.discussion_prep_sheet" }
+      ]
+    },
+    {
+      "day_id": "week8",
+      "day_label": "Week 8: Flex Week — Revision and Growth Extension",
+      "carryover_note": "Flex week. Use to revise the Week 7 client update or extend the growth record.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 8: Flex Week",
+          "layout": "hero",
+          "content": { "subtitle": "This week: revise your client update, complete growth records, or practice the oral report." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What needs attention?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Before Week 9, we want our writing and data in good shape. This flex week lets us revisit the client update, add new data, or practice how to present our findings.",
+            "prompts": ["What feedback did you receive on your Week 7 update?", "Do you have all the growth data you need?", "Can you say your key finding out loud in one sentence?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Revising for clarity",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Read your writing as if you are the client — what is missing or unclear?",
+              "Cut any sentence that repeats another or adds nothing.",
+              "Sharpen every number: 'grew significantly' → 'grew 4 cm in Week 7'."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Flex options",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Option 1: Revise your client update using peer or teacher feedback.",
+              "Option 2: Add Week 8 and 9 growth data to your log.",
+              "Option 3: Practice saying the key finding aloud without reading it.",
+              "Option 4: Catch up planting report or site log.",
+              "Option 5: Draft a second version of the client update with a different lead sentence."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Approaching the final",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The strongest part of my client update so far is ___.",
+              "Before Week 10, I need to ___.",
+              "I will support my final recommendation with these two pieces of evidence: ___ and ___."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 8 Task Sheet — Revision and Growth Extension",
+        "instructions": [
+          "Choose the activity that best fits your needs today.",
+          "Mark all revisions clearly.",
+          "Record new data in your growth log if available."
+        ],
+        "tasks": [
+          {
+            "label": "Activity A: Client update revision",
+            "prompt": "Using feedback, revise your client update paragraph. Write your revised version below. Mark changes with a different colour or underline.\n\nRevised update:",
+            "lines": 7,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Target: specific measurements, clear trend statement, professional tone." }
+          },
+          {
+            "label": "Activity B: Growth log extension",
+            "prompt": "Record any new measurement data:\n\nWeek 8 — Height: _____ cm — Date: _________\nWeek 9 — Height: _____ cm — Date: _________\n\nCompared to Week 7, what is the trend now? ___",
+            "lines": 3,
+            "activity_type": "write_response",
+            "render_hints": { "help": "Describe the trend: increasing, leveling off, or declining." }
+          }
+        ],
+        "embedded_supports": [
+          "Revision checklist: key finding in sentence 1 / two measurements / professional tone / on-track statement",
+          "Sentence starter: Since my last report, the plant has grown an additional ___ cm."
+        ],
+        "success_criteria": [
+          "My revised update is clearer and more specific than the original.",
+          "My growth log is complete with dates and units.",
+          "I can state my key finding from memory."
+        ]
+      },
+      "graphic_organizer": {
+        "organizer_type": "t_chart",
+        "title": "Update Revision — Before and After",
+        "columns": ["Original Sentence", "Revised Sentence"],
+        "rows": ["Key finding sentence", "First evidence sentence", "Second evidence sentence", "On-track statement"],
+        "prompt": "Compare your original client update sentences with your revised versions.",
+        "success_criteria": [
+          "Each revised sentence is more specific than the original.",
+          "Revisions maintain or improve professional tone."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w8_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week8.slides" },
+        { "output_id": "w8_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week8.task_sheet" },
+        { "output_id": "w8_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week8.graphic_organizer" }
+      ]
+    },
+    {
+      "day_id": "week9",
+      "day_label": "Week 9: Draft the Final Recommendation",
+      "carryover_note": "Recommendation draft is revised and finalized in Week 10.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 9: Draft Your Recommendation",
+          "layout": "hero",
+          "content": { "subtitle": "This week: use evidence from across the project to draft a formal written recommendation." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Evidence inventory",
+          "layout": "retrieval",
+          "content": {
+            "task": "Gather your work from the whole project.",
+            "prompts": ["What design did you select and why?", "What does the growth data show?", "What is one thing you would do differently or keep the same?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "What makes a strong recommendation?",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "State your recommendation clearly in the first sentence.",
+              "Support it with at least two pieces of specific evidence.",
+              "Acknowledge one limitation or caveat to show critical thinking."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Recommendation structure",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Sentence 1: State your recommendation (what and why in brief).",
+              "Sentence 2–3: First piece of evidence — reference your design data.",
+              "Sentence 4–5: Second piece of evidence — reference growth data.",
+              "Sentence 6: Acknowledge one limitation or next step.",
+              "Sentence 7: Closing statement — what you recommend the client do next."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Is your evidence working?",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Read your first sentence to a partner. Do they know your recommendation immediately?",
+              "Is each piece of evidence specific, or could it apply to any project?",
+              "What is the limitation or caveat you will acknowledge?"
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "organizer_type": "four_square",
+        "title": "Recommendation Planning Organizer",
+        "columns": ["Evidence 1 (Design)", "Evidence 2 (Growth Data)", "Limitation", "Next Step for Client"],
+        "rows": ["Planning notes"],
+        "prompt": "Plan your recommendation before you write. One point per box.",
+        "success_criteria": [
+          "I have two distinct pieces of evidence planned.",
+          "My limitation is honest and specific.",
+          "My next-step recommendation gives the client actionable guidance."
+        ]
+      },
+      "task_sheet": {
+        "title": "Week 9 Task Sheet — Recommendation Draft",
+        "instructions": [
+          "Use your planning organizer to write your recommendation draft.",
+          "Aim for 5–7 sentences total.",
+          "Every sentence should serve a clear purpose."
+        ],
+        "tasks": [
+          {
+            "label": "Draft: Final Recommendation",
+            "prompt": "Write your draft recommendation below. Use the seven-sentence structure from the slide.\n\nLevel B: Use the sentence structure provided — fill in the evidence and specific details.\nLevel C: Compose your own recommendation paragraph with all required elements.",
+            "lines": 10,
+            "activity_type": "write_response",
+            "render_hints": { "heading": "Recommendation Draft", "help": "Sentence 1 = recommendation. Sentences 2–5 = evidence. Sentence 6 = limitation. Sentence 7 = next step." }
+          }
+        ],
+        "embedded_supports": [
+          "Seven-sentence scaffold provided for Level A and B",
+          "Evidence checklist: design data + growth measurement + limitation + next step",
+          "Vocabulary: recommend, based on, demonstrates, however, advise, proceed"
+        ],
+        "success_criteria": [
+          "I stated my recommendation clearly in the first sentence.",
+          "I used at least two specific pieces of evidence.",
+          "I acknowledged a limitation.",
+          "My final sentence gives the client a clear next step."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w9_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week9.slides" },
+        { "output_id": "w9_graphic_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week9.graphic_organizer" },
+        { "output_id": "w9_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week9.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "week10",
+      "day_label": "Week 10: Deliver the Client Report",
+      "carryover_note": "Final project. Written recommendation and oral delivery are the summative artifacts.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 10: Final Client Report",
+          "layout": "hero",
+          "content": { "subtitle": "This week: deliver a structured oral client report and submit your final written recommendation." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Project recap",
+          "layout": "retrieval",
+          "content": {
+            "task": "Bring all documents from Weeks 1–9.",
+            "prompts": ["What is your recommendation in one sentence?", "What two pieces of evidence support it?", "What does the client need to do next?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Oral report structure",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Opening: state your name, role, and the report's purpose (10–15 seconds).",
+              "Body: deliver your recommendation with two pieces of evidence (45–60 seconds).",
+              "Closing: state what you recommend the client do next (10–15 seconds)."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Delivery tips",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "Speak to the client, not to the paper — use your cue card, not a script.",
+              "Use numbers: 'The plant grew 11 cm over 6 weeks' is more convincing than 'it grew a lot.'",
+              "Pause after your recommendation. Let it land.",
+              "Professional closing: 'Thank you for the opportunity to present this report.'"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "After the report",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The most important thing I communicated today was ___.",
+              "One professional communication skill I improved during this project: ___.",
+              "If I were to give this report again, I would change ___."
+            ]
+          }
+        }
+      ],
+      "discussion_prep_sheet": {
+        "discussion_prompt": "Prepare and deliver a structured 90-second oral client report summarizing the project and your recommendation.",
+        "position_label": "My recommendation (one sentence)",
+        "evidence_count": 2,
+        "include_question": false,
+        "include_counterargument": true,
+        "success_criteria": [
+          "I opened with my name, role, and purpose.",
+          "I stated my recommendation clearly in the first 20 seconds.",
+          "I used two specific pieces of evidence with numbers.",
+          "I acknowledged one limitation.",
+          "I closed with a recommendation for the client's next step."
+        ]
+      },
+      "final_response_sheet": {
+        "title": "Final Written Recommendation — English 11",
+        "prompt": "Write your final recommendation to the client. Draw from your planting report, growth log, and design rationale. Minimum 5 sentences.",
+        "final_evidence": true,
+        "response_mode": "paragraph_response",
+        "success_criteria": [
+          "My recommendation is stated clearly in the first sentence.",
+          "I used at least two specific pieces of evidence.",
+          "I acknowledged one limitation or caveat.",
+          "I gave the client a clear next step.",
+          "My language is professional and formal throughout."
+        ],
+        "embedded_supports": [
+          "Level A: seven-sentence frame with blanks for evidence and recommendations.",
+          "Level B: opening sentence and closing sentence provided — compose the evidence middle independently.",
+          "Level C: write a formal recommendation memo with a subject line, body, and sign-off."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 10 Checkpoint — Final Evidence Check",
+        "prompts": [
+          "Written recommendation: recommendation stated in sentence 1: Y / N",
+          "Written recommendation: two pieces of evidence with specifics: Y / N",
+          "Written recommendation: limitation acknowledged: Y / N",
+          "Oral delivery: recommendation stated in first 20 seconds: Y / N",
+          "Oral delivery: professional tone and vocabulary: Y / N",
+          "Conference note (optional):"
+        ],
+        "teacher_notes": "The final recommendation card and the oral delivery together form the summative artifact. Oral delivery can be recorded or conferenced one-on-one. Both count equally."
+      },
+      "outputs": [
+        { "output_id": "w10_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week10.slides" },
+        { "output_id": "w10_discussion_prep", "output_type": "discussion_prep_sheet", "audience": "student", "source_section": "days.week10.discussion_prep_sheet" },
+        { "output_id": "w10_final_response", "output_type": "final_response_sheet", "audience": "student", "source_section": "days.week10.final_response_sheet" },
+        { "output_id": "w10_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week10.checkpoint_sheet" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_day1_ws_math",
+  "primary_architecture": "single_period_full",
+  "session_count": 1,
+  "grade_band": "8-12",
+  "subject": "Mathematics",
+  "grade": null,
+  "topic": "Plan, Build, Grow — Day 1: Math Stream Worksheet",
+  "theme": "mathematics",
+  "teacher_guide": {
+    "big_idea": "Math-stream students are seeing the project as a measurement and estimation problem from day one. The space is their first data set — their job today is to look at it like a mathematician and make their first estimates.",
+    "learning_goals": [
+      "Identify length, width, and height as the three key dimensions of a planter box.",
+      "Make a reasonable first estimate of the space using pacing or visual comparison.",
+      "Identify what information they will need to calculate area and volume."
+    ],
+    "materials": ["This worksheet — one per Math-stream student", "Ruler or tape measure (optional — for pacing reference)", "Calculator available"],
+    "timing": [
+      { "time": "0:50–1:10", "activity": "Students work through this worksheet independently or with EA support. Teacher circulates." }
+    ],
+    "teacher_notes": [
+      "Read the anchor aloud before students begin. Sketch L/W/H on the board.",
+      "Q2 (sketch + estimate) is the core task. Accept rough sketches — the math goal is labeling, not drawing.",
+      "Q3 estimates do not need to be accurate. The goal is activating prior knowledge about reasonable sizes.",
+      "Students finishing early can calculate: if 1 step ≈ 70 cm, what is their estimated area in cm²?"
+    ]
+  },
+  "worksheet": {
+    "anchor": [
+      "Length (L) — the longest side, measured horizontally",
+      "Width (W) — the shorter side, measured horizontally",
+      "Height (H) — how tall it is, measured vertically",
+      "Area = L × W (how much flat surface)",
+      "Volume = L × W × H (how much space inside)"
+    ],
+    "tip": "Estimates are guesses based on what you can see. There is no wrong answer — just show your thinking.",
+    "questions": [
+      {
+        "q_num": 1,
+        "q_text": "Label the three dimensions on this box:\n\n[  box diagram  ]\n\n→ Draw an arrow pointing to the longest side. Label it: L (Length)\n→ Draw an arrow pointing to the shorter side. Label it: W (Width)\n→ Draw an arrow pointing upward. Label it: H (Height)",
+        "n_lines": 5
+      },
+      {
+        "q_num": 2,
+        "q_text": "Sketch the space where the planter will go (top view — like a map looking down).\n\n[  drawing space  ]\n\nLabel: a wall or edge   which side gets sun   where the planter will sit\n\nMy sketch shows the planter in the _______________ corner/side of the space.",
+        "n_lines": 7
+      },
+      {
+        "q_num": 3,
+        "q_text": "Estimate the size of the planter box using your steps.\n\nI walked the space: about _______ steps wide,  about _______ steps long.\n1 step ≈ 70 cm\n\nEstimated width:  _______ × 70 = _______ cm\nEstimated length: _______ × 70 = _______ cm\n\nDoes this seem like a reasonable planter size?  Y / N\nWhy? ___________________",
+        "n_lines": 4
+      },
+      {
+        "q_num": 4,
+        "q_text": "What THREE measurements will our team need to calculate how much soil to buy?\n\n1. ___________________\n2. ___________________\n3. ___________________\n\nCircle the formula we will use for soil volume:   A = L × W     V = L × W × H     P = 2L + 2W",
+        "n_lines": 3
+      },
+      {
+        "q_num": 5,
+        "q_text": "Before we know the real dimensions — make a prediction:\n\nI think the planter will be about _______ cm long and _______ cm wide.\nThat would give an area of roughly _______ × _______ = _______ cm².\n\nCircle your role on the math team:   MEASURE   CALCULATE   RECORD DATA   MAKE THE GRAPH",
+        "n_lines": 3
+      }
+    ],
+    "self_check": [
+      "I labeled length, width, and height on the diagram.",
+      "I made at least one estimate using steps or visual comparison.",
+      "I know what measurements we need to collect next session."
+    ]
+  },
+  "exit_ticket": {
+    "title": "Day 1 Exit Check — Math Stream",
+    "prompt": "What are the three dimensions of a planter box? Write or say them with their abbreviations.\n\n1. ___ (___)\n2. ___ (___)\n3. ___ (___)\n\nWhich formula gives us the volume?   A = L × W     V = L × W × H",
+    "n_lines": 4,
+    "success_criteria": [
+      "Student named all three dimensions (length, width, height).",
+      "Student selected the correct volume formula."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "pbg_day1_ws_math_bundle",
+    "declared_outputs": ["teacher_guide", "worksheet", "exit_ticket"]
+  },
+  "outputs": [
+    { "output_id": "d1m_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "pbg_day1_ws_math_bundle" },
+    { "output_id": "d1m_worksheet", "output_type": "worksheet", "audience": "student", "source_section": "worksheet", "bundle": "pbg_day1_ws_math_bundle" },
+    { "output_id": "d1m_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "exit_ticket", "bundle": "pbg_day1_ws_math_bundle" }
+  ]
+}

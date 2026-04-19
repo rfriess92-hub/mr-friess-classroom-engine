@@ -1,0 +1,1150 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_english10",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 10,
+  "grade_band": "9-12",
+  "subject": "English Language Arts",
+  "grade": 10,
+  "topic": "Plan, Build, Grow — Functional Workplace Communication",
+  "theme": "careers",
+  "lesson_overview": {
+    "overview": "Students act as a junior school grounds team across 10 project weeks. They read a client request, compare design options, complete workplace forms, plant and monitor growth, and give a short oral client report. English outcomes focus on functional communication: reading practical texts, completing forms, using project vocabulary, and giving short oral updates. Weeks 4 and 8 are built-in flex weeks for pacing. Differentiation is embedded in all student-facing materials.",
+    "essential_question": "How can we communicate clearly while planning, building, and caring for a planter box for a real client?",
+    "big_idea": "Real work requires people to understand requests, communicate clearly, complete practical forms, follow steps, and report results.",
+    "sequence": [
+      { "day": "Week 1", "focus": "Meet the client. Identify the job. Use key project vocabulary.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Week 2", "focus": "Compare planter options. Choose a design. State a preference with a reason.", "artifacts": ["Slides", "Graphic Organizer", "Exit Ticket"] },
+      { "day": "Week 3", "focus": "Complete a work order and build plan. Label materials and tools. Record dimensions.", "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet", "Exit Ticket"] },
+      { "day": "Week 4", "focus": "Flex week. Build prep, ruler review, safety practice, or catch-up.", "artifacts": ["Slides", "Task Sheet"] },
+      { "day": "Week 5", "focus": "Build week. Follow steps, communicate with team, complete build checklist.", "artifacts": ["Slides", "Task Sheet", "Checkpoint Sheet"] },
+      { "day": "Week 6", "focus": "Planting day. Follow planting instructions, record what was planted, set up care schedule.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Week 7", "focus": "First growth observation. Measure, record, and complete a client update.", "artifacts": ["Slides", "Graphic Organizer", "Discussion Prep Sheet"] },
+      { "day": "Week 8", "focus": "Flex week. Troubleshoot growth, review care routine, continue growth log.", "artifacts": ["Slides", "Task Sheet", "Graphic Organizer"] },
+      { "day": "Week 9", "focus": "Use data to make a recommendation. Graph results and draft a short explanation.", "artifacts": ["Slides", "Graphic Organizer", "Task Sheet"] },
+      { "day": "Week 10", "focus": "Present a short oral client report. Complete final recommendation card.", "artifacts": ["Slides", "Discussion Prep Sheet", "Final Response Sheet", "Checkpoint Sheet"] }
+    ],
+    "differentiation_note": "Three support levels are embedded in all student materials. Level A: pictures, circling, matching, dictated responses. Level B: word banks, sentence frames, partially completed tables. Level C: short written responses, open recording, simple explanations. Students may use different support levels for different tasks.",
+    "integrity_checks": [
+      "Teacher-only guidance and conference notes remain in teacher-facing outputs.",
+      "Sentence frames and visual supports remain visible in student-facing materials.",
+      "Oral responses count as valid evidence throughout.",
+      "Flex weeks are intentionally open — use them to absorb delays or reteach.",
+      "Final client recommendation stays in the final response sheet on Week 10."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "Functional English is real English. Students reading a client request, filling in a work order, and presenting a recommendation are doing grade-level communication work in a context that matters.",
+    "learning_goals": [
+      "Understand a simple client request and identify key information.",
+      "Complete workplace-style forms using short practical language.",
+      "Use project vocabulary accurately in speech and writing.",
+      "Give short oral updates using sentence frames and cue cards.",
+      "Make a simple evidence-based recommendation to a real client."
+    ],
+    "materials": [
+      "Client Request Card (Week 1 task sheet)",
+      "Planter comparison sheet (Week 2 graphic organizer)",
+      "Work Order Form (Week 3 task sheet)",
+      "Build checklist (Week 5 task sheet)",
+      "Planting Record (Week 6 task sheet)",
+      "Growth Log (Week 7 and 8 graphic organizers)",
+      "Oral Cue Card (Week 10 discussion prep sheet)",
+      "Final Recommendation Card (Week 10 final response sheet)",
+      "Sentence frame anchor chart posted in the room",
+      "Project vocabulary list with pictures"
+    ],
+    "timing": [
+      { "time": "0:00–0:08", "activity": "Settle, visual agenda, and review last week's goal." },
+      { "time": "0:08–0:20", "activity": "Direct instruction and teacher model using the week's target form or task." },
+      { "time": "0:20–0:32", "activity": "Guided whole-group example — teacher completes one row or section together with students." },
+      { "time": "0:32–1:02", "activity": "Supported student work time. Teacher circulates and conferences. Level A students may work with teacher or EA." },
+      { "time": "1:02–1:12", "activity": "Teacher checkpoint or small-group reteach." },
+      { "time": "1:12–1:17", "activity": "Oral share using sentence frame from the week." },
+      { "time": "1:17–1:19", "activity": "Exit check and cleanup." }
+    ],
+    "teacher_notes": [
+      "Model every form before students touch it. Students watch you complete one row first.",
+      "Keep only 2–3 visible design choices. Do not open up unlimited options.",
+      "Reuse the same sentence frames every week so they become automatic.",
+      "Oral responses count as valid evidence. Conference notes are assessment.",
+      "Weeks 4 and 8 are flex weeks — choose the activity that fits your class.",
+      "If build is delayed, run cardboard prototype activities instead.",
+      "If growth is slow on Week 7–8, focus on observation language and prediction rather than numbers."
+    ],
+    "flex_week_options": {
+      "week_4": ["Reteach ruler reading", "Catch up missing work orders", "Build cardboard prototypes", "Label tools and materials", "Practice safety procedures"],
+      "week_8": ["Continue growth log when no growth has appeared yet", "Troubleshoot care conditions", "Begin graphing if enough data exists", "Revisit measurement accuracy", "Catch up any missing planting records"]
+    }
+  },
+  "bundle": {
+    "bundle_id": "pbg_english10_bundle",
+    "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "task_sheet", "checkpoint_sheet", "final_response_sheet", "exit_ticket", "graphic_organizer", "discussion_prep_sheet"]
+  },
+  "outputs": [
+    { "output_id": "pbg_e10_overview", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview" },
+    { "output_id": "pbg_e10_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide" }
+  ],
+  "days": [
+    {
+      "day_id": "week1",
+      "day_label": "Week 1: Meet the Client",
+      "carryover_note": "Completed Client Request Card carries forward to Week 2.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Plan, Build, Grow — Week 1",
+          "layout": "hero",
+          "content": { "subtitle": "This week: meet the client, understand the job, and get started." }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "The Client Request",
+          "layout": "prompt",
+          "content": {
+            "scenario": "A real client wants a planter box for the school grounds. Before we build anything, we need to understand exactly what they want.",
+            "prompts": ["Who is our client?", "What do they want us to make?", "Where will it go?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "How to read a client request",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Read or listen to the whole request before writing anything.",
+              "Find the three key things: who, what, and where.",
+              "Record the most important information on your Client Request Card."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Project vocabulary",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "client — the person or group who gives us the job",
+              "planter box — a container used to grow plants",
+              "dimensions — the size of something: length, width, and height",
+              "materials — what something is made from",
+              "budget — the amount of money available to spend"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Oral share",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The client is ___.",
+              "The client needs a ___ .",
+              "We will put it ___ ."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 1 Task Sheet — Client Request Card",
+        "instructions": [
+          "Listen carefully while your teacher reads the client request.",
+          "Fill in each box using the information from the request.",
+          "Use the sentence frames to help you."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: The Client",
+            "prompt": "Fill in the Client Request Card.\n\nThe client is: ___________________\nThe job is: ___________________\nThe planter will go: ___________________\nOne important thing the client said: ___________________",
+            "lines": 4,
+            "render_hints": { "heading": "Client Request Card", "help": "Level A: circle the words your teacher wrote. Level B: use the word bank above. Level C: use your own words." }
+          },
+          {
+            "label": "Part 2: What Is the Job?",
+            "prompt": "Answer these questions about the job.\n\nWhat are we making? ___________________\nWho is it for? ___________________\nWhat does it need? ___________________\nWhat will we do first? ___________________",
+            "lines": 4,
+            "render_hints": { "help": "Sentence frame: We are making a ___ for ___ ." }
+          },
+          {
+            "label": "Part 3: Draw or label",
+            "prompt": "Draw a simple planter box and label at least two parts. Use the vocabulary from the board to help you.",
+            "lines": 5,
+            "render_hints": { "help": "Label ideas: soil, side, bottom, front, handle." }
+          }
+        ],
+        "embedded_supports": [
+          "Word bank: planter box, client, school, soil, seeds, wood, cardboard, measurements",
+          "Sentence frame: The client needs a ___ because ___ .",
+          "Level A: ask your teacher to scribe your answer, or circle from the choices on your support strip."
+        ],
+        "success_criteria": [
+          "I can say who the client is.",
+          "I can explain what the job is.",
+          "I used at least two project vocabulary words."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 1 Exit Check",
+        "prompt": "Complete this sentence: The client needs a ___ because ___ . We will put it ___ .",
+        "n_lines": 3,
+        "success_criteria": [
+          "I named the client.",
+          "I described the job.",
+          "I used one project vocabulary word."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w1_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week1.slides" },
+        { "output_id": "w1_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week1.task_sheet" },
+        { "output_id": "w1_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week1.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week2",
+      "day_label": "Week 2: Compare Planter Options",
+      "carryover_note": "Bring Week 1 Client Request Card. Team choice carries forward to Week 3.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 2: Compare Planter Options",
+          "layout": "hero",
+          "content": { "subtitle": "This week: compare planter designs and choose the one that best fits the client's needs." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "What did we learn last week?",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use your Client Request Card to answer these quick review questions.",
+            "prompts": ["Who is the client?", "What do they want built?", "What is one important thing from the request?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Comparison words",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "taller / shorter / same height",
+              "wider / narrower / same width",
+              "longer / shorter / same length",
+              "more expensive / less expensive / similar cost",
+              "easier to build / harder to build"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Compare two planters",
+          "layout": "two_column",
+          "content": {
+            "task": "Look at Planter A and Planter B. Use comparison words to describe how they are different.",
+            "left": "Planter A",
+            "right": "Planter B",
+            "columns": [
+              { "title": "Planter A", "items": [{ "text": "length: ___ cm" }, { "text": "width: ___ cm" }, { "text": "height: ___ cm" }, { "text": "cost: ___" }] },
+              { "title": "Planter B", "items": [{ "text": "length: ___ cm" }, { "text": "width: ___ cm" }, { "text": "height: ___ cm" }, { "text": "cost: ___" }] }
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Team choice",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "We chose Planter ___ because ___ .",
+              "This planter fits the job because ___ .",
+              "One thing we are not sure about is ___ ."
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "title": "Planter Comparison Sheet",
+        "organizer_type": "three_column",
+        "columns": ["Planter A", "Planter B", "Planter C"],
+        "rows": 7,
+        "prompt": "Compare the three planter options. Fill in what you notice about each one. Circle the one your team chooses at the bottom.",
+        "success_criteria": [
+          "I compared at least two planters.",
+          "I recorded one number (size or cost) for each option.",
+          "I chose one planter and can explain why."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 2 Exit Check",
+        "prompt": "Our team chose Planter ___ because ___ . One thing that fits the client's needs is ___ .",
+        "n_lines": 3,
+        "success_criteria": ["I named our planter choice.", "I gave one reason for the choice."]
+      },
+      "outputs": [
+        { "output_id": "w2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week2.slides" },
+        { "output_id": "w2_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week2.graphic_organizer" },
+        { "output_id": "w2_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week2.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week3",
+      "day_label": "Week 3: Work Order and Build Plan",
+      "carryover_note": "Completed Work Order and Build Plan carry forward to Weeks 4 and 5.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 3: Work Order and Build Plan",
+          "layout": "hero",
+          "content": { "subtitle": "This week: complete the plan so we are ready to build." }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Our chosen planter",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Last week we chose a planter design. Now we need to write a work order and a build plan before we can start building.",
+            "prompts": ["What planter did our team choose?", "What does the client need the planter to do?", "What information do we need in the plan?"]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "What goes in a work order?",
+          "layout": "numbered_steps",
+          "content": {
+            "steps": [
+              "Team name and date",
+              "The client's name and the job",
+              "The item to build and where it will go",
+              "Materials and tools needed",
+              "What the team will do today"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Build plan: size and shape",
+          "layout": "prompt",
+          "content": {
+            "scenario": "The build plan shows the size and shape of the planter before we cut or assemble anything.",
+            "prompts": ["Length: ___ cm", "Width: ___ cm", "Height: ___ cm", "Number of main pieces: ___"]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Checkpoint check-in",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Our plan is ___ (ready / almost ready / needs more work).",
+              "One thing I still need to add is ___ .",
+              "My teacher needs to check ___ ."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 3 Task Sheet — Work Order and Build Plan",
+        "instructions": [
+          "Complete the Work Order first, then move to the Build Plan.",
+          "Use your Team Choice Form from Week 2 to fill in the measurements.",
+          "Show your teacher when both forms are complete."
+        ],
+        "tasks": [
+          {
+            "label": "Work Order",
+            "prompt": "Fill in the work order.\n\nTeam name: ___________________  Date: ___________________\nClient: ___________________\nJob: ___________________\nItem we are building: ___________________\nWhere it will go: ___________________\nMaterials we need: ___________________\nTools we need: ___________________\nOur job today: ___________________",
+            "lines": 8,
+            "render_hints": { "heading": "Work Order Form", "help": "Level B: use the word bank. Level A: ask your teacher to help fill in the fields." }
+          },
+          {
+            "label": "Build Plan — Dimensions",
+            "prompt": "Record the size of your planter.\n\nLength: _______ cm     Width: _______ cm     Height: _______ cm\nNumber of pieces: _______\n\nDraw the planter here and label the front, top, and one side.",
+            "lines": 6,
+            "render_hints": { "help": "Sentence frame: Our planter is ___ cm long, ___ cm wide, and ___ cm high." }
+          },
+          {
+            "label": "Materials List",
+            "prompt": "List the materials you need to build your planter. Use the picture bank on the wall to help.\n\n1. ___________________\n2. ___________________\n3. ___________________\n4. ___________________\n5. ___________________",
+            "lines": 5,
+            "render_hints": { "help": "Material ideas: wood boards, screws, soil, seeds, labels, cardboard, tape." }
+          }
+        ],
+        "embedded_supports": [
+          "Word bank: wood, cardboard, screws, tape, soil, seeds, ruler, saw, drill, hammer",
+          "Sentence frame: We need ___ pieces of ___ to build our planter.",
+          "Level A: use cut-and-paste material labels from the support strip."
+        ],
+        "success_criteria": [
+          "My work order has a client name, job, and materials list.",
+          "My build plan shows three dimensions.",
+          "I labelled at least one part of my planter drawing."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 3 Teacher Checkpoint",
+        "checkpoint_focus": "Verify work order and build plan completeness before build prep begins.",
+        "look_fors": [
+          "Work order names the client, job, and materials.",
+          "Build plan shows length, width, and height.",
+          "Student can explain what each material is for.",
+          "Plan is feasible for the available build time."
+        ],
+        "conference_prompts": [
+          "Walk me through your build plan. What happens first?",
+          "What materials do you need most?",
+          "Is anything in your plan not quite right yet?"
+        ],
+        "release_rule": "Release build prep activities only after Work Order and Build Plan are both complete and checked."
+      },
+      "exit_ticket": {
+        "title": "Week 3 Exit Check",
+        "prompt": "Our planter is ___ cm long, ___ cm wide, and ___ cm high. We need ___ to build it.",
+        "n_lines": 3,
+        "success_criteria": ["I recorded three dimensions.", "I named at least one material."]
+      },
+      "outputs": [
+        { "output_id": "w3_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week3.slides" },
+        { "output_id": "w3_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week3.task_sheet" },
+        { "output_id": "w3_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week3.checkpoint_sheet" },
+        { "output_id": "w3_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week3.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week4",
+      "day_label": "Week 4: Flex — Build Prep and Review",
+      "carryover_note": "Flex week. Use to catch up, review, or prepare for building.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 4: Build Prep and Flex Time",
+          "layout": "hero",
+          "content": { "subtitle": "This week: get ready to build. Your teacher will tell you which activity your class is doing today." }
+        },
+        {
+          "type": "OPTIONS",
+          "title": "Today's options",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Option A: Review ruler reading and check your plan dimensions.",
+              "Option B: Finish missing work orders or build plans from Week 3.",
+              "Option C: Make a cardboard prototype of your planter design."
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Tool and material safety",
+          "layout": "checklist",
+          "content": {
+            "task": "Before we use any tools, go through this safety reminder together.",
+            "items": ["Listen for instructions before picking up any tool.", "Keep tools on the table when not in use.", "Ask before you cut or drill.", "Tell the teacher if something does not feel safe.", "Clean up your area before the end of the class."]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Check your plan",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Before we build, we need to make sure the plan is correct.",
+            "prompts": ["Do your three dimensions match your chosen planter?", "Do you have all your materials on your list?", "Is your team ready to start?"]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Ready check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "We are ___ (ready / almost ready / not ready yet) to build.",
+              "One thing we still need is ___ .",
+              "Our biggest question right now is ___ ."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 4 Task Sheet — Build Prep",
+        "instructions": [
+          "Complete the task your teacher assigns today.",
+          "If you finish early, move to the prototype sketch.",
+          "All forms must be finished before build week begins."
+        ],
+        "tasks": [
+          {
+            "label": "Build Prep Checklist",
+            "prompt": "Check each item. Put a checkmark when it is done.\n\n☐ My Work Order is complete.\n☐ My Build Plan has three dimensions.\n☐ I know what materials I need.\n☐ I know what my team role is.\n☐ I reviewed the safety rules.\n☐ I know what to do first on build day.\n☐ My teacher has checked my plan.",
+            "lines": 2,
+            "render_hints": { "heading": "Build Prep Checklist" }
+          },
+          {
+            "label": "Prototype Sketch",
+            "prompt": "Draw a simple sketch of your planter as if you are looking at it from the front. Label the length, width, and height. Add any notes about how it will be put together.",
+            "lines": 6,
+            "render_hints": { "help": "This is a planning sketch — it does not need to be perfect. Just show the main shape and measurements." }
+          }
+        ],
+        "embedded_supports": [
+          "Ask your teacher if you need to redo Week 2 or Week 3 forms.",
+          "Level A: your teacher will check boxes with you.",
+          "Sentence frame: We are ready because ___ ."
+        ],
+        "success_criteria": [
+          "My build prep checklist shows that I am ready.",
+          "I have all required forms complete.",
+          "I know my role for build week."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w4_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week4.slides" },
+        { "output_id": "w4_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week4.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "week5",
+      "day_label": "Week 5: Build Week",
+      "carryover_note": "Build Checklist and teacher observation notes carry forward to Week 6.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 5: Build Week",
+          "layout": "hero",
+          "content": { "subtitle": "Today we build. Follow the steps, work as a team, and check your work against the plan." }
+        },
+        {
+          "type": "LEARN",
+          "title": "Team roles and safety",
+          "layout": "numbered_steps",
+          "content": {
+            "steps": [
+              "Listen to the safety review before touching any materials.",
+              "Check your role card and know your job for today.",
+              "Follow the build steps in order — do not skip ahead.",
+              "Call for your teacher before cutting, drilling, or fixing a mistake.",
+              "Check your measurements before each step."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Build checkpoint",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Halfway through the build, stop and check your progress.",
+            "prompts": ["Is the size matching the plan?", "Are all team members doing their role?", "What do we still need to finish?"]
+          }
+        },
+        {
+          "type": "REVIEW",
+          "title": "Build steps",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Lay out all materials and count them before starting.",
+              "Measure and mark before you cut or attach anything.",
+              "Check the finished piece against the build plan before moving on."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Oral update",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Today we finished ___ .",
+              "Our planter is now ___ (complete / almost done / still needs work).",
+              "Next we need to ___ ."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 5 Task Sheet — Build Checklist and Team Roles",
+        "instructions": [
+          "Record your team role at the top.",
+          "Complete the Build Checklist as your team finishes each step.",
+          "Fill in the Oral Update Card at the end of the session."
+        ],
+        "tasks": [
+          {
+            "label": "Team Role",
+            "prompt": "My role today is: ___________________\nMy job description: ___________________\nI am responsible for: ___________________",
+            "lines": 3,
+            "render_hints": { "heading": "Group Role Card", "help": "Role options: Measurer, Recorder, Materials Helper, Water Checker, Speaker/Reporter, Cleanup Lead." }
+          },
+          {
+            "label": "Build Checklist",
+            "prompt": "Put a checkmark as your team completes each step.\n\n☐ We looked at the plan before starting.\n☐ We got our materials.\n☐ We measured before cutting or attaching.\n☐ We checked the size against the plan.\n☐ We put our name on the project.\n☐ We cleaned up our area.\n☐ We did a final check.",
+            "lines": 2,
+            "render_hints": { "heading": "Build Checklist" }
+          },
+          {
+            "label": "Oral Update Card",
+            "prompt": "Prepare your oral update. Use these sentence frames.\n\nToday we finished ___ .\nOur team worked on ___ .\nThe hardest part was ___ .\nNext we need to ___ .",
+            "lines": 4,
+            "render_hints": { "help": "Practice saying your update out loud before writing it down." }
+          }
+        ],
+        "embedded_supports": [
+          "Level A: your teacher will circulate and ask you questions — speak your answers.",
+          "Level B: use the sentence frames above to write your update.",
+          "Level C: write a short paragraph describing what your team built and what comes next."
+        ],
+        "success_criteria": [
+          "I completed my team role.",
+          "I checked off each step of the Build Checklist.",
+          "I can give a short oral update about what we did."
+        ]
+      },
+      "checkpoint_sheet": {
+        "title": "Week 5 Teacher Observation — Build Day",
+        "checkpoint_focus": "Observe participation, communication, and build accuracy.",
+        "look_fors": [
+          "Student is actively contributing to the team.",
+          "Student is using role language and tool names.",
+          "Build dimensions match the plan.",
+          "Student can explain what they did when asked."
+        ],
+        "conference_prompts": [
+          "What did you do today in your role?",
+          "What step was hardest? Why?",
+          "What does your planter still need?"
+        ],
+        "release_rule": "Build checklist must be complete before students move to Week 6 planting activities."
+      },
+      "outputs": [
+        { "output_id": "w5_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week5.slides" },
+        { "output_id": "w5_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week5.task_sheet" },
+        { "output_id": "w5_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week5.checkpoint_sheet" }
+      ]
+    },
+    {
+      "day_id": "week6",
+      "day_label": "Week 6: Planting Day",
+      "carryover_note": "Planting Record and Care Schedule carry forward to Week 7 observations.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 6: Planting Day",
+          "layout": "hero",
+          "content": { "subtitle": "Today we plant seeds and start the care cycle. Record everything you do." }
+        },
+        {
+          "type": "LEARN",
+          "title": "Planting vocabulary",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "seed — the small unit we plant to grow a new plant",
+              "soil — the growing material that holds moisture and nutrients",
+              "spacing — how far apart the seeds are placed",
+              "depth — how deep below the surface the seed is planted",
+              "germinate — when a seed begins to sprout and grow"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Planting steps",
+          "layout": "numbered_steps",
+          "content": {
+            "steps": [
+              "Fill the planter with soil to about 3 cm below the top edge.",
+              "Use your finger or a pencil to make a small hole for each seed.",
+              "Place one seed in each hole at the correct depth.",
+              "Gently cover each seed with soil.",
+              "Water lightly — the soil should be damp, not soaking.",
+              "Label the planter with your team name and the seed type."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Care schedule",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Now that we have planted, we need a plan for caring for the plants every week.",
+            "prompts": ["Who checks the soil?", "Who waters when needed?", "Who records growth each week?"]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "First planting day",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Today we planted ___ seeds.",
+              "The seeds are in the ___ (planter box / starter cups / trays).",
+              "Our first care task is ___ ."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 6 Task Sheet — Planting Record and Care Schedule",
+        "instructions": [
+          "Complete the Planting Record as you plant today.",
+          "Fill in the Care Schedule for the coming weeks.",
+          "Keep this sheet — you will need it every week."
+        ],
+        "tasks": [
+          {
+            "label": "Planting Record",
+            "prompt": "Fill in the record while you plant.\n\nDate planted: ___________________\nSeed type: ___________________\nNumber of seeds: ___________________\nWhere planted: ___________________\nDepth (how deep): ___________________\nWho planted: ___________________\nFirst observation: ___________________",
+            "lines": 7,
+            "render_hints": { "heading": "Planting Record" }
+          },
+          {
+            "label": "Care Schedule",
+            "prompt": "Set up your weekly care routine. Fill in who will do each job.\n\nCheck soil: ___________________\nWater when needed: ___________________\nLook for growth: ___________________\nRecord what we see: ___________________\nClean the area: ___________________",
+            "lines": 5,
+            "render_hints": { "help": "Level B: circle one name from your team for each job." }
+          }
+        ],
+        "embedded_supports": [
+          "Level A: draw what you planted instead of writing. Teacher scribes the labels.",
+          "Sentence frame: Today we planted ___ seeds. We will check them every ___ ."
+        ],
+        "success_criteria": [
+          "My Planting Record has a date, seed type, and location.",
+          "My Care Schedule shows at least two jobs assigned.",
+          "I can say what we planted and what comes next."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Week 6 Exit Check",
+        "prompt": "Today we planted ___ seeds. We will take care of them by ___ . Next week we will check for ___ .",
+        "n_lines": 3,
+        "success_criteria": ["I named what we planted.", "I described one care task."]
+      },
+      "outputs": [
+        { "output_id": "w6_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week6.slides" },
+        { "output_id": "w6_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week6.task_sheet" },
+        { "output_id": "w6_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.week6.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "week7",
+      "day_label": "Week 7: First Growth Observation",
+      "carryover_note": "Growth Log 1 data carries forward to Week 8 and Week 9.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 7: First Growth Check",
+          "layout": "hero",
+          "content": { "subtitle": "This week: observe your plant, record what you see, and send the client an update." }
+        },
+        {
+          "type": "LEARN",
+          "title": "How to observe and record",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Look before you measure. Notice colour, shape, and any growth.",
+              "Measure from the base of the soil to the top of the tallest stem.",
+              "Write exactly what you see — even 'nothing yet' is a useful observation."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Observation questions",
+          "layout": "retrieval",
+          "content": {
+            "task": "Before writing in your Growth Log, answer these observation questions.",
+            "prompts": ["Is there any visible growth above the soil?", "What does the soil look like — dry, damp, or soaking?", "Has anything changed since planting day?"]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Client update language",
+          "layout": "prompt",
+          "content": {
+            "scenario": "The client wants to know how the project is going. Write a short update using these sentence frames.",
+            "prompts": ["This week our plant is ___ .", "It is ___ cm tall.", "We noticed ___ .", "Next we will ___ ."]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "What we noticed",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "The most interesting thing we observed was ___ .",
+              "Our plant is ___ (growing well / just starting / not visible yet).",
+              "We think next week it will ___ ."
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "title": "Growth Log 1 — Week 7",
+        "organizer_type": "t_chart",
+        "columns": ["Week / Date", "Height (cm)", "Leaves", "Healthy? Y/N"],
+        "rows": 4,
+        "prompt": "Observe your plant carefully each week. Fill in one row for each observation. If nothing has grown yet, write 'no growth' and record care conditions instead.",
+        "success_criteria": [
+          "I recorded the date and height (or 'no growth yet').",
+          "I noted whether the plant looks healthy.",
+          "I checked the care conditions."
+        ]
+      },
+      "discussion_prep_sheet": {
+        "title": "Weekly Client Update Card — Week 7",
+        "discussion_prompt": "What does the client need to know about our planter project this week?",
+        "position_label": "This week our project is...",
+        "evidence_count": 2,
+        "include_question": true,
+        "include_counterargument": false,
+        "success_criteria": [
+          "I described the current state of the plant.",
+          "I included at least one observation detail.",
+          "I have a question or next step ready."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w7_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week7.slides" },
+        { "output_id": "w7_growth_log", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week7.graphic_organizer" },
+        { "output_id": "w7_client_update", "output_type": "discussion_prep_sheet", "audience": "student", "source_section": "days.week7.discussion_prep_sheet" }
+      ]
+    },
+    {
+      "day_id": "week8",
+      "day_label": "Week 8: Flex — Growth Check and Troubleshooting",
+      "carryover_note": "Flex week. Growth Log 2 continues the data record from Week 7.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 8: Growth Check and Flex",
+          "layout": "hero",
+          "content": { "subtitle": "This week: continue the growth log, solve any problems, and review care. Your teacher will tell you today's focus." }
+        },
+        {
+          "type": "OPTIONS",
+          "title": "Today's options",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Option A: Continue the growth log and review care conditions.",
+              "Option B: Use the Problem and Solution Sheet if growth is stalled or plants look unhealthy.",
+              "Option C: Begin comparing growth data if you have two or more log entries."
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "What to do if nothing has grown",
+          "layout": "prompt",
+          "content": {
+            "scenario": "If nothing has sprouted yet, that is useful information. It means we need to look at the care conditions.",
+            "prompts": ["Is the soil staying damp?", "Is the planter getting enough light?", "Were the seeds planted at the right depth?"]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Care vocabulary review",
+          "layout": "rows",
+          "content": {
+            "rows": [
+              "germinate — when the seed begins to sprout",
+              "dormant — not growing yet, but not dead",
+              "overwatered — too much water can harm roots",
+              "underwatered — too little water causes wilting",
+              "sprout — the first visible growth above the soil"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Next steps",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Our plant is ___ (growing / not yet growing / struggling).",
+              "One thing we are going to change or fix is ___ .",
+              "By Week 9, we expect our plant to ___ ."
+            ]
+          }
+        }
+      ],
+      "task_sheet": {
+        "title": "Week 8 Task Sheet — Problem and Solution",
+        "instructions": [
+          "If your plant is growing well, skip Part 1 and go straight to Part 2.",
+          "If your plant is not growing or looks unhealthy, complete Part 1 first.",
+          "Complete Part 2 regardless."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Problem and Solution (if needed)",
+            "prompt": "The problem I noticed is: ___________________\n\nI think the problem is happening because: ___________________\n\nI think we need to: ___________________\n\nOur fix is: ___________________",
+            "lines": 4,
+            "render_hints": { "help": "Problem examples: not enough water, not enough light, seeds too deep, soil too dry." }
+          },
+          {
+            "label": "Part 2: Care Review Checklist",
+            "prompt": "Check your care routine.\n\n☐ Soil has been checked at least twice this week.\n☐ Plant was watered when soil was dry.\n☐ Planter is in a location with enough light.\n☐ Growth log has an entry this week.\n☐ Team members know their care roles.\n☐ Area around the planter is clean.",
+            "lines": 2,
+            "render_hints": { "heading": "Care Review Checklist" }
+          }
+        ],
+        "embedded_supports": [
+          "Sentence frame: The problem is ___ . We think we need to ___ .",
+          "Level A: circle the problem from pictures shown by your teacher.",
+          "If nothing has grown yet, write 'no growth yet' — this is still a valid observation."
+        ],
+        "success_criteria": [
+          "I identified any problems with my plant.",
+          "I completed the care review checklist.",
+          "I know what to do differently next week."
+        ]
+      },
+      "graphic_organizer": {
+        "title": "Growth Log 2 — Week 8",
+        "organizer_type": "t_chart",
+        "columns": ["Week / Date", "Height (cm)", "Leaves", "Healthy? Y/N"],
+        "rows": 4,
+        "prompt": "Continue recording growth from Week 7. Add new observations this week. If growth has started since last week, record the change.",
+        "success_criteria": [
+          "I added at least one new row to the growth log.",
+          "I can compare this week's observation to last week's."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w8_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week8.slides" },
+        { "output_id": "w8_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week8.task_sheet" },
+        { "output_id": "w8_growth_log2", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week8.graphic_organizer" }
+      ]
+    },
+    {
+      "day_id": "week9",
+      "day_label": "Week 9: Graph, Compare, and Recommend",
+      "carryover_note": "Recommendation draft and data table carry forward to Week 10 final report.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 9: Graph, Compare, Recommend",
+          "layout": "hero",
+          "content": { "subtitle": "This week: use your growth data to make a simple recommendation to the client." }
+        },
+        {
+          "type": "LEARN",
+          "title": "Reading your data",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Look at your Growth Log. Find the tallest measurement you recorded.",
+              "Compare your first observation to your most recent one.",
+              "Use the numbers to describe what changed."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Recommendation language",
+          "layout": "prompt",
+          "content": {
+            "scenario": "A recommendation is a short, clear statement about what worked and what the client should do.",
+            "prompts": [
+              "Our team recommends ___ because ___ .",
+              "The best part of our plan was ___ .",
+              "If we did this again, we would ___ ."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Before and after",
+          "layout": "two_column",
+          "content": {
+            "task": "Compare what our plant looked like at the start and what it looks like now.",
+            "columns": [
+              { "title": "When we planted (Week 6)", "items": [{ "text": "height: ___ cm (no growth yet)" }, { "text": "appearance: ___" }, { "text": "conditions: ___" }] },
+              { "title": "Now (Week 9)", "items": [{ "text": "height: ___ cm" }, { "text": "appearance: ___" }, { "text": "conditions: ___" }] }
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Draft check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "My recommendation says ___ .",
+              "The evidence I am using is ___ .",
+              "The most important thing the client needs to know is ___ ."
+            ]
+          }
+        }
+      ],
+      "graphic_organizer": {
+        "title": "Growth Data Table — Week 9",
+        "organizer_type": "t_chart",
+        "columns": ["Week / Date", "Height (cm)"],
+        "rows": 6,
+        "prompt": "Copy your height measurements from your Growth Log into this table. Fill in all the weeks you recorded. Then circle the biggest number. This is your data for the recommendation.",
+        "success_criteria": [
+          "I have at least two rows of data.",
+          "I circled the tallest measurement.",
+          "I can see whether the plant grew over time."
+        ]
+      },
+      "task_sheet": {
+        "title": "Week 9 Task Sheet — Recommendation Draft",
+        "instructions": [
+          "Use your data table and Growth Log to complete this recommendation draft.",
+          "Your recommendation must include at least one number from your data.",
+          "This is a draft — you will use it in Week 10 to prepare your final report."
+        ],
+        "tasks": [
+          {
+            "label": "Data Summary",
+            "prompt": "Fill in these summary statements.\n\nThe tallest our plant grew was: ___ cm (Week ___)\nCompared to when we planted, the plant is now ___ cm ___ (taller / shorter / the same).\nThe biggest change happened between Week ___ and Week ___ .",
+            "lines": 4,
+            "render_hints": { "help": "Level B: just fill in the blanks. Level C: add one sentence explaining why you think the change happened." }
+          },
+          {
+            "label": "Recommendation Draft",
+            "prompt": "Write your recommendation to the client. Use at least one number from your data.\n\nOur team recommends: ___________________\nBecause: ___________________\nThe evidence shows: ___________________\nFor next time, we suggest: ___________________",
+            "lines": 5,
+            "render_hints": { "help": "Sentence frame: Our team recommends ___ because our data shows ___." }
+          }
+        ],
+        "embedded_supports": [
+          "Level A: speak your recommendation to your teacher. Teacher scribes with you.",
+          "Sentence frames: Our plant grew from ___ cm to ___ cm. This shows that ___ .",
+          "Useful words: grew, increased, stayed the same, improved, changed, recommends"
+        ],
+        "success_criteria": [
+          "My data summary includes at least one number.",
+          "My recommendation draft includes a 'because' statement.",
+          "I am ready to turn this into my final report."
+        ]
+      },
+      "outputs": [
+        { "output_id": "w9_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week9.slides" },
+        { "output_id": "w9_data_table", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.week9.graphic_organizer" },
+        { "output_id": "w9_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.week9.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "week10",
+      "day_label": "Week 10: Final Client Report",
+      "carryover_note": "Final evidence week. Oral report and Final Recommendation Card are the closing evidence.",
+      "slides": [
+        {
+          "type": "LAUNCH",
+          "title": "Week 10: Report to the Client",
+          "layout": "hero",
+          "content": { "subtitle": "Today we present our work to the client. Use your cue card and speak clearly." }
+        },
+        {
+          "type": "LEARN",
+          "title": "How to present clearly",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Stand still, make eye contact, and speak at a pace the listener can follow.",
+              "Use your cue card — it keeps you on track and shows you prepared.",
+              "End with your recommendation — that is the most important part."
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "The 30-second client report",
+          "layout": "numbered_steps",
+          "content": {
+            "steps": [
+              "Start with the project: 'Our team built a planter box for ___.'",
+              "Describe the planting: 'We planted ___ seeds.'",
+              "Share the growth: 'Our plant grew to ___ cm.'",
+              "Make the recommendation: 'We recommend ___ because ___.'",
+              "Finish: 'Thank you for the job.'"
+            ]
+          }
+        },
+        {
+          "type": "TASK",
+          "title": "Rehearsal time",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Practice your report with a partner before presenting to the teacher or class.",
+            "prompts": ["Can your partner follow your report?", "Did you include a number from your data?", "Did your recommendation make sense?"]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Self-check",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "I helped my team ___ .",
+              "The part I am most proud of is ___ .",
+              "Next time I would ___ ."
+            ]
+          }
+        }
+      ],
+      "discussion_prep_sheet": {
+        "title": "Oral Presentation Cue Card — Week 10",
+        "discussion_prompt": "Present your team's planter project to the client in under one minute.",
+        "position_label": "Our team recommends...",
+        "evidence_count": 2,
+        "include_question": false,
+        "include_counterargument": false,
+        "success_criteria": [
+          "I described what we built and planted.",
+          "I included at least one piece of data.",
+          "I made a clear recommendation with a reason."
+        ]
+      },
+      "final_response_sheet": {
+        "title": "Final Recommendation Card — Week 10",
+        "prompt": "Write your team's final recommendation to the client. Use your data, your Recommendation Draft from Week 9, and your Oral Cue Card to help you. This is your official record of the project.",
+        "planning_reminders": [
+          "Include your team name and the planter you built.",
+          "Include at least one measurement or piece of data.",
+          "Explain why you are making this recommendation.",
+          "Keep it short and clear — this is a professional report."
+        ],
+        "paragraph_support": {
+          "frame_strip": [
+            "Our team built a ___ for ___.",
+            "We planted ___ seeds and our plant grew to ___ cm.",
+            "Based on our results, we recommend ___ because ___.",
+            "If we did this again, we would ___."
+          ]
+        },
+        "success_criteria": [
+          "I named the project and the client.",
+          "I included at least one number from my data.",
+          "My recommendation includes a 'because' statement.",
+          "I am proud of this as my final communication to the client."
+        ],
+        "response_lines": 10
+      },
+      "checkpoint_sheet": {
+        "title": "Week 10 Teacher Conference — Final Report",
+        "checkpoint_focus": "Observe oral presentation and review final recommendation card.",
+        "look_fors": [
+          "Student can present a 30-second oral report clearly.",
+          "Report includes a recommendation with a reason.",
+          "Final Recommendation Card is complete with at least one data reference.",
+          "Student can speak to what their team accomplished."
+        ],
+        "conference_prompts": [
+          "Tell me what your team built and planted.",
+          "What did the data show?",
+          "What would you recommend to the client and why?"
+        ],
+        "release_rule": "Final Recommendation Card is the declared final evidence location. Oral report and self-check are supporting evidence."
+      },
+      "outputs": [
+        { "output_id": "w10_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.week10.slides" },
+        { "output_id": "w10_oral_cue", "output_type": "discussion_prep_sheet", "audience": "student", "source_section": "days.week10.discussion_prep_sheet" },
+        { "output_id": "w10_final_rec", "output_type": "final_response_sheet", "audience": "student", "source_section": "days.week10.final_response_sheet", "final_evidence": true },
+        { "output_id": "w10_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.week10.checkpoint_sheet" }
+      ]
+    }
+  ]
+}

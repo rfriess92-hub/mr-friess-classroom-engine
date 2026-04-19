@@ -8,6 +8,17 @@ export const repoPath = (...parts) => resolve(repoRoot, ...parts)
 export const FIXTURE_MAP = {
   benchmark1: 'fixtures/core/benchmark-1.grade2-math.json',
   challenge7: 'fixtures/core/challenge-7.grade8-sequence.json',
+  pbg_day1_launch: 'fixtures/plan-build-grow/pbg_day1_launch.json',
+  pbg_week1_shared: 'fixtures/plan-build-grow/pbg_week1_shared.json',
+  pbg_week1_english: 'fixtures/plan-build-grow/pbg_week1_english.json',
+  pbg_week1_math: 'fixtures/plan-build-grow/pbg_week1_math.json',
+  pbg_day1_ws_english: 'fixtures/plan-build-grow/pbg_day1_ws_english.json',
+  pbg_day1_ws_math: 'fixtures/plan-build-grow/pbg_day1_ws_math.json',
+  pbg_english10: 'fixtures/plan-build-grow/pbg_english10.json',
+  pbg_english11: 'fixtures/plan-build-grow/pbg_english11.json',
+  pbg_english12: 'fixtures/plan-build-grow/pbg_english12.json',
+  pbg_math8: 'fixtures/plan-build-grow/pbg_math8.json',
+  pbg_workplace_math10: 'fixtures/plan-build-grow/pbg_workplace_math10.json',
 }
 
 export function ensureExists(path, label = path) {

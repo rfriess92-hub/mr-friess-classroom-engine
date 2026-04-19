@@ -1,0 +1,285 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_week1_math",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 4,
+  "grade_band": "8-12",
+  "subject": "Mathematics",
+  "grade": null,
+  "topic": "Plan, Build, Grow — Week 1, Days 2–5: Math Stream",
+  "theme": "mathematics",
+  "lesson_overview": {
+    "overview": "Math-stream students complete four task sheets across Days 2–5 of Week 1. Day 1 estimates are replaced with real data: students extract the budget from the client brief, compare design dimensions from cards, calculate the area of each option, and then for the chosen design calculate volume and estimate soil bags. By Day 5 they have a complete Week 1 measurement record.",
+    "essential_question": "What numbers do we need, and what can we calculate from them?",
+    "big_idea": "Math gives us a way to compare options and make decisions we can defend with evidence — not just gut feeling.",
+    "sequence": [
+      { "day": "Day 2", "focus": "Read the client brief for numbers: budget, dimensions of the space, timeline.", "artifacts": ["Task Sheet"] },
+      { "day": "Day 3", "focus": "Record dimensions of three design options. Calculate and compare areas.", "artifacts": ["Task Sheet"] },
+      { "day": "Day 4", "focus": "For the chosen design: calculate area, volume, and estimate soil bags needed.", "artifacts": ["Task Sheet"] },
+      { "day": "Day 5", "focus": "Week 1 measurement record. Check calculations. Identify what to measure next.", "artifacts": ["Task Sheet", "Exit Ticket"] }
+    ],
+    "differentiation_note": "Three support levels. Level A: formula printed on sheet, calculation steps pre-structured with blanks, number sense check ('does this seem right?'). Level B: formula reminder, open calculation space, comparison question. Level C: open problems, extend to cost estimation or comparison of all three designs."
+  },
+  "teacher_guide": {
+    "big_idea": "Math-stream students are making real calculations that the project depends on. Their area and volume numbers will feed into materials orders and budget decisions.",
+    "learning_goals": [
+      "Extract numerical data (budget, dimensions) from a functional document.",
+      "Calculate the area of a rectangle using A = L × W for three designs.",
+      "Calculate the volume of a rectangular prism using V = L × W × H for the chosen design.",
+      "Estimate the number of soil bags needed by converting volume to litres."
+    ],
+    "materials": ["Design cards A, B, C — with dimensions clearly labeled", "Calculator — all students, all days", "Ruler — for Day 3 if measuring physical cards", "Formula reference card (printed or posted)"],
+    "timing": [{ "time": "0:30–1:00", "activity": "Math-stream task time. Teacher circulates. Calculator available throughout." }],
+    "teacher_notes": [
+      "Day 2: model how to find numbers in a text document — circle, box, or highlight before recording.",
+      "Day 3: show A = L × W on the board before students attempt it. Work through Design A together first.",
+      "Day 4: volume is new for Math 8 students. Walk through V = L × W × H step by step before independent work.",
+      "Day 5: the measurement record is a reference document — accuracy matters. Students check their own work.",
+      "Workplace Math 10 students can extend Day 4 to include cost per bag × number of bags = soil cost."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "pbg_week1_math_bundle",
+    "declared_outputs": ["lesson_overview", "teacher_guide", "task_sheet", "exit_ticket"]
+  },
+  "outputs": [
+    { "output_id": "w1m_overview", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview" },
+    { "output_id": "w1m_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide" }
+  ],
+  "days": [
+    {
+      "day_id": "day2",
+      "day_label": "Day 2 — Numbers in the Brief (Math Stream)",
+      "carryover_note": "Day 1 step-estimates are a reference. Today we extract real numbers from the client brief.",
+      "task_sheet": {
+        "title": "Day 2 — Find the Numbers in the Brief",
+        "instructions": [
+          "Your teacher will read the client brief aloud.",
+          "As you listen, look for numbers: budget, size limits, and timeline.",
+          "Circle or underline every number you hear."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Extract the numbers",
+            "prompt": "Read or listen to the client brief. Record every number you find.\n\nBudget per planter: $___________________\nMaximum space available: ___ m × ___ m (or ___ cm × ___ cm)\nNumber of planters needed: ___________________\nTimeline (weeks): ___________________\nAny other numbers I found: ___________________",
+            "lines": 0,
+            "activity_type": "close_reading",
+            "render_hints": {
+              "heading": "Numbers from the Brief",
+              "help": "Numbers hide in sentences. Look for: $, cm, m, weeks, and counts like 'two' or 'three'."
+            }
+          },
+          {
+            "label": "Part 2: Budget breakdown thinking",
+            "prompt": "The total budget is $_____ per planter.\n\nBefore we calculate real costs, estimate how much each category might cost:\n\nWood / lumber: about $___\nScrews and hardware: about $___\nSoil: about $___\nPlants or seeds: about $___\n\nTotal estimate: $___\n\nIs this more or less than the budget? (circle)   MORE   LESS   ABOUT THE SAME",
+            "lines": 0,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "These are guesses — real prices come later. The goal is to think about where the money goes."
+            }
+          },
+          {
+            "label": "Part 3: My Day 1 estimate vs. today",
+            "prompt": "On Day 1, I estimated the space was about _____ cm wide and _____ cm long.\n\nDoes the brief give us any size limits for the planter? Y / N\nIf yes, what are they? ___________________\n\nDo my Day 1 estimates seem reasonable for that space? Y / N\nWhy or why not? ___________________",
+            "lines": 0,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "Check your Day 1 worksheet. Compare your estimate to any size information in the brief."
+            }
+          }
+        ],
+        "embedded_supports": [
+          "Calculator available throughout",
+          "Level A: numbers are pre-circled in a printed copy of the brief",
+          "Formula reminder posted: A = L × W"
+        ],
+        "success_criteria": [
+          "I found the budget number in the brief and recorded it.",
+          "I estimated costs for at least three categories.",
+          "I compared my Day 1 estimate to what the brief tells us."
+        ]
+      },
+      "outputs": [
+        { "output_id": "d2m_task", "output_type": "task_sheet", "audience": "student", "source_section": "days.day2.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "day3",
+      "day_label": "Day 3 — Compare Design Dimensions (Math Stream)",
+      "carryover_note": "Design cards A, B, C must be available. Calculators needed.",
+      "task_sheet": {
+        "title": "Day 3 — Measure and Compare the Designs",
+        "instructions": [
+          "Use the design cards to find the dimensions of each planter option.",
+          "Record and calculate. Show your work.",
+          "Formula: A = L × W"
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Record dimensions",
+            "prompt": "Find the length (L), width (W), and height (H) for each design.\n\nDesign A: L = _____ cm   W = _____ cm   H = _____ cm\nDesign B: L = _____ cm   W = _____ cm   H = _____ cm\nDesign C: L = _____ cm   W = _____ cm   H = _____ cm\n\nWhich is the tallest? Design ___\nWhich is the longest? Design ___",
+            "lines": 0,
+            "activity_type": "write_response",
+            "render_hints": {
+              "heading": "Design Dimensions",
+              "help": "Read the numbers from the design card. Write the unit (cm) after every number."
+            }
+          },
+          {
+            "label": "Part 2: Calculate area",
+            "prompt": "Calculate the planting surface area (A = L × W) for each design.\n\nDesign A: A = _____ × _____ = __________ cm²\nDesign B: A = _____ × _____ = __________ cm²\nDesign C: A = _____ × _____ = __________ cm²\n\nLargest area: Design ___ with __________ cm²\nSmallest area: Design ___ with __________ cm²\nDifference between largest and smallest: __________ cm²",
+            "lines": 0,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "Area = Length × Width. Answer is always in cm² (square centimetres). Use your calculator."
+            }
+          },
+          {
+            "label": "Part 3: Best fit for the budget",
+            "prompt": "More area usually means more materials and higher cost.\n\nBased on area alone, which design gives the client the most planting space? Design ___\n\nBut does a bigger design always mean better value? Circle: YES   NO   DEPENDS\n\nExplain in one sentence: ___________________",
+            "lines": 0,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "Think: a bigger planter costs more to fill with soil and more wood to build. Is it always worth it?"
+            }
+          }
+        ],
+        "embedded_supports": [
+          "Formula card: A = L × W (area = length × width)",
+          "Unit reminder: area is always cm² or m²",
+          "Level A: calculation steps pre-printed — fill in the dimension numbers only"
+        ],
+        "success_criteria": [
+          "I recorded all three dimensions (L, W, H) for each design.",
+          "I calculated the area of each design using A = L × W.",
+          "I identified which design has the most planting area."
+        ]
+      },
+      "outputs": [
+        { "output_id": "d3m_task", "output_type": "task_sheet", "audience": "student", "source_section": "days.day3.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "day4",
+      "day_label": "Day 4 — Calculate for the Chosen Design (Math Stream)",
+      "carryover_note": "The class has voted. Teacher confirms the chosen design at the start. Students use that design only.",
+      "task_sheet": {
+        "title": "Day 4 — Area, Volume, and Soil Estimate",
+        "instructions": [
+          "The class chose Design ___. (Confirmed by teacher.)",
+          "Use those dimensions for all calculations today.",
+          "Show every step. Write units with every answer."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Confirm the dimensions",
+            "prompt": "Chosen design: Design ___\n\nL = __________ cm\nW = __________ cm\nH = __________ cm\n\nArea (L × W) = __________ × __________ = __________ cm²\n\nDoes this match your Day 3 calculation? Y / N",
+            "lines": 0,
+            "activity_type": "write_response",
+            "render_hints": {
+              "heading": "Our Design — Key Numbers",
+              "help": "Copy from your Day 3 sheet or the design card. Check that you are using the right design."
+            }
+          },
+          {
+            "label": "Part 2: Calculate volume",
+            "prompt": "Volume tells us how much soil fits inside the planter.\n\nFormula: V = L × W × H\n\nV = __________ × __________ × __________ = __________ cm³\n\nConvert to litres: __________ cm³ ÷ 1000 = __________ litres\n\nDoes this volume seem reasonable for a planter box? Y / N",
+            "lines": 0,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "Formula: V = L × W × H. Then divide by 1000 to get litres. 1000 cm³ = 1 litre."
+            }
+          },
+          {
+            "label": "Part 3: Estimate soil bags",
+            "prompt": "One standard bag of potting soil holds about 20 litres.\n\nLitres needed: __________ L\n÷ 20 litres per bag = __________ bags\nRound UP to: __________ bags\n\nIf one bag costs $8.50:\nTotal soil cost = __________ bags × $8.50 = $__________\n\nExtension (WM10): What percent of the $250 budget does soil take up?\n$__________ ÷ $250 × 100 = __________%",
+            "lines": 0,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "Always round UP for bags — you cannot buy half a bag. WM10 extension: percent = (part ÷ whole) × 100."
+            }
+          }
+        ],
+        "embedded_supports": [
+          "Formula card: V = L × W × H; 1 bag = 20 L; always round up",
+          "Conversion reminder: 1000 cm³ = 1 litre",
+          "Level A: step-by-step calculation chain printed — fill in the numbers"
+        ],
+        "success_criteria": [
+          "I confirmed the area of the chosen design.",
+          "I calculated the volume using V = L × W × H.",
+          "I estimated how many soil bags we need and rounded up."
+        ]
+      },
+      "outputs": [
+        { "output_id": "d4m_task", "output_type": "task_sheet", "audience": "student", "source_section": "days.day4.task_sheet" }
+      ]
+    },
+    {
+      "day_id": "day5",
+      "day_label": "Day 5 — Week 1 Measurement Record (Math Stream)",
+      "carryover_note": "Students bring all math task sheets from Days 1–4. This is a review and record-keeping day.",
+      "task_sheet": {
+        "title": "Day 5 — Week 1 Measurement Record",
+        "instructions": [
+          "Today you complete your Week 1 measurement record.",
+          "Use your task sheets from Days 2–4 to fill it in.",
+          "This record stays in your project folder — it is a reference for the whole project."
+        ],
+        "tasks": [
+          {
+            "label": "Part 1: Complete the measurement record",
+            "prompt": "Fill in everything we know about our chosen design.\n\nChosen design: Design ___\n\nLength:  __________ cm\nWidth:   __________ cm\nHeight:  __________ cm\n\nArea (L × W):           __________ cm²\nVolume (L × W × H):    __________ cm³\nVolume in litres:        __________ L\nSoil bags needed:        __________ bags (rounded up)\nEstimated soil cost:     $__________",
+            "lines": 0,
+            "activity_type": "write_response",
+            "render_hints": {
+              "heading": "Week 1 Measurement Record",
+              "help": "Copy from your Days 2–4 sheets. Check every unit. This record goes in your project folder."
+            }
+          },
+          {
+            "label": "Part 2: Check your calculations",
+            "prompt": "Check each answer by asking: does this make sense?\n\nArea of __________ cm² — does this seem like a reasonable planter surface? Y / N\nVolume of __________ cm³ — is this more or less than 50 000 cm³? (circle)  MORE   LESS\nSoil bags: __________ — a standard planter usually needs 3–8 bags. Are we in range? Y / N\n\nOne number I want to recheck: ___________________",
+            "lines": 0,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "Reasonableness check: typical planter dimensions 60–120 cm long, 30–60 cm wide, 20–40 cm tall."
+            }
+          },
+          {
+            "label": "Part 3: What do we still need to measure?",
+            "prompt": "We calculated from the design card. Next week we measure the REAL space.\n\nList two measurements you want to take of the actual site next week:\n\n1. ___________________\n2. ___________________\n\nWhat tool will you use? (circle)   ruler   tape measure   metre stick   steps",
+            "lines": 0,
+            "activity_type": "write_response",
+            "render_hints": {
+              "help": "Think: does the design fit the space? What do we need to verify with real measurements?"
+            }
+          }
+        ],
+        "embedded_supports": [
+          "Task sheets from Days 2–4 available as reference",
+          "Formula reference: A = L × W; V = L × W × H; 1000 cm³ = 1 L",
+          "Level A: record form is pre-labelled — write numbers only"
+        ],
+        "success_criteria": [
+          "My measurement record is complete with all eight fields filled in.",
+          "Every measurement has a unit (cm, cm², cm³, L, bags).",
+          "I can name two measurements I still need to take from the real space."
+        ]
+      },
+      "exit_ticket": {
+        "title": "Day 5 Exit Check — Math Stream",
+        "prompt": "Without looking at your sheet — answer from memory:\n\nOur planter is ___ cm long, ___ cm wide, and ___ cm tall.\nIts area is about ___ cm².\nWe need about ___ bags of soil.",
+        "n_lines": 3,
+        "success_criteria": [
+          "Student recalls all three dimensions (approximate is fine).",
+          "Student can estimate the area and soil bag count."
+        ]
+      },
+      "outputs": [
+        { "output_id": "d5m_task", "output_type": "task_sheet", "audience": "student", "source_section": "days.day5.task_sheet" },
+        { "output_id": "d5m_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.day5.exit_ticket" }
+      ]
+    }
+  ]
+}
