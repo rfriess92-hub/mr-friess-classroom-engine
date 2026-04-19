@@ -25,10 +25,13 @@ function detectStudentPacketSignals(blocks) {
   if (signals.some((text) => includesAny(text, ['before watching', 'while watching', 'after watching', 'follow along', 'movie', 'film']))) {
     matches.push('follow_along')
   }
-  if (signals.some((text) => includesAny(text, ['matching bank', 'topic bank', 'reference bank', 'bank', 'match one risk topic']))) {
+  if (
+    signals.some((text) => includesAny(text, ['matching bank', 'topic bank', 'reference bank', 'match one risk topic']))
+    || blockList.some((block) => block.block_type === 'quick_tool' && includesAny(blockSignalText(block), ['reference']))
+  ) {
     matches.push('reference_bank')
   }
-  if (signals.some((text) => includesAny(text, ['research planner', 'project planner', 'research', 'project']))) {
+  if (signals.some((text) => includesAny(text, ['research planner', 'project planner', 'inquiry planner', 'planning grid']))) {
     matches.push('research_planner')
   }
   if (
@@ -90,6 +93,9 @@ export function deriveMultipageArtifactClass(route, blocks, baseArtifactClass) {
   const estimatedLines = (Array.isArray(blocks) ? blocks : []).reduce((sum, block) => sum + Number(block.estimated_lines ?? 0), 0)
   const studentSignals = detectStudentPacketSignals(blocks)
   const teacherSignals = detectTeacherGuideSignals(blocks)
+  const hasStudentPhaseProgression = studentSignals.includes('follow_along') || studentSignals.includes('continuation_notes')
+  const hasStudentPhaseTwoRetrieval = studentSignals.includes('reference_bank') || studentSignals.includes('research_planner')
+  const hasStudentClose = studentSignals.includes('completion_check')
 
   if (
     outputType === 'task_sheet'
@@ -98,7 +104,10 @@ export function deriveMultipageArtifactClass(route, blocks, baseArtifactClass) {
     && responseAreas >= 3
     && workflowSections >= 3
     && estimatedLines >= 18
-    && studentSignals.length >= 2
+    && studentSignals.length >= 3
+    && hasStudentPhaseProgression
+    && hasStudentPhaseTwoRetrieval
+    && hasStudentClose
   ) {
     return {
       artifact_class: 'student_packet_multi_page',
@@ -109,6 +118,9 @@ export function deriveMultipageArtifactClass(route, blocks, baseArtifactClass) {
         `response_areas:${responseAreas}`,
         `workflow_sections:${workflowSections}`,
         `estimated_lines:${estimatedLines}`,
+        `phase_progression:${hasStudentPhaseProgression}`,
+        `phase_two_retrieval:${hasStudentPhaseTwoRetrieval}`,
+        `close_present:${hasStudentClose}`,
         `page_role_signals:${studentSignals.join('|')}`,
       ],
     }
