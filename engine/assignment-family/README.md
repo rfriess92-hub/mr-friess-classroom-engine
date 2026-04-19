@@ -1,15 +1,17 @@
 # Assignment family decision layer
 
-> **STATUS: NOT IN ACTIVE RENDER PIPELINE**
+> **STATUS: ACTIVE IN LIVE RENDER PIPELINE**
 >
-> This module is a standalone CLI tool layer (`scripts/select-assignment-family.mjs`,
-> `scripts/validate-assignment-build.mjs`) and is NOT imported by the render pipeline
-> (`scripts/render-package.mjs` → `engine/schema/render-plan.mjs`).
+> The live stable-core render pipeline reaches this layer through
+> `scripts/render-package.mjs` -> `engine/schema/render-plan.mjs` ->
+> `engine/assignment-family/package-selector.mjs`.
 >
-> The active render pipeline uses `engine/family/selection.mjs` for assignment family
-> selection as part of render plan normalization.
+> `scripts/select-assignment-family.mjs` and
+> `scripts/validate-assignment-build.mjs` remain useful standalone CLI
+> surfaces for assignment design workflows.
 >
-> This module remains available as an independent CLI tool for assignment design workflows.
+> `engine/family/*` remains compatibility-only residue during cleanup. It is
+> not the live family-selection authority.
 
 This layer sits before artifact generation.
 
