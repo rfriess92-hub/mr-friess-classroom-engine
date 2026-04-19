@@ -28,4 +28,17 @@ test('legacy direct-builder docs state they are not the stable-core acceptance p
   assert.match(doc, /compatibility\/debugging surfaces/i)
   assert.match(doc, /doctor/i)
   assert.match(doc, /qa:bundle/i)
+  assert.match(doc, /node scripts\/build-all\.mjs/i)
+})
+
+test('legacy direct-builder scripts no longer depend on missing build package scripts', () => {
+  const buildAll = readFileSync(repoPath('scripts', 'build-all.mjs'), 'utf-8')
+  const buildPptx = readFileSync(repoPath('scripts', 'build-pptx.mjs'), 'utf-8')
+
+  assert.doesNotMatch(buildAll, /pnpm', \['run', 'build:pptx'/i)
+  assert.doesNotMatch(buildAll, /pnpm', \['run', 'build:pdf'/i)
+  assert.match(buildAll, /node scripts\/build-all\.mjs/i)
+  assert.match(buildAll, /scripts\/build-pptx\.mjs/i)
+  assert.match(buildAll, /scripts\/build-pdf\.mjs/i)
+  assert.match(buildPptx, /node scripts\/build-pptx\.mjs/i)
 })
