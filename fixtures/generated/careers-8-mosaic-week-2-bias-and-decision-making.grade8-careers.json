@@ -1,0 +1,938 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers_8_mosaic_week_2_bias_and_decision_making",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 5,
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Career 8 Mosaic - Week 2 Bias and Decision-Making",
+  "theme": "careers",
+  "secondary_architecture_support": {
+    "architecture": "single_period_full",
+    "note": "The week can be compressed into shorter advisory-style blocks, but the staged packet, Day 4 checkpoint, and Day 5 final reflection still need the full sequence."
+  },
+  "materials_control_note": "The weekly packet holds scenario work, comparison notes, and reflection planning only. The Day 4 checkpoint sheet stays teacher-facing. The single primary evidence artifact for the week stays in the Day 5 final response sheet.",
+  "assignment_family": "short_inquiry_sequence",
+  "grade_subject_fit": "Fits BC Career Education 8 by centering decision-making, assumptions, stereotypes, social influence, and reflection on how those forces shape self-perception and future choices.",
+  "unit_context": "Week 2 of a six-week Career 8 Mosaic unit. This week builds on Week 1 self-knowledge by examining how fast thinking, social messages, and narrow assumptions can shape who students imagine themselves and others becoming.",
+  "assignment_purpose": "Students investigate quick judgments, assumptions, stereotypes, and social influence through a staged week of psychology-infused activities, then explain how one bias or thinking trap could distort a career-related choice and how to make a more thoughtful decision.",
+  "final_evidence_target": "A Day 5 Bias and Decision-Making Reflection in the final response sheet that explains one thinking trap or bias, shows how it could affect a career-related choice, and names a strategy for better judgment.",
+  "student_task_flow": [
+    {
+      "step": "Notice fast judgments and first impressions",
+      "label": "Day 1",
+      "evidence": "Students compare snap judgments with better questions and record where assumptions form."
+    },
+    {
+      "step": "Work through concrete thinking-trap scenarios",
+      "label": "Day 2",
+      "evidence": "Students use scenario cards to compare the fast story with missing information and better checks."
+    },
+    {
+      "step": "Challenge stereotypes about jobs and belonging",
+      "label": "Day 3",
+      "evidence": "Students question narrow images of who fits certain careers and what really matters in those roles."
+    },
+    {
+      "step": "Map social influence and prepare a decision check",
+      "label": "Day 4",
+      "evidence": "Students identify messages from family, peers, media, and community, then plan one more thoughtful career-related decision."
+    },
+    {
+      "step": "Write the final reflection",
+      "label": "Day 5",
+      "evidence": "Students complete the Bias and Decision-Making Reflection in the final response sheet only."
+    }
+  ],
+  "success_criteria": [
+    "I can identify at least one thinking trap, assumption, stereotype, or influence that can shape career-related choices.",
+    "I can explain how a quick judgment could limit how someone sees a job, a pathway, or themselves.",
+    "I can use better questions, missing information, and slower thinking to improve a decision.",
+    "I can complete a clear Bias and Decision-Making Reflection on the final response sheet."
+  ],
+  "supports_scaffolds": [
+    {
+      "label": "Short scenario cards",
+      "support": "Students work from brief, concrete scenarios instead of abstract bias definitions.",
+      "embedded": true
+    },
+    {
+      "label": "Stereotype challenge tasks",
+      "support": "Packet prompts and slide tasks ask students to compare the narrow image people jump to with the wider reality of skills, opportunity, and fit.",
+      "embedded": true
+    },
+    {
+      "label": "Sentence frames",
+      "support": "Frames help students move from a vague reaction to a clearer explanation of bias, influence, and better judgment.",
+      "embedded": true
+    },
+    {
+      "label": "Guided discussion prompts",
+      "support": "Each day includes short talk prompts before longer writing so students can test ideas out loud first.",
+      "embedded": true
+    },
+    {
+      "label": "Teacher modelling",
+      "support": "The teacher guide and slides model how to name a quick assumption without shaming the person who had it, then shift to a better process.",
+      "embedded": true
+    },
+    {
+      "label": "First impression versus better judgment organizer",
+      "support": "Students compare the fast story with missing information, a better question, and a more careful decision.",
+      "embedded": true
+    },
+    {
+      "label": "Choice in response format",
+      "support": "Students may use bullets or short phrases in the packet while keeping the final Day 5 reflection more polished and coherent.",
+      "embedded": true
+    }
+  ],
+  "differentiation_model": {
+    "support_pathway": "Use the scenario cards, sentence frames, partner talk, and comparison organizers to help students move from first reactions to clearer explanations of better judgment.",
+    "core_pathway": "Move through the weekly packet, compare quick judgments with better questions, and write a clear final reflection connected to a career-related choice.",
+    "extension_pathway": "Push students to compare more than one possible influence on the same decision, question hidden assumptions in career messaging, and explain why a thoughtful process changes outcomes."
+  },
+  "checkpoint_release_logic": [
+    "Keep the weekly packet as planning-only evidence until Day 4.",
+    "Release the Day 5 final response sheet only after the teacher checkpoint confirms the student can name one bias, assumption, stereotype, or influence; connect it to a career-related choice; and suggest a better decision-making move."
+  ],
+  "teacher_implementation_notes": [
+    "Keep the tone age-respectful, concrete, and psychologically interesting rather than preachy.",
+    "Use visible examples and ordinary choices instead of turning the week into theory delivery.",
+    "Treat the packet as one staged workflow across the week, not as separate filler pages.",
+    "Keep the career link explicit: the point is how bias shapes self-perception, job assumptions, pathway ideas, and decisions.",
+    "Handle stereotype conversations carefully by focusing on assumptions, messages, and decision quality rather than shaming students for having quick thoughts."
+  ],
+  "likely_misconceptions": [
+    "Students may think bias only means intentionally unfair behavior instead of also including ordinary thinking shortcuts and incomplete first stories.",
+    "Students may think stereotypes only harm other people and not how they see themselves or their own options.",
+    "Students may think influence only comes from peers and miss family, media, and community messages.",
+    "Students may think a better decision means never having a first impression rather than checking it more carefully.",
+    "Students may think career decisions are only about jobs and not about course choices, self-belief, or who feels allowed to belong somewhere."
+  ],
+  "pacing_shape": "five_day_fast_judgment_to_better_decision",
+  "assessment_focus": [
+    "Quality of the student's explanation of one thinking trap or bias",
+    "Clarity of the connection between bias and a career-related choice",
+    "Use of better questions, missing information, or another decision strategy",
+    "Completeness and honesty of the final Day 5 reflection"
+  ],
+  "lesson_overview": {
+    "overview": "Week 2 of the six-week Career 8 Mosaic unit focuses on how people make judgments and how those judgments shape decisions about self, work, and possibility. Across five days, students examine quick assumptions, concrete thinking traps, stereotypes about jobs and people, and the influence of family, peers, media, and community. The week ends with a Bias and Decision-Making Reflection that asks students to name one bias or trap, explain how it could affect a career-related choice, and describe a more thoughtful decision strategy.",
+    "essential_question": "How do bias, assumptions, and social influence affect career decisions, and how can we make better choices?",
+    "sequence": [
+      {
+        "day": "Day 1",
+        "focus": "Quick judgments, first impressions, and how assumptions form.",
+        "artifacts": ["Slides", "Weekly Packet"],
+        "carryover": "Students begin noticing the difference between a fast story and a better question."
+      },
+      {
+        "day": "Day 2",
+        "focus": "Concrete cognitive bias examples and short scenario activities.",
+        "artifacts": ["Slides", "Weekly Packet"],
+        "carryover": "Students collect language for thinking traps without turning the week into vocabulary study."
+      },
+      {
+        "day": "Day 3",
+        "focus": "Stereotypes about jobs, people, and who is seen as fitting different careers.",
+        "artifacts": ["Slides", "Weekly Packet"],
+        "carryover": "Students challenge narrow images of who belongs in what work."
+      },
+      {
+        "day": "Day 4",
+        "focus": "Family, peers, media, and community influence on career thinking.",
+        "artifacts": ["Slides", "Weekly Packet", "Checkpoint Sheet"],
+        "carryover": "Students prepare one clear example of better decision-making before final writing."
+      },
+      {
+        "day": "Day 5",
+        "focus": "Bias and Decision-Making Reflection completion and short revised-thinking share-out.",
+        "artifacts": ["Slides", "Final Response Sheet"],
+        "carryover": "The final evidence remains in the Day 5 final response sheet only."
+      }
+    ],
+    "integrity_checks": [
+      "The weekly packet remains one coherent staged workflow instead of five disconnected pages.",
+      "The Day 4 checkpoint sheet stays teacher-facing and supports release logic rather than student busywork.",
+      "The Day 5 final response sheet is the single primary evidence artifact for the week.",
+      "The career connection stays explicit throughout the week.",
+      "Bias work stays practical and classroom-ready instead of turning into a theory lecture."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "The way students think, judge, and make assumptions affects the choices they make about themselves, other people, and possible futures. In Week 2, psychology is used as a practical lens for improving decision-making, not as a separate theory-heavy unit.",
+    "learning_goals": [
+      "I can guide students in identifying concrete thinking traps and assumptions without overloading them with abstract vocabulary.",
+      "I can keep stereotype conversations safe, specific, and focused on better judgment rather than blame.",
+      "I can help students connect bias and influence to self-perception, pathway ideas, and career-related decisions.",
+      "I can use the Day 4 checkpoint to determine whether students are ready to write a stronger Day 5 final reflection."
+    ],
+    "materials": [
+      "One weekly Career Mosaic packet for Week 2",
+      "Five day slide sets",
+      "Optional printed scenario cards for snap-judgment and bias examples",
+      "Optional printed job or pathway stereotype prompt cards",
+      "Day 4 checkpoint sheet",
+      "Day 5 final response sheet",
+      "Optional Career Trek or WorkBC exploration tools after core reflection work is complete"
+    ],
+    "timing": [
+      {
+        "time": "Day 1 / 0:00-0:10",
+        "activity": "Launch the week with a quick-judgment task and frame the difference between a first impression and a better decision."
+      },
+      {
+        "time": "Day 1 / 0:10-0:25",
+        "activity": "Use partner talk and slide prompts to surface how assumptions form from limited clues."
+      },
+      {
+        "time": "Day 1 / 0:25-0:50",
+        "activity": "Students complete the Day 1 packet organizer comparing the fast story with better questions."
+      },
+      {
+        "time": "Day 2 / 0:00-0:12",
+        "activity": "Introduce thinking traps through short scenarios and plain language instead of a vocabulary list."
+      },
+      {
+        "time": "Day 2 / 0:12-0:35",
+        "activity": "Run scenario-card sorting and pause for partner talk before students write down missing information and better checks."
+      },
+      {
+        "time": "Day 2 / 0:35-0:50",
+        "activity": "Students connect one thinking trap to a career-related choice or self-perception issue."
+      },
+      {
+        "time": "Day 3 / 0:00-0:12",
+        "activity": "Launch stereotype challenge work with quick examples about jobs, people, and who seems like the obvious fit."
+      },
+      {
+        "time": "Day 3 / 0:12-0:30",
+        "activity": "Use myth-busting, four corners, or prompt cards to keep the conversation active and grounded."
+      },
+      {
+        "time": "Day 3 / 0:30-0:50",
+        "activity": "Students record one stereotype, what it hides, and what actually matters more."
+      },
+      {
+        "time": "Day 4 / 0:00-0:15",
+        "activity": "Map influences from family, peers, media, and community with short examples and teacher modelling."
+      },
+      {
+        "time": "Day 4 / 0:15-0:35",
+        "activity": "Students complete the influence map and better-decision planner in the packet."
+      },
+      {
+        "time": "Day 4 / 0:35-0:50",
+        "activity": "Teacher conferences with the checkpoint sheet to confirm who can move from naming bias to applying better judgment."
+      },
+      {
+        "time": "Day 5 / 0:00-0:12",
+        "activity": "Re-open the final reflection ingredients, model the tone of a strong answer, and remind students that the Day 5 final response sheet is the only final evidence location."
+      },
+      {
+        "time": "Day 5 / 0:12-0:40",
+        "activity": "Students write the Bias and Decision-Making Reflection using notes from the packet."
+      },
+      {
+        "time": "Day 5 / 0:40-0:50",
+        "activity": "Students share one revised idea, one better question, or one message they now want to challenge."
+      }
+    ],
+    "teacher_notes": [
+      "Keep the language plain. Students do not need a lecture on psychology vocabulary in order to think more carefully.",
+      "Avoid framing students as bad people for having quick thoughts. The goal is to notice, question, and improve judgment.",
+      "Use safe public examples when stereotype conversations feel tense, then move carefully toward self-perception and career choices.",
+      "Treat the packet as a week-long build. Do not let Day 5 turn into a cold start."
+    ],
+    "likely_misconceptions": [
+      "Students may think the first thought is always the final truth.",
+      "Students may think stereotypes are only about obvious prejudice and not about quiet assumptions of fit or belonging.",
+      "Students may think better judgment means overthinking everything instead of checking the important parts more carefully.",
+      "Students may think influence disappears if they say they make their own choices."
+    ],
+    "likely_hesitations": [
+      "Some students may worry the week is secretly trying to catch them saying the wrong thing.",
+      "Some students may stay at the level of slogans unless pushed toward a concrete example or decision.",
+      "Some students may talk comfortably about stereotypes affecting others but struggle to notice how messages affect their own self-belief."
+    ],
+    "teacher_moves": [
+      "Model one fast assumption you have had before, then show how you checked it with better questions instead of pretending you never had it.",
+      "Use prompts like What clue made that story feel convincing? and What would you still need to know? rather than Was that biased or not?",
+      "Keep the career connection alive with examples about course choices, job fit assumptions, self-doubt, and who feels allowed to picture themselves in a field."
+    ],
+    "model_reflection_language": [
+      "My first reaction was to assume that job was only for a certain kind of person, but that reaction came from the image I had seen most often, not from the full reality of the role.",
+      "A better question is not Who seems like the obvious fit? It is What skills, interests, and training actually matter here?",
+      "I can notice a quick thought without letting it make the whole decision for me.",
+      "A more thoughtful decision usually needs one more question, one more source of information, or one more perspective."
+    ],
+    "look_fors": [
+      "Student can explain a quick judgment or stereotype in concrete language instead of only moral language.",
+      "Student can connect a thinking trap or influence to a real career-related choice, pathway idea, or self-perception issue.",
+      "Student can name missing information or a better question that would improve the decision.",
+      "Student is building enough material to write a coherent Day 5 final reflection."
+    ],
+    "support_moves": [
+      "Ask: What fast story is showing up there?",
+      "Ask: What information is missing before someone should decide?",
+      "Ask: Is that message coming from you, or from something you keep hearing around you?",
+      "Offer sentence frames and allow short bullet notes before more polished writing."
+    ],
+    "future_pathway_connection": [
+      "If students are ready, use Career Trek or WorkBC tools after the core reflection to test one assumption against a wider set of real career clusters and pathways.",
+      "Keep the extension optional. The core outcome for this week is improved judgment, not tool exploration."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "careers_8_mosaic_week_2_bias_and_decision_making_bundle",
+    "declared_outputs": [
+      "lesson_overview",
+      "teacher_guide",
+      "slides",
+      "task_sheet",
+      "checkpoint_sheet",
+      "final_response_sheet"
+    ]
+  },
+  "task_sheet": {
+    "title": "Week 2 Career Mosaic Packet - Bias and Decision-Making",
+    "purpose_line": "Use this packet across the week to compare first impressions with better judgment and build toward your Day 5 Bias and Decision-Making Reflection.",
+    "instructions": [
+      "Move through the packet across the week. Each section builds the next one.",
+      "Use partner talk before longer writing, then keep your own notes on this sheet.",
+      "You may use short phrases or bullets in the packet. Save the polished reflection for the Day 5 final response sheet. It is the only final evidence sheet for Week 2."
+    ],
+    "tasks": [
+      {
+        "label": "Day 1 / Part A",
+        "prompt": "After the snap-judgment warm-up, record what happened in your thinking before you had the full picture.",
+        "lines": 1,
+        "activity_type": "think_pair_share",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 1 - Snap judgment check",
+          "help": "The goal is not to pretend you had no first impression. The goal is to notice how it formed.",
+          "record_fields": [
+            "The first story I jumped to",
+            "What clue made that story feel convincing",
+            "What I still did not know",
+            "One better question I could ask"
+          ]
+        }
+      },
+      {
+        "label": "Day 1 / Part B",
+        "prompt": "Use one job or pathway example from class to compare a first impression with a better judgment.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 1 - First impression versus better judgment",
+          "help": "Choose an example that felt realistic today. Keep the career connection visible.",
+          "record_fields": [
+            "A job, pathway, or school choice people may judge quickly",
+            "The first impression people might have",
+            "A better judgment after asking better questions",
+            "Why this matters for career decisions"
+          ]
+        }
+      },
+      {
+        "label": "Day 2 / Part A",
+        "prompt": "Use the scenario cards to compare the fast story with missing information and a better check.",
+        "lines": 1,
+        "activity_type": "scenario_sort",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 2 - Thinking trap scenario cards",
+          "help": "Use short notes. You are tracking how a quick story forms, not writing a full paragraph yet.",
+          "record_fields": [
+            "Scenario 1 - the fast story",
+            "Scenario 1 - missing information or another explanation",
+            "Scenario 2 - the fast story",
+            "Scenario 2 - missing information or another explanation",
+            "One better check I can use before deciding"
+          ]
+        }
+      },
+      {
+        "label": "Day 2 / Part B",
+        "prompt": "Complete the frames in plain language. You do not need a technical vocabulary list to describe what happened.",
+        "lines": 4,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "heading": "Day 2 - Name the trap in plain language",
+          "help": "Examples might include rushing to the first story, only noticing evidence that agrees, or following the crowd too quickly.",
+          "blank_prompts": [
+            "One thinking trap I noticed today was ___.",
+            "It can affect a career-related choice by ___.",
+            "A better question to slow that trap down is ___.",
+            "A more thoughtful decision would include ___."
+          ]
+        }
+      },
+      {
+        "label": "Day 3 / Part A",
+        "prompt": "Choose one stereotype or narrow image about a job, pathway, or kind of person and challenge it.",
+        "lines": 1,
+        "activity_type": "card_sort",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 3 - Stereotype challenge",
+          "help": "Stay concrete. Focus on what the stereotype assumes and what it misses.",
+          "record_fields": [
+            "A job or pathway people often stereotype",
+            "The narrow image people jump to",
+            "Skills, interests, or training that actually matter more",
+            "Who could belong there if given support and opportunity"
+          ]
+        }
+      },
+      {
+        "label": "Day 3 / Part B",
+        "prompt": "Use the frames to challenge a message about who seems like the obvious fit for certain work.",
+        "lines": 3,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "heading": "Day 3 - From stereotype to better judgment",
+          "help": "You may write about a public example, not only about yourself.",
+          "blank_prompts": [
+            "A message people sometimes hear about who is good at ___ is ___.",
+            "That message could limit choices by ___.",
+            "A fairer and more accurate way to think about it is ___."
+          ]
+        }
+      },
+      {
+        "label": "Day 4 / Part A",
+        "prompt": "Map the messages you hear about work, school, success, and what kinds of futures make sense.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 4 - Influence map",
+          "help": "These messages can be helpful, mixed, or limiting. The goal is to notice them clearly.",
+          "record_fields": [
+            "A family message I hear about work, school, or success",
+            "A peer message I notice",
+            "A media or community message I notice",
+            "One message I agree with",
+            "One message I want to question more carefully"
+          ]
+        }
+      },
+      {
+        "label": "Day 4 / Part B",
+        "prompt": "Use one career-related choice to compare the pressure or assumption with a more thoughtful decision process.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 4 - Better decision planner",
+          "help": "The choice could be about a job idea, a course, a club, a role, or whether you see yourself as fitting somewhere.",
+          "record_fields": [
+            "A career-related choice or idea that could be shaped by pressure or assumption",
+            "The message, pressure, or fast story behind it",
+            "How that message could distort the decision",
+            "A better question, source, or perspective to use"
+          ]
+        }
+      },
+      {
+        "label": "Day 4 / Part C",
+        "prompt": "Complete the planner so you are ready for the Day 4 checkpoint and the Day 5 final reflection.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 4 - Reflection planner for Day 5",
+          "help": "This is planning only. Move the polished reflection to the Day 5 final response sheet.",
+          "record_fields": [
+            "The thinking trap or bias I will explain",
+            "The career-related choice it could affect",
+            "How it could shape or limit the choice",
+            "A strategy for better judgment",
+            "One revised idea or insight I now have"
+          ]
+        }
+      }
+    ],
+    "embedded_supports": [
+      "Partner talk first, then record your own thinking.",
+      "Use scenario cards and stereotype prompts as examples, not as fixed answers.",
+      "Bullet points are fine on planning pages; the final response should sound cleaner and more complete.",
+      "If a prompt feels too personal, use a public example, a media message, or a school-based scenario instead."
+    ],
+    "success_criteria": [
+      "I used the packet to compare quick judgments with better questions and missing information.",
+      "I challenged at least one narrow stereotype or assumption about work, people, or fit.",
+      "I mapped at least one influence on career thinking and planned a more thoughtful decision process.",
+      "I kept planning in the packet and saved my final evidence for the Day 5 Bias and Decision-Making Reflection."
+    ],
+    "render_grammar": {
+      "render_intent": "exploratory_planning",
+      "evidence_role": "planning_only",
+      "density": "heavy",
+      "length_band": "extended"
+    }
+  },
+  "outputs": [
+    {
+      "output_id": "lesson_overview_main",
+      "output_type": "lesson_overview",
+      "audience": "teacher",
+      "source_section": "lesson_overview",
+      "bundle": "careers_8_mosaic_week_2_bias_and_decision_making_bundle"
+    },
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "careers_8_mosaic_week_2_bias_and_decision_making_bundle"
+    },
+    {
+      "output_id": "weekly_task_sheet",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "careers_8_mosaic_week_2_bias_and_decision_making_bundle",
+      "alignment_target": "week2_bias_reflection_build",
+      "final_evidence_target": "day5_bias_decision_reflection"
+    }
+  ],
+  "days": [
+    {
+      "day_id": "day_1",
+      "day_label": "Day 1",
+      "carryover_note": "Students notice how fast assumptions form and carry a first-impression versus better-question frame into the rest of the week.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 2, Day 1",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Bias and Decision-Making: quick judgments, first impressions, and better questions."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Snap judgment warm-up",
+          "layout": "prompt",
+          "content": {
+            "scenario": "You see three quick snapshots: a person in safety gear, a person in a business outfit, and a person covered in paint after a long shift. What stories does your brain start telling right away?",
+            "prompts": [
+              "What did you assume first?",
+              "What clue pushed you there?",
+              "What would you still need to know before deciding anything?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Fast thinking is useful and incomplete",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Quick judgments help us react fast, but they can also shrink the story too early.",
+              "A first impression is not the same as a final truth.",
+              "Better decisions usually come from one more question and one more piece of information."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "First impression versus better question",
+          "layout": "two_column_compare",
+          "content": {
+            "left": "She does not look like the type for that job.",
+            "right": "What skills, interests, and training actually matter for that job?",
+            "prompts": [
+              "Which side makes a better decision?",
+              "What is missing from the first statement?",
+              "How could this show up in career choices?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Carry this into the packet",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "When does your brain like to decide too quickly?",
+              "What better question do you want to practice this week?"
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "output_id": "day1_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_1.slides",
+          "bundle": "careers_8_mosaic_week_2_bias_and_decision_making_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_2",
+      "day_label": "Day 2",
+      "carryover_note": "Students collect plain-language tools for noticing thinking traps before the week moves into stereotype work.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 2, Day 2",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Thinking traps in real life: the fast story, missing information, and better checks."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Scenario card sort",
+          "layout": "prompt",
+          "content": {
+            "scenario": "A student has one bad lab and decides they are not a science person. A job video shows one confident speaker and viewers assume everyone in that field works the same way. A group follows the most popular option without testing it.",
+            "prompts": [
+              "What fast story appears first in each scenario?",
+              "What information is missing?",
+              "What would a better check look like?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Three traps worth watching",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "The first story trap: deciding too quickly from a small clue.",
+              "The only-looking-for-proof trap: noticing what agrees and ignoring what does not.",
+              "The crowd-pull trap: treating what seems normal or popular as the best choice."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Use the scenario cards",
+          "layout": "retrieval",
+          "content": {
+            "task": "Work through the scenario cards, then record the fast story, the missing information, and one better check in your packet.",
+            "prompts": [
+              "What assumption feels most tempting to believe first?",
+              "What would slow that assumption down?",
+              "How could this affect a future choice?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Keep it plain",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Which trap do you recognize most easily in real life?",
+              "Why is plain language often more useful than memorizing a definition?"
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "output_id": "day2_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_2.slides",
+          "bundle": "careers_8_mosaic_week_2_bias_and_decision_making_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_3",
+      "day_label": "Day 3",
+      "carryover_note": "Students challenge narrow ideas of fit and belonging before examining outside influence on choices.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 2, Day 3",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Stereotypes and fit: who seems like the obvious choice, and what gets missed?"
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Who seems like the obvious fit?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Think about jobs like welder, nurse, engineer, early childhood educator, designer, firefighter, or entrepreneur. Which roles get linked to one kind of person too quickly?",
+            "prompts": [
+              "What image shows up first?",
+              "Where does that image come from?",
+              "What does that image ignore?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Stereotypes shrink options",
+          "layout": "checklist",
+          "content": {
+            "items": [
+              "They can make some students feel like they do not belong before they even try.",
+              "They can hide the real skills, interests, and training behind a job.",
+              "They can push people toward narrow choices based on image instead of fit."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Myth-busting and four corners",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use the class prompts to challenge one narrow image of a job or pathway, then capture the stronger version in your packet.",
+            "prompts": [
+              "What does the stereotype assume?",
+              "What matters more than the stereotype?",
+              "Who could belong there if the doors were open and the support was real?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Bring it back to choice",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "How can stereotypes shape who students imagine themselves becoming?",
+              "What is one idea about fit you want to challenge more carefully?"
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "output_id": "day3_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_3.slides",
+          "bundle": "careers_8_mosaic_week_2_bias_and_decision_making_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_4",
+      "day_label": "Day 4",
+      "carryover_note": "Students examine outside influence and prepare a final example of better judgment for the checkpoint and Day 5 reflection.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 2, Day 4",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Influence and decision-making: family, peers, media, community, and the choices we borrow."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Who is in the room when you decide?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "A student is choosing electives, thinking about a job idea, or deciding whether they belong in a club or pathway. Even when nobody is speaking directly, a lot of voices can still be in the room.",
+            "prompts": [
+              "What messages might come from family?",
+              "What messages might come from peers or social media?",
+              "Which messages feel helpful, and which ones need questioning?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Influence is not always pressure",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Some messages help us feel supported and informed.",
+              "Some messages quietly narrow who we think we are allowed to be.",
+              "Better decisions come from noticing the message before automatically obeying it."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Model: better judgment in action",
+          "layout": "planner_model",
+          "content": {
+            "model": "I might hear that a certain course is only for the smartest students or for one type of person. If I let that message decide for me, I might avoid it too early. A better process is to ask what the course actually expects, what support exists, what interests I have, and whether the message is based on reality or reputation.",
+            "supports": [
+              "The model names the message without automatically accepting it.",
+              "The better process uses questions and missing information.",
+              "The final choice becomes more thoughtful, not more perfect."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Get ready for the checkpoint",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Which message has influenced your thinking the most this week?",
+              "What better question or strategy are you ready to carry into Day 5?"
+            ]
+          }
+        }
+      ],
+      "checkpoint_sheet": {
+        "title": "Day 4 Checkpoint Sheet",
+        "checkpoint_focus": "Teacher checkpoint before Day 5 Bias and Decision-Making Reflection release.",
+        "look_fors": [
+          "Student can describe one thinking trap, assumption, stereotype, or influence in plain and concrete language.",
+          "Student can connect it to a career-related choice, pathway idea, job assumption, or self-perception issue.",
+          "Student can name missing information, a better question, or another strategy for slowing the decision down.",
+          "Student is ready to move from packet planning to a cleaner Day 5 reflection."
+        ],
+        "conference_prompts": [
+          "Show me one example from the packet where the fast story changed after you asked a better question.",
+          "Which kind of influence is strongest in your example: family, peers, media, community, or something else?",
+          "How could that message or bias affect a career-related choice?",
+          "What will make your Day 5 reflection stronger than just saying people should not judge?"
+        ],
+        "release_rule": "Release the Day 5 final response sheet only when the student can explain one bias or influence, connect it to a career-related choice, and name a more thoughtful decision strategy."
+      },
+      "outputs": [
+        {
+          "output_id": "day4_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_4.slides",
+          "bundle": "careers_8_mosaic_week_2_bias_and_decision_making_bundle"
+        },
+        {
+          "output_id": "day4_checkpoint_sheet",
+          "output_type": "checkpoint_sheet",
+          "audience": "teacher",
+          "source_section": "days.day_4.checkpoint_sheet",
+          "bundle": "careers_8_mosaic_week_2_bias_and_decision_making_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_5",
+      "day_label": "Day 5",
+      "carryover_note": "Final evidence stays in the Day 5 Bias and Decision-Making Reflection only.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 2, Day 5",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Bias and Decision-Making Reflection: revise the fast story and write the stronger decision."
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "What the final reflection needs",
+          "layout": "checklist",
+          "content": {
+            "items": [
+              "One thinking trap or bias",
+              "A career-related choice it could affect",
+              "How it could shape or limit the choice",
+              "A strategy for more thoughtful decision-making",
+              "One revised idea or insight"
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Model the tone, not the exact answer",
+          "layout": "planner_model",
+          "content": {
+            "model": "One trap I notice is deciding too fast from the first image or first hard experience. That could affect a career-related choice if someone assumes they are not a fit for a course or job after one rough moment or one stereotype. A better decision would include asking what skills actually matter, what support exists, and whether the first story came from real evidence or from a narrow message. My revised idea is that fit should be tested with better information, not guessed from one impression.",
+            "supports": [
+              "Stay specific instead of preachy.",
+              "Use one clear example instead of trying to explain every bias at once.",
+              "Show how the decision improves, not just that bias is bad."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Before you write",
+          "layout": "prompt_card",
+          "content": {
+            "goal": "Turn your planner notes into one clear reflection.",
+            "prompts": [
+              "Keep the career connection explicit.",
+              "Name the fast story and the better strategy.",
+              "End with what you think differently now."
+            ],
+            "instruction": "Use the Day 5 final response sheet. It is the only final evidence sheet for Week 2."
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Short share-out",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "What is one idea you revised this week?",
+              "What is one better question you want to keep using when decisions matter?"
+            ]
+          }
+        }
+      ],
+      "final_response_sheet": {
+        "title": "Day 5 Bias and Decision-Making Reflection",
+        "prompt": "Complete your Bias and Decision-Making Reflection in clear labeled lines. Explain one thinking trap or bias, show how it could affect a career-related choice about yourself or other people, and describe one strategy for making a more thoughtful decision. End with one revised idea or insight.",
+        "planning_reminders": [
+          "Use labels such as Thinking trap or bias, Career-related choice, How it could affect the choice, Better decision strategy, and Revised idea or insight.",
+          "Choose one example you can actually explain clearly instead of naming several loosely.",
+          "Keep the career connection visible: self-perception, job assumptions, pathway ideas, or who seems like the obvious fit.",
+          "Write the polished reflection here. This is the only final evidence sheet for Week 2."
+        ],
+        "paragraph_support": {
+          "frame_strip": [
+            "Thinking trap or bias: ___",
+            "Career-related choice: ___",
+            "How it could affect the choice: ___",
+            "Better decision strategy: ___",
+            "Revised idea or insight: ___"
+          ],
+          "reminder_box": "name the fast story, then show the better process"
+        },
+        "success_criteria": [
+          "My reflection explains one bias or thinking trap clearly.",
+          "I show how it could affect a real career-related choice.",
+          "I describe a strategy for making a more thoughtful decision.",
+          "My final evidence is recorded only on this sheet."
+        ],
+        "response_lines": 14
+      },
+      "outputs": [
+        {
+          "output_id": "day5_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_5.slides",
+          "bundle": "careers_8_mosaic_week_2_bias_and_decision_making_bundle"
+        },
+        {
+          "output_id": "day5_final_response_sheet",
+          "output_type": "final_response_sheet",
+          "audience": "student",
+          "source_section": "days.day_5.final_response_sheet",
+          "bundle": "careers_8_mosaic_week_2_bias_and_decision_making_bundle",
+          "final_evidence": true
+        }
+      ]
+    }
+  ]
+}
