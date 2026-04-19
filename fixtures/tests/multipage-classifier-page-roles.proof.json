@@ -1,0 +1,100 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "multipage_classifier_page_roles_proof",
+  "primary_architecture": "workshop_session",
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Technology risks, responsibility, and careers in B.C.",
+  "theme": "careers",
+  "teacher_guide": {
+    "title": "Career 8 Teacher Guide — Technology risks and careers in B.C.",
+    "overview": "This multi-page teacher guide supports a multi-day workflow around digital risks, responsibility, and careers in British Columbia.",
+    "essential_question": "How can students connect technology risks to responsible decisions and career pathways in B.C.?",
+    "opening_frame": "Today we are connecting what students notice in media to what they may need to understand in future workplaces.",
+    "timing": [
+      { "time": "0:00–0:10", "activity": "Launch the unit and frame the essential question." },
+      { "time": "0:10–0:30", "activity": "Guide students through the follow-along and post-film discussion." },
+      { "time": "0:30–0:50", "activity": "Transition to project tools and research planning." }
+    ],
+    "teacher_notes": [
+      "Keep the opening frame visible at the start of class.",
+      "Return to the timing map when discussion runs long."
+    ],
+    "project_prompt": "Students will choose one technology risk, connect it to a real B.C. career pathway, and explain a responsible response.",
+    "matching_bank": [
+      "privacy risk → cybersecurity analyst",
+      "misinformation → journalist",
+      "algorithm bias → software developer"
+    ],
+    "model": {
+      "title": "Teacher model",
+      "sample": "A strong model connects the named risk, one concrete consequence, and one career-linked response."
+    },
+    "assessment_focus": "Assessment focus: accurate risk explanation, responsible response, and clear connection to a B.C. career pathway."
+  },
+  "task_sheet": {
+    "title": "Student Packet — Technology risks, responsibility, and careers in B.C.",
+    "instructions": [
+      "Before watching, preview the key risk ideas.",
+      "While watching, record short follow-along notes.",
+      "After watching, use the matching bank and research planner to prepare your project."
+    ],
+    "tasks": [
+      {
+        "label": "Part A",
+        "prompt": "Before watching: note one technology risk you already know about.",
+        "lines": 2
+      },
+      {
+        "label": "Part B",
+        "prompt": "While watching: record two follow-along notes about privacy, misinformation, or algorithm influence.",
+        "lines": 4
+      },
+      {
+        "label": "Part C",
+        "prompt": "Post-film discussion: continue your notes by naming one harm and one responsible response.",
+        "lines": 3
+      },
+      {
+        "label": "Part D",
+        "prompt": "Matching bank: match one risk topic to a career pathway in B.C.",
+        "lines": 2
+      },
+      {
+        "label": "Part E",
+        "prompt": "Research planner: choose your project topic and record the questions you need to investigate.",
+        "lines": 5
+      }
+    ],
+    "embedded_supports": [
+      "Use the matching bank as a reference tool before you choose a topic.",
+      "Keep the research planner in point form first."
+    ],
+    "success_criteria": [
+      "I used the packet as a staged workflow.",
+      "I used the matching bank as a reference tool.",
+      "I completed the final checklist before handing in the project."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "multipage_classifier_page_roles_proof_bundle",
+    "declared_outputs": ["task_sheet", "teacher_guide"]
+  },
+  "outputs": [
+    {
+      "output_id": "student_packet_main",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "multipage_classifier_page_roles_proof_bundle"
+    },
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "multipage_classifier_page_roles_proof_bundle"
+    }
+  ]
+}

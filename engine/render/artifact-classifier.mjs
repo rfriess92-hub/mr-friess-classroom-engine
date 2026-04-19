@@ -1,4 +1,6 @@
 import { resolveSourceSection } from '../schema/source-section.mjs'
+import { buildTypedLayoutBlocks } from './typed-blocks.mjs'
+import { deriveMultipageArtifactClass, derivePageRoles } from './multipage-page-roles.mjs'
 
 const TASK_SHEET_OUTPUTS = new Set(['task_sheet'])
 const SLIDE_OUTPUTS = new Set(['slides'])
@@ -28,16 +30,18 @@ function teacherPackSignals(section) {
   )
 }
 
-export function classifyArtifactRoute(pkg, route) {
+export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
   const outputType = route.output_type
   const section = resolveSourceSection(pkg, route.source_section)
+  const blocks = typedBlocks ?? buildTypedLayoutBlocks(pkg, route)
 
   if (TASK_SHEET_OUTPUTS.has(outputType) && taskSheetSignals(section)) {
+    const multipage = deriveMultipageArtifactClass(route, blocks, 'task_sheet')
     return {
-      artifact_class: 'task_sheet',
-      classification_confidence: 0.99,
+      artifact_class: multipage.artifact_class,
+      classification_confidence: multipage.classification_confidence ?? 0.99,
       fallback_reason: null,
-      classifier_basis: ['output_type:task_sheet', 'section.tasks present'],
+      classifier_basis: ['output_type:task_sheet', 'section.tasks present', ...multipage.classifier_basis_extension],
     }
   }
 
@@ -51,11 +55,12 @@ export function classifyArtifactRoute(pkg, route) {
   }
 
   if (TEACHER_PACK_OUTPUTS.has(outputType) && route.audience === 'teacher' && teacherPackSignals(section)) {
+    const multipage = deriveMultipageArtifactClass(route, blocks, 'teacher_pack')
     return {
-      artifact_class: 'teacher_pack',
-      classification_confidence: 0.9,
+      artifact_class: multipage.artifact_class,
+      classification_confidence: multipage.classification_confidence ?? 0.9,
       fallback_reason: null,
-      classifier_basis: [`output_type:${outputType}`, 'teacher audience', 'teacher-pack section signals present'],
+      classifier_basis: [`output_type:${outputType}`, 'teacher audience', 'teacher-pack section signals present', ...multipage.classifier_basis_extension],
     }
   }
 
@@ -81,9 +86,11 @@ export function resolveRenderMode(classification) {
   }
 }
 
-export function buildArtifactTrace(pkg, route) {
-  const classification = classifyArtifactRoute(pkg, route)
+export function buildArtifactTrace(pkg, route, typedBlocks = null) {
+  const blocks = typedBlocks ?? buildTypedLayoutBlocks(pkg, route)
+  const classification = classifyArtifactRoute(pkg, route, blocks)
   const mode = resolveRenderMode(classification)
+  const page_roles = derivePageRoles(route, classification.artifact_class, blocks)
   return {
     route_id: route.route_id,
     output_id: route.output_id,
@@ -96,5 +103,6 @@ export function buildArtifactTrace(pkg, route) {
     classifier_basis: classification.classifier_basis,
     mode: mode.mode,
     mode_reason: mode.mode_reason,
+    page_roles,
   }
 }
