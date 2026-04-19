@@ -133,8 +133,9 @@ function logTrace(trace) {
     : '0.00'
   const fallback = trace.fallback_reason ? ` fallback_reason="${trace.fallback_reason}"` : ''
   const blockCounts = trace.block_counts_by_type ? ` block_counts=${formatBlockCounts(trace.block_counts_by_type)}` : ''
+  const pageRoles = Array.isArray(trace.page_roles) && trace.page_roles.length > 0 ? ` page_roles=${trace.page_roles.join('|')}` : ''
   console.log(
-    `[render-trace] route=${trace.route_id} artifact_class=${trace.artifact_class} mode=${trace.mode} confidence=${confidence}${fallback}${blockCounts}`,
+    `[render-trace] route=${trace.route_id} artifact_class=${trace.artifact_class} mode=${trace.mode} confidence=${confidence}${fallback}${blockCounts}${pageRoles}`,
   )
 }
 
@@ -193,7 +194,7 @@ for (const route of routes) {
   }
   const blockCountsByType = countBlocksByType(typedBlocks)
   const trace = {
-    ...buildArtifactTrace(pkg, route),
+    ...buildArtifactTrace(pkg, route, typedBlocks),
     block_total: typedBlocks.length,
     block_counts_by_type: blockCountsByType,
   }
@@ -202,6 +203,7 @@ for (const route of routes) {
     output_id: route.output_id,
     route_id: route.route_id,
     artifact_class: trace.artifact_class,
+    page_roles: trace.page_roles ?? [],
     block_total: typedBlocks.length,
     block_counts_by_type: blockCountsByType,
     blocks: typedBlocks,
