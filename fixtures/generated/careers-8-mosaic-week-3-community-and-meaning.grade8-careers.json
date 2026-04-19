@@ -1,0 +1,925 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers_8_mosaic_week_3_community_and_meaning",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 5,
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Career 8 Mosaic - Week 3 Community and Meaning",
+  "theme": "careers",
+  "secondary_architecture_support": {
+    "architecture": "single_period_full",
+    "note": "The week can be compressed into shorter advisory-style blocks, but the staged packet, Day 4 checkpoint, and Day 5 final synthesis still need the full sequence."
+  },
+  "materials_control_note": "The weekly packet holds community mapping, role-to-need matching, case-study planning, and personal reflection notes only. The Day 4 checkpoint sheet stays teacher-facing. The single primary evidence artifact for the week stays in the Day 5 final response sheet.",
+  "assignment_family": "short_inquiry_sequence",
+  "grade_subject_fit": "Fits BC Career Education 8 by centering community needs, the value of work, local and social conditions that shape jobs, and reflection on how interests and strengths connect to meaningful contribution.",
+  "unit_context": "Week 3 of a six-week Career 8 Mosaic unit. This week builds on Week 1 self-knowledge and Week 2 decision-making by helping students see that work exists because needs exist, and that both visible and less-visible roles keep communities functioning.",
+  "assignment_purpose": "Students investigate how communities function through a staged week of inquiry about needs, systems, contribution, volunteering, and meaningful work, then create a Community Needs Map or Jobs That Keep Us Going final artifact that connects a real need to roles, systems, and personal meaning.",
+  "final_evidence_target": "A Day 5 Community Needs Map or Jobs That Keep Us Going artifact in the final response sheet that identifies at least one real community need, names jobs or roles connected to it, explains how work contributes to community well-being, and reflects on what kind of contribution feels meaningful to the student.",
+  "student_task_flow": [
+    {
+      "step": "Notice what a community needs in order to keep going",
+      "label": "Day 1",
+      "evidence": "Students map everyday needs and begin noticing the roles and systems connected to them."
+    },
+    {
+      "step": "Match visible and less-visible roles to local needs",
+      "label": "Day 2",
+      "evidence": "Students compare roles that get noticed quickly with roles that are often only noticed when they disappear."
+    },
+    {
+      "step": "Examine contribution through case work and community problem-solving",
+      "label": "Day 3",
+      "evidence": "Students analyze how paid roles, unpaid roles, volunteering, and systems work together without reducing community to charity alone."
+    },
+    {
+      "step": "Connect strengths and interests to meaningful contribution",
+      "label": "Day 4",
+      "evidence": "Students prepare a specific need-role-contribution explanation and conference for release."
+    },
+    {
+      "step": "Complete the final synthesis artifact",
+      "label": "Day 5",
+      "evidence": "Students complete the Community Needs Map or Jobs That Keep Us Going artifact in the final response sheet only."
+    }
+  ],
+  "success_criteria": [
+    "I can identify at least one real community need and explain why it matters.",
+    "I can name jobs or roles connected to that need, including roles people may overlook.",
+    "I can explain how work contributes to people, systems, and community well-being.",
+    "I can connect my own interests or strengths to a kind of contribution that feels meaningful.",
+    "I can complete a clear Day 5 final artifact on the final response sheet."
+  ],
+  "supports_scaffolds": [
+    {
+      "label": "Community mapping templates",
+      "support": "Students begin with concrete need-role-system organizers rather than an open reflection page.",
+      "embedded": true
+    },
+    {
+      "label": "Role-to-need matching",
+      "support": "Packet tasks and slide prompts keep the focus on how jobs and roles exist because needs exist.",
+      "embedded": true
+    },
+    {
+      "label": "Sentence frames",
+      "support": "Frames help students move from broad statements about helping to clearer need-role-contribution explanations.",
+      "embedded": true
+    },
+    {
+      "label": "Scenario cards",
+      "support": "Case work makes community contribution practical rather than abstract or sentimental.",
+      "embedded": true
+    },
+    {
+      "label": "Local example prompts",
+      "support": "Students can anchor their thinking in school, neighborhood, transit, recreation, food, health, housing, and public spaces.",
+      "embedded": true
+    },
+    {
+      "label": "Partner discussion before writing",
+      "support": "Each day includes short talk prompts before longer writing so students can test an example aloud first.",
+      "embedded": true
+    },
+    {
+      "label": "Roles-needs-contribution organizer",
+      "support": "Students build a map they can later transfer into the final Day 5 artifact.",
+      "embedded": true
+    },
+    {
+      "label": "Choice in response format",
+      "support": "Students may plan in bullets in the packet and choose between a Community Needs Map or Jobs That Keep Us Going structure for the final response sheet.",
+      "embedded": true
+    }
+  ],
+  "differentiation_model": {
+    "support_pathway": "Use local example prompts, role-to-need matching, sentence frames, and partner talk to help students move from broad community language to one concrete need-role explanation.",
+    "core_pathway": "Move through the weekly packet, compare visible and less-visible work, and complete one clear final artifact showing how work contributes to community well-being.",
+    "extension_pathway": "Push students to compare multiple systems around the same need, notice how local conditions shape roles, and explain why different kinds of contribution carry different meaning for different people."
+  },
+  "checkpoint_release_logic": [
+    "Keep the weekly packet as planning-only evidence until Day 4.",
+    "Release the Day 5 final response sheet only after the teacher checkpoint confirms the student can name one concrete community need, connect at least one job or role to that need, and explain how that work contributes to community well-being."
+  ],
+  "teacher_implementation_notes": [
+    "Keep the week practical, discussion-rich, and grounded in real systems rather than abstract moral language.",
+    "Do not reduce community to charity alone; include everyday roles and infrastructure that keep school and local life functioning.",
+    "Treat the packet as one staged workflow across the week, not as five disconnected worksheets.",
+    "Keep the career connection visible: work exists because needs exist, and local conditions shape what roles matter.",
+    "Use local examples when possible, but let students use nearby school or community systems if broader local knowledge is uneven."
+  ],
+  "likely_misconceptions": [
+    "Students may think community contribution only means volunteering or charity and miss everyday work that keeps systems running.",
+    "Students may think only highly visible or high-status jobs matter to a community.",
+    "Students may think meaningful work has to look inspiring all the time instead of being connected to real needs and responsibilities.",
+    "Students may think unpaid help can replace all paid systems and public services.",
+    "Students may think their own strengths and interests have no connection to contribution yet because they are still in school."
+  ],
+  "pacing_shape": "five_day_needs_roles_contribution_map",
+  "assessment_focus": [
+    "Quality of the student's explanation of at least one real community need",
+    "Accuracy and clarity in naming jobs or roles connected to that need",
+    "Strength of the student's explanation of how work contributes to people or systems",
+    "Clarity of the student's short reflection on what kind of contribution feels meaningful"
+  ],
+  "lesson_overview": {
+    "overview": "Week 3 of the six-week Career 8 Mosaic unit focuses on community needs, the value of work, and the idea that jobs and roles exist because needs exist. Across five days, students map community systems, compare visible and less-visible work, analyze contribution through case studies, and connect their own strengths and interests to meaningful contribution. The week ends with a Community Needs Map or Jobs That Keep Us Going artifact that explains one or more real needs, names jobs or roles connected to those needs, and reflects on what kind of contribution feels meaningful to the student.",
+    "essential_question": "How do community needs shape work, and how can our interests and strengths connect to meaningful contribution?",
+    "sequence": [
+      {
+        "day": "Day 1",
+        "focus": "Community needs and what keeps a community going.",
+        "artifacts": ["Slides", "Weekly Packet"],
+        "carryover": "Students begin noticing that work is connected to needs, systems, and everyday functioning."
+      },
+      {
+        "day": "Day 2",
+        "focus": "Local needs, visible and invisible work, and supporting roles.",
+        "artifacts": ["Slides", "Weekly Packet"],
+        "carryover": "Students compare the work people notice immediately with the work that only becomes visible when it stops."
+      },
+      {
+        "day": "Day 3",
+        "focus": "Contribution, volunteering, and problem-solving case work.",
+        "artifacts": ["Slides", "Weekly Packet"],
+        "carryover": "Students see volunteering as one real contribution pathway without letting it stand in for all community work."
+      },
+      {
+        "day": "Day 4",
+        "focus": "Connecting strengths and interests to community contribution and meaningful work.",
+        "artifacts": ["Slides", "Weekly Packet", "Checkpoint Sheet"],
+        "carryover": "Students prepare one specific need-role-contribution explanation before the final artifact."
+      },
+      {
+        "day": "Day 5",
+        "focus": "Community Needs Map or Jobs That Keep Us Going completion and insight share.",
+        "artifacts": ["Slides", "Final Response Sheet"],
+        "carryover": "The final evidence remains in the Day 5 final response sheet only."
+      }
+    ],
+    "integrity_checks": [
+      "The weekly packet remains one coherent staged workflow instead of five disconnected pages.",
+      "The Day 4 checkpoint sheet stays teacher-facing and supports release logic rather than student busywork.",
+      "The Day 5 final response sheet is the single primary evidence artifact for the week.",
+      "The community lens stays practical and connected to systems, roles, and everyday work.",
+      "The career connection stays explicit without forcing students into one future identity."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "Work matters because it helps meet needs in families, communities, and society. In Week 3, students examine how community needs shape jobs, roles, systems, and possibilities, while also reflecting on what kinds of contribution feel meaningful to them.",
+    "learning_goals": [
+      "I can help students see that community includes everyday systems and invisible work, not only charity or obvious helping roles.",
+      "I can keep the week's discussions practical, local, and grounded in real examples instead of vague inspiration language.",
+      "I can help students connect needs, roles, and contribution without losing the Career Education focus.",
+      "I can use the Day 4 checkpoint to confirm whether students have enough concrete material to build a strong Day 5 final artifact."
+    ],
+    "materials": [
+      "One weekly Career Mosaic packet for Week 3",
+      "Five day slide sets",
+      "Optional local example prompt cards",
+      "Optional role-to-need matching cards",
+      "Optional community scenario cards",
+      "Day 4 checkpoint sheet",
+      "Day 5 final response sheet",
+      "Optional WorkBC or Career Trek tools later in the week after the core reflection work is established"
+    ],
+    "timing": [
+      {
+        "time": "Day 1 / 0:00-0:10",
+        "activity": "Launch the week by asking what a community needs in order to keep going and widen the idea of community beyond charity."
+      },
+      {
+        "time": "Day 1 / 0:10-0:25",
+        "activity": "Use quick mapping and talk prompts to surface food, safety, transportation, health, recreation, learning, and belonging as real community needs."
+      },
+      {
+        "time": "Day 1 / 0:25-0:50",
+        "activity": "Students complete the Day 1 packet organizer connecting one need to places, roles, and what happens when the need is not met."
+      },
+      {
+        "time": "Day 2 / 0:00-0:12",
+        "activity": "Launch visible versus invisible work analysis with examples from school and community life."
+      },
+      {
+        "time": "Day 2 / 0:12-0:30",
+        "activity": "Run role-to-need matching, what-would-happen-if-this-job-disappeared prompts, or short partner sorts."
+      },
+      {
+        "time": "Day 2 / 0:30-0:50",
+        "activity": "Students record one local need and map multiple roles connected to it, including at least one role people often overlook."
+      },
+      {
+        "time": "Day 3 / 0:00-0:12",
+        "activity": "Introduce community case work that includes service, volunteering, and system roles without treating volunteering as the whole answer."
+      },
+      {
+        "time": "Day 3 / 0:12-0:30",
+        "activity": "Use scenario cards or local problem/local solution tasks to compare direct responders, behind-the-scenes roles, and short-term volunteer support."
+      },
+      {
+        "time": "Day 3 / 0:30-0:50",
+        "activity": "Students build a contribution map showing one need, who responds, and how different roles help."
+      },
+      {
+        "time": "Day 4 / 0:00-0:15",
+        "activity": "Model how strengths and interests can connect to meaningful contribution without asking students to lock in one future identity."
+      },
+      {
+        "time": "Day 4 / 0:15-0:35",
+        "activity": "Students complete the strengths-to-contribution planner and choose the final artifact structure they will use on Day 5."
+      },
+      {
+        "time": "Day 4 / 0:35-0:50",
+        "activity": "Teacher conferences with the checkpoint sheet to confirm who can move from broad talk about community into a specific need-role-contribution explanation."
+      },
+      {
+        "time": "Day 5 / 0:00-0:12",
+        "activity": "Re-open the final artifact ingredients, model the tone of a clear synthesis, and remind students that the Day 5 final response sheet is the only final evidence location."
+      },
+      {
+        "time": "Day 5 / 0:12-0:40",
+        "activity": "Students complete the Community Needs Map or Jobs That Keep Us Going artifact using notes from the packet."
+      },
+      {
+        "time": "Day 5 / 0:40-0:50",
+        "activity": "Students share one insight about community need, hidden work, or the kind of contribution that feels meaningful to them."
+      }
+    ],
+    "teacher_notes": [
+      "Keep the language practical and community-focused. Avoid drifting into generic moral lessons about being a good person.",
+      "Use school examples if students struggle to name wider local systems. Cafeteria work, custodial work, office work, transit, recreation, and health services all count.",
+      "Do not let volunteering replace the main message. It is one meaningful form of contribution, but communities also rely on ongoing roles, systems, and skilled work.",
+      "Treat the packet as a week-long build. Do not let Day 5 turn into a cold start."
+    ],
+    "likely_misconceptions": [
+      "Students may think only emergency or dramatic work really helps a community.",
+      "Students may think visible work matters more than less-visible maintenance, support, or systems work.",
+      "Students may think meaningful work has to match a passion perfectly instead of meeting a real need.",
+      "Students may think contribution only counts if it is unpaid or self-sacrificing."
+    ],
+    "likely_hesitations": [
+      "Some students may default to jobs they already know well and miss the wider system around those jobs.",
+      "Some students may talk vaguely about helping unless pushed toward one concrete need and one specific role.",
+      "Some students may find it easier to talk about community needs than to connect their own strengths or interests to contribution."
+    ],
+    "teacher_moves": [
+      "Use prompts like What need is being met here? and What would get harder if this role disappeared? to keep the conversation concrete.",
+      "Model one example that includes both a visible role and a less-visible role so students do not flatten the system to one person doing everything.",
+      "Keep the career connection alive with examples about local conditions, school systems, community roles, public services, and everyday work that keeps people safe, fed, connected, and supported."
+    ],
+    "model_reflection_language": [
+      "A community need I notice is reliable transportation because people cannot reach school, work, appointments, or activities without it.",
+      "The value of work is not only in the job title. It is also in what the work helps other people do and what systems it keeps moving.",
+      "A role can matter even if most people only notice it when something goes wrong.",
+      "A kind of contribution that feels meaningful to me is helping people solve real problems in a way that is steady and useful, not only dramatic."
+    ],
+    "look_fors": [
+      "Student can identify one real community need in concrete language.",
+      "Student can name at least one job or role connected to that need and explain what it does.",
+      "Student can recognize that communities rely on both visible and less-visible work.",
+      "Student is building enough material to write a coherent Day 5 final artifact."
+    ],
+    "support_moves": [
+      "Ask: What need is this role responding to?",
+      "Ask: Who else helps this system work, even if people do not notice them first?",
+      "Ask: Is this an example of volunteering, a job, a public service, or several roles working together?",
+      "Offer sentence frames and allow planning in bullets before students write the final Day 5 synthesis."
+    ],
+    "future_pathway_connection": [
+      "If students are ready, use Career Trek or WorkBC tools later in the week to trace one community need into broader career clusters or pathways.",
+      "Keep the extension optional. The core outcome for this week is understanding need-role-contribution logic, not tool exploration."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "careers_8_mosaic_week_3_community_and_meaning_bundle",
+    "declared_outputs": [
+      "lesson_overview",
+      "teacher_guide",
+      "slides",
+      "task_sheet",
+      "checkpoint_sheet",
+      "final_response_sheet"
+    ]
+  },
+  "task_sheet": {
+    "title": "Week 3 Career Mosaic Packet - Community and Meaning",
+    "purpose_line": "Use this packet across the week to map needs, roles, and contribution before building your Day 5 Community Needs Map or Jobs That Keep Us Going artifact.",
+    "instructions": [
+      "Move through the packet across the week. Each section builds the next one.",
+      "Use partner talk before longer writing, then keep your own notes on this sheet.",
+      "You may use short phrases or bullets in the packet. Save the polished final artifact for the Day 5 final response sheet. It is the only final evidence sheet for Week 3."
+    ],
+    "tasks": [
+      {
+        "label": "Day 1 / Part A",
+        "prompt": "After the launch discussion, map one community need people rely on every day.",
+        "lines": 1,
+        "activity_type": "think_pair_share",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 1 - Community need quick map",
+          "help": "Start with something real and ordinary. School, food, transportation, health, recreation, housing, belonging, and safety all count.",
+          "record_fields": [
+            "A real community need people rely on",
+            "A place where I can see this need in school or local life",
+            "What gets harder when this need is not met",
+            "One job or role already connected to this need"
+          ]
+        }
+      },
+      {
+        "label": "Day 1 / Part B",
+        "prompt": "Complete the reflection frames about what keeps a community going.",
+        "lines": 3,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "heading": "Day 1 - What keeps a community going?",
+          "help": "Keep the idea concrete. Try not to stay at the level of a slogan.",
+          "blank_prompts": [
+            "A community works better when ___.",
+            "Work matters in a community because ___.",
+            "One role people may overlook until it disappears is ___ because ___."
+          ]
+        }
+      },
+      {
+        "label": "Day 2 / Part A",
+        "prompt": "Use one example from class to compare visible work with less-visible work.",
+        "lines": 1,
+        "activity_type": "card_sort",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 2 - Visible and invisible work",
+          "help": "The goal is not to rank roles. The goal is to notice how different kinds of work keep the same system going.",
+          "record_fields": [
+            "A visible job or role people notice quickly",
+            "A less-visible role that still keeps things working",
+            "What each role helps people do",
+            "Which role gets less credit than it deserves"
+          ]
+        }
+      },
+      {
+        "label": "Day 2 / Part B",
+        "prompt": "Choose one local or school need and map more than one role connected to it.",
+        "lines": 1,
+        "activity_type": "scenario_sort",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 2 - Role-to-need matching",
+          "help": "Use a local example prompt if you need one. Think about what keeps school, recreation, food, transit, health, or public spaces working.",
+          "record_fields": [
+            "The local or school need I am focusing on",
+            "Two jobs or roles connected to this need",
+            "What one of those roles does behind the scenes",
+            "What would get harder if nobody did this work"
+          ]
+        }
+      },
+      {
+        "label": "Day 3 / Part A",
+        "prompt": "Use the case-study frames to compare a community problem with roles that respond to it.",
+        "lines": 4,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "heading": "Day 3 - Contribution case study",
+          "help": "Keep volunteering in the picture, but do not let it replace the full system around the need.",
+          "blank_prompts": [
+            "A community need or problem in today's case was ___.",
+            "A paid or ongoing role connected to it is ___.",
+            "A volunteer or short-term contribution that could also help is ___.",
+            "This shows that communities rely on ___, not only one kind of help."
+          ]
+        }
+      },
+      {
+        "label": "Day 3 / Part B",
+        "prompt": "Build a contribution map that shows how several roles connect to one need.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 3 - Need, roles, and contribution map",
+          "help": "Include direct responders and support roles if you can.",
+          "record_fields": [
+            "One need I want to understand better",
+            "Roles that respond directly to that need",
+            "Roles that support the system around it",
+            "How volunteering or service could help without replacing the whole system",
+            "What this shows about the value of work"
+          ]
+        }
+      },
+      {
+        "label": "Day 4 / Part A",
+        "prompt": "Connect your own strengths and interests to a kind of contribution that feels meaningful.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 4 - Strengths to contribution",
+          "help": "You are not choosing one future identity. You are noticing what kinds of problems, roles, or settings make your effort feel useful.",
+          "record_fields": [
+            "A strength I could bring to a community need",
+            "An interest or topic that keeps my attention",
+            "A kind of contribution that feels meaningful to me",
+            "A local issue, setting, or system where I could imagine using that strength or interest"
+          ]
+        }
+      },
+      {
+        "label": "Day 4 / Part B",
+        "prompt": "Plan the final artifact by choosing one need and a clear need-role-contribution explanation.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 4 - Final artifact planner",
+          "help": "Choose the clearest example you can explain. Save the polished final version for the Day 5 final response sheet.",
+          "record_fields": [
+            "The community need I will focus on",
+            "Jobs or roles I will include",
+            "How those roles help the community keep going",
+            "What kind of contribution feels meaningful to me",
+            "My final format: Community Needs Map or Jobs That Keep Us Going"
+          ]
+        }
+      },
+      {
+        "label": "Day 4 / Part C",
+        "prompt": "Complete the short frames so you are ready for the checkpoint and the Day 5 final artifact.",
+        "lines": 4,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "heading": "Day 4 - Ready for Day 5",
+          "help": "This is planning only. Move the polished final artifact to the Day 5 final response sheet.",
+          "blank_prompts": [
+            "The need matters because ___.",
+            "One role connected to that need is ___.",
+            "That role contributes by ___.",
+            "A kind of contribution that feels meaningful to me is ___."
+          ]
+        }
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "lesson_overview_main",
+      "output_type": "lesson_overview",
+      "audience": "teacher",
+      "source_section": "lesson_overview",
+      "bundle": "careers_8_mosaic_week_3_community_and_meaning_bundle"
+    },
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "careers_8_mosaic_week_3_community_and_meaning_bundle"
+    },
+    {
+      "output_id": "weekly_task_sheet",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "careers_8_mosaic_week_3_community_and_meaning_bundle",
+      "alignment_target": "week3_community_contribution_build",
+      "final_evidence_target": "day5_community_needs_map"
+    }
+  ],
+  "days": [
+    {
+      "day_id": "day_1",
+      "day_label": "Day 1",
+      "carryover_note": "Students begin noticing that communities rely on real needs, ongoing systems, and many kinds of work that keep things going.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 3, Day 1",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Community and Meaning: what communities need and what keeps them going."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What keeps a community going?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Imagine your community for one ordinary week with no clean water, no transit, no grocery stores, no school support staff, no health services, no maintenance crews, and no one organizing public spaces. What would break first?",
+            "prompts": [
+              "What needs show up right away?",
+              "Which needs are easy to see and which ones are easy to forget?",
+              "What kinds of work are already hiding inside your answer?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Jobs exist because needs exist",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Communities rely on food, safety, learning, health, movement, belonging, and care.",
+              "Some work is highly visible. Some work is only noticed when it stops.",
+              "The value of work is partly in what it helps other people or systems keep doing."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Community map launch",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use the packet to map one real community need, where you can see it, and one role already connected to it.",
+            "prompts": [
+              "What need are you naming?",
+              "Where does it show up in real life?",
+              "Who helps meet it now?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Exit thought",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "What is one kind of work you think people overlook too often?",
+              "What did today change about how you define value in work?"
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "output_id": "day1_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_1.slides",
+          "bundle": "careers_8_mosaic_week_3_community_and_meaning_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_2",
+      "day_label": "Day 2",
+      "carryover_note": "Students compare visible and invisible work and begin seeing that one need often depends on several connected roles.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 3, Day 2",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Local needs and less-visible work: who keeps things working when nobody is clapping?"
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "If this job disappeared",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Pick one role from school or local life: bus driver, custodian, school office staff member, grocery worker, recreation worker, crossing guard, building maintenance worker, educational assistant, nurse, or waste collection worker. What would go wrong if that role disappeared for a week?",
+            "prompts": [
+              "Who would notice right away?",
+              "Who might only understand the job after it was gone?",
+              "What need would stop getting met?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Visible and invisible work both matter",
+          "layout": "checklist",
+          "content": {
+            "items": [
+              "Some roles are public and easy to recognize.",
+              "Some roles are behind the scenes but essential to the same system.",
+              "Credit is not the same thing as value."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Role-to-need matching",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use the class cards or examples to match roles to one need, then record a visible role and a less-visible role in your packet.",
+            "prompts": [
+              "What need is being met?",
+              "Who responds directly?",
+              "Who supports the system behind it?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Carry the idea forward",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Which role deserves more recognition than it usually gets?",
+              "How does this change the way you think about what counts as meaningful work?"
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "output_id": "day2_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_2.slides",
+          "bundle": "careers_8_mosaic_week_3_community_and_meaning_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_3",
+      "day_label": "Day 3",
+      "carryover_note": "Students compare community problem-solving, volunteering, and system roles without flattening all contribution into charity.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 3, Day 3",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Contribution and problem-solving: volunteering, service, and the systems around them."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Community case study",
+          "layout": "prompt",
+          "content": {
+            "scenario": "A neighborhood food program is short on supplies. A school has fewer recreation options after hours. A local park has become less welcoming because of damage and poor upkeep. What kinds of roles would actually respond to those situations?",
+            "prompts": [
+              "Which roles respond right away?",
+              "Which roles keep the system going over time?",
+              "Where could volunteering help without being the whole solution?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Contribution can take different forms",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Some contribution happens through paid jobs and ongoing public or community systems.",
+              "Some contribution happens through volunteering, service, mentoring, or short-term support.",
+              "Meaningful work is not only about status or income. It is also about what it helps people and communities do."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Build the contribution map",
+          "layout": "retrieval",
+          "content": {
+            "task": "Use the packet to map one need, direct roles, support roles, and where volunteering or service could fit.",
+            "prompts": [
+              "What need are you focusing on?",
+              "Who responds directly?",
+              "What roles support the system around that work?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Short discussion",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Why is it too simple to say volunteering is the whole answer to every community problem?",
+              "What did today show you about the value of less-visible work?"
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "output_id": "day3_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_3.slides",
+          "bundle": "careers_8_mosaic_week_3_community_and_meaning_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_4",
+      "day_label": "Day 4",
+      "carryover_note": "Students connect strengths and interests to contribution, then prepare one clear need-role-contribution explanation for the checkpoint and Day 5 artifact.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 3, Day 4",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Meaningful contribution: connecting strengths, interests, and community needs."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What kind of contribution feels meaningful?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Two people can both care about community but imagine very different kinds of contribution. One wants hands-on problem solving. Another wants quiet support work that keeps a system steady. Another wants roles that build trust or communication. None of those are automatically better than the others.",
+            "prompts": [
+              "What kinds of contribution feel meaningful to you right now?",
+              "What strengths or interests connect to that kind of work?",
+              "What need could that contribution connect to?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Meaning is not one-size-fits-all",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "A role can matter because it meets a real need, even if it is not glamorous.",
+              "Meaningful work can look practical, steady, creative, relational, technical, or behind the scenes.",
+              "The question is not only What job sounds impressive? It is also What need do I care about helping with, and how?"
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Model the final logic",
+          "layout": "planner_model",
+          "content": {
+            "model": "One community need I notice is safe and welcoming public spaces. Roles connected to that need include recreation staff, planners, maintenance crews, program leaders, and people who organize events or outreach. The work matters because people use those spaces for belonging, exercise, and community life. A kind of contribution that feels meaningful to me is helping create spaces where people feel included and supported.",
+            "supports": [
+              "The model names a real need, not only a job.",
+              "The response shows more than one role connected to the system.",
+              "The personal reflection is short and specific rather than sentimental."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Get ready for the checkpoint",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Which need will you focus on in your final artifact?",
+              "What kind of contribution feels most meaningful to you right now, and why?"
+            ]
+          }
+        }
+      ],
+      "checkpoint_sheet": {
+        "title": "Day 4 Checkpoint Sheet",
+        "checkpoint_focus": "Teacher checkpoint before Day 5 Community Needs Map or Jobs That Keep Us Going release.",
+        "look_fors": [
+          "Student can identify one real community need in concrete language.",
+          "Student can connect at least one job or role to that need and explain what it does.",
+          "Student can show that community includes both visible and less-visible work or systems.",
+          "Student is ready to move from packet planning to a cleaner Day 5 final artifact."
+        ],
+        "conference_prompts": [
+          "Which community need are you focusing on, and why does it matter?",
+          "What jobs or roles will you include in your final artifact?",
+          "What would get harder if this work disappeared?",
+          "What kind of contribution feels meaningful to you, and how will you say that clearly on Day 5?"
+        ],
+        "release_rule": "Release the Day 5 final response sheet only when the student can explain one concrete need, name at least one connected job or role, and describe how that work contributes to community well-being."
+      },
+      "outputs": [
+        {
+          "output_id": "day4_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_4.slides",
+          "bundle": "careers_8_mosaic_week_3_community_and_meaning_bundle"
+        },
+        {
+          "output_id": "day4_checkpoint_sheet",
+          "output_type": "checkpoint_sheet",
+          "audience": "teacher",
+          "source_section": "days.day_4.checkpoint_sheet",
+          "bundle": "careers_8_mosaic_week_3_community_and_meaning_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_5",
+      "day_label": "Day 5",
+      "carryover_note": "Final evidence stays in the Day 5 Community Needs Map or Jobs That Keep Us Going artifact only.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 3, Day 5",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Community Needs Map or Jobs That Keep Us Going: show the need, the roles, and the meaning."
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "What the final artifact needs",
+          "layout": "checklist",
+          "content": {
+            "items": [
+              "At least one real community need",
+              "Jobs or roles connected to that need",
+              "How those roles help people or systems keep going",
+              "What this shows about the value of work",
+              "A short reflection on what kind of contribution feels meaningful to you"
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Model the structure, not the exact answer",
+          "layout": "planner_model",
+          "content": {
+            "model": "Community need: reliable school and community food access. Jobs and roles: grocery workers, drivers, food program coordinators, cooks, warehouse staff, and volunteers supporting food programs. How the work contributes: these roles help people get what they need to stay healthy, learn, and function each day. What this shows about the value of work: a lot of important work is steady and essential even when it is not glamorous. Meaningful contribution for me: I care about roles that solve practical problems and make daily life more stable for people.",
+            "supports": [
+              "Use one clear need instead of trying to cover everything.",
+              "Include roles that are visible and roles that are easy to overlook.",
+              "End with a short personal meaning reflection, not a long life plan."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Before you write",
+          "layout": "prompt_card",
+          "content": {
+            "goal": "Turn your packet notes into one clear final artifact.",
+            "prompts": [
+              "Keep the need-role-contribution logic visible.",
+              "Use clear labels, bullets, or a map-style structure if that helps.",
+              "Make the personal meaning reflection short and specific."
+            ],
+            "instruction": "Use the Day 5 final response sheet. It is the only final evidence sheet for Week 3."
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Short share-out",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "What is one kind of work you respect more after this week?",
+              "What is one kind of contribution that feels meaningful to you right now?"
+            ]
+          }
+        }
+      ],
+      "final_response_sheet": {
+        "title": "Day 5 Community Needs Map or Jobs That Keep Us Going",
+        "prompt": "Complete your final artifact in clear labeled lines or bullet clusters. Identify at least one real community need, name jobs or roles connected to that need, explain how the work helps people or systems keep going, and include a short reflection on what kind of contribution feels meaningful to you.",
+        "planning_reminders": [
+          "Use labels such as Community need, Jobs or roles, How the work contributes, What this shows about the value of work, and Meaningful contribution for me.",
+          "Choose one need you can explain clearly instead of naming many loosely.",
+          "Include both the need and the roles connected to it so the career connection stays visible.",
+          "Write the polished final artifact here. This is the only final evidence sheet for Week 3."
+        ],
+        "paragraph_support": {
+          "frame_strip": [
+            "Community need: ___",
+            "Jobs or roles connected to it: ___",
+            "How the work helps people or systems keep going: ___",
+            "What this shows about the value of work: ___",
+            "Meaningful contribution for me: ___"
+          ],
+          "reminder_box": "show the need, the roles, the contribution, and the personal meaning"
+        },
+        "success_criteria": [
+          "My final artifact identifies at least one real community need.",
+          "I name jobs or roles connected to that need.",
+          "I explain how the work contributes to community well-being.",
+          "My final evidence is recorded only on this sheet."
+        ],
+        "response_lines": 16
+      },
+      "outputs": [
+        {
+          "output_id": "day5_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_5.slides",
+          "bundle": "careers_8_mosaic_week_3_community_and_meaning_bundle"
+        },
+        {
+          "output_id": "day5_final_response_sheet",
+          "output_type": "final_response_sheet",
+          "audience": "student",
+          "source_section": "days.day_5.final_response_sheet",
+          "bundle": "careers_8_mosaic_week_3_community_and_meaning_bundle",
+          "final_evidence": true
+        }
+      ]
+    }
+  ]
+}
