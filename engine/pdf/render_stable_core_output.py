@@ -6,6 +6,7 @@ import sys
 
 from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
+from reportlab.platypus import SimpleDocTemplate
 
 ARCHIVE_DIR = Path(__file__).with_name('archive')
 if str(ARCHIVE_DIR) not in sys.path:
@@ -41,11 +42,13 @@ _ORIGINAL_STYLES_BUNDLE = getattr(base, '_original_styles_bundle_saved', base.st
 _ORIGINAL_ESTIMATE_PLAIN_LABEL_BLOCK_HEIGHT = getattr(base, '_original_estimate_plain_label_block_height', base.estimate_plain_label_block_height)
 _ORIGINAL_PLAIN_LABEL_BLOCK = getattr(base, '_original_plain_label_block', base.plain_label_block)
 _ORIGINAL_RENDER_TEACHER_GUIDE = getattr(base, '_original_render_teacher_guide', base.render_teacher_guide)
+_ORIGINAL_BUILD_PRINTABLE_PDF = getattr(base, '_original_build_printable_pdf', getattr(base, 'build_printable_pdf', None))
 
 base._original_styles_bundle_saved = _ORIGINAL_STYLES_BUNDLE
 base._original_estimate_plain_label_block_height = _ORIGINAL_ESTIMATE_PLAIN_LABEL_BLOCK_HEIGHT
 base._original_plain_label_block = _ORIGINAL_PLAIN_LABEL_BLOCK
 base._original_render_teacher_guide = _ORIGINAL_RENDER_TEACHER_GUIDE
+base._original_build_printable_pdf = _ORIGINAL_BUILD_PRINTABLE_PDF
 
 
 def styles_bundle():
@@ -62,6 +65,32 @@ def styles_bundle():
         if name not in styles:
             styles.add(style)
     return styles
+
+
+def build_printable_pdf(story, out_path, packet=None, output_type=None, section=None, pagesize=None, left_margin=36, right_margin=36, top_margin=36, bottom_margin=36):
+    if callable(_ORIGINAL_BUILD_PRINTABLE_PDF):
+        return _ORIGINAL_BUILD_PRINTABLE_PDF(
+            story,
+            out_path,
+            packet=packet,
+            output_type=output_type,
+            section=section,
+            pagesize=pagesize,
+            left_margin=left_margin,
+            right_margin=right_margin,
+            top_margin=top_margin,
+            bottom_margin=bottom_margin,
+        )
+
+    doc = SimpleDocTemplate(
+        str(out_path),
+        pagesize=pagesize or base.letter,
+        leftMargin=left_margin,
+        rightMargin=right_margin,
+        topMargin=top_margin,
+        bottomMargin=bottom_margin,
+    )
+    doc.build(story)
 
 
 def estimate_plain_label_block_height(lines: list, compact: bool = False, spacer_after: int = 6):
@@ -176,6 +205,7 @@ def render_discussion_prep_sheet_wrapper(packet: dict, section: dict, out_path: 
 
 
 base.styles_bundle = styles_bundle
+base.build_printable_pdf = build_printable_pdf
 base.estimate_plain_label_block_height = estimate_plain_label_block_height
 base.plain_label_block = plain_label_block
 base.estimate_question_block_height = estimate_question_block_height
