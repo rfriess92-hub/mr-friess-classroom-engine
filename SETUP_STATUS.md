@@ -4,7 +4,6 @@
 
 - `engine/schema/` — canonical vocabulary, lesson package schema validation, preflight
 - `engine/pdf/` — Python/reportlab stable-core renderer with document chrome
-- `engine/pdf-html/` — Playwright HTML→PDF renderer for doc-mode output types
 - `engine/pptx/` — Python/pptx slide renderer
 - `engine/render/` — typed block validation, artifact classifier, multipage page-role classifier, template router
 - `engine/planner/` — output router, route planning
@@ -17,8 +16,7 @@
 - `npm run schema:check` — validate all fixtures against schema
 - `npm run route:plan` — plan routes for a package
 - `npm run render:package` — render a full package (PPTX + PDF)
-- `npm run pdf:build` — HTML→PDF via Playwright
-- `npm run qa:render` / `qa:bundle` / `qa:visual` — QA helpers
+- `npm run qa:render` / `qa:bundle` / `qa:visual` / `qa:pedagogy-variants` — QA helpers
 - `npm run generate:package` — generate a new package
 - `npm test` — node tests + Python contract tests
 
