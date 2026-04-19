@@ -1,33 +1,50 @@
-# Generated builder layer
+# Builder Notes
 
-These are **generated starter builders**, not the original lost engine files.
+## Rendering pipeline
 
-They are meant to do three things:
-1. validate the current lesson packet shape,
-2. build a simple PPTX deck,
-3. build a simple PDF print pack.
+All output is produced by two renderers:
 
-## Files
+**PDF — Python/reportlab**
+- Entry: `engine/pdf/render_stable_core_output.py`
+- Base module: `engine/pdf/archive/render_stable_core_output_base.py`
+- Per-type modules: `student_pdf_task_sheets.py`, `student_pdf_short_forms.py`, `student_pdf_graphic_organizer.py`, `student_pdf_worksheet.py`
+- Chrome wrapper: `engine/pdf/document_chrome.py` — branded header/footer applied to every page via `build_printable_pdf()`
 
-- `engine/pptx/build.js` — thin Node wrapper
-- `engine/pptx/render_pptx.py` — Python PPTX renderer
-- `engine/pdf/build.py` — Python PDF renderer
-- `engine/schema/lesson.schema.json` — starter schema
+**Slides — Python/python-pptx**
+- Entry: `engine/pptx/render-cli.mjs` (Node subprocess wrapper)
+- Renderer: `engine/pptx/renderer.py`
+
+Both renderers are invoked by `scripts/render-package.mjs`, which runs the full route plan → artifact classification → dispatch cycle.
 
 ## Install
 
-Python:
-
 ```bash
-pip install python-pptx reportlab jsonschema
+pip install reportlab python-pptx pypdf pillow lxml
+pnpm install
 ```
 
-## Usage
+## Key scripts
 
 ```bash
-node engine/pptx/build.js --lesson engine/content/science9_interconnected_spheres.json --out output
-python3 engine/pdf/build.py --lesson engine/content/science9_interconnected_spheres.json --out output
+pnpm run schema:check -- --fixture benchmark1
+pnpm run route:plan   -- --fixture benchmark1 --print-routes
+pnpm run render:package -- --fixture benchmark1 --out output
+pnpm run qa:bundle    -- --fixture benchmark1 --out output
+pnpm run qa:pedagogy-variants -- --fixture benchmark1
+pnpm test
 ```
 
-The PPTX builder writes `{lesson_id}.pptx`.
-The PDF builder writes `{lesson_id}.pdf`.
+## Output types
+
+| Output type | Renderer module |
+|---|---|
+| `task_sheet` | `student_pdf_task_sheets.py` |
+| `final_response_sheet` | `student_pdf_task_sheets.py` |
+| `exit_ticket` | `student_pdf_short_forms.py` |
+| `discussion_prep_sheet` | `student_pdf_short_forms.py` |
+| `graphic_organizer` | `student_pdf_graphic_organizer.py` |
+| `worksheet` | `student_pdf_worksheet.py` |
+| `teacher_guide` | base module + multipage variant |
+| `lesson_overview` | base module |
+| `checkpoint_sheet` | base module |
+| `slides` | `engine/pptx/renderer.py` |
