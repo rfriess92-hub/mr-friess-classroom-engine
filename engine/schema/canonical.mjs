@@ -40,6 +40,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'final_response_sheet',
     'exit_ticket',
     'graphic_organizer',
+    'discussion_prep_sheet',
   ],
   three_day_sequence: [
     'lesson_overview',
@@ -50,6 +51,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'final_response_sheet',
     'exit_ticket',
     'graphic_organizer',
+    'discussion_prep_sheet',
   ],
   workshop_session: [
     'teacher_guide',

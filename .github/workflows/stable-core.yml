@@ -72,6 +72,33 @@ jobs:
       - name: Render task-sheet response-pattern fixture
         run: pnpm run render:package -- --package fixtures/tests/task-sheet-response-patterns.workshop-session.json --out output
 
+      - name: Schema check PBG ELA 10 fixture
+        run: pnpm run schema:check -- --fixture pbg_english10
+
+      - name: Route plan PBG ELA 10 fixture
+        run: pnpm run route:plan -- --fixture pbg_english10 --print-routes
+
+      - name: Render PBG ELA 10 fixture
+        run: pnpm run render:package -- --fixture pbg_english10 --out output
+
+      - name: Schema check PBG Math 8 fixture
+        run: pnpm run schema:check -- --fixture pbg_math8
+
+      - name: Route plan PBG Math 8 fixture
+        run: pnpm run route:plan -- --fixture pbg_math8 --print-routes
+
+      - name: Render PBG Math 8 fixture
+        run: pnpm run render:package -- --fixture pbg_math8 --out output
+
+      - name: Schema check PBG Workplace Math 10 fixture
+        run: pnpm run schema:check -- --fixture pbg_workplace_math10
+
+      - name: Route plan PBG Workplace Math 10 fixture
+        run: pnpm run route:plan -- --fixture pbg_workplace_math10 --print-routes
+
+      - name: Render PBG Workplace Math 10 fixture
+        run: pnpm run render:package -- --fixture pbg_workplace_math10 --out output
+
       - name: Upload rendered bundle evidence
         if: always()
         uses: actions/upload-artifact@v4
