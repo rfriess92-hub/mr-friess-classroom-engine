@@ -6,6 +6,7 @@ import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
 import { buildArtifactTrace } from '../engine/render/artifact-classifier.mjs'
 import { runMultipageArtifactQa } from '../engine/render/multipage-artifact-qa.mjs'
+import { runPackageContractQa } from '../engine/render/package-contract-qa.mjs'
 import { resolveTemplateRoute } from '../engine/render/template-router.mjs'
 import { buildTypedLayoutBlocks, countBlocksByType, validateTypedLayoutBlocks } from '../engine/render/typed-blocks.mjs'
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
@@ -124,6 +125,10 @@ function writeQaSidecar(outDir, route, payload) {
   writeJsonSidecar(outDir, route.output_id, 'qa', payload)
 }
 
+function writePackageQaSidecar(outDir, payload) {
+  writeFileSync(resolve(outDir, 'package.qa.json'), JSON.stringify(payload, null, 2), 'utf-8')
+}
+
 function formatBlockCounts(blockCounts) {
   return Object.entries(blockCounts).sort(([l], [r]) => l.localeCompare(r)).map(([t, c]) => `${t}:${c}`).join(',')
 }
@@ -169,6 +174,7 @@ if (!validation.valid) {
 const baseOutDir = repoPath(outArg)
 const outDir = flatOut ? baseOutDir : resolve(baseOutDir, renderPlan.package_id ?? 'package')
 mkdirSync(outDir, { recursive: true })
+const routeBundles = []
 
 for (const route of routes) {
   const typedBlocks = buildTypedLayoutBlocks(pkg, route)
@@ -218,6 +224,7 @@ for (const route of routes) {
   const visualBundle = buildRouteVisualPlan(pkg, route)
   writeVisualSidecar(outDir, route, visualBundle)
   writeImageSidecar(outDir, route, visualBundle)
+  routeBundles.push({ route, trace, typedBlocks })
 
   if (trace.mode === 'slide_mode') {
     if (!(route.renderer_family === 'pptx' && route.output_type === 'slides')) {
@@ -239,6 +246,23 @@ for (const route of routes) {
 
   console.error(`Unsupported render mode '${trace.mode}' for route ${route.route_id}`)
   process.exit(1)
+}
+
+const packageQa = runPackageContractQa({
+  pkg,
+  renderPlan,
+  routeBundles,
+})
+
+if (packageQa) {
+  writePackageQaSidecar(outDir, packageQa)
+  if (packageQa.judgment === 'block') {
+    console.error(`Package contract QA failed for package ${renderPlan.package_id}.`)
+    for (const check of packageQa.checks.filter((entry) => entry.status !== 'pass')) {
+      console.error(` - ${check.check_id}: ${check.detail}`)
+    }
+    process.exit(1)
+  }
 }
 
 console.log(`Rendered package ${renderPlan.package_id} to ${outDir}`)
