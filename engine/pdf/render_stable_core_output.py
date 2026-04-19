@@ -37,6 +37,7 @@ from student_pdf_task_sheets import (
 )
 from student_pdf_short_forms import render_exit_ticket, render_discussion_prep_sheet
 from student_pdf_graphic_organizer import render_graphic_organizer
+from student_pdf_worksheet import render_worksheet
 
 _ORIGINAL_STYLES_BUNDLE = getattr(base, '_original_styles_bundle_saved', base.styles_bundle)
 _ORIGINAL_ESTIMATE_PLAIN_LABEL_BLOCK_HEIGHT = getattr(base, '_original_estimate_plain_label_block_height', base.estimate_plain_label_block_height)
@@ -204,6 +205,10 @@ def render_discussion_prep_sheet_wrapper(packet: dict, section: dict, out_path: 
     return render_discussion_prep_sheet(base, styles_bundle, packet, section, out_path)
 
 
+def render_worksheet_wrapper(packet: dict, section: dict, out_path: Path):
+    return render_worksheet(base, styles_bundle, packet, section, out_path)
+
+
 base.styles_bundle = styles_bundle
 base.build_printable_pdf = build_printable_pdf
 base.estimate_plain_label_block_height = estimate_plain_label_block_height
@@ -219,6 +224,7 @@ base.render_final_response_sheet = render_final_response_sheet_wrapper
 base.render_exit_ticket = render_exit_ticket_wrapper
 base.render_graphic_organizer = render_graphic_organizer_wrapper
 base.render_discussion_prep_sheet = render_discussion_prep_sheet_wrapper
+base.render_worksheet = render_worksheet_wrapper
 
 
 if __name__ == '__main__':
