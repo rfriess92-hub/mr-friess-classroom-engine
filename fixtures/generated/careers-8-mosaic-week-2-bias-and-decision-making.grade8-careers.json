@@ -560,7 +560,7 @@
         },
         {
           "type": "REFLECT",
-          "title": "Carry this into the packet",
+          "title": "Write one question to keep",
           "layout": "reflect",
           "content": {
             "prompts": [
@@ -766,7 +766,7 @@
         },
         {
           "type": "APPLY",
-          "title": "Model: better judgment in action",
+          "title": "One way to slow the story down",
           "layout": "planner_model",
           "content": {
             "model": "I might hear that a certain course is only for the smartest students or for one type of person. If I let that message decide for me, I might avoid it too early. A better process is to ask what the course actually expects, what support exists, what interests I have, and whether the message is based on reality or reputation.",
@@ -779,7 +779,7 @@
         },
         {
           "type": "REFLECT",
-          "title": "Get ready for the checkpoint",
+          "title": "Take stock",
           "layout": "reflect",
           "content": {
             "prompts": [
@@ -791,7 +791,7 @@
       ],
       "checkpoint_sheet": {
         "title": "Day 4 Checkpoint Sheet",
-        "checkpoint_focus": "Teacher checkpoint before Day 5 Bias and Decision-Making Reflection release.",
+        "checkpoint_focus": "Use this during Day 4 conferences before students move into the final reflection.",
         "look_fors": [
           "Student can describe one thinking trap, assumption, stereotype, or influence in plain and concrete language.",
           "Student can connect it to a career-related choice, pathway idea, job assumption, or self-perception issue.",
@@ -799,12 +799,12 @@
           "Student is ready to move from packet planning to a cleaner Day 5 reflection."
         ],
         "conference_prompts": [
-          "Show me one example from the packet where the fast story changed after you asked a better question.",
-          "Which kind of influence is strongest in your example: family, peers, media, community, or something else?",
-          "How could that message or bias affect a career-related choice?",
-          "What will make your Day 5 reflection stronger than just saying people should not judge?"
+          "Show me where the fast story changed after you asked a better question.",
+          "Which influence matters most here: family, peers, media, community, or something else?",
+          "How could that message or bias affect a real career-related choice?",
+          "What will make tomorrow's reflection sound more thoughtful than just saying people should not judge?"
         ],
-        "release_rule": "Release the Day 5 final response sheet only when the student can explain one bias or influence, connect it to a career-related choice, and name a more thoughtful decision strategy."
+        "release_rule": "Hand out the Day 5 final response sheet once the student can explain one bias or influence, connect it to a career-related choice, and name a more thoughtful decision strategy."
       },
       "outputs": [
         {
@@ -833,12 +833,12 @@
           "title": "Career 8 Mosaic - Week 2, Day 5",
           "layout": "hero",
           "content": {
-            "subtitle": "Bias and Decision-Making Reflection: revise the fast story and write the stronger decision."
+            "subtitle": "Bias and Decision-Making Reflection: revise the fast story and write the stronger version."
           }
         },
         {
           "type": "LEARN",
-          "title": "What the final reflection needs",
+          "title": "What belongs in the reflection",
           "layout": "checklist",
           "content": {
             "items": [
@@ -852,20 +852,20 @@
         },
         {
           "type": "APPLY",
-          "title": "Model the tone, not the exact answer",
+          "title": "One way this could sound",
           "layout": "planner_model",
           "content": {
-            "model": "One trap I notice is deciding too fast from the first image or first hard experience. That could affect a career-related choice if someone assumes they are not a fit for a course or job after one rough moment or one stereotype. A better decision would include asking what skills actually matter, what support exists, and whether the first story came from real evidence or from a narrow message. My revised idea is that fit should be tested with better information, not guessed from one impression.",
+            "model": "One trap I notice is deciding too much from the first picture or one rough experience. That could affect a career-related choice if someone decides they are not a fit for a course or job too early. A better move would be to ask what skills actually matter, what support exists, and whether that first story came from real evidence or just a narrow message. My revised idea is that fit should be checked with better information, not guessed from one impression.",
             "supports": [
-              "Stay specific instead of preachy.",
-              "Use one clear example instead of trying to explain every bias at once.",
-              "Show how the decision improves, not just that bias is bad."
+              "Stay specific.",
+              "Stick with one example.",
+              "Show how the decision gets better."
             ]
           }
         },
         {
           "type": "APPLY",
-          "title": "Before you write",
+          "title": "Write your reflection",
           "layout": "prompt_card",
           "content": {
             "goal": "Turn your planner notes into one clear reflection.",
@@ -874,12 +874,12 @@
               "Name the fast story and the better strategy.",
               "End with what you think differently now."
             ],
-            "instruction": "Use the Day 5 final response sheet. It is the only final evidence sheet for Week 2."
+            "instruction": "Use the Day 5 final response sheet."
           }
         },
         {
           "type": "REFLECT",
-          "title": "Short share-out",
+          "title": "Quick share",
           "layout": "reflect",
           "content": {
             "prompts": [
@@ -896,7 +896,7 @@
           "Use labels such as Thinking trap or bias, Career-related choice, How it could affect the choice, Better decision strategy, and Revised idea or insight.",
           "Choose one example you can actually explain clearly instead of naming several loosely.",
           "Keep the career connection visible: self-perception, job assumptions, pathway ideas, or who seems like the obvious fit.",
-          "Write the polished reflection here. This is the only final evidence sheet for Week 2."
+          "Write your final reflection here."
         ],
         "paragraph_support": {
           "frame_strip": [
@@ -906,13 +906,12 @@
             "Better decision strategy: ___",
             "Revised idea or insight: ___"
           ],
-          "reminder_box": "name the fast story, then show the better process"
+          "reminder_box": "Name the fast story, then show the better decision."
         },
         "success_criteria": [
           "My reflection explains one bias or thinking trap clearly.",
           "I show how it could affect a real career-related choice.",
-          "I describe a strategy for making a more thoughtful decision.",
-          "My final evidence is recorded only on this sheet."
+          "I describe a strategy for making a more thoughtful decision."
         ],
         "response_lines": 14
       },
