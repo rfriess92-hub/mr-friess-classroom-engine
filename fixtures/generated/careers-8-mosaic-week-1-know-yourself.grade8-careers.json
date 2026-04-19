@@ -621,7 +621,7 @@
         },
         {
           "type": "REFLECT",
-          "title": "Carry this into the packet",
+          "title": "Write one note to keep",
           "layout": "reflect",
           "content": {
             "prompts": [
@@ -828,7 +828,7 @@
         },
         {
           "type": "APPLY",
-          "title": "Use the packet to rank and explain",
+          "title": "Rank what matters",
           "layout": "retrieval",
           "content": {
             "task": "Work through the value pairs, then explain which values rose to the top and why they fit your real life.",
@@ -841,7 +841,7 @@
         },
         {
           "type": "REFLECT",
-          "title": "Get ready for the checkpoint",
+          "title": "Take stock",
           "layout": "reflect",
           "content": {
             "prompts": [
@@ -853,7 +853,7 @@
       ],
       "checkpoint_sheet": {
         "title": "Day 4 Checkpoint Sheet",
-        "checkpoint_focus": "Teacher checkpoint before Day 5 Career Identity Snapshot release.",
+        "checkpoint_focus": "Use this during Day 4 conferences before students move into the final snapshot.",
         "look_fors": [
           "Student can point to at least one concrete note for strengths, interests, values, and learning or work preferences in the packet.",
           "Student has a realistic next-step goal that sounds startable rather than huge or vague.",
@@ -861,12 +861,12 @@
           "Student is ready to move from planning notes to a cleaner final snapshot."
         ],
         "conference_prompts": [
-          "Show me one packet note that feels most true to you.",
-          "Which category still needs more detail: strengths, interests, values, or learning or work preferences?",
-          "What makes your goal realistic for right now?",
-          "What will you carry into the final snapshot and what will you leave out?"
+          "Show me the note that feels most solid right now.",
+          "Which part still feels thin: strengths, interests, values, or learning or work preferences?",
+          "Why does this goal feel doable right now?",
+          "What belongs in tomorrow's snapshot, and what is still rough thinking?"
         ],
-        "release_rule": "Release the Day 5 final response sheet only when the student can point to usable planning for each snapshot category and explain one realistic next-step goal."
+        "release_rule": "Hand out the Day 5 final response sheet once the student can point to usable planning in each snapshot category and explain one realistic next-step goal."
       },
       "outputs": [
         {
@@ -895,12 +895,12 @@
           "title": "Career 8 Mosaic - Week 1, Day 5",
           "layout": "hero",
           "content": {
-            "subtitle": "Career Identity Snapshot: pull the week together into one clear final response."
+            "subtitle": "Career Identity Snapshot: pull the week together."
           }
         },
         {
           "type": "LEARN",
-          "title": "What the final snapshot needs",
+          "title": "What belongs in the snapshot",
           "layout": "checklist",
           "content": {
             "items": [
@@ -915,34 +915,34 @@
         },
         {
           "type": "APPLY",
-          "title": "Model the tone, not the exact answer",
+          "title": "One way this could sound",
           "layout": "planner_model",
           "content": {
-            "model": "Strengths: I notice patterns and help groups get organized. Interests: I stay with tasks that involve design, problem solving, and helping people make sense of ideas. Values: I care about creativity and usefulness. Learning or work preferences: I do my best when I can think first, then explain. Next-step goal: This week I will start sooner on one assignment and use a short plan before I begin.",
+            "model": "Strengths: I notice patterns and I am usually the person who gets a group organized when things feel scattered. Interests: I stick with tasks that involve design, problem solving, or helping people understand something. Values: I care about creativity and being useful. Learning or work preferences: I do better when I get a minute to think before I explain. Next-step goal: This week I will start one assignment earlier and make a short plan before I begin.",
             "supports": [
-              "Specific beats dramatic.",
-              "Use notes from the packet, but clean them up.",
-              "A future direction can stay light: area worth exploring, not final life decision."
+              "Keep it specific.",
+              "Use your packet notes, then clean up the wording.",
+              "You can name a possible direction without pretending you already know the whole future."
             ]
           }
         },
         {
           "type": "APPLY",
-          "title": "Before you write",
+          "title": "Write your snapshot",
           "layout": "prompt_card",
           "content": {
-            "goal": "Turn your planning into a clean final snapshot.",
+            "goal": "Turn your notes into a clear final snapshot.",
             "prompts": [
               "Keep what is true and specific.",
               "Drop filler language.",
               "Make the next-step goal realistic enough to start."
             ],
-            "instruction": "Use the Day 5 final response sheet. It is the only final evidence sheet for Week 1."
+            "instruction": "Use the Day 5 final response sheet."
           }
         },
         {
           "type": "REFLECT",
-          "title": "Short share-out",
+          "title": "Quick share",
           "layout": "reflect",
           "content": {
             "prompts": [
@@ -959,7 +959,7 @@
           "Use labels such as Strengths, Interests, Values, Learning or work preferences, and Next-step goal.",
           "Choose details you can actually stand behind from this week's packet.",
           "Keep the future-pathway link light: name one area worth exploring, not a lifetime decision.",
-          "Write the polished snapshot here. This is the only final evidence sheet for Week 1."
+          "Write your final snapshot here."
         ],
         "paragraph_support": {
           "frame_strip": [
@@ -970,13 +970,12 @@
             "Next-step goal: ___",
             "At my best, I am someone who ___"
           ],
-          "reminder_box": "specific, honest, and startable beats impressive but vague"
+          "reminder_box": "Specific and honest beats impressive."
         },
         "success_criteria": [
           "My snapshot names strengths, interests, values, and learning or work preferences clearly.",
           "My next-step goal is realistic enough to start soon.",
-          "My final response sounds like a real self-description, not filler language.",
-          "My final evidence is recorded only on this sheet."
+          "My final response sounds like a real self-description, not filler language."
         ],
         "response_lines": 14
       },
