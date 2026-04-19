@@ -4,25 +4,37 @@ Running record of architectural and structural decisions for repo operation.
 
 ---
 
-## 2026-04-12 — Stable-core render contract and assignment-family authority are separate on purpose
+## 2026-04-19 - Assignment-family cutover is complete in the live render-plan path
 
-**Decision:** The stable-core package remains the live render contract.
+**Decision:** `engine/assignment-family/*` is now the live family-selection authority for the stable-core render-plan path.
 
-**Decision:** The assignment-family layer is the authoritative upstream pedagogy/authoring contract.
+**Decision:** `engine/family/*` remains compatibility-only residue and should be documented that way.
 
-**Decision:** `engine/assignment-family/` is the intended long-term source of truth for family definitions, routing rules, chain recommendations, required upstream assignment metadata, and family integrity expectations.
+**Reason:** `engine/schema/render-plan.mjs` imports `engine/assignment-family/package-selector.mjs` directly, so repo-truth docs should no longer describe `engine/family/*` as the live path.
 
-**Decision:** `engine/family/` is now treated as transitional compatibility code. It may continue to serve the live render-plan path during cutover, but it is no longer the architectural end-state.
+**Implementation note:** Keep the compatibility shims until remaining explicit callers are retired deliberately. Do not reopen broad family cleanup in this doc-truth slice.
 
-**Decision:** Until cutover is complete, docs must distinguish clearly between:
+---
 
-- what is live today
-- what is compatibility-only
-- what is the intended authoritative path after cleanup
+## 2026-04-12 - Stable-core render contract and assignment-family authority were temporarily split during cutover
 
-**Reason:** The repo currently contains two overlapping family systems. The live stable-core acceptance path still reads `assignment_family` through `engine/family/*`, while `engine/assignment-family/*` already contains the newer config-driven authoring/validation surface. Keeping both without an explicit architecture decision invites rule drift and operator confusion.
+**Decision:** The stable-core package remained the live render contract during cutover.
 
-**Implementation note:** The safe migration order is:
+**Decision:** The assignment-family layer was the authoritative upstream pedagogy/authoring contract during cutover.
+
+**Decision:** `engine/assignment-family/` was the intended long-term source of truth for family definitions, routing rules, chain recommendations, required upstream assignment metadata, and family integrity expectations.
+
+**Decision:** During cutover, `engine/family/` served as transitional compatibility code on the live render-plan path rather than the architectural end-state.
+
+**Decision:** During cutover, docs needed to distinguish clearly between:
+
+- what was live at that point
+- what was compatibility-only
+- what was the intended authoritative path after cleanup
+
+**Reason:** At the time of this entry, the repo contained two overlapping family systems and the live-path cutover was still underway. Recording that temporary split reduced rule drift and operator confusion while the direct `engine/assignment-family/*` path was being finished.
+
+**Implementation note:** The safe migration order was:
 
 1. document the contract split
 2. add an authoritative package-facing selector under `engine/assignment-family/`
@@ -30,23 +42,23 @@ Running record of architectural and structural decisions for repo operation.
 4. demote `engine/family/*` to explicit compatibility shims
 5. only then remove dead duplicate logic
 
-**Validation note:** `schema:check` remains the live stable-core gate today. Assignment-family validation should enter the real acceptance path only after generation and package metadata are aligned enough to support it cleanly.
+**Validation note:** `schema:check` remained the live stable-core gate during the cutover. Assignment-family validation was expected to enter the acceptance path only after generation and package metadata were aligned enough to support it cleanly.
 
 ---
 
-## 2026-04-11 — Workflow docs aligned to the live solo operating model
+## 2026-04-11 - Workflow docs aligned to the live solo operating model
 
 **Decision:** `README.md`, `DECISIONS.md`, and `docs/stable-core-workflow-policy.md` should describe the same live workflow: lightweight solo operation, local command gates, and the stable-core package path as the acceptance route.
 
 **Decision:** `content` / `renderer` / `qa` / `tooling` remain useful intent labels for branches and PRs, but they are not a hard ceremony system.
 
-**Decision:** Until CI exists, local command execution is the real gate. Use `doctor` when repo structure or entrypoints change, then use `schema:check` → `route:plan` → `render:package` → `qa:bundle` as the stable-core acceptance path.
+**Decision:** Until CI exists, local command execution is the real gate. Use `doctor` when repo structure or entrypoints change, then use `schema:check` -> `route:plan` -> `render:package` -> `qa:bundle` as the stable-core acceptance path.
 
 **Decision:** Legacy direct builders remain compatibility/debugging surfaces, not stable-core acceptance proof.
 
 ---
 
-## 2026-04-10 — Content files: authoritative location is engine/content/
+## 2026-04-10 - Content files: authoritative location is engine/content/
 
 **Decision:** `engine/content/` is the single authoritative location for lesson content JSON files. Root-level copies are not allowed.
 
@@ -56,7 +68,7 @@ Running record of architectural and structural decisions for repo operation.
 
 ---
 
-## 2026-04-10 — PPTX renderer: authoritative entrypoint is engine/pptx/renderer.py
+## 2026-04-10 - PPTX renderer: authoritative entrypoint is engine/pptx/renderer.py
 
 **Decision:** `engine/pptx/renderer.py` is the single authoritative public entrypoint for PPTX rendering.
 
@@ -66,7 +78,7 @@ Running record of architectural and structural decisions for repo operation.
 
 ---
 
-## 2026-04-10 — Governance: decisions log replaces PR-class ceremony
+## 2026-04-10 - Governance: decisions log replaces PR-class ceremony
 
 **Decision:** Solo repo operation now uses this decisions log plus lightweight branches/PRs. The old PR-class governance overhead is not the live control surface.
 
