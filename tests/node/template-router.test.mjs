@@ -33,3 +33,26 @@ test('template router leaves unrelated artifacts on generic flow family', () => 
   assert.equal(routed.template_family, 'GENERIC_FLOW')
   assert.equal(routed.selected_template, 'GENERIC_FLOW')
 })
+
+test('template router maps week-sequence packet system artifacts to explicit template families', () => {
+  const packet = resolveTemplateRoute({ artifact_class: 'week_sequence_packet', page_roles: ['staged_week_workflow'] })
+  const checkpoint = resolveTemplateRoute({ artifact_class: 'teacher_checkpoint_gate', page_roles: ['teacher_release_gate'] })
+  const slides = resolveTemplateRoute({ artifact_class: 'week_sequence_day_slides', page_roles: ['checkpoint_prep'] })
+  const teacherGuide = resolveTemplateRoute({ artifact_class: 'week_sequence_teacher_guide', page_roles: ['teacher_sequence_support'] })
+  const finalResponse = resolveTemplateRoute({ artifact_class: 'week_sequence_final_response', page_roles: ['single_final_evidence'] })
+
+  assert.equal(packet.template_family, 'WEEK_SEQUENCE_PACKET')
+  assert.equal(packet.selected_template, 'WSP_STAGED_WORKFLOW')
+
+  assert.equal(checkpoint.template_family, 'WEEK_SEQUENCE_CHECKPOINT_GATE')
+  assert.equal(checkpoint.selected_template, 'WSC_RELEASE_GATE')
+
+  assert.equal(slides.template_family, 'WEEK_SEQUENCE_DAY_SLIDES')
+  assert.equal(slides.selected_template, 'WSD_CHECKPOINT_PREP')
+
+  assert.equal(teacherGuide.template_family, 'WEEK_SEQUENCE_TEACHER_SUPPORT')
+  assert.equal(teacherGuide.selected_template, 'WTS_GUIDE_SEQUENCE')
+
+  assert.equal(finalResponse.template_family, 'WEEK_SEQUENCE_FINAL_RESPONSE')
+  assert.equal(finalResponse.selected_template, 'WSF_SINGLE_EVIDENCE')
+})

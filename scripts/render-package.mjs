@@ -99,11 +99,14 @@ function writeGrammarSidecar(outDir, route, trace, templateRoute) {
   const grammarPayload = {
     output_id: route.output_id,
     artifact_family: route.artifact_family,
-    render_intent: route.render_intent,
+    declared_render_intent: route.render_intent,
+    render_intent: trace.render_intent ?? route.render_intent,
     evidence_role: route.evidence_role,
     assessment_weight: route.assessment_weight,
     density: route.density,
     length_band: route.length_band,
+    package_contract_family: trace.package_contract_family ?? null,
+    package_system_role: trace.package_system_role ?? null,
     artifact_class: trace.artifact_class,
     page_roles: trace.page_roles ?? [],
     template_family: templateRoute.template_family,
@@ -138,8 +141,10 @@ function logTrace(trace) {
   const fallback = trace.fallback_reason ? ` fallback_reason="${trace.fallback_reason}"` : ''
   const blockCounts = trace.block_counts_by_type ? ` block_counts=${formatBlockCounts(trace.block_counts_by_type)}` : ''
   const pageRoles = Array.isArray(trace.page_roles) && trace.page_roles.length > 0 ? ` page_roles=${trace.page_roles.join('|')}` : ''
+  const renderIntent = trace.render_intent ? ` render_intent=${trace.render_intent}` : ''
+  const packageRole = trace.package_system_role ? ` package_system_role=${trace.package_system_role}` : ''
   const template = trace.template_family ? ` template_family=${trace.template_family} selected_template=${trace.selected_template}` : ''
-  console.log(`[render-trace] route=${trace.route_id} artifact_class=${trace.artifact_class} mode=${trace.mode} confidence=${confidence}${fallback}${blockCounts}${pageRoles}${template}`)
+  console.log(`[render-trace] route=${trace.route_id} artifact_class=${trace.artifact_class} mode=${trace.mode} confidence=${confidence}${fallback}${blockCounts}${pageRoles}${renderIntent}${packageRole}${template}`)
 }
 
 const DOC_OUTPUT_TYPES = new Set(['teacher_guide', 'lesson_overview', 'worksheet', 'task_sheet', 'checkpoint_sheet', 'exit_ticket', 'final_response_sheet', 'graphic_organizer', 'discussion_prep_sheet'])
@@ -198,6 +203,9 @@ for (const route of routes) {
     output_id: route.output_id,
     route_id: route.route_id,
     artifact_class: trace.artifact_class,
+    package_contract_family: trace.package_contract_family ?? null,
+    package_system_role: trace.package_system_role ?? null,
+    render_intent: trace.render_intent ?? null,
     page_roles: trace.page_roles ?? [],
     template_family: trace.template_family,
     selected_template: trace.selected_template,

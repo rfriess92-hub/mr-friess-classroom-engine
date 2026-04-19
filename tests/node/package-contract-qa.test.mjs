@@ -41,7 +41,7 @@ test('package contract QA passes for the live Week 1 package', () => {
   const qa = runQa(pkg)
 
   assert.equal(qa?.judgment, 'pass')
-  assert.equal(qa?.check_count, 5)
+  assert.equal(qa?.check_count, 10)
 })
 
 test('package contract QA blocks when weekly and day-scoped task-sheet systems are mixed', () => {
@@ -95,4 +95,39 @@ test('package contract QA blocks when a slide route loses day scope', () => {
 
   assert.equal(qa?.judgment, 'block')
   assert.equal(qa?.checks.find((check) => check.check_id === 'package.slide_day_phase_roles')?.status, 'block')
+})
+
+test('package contract QA blocks when route traces collapse back to generic flow', () => {
+  const pkg = loadFixture('fixtures/generated/careers-8-mosaic-week-1-know-yourself.grade8-careers.json')
+  const { renderPlan, routeBundles } = buildRouteBundles(pkg)
+
+  const weeklyPacket = routeBundles.find(({ route }) => route.output_id === 'weekly_task_sheet')
+  weeklyPacket.trace.artifact_class = 'task_sheet'
+  weeklyPacket.trace.template_family = 'GENERIC_FLOW'
+
+  const checkpoint = routeBundles.find(({ route }) => route.output_id === 'day4_checkpoint_sheet')
+  checkpoint.trace.artifact_class = 'student_checkpoint'
+  checkpoint.trace.template_family = 'GENERIC_FLOW'
+
+  const day1Slides = routeBundles.find(({ route }) => route.output_id === 'day1_slides')
+  day1Slides.trace.render_intent = 'launch'
+  day1Slides.trace.template_family = 'GENERIC_FLOW'
+  day1Slides.trace.page_roles = []
+
+  const teacherGuide = routeBundles.find(({ route }) => route.output_id === 'teacher_guide_main')
+  teacherGuide.trace.artifact_class = 'teacher_pack'
+  teacherGuide.trace.template_family = 'GENERIC_FLOW'
+
+  const finalResponse = routeBundles.find(({ route }) => route.output_id === 'day5_final_response_sheet')
+  finalResponse.trace.artifact_class = 'student_final_response'
+  finalResponse.trace.template_family = 'GENERIC_FLOW'
+
+  const qa = runPackageContractQa({ pkg, renderPlan, routeBundles })
+
+  assert.equal(qa?.judgment, 'block')
+  assert.equal(qa?.checks.find((check) => check.check_id === 'package.week_packet_trace_contract')?.status, 'block')
+  assert.equal(qa?.checks.find((check) => check.check_id === 'package.checkpoint_trace_identity')?.status, 'block')
+  assert.equal(qa?.checks.find((check) => check.check_id === 'package.slide_trace_day_roles')?.status, 'block')
+  assert.equal(qa?.checks.find((check) => check.check_id === 'package.teacher_support_trace_contract')?.status, 'block')
+  assert.equal(qa?.checks.find((check) => check.check_id === 'package.final_response_trace_contract')?.status, 'block')
 })
