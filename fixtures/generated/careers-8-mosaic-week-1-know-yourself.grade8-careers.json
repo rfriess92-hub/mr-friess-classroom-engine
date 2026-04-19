@@ -1,0 +1,1002 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers_8_mosaic_week_1_know_yourself",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 5,
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Career 8 Mosaic - Week 1 Know Yourself",
+  "theme": "careers",
+  "secondary_architecture_support": {
+    "architecture": "single_period_full",
+    "note": "The week can be compressed into shorter advisory-style blocks, but the staged packet, Day 4 checkpoint, and Day 5 final snapshot still need all five sessions."
+  },
+  "materials_control_note": "The weekly packet holds planning, sorting, and reflection only. The Day 4 checkpoint sheet stays teacher-facing. The single primary evidence artifact for the week stays in the Day 5 final response sheet.",
+  "assignment_family": "short_inquiry_sequence",
+  "grade_subject_fit": "Fits BC Career Education 8 by centering self-assessment, reflection, personal strengths, values, learning or work preferences, and realistic goal setting inside an age-respectful Grade 8 launch week.",
+  "unit_context": "Week 1 of a six-week Career 8 Mosaic unit. This opening week establishes self-knowledge, reflection language, and low-stakes goal setting before later weeks move more explicitly into pathways, decision-making, and future planning.",
+  "assignment_purpose": "Students investigate their own strengths, interests, values, learning and work preferences, and habits across a staged week of psychology-infused activities, then interpret those patterns in a Career Identity Snapshot with one realistic next-step goal.",
+  "final_evidence_target": "A Day 5 Career Identity Snapshot in the final response sheet that interprets patterns across strengths, interests, values, and learning/work preferences and recommends one realistic next-step goal.",
+  "student_task_flow": [
+    {
+      "step": "Launch identity and self-concept",
+      "label": "Day 1",
+      "evidence": "Students complete preference and self-description tasks in the weekly packet."
+    },
+    {
+      "step": "Sort strengths, interests, and learning or work preferences",
+      "label": "Day 2",
+      "evidence": "Students collect stronger evidence about how they work, what draws them in, and what kinds of roles or settings feel natural."
+    },
+    {
+      "step": "Reflect on mindset, habits, and a realistic goal",
+      "label": "Day 3",
+      "evidence": "Students identify one habit to strengthen and one startable next-step goal."
+    },
+    {
+      "step": "Rank values and prepare a synthesis",
+      "label": "Day 4",
+      "evidence": "Students clarify what matters to them and complete a snapshot planner before the teacher checkpoint."
+    },
+    {
+      "step": "Write the final snapshot",
+      "label": "Day 5",
+      "evidence": "Students complete the Career Identity Snapshot in the final response sheet only."
+    }
+  ],
+  "success_criteria": [
+    "I can name strengths, interests, values, and learning or work preferences using concrete evidence from my own experience.",
+    "I can reflect on how mindset and habits affect my growth instead of treating them as fixed traits.",
+    "I can connect what I notice about myself to one future area worth exploring lightly.",
+    "I can set one realistic next-step goal and complete a clear Career Identity Snapshot on the final response sheet."
+  ],
+  "supports_scaffolds": [
+    {
+      "label": "Strengths sort",
+      "support": "A paired-choice strengths sort helps students notice patterns without relying on fake multiple-choice personality language.",
+      "embedded": true
+    },
+    {
+      "label": "Sentence frames",
+      "support": "Structured sentence starters and fill-in prompts help students move from vague ideas to concrete reflection.",
+      "embedded": true
+    },
+    {
+      "label": "Values ranking support",
+      "support": "A paired value-ranking task gives students language for what matters to them before they write.",
+      "embedded": true
+    },
+    {
+      "label": "Guided self-assessment",
+      "support": "Record-field tasks break identity categories into short, manageable entries before synthesis.",
+      "embedded": true
+    },
+    {
+      "label": "Partner talk before writing",
+      "support": "Teacher and slide prompts encourage short talk rehearsals before longer written reflection.",
+      "embedded": true
+    },
+    {
+      "label": "Snapshot planning organizer",
+      "support": "A late-week planner inside the packet helps students gather the exact categories needed for the final snapshot.",
+      "embedded": true
+    },
+    {
+      "label": "Choice in response format",
+      "support": "Students may use short phrases or bullets on planning pages while keeping the final snapshot clean and coherent.",
+      "embedded": true
+    }
+  ],
+  "differentiation_model": {
+    "support_pathway": "Use the paired sorts, sentence frames, teacher modelling, and short record fields to help students build concrete notes in each snapshot category before synthesis.",
+    "core_pathway": "Move through the weekly packet, compare patterns across days, and write a clear final snapshot with a realistic next-step goal.",
+    "extension_pathway": "Push students to name sharper patterns across settings, explain tensions between values or habits, and connect their snapshot to one future area they want to explore without overcommitting."
+  },
+  "checkpoint_release_logic": [
+    "Keep the weekly packet as planning-only evidence until Day 4.",
+    "Release the Day 5 final response sheet only after the teacher checkpoint confirms the student has usable notes for strengths, interests, values, learning or work preferences, and one realistic next-step goal."
+  ],
+  "teacher_implementation_notes": [
+    "Keep the tone reflective, age-respectful, and concrete rather than childish or slogan-heavy.",
+    "Use psychology as a practical lens for noticing patterns in thinking, habits, and self-concept, not as a separate theory unit.",
+    "Do not turn the week into a binder of worksheets. The packet should feel like one staged build toward the final snapshot.",
+    "Keep future pathways light but visible: students should notice directions worth exploring, not feel pushed into early career certainty.",
+    "Use teacher modelling to show what honest, grounded reflection sounds like."
+  ],
+  "likely_misconceptions": [
+    "Students may think strengths only mean academic marks or natural talent instead of patterns they can already use in different settings.",
+    "Students may confuse values with what they think adults want to hear instead of what genuinely matters to them.",
+    "Students may treat mindset as empty positivity rather than a way to choose a better next move when work gets hard.",
+    "Students may write goals that sound impressive but are too vague or too big to start.",
+    "Students may assume a future pathway note means choosing a permanent career now."
+  ],
+  "pacing_shape": "five_day_self_assessment_to_snapshot_release",
+  "assessment_focus": [
+    "Completeness and clarity of the final Career Identity Snapshot categories",
+    "Quality of self-assessment evidence gathered across the weekly packet",
+    "Realism and specificity of the next-step goal",
+    "Ability to interpret patterns rather than list disconnected traits"
+  ],
+  "lesson_overview": {
+    "overview": "Week 1 of the six-week Career 8 Mosaic unit launches career education through self-discovery rather than generic pathway worksheets. Across five days, students examine self-concept, strengths, interests, values, habits, and mindset through short, interactive psychology-infused activities that build toward a Career Identity Snapshot and one realistic next-step goal.",
+    "essential_question": "Who am I when I am learning, working, and making choices at my best?",
+    "sequence": [
+      {
+        "day": "Day 1",
+        "focus": "Course launch, identity, self-concept, and an observation-based starting self-description.",
+        "artifacts": ["Slides", "Weekly Packet"],
+        "carryover": "Students begin language for describing who they are at their best without turning reflection into labels."
+      },
+      {
+        "day": "Day 2",
+        "focus": "Strengths, interests, and learning or work preferences through structured sorting and short evidence capture.",
+        "artifacts": ["Slides", "Weekly Packet"],
+        "carryover": "Students collect stronger notes about what kinds of tasks, settings, and roles fit them."
+      },
+      {
+        "day": "Day 3",
+        "focus": "Growth mindset, habits, and one realistic next-step goal.",
+        "artifacts": ["Slides", "Weekly Packet"],
+        "carryover": "Students move from self-description into practical growth planning."
+      },
+      {
+        "day": "Day 4",
+        "focus": "Values, purpose, what matters most, and readiness for final synthesis.",
+        "artifacts": ["Slides", "Weekly Packet", "Checkpoint Sheet"],
+        "carryover": "Students complete a snapshot planner and teacher checkpoint before final writing."
+      },
+      {
+        "day": "Day 5",
+        "focus": "Career Identity Snapshot completion and short reflection or share-out.",
+        "artifacts": ["Slides", "Final Response Sheet"],
+        "carryover": "The final evidence remains in the Day 5 final response sheet only."
+      }
+    ],
+    "integrity_checks": [
+      "The weekly packet remains one coherent staged workflow instead of five disconnected filler pages.",
+      "The Day 4 checkpoint sheet stays teacher-facing and supports release decisions rather than student busywork.",
+      "The Day 5 final response sheet is the single primary evidence artifact for the week.",
+      "Future pathways stay light but visible rather than dominating the week.",
+      "Student-facing reflection stays structured, concrete, and age-respectful."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "Reflecting on our strengths, interests, learning or work preferences, habits, and values helps students make better learning and career decisions. In Week 1, psychology serves as a practical lens for noticing patterns in self-concept, mindset, and behaviour so students can build a usable self-assessment foundation for the rest of the unit.",
+    "learning_goals": [
+      "I can guide students in identifying strengths, interests, learning or work preferences, and habits using concrete examples.",
+      "I can frame mindset and self-concept as practical tools for growth rather than abstract theory.",
+      "I can use a teacher-facing checkpoint to decide who is ready to move from planning notes into the final snapshot.",
+      "I can keep pathway talk light but visible while the main focus stays on self-assessment and identity."
+    ],
+    "materials": [
+      "One weekly Career Mosaic packet for Week 1",
+      "Five day slide sets",
+      "Optional printed strengths-sort or value-pair strips for modelling",
+      "Day 4 checkpoint sheet",
+      "Day 5 final response sheet"
+    ],
+    "timing": [
+      {
+        "time": "Day 1 / 0:00-0:10",
+        "activity": "Launch the course week, explain why Career Education begins with self-knowledge, and surface what students think it means to be at their best."
+      },
+      {
+        "time": "Day 1 / 0:10-0:25",
+        "activity": "Use quick partner talk and slide comparison prompts to separate self-concept, strength, and habit language."
+      },
+      {
+        "time": "Day 1 / 0:25-0:50",
+        "activity": "Students complete the Day 1 packet sections and teacher models one honest, non-showy self-description."
+      },
+      {
+        "time": "Day 2 / 0:00-0:12",
+        "activity": "Re-open Day 1 thinking and launch strengths, interests, and learning or work preference sorting."
+      },
+      {
+        "time": "Day 2 / 0:12-0:35",
+        "activity": "Run strengths-sort and learning or work preference activities, pausing for pair talk before students record notes in the packet."
+      },
+      {
+        "time": "Day 2 / 0:35-0:50",
+        "activity": "Students identify which tasks, topics, and settings pull them in most naturally."
+      },
+      {
+        "time": "Day 3 / 0:00-0:12",
+        "activity": "Launch mindset and habit reflection with a low-text talk prompt about what happens when work gets frustrating."
+      },
+      {
+        "time": "Day 3 / 0:12-0:30",
+        "activity": "Model the difference between a fixed self-story and a better next move using teacher language and one short example."
+      },
+      {
+        "time": "Day 3 / 0:30-0:50",
+        "activity": "Students complete the mindset and realistic-goal sections of the packet."
+      },
+      {
+        "time": "Day 4 / 0:00-0:15",
+        "activity": "Launch values and purpose through a ranking task that makes students choose what matters more right now."
+      },
+      {
+        "time": "Day 4 / 0:15-0:35",
+        "activity": "Students explain which values rose to the top and complete the snapshot planner in the weekly packet."
+      },
+      {
+        "time": "Day 4 / 0:35-0:50",
+        "activity": "Teacher conferences with the checkpoint sheet to confirm who is ready for the Day 5 final snapshot."
+      },
+      {
+        "time": "Day 5 / 0:00-0:12",
+        "activity": "Re-open the snapshot categories, show one concise model, and clarify that the final response sheet is the only final evidence location."
+      },
+      {
+        "time": "Day 5 / 0:12-0:40",
+        "activity": "Students write the Career Identity Snapshot using notes from the packet."
+      },
+      {
+        "time": "Day 5 / 0:40-0:50",
+        "activity": "Students complete a short reflection or share-out about one pattern they noticed and one goal they are ready to try."
+      }
+    ],
+    "teacher_notes": [
+      "Keep identity work grounded in school, activities, habits, and observable patterns rather than broad personality labels.",
+      "If students resist reflection, lower the pressure by offering examples from class routines, group work, hobbies, or responsibilities instead of private disclosure.",
+      "Treat the packet as a weekly build. Do not hand it out as five isolated worksheet moments.",
+      "Keep the final snapshot clean and focused; avoid letting students dump every note from the packet into the final response."
+    ],
+    "likely_misconceptions": [
+      "Students may think a strength has to be something they are already exceptional at.",
+      "Students may think growth mindset means pretending something is easy.",
+      "Students may treat values language as abstract or performative if examples stay too vague.",
+      "Students may think a next-step goal needs to be major to count."
+    ],
+    "likely_hesitations": [
+      "Some students may worry the work feels too personal.",
+      "Some students may try to write what sounds impressive instead of what is true.",
+      "Some students may freeze when asked to name interests because they think they need one perfect future direction."
+    ],
+    "teacher_moves": [
+      "Model short, specific reflection: name one real strength, one tension, and one realistic next step.",
+      "Use questions like What do you actually do when things go well? rather than What kind of person are you?",
+      "Invite students to use safe domains such as sports, gaming, art, family responsibilities, clubs, or class routines when examples feel hard to find."
+    ],
+    "model_reflection_language": [
+      "I notice that I do better when I can see the structure first, but I also need room to make choices inside that structure.",
+      "A strength I trust is that I help groups get moving when people are stuck, even if I am not always the loudest person.",
+      "One habit I want to strengthen is starting sooner instead of waiting until I feel completely ready.",
+      "A realistic next step for me would be to try one small routine this week, not to reinvent everything at once."
+    ],
+    "look_fors": [
+      "Student can name concrete strengths or learning or work preferences instead of generic praise words.",
+      "Student can connect a habit or mindset pattern to a specific next move.",
+      "Student can identify values that actually matter to them and not just values they think they should choose.",
+      "Student is building enough material to complete a coherent final snapshot."
+    ],
+    "support_moves": [
+      "Ask: What does that look like in real life when you are learning or working?",
+      "Ask: Is that a trait label, or is that something you can actually observe yourself doing?",
+      "Offer sentence starters and allow brief bullet notes before more polished writing."
+    ],
+    "future_pathway_connection": [
+      "Use light language such as areas worth exploring, kinds of roles, or environments that fit me rather than pressing for a fixed career choice in Week 1."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "careers_8_mosaic_week_1_know_yourself_bundle",
+    "declared_outputs": [
+      "lesson_overview",
+      "teacher_guide",
+      "slides",
+      "task_sheet",
+      "checkpoint_sheet",
+      "final_response_sheet"
+    ]
+  },
+  "task_sheet": {
+    "title": "Week 1 Career Mosaic Packet - Know Yourself",
+    "purpose_line": "Use this packet across the week to collect short sorts, reflections, and planning notes that build toward your Day 5 Career Identity Snapshot.",
+    "instructions": [
+      "Move through the packet across the week. Each section builds the next one.",
+      "Use partner talk before longer writing, then keep your own notes on this sheet.",
+      "You may use short phrases or bullets in the packet. Save the polished snapshot for the Day 5 final response sheet. It is the only final evidence sheet for Week 1."
+    ],
+    "tasks": [
+      {
+        "label": "Day 1 / Part A",
+        "prompt": "After a quick partner talk, choose the side in each pair that feels more like you right now as a learner.",
+        "lines": 1,
+        "activity_type": "think_pair_share",
+        "render_hints": {
+          "response_pattern": "paired_choice",
+          "heading": "Day 1 - Learning preferences quick sort",
+          "help": "There is no perfect profile here. Choose the side that feels closer to you right now, not the side that sounds more impressive.",
+          "choice_pairs": [
+            {
+              "label": "Starting work",
+              "left": "I like to talk it out first.",
+              "right": "I like a quiet minute to think first."
+            },
+            {
+              "label": "Directions",
+              "left": "I like clear steps.",
+              "right": "I like room to choose my approach."
+            },
+            {
+              "label": "Working with others",
+              "left": "Partner or team energy helps me think.",
+              "right": "I think more clearly once I work alone for a bit."
+            },
+            {
+              "label": "Showing learning",
+              "left": "I explain best by speaking.",
+              "right": "I explain best by writing or sketching first."
+            }
+          ]
+        }
+      },
+      {
+        "label": "Day 1 / Part B",
+        "prompt": "Write a short self-description using concrete observations, not hype or harsh self-judgment.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 1 - Observation-based self-description",
+          "help": "Use real examples from class, teams, clubs, home, or hobbies. Short phrases are fine.",
+          "record_fields": [
+            "A strength I already trust in myself",
+            "A strength other people often notice in me",
+            "A habit that helps me learn or work well",
+            "A situation where I am usually at my best"
+          ]
+        }
+      },
+      {
+        "label": "Day 1 / Part C",
+        "prompt": "Complete the reflection frames with something specific and true.",
+        "lines": 3,
+        "activity_type": "think_pair_share",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "heading": "Day 1 - Identity launch reflection",
+          "help": "Try to connect a real pattern or example to your sentence, not only a label.",
+          "blank_prompts": [
+            "At my best, I am someone who ___.",
+            "This shows up when ___.",
+            "It matters because ___."
+          ]
+        }
+      },
+      {
+        "label": "Day 2 / Part A",
+        "prompt": "Work through the strengths sort and choose the side that feels more like how you tend to contribute right now.",
+        "lines": 1,
+        "activity_type": "card_sort",
+        "render_hints": {
+          "response_pattern": "paired_choice",
+          "heading": "Day 2 - Strengths sort",
+          "help": "If both sides fit sometimes, choose the one that feels more like you most often right now.",
+          "choice_pairs": [
+            {
+              "label": "When a group is stuck",
+              "left": "I help organize the next step.",
+              "right": "I help generate new ideas."
+            },
+            {
+              "label": "When something is confusing",
+              "left": "I look for patterns or rules.",
+              "right": "I ask questions until it clicks."
+            },
+            {
+              "label": "When people need support",
+              "left": "I step in and help people.",
+              "right": "I build or fix something practical."
+            },
+            {
+              "label": "In a project",
+              "left": "I keep the group on task.",
+              "right": "I improve the quality of the final product."
+            }
+          ]
+        }
+      },
+      {
+        "label": "Day 2 / Part B",
+        "prompt": "Turn the sort into evidence about your interests and learning or work preferences.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 2 - Interests and learning or work preference notes",
+          "help": "Think about tasks, topics, and settings that pull you in, not only jobs.",
+          "record_fields": [
+            "Topics or issues I naturally pay attention to",
+            "Tasks I choose quickly when I have a choice",
+            "A setting I usually like best",
+            "A school activity, hobby, or responsibility that fits me",
+            "One pattern I noticed from today's sort"
+          ]
+        }
+      },
+      {
+        "label": "Day 3 / Part A",
+        "prompt": "Use the frames to notice what happens when work gets hard and what a stronger next move could be.",
+        "lines": 4,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "heading": "Day 3 - Mindset and habit reset",
+          "help": "This is not about fake positivity. It is about naming a better next move.",
+          "blank_prompts": [
+            "When work feels hard, my first reaction is usually ___.",
+            "A more helpful next move would be ___.",
+            "A sentence I can tell myself is ___.",
+            "One habit I want to build is ___."
+          ]
+        }
+      },
+      {
+        "label": "Day 3 / Part B",
+        "prompt": "Plan one realistic next-step goal you could actually start soon.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 3 - Realistic goal planner",
+          "help": "Keep the goal small enough to start. A realistic next step beats a huge promise.",
+          "record_fields": [
+            "Habit or skill I want to strengthen",
+            "A small next step I could try this week",
+            "One support I can use",
+            "How I will know I actually started"
+          ]
+        }
+      },
+      {
+        "label": "Day 4 / Part A",
+        "prompt": "Choose which value matters more to you right now in each pair. Be honest, not what sounds impressive.",
+        "lines": 1,
+        "activity_type": "card_sort",
+        "render_hints": {
+          "response_pattern": "paired_choice",
+          "heading": "Day 4 - Values ranking support",
+          "help": "You are not choosing forever. You are noticing what matters most to you right now.",
+          "choice_pairs": [
+            {
+              "label": "Value pair 1",
+              "left": "Stability",
+              "right": "Variety"
+            },
+            {
+              "label": "Value pair 2",
+              "left": "Independence",
+              "right": "Team contribution"
+            },
+            {
+              "label": "Value pair 3",
+              "left": "Creativity",
+              "right": "Clear structure"
+            },
+            {
+              "label": "Value pair 4",
+              "left": "Achievement",
+              "right": "Helping other people"
+            }
+          ]
+        }
+      },
+      {
+        "label": "Day 4 / Part B",
+        "prompt": "Choose two values from Part A. For each one, explain where it shows up in your real life and why it matters to you.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 4 - What actually matters to me",
+          "help": "Use school, activities, home responsibilities, friendships, or hobbies as evidence. One short example for each value is enough.",
+          "record_fields": [
+            "Value 1 and where it shows up in real life",
+            "Why value 1 matters to me",
+            "Value 2 and where it shows up in real life",
+            "Why value 2 matters to me"
+          ]
+        }
+      },
+      {
+        "label": "Day 4 / Part C",
+        "prompt": "Complete the planner so you are ready for the Day 4 checkpoint and the Day 5 final snapshot.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 4 - Snapshot planner for Day 5",
+          "help": "This is planning only. Move the polished snapshot to the Day 5 final response sheet.",
+          "record_fields": [
+            "Strengths to carry into Day 5",
+            "Interests or topics to carry into Day 5",
+            "Values to carry into Day 5",
+            "Learning or work preferences to carry into Day 5",
+            "One future area I want to explore lightly",
+            "One realistic next-step goal to carry into Day 5"
+          ]
+        }
+      }
+    ],
+    "embedded_supports": [
+      "Partner talk first, then record your own thinking.",
+      "Use the sentence frames to get started, then adjust them so they sound like you.",
+      "Bullet points are fine on planning pages; the final response should sound cleaner and more complete.",
+      "If a prompt feels too personal, use a school, activity, hobby, or responsibility example instead."
+    ],
+    "success_criteria": [
+      "I used the packet to collect real evidence about my strengths, interests, values, and learning or work preferences.",
+      "I moved from vague ideas to more concrete observations across the week.",
+      "I planned one realistic next-step goal I could actually start.",
+      "I kept planning in the packet and saved my final evidence for the Day 5 Career Identity Snapshot."
+    ],
+    "render_grammar": {
+      "render_intent": "exploratory_planning",
+      "evidence_role": "planning_only",
+      "density": "heavy",
+      "length_band": "extended"
+    }
+  },
+  "outputs": [
+    {
+      "output_id": "lesson_overview_main",
+      "output_type": "lesson_overview",
+      "audience": "teacher",
+      "source_section": "lesson_overview",
+      "bundle": "careers_8_mosaic_week_1_know_yourself_bundle"
+    },
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "careers_8_mosaic_week_1_know_yourself_bundle"
+    },
+    {
+      "output_id": "weekly_task_sheet",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "careers_8_mosaic_week_1_know_yourself_bundle",
+      "alignment_target": "week1_identity_snapshot_build",
+      "final_evidence_target": "day5_career_identity_snapshot"
+    }
+  ],
+  "days": [
+    {
+      "day_id": "day_1",
+      "day_label": "Day 1",
+      "carryover_note": "Students begin with observable language about who they are at their best and carry those notes into the strengths work.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 1, Day 1",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Know Yourself: identity, self-concept, and where you do your best learning."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "When are you at your best?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Think about school, sports, gaming, clubs, art, family responsibilities, or a time you solved a real problem. When do you feel switched on, useful, or most like yourself?",
+            "prompts": [
+              "What were you doing?",
+              "What helped you do well?",
+              "What would someone watching you notice?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Three useful identity lenses",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Self-concept is the story we tell about who we are.",
+              "A strength is something we can already use in real situations.",
+              "A habit is a pattern we can strengthen or change."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Better than a fixed label",
+          "layout": "two_column_compare",
+          "content": {
+            "left": "I am just bad at presenting.",
+            "right": "I need a minute to think first and a chance to rehearse before speaking.",
+            "prompts": [
+              "Which version gives a better next step?",
+              "Which version sounds more true and more useful?",
+              "What is the difference between a label and an observation?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Carry this into the packet",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "What does at my best mean for you right now?",
+              "What would you want a teacher or teammate to understand about how you work best?"
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "output_id": "day1_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_1.slides",
+          "bundle": "careers_8_mosaic_week_1_know_yourself_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_2",
+      "day_label": "Day 2",
+      "carryover_note": "Students add stronger evidence about strengths, interests, and settings that fit them before mindset work.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 1, Day 2",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Strengths, interests, and learning or work preferences: what pulls you in and how you contribute."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "What kinds of tasks pull you in?",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Some people like solving, building, helping, organizing, designing, performing, or leading. None of those are better than the others. They just point to different patterns.",
+            "prompts": [
+              "What kinds of tasks do you start quickly?",
+              "What kinds of tasks drain you fast?",
+              "What do people often trust you to do?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Not the same thing",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "A strength is what you can already do or contribute.",
+              "An interest is what keeps pulling your attention back.",
+              "A preference is how you like to learn, work, or solve."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Watch for these patterns today",
+          "layout": "checklist",
+          "content": {
+            "items": [
+              "What you do well",
+              "What you enjoy enough to stay with",
+              "What setting helps you do your best thinking",
+              "What role you often take in a group"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Keep it concrete",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "What evidence do you actually have for the strength or preference you named?",
+              "Which notes from today belong in your final snapshot later in the week?"
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "output_id": "day2_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_2.slides",
+          "bundle": "careers_8_mosaic_week_1_know_yourself_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_3",
+      "day_label": "Day 3",
+      "carryover_note": "Students shift from describing themselves to planning one realistic next move they can actually start.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 1, Day 3",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Mindset, habits, and one realistic next-step goal."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "When work gets frustrating",
+          "layout": "prompt",
+          "content": {
+            "scenario": "Everybody hits moments where the work feels hard, awkward, slow, or annoying. What matters is not pretending that feeling disappears. What matters is what happens next.",
+            "prompts": [
+              "What is your usual first reaction?",
+              "Which reactions help you grow?",
+              "Which reactions trap you in the same pattern?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Three useful mindset moves",
+          "layout": "three_rows",
+          "content": {
+            "rows": [
+              "Notice the story you are telling yourself.",
+              "Replace a shutdown move with one better next move.",
+              "Set a goal small enough to start, not just big enough to sound good."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Model: honest reflection, not fake positivity",
+          "layout": "planner_model",
+          "content": {
+            "model": "When a task feels messy, I sometimes stall because I want to get it right immediately. A better next move for me is to start with one small section, ask one clarifying question, and keep working instead of waiting until I feel fully ready.",
+            "supports": [
+              "The model names a real pattern instead of pretending there is no struggle.",
+              "The next move is small enough to try this week.",
+              "A realistic goal sounds startable, not dramatic."
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Choose a goal worth trying",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "What habit would actually improve your learning or work right now?",
+              "What is one next step you could try before next week?"
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "output_id": "day3_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_3.slides",
+          "bundle": "careers_8_mosaic_week_1_know_yourself_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_4",
+      "day_label": "Day 4",
+      "carryover_note": "Students rank values, name what matters, and complete a planner the teacher can use for release decisions.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 1, Day 4",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Values, purpose, and what actually matters to me."
+          }
+        },
+        {
+          "type": "ENGAGE",
+          "title": "Looks good vs matters to me",
+          "layout": "two_column_compare",
+          "content": {
+            "left": "Choosing what sounds impressive",
+            "right": "Choosing what actually matters to me",
+            "prompts": [
+              "Why are those not always the same thing?",
+              "What happens when people choose only what sounds impressive?",
+              "How can values make decisions feel clearer?"
+            ]
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "Values are decision clues",
+          "layout": "checklist",
+          "content": {
+            "items": [
+              "Values help explain why two good options may still feel different.",
+              "A value is not a slogan; it shows up in real choices.",
+              "Values do not decide everything, but they help make choices feel more honest."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Use the packet to rank and explain",
+          "layout": "retrieval",
+          "content": {
+            "task": "Work through the value pairs, then explain which values rose to the top and why they fit your real life.",
+            "prompts": [
+              "What matters when you are working with others?",
+              "What matters when you are choosing how to spend time or effort?",
+              "What matters when you picture a future area worth exploring?"
+            ]
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Get ready for the checkpoint",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "Which snapshot category is strongest for you right now?",
+              "Which category still needs more detail before tomorrow?"
+            ]
+          }
+        }
+      ],
+      "checkpoint_sheet": {
+        "title": "Day 4 Checkpoint Sheet",
+        "checkpoint_focus": "Teacher checkpoint before Day 5 Career Identity Snapshot release.",
+        "look_fors": [
+          "Student can point to at least one concrete note for strengths, interests, values, and learning or work preferences in the packet.",
+          "Student has a realistic next-step goal that sounds startable rather than huge or vague.",
+          "Student can explain one light connection between a pattern they noticed and a future area worth exploring.",
+          "Student is ready to move from planning notes to a cleaner final snapshot."
+        ],
+        "conference_prompts": [
+          "Show me one packet note that feels most true to you.",
+          "Which category still needs more detail: strengths, interests, values, or learning or work preferences?",
+          "What makes your goal realistic for right now?",
+          "What will you carry into the final snapshot and what will you leave out?"
+        ],
+        "release_rule": "Release the Day 5 final response sheet only when the student can point to usable planning for each snapshot category and explain one realistic next-step goal."
+      },
+      "outputs": [
+        {
+          "output_id": "day4_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_4.slides",
+          "bundle": "careers_8_mosaic_week_1_know_yourself_bundle"
+        },
+        {
+          "output_id": "day4_checkpoint_sheet",
+          "output_type": "checkpoint_sheet",
+          "audience": "teacher",
+          "source_section": "days.day_4.checkpoint_sheet",
+          "bundle": "careers_8_mosaic_week_1_know_yourself_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day_5",
+      "day_label": "Day 5",
+      "carryover_note": "Final evidence stays in the Day 5 Career Identity Snapshot only.",
+      "slides": [
+        {
+          "type": "TITLE",
+          "title": "Career 8 Mosaic - Week 1, Day 5",
+          "layout": "hero",
+          "content": {
+            "subtitle": "Career Identity Snapshot: pull the week together into one clear final response."
+          }
+        },
+        {
+          "type": "LEARN",
+          "title": "What the final snapshot needs",
+          "layout": "checklist",
+          "content": {
+            "items": [
+              "Strengths",
+              "Interests",
+              "Values",
+              "Learning or work preferences",
+              "One realistic next-step goal",
+              "One closing sentence about who you are at your best"
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Model the tone, not the exact answer",
+          "layout": "planner_model",
+          "content": {
+            "model": "Strengths: I notice patterns and help groups get organized. Interests: I stay with tasks that involve design, problem solving, and helping people make sense of ideas. Values: I care about creativity and usefulness. Learning or work preferences: I do my best when I can think first, then explain. Next-step goal: This week I will start sooner on one assignment and use a short plan before I begin.",
+            "supports": [
+              "Specific beats dramatic.",
+              "Use notes from the packet, but clean them up.",
+              "A future direction can stay light: area worth exploring, not final life decision."
+            ]
+          }
+        },
+        {
+          "type": "APPLY",
+          "title": "Before you write",
+          "layout": "prompt_card",
+          "content": {
+            "goal": "Turn your planning into a clean final snapshot.",
+            "prompts": [
+              "Keep what is true and specific.",
+              "Drop filler language.",
+              "Make the next-step goal realistic enough to start."
+            ],
+            "instruction": "Use the Day 5 final response sheet. It is the only final evidence sheet for Week 1."
+          }
+        },
+        {
+          "type": "REFLECT",
+          "title": "Short share-out",
+          "layout": "reflect",
+          "content": {
+            "prompts": [
+              "What is one pattern you noticed about yourself this week?",
+              "What is one next step you are actually willing to try?"
+            ]
+          }
+        }
+      ],
+      "final_response_sheet": {
+        "title": "Day 5 Career Identity Snapshot",
+        "prompt": "Complete your Career Identity Snapshot in clear labeled lines. Include at least two strengths, two interests, two values, two learning or work preferences, and one realistic next-step goal. End with one short sentence about who you are at your best as a learner or worker.",
+        "planning_reminders": [
+          "Use labels such as Strengths, Interests, Values, Learning or work preferences, and Next-step goal.",
+          "Choose details you can actually stand behind from this week's packet.",
+          "Keep the future-pathway link light: name one area worth exploring, not a lifetime decision.",
+          "Write the polished snapshot here. This is the only final evidence sheet for Week 1."
+        ],
+        "paragraph_support": {
+          "frame_strip": [
+            "Strengths: ___",
+            "Interests: ___",
+            "Values: ___",
+            "Learning or work preferences: ___",
+            "Next-step goal: ___",
+            "At my best, I am someone who ___"
+          ],
+          "reminder_box": "specific, honest, and startable beats impressive but vague"
+        },
+        "success_criteria": [
+          "My snapshot names strengths, interests, values, and learning or work preferences clearly.",
+          "My next-step goal is realistic enough to start soon.",
+          "My final response sounds like a real self-description, not filler language.",
+          "My final evidence is recorded only on this sheet."
+        ],
+        "response_lines": 14
+      },
+      "outputs": [
+        {
+          "output_id": "day5_slides",
+          "output_type": "slides",
+          "audience": "shared_view",
+          "source_section": "days.day_5.slides",
+          "bundle": "careers_8_mosaic_week_1_know_yourself_bundle"
+        },
+        {
+          "output_id": "day5_final_response_sheet",
+          "output_type": "final_response_sheet",
+          "audience": "student",
+          "source_section": "days.day_5.final_response_sheet",
+          "bundle": "careers_8_mosaic_week_1_know_yourself_bundle",
+          "final_evidence": true
+        }
+      ]
+    }
+  ]
+}
