@@ -6,12 +6,14 @@ import sys
 
 from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
+from reportlab.platypus import SimpleDocTemplate
 
 ARCHIVE_DIR = Path(__file__).with_name('archive')
 if str(ARCHIVE_DIR) not in sys.path:
     sys.path.insert(0, str(ARCHIVE_DIR))
 
 import render_stable_core_output_base as base
+from multipage_template_renderers import render_student_packet_multipage, render_teacher_guide_multipage
 from student_pdf_shared import (
     SLATE_DARK,
     SLATE,
@@ -39,10 +41,14 @@ from student_pdf_graphic_organizer import render_graphic_organizer
 _ORIGINAL_STYLES_BUNDLE = getattr(base, '_original_styles_bundle_saved', base.styles_bundle)
 _ORIGINAL_ESTIMATE_PLAIN_LABEL_BLOCK_HEIGHT = getattr(base, '_original_estimate_plain_label_block_height', base.estimate_plain_label_block_height)
 _ORIGINAL_PLAIN_LABEL_BLOCK = getattr(base, '_original_plain_label_block', base.plain_label_block)
+_ORIGINAL_RENDER_TEACHER_GUIDE = getattr(base, '_original_render_teacher_guide', base.render_teacher_guide)
+_ORIGINAL_BUILD_PRINTABLE_PDF = getattr(base, '_original_build_printable_pdf', getattr(base, 'build_printable_pdf', None))
 
 base._original_styles_bundle_saved = _ORIGINAL_STYLES_BUNDLE
 base._original_estimate_plain_label_block_height = _ORIGINAL_ESTIMATE_PLAIN_LABEL_BLOCK_HEIGHT
 base._original_plain_label_block = _ORIGINAL_PLAIN_LABEL_BLOCK
+base._original_render_teacher_guide = _ORIGINAL_RENDER_TEACHER_GUIDE
+base._original_build_printable_pdf = _ORIGINAL_BUILD_PRINTABLE_PDF
 
 
 def styles_bundle():
@@ -59,6 +65,32 @@ def styles_bundle():
         if name not in styles:
             styles.add(style)
     return styles
+
+
+def build_printable_pdf(story, out_path, packet=None, output_type=None, section=None, pagesize=None, left_margin=36, right_margin=36, top_margin=36, bottom_margin=36):
+    if callable(_ORIGINAL_BUILD_PRINTABLE_PDF):
+        return _ORIGINAL_BUILD_PRINTABLE_PDF(
+            story,
+            out_path,
+            packet=packet,
+            output_type=output_type,
+            section=section,
+            pagesize=pagesize,
+            left_margin=left_margin,
+            right_margin=right_margin,
+            top_margin=top_margin,
+            bottom_margin=bottom_margin,
+        )
+
+    doc = SimpleDocTemplate(
+        str(out_path),
+        pagesize=pagesize or base.letter,
+        leftMargin=left_margin,
+        rightMargin=right_margin,
+        topMargin=top_margin,
+        bottomMargin=bottom_margin,
+    )
+    doc.build(story)
 
 
 def estimate_plain_label_block_height(lines: list, compact: bool = False, spacer_after: int = 6):
@@ -133,16 +165,7 @@ def worksheet_question_block(styles, question: dict):
 
 
 def build_task_block(styles, task: dict, compact=False, spacing_scale: float = 1.0, rendered_lines: int | None = None, show_help: bool = True, **kwargs):
-    return task_sheet_build_task_block(
-        base,
-        styles,
-        task,
-        compact=compact,
-        spacing_scale=spacing_scale,
-        rendered_lines=rendered_lines,
-        show_help=show_help,
-        **kwargs,
-    )
+    return task_sheet_build_task_block(base, styles, task, compact=compact, spacing_scale=spacing_scale, rendered_lines=rendered_lines, show_help=show_help, **kwargs)
 
 
 def add_day1_page2_footer_wrapper(story, styles, _section: dict):
@@ -153,7 +176,15 @@ def add_day2_footer_wrapper(story, styles, _section: dict):
     add_day2_footer(styles, story)
 
 
+def render_teacher_guide_wrapper(packet: dict, section: dict, out_path: Path):
+    if packet.get('_render_grammar', {}).get('template_family') == 'TG_MULTIPAGE_GUIDE':
+        return render_teacher_guide_multipage(base, styles_bundle, packet, section, out_path)
+    return _ORIGINAL_RENDER_TEACHER_GUIDE(packet, section, out_path)
+
+
 def render_task_sheet_wrapper(packet: dict, section: dict, out_path: Path):
+    if packet.get('_render_grammar', {}).get('template_family') == 'SP_MULTIPAGE_PACKET':
+        return render_student_packet_multipage(base, styles_bundle, packet, section, out_path)
     return render_task_sheet(base, styles_bundle, packet, section, out_path)
 
 
@@ -174,6 +205,7 @@ def render_discussion_prep_sheet_wrapper(packet: dict, section: dict, out_path: 
 
 
 base.styles_bundle = styles_bundle
+base.build_printable_pdf = build_printable_pdf
 base.estimate_plain_label_block_height = estimate_plain_label_block_height
 base.plain_label_block = plain_label_block
 base.estimate_question_block_height = estimate_question_block_height
@@ -181,6 +213,7 @@ base.worksheet_question_block = worksheet_question_block
 base.build_task_block = build_task_block
 base.add_day1_page2_footer = add_day1_page2_footer_wrapper
 base.add_day2_footer = add_day2_footer_wrapper
+base.render_teacher_guide = render_teacher_guide_wrapper
 base.render_task_sheet = render_task_sheet_wrapper
 base.render_final_response_sheet = render_final_response_sheet_wrapper
 base.render_exit_ticket = render_exit_ticket_wrapper
