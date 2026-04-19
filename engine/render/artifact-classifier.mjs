@@ -26,8 +26,38 @@ function teacherPackSignals(section) {
     || Array.isArray(section.checklist)
     || Array.isArray(section.notes)
     || Array.isArray(section.questions)
+    || Array.isArray(section.learning_goals)
+    || Array.isArray(section.materials)
+    || Array.isArray(section.sequence)
     || typeof section.title === 'string'
+    || typeof section.big_idea === 'string'
+    || typeof section.overview === 'string'
+    || typeof section.teacher_notes === 'string'
   )
+}
+
+function worksheetSignals(section) {
+  return hasObject(section) && Array.isArray(section.questions)
+}
+
+function exitTicketSignals(section) {
+  return hasObject(section) && (typeof section.prompt === 'string' || typeof section.n_lines === 'number')
+}
+
+function graphicOrganizerSignals(section) {
+  return hasObject(section) && (typeof section.organizer_type === 'string' || Array.isArray(section.columns))
+}
+
+function discussionPrepSignals(section) {
+  return hasObject(section) && (typeof section.discussion_prompt === 'string' || typeof section.position_label === 'string')
+}
+
+function finalResponseSignals(section) {
+  return hasObject(section) && typeof section.prompt === 'string'
+}
+
+function checkpointSignals(section) {
+  return hasObject(section) && (Array.isArray(section.look_fors) || typeof section.checkpoint_focus === 'string')
 }
 
 export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
@@ -61,6 +91,60 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
       classification_confidence: multipage.classification_confidence ?? 0.9,
       fallback_reason: null,
       classifier_basis: [`output_type:${outputType}`, 'teacher audience', 'teacher-pack section signals present', ...multipage.classifier_basis_extension],
+    }
+  }
+
+  if (outputType === 'worksheet' && worksheetSignals(section)) {
+    return {
+      artifact_class: 'student_worksheet',
+      classification_confidence: 0.92,
+      fallback_reason: null,
+      classifier_basis: ['output_type:worksheet', 'section.questions present'],
+    }
+  }
+
+  if (outputType === 'exit_ticket' && exitTicketSignals(section)) {
+    return {
+      artifact_class: 'student_exit_ticket',
+      classification_confidence: 0.92,
+      fallback_reason: null,
+      classifier_basis: ['output_type:exit_ticket', 'section prompt/n_lines present'],
+    }
+  }
+
+  if (outputType === 'graphic_organizer' && graphicOrganizerSignals(section)) {
+    return {
+      artifact_class: 'student_graphic_organizer',
+      classification_confidence: 0.92,
+      fallback_reason: null,
+      classifier_basis: ['output_type:graphic_organizer', 'section organizer_type/columns present'],
+    }
+  }
+
+  if (outputType === 'discussion_prep_sheet' && discussionPrepSignals(section)) {
+    return {
+      artifact_class: 'student_discussion_prep',
+      classification_confidence: 0.92,
+      fallback_reason: null,
+      classifier_basis: ['output_type:discussion_prep_sheet', 'section discussion_prompt/position_label present'],
+    }
+  }
+
+  if (outputType === 'final_response_sheet' && finalResponseSignals(section)) {
+    return {
+      artifact_class: 'student_final_response',
+      classification_confidence: 0.92,
+      fallback_reason: null,
+      classifier_basis: ['output_type:final_response_sheet', 'section.prompt present'],
+    }
+  }
+
+  if (outputType === 'checkpoint_sheet' && checkpointSignals(section)) {
+    return {
+      artifact_class: 'student_checkpoint',
+      classification_confidence: 0.92,
+      fallback_reason: null,
+      classifier_basis: ['output_type:checkpoint_sheet', 'section look_fors/checkpoint_focus present'],
     }
   }
 
