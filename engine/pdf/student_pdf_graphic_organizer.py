@@ -144,7 +144,8 @@ def render_graphic_organizer(base, styles_bundle, packet: dict, section: dict, o
 
     organizer_type = str(section.get('organizer_type') or 't_chart').strip()
     columns = normalize_string_list(section.get('columns') or [])
-    rows = max(1, int(section.get('rows') or 4))
+    _rows_raw = section.get('rows') or 4
+    rows = max(1, len(_rows_raw) if isinstance(_rows_raw, list) else int(_rows_raw))
     prompt = str(section.get('prompt') or '').strip()
     success = normalize_string_list(section.get('success_criteria') or [])
 
