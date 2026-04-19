@@ -1,13 +1,15 @@
 import { readFileSync } from 'node:fs'
-import { resolve } from 'node:path'
-import process from 'node:process'
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 function loadJson(path) {
   return JSON.parse(readFileSync(path, 'utf-8'))
 }
 
-const VOCABULARY = loadJson(resolve(process.cwd(), 'schemas', 'canonical-vocabulary.json'))
-const PACKAGE_SCHEMA = loadJson(resolve(process.cwd(), 'schemas', 'lesson-package.schema.json'))
+const VOCABULARY = loadJson(resolve(__dirname, '../../schemas/canonical-vocabulary.json'))
+const PACKAGE_SCHEMA = loadJson(resolve(__dirname, '../../schemas/lesson-package.schema.json'))
 
 export const SCHEMA_VERSION_PREFIX = VOCABULARY.schema_version_prefix ?? '2.1'
 

@@ -8,6 +8,15 @@ export const repoPath = (...parts) => resolve(repoRoot, ...parts)
 export const FIXTURE_MAP = {
   benchmark1: 'fixtures/core/benchmark-1.grade2-math.json',
   challenge7: 'fixtures/core/challenge-7.grade8-sequence.json',
+  biology11: 'fixtures/generated/biology-11-enzyme-activity-factors.grade11-biology.json',
+  careers8_bias: 'fixtures/generated/careers-8-bias-and-decision-making.grade8-careers.json',
+  careers8_clusters: 'fixtures/generated/careers-8-career-clusters.grade8-careers.json',
+  careers8_clusters_v2: 'fixtures/generated/careers-8-career-clusters-engagement-v2.grade8-careers.json',
+  careers8_tech: 'fixtures/generated/careers-8-technology-use-school-workplace.grade8-careers.json',
+  ela8: 'fixtures/generated/ela-8-community-issue-argument.grade8-ela.json',
+  ela8_v2: 'fixtures/generated/ela-8-community-issue-argument.grade8-ela.revision-v2.json',
+  ela8_proof: 'fixtures/generated/ela-8-community-issue-argument.variant-proof.json',
+  science8: 'fixtures/generated/science-8-human-impacts-ecosystems.grade8-science.json',
   pbg_day1_launch: 'fixtures/plan-build-grow/pbg_day1_launch.json',
   pbg_week1_shared: 'fixtures/plan-build-grow/pbg_week1_shared.json',
   pbg_week1_english: 'fixtures/plan-build-grow/pbg_week1_english.json',
@@ -34,6 +43,10 @@ export function run(cmd, args, options = {}) {
     shell: process.platform === 'win32',
     ...options
   })
+  if (result.error) {
+    console.error(`Failed to run ${cmd}: ${result.error.message}`)
+    process.exit(1)
+  }
   if (result.status !== 0) {
     process.exit(result.status ?? 1)
   }

@@ -1,25 +1,35 @@
 # Setup status
 
-## Loaded into repo / starter pack
+## Engine — fully implemented
 
-- `engine/content/science9_interconnected_spheres.json`
-- `engine/content/careers8_goal_setting.json`
-- starter README and repo config
-- basic script stubs in `scripts/`
-- one basic Python repo-layout test
+- `engine/schema/` — canonical vocabulary, lesson package schema validation, preflight
+- `engine/pdf/` — Python/reportlab stable-core renderer with document chrome
+- `engine/pdf-html/` — Playwright HTML→PDF renderer for doc-mode output types
+- `engine/pptx/` — Python/pptx slide renderer
+- `engine/render/` — typed block validation, artifact classifier, multipage page-role classifier, template router
+- `engine/planner/` — output router, route planning
+- `engine/visual/` — visual plan builder, token system
+- `engine/assignment-family/` — assignment family contract and validation
+- `engine/family/` — family validation
 
-## Not loaded yet
+## Scripts — all wired
 
-- real `engine/pptx/` builder implementation
-- real `engine/pdf/` builder implementation
-- real `engine/schema/` files
-- complete package/toolchain wiring
+- `npm run schema:check` — validate all fixtures against schema
+- `npm run route:plan` — plan routes for a package
+- `npm run render:package` — render a full package (PPTX + PDF)
+- `npm run pdf:build` — HTML→PDF via Playwright
+- `npm run qa:render` / `qa:bundle` / `qa:visual` — QA helpers
+- `npm run generate:package` — generate a new package
+- `npm test` — node tests + Python contract tests
 
-## Practical meaning
+## Fixtures
 
-This repo now preserves the lesson content layer and starter scaffolding.
-It is not yet the full runnable engine.
+- `fixtures/core/` — 2 benchmark fixtures
+- `fixtures/generated/` — 9 generated lesson package fixtures
+- `fixtures/plan-build-grow/` — 10 PBG cross-curricular fixtures
+- `fixtures/tests/` — proof fixtures for CI smoke tests
 
-## Best next step
+## CI
 
-Add the real `engine/` builder files, then wire the stubs to the actual build path.
+- `CI` workflow — node tests
+- `stable-core` workflow — contract tests + render smoke tests
