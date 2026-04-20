@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, statSync } from 'node:fs'
 import { basename, extname, resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 
@@ -9,25 +10,32 @@ function argValue(flag) {
   return process.argv[index + 1] ?? null
 }
 
-function artifactTypeFor(path) {
+export function artifactTypeFor(path) {
   const ext = extname(path).toLowerCase()
   if (ext === '.pptx') return 'pptx'
   if (ext === '.pdf') return 'pdf'
   return null
 }
 
-function artifactStem(path) {
+export function artifactStem(path) {
   const name = basename(path)
   const dot = name.lastIndexOf('.')
   return dot >= 0 ? name.slice(0, dot) : name
 }
 
-function inferAudienceBucket(name) {
+export function inferAudienceBucket(name) {
   const stem = artifactStem(name)
   if (stem.includes('teacher_guide') || stem.includes('lesson_overview') || stem.includes('checkpoint_sheet')) {
     return 'teacher_only'
   }
-  if (stem.includes('worksheet') || stem.includes('task_sheet') || stem.includes('final_response_sheet') || stem.includes('exit_ticket')) {
+  if (
+    stem.includes('worksheet')
+    || stem.includes('task_sheet')
+    || stem.includes('final_response_sheet')
+    || stem.includes('exit_ticket')
+    || stem.includes('graphic_organizer')
+    || stem.includes('discussion_prep_sheet')
+  ) {
     return 'student_facing'
   }
   if (stem.includes('slides')) {
@@ -36,7 +44,7 @@ function inferAudienceBucket(name) {
   return null
 }
 
-function expectedArtifactTypeFromName(name) {
+export function expectedArtifactTypeFromName(name) {
   const stem = artifactStem(name)
   if (stem.includes('slides')) return 'pptx'
   if (
@@ -47,6 +55,8 @@ function expectedArtifactTypeFromName(name) {
     || stem.includes('task_sheet')
     || stem.includes('final_response_sheet')
     || stem.includes('exit_ticket')
+    || stem.includes('graphic_organizer')
+    || stem.includes('discussion_prep_sheet')
   ) {
     return 'pdf'
   }
@@ -238,13 +248,15 @@ function detectScaffoldLeakage(slideTexts) {
   return hits
 }
 
-function expectedPdfIdentityPhrase(artifactName) {
+export function expectedPdfIdentityPhrase(artifactName) {
   const stem = artifactStem(artifactName)
   if (stem.includes('teacher_guide')) return 'teacher guide'
   if (stem.includes('lesson_overview')) return 'lesson overview'
   if (stem.includes('checkpoint_sheet')) return 'checkpoint sheet'
   if (stem.includes('task_sheet')) return 'task sheet'
   if (stem.includes('final_response_sheet')) return 'final response sheet'
+  if (stem.includes('graphic_organizer')) return 'graphic organizer'
+  if (stem.includes('discussion_prep_sheet')) return 'discussion prep'
   if (stem.includes('worksheet')) return 'worksheet'
   if (stem.includes('exit_ticket')) return 'exit ticket'
   return null
@@ -318,201 +330,211 @@ function buildPatches() {
   ]
 }
 
-const artifactArg = argValue('--artifact')
-if (!artifactArg) {
-  console.error('Usage: pnpm run qa:render -- --artifact path/to/file.pptx|pdf')
-  process.exit(1)
-}
+export function main() {
+  const artifactArg = argValue('--artifact')
+  if (!artifactArg) {
+    console.error('Usage: pnpm run qa:render -- --artifact path/to/file.pptx|pdf')
+    process.exit(1)
+  }
 
-const artifactPath = resolve(process.cwd(), artifactArg)
-const artifactName = basename(artifactPath)
-const artifactType = artifactTypeFor(artifactPath)
-const expectedType = expectedArtifactTypeFromName(artifactName)
-const audienceBucket = inferAudienceBucket(artifactName)
+  const artifactPath = resolve(process.cwd(), artifactArg)
+  const artifactName = basename(artifactPath)
+  const artifactType = artifactTypeFor(artifactPath)
+  const expectedType = expectedArtifactTypeFromName(artifactName)
+  const audienceBucket = inferAudienceBucket(artifactName)
 
-if (!existsSync(artifactPath)) {
-  emit({
-    artifact_name: artifactName,
-    artifact_type: artifactType ?? 'unknown',
-    judgment: 'block',
-    fast_score: 0,
-    escalated_full_qa: false,
-    primary_failure_type: 'artifact_formatting_issue',
-    metadata_coherence: 'failed',
-    visibility_separation: 'failed',
-    overflow_refusal: 'failed',
-    blockers: ['artifact_missing'],
-    findings: [
-      {
-        type: 'artifact_formatting_issue',
-        note: 'Artifact does not exist. Artifact QA cannot run before a real PPTX/PDF output exists.'
-      }
-    ],
-    top_3_patches: buildPatches(),
-    ship_rule: 'rebuild_before_shipping'
-  })
-  process.exit(1)
-}
+  if (!existsSync(artifactPath)) {
+    emit({
+      artifact_name: artifactName,
+      artifact_type: artifactType ?? 'unknown',
+      judgment: 'block',
+      fast_score: 0,
+      escalated_full_qa: false,
+      primary_failure_type: 'artifact_formatting_issue',
+      metadata_coherence: 'failed',
+      visibility_separation: 'failed',
+      overflow_refusal: 'failed',
+      blockers: ['artifact_missing'],
+      findings: [
+        {
+          type: 'artifact_formatting_issue',
+          note: 'Artifact does not exist. Artifact QA cannot run before a real PPTX/PDF output exists.'
+        }
+      ],
+      top_3_patches: buildPatches(),
+      ship_rule: 'rebuild_before_shipping'
+    })
+    process.exit(1)
+  }
 
-if (!artifactType) {
-  emit({
-    artifact_name: artifactName,
-    artifact_type: 'unknown',
-    judgment: 'block',
-    fast_score: 0,
-    escalated_full_qa: false,
-    primary_failure_type: 'artifact_formatting_issue',
-    metadata_coherence: 'failed',
-    visibility_separation: 'failed',
-    overflow_refusal: 'failed',
-    blockers: ['unsupported_artifact_type'],
-    findings: [
-      {
-        type: 'artifact_formatting_issue',
-        note: 'Artifact QA currently supports only PPTX and PDF artifacts.'
-      }
-    ],
-    top_3_patches: buildPatches(),
-    ship_rule: 'rebuild_before_shipping'
-  })
-  process.exit(1)
-}
+  if (!artifactType) {
+    emit({
+      artifact_name: artifactName,
+      artifact_type: 'unknown',
+      judgment: 'block',
+      fast_score: 0,
+      escalated_full_qa: false,
+      primary_failure_type: 'artifact_formatting_issue',
+      metadata_coherence: 'failed',
+      visibility_separation: 'failed',
+      overflow_refusal: 'failed',
+      blockers: ['unsupported_artifact_type'],
+      findings: [
+        {
+          type: 'artifact_formatting_issue',
+          note: 'Artifact QA currently supports only PPTX and PDF artifacts.'
+        }
+      ],
+      top_3_patches: buildPatches(),
+      ship_rule: 'rebuild_before_shipping'
+    })
+    process.exit(1)
+  }
 
-const artifactSize = statSync(artifactPath).size
-const blockers = []
-const findings = []
-let fastScore = 0
+  const artifactSize = statSync(artifactPath).size
+  const blockers = []
+  const findings = []
+  let fastScore = 0
 
-if (expectedType && expectedType === artifactType) {
-  fastScore += 2
-} else if (expectedType && expectedType !== artifactType) {
-  blockers.push('artifact_name_type_mismatch')
-  findings.push({
-    type: 'artifact_formatting_issue',
-    note: `Artifact name implies ${expectedType}, but file extension/type is ${artifactType}.`
-  })
-} else {
-  findings.push({
-    type: 'artifact_formatting_issue',
-    note: 'Artifact name does not match a recognized stable-core output pattern. Fast QA can still inspect structure, but naming coherence is soft.'
-  })
-}
-
-if (audienceBucket) {
-  fastScore += 2
-} else {
-  findings.push({
-    type: 'content_issue',
-    note: 'Artifact audience bucket could not be inferred from the artifact name, so visibility separation remains soft.'
-  })
-}
-
-const minSize = artifactType === 'pptx' ? 8000 : 1200
-if (artifactSize >= minSize) {
-  fastScore += 2
-} else {
-  blockers.push('artifact_too_small')
-  findings.push({
-    type: 'artifact_formatting_issue',
-    note: `Artifact size is suspiciously small for a rendered ${artifactType} (${artifactSize} bytes).`
-  })
-}
-
-if (artifactType === 'pdf') {
-  const pdf = inspectPdf(artifactPath)
-  if (pdf.header_ok) fastScore += 2
-  else blockers.push('pdf_header_invalid')
-
-  if (pdf.eof_ok) fastScore += 2
-  else blockers.push('pdf_eof_missing')
-
-  if (pdf.page_marker_ok) fastScore += 2
-  else {
-    blockers.push('pdf_page_structure_missing')
+  if (expectedType && expectedType === artifactType) {
+    fastScore += 2
+  } else if (expectedType && expectedType !== artifactType) {
+    blockers.push('artifact_name_type_mismatch')
     findings.push({
       type: 'artifact_formatting_issue',
-      note: 'PDF does not appear to contain basic page structure markers.'
+      note: `Artifact name implies ${expectedType}, but file extension/type is ${artifactType}.`
     })
-  }
-
-  const semantic = checkPdfSemantics(artifactName, audienceBucket, pdf.normalized_text, pdf.text_extraction_ok)
-  blockers.push(...semantic.blockers)
-  findings.push(...semantic.findings)
-}
-
-if (artifactType === 'pptx') {
-  const pptx = inspectPptx(artifactPath)
-  if (pptx.valid_zip) fastScore += 2
-  else blockers.push('pptx_zip_invalid')
-
-  if (pptx.has_content_types && pptx.has_presentation_xml) {
-    fastScore += 2
   } else {
-    blockers.push('pptx_core_parts_missing')
     findings.push({
       type: 'artifact_formatting_issue',
-      note: 'PPTX is missing core package parts required for a valid slide deck.'
+      note: 'Artifact name does not match a recognized stable-core output pattern. Fast QA can still inspect structure, but naming coherence is soft.'
     })
   }
 
-  if (pptx.slide_count > 0) {
+  if (audienceBucket) {
     fastScore += 2
   } else {
-    blockers.push('pptx_no_slides')
     findings.push({
-      type: 'render_logic_issue',
-      note: 'PPTX package contains no slide XML entries.'
+      type: 'content_issue',
+      note: 'Artifact audience bucket could not be inferred from the artifact name, so visibility separation remains soft.'
     })
   }
 
-  if (artifactStem(artifactName).includes('slides')) {
-    const leaks = detectScaffoldLeakage(Array.isArray(pptx.slide_texts) ? pptx.slide_texts : [])
-    if (leaks.length > 0) {
-      blockers.push('pptx_scaffold_token_leakage')
-      const summary = leaks.slice(0, 6).map((hit) => `${hit.token} (slide ${hit.slide_number})`).join(', ')
+  const minSize = artifactType === 'pptx' ? 8000 : 1200
+  if (artifactSize >= minSize) {
+    fastScore += 2
+  } else {
+    blockers.push('artifact_too_small')
+    findings.push({
+      type: 'artifact_formatting_issue',
+      note: `Artifact size is suspiciously small for a rendered ${artifactType} (${artifactSize} bytes).`
+    })
+  }
+
+  if (artifactType === 'pdf') {
+    const pdf = inspectPdf(artifactPath)
+    if (pdf.header_ok) fastScore += 2
+    else blockers.push('pdf_header_invalid')
+
+    if (pdf.eof_ok) fastScore += 2
+    else blockers.push('pdf_eof_missing')
+
+    if (pdf.page_marker_ok) fastScore += 2
+    else {
+      blockers.push('pdf_page_structure_missing')
       findings.push({
-        type: 'render_logic_issue',
-        note: `Visible scaffold tokens detected in slide text: ${summary}`
+        type: 'artifact_formatting_issue',
+        note: 'PDF does not appear to contain basic page structure markers.'
       })
     }
+
+    const semantic = checkPdfSemantics(artifactName, audienceBucket, pdf.normalized_text, pdf.text_extraction_ok)
+    blockers.push(...semantic.blockers)
+    findings.push(...semantic.findings)
+  }
+
+  if (artifactType === 'pptx') {
+    const pptx = inspectPptx(artifactPath)
+    if (pptx.valid_zip) fastScore += 2
+    else blockers.push('pptx_zip_invalid')
+
+    if (pptx.has_content_types && pptx.has_presentation_xml) {
+      fastScore += 2
+    } else {
+      blockers.push('pptx_core_parts_missing')
+      findings.push({
+        type: 'artifact_formatting_issue',
+        note: 'PPTX is missing core package parts required for a valid slide deck.'
+      })
+    }
+
+    if (pptx.slide_count > 0) {
+      fastScore += 2
+    } else {
+      blockers.push('pptx_no_slides')
+      findings.push({
+        type: 'render_logic_issue',
+        note: 'PPTX package contains no slide XML entries.'
+      })
+    }
+
+    if (artifactStem(artifactName).includes('slides')) {
+      const leaks = detectScaffoldLeakage(Array.isArray(pptx.slide_texts) ? pptx.slide_texts : [])
+      if (leaks.length > 0) {
+        blockers.push('pptx_scaffold_token_leakage')
+        const summary = leaks.slice(0, 6).map((hit) => `${hit.token} (slide ${hit.slide_number})`).join(', ')
+        findings.push({
+          type: 'render_logic_issue',
+          note: `Visible scaffold tokens detected in slide text: ${summary}`
+        })
+      }
+    }
+  }
+
+  fastScore = Math.max(0, Math.min(14, fastScore))
+
+  const metadataCoherence = blockers.includes('artifact_name_type_mismatch')
+    ? 'failed'
+    : expectedType
+      ? 'clean'
+      : 'soft'
+
+  const visibilitySeparation = audienceBucket ? 'clean' : 'soft'
+  const overflowRefusal = blockers.includes('artifact_too_small') ? 'failed' : 'clean'
+  const hardFailure = blockers.length > 0
+  const judgment = hardFailure ? 'block' : findings.length > 0 ? 'revise' : 'pass'
+  const primaryFailureType = hardFailure
+    ? (findings[0]?.type ?? 'artifact_formatting_issue')
+    : findings.length > 0
+      ? findings[0].type
+      : 'none'
+  const shipRule = hardFailure ? 'rebuild_before_shipping' : judgment === 'pass' ? 'ship' : 'patch_then_ship'
+
+  emit({
+    artifact_name: artifactName,
+    artifact_type: artifactType,
+    judgment,
+    fast_score: fastScore,
+    escalated_full_qa: false,
+    primary_failure_type: primaryFailureType,
+    metadata_coherence: metadataCoherence,
+    visibility_separation: visibilitySeparation,
+    overflow_refusal: overflowRefusal,
+    blockers: hardFailure ? Array.from(new Set(blockers)) : ['none'],
+    findings,
+    top_3_patches: buildPatches(),
+    ship_rule: shipRule,
+  })
+
+  if (hardFailure) {
+    process.exit(1)
   }
 }
 
-fastScore = Math.max(0, Math.min(14, fastScore))
+const isDirectExecution = process.argv[1]
+  ? import.meta.url === pathToFileURL(resolve(process.cwd(), process.argv[1])).href
+  : false
 
-const metadataCoherence = blockers.includes('artifact_name_type_mismatch')
-  ? 'failed'
-  : expectedType
-    ? 'clean'
-    : 'soft'
-
-const visibilitySeparation = audienceBucket ? 'clean' : 'soft'
-const overflowRefusal = blockers.includes('artifact_too_small') ? 'failed' : 'clean'
-const hardFailure = blockers.length > 0
-const judgment = hardFailure ? 'block' : findings.length > 0 ? 'revise' : 'pass'
-const primaryFailureType = hardFailure
-  ? (findings[0]?.type ?? 'artifact_formatting_issue')
-  : findings.length > 0
-    ? findings[0].type
-    : 'none'
-const shipRule = hardFailure ? 'rebuild_before_shipping' : judgment === 'pass' ? 'ship' : 'patch_then_ship'
-
-emit({
-  artifact_name: artifactName,
-  artifact_type: artifactType,
-  judgment,
-  fast_score: fastScore,
-  escalated_full_qa: false,
-  primary_failure_type: primaryFailureType,
-  metadata_coherence: metadataCoherence,
-  visibility_separation: visibilitySeparation,
-  overflow_refusal: overflowRefusal,
-  blockers: hardFailure ? Array.from(new Set(blockers)) : ['none'],
-  findings,
-  top_3_patches: buildPatches(),
-  ship_rule: shipRule,
-})
-
-if (hardFailure) {
-  process.exit(1)
+if (isDirectExecution) {
+  main()
 }
