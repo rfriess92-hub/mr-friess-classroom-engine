@@ -1,0 +1,152 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "station_rotation_graphic_organizer_proof",
+  "primary_architecture": "station_rotation",
+  "grade_band": "6-8",
+  "subject": "Science",
+  "grade": 7,
+  "topic": "Station rotation comparison organizer",
+  "theme": "science",
+  "teacher_guide": {
+    "big_idea": "Students need a clear organizer while rotating through stations so they can compare what each station reveals before the closing task.",
+    "learning_goals": [
+      "I can record evidence from more than one station.",
+      "I can compare patterns across stations.",
+      "I can use an organizer to keep evidence readable."
+    ],
+    "materials": [
+      "slides",
+      "task sheet",
+      "graphic organizer",
+      "exit ticket"
+    ],
+    "timing": [
+      { "time": "0:00-0:08", "activity": "Explain the station flow and organizer purpose." },
+      { "time": "0:08-0:35", "activity": "Students rotate through stations and record evidence." },
+      { "time": "0:35-0:48", "activity": "Students compare evidence in the organizer and task sheet." },
+      { "time": "0:48-0:55", "activity": "Exit reflection." }
+    ],
+    "teacher_notes": [
+      "Keep the organizer focused on comparing evidence rather than copying every detail from a station card.",
+      "Push students to notice patterns across stations before the exit response."
+    ]
+  },
+  "slides": [
+    {
+      "type": "TITLE",
+      "title": "Station Rotation Evidence",
+      "layout": "hero",
+      "content": {
+        "subtitle": "Use the organizer to compare what each station shows before you write your final idea."
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "Station workflow",
+      "layout": "three_rows",
+      "content": {
+        "rows": [
+          "Record one important piece of evidence from each station.",
+          "Use the organizer to compare what repeats or changes.",
+          "Use your organizer before writing the exit response."
+        ]
+      }
+    }
+  ],
+  "task_sheet": {
+    "title": "Station Task Sheet",
+    "instructions": [
+      "Move through the stations in order.",
+      "Record one strong detail from each station before you move on.",
+      "Use the organizer to compare what you noticed."
+    ],
+    "tasks": [
+      {
+        "label": "Station notes",
+        "prompt": "Record the strongest evidence from each station in short point form.",
+        "lines": 6,
+        "activity_type": "station_task"
+      },
+      {
+        "label": "Compare",
+        "prompt": "What pattern or contrast do you notice when you look across the stations?",
+        "lines": 4,
+        "activity_type": "write_response"
+      }
+    ],
+    "embedded_supports": [
+      "Use point-form notes first.",
+      "Underline repeated evidence across more than one station."
+    ],
+    "success_criteria": [
+      "I recorded evidence from the stations.",
+      "I compared what I noticed across stations."
+    ]
+  },
+  "graphic_organizer": {
+    "title": "Station Comparison Organizer",
+    "organizer_type": "three_column",
+    "columns": ["Station", "Key evidence", "Pattern or contrast"],
+    "rows": 4,
+    "prompt": "Use this organizer to compare evidence from each station before writing your exit response.",
+    "success_criteria": [
+      "I used the organizer to compare evidence, not just collect it."
+    ]
+  },
+  "exit_ticket": {
+    "title": "Exit Ticket",
+    "prompt": "What is one pattern you noticed across the stations, and what evidence supports it?",
+    "n_lines": 3,
+    "success_criteria": [
+      "I named one pattern and one supporting piece of evidence."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "station_rotation_graphic_organizer_proof_bundle",
+    "declared_outputs": [
+      "teacher_guide",
+      "slides",
+      "task_sheet",
+      "graphic_organizer",
+      "exit_ticket"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "station_rotation_graphic_organizer_proof_bundle"
+    },
+    {
+      "output_id": "slides_main",
+      "output_type": "slides",
+      "audience": "shared_view",
+      "source_section": "slides",
+      "bundle": "station_rotation_graphic_organizer_proof_bundle"
+    },
+    {
+      "output_id": "task_sheet_main",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "station_rotation_graphic_organizer_proof_bundle"
+    },
+    {
+      "output_id": "graphic_organizer_main",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "graphic_organizer",
+      "bundle": "station_rotation_graphic_organizer_proof_bundle"
+    },
+    {
+      "output_id": "exit_ticket_main",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "exit_ticket",
+      "bundle": "station_rotation_graphic_organizer_proof_bundle",
+      "final_evidence": true
+    }
+  ]
+}
