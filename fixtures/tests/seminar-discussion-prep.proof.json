@@ -1,0 +1,117 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "seminar_discussion_prep_proof",
+  "primary_architecture": "seminar",
+  "grade_band": "6-8",
+  "subject": "English Language Arts",
+  "grade": 8,
+  "topic": "Preparing for a short seminar discussion",
+  "theme": "english_language_arts",
+  "teacher_guide": {
+    "big_idea": "Students need a visible structure for taking a position, selecting evidence, and preparing a question before a short discussion.",
+    "learning_goals": [
+      "I can prepare a clear position for discussion.",
+      "I can collect evidence before I speak.",
+      "I can bring one question into the discussion."
+    ],
+    "materials": [
+      "slides",
+      "discussion prep sheet",
+      "exit ticket"
+    ],
+    "timing": [
+      { "time": "0:00-0:10", "activity": "Open the seminar question and model position-building." },
+      { "time": "0:10-0:25", "activity": "Students complete the discussion prep sheet." },
+      { "time": "0:25-0:40", "activity": "Partner share and discussion rehearsal." },
+      { "time": "0:40-0:50", "activity": "Exit reflection." }
+    ],
+    "teacher_notes": [
+      "Keep the prep sheet evidence-focused rather than debate-theater focused.",
+      "Push students to bring at least one specific piece of evidence into the discussion."
+    ]
+  },
+  "slides": [
+    {
+      "type": "TITLE",
+      "title": "Seminar Prep",
+      "layout": "hero",
+      "content": {
+        "subtitle": "Prepare your position, evidence, and one real question before the discussion begins."
+      }
+    },
+    {
+      "type": "ENGAGE",
+      "title": "Discussion question",
+      "layout": "prompt",
+      "content": {
+        "scenario": "Should communities put more funding into public libraries or into youth recreation spaces?",
+        "prompts": [
+          "What is your first position?",
+          "What evidence could support it?",
+          "What question do you still need to ask?"
+        ]
+      }
+    }
+  ],
+  "discussion_prep_sheet": {
+    "title": "Discussion Prep Sheet",
+    "discussion_prompt": "Should communities put more funding into public libraries or into youth recreation spaces?",
+    "position_label": "My position",
+    "evidence_count": 2,
+    "include_question": true,
+    "include_counterargument": true,
+    "success_criteria": [
+      "I stated a clear position.",
+      "I prepared evidence before speaking.",
+      "I brought one real question into the discussion."
+    ]
+  },
+  "exit_ticket": {
+    "title": "Exit Ticket",
+    "prompt": "What helped you feel more ready for the discussion today?",
+    "n_lines": 3,
+    "success_criteria": [
+      "I named one useful preparation move."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "seminar_discussion_prep_proof_bundle",
+    "declared_outputs": [
+      "teacher_guide",
+      "slides",
+      "discussion_prep_sheet",
+      "exit_ticket"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "seminar_discussion_prep_proof_bundle"
+    },
+    {
+      "output_id": "slides_main",
+      "output_type": "slides",
+      "audience": "shared_view",
+      "source_section": "slides",
+      "bundle": "seminar_discussion_prep_proof_bundle"
+    },
+    {
+      "output_id": "discussion_prep_sheet_main",
+      "output_type": "discussion_prep_sheet",
+      "audience": "student",
+      "source_section": "discussion_prep_sheet",
+      "bundle": "seminar_discussion_prep_proof_bundle"
+    },
+    {
+      "output_id": "exit_ticket_main",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "exit_ticket",
+      "bundle": "seminar_discussion_prep_proof_bundle",
+      "final_evidence": true
+    }
+  ]
+}
