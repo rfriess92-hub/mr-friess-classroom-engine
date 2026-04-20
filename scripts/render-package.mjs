@@ -12,6 +12,7 @@ import { buildTypedLayoutBlocks, countBlocksByType, validateTypedLayoutBlocks } 
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
 import { resolveSourceSection } from '../engine/schema/source-section.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
+import { renderStudentDoc, renderStudentDocDays, supportsHtmlRender } from '../engine/pdf-html/index.mjs'
 
 function pickPython() {
   for (const cmd of ['python', 'python3', 'py']) {
@@ -180,6 +181,7 @@ const baseOutDir = repoPath(outArg)
 const outDir = flatOut ? baseOutDir : resolve(baseOutDir, renderPlan.package_id ?? 'package')
 mkdirSync(outDir, { recursive: true })
 const routeBundles = []
+const htmlRoutes = []
 
 for (const route of routes) {
   const typedBlocks = buildTypedLayoutBlocks(pkg, route)
@@ -244,6 +246,10 @@ for (const route of routes) {
   }
 
   if (trace.mode === 'doc_mode') {
+    if (route.audience === 'student' && supportsHtmlRender(route.output_type)) {
+      htmlRoutes.push(route)
+      continue
+    }
     if (route.renderer_family === 'pdf' && DOC_OUTPUT_TYPES.has(route.output_type)) {
       renderPdfOutput(packagePath, route, outDir)
       continue
@@ -274,3 +280,13 @@ if (packageQa) {
 }
 
 console.log(`Rendered package ${renderPlan.package_id} to ${outDir}`)
+
+// HTML routes are collected during the sync pass above and rendered here.
+// Playwright is async; top-level await is valid in this ES module.
+for (const route of htmlRoutes) {
+  if (route.output_type === 'task_sheet') {
+    await renderStudentDocDays(pkg, route, outDir)
+  } else {
+    await renderStudentDoc(pkg, route, resolve(outDir, `${route.output_id}.pdf`))
+  }
+}

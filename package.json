@@ -15,6 +15,11 @@
     "qa:pedagogy-variants": "node scripts/qa-pedagogy-variants.mjs",
     "select:assignment-family": "node scripts/select-assignment-family.mjs",
     "qa:assignment-family": "node scripts/validate-assignment-build.mjs",
-    "generate:package": "node scripts/generate-package.mjs"
+    "generate:package": "node scripts/generate-package.mjs",
+    "fonts:install": "npx playwright install chromium"
+  },
+  "devDependencies": {
+    "@fontsource/lexend": "^5.0.0",
+    "playwright": "^1.44.0"
   }
 }

@@ -28,6 +28,10 @@ export const FIXTURE_MAP = {
   pbg_english12: 'fixtures/plan-build-grow/pbg_english12.json',
   pbg_math8: 'fixtures/plan-build-grow/pbg_math8.json',
   pbg_workplace_math10: 'fixtures/plan-build-grow/pbg_workplace_math10.json',
+  careers8_mosaic_w1: 'fixtures/generated/careers-8-mosaic-week-1-know-yourself.grade8-careers.json',
+  careers8_mosaic_w2: 'fixtures/generated/careers-8-mosaic-week-2-bias-and-decision-making.grade8-careers.json',
+  careers8_mosaic_w3: 'fixtures/generated/careers-8-mosaic-week-3-community-and-meaning.grade8-careers.json',
+  careers8_mosaic_w4: 'fixtures/generated/careers-8-mosaic-week-4-technology-and-identity.grade8-careers.json',
 }
 
 export function ensureExists(path, label = path) {
