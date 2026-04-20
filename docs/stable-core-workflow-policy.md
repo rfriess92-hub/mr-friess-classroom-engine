@@ -51,6 +51,7 @@ The live stable-core render-plan path already reads family selection from `engin
 Docs should distinguish clearly between:
 
 - **live today** - what the stable-core render path actually uses now
+- **proven in CI** - what workflows and tests explicitly exercise now
 - **upstream tooling** - authoring and validation surfaces used before render work
 - **compatibility-only** - temporary residue kept so the live path does not break during cleanup
 
@@ -64,8 +65,9 @@ Current reality, stated plainly:
 - `engine/schema/render-plan.mjs` already imports `engine/assignment-family/package-selector.mjs` for live family selection
 - `engine/family/*` remains compatibility-only residue during cleanup
 - `pnpm test` runs Node tests only
+- `npm run test:all` runs Node tests plus `pytest tests/python`
 - `.github/workflows/ci.yml` runs the Node test command plus `pytest tests/python`
-- `.github/workflows/stable-core.yml` runs `pnpm test` plus stable-core fixture schema, route, and render smoke coverage
+- `.github/workflows/stable-core.yml` runs `pnpm test` plus stable-core proof fixtures for benchmark, challenge7 routing, evaluated assignment-family routing, task-sheet response patterns, seminar discussion-prep, station-rotation organizer, and PBG smoke coverage
 - `stable-core.yml` installs Python renderer dependencies for render steps, but it does not invoke `pytest`
 - legacy direct builders remain compatibility and debugging surfaces, not acceptance proof
 - `package.json` does not currently expose `build:all`, `build:pptx`, or `build:pdf`
@@ -182,7 +184,7 @@ Until semantic QA grows, some of this remains manual by design.
 - Stable-core package rendering writes package-scoped output directories by default.
 - Legacy direct builders remain compatibility and debugging surfaces, not stable-core acceptance proof.
 - `DECISIONS.md` is the active decisions log for repo structure and operating rules.
-- `pnpm test` is node-only, while Python tests run separately in `.github/workflows/ci.yml`.
+- `pnpm test` is node-only, while Python tests run separately in `.github/workflows/ci.yml` or through `npm run test:all` locally.
 
 ---
 
@@ -192,7 +194,7 @@ Revisit this guide when one of these becomes true:
 
 - compatibility residue under `engine/family/*` is removed
 - family validation becomes part of the real stable-core acceptance gate
-- stable-core CI expands to cover the newer proof fixtures
+- stable-core CI expands again beyond the current proof fixtures
 - the PPTX implementation is truly consolidated
 - legacy direct builders are formally wired or removed
 - package generation moves to a different provider abstraction or integrated authoring flow
