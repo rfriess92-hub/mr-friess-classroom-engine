@@ -1,0 +1,71 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "task_sheet_day_split_workshop",
+  "primary_architecture": "workshop_session",
+  "grade_band": "6-8",
+  "subject": "Mathematics",
+  "grade": 6,
+  "topic": "Use one packet and optional daily print splits",
+  "theme": "mathematics",
+  "bundle": {
+    "bundle_id": "task_sheet_day_split_workshop_bundle",
+    "declared_outputs": ["task_sheet"]
+  },
+  "task_sheet": {
+    "title": "Comparison Packet",
+    "purpose_line": "Keep the full packet intact, but allow day-by-day print copies when needed.",
+    "output_packaging": "packet_and_days",
+    "instructions": [
+      "Use the packet as your full working record.",
+      "If your teacher prints day-by-day, the tasks should still read as one build."
+    ],
+    "tasks": [
+      {
+        "label": "Day 1 / Part A",
+        "prompt": "Fill in the short values from the comparison notes.",
+        "lines": 1,
+        "activity_type": "station_task",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "heading": "Day 1 values",
+          "blank_prompts": [
+            "The small package is ___ cm wide.",
+            "The metal package holds ___ items."
+          ]
+        }
+      },
+      {
+        "label": "Day 2 / Part A",
+        "prompt": "Choose the strongest option for today's comparison.",
+        "lines": 1,
+        "activity_type": "card_sort",
+        "render_hints": {
+          "response_pattern": "choice_select",
+          "heading": "Day 2 choice",
+          "choice_options": [
+            "Small package",
+            "Large package",
+            "Metal package"
+          ]
+        }
+      }
+    ],
+    "embedded_supports": [
+      "Keep values short.",
+      "Use selector marks for choices, not full explanations."
+    ],
+    "success_criteria": [
+      "I kept the packet readable.",
+      "I can work from the full packet or from one printed day at a time."
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "task_sheet_main",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "task_sheet_day_split_workshop_bundle"
+    }
+  ]
+}

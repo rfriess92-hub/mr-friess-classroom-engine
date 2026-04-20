@@ -3,7 +3,9 @@ import { extname, resolve } from 'node:path'
 import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 import { planPackageRoutes } from '../engine/planner/output-router.mjs'
+import { resolveSourceSection } from '../engine/schema/source-section.mjs'
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
+import { listTaskSheetArtifactFilenames } from '../engine/pdf-html/task-sheet-packaging.mjs'
 import { deriveBundleJudgment } from './bundle-judgment.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
@@ -13,12 +15,20 @@ function extensionForRendererFamily(family) {
   return null
 }
 
-function expectedArtifactsForRoutes(routes) {
+function expectedArtifactsForRoutes(pkg, routes) {
   return routes
-    .map((route) => {
+    .flatMap((route) => {
       const ext = extensionForRendererFamily(route.renderer_family)
-      if (!ext) return null
-      return {
+      if (!ext) return []
+
+      const section = route.output_type === 'task_sheet'
+        ? resolveSourceSection(pkg, route.source_section)
+        : null
+      const filenames = route.output_type === 'task_sheet'
+        ? listTaskSheetArtifactFilenames(route.output_id, section, ext)
+        : [`${route.output_id}${ext}`]
+
+      return filenames.map((filename) => ({
         route_id: route.route_id,
         output_id: route.output_id,
         output_type: route.output_type,
@@ -29,11 +39,10 @@ function expectedArtifactsForRoutes(routes) {
         alignment_target: route.alignment_target ?? null,
         final_evidence_target: route.final_evidence_target ?? null,
         final_evidence_role: route.final_evidence_role,
-        filename: `${route.output_id}${ext}`,
+        filename,
         visual_sidecar: `${route.output_id}.visual.json`,
-      }
+      }))
     })
-    .filter(Boolean)
 }
 
 function listArtifactFiles(outDir) {
@@ -183,7 +192,7 @@ if (!existsSync(packagePath)) {
 
 const pkg = loadJson(packagePath)
 const { validation, render_plan: renderPlan, routes } = planPackageRoutes(pkg)
-const expectedArtifacts = expectedArtifactsForRoutes(routes)
+const expectedArtifacts = expectedArtifactsForRoutes(pkg, routes)
 const expectedFilenames = expectedArtifacts.map((artifact) => artifact.filename)
 const expectedFilenameSet = new Set(expectedFilenames)
 const baseOutDir = repoPath(outArg)
@@ -199,7 +208,7 @@ const expectedFilesByFixture = {}
 for (const [fixtureKey, fixturePath] of Object.entries(FIXTURE_MAP)) {
   const otherPkg = loadJson(repoPath(fixturePath))
   const { routes: otherRoutes, render_plan: otherRenderPlan } = planPackageRoutes(otherPkg)
-  const otherBaseFiles = expectedArtifactsForRoutes(otherRoutes).map((artifact) => artifact.filename)
+  const otherBaseFiles = expectedArtifactsForRoutes(otherPkg, otherRoutes).map((artifact) => artifact.filename)
   expectedFilesByFixture[fixtureKey] = flatDir
     ? otherBaseFiles
     : otherBaseFiles.map((filename) => `${otherRenderPlan.package_id}/${filename}`)
