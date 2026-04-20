@@ -96,6 +96,55 @@
           "heading": "Quick checkpoint",
           "help": "Keep this to one or two short lines."
         }
+      },
+      {
+        "label": "Part F",
+        "prompt": "Choose the single strongest recommendation for the client.",
+        "lines": 1,
+        "activity_type": "station_task",
+        "render_hints": {
+          "response_pattern": "multiple_choice",
+          "heading": "Choose the strongest recommendation",
+          "choice_options": [
+            "Use the small package for every order",
+            "Match the package to the measurements",
+            "Always choose the most expensive package",
+            "Ignore the measurements and guess"
+          ]
+        }
+      },
+      {
+        "label": "Part G",
+        "prompt": "Record the most important measurement notes for each package option.",
+        "lines": 1,
+        "activity_type": "station_task",
+        "render_hints": {
+          "response_pattern": "table_record",
+          "heading": "Complete the comparison table",
+          "table_columns": ["What to check", "Measurement note"],
+          "table_rows": ["Small package", "Large package", "Special order"],
+          "table_cell_lines": 1
+        }
+      },
+      {
+        "label": "Part H",
+        "prompt": "Use the label bank to identify the main parts of the package sketch.",
+        "lines": 1,
+        "activity_type": "card_sort",
+        "render_hints": {
+          "response_pattern": "diagram_label",
+          "heading": "Label the package sketch",
+          "diagram_title": "Basic package sketch",
+          "diagram_note": "Match each label to a numbered part of the sketch.",
+          "diagram_parts": [
+            "top flap",
+            "side panel",
+            "base",
+            "label area",
+            "tape seam",
+            "handle cutout"
+          ]
+        }
       }
     ],
     "embedded_supports": [

@@ -1,7 +1,38 @@
 import { escapeHtml, formatPrompt } from './shared.mjs'
+import { buildResponsePatternBody, responsePatternCss } from './response-patterns.mjs'
 
 function buildResponseLines(count) {
   return Array.from({ length: count }, () => '<div class="ws-line"></div>').join('\n')
+}
+
+function buildLegacyLabeledResponses(labels, lineCount = 2) {
+  return `
+    <div class="legacy-response-stack">
+      ${labels.map((label) => `
+        <div class="legacy-response-block">
+          <div class="legacy-response-label">${escapeHtml(label)}</div>
+          <div class="ws-lines">${buildResponseLines(lineCount)}</div>
+        </div>`).join('\n')}
+    </div>`
+}
+
+function buildLegacyWorksheetResponse(question) {
+  const labels = Array.isArray(question.response_labels) ? question.response_labels : []
+  const responseMode = question.response_mode ?? 'generic'
+
+  switch (responseMode) {
+    case 'two_choice_explanations':
+      return buildLegacyLabeledResponses(labels.length > 0 ? labels : ['Choice 1', 'Choice 2'], 2)
+    case 'two_reasons':
+      return buildLegacyLabeledResponses(labels.length > 0 ? labels : ['Reason 1', 'Reason 2'], 2)
+    case 'example_explanation':
+      return buildLegacyLabeledResponses(labels.length > 0 ? labels : ['Example', 'Why it matters'], 2)
+    case 'judgment_reasoning':
+      return buildLegacyLabeledResponses(labels.length > 0 ? labels : ['Judgment', 'Reasoning'], 2)
+    case 'generic':
+    default:
+      return `<div class="ws-lines">${buildResponseLines(question.n_lines ?? 3)}</div>`
+  }
 }
 
 function buildQuestion(question, index) {
@@ -9,6 +40,7 @@ function buildQuestion(question, index) {
   const questionText = question.q_text ?? question.prompt ?? ''
   const subQuestions = Array.isArray(question.sub_questions) ? question.sub_questions : []
   const pointLabel = question.points ? `<div class="question-points">${escapeHtml(String(question.points))} pt${question.points === 1 ? '' : 's'}</div>` : ''
+  const hints = question.render_hints ?? {}
 
   const responseHtml = subQuestions.length > 0
     ? `
@@ -22,7 +54,14 @@ function buildQuestion(question, index) {
             </div>
           </div>`).join('\n')}
       </div>`
-    : `<div class="ws-lines">${buildResponseLines(question.n_lines ?? 3)}</div>`
+    : hints.response_pattern
+      ? buildResponsePatternBody({
+          prompt: questionText,
+          hints,
+          lines: hints.lines ?? question.n_lines ?? 3,
+          includePrompt: false,
+        })
+      : buildLegacyWorksheetResponse(question)
 
   return `
 <section class="question-block">
@@ -58,6 +97,7 @@ export function buildWorksheetHTML(pkg, section, fontFaceCSS, designCSS) {
   <style>
 ${fontFaceCSS}
 ${designCSS}
+${responsePatternCss}
 
 .doc-title {
   margin-bottom: 14pt;
@@ -123,6 +163,25 @@ ${designCSS}
 
 .ws-line:last-child {
   border-bottom: none;
+}
+
+.legacy-response-stack {
+  margin-top: 8pt;
+}
+
+.legacy-response-block {
+  margin-bottom: 10pt;
+}
+
+.legacy-response-block:last-child {
+  margin-bottom: 0;
+}
+
+.legacy-response-label {
+  font-size: 9.5pt;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 4pt;
 }
 
 .sub-questions {

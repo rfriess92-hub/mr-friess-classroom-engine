@@ -1,0 +1,75 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "response_pattern_parity_single_period",
+  "primary_architecture": "single_period_full",
+  "grade_band": "6-8",
+  "subject": "Science",
+  "grade": 7,
+  "topic": "Stormwater, watersheds, and response systems",
+  "theme": "science",
+  "bundle": {
+    "bundle_id": "response_pattern_parity_single_period_bundle",
+    "declared_outputs": ["worksheet"]
+  },
+  "worksheet": {
+    "title": "Watershed Systems Check",
+    "tip": "Use the response space that matches the task. Do not turn every answer into a paragraph.",
+    "questions": [
+      {
+        "q_num": 1,
+        "q_text": "Which response role is the best match for monitoring runoff after a heavy storm?",
+        "n_lines": 1,
+        "render_hints": {
+          "response_pattern": "multiple_choice",
+          "choice_options": [
+            "Stormwater technician",
+            "Restaurant server",
+            "Graphic designer",
+            "Retail cashier"
+          ]
+        }
+      },
+      {
+        "q_num": 2,
+        "q_text": "Record what each role helps protect in the watershed.",
+        "render_hints": {
+          "response_pattern": "table_record",
+          "table_columns": ["What they monitor", "Why it matters"],
+          "table_rows": ["Stormwater technician", "Water-quality scientist", "Parks worker"],
+          "table_cell_lines": 1
+        }
+      },
+      {
+        "q_num": 3,
+        "q_text": "Label the main parts of the watershed diagram.",
+        "render_hints": {
+          "response_pattern": "diagram_label",
+          "diagram_title": "Simple watershed model",
+          "diagram_note": "Place each label where it best fits on the numbered model.",
+          "diagram_parts": [
+            "upstream creek",
+            "storm drain",
+            "road runoff",
+            "wetland",
+            "river mouth",
+            "neighbourhood homes"
+          ]
+        }
+      }
+    ],
+    "self_check": [
+      "I used the choice space for the multiple-choice question.",
+      "I recorded short notes in the table instead of long paragraphs.",
+      "I used the label bank for the diagram task."
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "worksheet_main",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "worksheet",
+      "bundle": "response_pattern_parity_single_period_bundle"
+    }
+  ]
+}
