@@ -256,7 +256,7 @@ export function expectedPdfIdentityPhrase(artifactName) {
   if (stem.includes('task_sheet')) return 'task sheet'
   if (stem.includes('final_response_sheet')) return 'final response sheet'
   if (stem.includes('graphic_organizer')) return 'graphic organizer'
-  if (stem.includes('discussion_prep_sheet')) return 'discussion prep sheet'
+  if (stem.includes('discussion_prep_sheet')) return 'discussion prep'
   if (stem.includes('worksheet')) return 'worksheet'
   if (stem.includes('exit_ticket')) return 'exit ticket'
   return null

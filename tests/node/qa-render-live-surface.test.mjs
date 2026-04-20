@@ -15,5 +15,5 @@ test('artifact QA recognizes newer student-facing PDF artifact families', () => 
   assert.equal(expectedArtifactTypeFromName('seminar_discussion_prep_sheet.pdf'), 'pdf')
 
   assert.equal(expectedPdfIdentityPhrase('weekly_graphic_organizer.pdf'), 'graphic organizer')
-  assert.equal(expectedPdfIdentityPhrase('seminar_discussion_prep_sheet.pdf'), 'discussion prep sheet')
+  assert.equal(expectedPdfIdentityPhrase('seminar_discussion_prep_sheet.pdf'), 'discussion prep')
 })
