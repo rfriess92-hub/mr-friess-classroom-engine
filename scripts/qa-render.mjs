@@ -9,25 +9,32 @@ function argValue(flag) {
   return process.argv[index + 1] ?? null
 }
 
-function artifactTypeFor(path) {
+export function artifactTypeFor(path) {
   const ext = extname(path).toLowerCase()
   if (ext === '.pptx') return 'pptx'
   if (ext === '.pdf') return 'pdf'
   return null
 }
 
-function artifactStem(path) {
+export function artifactStem(path) {
   const name = basename(path)
   const dot = name.lastIndexOf('.')
   return dot >= 0 ? name.slice(0, dot) : name
 }
 
-function inferAudienceBucket(name) {
+export function inferAudienceBucket(name) {
   const stem = artifactStem(name)
   if (stem.includes('teacher_guide') || stem.includes('lesson_overview') || stem.includes('checkpoint_sheet')) {
     return 'teacher_only'
   }
-  if (stem.includes('worksheet') || stem.includes('task_sheet') || stem.includes('final_response_sheet') || stem.includes('exit_ticket')) {
+  if (
+    stem.includes('worksheet')
+    || stem.includes('task_sheet')
+    || stem.includes('final_response_sheet')
+    || stem.includes('exit_ticket')
+    || stem.includes('graphic_organizer')
+    || stem.includes('discussion_prep_sheet')
+  ) {
     return 'student_facing'
   }
   if (stem.includes('slides')) {
@@ -36,7 +43,7 @@ function inferAudienceBucket(name) {
   return null
 }
 
-function expectedArtifactTypeFromName(name) {
+export function expectedArtifactTypeFromName(name) {
   const stem = artifactStem(name)
   if (stem.includes('slides')) return 'pptx'
   if (
@@ -47,6 +54,8 @@ function expectedArtifactTypeFromName(name) {
     || stem.includes('task_sheet')
     || stem.includes('final_response_sheet')
     || stem.includes('exit_ticket')
+    || stem.includes('graphic_organizer')
+    || stem.includes('discussion_prep_sheet')
   ) {
     return 'pdf'
   }
@@ -238,13 +247,15 @@ function detectScaffoldLeakage(slideTexts) {
   return hits
 }
 
-function expectedPdfIdentityPhrase(artifactName) {
+export function expectedPdfIdentityPhrase(artifactName) {
   const stem = artifactStem(artifactName)
   if (stem.includes('teacher_guide')) return 'teacher guide'
   if (stem.includes('lesson_overview')) return 'lesson overview'
   if (stem.includes('checkpoint_sheet')) return 'checkpoint sheet'
   if (stem.includes('task_sheet')) return 'task sheet'
   if (stem.includes('final_response_sheet')) return 'final response sheet'
+  if (stem.includes('graphic_organizer')) return 'graphic organizer'
+  if (stem.includes('discussion_prep_sheet')) return 'discussion prep sheet'
   if (stem.includes('worksheet')) return 'worksheet'
   if (stem.includes('exit_ticket')) return 'exit ticket'
   return null
