@@ -4,6 +4,7 @@
 
 - `engine/schema/` - canonical vocabulary, lesson-package schema validation, preflight
 - `engine/pdf/` - Python/reportlab stable-core renderer with document chrome and live student short-form organizers
+- `engine/pdf-html/` - HTML/CSS → Playwright renderer for student-facing PDFs (task sheets, worksheets, exit tickets, final response sheets, discussion prep sheets); per-day split for task_sheet; Lexend font, B&W printer-friendly design
 - `engine/pptx/` - Python/pptx slide renderer
 - `engine/render/` - typed block validation, artifact classification, multipage page-role classification, template routing
 - `engine/planner/` - output router and route planning
@@ -15,7 +16,8 @@
 
 - `npm run schema:check` - validate fixtures against schema
 - `npm run route:plan` - plan routes for a package
-- `npm run render:package` - render a full package (PPTX + PDF)
+- `npm run render:package` - render a full package (PPTX + PDF + student HTML PDFs via Playwright)
+- `npm run fonts:install` - install Playwright Chromium (required once before rendering student docs)
 - `npm run qa:render` / `qa:bundle` / `qa:visual` / `qa:pedagogy-variants` - QA helpers
 - `npm run generate:package` - generate a new package
 - `npm test` - Node tests in `tests/node`

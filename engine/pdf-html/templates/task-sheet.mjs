@@ -21,7 +21,7 @@ export function getDaysFromSection(section) {
 
 function groupTasksByDay(tasks) {
   const groups = []
-  let currentDay = null
+  let currentDay = undefined
   let currentGroup = null
 
   for (const task of tasks) {

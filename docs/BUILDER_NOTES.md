@@ -2,25 +2,32 @@
 
 ## Rendering pipeline
 
-All output is produced by two renderers:
+All output is produced by three renderers:
 
-**PDF — Python/reportlab**
+**Student PDFs — HTML/CSS → Playwright (Node)**
+- Entry: `engine/pdf-html/render.mjs` (`renderStudentDoc`, `renderStudentDocDays`)
+- Templates: `engine/pdf-html/templates/` — one file per output type (task-sheet, worksheet, exit-ticket, final-response-sheet, discussion-prep-sheet)
+- Shared CSS design system and Lexend font loader: `engine/pdf-html/templates/shared.mjs`
+- Page fillers (riddles): `engine/pdf-html/fillers.json` — edit to add or change riddles
+- `task_sheet` routes are split per-day automatically; each day produces a separate PDF
+- Requires: `pnpm install && pnpm run fonts:install` (installs Playwright Chromium)
+
+**Teacher PDFs — Python/reportlab**
 - Entry: `engine/pdf/render_stable_core_output.py`
-- Base module: `engine/pdf/archive/render_stable_core_output_base.py`
-- Per-type modules: `student_pdf_task_sheets.py`, `student_pdf_short_forms.py`, `student_pdf_graphic_organizer.py`, `student_pdf_worksheet.py`
-- Chrome wrapper: `engine/pdf/document_chrome.py` — branded header/footer applied to every page via `build_printable_pdf()`
+- Chrome wrapper: `engine/pdf/document_chrome.py` — branded header/footer via `build_printable_pdf()`
 
 **Slides — Python/python-pptx**
 - Entry: `engine/pptx/render-cli.mjs` (Node subprocess wrapper)
 - Renderer: `engine/pptx/renderer.py`
 
-Both renderers are invoked by `scripts/render-package.mjs`, which runs the full route plan → artifact classification → dispatch cycle.
+All renderers are invoked by `scripts/render-package.mjs`, which runs the full route plan → artifact classification → dispatch cycle.
 
 ## Install
 
 ```bash
 pip install reportlab python-pptx pypdf pillow lxml
 pnpm install
+pnpm run fonts:install   # installs Playwright Chromium — required for student PDFs
 ```
 
 ## Key scripts
@@ -36,15 +43,15 @@ pnpm test
 
 ## Output types
 
-| Output type | Renderer module |
-|---|---|
-| `task_sheet` | `student_pdf_task_sheets.py` |
-| `final_response_sheet` | `student_pdf_task_sheets.py` |
-| `exit_ticket` | `student_pdf_short_forms.py` |
-| `discussion_prep_sheet` | `student_pdf_short_forms.py` |
-| `graphic_organizer` | `student_pdf_graphic_organizer.py` |
-| `worksheet` | `student_pdf_worksheet.py` |
-| `teacher_guide` | base module + multipage variant |
-| `lesson_overview` | base module |
-| `checkpoint_sheet` | base module |
-| `slides` | `engine/pptx/renderer.py` |
+| Output type | Renderer | Notes |
+|---|---|---|
+| `task_sheet` | `engine/pdf-html` (HTML→PDF) | per-day split; one PDF per "Day X" |
+| `worksheet` | `engine/pdf-html` (HTML→PDF) | numbered questions, optional points |
+| `exit_ticket` | `engine/pdf-html` (HTML→PDF) | two-up layout, cut line |
+| `final_response_sheet` | `engine/pdf-html` (HTML→PDF) | culminating task, success criteria |
+| `discussion_prep_sheet` | `engine/pdf-html` (HTML→PDF) | position/evidence/counterargument boxes |
+| `graphic_organizer` | `engine/pdf` (Python/reportlab) | |
+| `teacher_guide` | `engine/pdf` (Python/reportlab) | multipage variant |
+| `lesson_overview` | `engine/pdf` (Python/reportlab) | |
+| `checkpoint_sheet` | `engine/pdf` (Python/reportlab) | |
+| `slides` | `engine/pptx/renderer.py` | |
