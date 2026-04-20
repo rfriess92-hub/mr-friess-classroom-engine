@@ -72,6 +72,30 @@ jobs:
       - name: Render task-sheet response-pattern fixture
         run: pnpm run render:package -- --package fixtures/tests/task-sheet-response-patterns.workshop-session.json --out output
 
+      - name: Schema check seminar discussion-prep proof fixture
+        run: pnpm run schema:check -- --package fixtures/tests/seminar-discussion-prep.proof.json
+
+      - name: Route plan seminar discussion-prep proof fixture
+        run: pnpm run route:plan -- --package fixtures/tests/seminar-discussion-prep.proof.json --print-routes
+
+      - name: Render seminar discussion-prep proof fixture
+        run: pnpm run render:package -- --package fixtures/tests/seminar-discussion-prep.proof.json --out output
+
+      - name: Bundle QA seminar discussion-prep proof fixture
+        run: pnpm run qa:bundle -- --package fixtures/tests/seminar-discussion-prep.proof.json --out output
+
+      - name: Schema check station-rotation organizer proof fixture
+        run: pnpm run schema:check -- --package fixtures/tests/station-rotation-graphic-organizer.proof.json
+
+      - name: Route plan station-rotation organizer proof fixture
+        run: pnpm run route:plan -- --package fixtures/tests/station-rotation-graphic-organizer.proof.json --print-routes
+
+      - name: Render station-rotation organizer proof fixture
+        run: pnpm run render:package -- --package fixtures/tests/station-rotation-graphic-organizer.proof.json --out output
+
+      - name: Bundle QA station-rotation organizer proof fixture
+        run: pnpm run qa:bundle -- --package fixtures/tests/station-rotation-graphic-organizer.proof.json --out output
+
       - name: Schema check PBG ELA 10 fixture
         run: pnpm run schema:check -- --fixture pbg_english10
 
