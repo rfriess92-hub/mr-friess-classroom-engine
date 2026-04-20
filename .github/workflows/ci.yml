@@ -18,8 +18,17 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install Node dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install chromium
+
       - name: Run stable-core node tests
-        run: npm test
+        run: pnpm test
 
       - name: Setup Python
         uses: actions/setup-python@v5
