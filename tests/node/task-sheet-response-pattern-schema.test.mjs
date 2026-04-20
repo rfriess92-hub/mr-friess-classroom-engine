@@ -5,6 +5,7 @@ import { loadJson, repoPath } from '../../scripts/lib.mjs'
 
 const lessonPackageSchema = loadJson(repoPath('schemas', 'lesson-package.schema.json'))
 const taskHints = lessonPackageSchema.$defs?.studentPdfTaskRenderHints?.properties ?? {}
+const taskSheetSection = lessonPackageSchema.$defs?.taskSheetSection?.properties ?? {}
 
 test('task-sheet render hints expose response-pattern primitives explicitly', () => {
   assert.deepEqual(
@@ -19,4 +20,11 @@ test('task-sheet render hints expose response-pattern primitives explicitly', ()
   assert.equal(taskHints.record_fields?.type, 'array')
   assert.equal(taskHints.workspace_rows?.minimum, 2)
   assert.equal(taskHints.answer_label?.type, 'string')
+})
+
+test('task-sheet schema exposes explicit output packaging control', () => {
+  assert.deepEqual(
+    new Set(taskSheetSection.output_packaging?.enum ?? []),
+    new Set(['packet', 'packet_and_days']),
+  )
 })
