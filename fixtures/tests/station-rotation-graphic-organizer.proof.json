@@ -66,12 +66,6 @@
         "prompt": "Record the strongest evidence from each station in short point form.",
         "lines": 6,
         "activity_type": "station_task"
-      },
-      {
-        "label": "Compare",
-        "prompt": "What pattern or contrast do you notice when you look across the stations?",
-        "lines": 4,
-        "activity_type": "write_response"
       }
     ],
     "embedded_supports": [
@@ -80,7 +74,7 @@
     ],
     "success_criteria": [
       "I recorded evidence from the stations.",
-      "I compared what I noticed across stations."
+      "I used the organizer to compare what I noticed across stations."
     ]
   },
   "graphic_organizer": {
