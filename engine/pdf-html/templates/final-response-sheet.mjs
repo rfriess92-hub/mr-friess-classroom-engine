@@ -32,59 +32,50 @@ function normalizeTableRows(tableRows, fallbackRows) {
   return fallbackRows
 }
 
-function buildPlanningReminders(items) {
-  if (!Array.isArray(items) || items.length === 0) return ''
-
-  return `
-<div class="support-card">
-  <div class="support-card-label">Use your notes</div>
-  <ul class="support-list-inline">
-    ${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('\n')}
-  </ul>
-</div>`
-}
-
-function buildParagraphSupport(paragraphSupport) {
-  if (!paragraphSupport) return ''
-
+function buildPrepPanels(section) {
+  const panels = []
+  const planningReminders = Array.isArray(section.planning_reminders) ? section.planning_reminders : []
+  const paragraphSupport = section.paragraph_support ?? {}
   const frameStrip = Array.isArray(paragraphSupport.frame_strip) ? paragraphSupport.frame_strip : []
-  const reminderBox = paragraphSupport.reminder_box ? `
-    <div class="frame-reminder">${escapeHtml(paragraphSupport.reminder_box)}</div>
-  ` : ''
+  const reminderBox = String(paragraphSupport.reminder_box ?? '').trim()
 
-  if (frameStrip.length === 0 && !reminderBox) return ''
+  if (planningReminders.length > 0) {
+    panels.push(`
+<div class="prep-panel">
+  <div class="prep-label">Use your notes</div>
+  <ul class="prep-list">
+    ${planningReminders.map((item) => `<li>${escapeHtml(item)}</li>`).join('\n')}
+  </ul>
+</div>`)
+  }
 
-  return `
-<div class="frame-card">
-  <div class="support-card-label">Helpful structure</div>
+  if (frameStrip.length > 0 || reminderBox) {
+    panels.push(`
+<div class="prep-panel">
+  <div class="prep-label">Keep the shape simple</div>
   ${frameStrip.length > 0 ? `
-    <div class="frame-strip">
-      ${frameStrip.map((frame) => `<div class="frame-chip">${escapeHtml(frame)}</div>`).join('\n')}
+    <div class="prep-chip-row">
+      ${frameStrip.map((frame) => `<span class="prep-chip">${escapeHtml(frame)}</span>`).join('\n')}
     </div>
   ` : ''}
-  ${reminderBox}
-</div>`
-}
+  ${reminderBox ? `<div class="prep-note">${escapeHtml(reminderBox)}</div>` : ''}
+</div>`)
+  }
 
-function buildSuccessCriteria(items, label = 'Quick check') {
-  if (!Array.isArray(items) || items.length === 0) return ''
+  if (panels.length === 0) return ''
 
   return `
-<div class="criteria-section">
-  <div class="support-card-label">${escapeHtml(label)}</div>
-  ${items.map((item) => `
-    <div class="criteria-row">
-      <span class="criteria-box"></span>
-      <span class="criteria-text">${escapeHtml(item)}</span>
-    </div>`).join('\n')}
+<div class="prep-strip">
+  ${panels.join('\n')}
 </div>`
 }
 
 function buildPlanningSpace(count) {
   if (!count || count <= 0) return ''
+
   return `
 <div class="planning-block">
-  <div class="support-card-label">Rough planning</div>
+  <div class="planning-label">Plan first if helpful</div>
   <div class="planning-lines">
     ${Array.from({ length: count }, () => '<div class="planning-line"></div>').join('\n')}
   </div>
@@ -97,7 +88,6 @@ function buildResponseLines(count) {
 
 function buildResponseNote(note) {
   if (!note) return ''
-
   return `<div class="response-section-note">${escapeHtml(note)}</div>`
 }
 
@@ -217,6 +207,20 @@ function buildResponseStructure(section) {
   }
 }
 
+function buildSuccessCriteria(items, label = 'Quick check') {
+  if (!Array.isArray(items) || items.length === 0) return ''
+
+  return `
+<div class="criteria-section">
+  <div class="criteria-label">${escapeHtml(label)}</div>
+  ${items.map((item) => `
+    <div class="criteria-row">
+      <span class="criteria-box"></span>
+      <span class="criteria-text">${escapeHtml(item)}</span>
+    </div>`).join('\n')}
+</div>`
+}
+
 export function buildFinalResponseSheetHTML(pkg, section, fontFaceCSS, designCSS) {
   const hints = section.render_hints ?? {}
   const title = section.title ?? 'Final Response'
@@ -239,84 +243,92 @@ ${fontFaceCSS}
 ${designCSS}
 
 .doc-title {
-  margin-bottom: 14pt;
-  border-bottom: 2pt solid #111827;
-  padding-bottom: 10pt;
+  margin-bottom: 12pt;
+  border-bottom: 1pt solid #D1D5DB;
+  padding-bottom: 8pt;
 }
 
 .prompt-box {
-  border: 1.5pt solid #D1D5DB;
-  border-left: 5pt solid #111827;
-  border-radius: 4pt;
-  padding: 14pt 16pt;
+  border: 1pt solid #D1D5DB;
+  border-radius: 10pt;
+  padding: 12pt 14pt;
   margin-bottom: 12pt;
-  background: #F9FAFB;
+  background: #FBFAF7;
 }
 
 .prompt-box-label,
-.support-card-label {
-  font-size: 8.5pt;
+.prep-label,
+.planning-label,
+.criteria-label,
+.structured-panel-label {
+  font-size: 8pt;
   font-weight: 700;
-  text-transform: none;
-  letter-spacing: 0.01em;
-  color: #4B5563;
-  margin-bottom: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #6B7280;
+  margin-bottom: 6pt;
 }
 
 .prompt-text {
-  font-size: 11pt;
-  line-height: 1.6;
+  font-size: 10.8pt;
+  line-height: 1.58;
   color: #111827;
 }
 
-.support-card,
-.frame-card,
-.planning-block,
-.criteria-section {
-  border: 1pt solid #D1D5DB;
-  border-radius: 4pt;
-  padding: 10pt 12pt;
+.prep-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210pt, 1fr));
+  gap: 10pt;
   margin-bottom: 12pt;
-  page-break-inside: avoid;
 }
 
-.support-card,
-.frame-card {
-  background: #FFFFFF;
+.prep-panel {
+  border-top: 1pt solid #D1D5DB;
+  padding-top: 8pt;
 }
 
-.support-list-inline {
+.prep-list {
   padding-left: 16pt;
 }
 
-.support-list-inline li {
-  color: #374151;
+.prep-list li {
   margin-bottom: 4pt;
+  color: #4B5563;
+  font-size: 9.5pt;
 }
 
-.support-list-inline li:last-child {
+.prep-list li:last-child {
   margin-bottom: 0;
 }
 
-.frame-strip {
+.prep-chip-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8pt;
 }
 
-.frame-chip {
+.prep-chip {
   border: 1pt solid #D1D5DB;
-  border-radius: 4pt;
-  padding: 6pt 8pt;
+  border-radius: 999pt;
+  padding: 5pt 10pt;
   background: #F9FAFB;
-  font-size: 9.5pt;
+  font-size: 9pt;
   color: #374151;
 }
 
-.frame-reminder {
-  margin-top: 10pt;
-  font-size: 9.5pt;
+.prep-note {
+  margin-top: 8pt;
   color: #6B7280;
+  font-size: 9.25pt;
+  line-height: 1.45;
+}
+
+.planning-block {
+  border: 1pt dashed #D1D5DB;
+  border-radius: 10pt;
+  padding: 10pt 12pt 8pt;
+  margin-bottom: 14pt;
+  background: #FFFFFF;
 }
 
 .planning-line {
@@ -331,8 +343,6 @@ ${designCSS}
 .response-section-label {
   font-size: 9pt;
   font-weight: 700;
-  text-transform: none;
-  letter-spacing: 0.01em;
   color: #374151;
   margin: 14pt 0 6pt;
   page-break-after: avoid;
@@ -344,11 +354,15 @@ ${designCSS}
   margin-bottom: 8pt;
 }
 
-.response-lines,
-.structured-panel-lines {
-  border: 1pt solid #D1D5DB;
-  border-radius: 4pt;
-  padding: 2pt 10pt 6pt;
+.response-shell {
+  border: 1pt solid #CFC7BC;
+  border-radius: 12pt;
+  padding: 10pt 12pt 12pt;
+  background: #FFFFFF;
+}
+
+.response-lines {
+  padding: 2pt 2pt 4pt;
 }
 
 .response-line,
@@ -379,13 +393,11 @@ ${designCSS}
   margin-bottom: 0;
 }
 
-.structured-panel-label {
-  font-size: 8.5pt;
-  font-weight: 700;
-  text-transform: none;
-  letter-spacing: 0.01em;
-  color: #4B5563;
-  margin-bottom: 5pt;
+.structured-panel-lines {
+  border: 1pt solid #D1D5DB;
+  border-radius: 9pt;
+  padding: 2pt 10pt 6pt;
+  background: #FCFBF8;
 }
 
 .chain-flow {
@@ -417,7 +429,7 @@ ${designCSS}
   width: 100%;
   border-collapse: collapse;
   border: 1pt solid #D1D5DB;
-  border-radius: 4pt;
+  border-radius: 10pt;
   overflow: hidden;
 }
 
@@ -458,6 +470,12 @@ ${designCSS}
   border-bottom: 1pt solid #D1D5DB;
 }
 
+.criteria-section {
+  margin-top: 14pt;
+  border-top: 1pt solid #E5E7EB;
+  padding-top: 10pt;
+}
+
 .criteria-row {
   display: flex;
   align-items: flex-start;
@@ -474,7 +492,7 @@ ${designCSS}
 .criteria-box {
   width: 10pt;
   height: 10pt;
-  border: 1.5pt solid #374151;
+  border: 1.4pt solid #6B7280;
   border-radius: 2pt;
   flex-shrink: 0;
   margin-top: 1pt;
@@ -502,13 +520,14 @@ ${designCSS}
       <div class="prompt-text">${formatPrompt(prompt)}</div>
     </div>
 
-    ${buildPlanningReminders(section.planning_reminders)}
-    ${buildParagraphSupport(section.paragraph_support)}
+    ${buildPrepPanels(section)}
     ${buildPlanningSpace(planningLines)}
 
     <div class="response-section-label">${escapeHtml(responseStructure.responseLabel)}</div>
     ${buildResponseNote(responseStructure.responseNote)}
-    ${responseStructure.body}
+    <div class="response-shell">
+      ${responseStructure.body}
+    </div>
 
     ${buildSuccessCriteria(quickCheckItems, quickCheckLabel)}
   </div>

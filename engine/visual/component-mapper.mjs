@@ -716,10 +716,11 @@ function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
   const tasks = Array.isArray(options.tasks) ? options.tasks : (section.tasks ?? [])
   const lineCounts = Array.isArray(options.line_counts) ? options.line_counts : scaledTaskLines(options.length_band ?? 'standard', tasks.length, compact ? 3 : 4)
   for (const [taskIndex, task] of tasks.entries()) {
+    const promptRole = taskIndex === 0 ? 'main_prompt' : 'secondary_prompt'
     components.push({
       id: `page_${pageIndex + 1}_section_${taskIndex + 1}`,
       type: 'SectionBlock',
-      visual_role: 'main_prompt',
+      visual_role: promptRole,
       content: {
         label: task.label ?? `Part ${taskIndex + 1}`,
         prompt: task.prompt ?? '',
@@ -743,17 +744,53 @@ function mapWorksheetComponents(section, pageRole, pageIndex, options = {}) {
   }
 
   if (pageRole === 'final_response') {
+    if (String(section.prompt ?? '').trim()) {
+      components.push({
+        id: `page_${pageIndex + 1}_final_prompt`,
+        type: 'SectionBlock',
+        visual_role: 'secondary_prompt',
+        content: {
+          label: section.render_hints?.prompt_label ?? 'Prompt',
+          prompt: section.prompt ?? '',
+        },
+        options: {
+          prompt: section.prompt ?? '',
+        },
+      })
+    }
+
     components.push({
       id: `page_${pageIndex + 1}_final_draft`,
       type: 'FinalDraftField',
       visual_role: 'student_response',
       content: {
-        label: 'Final paragraph',
+        label: section.render_hints?.response_label ?? 'Write your response here',
       },
       options: {
         writing_lines: Number(section.response_lines ?? 10),
       },
     })
+
+    const quickCheckItems = Array.isArray(section.render_hints?.quick_check_items) && section.render_hints.quick_check_items.length > 0
+      ? section.render_hints.quick_check_items
+      : (Array.isArray(section.success_criteria) ? section.success_criteria : [])
+
+    if (quickCheckItems.length > 0) {
+      components.push({
+        id: `page_${pageIndex + 1}_final_review`,
+        type: 'SuccessCheckPanel',
+        visual_role: 'success_check',
+        content: {
+          label: section.render_hints?.quick_check_label ?? 'Quick check',
+          checklist: quickCheckItems.slice(0, 3),
+        },
+        options: {
+          item_count: Math.min(quickCheckItems.length, 3),
+          compact: true,
+          full_width: true,
+        },
+      })
+    }
   }
 
   return components.map(withEstimatedLayout)

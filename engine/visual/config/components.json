@@ -112,7 +112,7 @@
     },
     "SectionBlock": {
       "artifact_types": ["worksheet"],
-      "allowed_roles": ["main_prompt", "checkpoint"],
+      "allowed_roles": ["main_prompt", "secondary_prompt", "checkpoint"],
       "required_content": ["label", "prompt"]
     },
     "WritingField": {

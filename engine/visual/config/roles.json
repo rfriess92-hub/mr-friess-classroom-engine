@@ -39,9 +39,9 @@
       "radius_token": "sharp"
     },
     "secondary_prompt": {
-      "fill_mode": "paper",
+      "fill_mode": "panel",
       "border_mode": "thin",
-      "radius_token": "sharp"
+      "radius_token": "soft"
     },
     "example": {
       "fill_mode": "paper",
@@ -90,7 +90,7 @@
     "student_response": {
       "fill_mode": "paper",
       "border_mode": "none",
-      "radius_token": "sharp",
+      "radius_token": "soft",
       "line_emphasis": "light",
       "padding_token": "md"
     },
