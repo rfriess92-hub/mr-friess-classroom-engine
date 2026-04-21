@@ -3,10 +3,10 @@
   "schema_id": "mr_friess_layout_templates",
   "page_roles": {
     "slide_deck": [
-      "launch",
-      "discuss",
+      "hero",
+      "prompt",
       "model",
-      "task",
+      "compare",
       "reflect"
     ],
     "worksheet": [
@@ -16,82 +16,119 @@
     ]
   },
   "slide_layouts": {
-    "launch_open": {
+    "S_HERO": {
       "page_roles": [
-        "launch"
+        "hero"
       ],
       "regions": [
-        "course_band",
-        "title",
-        "main_stage",
-        "support_rail"
+        "hero_band",
+        "title_stage",
+        "subtitle_stage",
+        "visual_field"
       ],
+      "budgets": {
+        "max_words": 25,
+        "max_lines": 5,
+        "max_bullets": 0,
+        "max_prompts": 0,
+        "body_font_min": 24
+      },
       "rules": [
-        "main_stage gets 55-70% of usable area",
-        "support_rail sits right or below",
-        "max 2 primary boxes"
+        "title_stage is dominant",
+        "support text stays minimal",
+        "no support cards by default",
+        "slide should feel like a classroom poster, not a dashboard"
       ]
     },
-    "discuss_two_zone": {
+    "S_PROMPT": {
       "page_roles": [
-        "discuss"
+        "prompt"
       ],
       "regions": [
-        "course_band",
-        "title",
-        "main_stage",
-        "secondary_stage",
-        "support_footer"
+        "title_band",
+        "prompt_stage",
+        "prompt_list"
       ],
+      "budgets": {
+        "max_words": 40,
+        "max_lines": 7,
+        "max_bullets": 3,
+        "max_prompts": 3,
+        "body_font_min": 24
+      },
       "rules": [
-        "secondary_stage must be visually lighter than main_stage",
-        "support_footer stays short"
+        "prompt_stage is dominant",
+        "prompt_list is secondary",
+        "do not use stacked mini-cards",
+        "keep one dominant question or scenario"
       ]
     },
-    "model_focus": {
+    "S_MODEL": {
       "page_roles": [
         "model"
       ],
       "regions": [
-        "course_band",
-        "title",
-        "example_stage",
-        "cue_stage"
+        "title_band",
+        "model_stage",
+        "support_strip"
       ],
+      "budgets": {
+        "max_words": 50,
+        "max_lines": 7,
+        "max_bullets": 2,
+        "max_prompts": 2,
+        "body_font_min": 24
+      },
       "rules": [
-        "example_stage is dominant",
-        "cue_stage is compact"
+        "model_stage is dominant",
+        "show one example only",
+        "support_strip remains visually secondary"
       ]
     },
-    "task_flow": {
+    "S_COMPARE": {
       "page_roles": [
-        "task"
+        "compare"
       ],
       "regions": [
-        "course_band",
-        "title",
-        "task_stage",
-        "cue_stage",
-        "footer_note"
+        "title_band",
+        "compare_left",
+        "compare_right",
+        "takeaway_strip"
       ],
+      "budgets": {
+        "max_words": 45,
+        "max_lines": 7,
+        "max_bullets": 2,
+        "max_prompts": 1,
+        "body_font_min": 24
+      },
       "rules": [
-        "task_stage emphasizes action sequence",
-        "footer_note is lowest contrast"
+        "only one compare pair per slide",
+        "left and right panels form one compare unit",
+        "no extra dashboard cards"
       ]
     },
-    "reflect_open": {
+    "S_REFLECT": {
       "page_roles": [
         "reflect"
       ],
       "regions": [
-        "course_band",
-        "title",
+        "title_band",
         "reflection_stage",
-        "optional_support"
+        "optional_prompt"
       ],
+      "budgets": {
+        "max_words": 30,
+        "max_lines": 5,
+        "max_bullets": 2,
+        "max_prompts": 2,
+        "body_font_min": 24
+      },
       "rules": [
-        "more whitespace than any other slide",
-        "no more than 2 content blocks"
+        "reflection_stage is dominant",
+        "use more whitespace than any other slide family",
+        "no three-stack prompt ladders",
+        "keep the slide open and breathable"
       ]
     }
   },
@@ -148,9 +185,9 @@
   "sequence_rules": {
     "slide_deck": [
       "across a 5-slide lesson sequence at least 3 different layout ids must be used",
-      "no more than 2 consecutive slides may share the same region structure",
-      "at least 1 slide must use a side support rail",
-      "at least 1 slide must reduce box count for visual breathing room"
+      "no more than 2 consecutive slides may share the same layout id",
+      "prompt and reflect slides should be the sparsest text surfaces in the deck",
+      "if a slide exceeds its family budget, reroute or split instead of shrinking"
     ],
     "worksheet": [
       "every page gets one warm entry or orientation region",

@@ -103,195 +103,138 @@ def add_resolved_images(slide, image_plan: dict) -> None:
             continue
 
 
-def render_hero_with_image(slide, packet: dict, slide_spec: dict, accent, slot: dict) -> None:
-    content = slide_spec.get("content", {})
-    title = slide_spec.get("title", packet.get("topic", "Lesson"))
-    subtitle = content.get("subtitle") or ""
-    slot_x = float(slot.get("bounds", {}).get("x", 7.7))
-    text_w = max(5.6, slot_x - 1.2)
+def reserved_text_width(slot: dict | None, minimum: float = 6.1) -> float:
+    if not slot:
+        return 11.2
+    bounds = slot.get("bounds") or {}
+    image_left = float(bounds.get("x", 12.0))
+    return max(minimum, image_left - 1.15)
 
-    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.35), Inches(0.35), Inches(0.10), Inches(0.66))
-    bar.fill.solid()
-    bar.fill.fore_color.rgb = accent
-    bar.line.fill.background()
-    base.add_textbox(slide, 0.58, 0.32, 12.0, 0.5, title, font_size=26, bold=True, color=base.NAVY)
-    sep = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(1.35), Inches(12.0), Inches(0.03))
-    sep.fill.solid()
-    sep.fill.fore_color.rgb = base.BORDER
-    sep.line.fill.background()
 
-    left_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.72), Inches(1.72), Inches(0.12), Inches(4.45))
-    left_bar.fill.solid()
-    left_bar.fill.fore_color.rgb = accent
-    left_bar.line.fill.background()
-
-    note = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(0.95), Inches(4.95), Inches(text_w - 0.15), Inches(0.62))
-    note.fill.solid()
-    note.fill.fore_color.rgb = base.LIGHT
-    note.line.color.rgb = base.BORDER
-    note.line.width = Pt(0.8)
-
-    base.add_textbox(slide, 0.95, 1.95, text_w, 0.95, title, font_size=28, bold=True, color=base.NAVY)
-    if subtitle:
-        base.add_textbox(slide, 0.95, 2.95, text_w, 1.25, subtitle, font_size=17, color=base.SLATE)
-    base.add_textbox(slide, 1.15, 5.15, text_w - 0.35, 0.18, "Launch the lesson here before moving students into the first prompt.", font_size=14, color=base.SLATE, align=PP_ALIGN.CENTER)
-
-    meta = f"{packet.get('subject', 'Subject')} {packet.get('grade', '')}"
-    if packet.get("lesson_label"):
-        meta += f" · {packet['lesson_label']}"
-    base.add_textbox(slide, 0.95, 6.12, text_w, 0.30, meta, font_size=14, color=accent, bold=True)
-    stripe = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.95), Inches(6.55), Inches(11.4), Inches(0.16))
-    stripe.fill.solid()
-    stripe.fill.fore_color.rgb = accent
-    stripe.line.fill.background()
+def image_overlay(slide, slot: dict | None):
+    if not slot:
+        return
+    bounds = slot.get("bounds") or {}
+    x = float(bounds.get("x", 0))
+    y = float(bounds.get("y", 0))
+    w = float(bounds.get("w", 0))
+    h = float(bounds.get("h", 0))
+    if w <= 0 or h <= 0:
+        return
+    panel = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(x), Inches(y), Inches(w), Inches(h))
+    panel.fill.background()
+    panel.line.color.rgb = base.BORDER
+    panel.line.width = Pt(0.8)
+    if panel.adjustments:
+        panel.adjustments[0] = 0.03
 
 
 def render_prompt_with_image(slide, packet: dict, slide_spec: dict, theme: dict, visual_page: dict, slot: dict) -> None:
-    content = dict(slide_spec.get("content", {}))
-    content["_visual_page"] = visual_page
     current.add_visual_title(slide, packet, slide_spec, visual_page, theme)
-    slot_bounds = slot.get("bounds", {})
-    image_left = float(slot_bounds.get("x", 10.75))
-    card_x = 0.85
-    card_w = max(6.4, image_left - card_x - 0.35)
+    tokens = current.page_tokens(visual_page)
+    plan = current.content_plan_for(visual_page, slide_spec)
+    accent = current.page_accent(visual_page, theme)
+    panel = current.token_rgb(tokens, "paper", base.WHITE)
+    line = current.token_rgb(tokens, "line", base.BORDER)
+    ink = current.token_rgb(tokens, "ink_primary", base.NAVY)
+    body_pt = current.type_size(tokens, "body_l", 28)
+    support_pt = current.type_size(tokens, "body_m", 24)
+    label_pt = current.type_size(tokens, "label", 18)
+    text_w = reserved_text_width(slot, 6.2)
 
-    main_style = current.component_style_bundle(visual_page, "main_prompt", theme["secondary"], theme["tints"]["secondary"], "Start here")
-    task_style = current.component_style_bundle(visual_page, "task_step", theme["primary"], theme["tints"]["primary"], "Discuss")
-    body_color = current.token_rgb(current.page_tokens(visual_page), "ink_primary", base.NAVY)
+    current.add_panel(slide, 0.80, 1.68, text_w, 2.18, panel, line, accent=accent, radius=0.05)
+    base.add_textbox(slide, 1.15, 1.90, text_w - 0.55, 0.24, "Start here", font_size=label_pt, color=accent, bold=True)
+    base.add_textbox(slide, 1.15, 2.34, text_w - 0.50, 1.08, plan.get("prompt") or "", font_size=body_pt, color=ink)
 
-    scenario = content.get("scenario") or content.get("task") or ""
-    if scenario:
-        base.add_card(slide, card_x, 1.55, card_w, 1.65, main_style["title"], main_style["accent"], main_style["tint"])
-        base.add_textbox(slide, card_x + 0.30, 2.10, card_w - 0.50, 0.75, scenario, font_size=18, color=body_color)
+    y = 4.34
+    for i, prompt in enumerate((plan.get("prompts") or [])[:3], start=1):
+        badge = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.OVAL, Inches(0.92), Inches(y + 0.02), Inches(0.34), Inches(0.34))
+        badge.fill.solid()
+        badge.fill.fore_color.rgb = accent
+        badge.line.fill.background()
+        base.add_textbox(slide, 0.99, y + 0.06, 0.18, 0.16, str(i), font_size=16, color=base.WHITE, bold=True, align=PP_ALIGN.CENTER)
+        base.add_textbox(slide, 1.38, y, text_w - 0.20, 0.44, prompt, font_size=support_pt, color=ink)
+        y += 0.78
 
-    prompts = [str(x) for x in content.get("prompts", [])]
-    if prompts:
-        base.add_card(slide, card_x, 3.45, card_w, 2.30, task_style["title"], task_style["accent"], task_style["tint"])
-        base.add_card_bullets(slide, card_x + 0.27, 4.00, card_w - 0.45, 1.35, prompts, font_size=17)
-
-
-def render_prompt_card_with_image(slide, packet: dict, slide_spec: dict, theme: dict, visual_page: dict, slot: dict) -> None:
-    content = dict(slide_spec.get("content", {}))
-    current.add_visual_title(slide, packet, slide_spec, visual_page, theme)
-    slot_bounds = slot.get("bounds", {})
-    image_left = float(slot_bounds.get("x", 9.75))
-    card_x = 1.05
-    card_w = max(6.9, image_left - card_x - 0.30)
-    accent = base.hex_to_rgb(content.get("bar_color"), theme["primary"])
-    panel_tint = current.token_rgb(current.page_tokens(visual_page), "panel_alt", base.LIGHT)
-    title = content.get("card_title") or content.get("goal_title") or content.get("title") or "Prompt card"
-
-    panel = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(card_x), Inches(2.0), Inches(card_w), Inches(3.55))
-    panel.fill.solid()
-    panel.fill.fore_color.rgb = panel_tint
-    panel.line.color.rgb = base.BORDER
-    panel.line.width = Pt(1.0)
-
-    strip = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(card_x), Inches(2.0), Inches(0.14), Inches(3.55))
-    strip.fill.solid()
-    strip.fill.fore_color.rgb = accent
-    strip.line.fill.background()
-
-    base.add_textbox(slide, card_x + 0.38, 2.22, card_w - 0.62, 0.32, title, font_size=20, bold=True, color=base.NAVY, align=PP_ALIGN.CENTER)
-
-    lines = []
-    if content.get("goal"):
-        lines.append(str(content["goal"]))
-    for line in content.get("lines", []):
-        lines.append(line.get("text", "") if isinstance(line, dict) else str(line))
-    if content.get("prompts"):
-        lines.extend(str(x) for x in content.get("prompts", []))
-    if not lines and content.get("instruction"):
-        lines.append(str(content.get("instruction")))
-    if lines:
-        base.add_card_bullets(slide, card_x + 0.58, 2.78, card_w - 1.0, 1.85, lines, font_size=18)
-
-    instruction = content.get("instruction")
-    if instruction:
-        note = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(card_x + 0.52), Inches(4.9), Inches(card_w - 1.05), Inches(0.45))
-        note.fill.solid()
-        note.fill.fore_color.rgb = base.WHITE
-        note.line.color.rgb = base.BORDER
-        note.line.width = Pt(0.8)
-        base.add_textbox(slide, card_x + 0.68, 4.98, card_w - 1.35, 0.14, instruction, font_size=14, color=base.SLATE, align=PP_ALIGN.CENTER)
-
-
-def render_two_column_with_image(slide, packet: dict, slide_spec: dict, theme: dict, visual_page: dict, slot: dict) -> None:
-    content = dict(slide_spec.get("content", {}))
-    current.add_visual_title(slide, packet, slide_spec, visual_page, theme)
-    intro = content.get("task") or content.get("prompt") or "Compare the ideas in each column."
-    base.add_textbox(slide, 0.95, 1.36, 11.2, 0.34, intro, font_size=17, color=base.SLATE, align=PP_ALIGN.CENTER)
-
-    slot_bounds = slot.get("bounds", {})
-    divider_x = float(slot_bounds.get("x", 6.10))
-    divider_w = float(slot_bounds.get("w", 0.55))
-    divider = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(divider_x), Inches(1.82), Inches(divider_w), Inches(4.55))
-    divider.fill.solid()
-    divider.fill.fore_color.rgb = base.LIGHT
-    divider.line.color.rgb = base.BORDER
-    divider.line.width = Pt(0.8)
-
-    cols = base.normalize_two_columns(content)
-    positions = [(0.88, 5.05), (divider_x + divider_w + 0.15, 5.05)]
-    for i, col in enumerate(cols[:2]):
-        x, width = positions[i]
-        fallback_accent = theme["primary"] if i == 0 else theme["secondary"]
-        fallback_tint = theme["tints"]["primary"] if i == 0 else theme["tints"]["secondary"]
-        accent = base.hex_to_rgb(col.get("accent"), fallback_accent)
-        tint = base.hex_to_rgb(col.get("tint"), fallback_tint)
-        base.add_card(slide, x, 1.78, width, 4.7, col.get("title", f"Column {i+1}"), accent, tint)
-        lines = [base.dict_item_to_line(item) for item in col.get("items", [])]
-        base.add_card_bullets(slide, x + 0.28, 2.35, width - 0.48, 3.75, lines, font_size=15)
+    image_overlay(slide, slot)
 
 
 def render_reflect_with_image(slide, packet: dict, slide_spec: dict, theme: dict, visual_page: dict, slot: dict) -> None:
-    content = dict(slide_spec.get("content", {}))
-    content["_visual_page"] = visual_page
     current.add_visual_title(slide, packet, slide_spec, visual_page, theme)
-    slot_bounds = slot.get("bounds", {})
-    image_left = float(slot_bounds.get("x", 10.45))
-    block_x = 1.45
-    block_w = max(7.1, image_left - block_x - 0.35)
+    tokens = current.page_tokens(visual_page)
+    plan = current.content_plan_for(visual_page, slide_spec)
+    accent = current.page_accent(visual_page, theme)
+    ink = current.token_rgb(tokens, "ink_primary", base.NAVY)
+    invitation_pt = current.type_size(tokens, "body_l", 28)
+    prompt_pt = current.type_size(tokens, "body_m", 24)
+    text_w = reserved_text_width(slot, 6.0)
 
-    reflect_style = current.component_style_bundle(visual_page, "reflection", theme["secondary"], base.LIGHT, "Reflect")
-    raw_items = content.get("goals") or content.get("prompts") or []
-    items = [dict(x) if isinstance(x, dict) else {"text": str(x)} for x in raw_items]
-    heading = "Check yourself against today’s goals." if content.get("goals") else "Finish by reflecting on these prompts."
-    base.add_textbox(slide, 1.15, 1.35, max(6.7, image_left - 1.55), 0.40, heading, font_size=18, color=base.SLATE, align=PP_ALIGN.CENTER)
+    base.add_textbox(slide, 1.10, 2.00, text_w, 0.68, plan.get("invitation") or "", font_size=invitation_pt, color=ink)
+    y = 3.55
+    for prompt in (plan.get("prompts") or [])[:2]:
+        bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.12), Inches(y + 0.04), Inches(0.16), Inches(0.68))
+        bar.fill.solid()
+        bar.fill.fore_color.rgb = accent
+        bar.line.fill.background()
+        base.add_textbox(slide, 1.48, y, text_w - 0.40, 0.44, prompt, font_size=prompt_pt, color=ink)
+        y += 1.05
 
-    y = 2.0
-    for item in items[:3]:
-        title = item.get("title") or item.get("head") or item.get("label")
-        if title:
-            base.add_card(slide, block_x, y, block_w, 0.95, title, reflect_style["accent"], reflect_style["tint"])
-            text_y = y + 0.33
-        else:
-            current.add_plain_card(slide, block_x, y, block_w, 0.95, reflect_style["accent"])
-            text_y = y + 0.27
-        text = item.get("text") or item.get("body", "")
-        base.add_textbox(slide, block_x + 0.33, text_y, block_w - 1.2, 0.30, str(text), font_size=16, color=base.NAVY)
-        y += 1.25
+    image_overlay(slide, slot)
+
+
+def render_hero_with_image(slide, packet: dict, slide_spec: dict, visual_page: dict, theme: dict, slot: dict) -> None:
+    tokens = current.page_tokens(visual_page)
+    accent = current.page_accent(visual_page, theme)
+    accent_dark = base.darken_rgb(accent, 0.72)
+    title_pt = current.type_size(tokens, "title_xl", 46)
+    subtitle_pt = current.type_size(tokens, "body_l", 28)
+    label_pt = current.type_size(tokens, "label", 18)
+    plan = current.content_plan_for(visual_page, slide_spec)
+    text_w = reserved_text_width(slot, 6.0)
+
+    band = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), Inches(13.333), Inches(3.25))
+    band.line.fill.background()
+    base.apply_shape_gradient(
+        band,
+        [(0, accent_dark), (55000, accent), (100000, base.darken_rgb(accent, 0.88))],
+        angle_deg=90,
+    )
+
+    base.add_textbox(slide, 0.72, 0.34, text_w, 0.24, current.course_label(packet), font_size=label_pt, color=base.WHITE, bold=True)
+    base.add_textbox(slide, 0.72, 0.92, text_w, 1.25, plan.get("title") or slide_spec.get("title", "Untitled"), font_size=title_pt, color=base.WHITE, bold=True)
+
+    subtitle = plan.get("subtitle") or ""
+    if subtitle:
+        base.add_textbox(slide, 0.72, 2.36, text_w, 0.62, subtitle, font_size=subtitle_pt, color=base.WHITE)
+
+    image_overlay(slide, slot)
+
+
+def infer_family(visual_page: dict | None, slide_spec: dict) -> str:
+    if visual_page and visual_page.get("layout_id"):
+        return str(visual_page.get("layout_id"))
+    return current.infer_family(visual_page, slide_spec)
 
 
 def render_slide(prs, slide, packet: dict, slide_spec: dict, theme: dict, slide_index: int) -> None:
     visual_page = current.visual_page_for(packet, slide_index)
-    accent = current.page_accent(visual_page, theme)
     image_plan = image_plan_for(packet, slide_index)
     slot = first_slot(image_plan)
+    family = infer_family(visual_page, slide_spec)
+
     base.add_bg(prs, slide)
     add_resolved_images(slide, image_plan)
-    layout = str(slide_spec.get("layout", "") or "")
+    used_custom_family = False
 
-    if slot and layout == "hero":
-        render_hero_with_image(slide, packet, slide_spec, accent, slot)
-    elif slot and layout == "prompt":
+    if slot and family == "S_HERO":
+        render_hero_with_image(slide, packet, slide_spec, visual_page, theme, slot)
+        used_custom_family = True
+    elif slot and family == "S_PROMPT":
         render_prompt_with_image(slide, packet, slide_spec, theme, visual_page, slot)
-    elif slot and layout == "prompt_card":
-        render_prompt_card_with_image(slide, packet, slide_spec, theme, visual_page, slot)
-    elif slot and layout == "two_column":
-        render_two_column_with_image(slide, packet, slide_spec, theme, visual_page, slot)
-    elif slot and layout == "reflect":
+        used_custom_family = True
+    elif slot and family == "S_REFLECT":
         render_reflect_with_image(slide, packet, slide_spec, theme, visual_page, slot)
+        used_custom_family = True
     else:
         original_add_bg = base.add_bg
         base.add_bg = lambda *_args, **_kwargs: None
@@ -299,6 +242,9 @@ def render_slide(prs, slide, packet: dict, slide_spec: dict, theme: dict, slide_
             current.render_slide(prs, slide, packet, slide_spec, theme, slide_index)
         finally:
             base.add_bg = original_add_bg
+
+    if used_custom_family:
+        base.add_footer(slide, packet.get("subject", "Subject"), packet.get("grade", ""), packet.get("topic", "Lesson"))
 
 
 def build_deck(packet: dict, out_dir: Path) -> Path:

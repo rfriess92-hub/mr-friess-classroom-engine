@@ -17,10 +17,10 @@
     "lesson_slide_footer_note": "FooterNote"
   },
   "page_role_defaults": {
-    "launch": "launch_open",
-    "discuss": "discuss_two_zone",
-    "model": "model_focus",
-    "task": "task_flow",
-    "reflect": "reflect_open"
+    "hero": "S_HERO",
+    "prompt": "S_PROMPT",
+    "model": "S_MODEL",
+    "compare": "S_COMPARE",
+    "reflect": "S_REFLECT"
   }
 }

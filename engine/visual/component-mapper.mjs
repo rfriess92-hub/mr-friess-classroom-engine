@@ -1,13 +1,19 @@
 import { resolveVisualStyle } from './style-resolver.mjs'
 
-function inferSlidePageRole(slide = {}) {
-  const type = String(slide.type ?? '').toUpperCase()
-  const layout = String(slide.layout ?? '').toLowerCase()
-  if (type === 'REFLECT' || layout === 'reflect') return 'reflect'
-  if (type === 'APPLY') return 'task'
-  if (type === 'LEARN') return 'model'
-  if (type === 'ENGAGE') return 'launch'
-  return 'discuss'
+const SLIDE_LAYOUT_BY_ROLE = {
+  hero: 'S_HERO',
+  prompt: 'S_PROMPT',
+  model: 'S_MODEL',
+  compare: 'S_COMPARE',
+  reflect: 'S_REFLECT',
+}
+
+const SLIDE_BUDGETS = {
+  hero: { maxWords: 25, maxLines: 5, maxBullets: 0, maxPrompts: 0, bodyFontPt: 24 },
+  prompt: { maxWords: 40, maxLines: 7, maxBullets: 3, maxPrompts: 3, bodyFontPt: 26 },
+  model: { maxWords: 50, maxLines: 7, maxBullets: 2, maxPrompts: 2, bodyFontPt: 24 },
+  compare: { maxWords: 45, maxLines: 7, maxBullets: 2, maxPrompts: 1, bodyFontPt: 24 },
+  reflect: { maxWords: 30, maxLines: 5, maxBullets: 2, maxPrompts: 2, bodyFontPt: 26 },
 }
 
 function normalizeInstructionalVariant(routeVariantRole) {
@@ -28,13 +34,20 @@ function normalizeInstructionalVariant(routeVariantRole) {
 function estimatedLayout(componentType, visualRole, options = {}) {
   switch (componentType) {
     case 'SlideTitle':
-      return { w: 10.5, h: 0.8 }
+      return { w: 11.4, h: options.hero === true ? 1.7 : 1.0 }
     case 'PrimaryPromptBox':
-      return { w: 7.5, h: 2.2 }
-    case 'TaskStepBox':
-      return { w: 7.2, h: visualRole === 'reflection' ? 1.8 : 2.0 }
+      return { w: options.narrow === true ? 8.8 : 11.1, h: options.hero === true ? 1.3 : 2.4 }
+    case 'TaskStepBox': {
+      const itemCount = Number(options.item_count ?? 2)
+      const baseHeight = visualRole === 'reflection' ? 0.95 : 1.2
+      return { w: options.narrow === true ? 8.2 : 10.8, h: Math.max(baseHeight, 0.55 + (itemCount * 0.48)) }
+    }
     case 'ExampleBox':
-      return { w: 7.0, h: 1.8 }
+      return { w: options.compare_column === true ? 5.2 : 10.6, h: options.compare_column === true ? 3.2 : 2.4 }
+    case 'SupportCueBox':
+      return { w: options.narrow === true ? 8.2 : 10.4, h: 0.95 }
+    case 'ReflectionPrompt':
+      return { w: 10.8, h: 2.1 }
     case 'PageHeader':
       return { w: 10.5, h: 0.8 }
     case 'EntryPanel': {
@@ -84,55 +97,457 @@ function withEstimatedLayout(component) {
   }
 }
 
-function mapSlideComponents(slide, index) {
-  const title = slide.title ?? `Slide ${index + 1}`
+function toText(value) {
+  if (value == null) return ''
+  if (typeof value === 'string') return value.trim()
+  if (Array.isArray(value)) return value.map((item) => toText(item)).filter(Boolean).join(' ')
+  if (typeof value === 'object') {
+    return Object.values(value).map((item) => toText(item)).filter(Boolean).join(' ')
+  }
+  return String(value).trim()
+}
+
+function words(value) {
+  const text = toText(value)
+  return text ? text.split(/\s+/).filter(Boolean) : []
+}
+
+function wordCount(...values) {
+  return values.reduce((sum, value) => sum + words(value).length, 0)
+}
+
+function lineEstimate(...values) {
+  const totalWords = wordCount(...values)
+  if (totalWords === 0) return 0
+  return Math.max(1, Math.ceil(totalWords / 6))
+}
+
+function normalizeList(items, maxItems = Infinity) {
+  const list = Array.isArray(items) ? items.map((item) => toText(item)).filter(Boolean) : []
+  return list.slice(0, maxItems)
+}
+
+function firstNonEmpty(...values) {
+  for (const value of values) {
+    const text = toText(value)
+    if (text) return text
+  }
+  return ''
+}
+
+function rowBodies(rows = [], maxItems = 2) {
+  return normalizeList(
+    rows.slice(0, maxItems).map((row) => {
+      if (typeof row === 'string') return row
+      if (row && typeof row === 'object') {
+        return firstNonEmpty(row.body, row.text, row.prompt, row.label, row.head, row.title)
+      }
+      return row
+    }),
+    maxItems,
+  )
+}
+
+function columnBody(column) {
+  if (!column) return ''
+  if (typeof column === 'string') return column
+  if (Array.isArray(column)) return normalizeList(column, 2).join(' ')
+  if (typeof column === 'object') {
+    if (Array.isArray(column.items)) return normalizeList(column.items, 2).join(' ')
+    return firstNonEmpty(column.body, column.text, column.prompt)
+  }
+  return String(column)
+}
+
+function inferSlidePageRole(slide = {}) {
+  const type = String(slide.type ?? '').toUpperCase()
+  const layout = String(slide.layout ?? '').toLowerCase()
   const content = slide.content ?? {}
+
+  if (layout === 'hero') return 'hero'
+  if (type === 'REFLECT' || layout === 'reflect') return 'reflect'
+  if (
+    layout === 'two_column_compare'
+    || layout === 'two_column'
+    || Array.isArray(content.columns)
+    || content.left != null
+    || content.right != null
+  ) {
+    return 'compare'
+  }
+  if (type === 'LEARN' || ['planner_model', 'bullet_focus', 'summary_rows'].includes(layout)) return 'model'
+  return 'prompt'
+}
+
+function buildHeroContentPlan(slide) {
+  const content = slide.content ?? {}
+  return {
+    title: slide.title ?? 'Untitled',
+    subtitle: firstNonEmpty(content.subtitle, content.prompt),
+    course_note: firstNonEmpty(content.course_note),
+  }
+}
+
+function buildPromptContentPlan(slide) {
+  const content = slide.content ?? {}
+  const rawPrompts = normalizeList(content.prompts, 3)
+  let prompt = firstNonEmpty(content.scenario, content.task, content.prompt)
+  const prompts = [...rawPrompts]
+
+  if (!prompt && prompts.length > 0) {
+    prompt = prompts.shift()
+  }
+
+  if (!prompt) {
+    prompt = firstNonEmpty(...rowBodies(content.rows ?? [], 1), ...rowBodies(content.examples ?? [], 1))
+  }
+
+  return {
+    title: slide.title ?? 'Untitled',
+    prompt,
+    prompts,
+    support: firstNonEmpty(content.instruction, content.note),
+  }
+}
+
+function buildModelContentPlan(slide) {
+  const content = slide.content ?? {}
+  const model = firstNonEmpty(
+    content.model,
+    content.headline,
+    content.prompt,
+    normalizeList(content.items, 2).join(' '),
+    ...rowBodies(content.rows ?? [], 1),
+    ...rowBodies(content.examples ?? [], 1),
+  )
+  const support = firstNonEmpty(
+    normalizeList(content.supports, 2).join(' '),
+    normalizeList(content.prompts, 2).join(' '),
+    normalizeList(content.items, 3).join(' '),
+    content.instruction,
+  )
+  return {
+    title: slide.title ?? 'Untitled',
+    model,
+    support,
+  }
+}
+
+function buildCompareContentPlan(slide) {
+  const content = slide.content ?? {}
+  const columns = Array.isArray(content.columns) ? content.columns : null
+
+  let leftTitle = 'Left'
+  let rightTitle = 'Right'
+  let leftBody = ''
+  let rightBody = ''
+
+  if (columns && columns.length >= 2) {
+    const [left, right] = columns
+    leftTitle = firstNonEmpty(left?.title, 'Left')
+    rightTitle = firstNonEmpty(right?.title, 'Right')
+    leftBody = columnBody(left)
+    rightBody = columnBody(right)
+  } else if (content.left != null || content.right != null) {
+    leftBody = columnBody(content.left)
+    rightBody = columnBody(content.right)
+  } else {
+    const rows = rowBodies(content.rows ?? [], 2)
+    leftBody = rows[0] ?? ''
+    rightBody = rows[1] ?? ''
+  }
+
+  return {
+    title: slide.title ?? 'Untitled',
+    left_title: leftTitle,
+    left_body: leftBody,
+    right_title: rightTitle,
+    right_body: rightBody,
+    takeaway: firstNonEmpty(content.task, normalizeList(content.prompts, 1).join(' ')),
+  }
+}
+
+function buildReflectContentPlan(slide) {
+  const content = slide.content ?? {}
+  const prompts = normalizeList(
+    content.prompts ?? content.questions ?? content.points ?? content.goals,
+    2,
+  )
+  const invitation = firstNonEmpty(
+    content.invitation,
+    content.prompt,
+    content.body,
+    content.task,
+    'Take a minute. Then share if you want to.',
+  )
+  return {
+    title: slide.title ?? 'Untitled',
+    invitation,
+    prompts,
+  }
+}
+
+function buildSlideContentPlan(slide, pageRole) {
+  switch (pageRole) {
+    case 'hero':
+      return buildHeroContentPlan(slide)
+    case 'model':
+      return buildModelContentPlan(slide)
+    case 'compare':
+      return buildCompareContentPlan(slide)
+    case 'reflect':
+      return buildReflectContentPlan(slide)
+    case 'prompt':
+    default:
+      return buildPromptContentPlan(slide)
+  }
+}
+
+function slideComponentsForPlan(pageRole, contentPlan, index) {
   const components = [
     {
       id: `slide_${index + 1}_title`,
       type: 'SlideTitle',
       visual_role: 'title',
-      content: { title },
+      content: { title: contentPlan.title },
+      options: {
+        hero: pageRole === 'hero',
+        font_pt: pageRole === 'hero' ? 46 : 30,
+      },
     },
   ]
 
-  if (content.scenario || content.task) {
+  if (pageRole === 'prompt' && contentPlan.prompt) {
     components.push({
-      id: `slide_${index + 1}_main_prompt`,
+      id: `slide_${index + 1}_prompt`,
       type: 'PrimaryPromptBox',
       visual_role: 'main_prompt',
       content: {
-        label: 'Main prompt',
-        body: content.scenario ?? content.task ?? '',
+        label: 'Discuss',
+        body: contentPlan.prompt,
+      },
+      options: {
+        dominance: 'dominant',
+        font_pt: 26,
       },
     })
+    if (contentPlan.prompts.length > 0) {
+      components.push({
+        id: `slide_${index + 1}_prompt_list`,
+        type: 'TaskStepBox',
+        visual_role: 'task_step',
+        content: {
+          label: 'Talk about',
+          items: contentPlan.prompts,
+        },
+        options: {
+          item_count: contentPlan.prompts.length,
+          font_pt: 24,
+          dominance: 'support',
+        },
+      })
+    }
   }
 
-  if (Array.isArray(content.prompts) && content.prompts.length > 0) {
+  if (pageRole === 'model' && contentPlan.model) {
     components.push({
-      id: `slide_${index + 1}_task_steps`,
-      type: 'TaskStepBox',
-      visual_role: inferSlidePageRole(slide) === 'reflect' ? 'reflection' : 'task_step',
-      content: {
-        label: inferSlidePageRole(slide) === 'reflect' ? 'Reflect' : 'Next steps',
-        items: content.prompts.map((item) => String(item)),
-      },
-    })
-  }
-
-  if (Array.isArray(content.rows) && content.rows.length > 0) {
-    components.push({
-      id: `slide_${index + 1}_rows`,
+      id: `slide_${index + 1}_model`,
       type: 'ExampleBox',
       visual_role: 'example',
       content: {
-        label: 'Examples',
-        body: content.rows.map((item) => (typeof item === 'string' ? item : JSON.stringify(item))).join(' | '),
+        label: 'Model',
+        body: contentPlan.model,
+      },
+      options: {
+        dominance: 'dominant',
+        font_pt: 24,
+      },
+    })
+    if (contentPlan.support) {
+      components.push({
+        id: `slide_${index + 1}_support`,
+        type: 'SupportCueBox',
+        visual_role: 'support_cue',
+        content: {
+          label: 'Notice',
+          body: contentPlan.support,
+        },
+        options: {
+          font_pt: 24,
+          dominance: 'support',
+        },
+      })
+    }
+  }
+
+  if (pageRole === 'compare') {
+    components.push({
+      id: `slide_${index + 1}_left_compare`,
+      type: 'ExampleBox',
+      visual_role: 'example',
+      content: {
+        label: contentPlan.left_title,
+        body: contentPlan.left_body,
+      },
+      options: {
+        compare_column: true,
+        dominance: 'compare_pair',
+        font_pt: 24,
+      },
+    })
+    components.push({
+      id: `slide_${index + 1}_right_compare`,
+      type: 'ExampleBox',
+      visual_role: 'example',
+      content: {
+        label: contentPlan.right_title,
+        body: contentPlan.right_body,
+      },
+      options: {
+        compare_column: true,
+        dominance: 'compare_pair',
+        font_pt: 24,
+      },
+    })
+    if (contentPlan.takeaway) {
+      components.push({
+        id: `slide_${index + 1}_takeaway`,
+        type: 'SupportCueBox',
+        visual_role: 'support_cue',
+        content: {
+          label: 'Takeaway',
+          body: contentPlan.takeaway,
+        },
+        options: {
+          font_pt: 24,
+          dominance: 'support',
+        },
+      })
+    }
+  }
+
+  if (pageRole === 'reflect') {
+    components.push({
+      id: `slide_${index + 1}_reflect`,
+      type: 'ReflectionPrompt',
+      visual_role: 'reflection',
+      content: {
+        label: 'Reflect',
+        body: [contentPlan.invitation, ...contentPlan.prompts].filter(Boolean).join(' '),
+      },
+      options: {
+        font_pt: 26,
+        dominance: 'dominant',
+      },
+    })
+  }
+
+  if (pageRole === 'hero' && contentPlan.subtitle) {
+    components.push({
+      id: `slide_${index + 1}_subtitle`,
+      type: 'ExampleBox',
+      visual_role: 'example',
+      content: {
+        label: 'Focus',
+        body: contentPlan.subtitle,
+      },
+      options: {
+        font_pt: 28,
+        dominance: 'support',
+        hero: true,
       },
     })
   }
 
   return components.map(withEstimatedLayout)
+}
+
+function buildSlideMetrics(pageRole, contentPlan, components) {
+  const budget = SLIDE_BUDGETS[pageRole] ?? SLIDE_BUDGETS.prompt
+  const promptItems = Array.isArray(contentPlan.prompts) ? contentPlan.prompts : []
+  const metricsByRole = {
+    hero: {
+      visible_words: wordCount(contentPlan.title, contentPlan.subtitle),
+      visible_lines: lineEstimate(contentPlan.title, contentPlan.subtitle),
+      bullet_count: 0,
+      prompt_count: 0,
+      dominant_structure: 'title_hero',
+    },
+    prompt: {
+      visible_words: wordCount(contentPlan.title, contentPlan.prompt, promptItems),
+      visible_lines: lineEstimate(contentPlan.title, contentPlan.prompt, promptItems),
+      bullet_count: promptItems.length,
+      prompt_count: promptItems.length,
+      dominant_structure: 'single_block',
+    },
+    model: {
+      visible_words: wordCount(contentPlan.title, contentPlan.model, contentPlan.support),
+      visible_lines: lineEstimate(contentPlan.title, contentPlan.model, contentPlan.support),
+      bullet_count: contentPlan.support ? 1 : 0,
+      prompt_count: 0,
+      dominant_structure: 'single_block',
+    },
+    compare: {
+      visible_words: wordCount(contentPlan.title, contentPlan.left_title, contentPlan.left_body, contentPlan.right_title, contentPlan.right_body, contentPlan.takeaway),
+      visible_lines: lineEstimate(contentPlan.title, contentPlan.left_title, contentPlan.left_body, contentPlan.right_title, contentPlan.right_body, contentPlan.takeaway),
+      bullet_count: contentPlan.takeaway ? 1 : 0,
+      prompt_count: contentPlan.takeaway ? 1 : 0,
+      dominant_structure: 'paired_compare',
+    },
+    reflect: {
+      visible_words: wordCount(contentPlan.title, contentPlan.invitation, promptItems),
+      visible_lines: lineEstimate(contentPlan.title, contentPlan.invitation, promptItems),
+      bullet_count: promptItems.length,
+      prompt_count: promptItems.length,
+      dominant_structure: 'single_block',
+    },
+  }
+
+  const roleMetrics = metricsByRole[pageRole] ?? metricsByRole.prompt
+  const majorComponentCount = components.filter((component) => !['course_band', 'title', 'teacher_note'].includes(component.visual_role)).length
+  const overflowReasons = []
+
+  if (roleMetrics.visible_words > budget.maxWords) overflowReasons.push('word_budget')
+  if (roleMetrics.visible_lines > budget.maxLines) overflowReasons.push('line_budget')
+  if (roleMetrics.bullet_count > budget.maxBullets) overflowReasons.push('bullet_budget')
+  if (roleMetrics.prompt_count > budget.maxPrompts) overflowReasons.push('prompt_budget')
+
+  return {
+    ...roleMetrics,
+    body_font_pt: budget.bodyFontPt,
+    body_font_floor_pt: 24,
+    major_component_count: majorComponentCount,
+    competing_block_count: majorComponentCount,
+    requires_split: overflowReasons.length > 0,
+    overflow_reasons: overflowReasons,
+    content_shrunk_below_floor: false,
+  }
+}
+
+function buildSlidePage(slide, index, surfaceVariant, instructionalVariant) {
+  const pageRole = inferSlidePageRole(slide)
+  const layoutId = SLIDE_LAYOUT_BY_ROLE[pageRole] ?? 'S_PROMPT'
+  const contentPlan = buildSlideContentPlan(slide, pageRole)
+  const components = slideComponentsForPlan(pageRole, contentPlan, index).map((component) => ({
+    ...component,
+    resolved_visual: resolveVisualStyle({
+      surfaceVariant,
+      instructionalVariant,
+      pageRole,
+      visualRole: component.visual_role,
+      componentType: component.type,
+      overrides: component.style ?? {},
+    }),
+  }))
+
+  return {
+    page_id: `slide_page_${index + 1}`,
+    page_role: pageRole,
+    layout_id: layoutId,
+    content_plan: contentPlan,
+    metrics: buildSlideMetrics(pageRole, contentPlan, components),
+    components,
+  }
 }
 
 function taskSheetLayoutMode(route = {}, section = {}) {
@@ -390,30 +805,10 @@ export function buildVisualArtifactPlan(pkg, route, sourceSection) {
   if (route.output_type === 'slides') {
     const slides = Array.isArray(sourceSection) ? sourceSection : []
     const pages = slides.map((slide, index) => {
-      const pageRole = inferSlidePageRole(slide)
-      const layoutIdByRole = {
-        launch: 'launch_open',
-        discuss: 'discuss_two_zone',
-        model: 'model_focus',
-        task: 'task_flow',
-        reflect: 'reflect_open',
-      }
-      const components = mapSlideComponents(slide, index).map((component) => ({
-        ...component,
-        resolved_visual: resolveVisualStyle({
-          surfaceVariant,
-          instructionalVariant,
-          pageRole,
-          visualRole: component.visual_role,
-          componentType: component.type,
-          overrides: component.style ?? {},
-        }),
-      }))
+      const page = buildSlidePage(slide, index, surfaceVariant, instructionalVariant)
       return {
+        ...page,
         page_id: `${route.output_id}_page_${index + 1}`,
-        page_role: pageRole,
-        layout_id: layoutIdByRole[pageRole] ?? 'discuss_two_zone',
-        components,
       }
     })
 
