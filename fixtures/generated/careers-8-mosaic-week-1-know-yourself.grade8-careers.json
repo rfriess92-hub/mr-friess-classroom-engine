@@ -295,6 +295,7 @@
   "task_sheet": {
     "title": "Week 1 Career Mosaic Packet - Know Yourself",
     "purpose_line": "Use this packet across the week to collect short sorts, reflections, and planning notes that build toward your Day 5 Career Identity Snapshot.",
+    "output_packaging": "packet_and_days",
     "instructions": [
       "Move through the packet across the week. Each section builds the next one.",
       "Use partner talk before longer writing, then keep your own notes on this sheet.",
@@ -520,6 +521,28 @@
             "One realistic next-step goal to carry into Day 5"
           ]
         }
+      }
+    ],
+    "optional_extensions": [
+      {
+        "day_label": "Day 1",
+        "label": "If you finish early",
+        "body": "Write one sentence that starts with: \"A better way to describe me is...\" Try to make it more specific than a label."
+      },
+      {
+        "day_label": "Day 2",
+        "label": "If you finish early",
+        "body": "Add one real example beside a strength or preference you named. Where have you actually seen that pattern show up?"
+      },
+      {
+        "day_label": "Day 3",
+        "label": "If you finish early",
+        "body": "Write one version of your goal that sounds too big. Then rewrite it so it sounds startable this week."
+      },
+      {
+        "day_label": "Day 4",
+        "label": "If you finish early",
+        "body": "Choose one value you did not rank highest. Write one sentence about when it still matters to you."
       }
     ],
     "embedded_supports": [
@@ -918,7 +941,7 @@
           "title": "One way this could sound",
           "layout": "planner_model",
           "content": {
-            "model": "Strengths: I notice patterns and I am usually the person who gets a group organized when things feel scattered. Interests: I stick with tasks that involve design, problem solving, or helping people understand something. Values: I care about creativity and being useful. Learning or work preferences: I do better when I get a minute to think before I explain. Next-step goal: This week I will start one assignment earlier and make a short plan before I begin.",
+            "model": "Strengths: I usually notice patterns pretty quickly, and I often end up helping a group get organized when things feel scattered. Interests: I stay with tasks more when they involve solving something, designing something, or helping people understand an idea. Values: I care about doing work that feels useful and creative. Learning or work preferences: I do better when I get a minute to think before I have to explain. Next-step goal: This week I am going to start one assignment earlier and make a short plan before I begin.",
             "supports": [
               "Keep it specific.",
               "Use your packet notes, then clean up the wording.",
@@ -954,12 +977,11 @@
       ],
       "final_response_sheet": {
         "title": "Day 5 Career Identity Snapshot",
-        "prompt": "Complete your Career Identity Snapshot in clear labeled lines. Include at least two strengths, two interests, two values, two learning or work preferences, and one realistic next-step goal. End with one short sentence about who you are at your best as a learner or worker.",
+        "prompt": "Write in clear labeled lines. Include at least two strengths, two interests, two values, two learning or work preferences, and one realistic next-step goal. End with one short sentence about who you are at your best as a learner or worker.",
         "planning_reminders": [
-          "Use labels such as Strengths, Interests, Values, Learning or work preferences, and Next-step goal.",
-          "Choose details you can actually stand behind from this week's packet.",
-          "Keep the future-pathway link light: name one area worth exploring, not a lifetime decision.",
-          "Write your final snapshot here."
+          "You can use labels such as Strengths, Interests, Values, Learning or work preferences, and Next-step goal.",
+          "Use details from your packet that feel true and specific.",
+          "Keep the future link light: name one area worth exploring, not a lifetime decision."
         ],
         "paragraph_support": {
           "frame_strip": [
@@ -970,7 +992,18 @@
             "Next-step goal: ___",
             "At my best, I am someone who ___"
           ],
-          "reminder_box": "Specific and honest beats impressive."
+          "reminder_box": "Keep it honest and specific."
+        },
+        "render_hints": {
+          "purpose_line": "Use this page for your final snapshot.",
+          "prompt_label": "Snapshot guide",
+          "response_label": "Write your snapshot here",
+          "quick_check_label": "Before you hand it in",
+          "quick_check_items": [
+            "I named strengths, interests, values, and learning or work preferences clearly.",
+            "My next-step goal feels realistic enough to start.",
+            "My response sounds like me, not just like something polished."
+          ]
         },
         "success_criteria": [
           "My snapshot names strengths, interests, values, and learning or work preferences clearly.",

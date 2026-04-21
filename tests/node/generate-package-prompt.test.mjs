@@ -15,6 +15,14 @@ test('generate-package prompt requires canonical assignment-family metadata', ()
   assert.match(generatePackageSource, /- assessment_focus/)
 })
 
+test('generate-package prompt encodes content-style policy and optional extension guidance', () => {
+  assert.match(generatePackageSource, /content-style-policy\.json/)
+  assert.match(generatePackageSource, /aligned optional extension tied to the same day's thinking/i)
+  assert.match(generatePackageSource, /Generic riddles, unrelated trivia, novelty filler, and random brain breaks are disallowed by default/i)
+  assert.match(generatePackageSource, /task_sheet\.optional_extensions/)
+  assert.match(generatePackageSource, /Student-facing models should sound plausible and human/i)
+})
+
 test('generate-package reports assignment family when a package is written', () => {
   assert.match(generatePackageSource, /Assignment family: \$\{pkg\.assignment_family \?\? '\(missing assignment_family\)'\}/)
 })

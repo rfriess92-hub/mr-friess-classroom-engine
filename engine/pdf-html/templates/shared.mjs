@@ -4,7 +4,6 @@ import { dirname, resolve } from 'node:path'
 
 const __dir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(__dir, '..', '..', '..')
-const PAGE_FILLERS = JSON.parse(readFileSync(resolve(__dir, '..', 'fillers.json'), 'utf-8'))
 
 export function escapeHtml(str) {
   return String(str ?? '')
@@ -47,18 +46,18 @@ export function buildFontFaceCSS() {
     .join('\n')
 }
 
-export function buildPageFiller(dayLabel) {
-  if (!dayLabel) return ''
+export function buildOptionalExtension(extension) {
+  if (!extension || typeof extension !== 'object') return ''
 
-  const index = [...String(dayLabel)].reduce((sum, char) => sum + char.charCodeAt(0), 0) % PAGE_FILLERS.length
-  const filler = PAGE_FILLERS[index]
+  const label = String(extension.label ?? '').trim()
+  const body = String(extension.body ?? '').trim()
+  if (!label || !body) return ''
 
   return `
-<div class="page-filler">
-  <div class="filler-rule"></div>
-  <span class="filler-riddle-label">${escapeHtml(filler.prompt)}</span>
-  <span class="filler-riddle-text">${escapeHtml(filler.text)}</span>
-  <span class="filler-riddle-answer">${escapeHtml(filler.answer)}</span>
+<div class="page-extension">
+  <div class="page-extension-rule"></div>
+  <div class="page-extension-label">${escapeHtml(label)}</div>
+  <div class="page-extension-body">${escapeHtml(body)}</div>
 </div>`
 }
 
@@ -230,36 +229,30 @@ ul, ol { margin: 0; padding-left: 18pt; }
   margin-bottom: 0;
 }
 
-.page-filler {
+.page-extension {
   margin-top: 28pt;
   padding-top: 12pt;
-  color: #9CA3AF;
-  font-size: 9pt;
+  font-size: 9.25pt;
   page-break-inside: avoid;
 }
 
-.filler-rule {
+.page-extension-rule {
   border-top: 1pt dashed #D1D5DB;
   margin-bottom: 10pt;
 }
 
-.filler-riddle-label {
+.page-extension-label {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-size: 8pt;
-  margin-right: 6pt;
+  color: #6B7280;
+  margin-bottom: 5pt;
 }
 
-.filler-riddle-text {
-  font-style: italic;
-}
-
-.filler-riddle-answer {
-  display: block;
-  margin-top: 4pt;
-  font-size: 8.5pt;
-  color: #D1D5DB;
+.page-extension-body {
+  color: #4B5563;
+  line-height: 1.45;
 }
 `
 }
