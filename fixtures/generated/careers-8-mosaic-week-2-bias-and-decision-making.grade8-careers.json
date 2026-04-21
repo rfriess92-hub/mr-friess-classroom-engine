@@ -521,14 +521,14 @@
         },
         {
           "type": "ENGAGE",
-          "title": "Snap judgment warm-up",
+          "title": "Fast story first",
           "layout": "prompt",
           "content": {
-            "scenario": "You see three quick snapshots: a person in safety gear, a person in a business outfit, and a person covered in paint after a long shift. What stories does your brain start telling right away?",
+            "scenario": "Three quick snapshots can trigger fast stories right away.",
             "prompts": [
-              "What did you assume first?",
+              "What did you assume?",
               "What clue pushed you there?",
-              "What would you still need to know before deciding anything?"
+              "What do you still need?"
             ]
           }
         },
@@ -560,12 +560,12 @@
         },
         {
           "type": "REFLECT",
-          "title": "Write one question to keep",
+          "title": "Keep one question",
           "layout": "reflect",
           "content": {
             "prompts": [
-              "When does your brain like to decide too quickly?",
-              "What better question do you want to practice this week?"
+              "When do you decide too quickly?",
+              "What better question will you practice?"
             ]
           }
         }
@@ -595,14 +595,14 @@
         },
         {
           "type": "ENGAGE",
-          "title": "Scenario card sort",
+          "title": "Fast story check",
           "layout": "prompt",
           "content": {
-            "scenario": "A student has one bad lab and decides they are not a science person. A job video shows one confident speaker and viewers assume everyone in that field works the same way. A group follows the most popular option without testing it.",
+            "scenario": "Each scenario shows a fast story taking over before the facts get checked.",
             "prompts": [
-              "What fast story appears first in each scenario?",
+              "What fast story shows up?",
               "What information is missing?",
-              "What would a better check look like?"
+              "What is a better check?"
             ]
           }
         },
@@ -620,14 +620,14 @@
         },
         {
           "type": "APPLY",
-          "title": "Use the scenario cards",
+          "title": "Use the cards",
           "layout": "retrieval",
           "content": {
-            "task": "Work through the scenario cards, then record the fast story, the missing information, and one better check in your packet.",
+            "task": "Record the fast story, the missing information, and one better check.",
             "prompts": [
-              "What assumption feels most tempting to believe first?",
-              "What would slow that assumption down?",
-              "How could this affect a future choice?"
+              "What feels easy to believe first?",
+              "What would slow it down?",
+              "How could it affect a choice?"
             ]
           }
         },
@@ -637,8 +637,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "Which trap do you recognize most easily in real life?",
-              "Why is plain language often more useful than memorizing a definition?"
+              "Which trap do you notice most?",
+              "Why is plain language better here?"
             ]
           }
         }
@@ -668,10 +668,10 @@
         },
         {
           "type": "ENGAGE",
-          "title": "Who seems like the obvious fit?",
+          "title": "Who seems like a fit?",
           "layout": "prompt",
           "content": {
-            "scenario": "Think about jobs like welder, nurse, engineer, early childhood educator, designer, firefighter, or entrepreneur. Which roles get linked to one kind of person too quickly?",
+            "scenario": "Some jobs get linked to one kind of person too quickly.",
             "prompts": [
               "What image shows up first?",
               "Where does that image come from?",
@@ -685,22 +685,22 @@
           "layout": "checklist",
           "content": {
             "items": [
-              "They can make some students feel like they do not belong before they even try.",
-              "They can hide the real skills, interests, and training behind a job.",
-              "They can push people toward narrow choices based on image instead of fit."
+              "They can make students feel shut out before they try.",
+              "They can hide the real skills behind a job.",
+              "They can push choices toward image instead of fit."
             ]
           }
         },
         {
           "type": "APPLY",
-          "title": "Myth-busting and four corners",
+          "title": "Challenge the picture",
           "layout": "retrieval",
           "content": {
-            "task": "Use the class prompts to challenge one narrow image of a job or pathway, then capture the stronger version in your packet.",
+            "task": "Challenge one narrow job image, then record the stronger version.",
             "prompts": [
-              "What does the stereotype assume?",
-              "What matters more than the stereotype?",
-              "Who could belong there if the doors were open and the support was real?"
+              "What does it assume?",
+              "What matters more?",
+              "Who gets left out?"
             ]
           }
         },
@@ -710,8 +710,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "How can stereotypes shape who students imagine themselves becoming?",
-              "What is one idea about fit you want to challenge more carefully?"
+              "How can stereotypes shape choices?",
+              "What idea about fit needs a second look?"
             ]
           }
         }
@@ -741,14 +741,14 @@
         },
         {
           "type": "ENGAGE",
-          "title": "Who is in the room when you decide?",
+          "title": "Who is in the room?",
           "layout": "prompt",
           "content": {
-            "scenario": "A student is choosing electives, thinking about a job idea, or deciding whether they belong in a club or pathway. Even when nobody is speaking directly, a lot of voices can still be in the room.",
+            "scenario": "When students make choices, other voices are often there too.",
             "prompts": [
-              "What messages might come from family?",
-              "What messages might come from peers or social media?",
-              "Which messages feel helpful, and which ones need questioning?"
+              "What comes from family?",
+              "What comes from peers or media?",
+              "What needs questioning?"
             ]
           }
         },
@@ -766,14 +766,13 @@
         },
         {
           "type": "APPLY",
-          "title": "One way to slow the story down",
+          "title": "Slow the story down",
           "layout": "planner_model",
           "content": {
-            "model": "I might hear that a certain course is only for the smartest students or for one type of person. If I let that message decide for me, I might avoid it too early. A better process is to ask what the course actually expects, what support exists, what interests I have, and whether the message is based on reality or reputation.",
+            "model": "If I hear a course is only for one kind of student, I might rule it out too fast. A better move is to check the real expectations, supports, and my actual interest.",
             "supports": [
-              "The model names the message without automatically accepting it.",
-              "The better process uses questions and missing information.",
-              "The final choice becomes more thoughtful, not more perfect."
+              "Name the message.",
+              "Check it before you trust it."
             ]
           }
         },
@@ -783,8 +782,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "Which message has influenced your thinking the most this week?",
-              "What better question or strategy are you ready to carry into Day 5?"
+              "Which message has shaped you most?",
+              "What question will you carry into Day 5?"
             ]
           }
         }
@@ -852,14 +851,12 @@
         },
         {
           "type": "APPLY",
-          "title": "One way this could sound",
+          "title": "One example",
           "layout": "planner_model",
           "content": {
-            "model": "One trap I notice is deciding too much from the first picture or one rough experience. That could affect a career-related choice if someone decides they are not a fit for a course or job too early. A better move would be to ask what skills actually matter, what support exists, and whether that first story came from real evidence or just a narrow message. My revised idea is that fit should be checked with better information, not guessed from one impression.",
+            "model": "One trap I notice is deciding too much from a first picture. That could push someone away from a course or job too early. A better move is to ask what skills matter and what support exists.",
             "supports": [
-              "Stay specific.",
-              "Stick with one example.",
-              "Show how the decision gets better."
+              "Then add your revised idea in one honest line."
             ]
           }
         },
@@ -883,8 +880,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "What is one idea you revised this week?",
-              "What is one better question you want to keep using when decisions matter?"
+              "What idea did you revise?",
+              "What better question will you keep?"
             ]
           }
         }
