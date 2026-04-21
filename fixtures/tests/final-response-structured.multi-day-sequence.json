@@ -1,0 +1,155 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "final_response_structured_multi_day",
+  "primary_architecture": "multi_day_sequence",
+  "grade_band": "6-8",
+  "subject": "Career Education",
+  "grade": 8,
+  "topic": "Decision-making and contribution",
+  "theme": "careers",
+  "bundle": {
+    "bundle_id": "final_response_structured_multi_day_bundle",
+    "declared_outputs": ["final_response_sheet"]
+  },
+  "days": [
+    {
+      "day_id": "day1",
+      "day_label": "Day 1",
+      "final_response_sheet": {
+        "title": "Claim, Evidence, Action",
+        "prompt": "Use one clear claim, one strong piece of evidence, and one realistic next step to explain your position.",
+        "planning_reminders": [
+          "Keep each section short and specific.",
+          "Choose one piece of evidence that actually helps your claim."
+        ],
+        "render_hints": {
+          "purpose_line": "This final response works best as a short, structured explanation.",
+          "prompt_label": "Final task",
+          "response_pattern": "claim_evidence_action",
+          "response_label": "Complete the response chain",
+          "response_note": "One clear idea in each box is enough.",
+          "structured_labels": ["Claim", "Evidence", "Action or next step"],
+          "quick_check_items": [
+            "My claim is clear.",
+            "My evidence actually supports the claim.",
+            "My next step is realistic."
+          ]
+        },
+        "response_lines": 3
+      },
+      "outputs": [
+        {
+          "output_id": "day1_final_response_sheet",
+          "output_type": "final_response_sheet",
+          "audience": "student",
+          "source_section": "days.day1.final_response_sheet",
+          "bundle": "final_response_structured_multi_day_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day2",
+      "day_label": "Day 2",
+      "final_response_sheet": {
+        "title": "Cause and Effect Chain",
+        "prompt": "Explain how one choice or event leads to the next part of the situation.",
+        "planning_reminders": [
+          "Keep the chain in order.",
+          "Use your own words instead of copying the source."
+        ],
+        "render_hints": {
+          "purpose_line": "Show the sequence, not just the ending.",
+          "prompt_label": "Final task",
+          "response_pattern": "chain_explanation",
+          "response_label": "Build the explanation chain",
+          "response_note": "Short notes work better than one long paragraph here.",
+          "structured_labels": ["Start", "What changed", "Why it matters"]
+        },
+        "response_lines": 3,
+        "success_criteria": [
+          "My sequence makes sense.",
+          "I explained the middle step, not just the start and end."
+        ]
+      },
+      "outputs": [
+        {
+          "output_id": "day2_final_response_sheet",
+          "output_type": "final_response_sheet",
+          "audience": "student",
+          "source_section": "days.day2.final_response_sheet",
+          "bundle": "final_response_structured_multi_day_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day3",
+      "day_label": "Day 3",
+      "final_response_sheet": {
+        "title": "Map the Decision",
+        "prompt": "Record the strongest parts of the decision in a simple matrix so each part stays visible.",
+        "render_hints": {
+          "purpose_line": "Use the grid to keep the parts separated and readable.",
+          "prompt_label": "Final task",
+          "response_pattern": "map_or_matrix",
+          "response_label": "Complete the decision map",
+          "response_note": "Short notes in the grid are enough.",
+          "table_columns": ["What happened", "Who it affects", "What should happen next"],
+          "table_rows": ["School", "Community", "Future choice"],
+          "table_cell_lines": 2
+        },
+        "response_lines": 3,
+        "success_criteria": [
+          "I used the grid instead of turning everything into a paragraph."
+        ]
+      },
+      "outputs": [
+        {
+          "output_id": "day3_final_response_sheet",
+          "output_type": "final_response_sheet",
+          "audience": "student",
+          "source_section": "days.day3.final_response_sheet",
+          "bundle": "final_response_structured_multi_day_bundle"
+        }
+      ]
+    },
+    {
+      "day_id": "day4",
+      "day_label": "Day 4",
+      "final_response_sheet": {
+        "title": "Need, Role, Response",
+        "prompt": "Show the need, the people affected, the role that helps, and why that response matters.",
+        "planning_reminders": [
+          "Choose one real need or risk.",
+          "Make sure the response role actually fits the problem."
+        ],
+        "render_hints": {
+          "purpose_line": "This format works best when each part stays concrete.",
+          "prompt_label": "Final task",
+          "response_pattern": "role_need_response",
+          "response_label": "Complete the response map",
+          "response_note": "Keep each section specific and believable.",
+          "structured_labels": [
+            "Need or risk",
+            "Who is affected",
+            "Who helps respond",
+            "Why the response matters"
+          ]
+        },
+        "response_lines": 3,
+        "success_criteria": [
+          "The need is specific.",
+          "The response role actually matches the need."
+        ]
+      },
+      "outputs": [
+        {
+          "output_id": "day4_final_response_sheet",
+          "output_type": "final_response_sheet",
+          "audience": "student",
+          "source_section": "days.day4.final_response_sheet",
+          "bundle": "final_response_structured_multi_day_bundle"
+        }
+      ]
+    }
+  ]
+}
