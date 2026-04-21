@@ -1,5 +1,37 @@
 import { escapeHtml, formatPrompt } from './shared.mjs'
 
+function buildLines(count, className) {
+  return Array.from({ length: count }, () => `<div class="${className}"></div>`).join('\n')
+}
+
+function clamp(value, minimum, maximum) {
+  return Math.max(minimum, Math.min(maximum, value))
+}
+
+function normalizeLabels(labels, fallbackLabels) {
+  if (!Array.isArray(labels) || labels.length === 0) return fallbackLabels
+
+  const cleaned = labels
+    .map((label) => String(label ?? '').trim())
+    .filter(Boolean)
+
+  if (cleaned.length === 0) return fallbackLabels
+
+  return fallbackLabels.map((fallbackLabel, index) => cleaned[index] ?? fallbackLabel)
+}
+
+function normalizeTableRows(tableRows, fallbackRows) {
+  if (Array.isArray(tableRows) && tableRows.length > 0) {
+    return tableRows.map((row) => String(row ?? '').trim()).filter(Boolean)
+  }
+
+  if (Number.isInteger(tableRows) && tableRows > 0) {
+    return Array.from({ length: tableRows }, (_, index) => `Row ${index + 1}`)
+  }
+
+  return fallbackRows
+}
+
 function buildPlanningReminders(items) {
   if (!Array.isArray(items) || items.length === 0) return ''
 
@@ -63,11 +95,139 @@ function buildResponseLines(count) {
   return Array.from({ length: count }, () => '<div class="response-line"></div>').join('\n')
 }
 
+function buildResponseNote(note) {
+  if (!note) return ''
+
+  return `<div class="response-section-note">${escapeHtml(note)}</div>`
+}
+
+function buildFieldPanel(label, lineCount) {
+  return `
+<div class="structured-panel">
+  <div class="structured-panel-label">${escapeHtml(label)}</div>
+  <div class="structured-panel-lines">
+    ${buildLines(lineCount, 'structured-line')}
+  </div>
+</div>`
+}
+
+function buildClaimEvidenceAction(hints, lineCount) {
+  const labels = normalizeLabels(hints.structured_labels, ['Claim', 'Evidence', 'Action or next step'])
+  return `
+<div class="structured-stack">
+  ${labels.map((label) => buildFieldPanel(label, lineCount)).join('\n')}
+</div>`
+}
+
+function buildChainExplanation(hints, lineCount) {
+  const labels = normalizeLabels(hints.structured_labels, ['What happened', 'Why it happened', 'What this means'])
+
+  return `
+<div class="chain-flow">
+  ${labels.map((label, index) => `
+    <div class="chain-step-wrap">
+      ${buildFieldPanel(label, lineCount)}
+      ${index < labels.length - 1 ? '<div class="chain-connector">Next</div>' : ''}
+    </div>`).join('\n')}
+</div>`
+}
+
+function buildMatrix(hints, lineCount) {
+  const columns = Array.isArray(hints.table_columns) && hints.table_columns.length > 0
+    ? hints.table_columns
+    : ['Notice', 'Connection', 'Meaning']
+  const rows = normalizeTableRows(hints.table_rows, ['Part 1', 'Part 2', 'Part 3'])
+  const tableCellLines = clamp(hints.table_cell_lines ?? Math.max(1, lineCount - 1), 1, 3)
+
+  return `
+<table class="response-matrix">
+  <thead>
+    <tr>
+      <th class="response-matrix-corner"></th>
+      ${columns.map((column) => `<th class="response-matrix-header">${escapeHtml(column)}</th>`).join('\n')}
+    </tr>
+  </thead>
+  <tbody>
+    ${rows.map((rowLabel) => `
+      <tr>
+        <th class="response-matrix-row-label">${escapeHtml(rowLabel)}</th>
+        ${columns.map(() => `
+          <td class="response-matrix-cell">
+            ${buildLines(tableCellLines, 'response-matrix-line')}
+          </td>`).join('\n')}
+      </tr>`).join('\n')}
+  </tbody>
+</table>`
+}
+
+function buildRoleNeedResponse(hints, lineCount) {
+  const labels = normalizeLabels(
+    hints.structured_labels,
+    ['Need or risk', 'Who is affected', 'Who helps respond', 'Why this response matters'],
+  )
+
+  return `
+<div class="role-response-grid">
+  ${labels.map((label) => buildFieldPanel(label, lineCount)).join('\n')}
+</div>`
+}
+
+function buildResponseStructure(section) {
+  const hints = section.render_hints ?? {}
+  const responsePattern = hints.response_pattern ?? 'open_response'
+  const responseLabel = hints.response_label ?? 'Write your response here'
+  const responseNote = hints.response_note ?? ''
+  const structuredLineCount = clamp(section.response_lines ?? section.n_lines ?? 3, 2, 4)
+
+  switch (responsePattern) {
+    case 'claim_evidence_action':
+      return {
+        responseLabel,
+        responseNote,
+        body: buildClaimEvidenceAction(hints, structuredLineCount),
+      }
+    case 'chain_explanation':
+      return {
+        responseLabel,
+        responseNote,
+        body: buildChainExplanation(hints, structuredLineCount),
+      }
+    case 'map_or_matrix':
+      return {
+        responseLabel,
+        responseNote,
+        body: buildMatrix(hints, structuredLineCount),
+      }
+    case 'role_need_response':
+      return {
+        responseLabel,
+        responseNote,
+        body: buildRoleNeedResponse(hints, structuredLineCount),
+      }
+    case 'open_response':
+    default:
+      return {
+        responseLabel,
+        responseNote,
+        body: `
+<div class="response-lines">
+  ${buildResponseLines(section.response_lines ?? section.n_lines ?? 12)}
+</div>`,
+      }
+  }
+}
+
 export function buildFinalResponseSheetHTML(pkg, section, fontFaceCSS, designCSS) {
+  const hints = section.render_hints ?? {}
   const title = section.title ?? 'Final Response'
   const prompt = section.prompt ?? ''
-  const responseLines = section.response_lines ?? section.n_lines ?? 12
   const planningLines = section.planning_lines ?? 0
+  const promptLabel = hints.prompt_label ?? 'Your prompt'
+  const purposeLine = hints.purpose_line ? `<div class="doc-subtitle">${escapeHtml(hints.purpose_line)}</div>` : ''
+  const quickCheckItems = Array.isArray(hints.quick_check_items) && hints.quick_check_items.length > 0
+    ? hints.quick_check_items
+    : section.success_criteria
+  const responseStructure = buildResponseStructure(section)
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -177,19 +337,124 @@ ${designCSS}
   page-break-after: avoid;
 }
 
-.response-lines {
+.response-section-note {
+  font-size: 9.25pt;
+  color: #6B7280;
+  margin-bottom: 8pt;
+}
+
+.response-lines,
+.structured-panel-lines {
   border: 1pt solid #D1D5DB;
   border-radius: 4pt;
   padding: 2pt 10pt 6pt;
 }
 
-.response-line {
+.response-line,
+.structured-line {
   height: 9.5mm;
   border-bottom: 1pt solid #D1D5DB;
 }
 
-.response-line:last-child {
+.response-line:last-child,
+.structured-line:last-child,
+.response-matrix-line:last-child {
   border-bottom: none;
+}
+
+.structured-stack,
+.chain-flow,
+.role-response-grid,
+.response-matrix {
+  page-break-inside: avoid;
+}
+
+.structured-stack {
+  display: grid;
+  gap: 10pt;
+}
+
+.structured-panel {
+  margin-bottom: 0;
+}
+
+.structured-panel-label {
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6B7280;
+  margin-bottom: 5pt;
+}
+
+.chain-flow {
+  display: grid;
+  gap: 8pt;
+}
+
+.chain-step-wrap {
+  display: grid;
+  gap: 6pt;
+}
+
+.chain-connector {
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9CA3AF;
+  text-align: center;
+}
+
+.role-response-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10pt 12pt;
+}
+
+.response-matrix {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1pt solid #D1D5DB;
+  border-radius: 4pt;
+  overflow: hidden;
+}
+
+.response-matrix th,
+.response-matrix td {
+  border: 1pt solid #D1D5DB;
+}
+
+.response-matrix-header,
+.response-matrix-corner {
+  background: #F9FAFB;
+}
+
+.response-matrix-header {
+  padding: 8pt 10pt;
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #374151;
+}
+
+.response-matrix-row-label {
+  padding: 8pt 10pt;
+  font-size: 9pt;
+  font-weight: 600;
+  color: #374151;
+  width: 22%;
+}
+
+.response-matrix-cell {
+  vertical-align: top;
+  padding: 5pt 8pt 4pt;
+}
+
+.response-matrix-line {
+  height: 7mm;
+  border-bottom: 1pt solid #D1D5DB;
 }
 
 .criteria-row {
@@ -229,9 +494,10 @@ ${designCSS}
 
     <div class="doc-eyebrow">Final Response Sheet</div>
     <div class="doc-title">${escapeHtml(title)}</div>
+    ${purposeLine}
 
     <div class="prompt-box">
-      <div class="prompt-box-label">Your prompt</div>
+      <div class="prompt-box-label">${escapeHtml(promptLabel)}</div>
       <div class="prompt-text">${formatPrompt(prompt)}</div>
     </div>
 
@@ -239,12 +505,11 @@ ${designCSS}
     ${buildParagraphSupport(section.paragraph_support)}
     ${buildPlanningSpace(planningLines)}
 
-    <div class="response-section-label">Write your response here</div>
-    <div class="response-lines">
-      ${buildResponseLines(responseLines)}
-    </div>
+    <div class="response-section-label">${escapeHtml(responseStructure.responseLabel)}</div>
+    ${buildResponseNote(responseStructure.responseNote)}
+    ${responseStructure.body}
 
-    ${buildSuccessCriteria(section.success_criteria)}
+    ${buildSuccessCriteria(quickCheckItems)}
   </div>
 </body>
 </html>`
