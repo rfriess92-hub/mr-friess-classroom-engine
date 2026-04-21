@@ -111,12 +111,15 @@ export function routeRenderPlan(renderPlan) {
       for (const tier of TIER_LEVELS) {
         routes.push(buildRoute(output, normalizedOutputType, {
           route_id: `${output.output_id}__${normalizedOutputType}__${tier}`,
+          artifact_id: `${output.output_id}_${tier}`,
           variant_group: 'tiers',
           variant_role: tier,
         }))
       }
     } else {
-      routes.push(buildRoute(output, normalizedOutputType))
+      routes.push(buildRoute(output, normalizedOutputType, {
+        artifact_id: output.output_id,
+      }))
     }
   }
   return routes
