@@ -19,4 +19,5 @@ test('final-response section render hints expose structured response patterns ex
   assert.equal(sectionHints.prompt_label?.type, 'string')
   assert.equal(sectionHints.response_label?.type, 'string')
   assert.equal(sectionHints.response_note?.type, 'string')
+  assert.equal(sectionHints.quick_check_label?.type, 'string')
 })

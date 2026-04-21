@@ -1,4 +1,4 @@
-import { buildPageFiller, escapeHtml } from './shared.mjs'
+import { buildOptionalExtension, escapeHtml } from './shared.mjs'
 import { buildResponsePatternBody, responsePatternCss } from './response-patterns.mjs'
 import { extractDayLabel, getDaysFromSection, stripDayPrefix } from '../task-sheet-packaging.mjs'
 
@@ -49,12 +49,28 @@ function groupTasksByDay(tasks) {
   return groups
 }
 
-function buildDaySection(group, isFirst, suppressHeader = false) {
+function normalizeOptionalExtensions(section) {
+  return Array.isArray(section?.optional_extensions)
+    ? section.optional_extensions
+    : []
+}
+
+function findOptionalExtension(section, dayLabel) {
+  const normalizedDayLabel = String(dayLabel ?? '').trim().toLowerCase()
+
+  return normalizeOptionalExtensions(section).find((extension) => {
+    const extensionDay = String(extension?.day_label ?? '').trim().toLowerCase()
+    return extensionDay && extensionDay === normalizedDayLabel
+  }) ?? null
+}
+
+function buildDaySection(section, group, isFirst, suppressHeader = false) {
   const header = group.dayLabel && !suppressHeader
     ? `<div class="day-section-header${isFirst ? ' first' : ''}">${escapeHtml(group.dayLabel)}</div>`
     : ''
+  const optionalExtension = buildOptionalExtension(findOptionalExtension(section, group.dayLabel))
 
-  return `${header}\n${group.tasks.map(buildTaskBlock).join('\n')}`
+  return `${header}\n${group.tasks.map(buildTaskBlock).join('\n')}\n${optionalExtension}`
 }
 
 function buildInstructionBlock(items, label, className) {
@@ -73,8 +89,7 @@ function buildTaskSheetPage(pkg, section, title, groups, fontFaceCSS, designCSS,
   const instructions = buildInstructionBlock(section.instructions, 'Use this sheet', 'instruction-list')
   const supports = buildInstructionBlock(section.embedded_supports, 'Helpful reminders', 'support-list')
   const criteria = buildInstructionBlock(section.success_criteria, 'Check before you move on', 'criteria-list')
-  const bodyContent = groups.map((group, index) => buildDaySection(group, index === 0, singleDay)).join('\n')
-  const filler = buildPageFiller(dayLabel)
+  const bodyContent = groups.map((group, index) => buildDaySection(section, group, index === 0, singleDay)).join('\n')
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -133,7 +148,6 @@ ${responsePatternCss}
     ${bodyContent}
     ${supports}
     ${criteria}
-    ${filler}
   </div>
 </body>
 </html>`

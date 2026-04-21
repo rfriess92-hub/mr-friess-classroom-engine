@@ -34,6 +34,9 @@ test('task-sheet schema exposes explicit output packaging control', () => {
     new Set(taskSheetSection.output_packaging?.enum ?? []),
     new Set(['packet', 'packet_and_days']),
   )
+
+  assert.equal(taskSheetSection.optional_extensions?.type, 'array')
+  assert.equal(taskSheetSection.optional_extensions?.items?.$ref, '#/$defs/taskSheetOptionalExtension')
 })
 
 test('worksheet questions can use the same response-pattern hints as task sheets', () => {

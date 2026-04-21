@@ -66,12 +66,12 @@ function buildParagraphSupport(paragraphSupport) {
 </div>`
 }
 
-function buildSuccessCriteria(items) {
+function buildSuccessCriteria(items, label = 'Quick check') {
   if (!Array.isArray(items) || items.length === 0) return ''
 
   return `
 <div class="criteria-section">
-  <div class="support-card-label">Quick check</div>
+  <div class="support-card-label">${escapeHtml(label)}</div>
   ${items.map((item) => `
     <div class="criteria-row">
       <span class="criteria-box"></span>
@@ -227,6 +227,7 @@ export function buildFinalResponseSheetHTML(pkg, section, fontFaceCSS, designCSS
   const quickCheckItems = Array.isArray(hints.quick_check_items) && hints.quick_check_items.length > 0
     ? hints.quick_check_items
     : section.success_criteria
+  const quickCheckLabel = hints.quick_check_label ?? 'Quick check'
   const responseStructure = buildResponseStructure(section)
 
   return `<!DOCTYPE html>
@@ -254,11 +255,11 @@ ${designCSS}
 
 .prompt-box-label,
 .support-card-label {
-  font-size: 8pt;
+  font-size: 8.5pt;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #6B7280;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  color: #4B5563;
   margin-bottom: 8pt;
 }
 
@@ -328,10 +329,10 @@ ${designCSS}
 }
 
 .response-section-label {
-  font-size: 8.5pt;
+  font-size: 9pt;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  text-transform: none;
+  letter-spacing: 0.01em;
   color: #374151;
   margin: 14pt 0 6pt;
   page-break-after: avoid;
@@ -379,11 +380,11 @@ ${designCSS}
 }
 
 .structured-panel-label {
-  font-size: 8pt;
+  font-size: 8.5pt;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #6B7280;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  color: #4B5563;
   margin-bottom: 5pt;
 }
 
@@ -509,7 +510,7 @@ ${designCSS}
     ${buildResponseNote(responseStructure.responseNote)}
     ${responseStructure.body}
 
-    ${buildSuccessCriteria(quickCheckItems)}
+    ${buildSuccessCriteria(quickCheckItems, quickCheckLabel)}
   </div>
 </body>
 </html>`

@@ -131,6 +131,13 @@ function buildTaskSheetBlocks(route, section) {
       }),
     )
   }
+  for (const [index, extension] of (Array.isArray(section.optional_extensions) ? section.optional_extensions : []).entries()) {
+    pushTextBlock(blocks, route, 'callout', extension.body, {
+      priority: 'support',
+      source_key: `optional_extensions.${index + 1}.body`,
+      label: extension.label || extension.body,
+    })
+  }
   pushListBlock(blocks, route, 'callout', section.embedded_supports, { priority: 'support', source_key: 'embedded_supports', label: 'embedded_supports' })
   pushListBlock(blocks, route, 'checklist', section.success_criteria, { priority: 'normal', source_key: 'success_criteria', label: 'success_criteria' })
   return blocks

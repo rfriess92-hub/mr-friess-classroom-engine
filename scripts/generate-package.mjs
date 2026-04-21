@@ -54,6 +54,10 @@ const referenceFixturePath = resolve(process.cwd(), 'fixtures/generated/careers-
 const referenceFixture = existsSync(referenceFixturePath)
   ? readFileSync(referenceFixturePath, 'utf-8')
   : null
+const contentStylePolicyPath = resolve(process.cwd(), 'engine', 'generation', 'content-style-policy.json')
+const contentStylePolicy = existsSync(contentStylePolicyPath)
+  ? readFileSync(contentStylePolicyPath, 'utf-8')
+  : null
 
 const SYSTEM_PROMPT = `You are generating a stable-core lesson package for the Mr. Friess Classroom Engine.
 
@@ -73,6 +77,11 @@ Hard requirements:
 10. Prefer minimal sufficient structure over bloated structure.
 11. Include canonical assignment metadata so assignment-family intent is explicit upstream.
 12. Infer assignment_family conservatively from the task structure when the brief does not name it directly.
+13. When a student packet or worksheet benefits from extra space or early-finisher support, prefer aligned optional extension tied to the same day's thinking.
+14. Generic riddles, unrelated trivia, novelty filler, and random brain breaks are disallowed by default unless the brief explicitly asks for them.
+15. Match artifact tone to artifact role instead of giving every artifact the same narrated voice.
+16. Avoid over-explaining artifact purpose when headings and layout already make it obvious.
+17. Student-facing models should sound plausible and human, not hyper-polished or unnaturally self-aware.
 
 Required top-level fields:
 - schema_version: "2.1.0"
@@ -104,6 +113,11 @@ Required top-level fields:
 - pacing_shape
 - assessment_focus
 
+Task-sheet add-on rule:
+- If extra space or early-finisher support is genuinely needed in a task_sheet, encode it in task_sheet.optional_extensions.
+- task_sheet.optional_extensions uses objects shaped like { day_label, label, body }.
+- These optional extensions must stay short, visually secondary, clearly optional, and aligned to the same day's thinking.
+
 Each output object must include:
 - output_id: snake_case identifier
 - output_type: one of teacher_guide, slides, worksheet, task_sheet, checkpoint_sheet, exit_ticket, final_response_sheet, lesson_overview
@@ -131,6 +145,8 @@ Slide content field guide:
 - planner_model: { model, supports: [...] }
 - single_card / prompt_card: { goal OR title, prompts: [...], instruction }
 - numbered_steps: { steps: [...] }
+
+${contentStylePolicy ? `Apply this content style policy:\n\n<content_style_policy>\n${contentStylePolicy}\n</content_style_policy>\n` : ''}
 
 Return exactly one JSON object. No markdown. No explanation.`
 

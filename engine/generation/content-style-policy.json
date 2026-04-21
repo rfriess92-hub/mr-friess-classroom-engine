@@ -1,0 +1,66 @@
+{
+  "$schema_version": "1.0.0",
+  "schema_id": "mr_friess_content_style_policy",
+  "content_addon_policy": {
+    "default_mode": "aligned_optional_extension",
+    "disallow_generic_filler": true,
+    "allowed_addon_types": [
+      "evidence_extension",
+      "revision_extension",
+      "carryover_extension"
+    ],
+    "disallowed_addon_types": [
+      "generic_riddle",
+      "random_brain_break",
+      "unrelated_trivia",
+      "novelty_filler"
+    ],
+    "rules": [
+      "Use aligned optional extension only when it deepens the same lesson thinking.",
+      "Keep extension prompts visually secondary and clearly optional.",
+      "Do not let early-finisher space start a new task or a different lesson."
+    ]
+  },
+  "artifact_tone_profiles": {
+    "weekly_packet": [
+      "student-usable",
+      "structured",
+      "light-touch guidance",
+      "less narrated"
+    ],
+    "checkpoint_sheet": [
+      "teacher-only",
+      "fast to use",
+      "conference-ready",
+      "judgment-oriented"
+    ],
+    "final_response_sheet": [
+      "quieter",
+      "more serious",
+      "trusted",
+      "clearly culminating"
+    ],
+    "slide_deck": [
+      "live-teaching voice",
+      "discussion-ready",
+      "less templated"
+    ],
+    "lesson_overview_or_teacher_guide": [
+      "practical",
+      "colleague-authored",
+      "sharper judgment",
+      "less system-memo"
+    ]
+  },
+  "anti_sameness_rules": [
+    "Do not restate artifact purpose when headings and layout already make it obvious.",
+    "Reduce repeated helper text that explains the page too much.",
+    "Prefer one short aligned extension over stacked support reminders plus filler.",
+    "Allow consistency, but avoid cloned phrasing across days or artifact roles."
+  ],
+  "model_language_realism": [
+    "Student-facing models should sound plausible, not perfected.",
+    "Avoid hyper-polished, morally over-finished, or unnaturally self-aware model language.",
+    "Keep model structure clear without turning it into an idealized exemplar."
+  ]
+}
