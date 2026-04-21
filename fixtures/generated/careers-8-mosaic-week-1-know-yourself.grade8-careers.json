@@ -509,17 +509,22 @@
         "lines": 1,
         "activity_type": "write_response",
         "render_hints": {
-          "response_pattern": "record_fields",
+          "response_pattern": "table_record",
           "heading": "Day 4 - Snapshot planner for Day 5",
-          "help": "This is planning only. Move the polished snapshot to the Day 5 final response sheet.",
-          "record_fields": [
-            "Strengths to carry into Day 5",
-            "Interests or topics to carry into Day 5",
-            "Values to carry into Day 5",
-            "Learning or work preferences to carry into Day 5",
-            "One future area I want to explore lightly",
-            "One realistic next-step goal to carry into Day 5"
-          ]
+          "help": "Use short notes. Save the polished snapshot for the Day 5 final response sheet.",
+          "table_columns": [
+            "Notes to carry forward",
+            "Most specific detail to keep"
+          ],
+          "table_rows": [
+            "Strengths",
+            "Interests or topics",
+            "Values",
+            "Learning or work preferences",
+            "Future area to explore lightly",
+            "Realistic next-step goal"
+          ],
+          "table_cell_lines": 1
         }
       }
     ],
