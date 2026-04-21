@@ -509,14 +509,14 @@
         },
         {
           "type": "ENGAGE",
-          "title": "What keeps a community going?",
+          "title": "What keeps it going?",
           "layout": "prompt",
           "content": {
-            "scenario": "Imagine your community for one ordinary week with no clean water, no transit, no grocery stores, no school support staff, no health services, no maintenance crews, and no one organizing public spaces. What would break first?",
+            "scenario": "If clean water, transit, food access, health services, and maintenance disappeared for a week, what would break first?",
             "prompts": [
-              "What needs show up right away?",
-              "Which needs are easy to see and which ones are easy to forget?",
-              "What kinds of work are already hiding inside your answer?"
+              "What needs show up fast?",
+              "Which ones are easy to forget?",
+              "What work is hiding in your answer?"
             ]
           }
         },
@@ -537,10 +537,10 @@
           "title": "Community map launch",
           "layout": "retrieval",
           "content": {
-            "task": "Use the packet to map one real community need, where you can see it, and one role already connected to it.",
+            "task": "Map one real community need and one role tied to it.",
             "prompts": [
               "What need are you naming?",
-              "Where does it show up in real life?",
+              "Where do you see it?",
               "Who helps meet it now?"
             ]
           }
@@ -551,8 +551,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "What is one kind of work you think people overlook too often?",
-              "What did today change about how you define value in work?"
+              "What work gets overlooked?",
+              "How did today change your idea of valuable work?"
             ]
           }
         }
@@ -585,11 +585,11 @@
           "title": "If this job disappeared",
           "layout": "prompt",
           "content": {
-            "scenario": "Pick one role from school or local life: bus driver, custodian, school office staff member, grocery worker, recreation worker, crossing guard, building maintenance worker, educational assistant, nurse, or waste collection worker. What would go wrong if that role disappeared for a week?",
+            "scenario": "Pick one school or local role. What would go wrong if it disappeared for a week?",
             "prompts": [
               "Who would notice right away?",
-              "Who might only understand the job after it was gone?",
-              "What need would stop getting met?"
+              "Who might notice later?",
+              "What need stops getting met?"
             ]
           }
         },
@@ -599,8 +599,8 @@
           "layout": "checklist",
           "content": {
             "items": [
-              "Some roles are public and easy to recognize.",
-              "Some roles are behind the scenes but essential to the same system.",
+              "Some roles are public and easy to spot.",
+              "Some are behind the scenes but still essential.",
               "Credit is not the same thing as value."
             ]
           }
@@ -610,11 +610,11 @@
           "title": "Role-to-need matching",
           "layout": "retrieval",
           "content": {
-            "task": "Use the class cards or examples to match roles to one need, then record a visible role and a less-visible role in your packet.",
+            "task": "Match roles to one need. Record one visible role and one less-visible role.",
             "prompts": [
               "What need is being met?",
               "Who responds directly?",
-              "Who supports the system behind it?"
+              "Who supports the system?"
             ]
           }
         },
@@ -624,8 +624,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "Which role deserves more recognition than it usually gets?",
-              "How does this change the way you think about what counts as meaningful work?"
+              "Which role deserves more recognition?",
+              "How does this change what meaningful work looks like?"
             ]
           }
         }
@@ -658,11 +658,11 @@
           "title": "Community case study",
           "layout": "prompt",
           "content": {
-            "scenario": "A neighborhood food program is short on supplies. A school has fewer recreation options after hours. A local park has become less welcoming because of damage and poor upkeep. What kinds of roles would actually respond to those situations?",
+            "scenario": "When a community problem shows up, different roles respond in different ways.",
             "prompts": [
-              "Which roles respond right away?",
-              "Which roles keep the system going over time?",
-              "Where could volunteering help without being the whole solution?"
+              "Who responds right away?",
+              "Who keeps the system going?",
+              "Where can volunteering help?"
             ]
           }
         },
@@ -683,11 +683,11 @@
           "title": "Build the contribution map",
           "layout": "retrieval",
           "content": {
-            "task": "Use the packet to map one need, direct roles, support roles, and where volunteering or service could fit.",
+            "task": "Map one need, direct roles, support roles, and where service could fit.",
             "prompts": [
               "What need are you focusing on?",
               "Who responds directly?",
-              "What roles support the system around that work?"
+              "Who supports the system?"
             ]
           }
         },
@@ -697,8 +697,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "Why is it too simple to say volunteering is the whole answer to every community problem?",
-              "What did today show you about the value of less-visible work?"
+              "Why is volunteering not the whole answer?",
+              "What did today show about less-visible work?"
             ]
           }
         }
@@ -728,14 +728,14 @@
         },
         {
           "type": "ENGAGE",
-          "title": "What kind of contribution feels meaningful?",
+          "title": "What contribution feels meaningful?",
           "layout": "prompt",
           "content": {
-            "scenario": "Two people can both care about community but imagine very different kinds of contribution. One wants hands-on problem solving. Another wants quiet support work that keeps a system steady. Another wants roles that build trust or communication. None of those are automatically better than the others.",
+            "scenario": "People can care about community in very different ways, and none of them are automatically better.",
             "prompts": [
-              "What kinds of contribution feel meaningful to you right now?",
-              "What strengths or interests connect to that kind of work?",
-              "What need could that contribution connect to?"
+              "What kind of contribution feels meaningful?",
+              "What strengths connect to it?",
+              "What need could it connect to?"
             ]
           }
         },
@@ -756,22 +756,20 @@
           "title": "Model the final logic",
           "layout": "planner_model",
           "content": {
-            "model": "One community need I notice is safe and welcoming public spaces. Roles connected to that need include recreation staff, planners, maintenance crews, program leaders, and people who organize events or outreach. The work matters because people use those spaces for belonging, exercise, and community life. A kind of contribution that feels meaningful to me is helping create spaces where people feel included and supported.",
+            "model": "One need I notice is safe public spaces. Roles tied to it include recreation staff, planners, maintenance crews, and community organizers. The work matters because those spaces support belonging. Meaningful contribution for me is helping people feel included there.",
             "supports": [
-              "The model names a real need, not only a job.",
-              "The response shows more than one role connected to the system.",
-              "The personal reflection is short and specific rather than sentimental."
+              "Connect the need, roles, and your part."
             ]
           }
         },
         {
           "type": "REFLECT",
-          "title": "Get ready for the checkpoint",
+          "title": "Get ready",
           "layout": "reflect",
           "content": {
             "prompts": [
-              "Which need will you focus on in your final artifact?",
-              "What kind of contribution feels most meaningful to you right now, and why?"
+              "Which need will you focus on?",
+              "What contribution feels meaningful right now?"
             ]
           }
         }
@@ -839,14 +837,13 @@
         },
         {
           "type": "APPLY",
-          "title": "Model the structure, not the exact answer",
+          "title": "One example",
           "layout": "planner_model",
           "content": {
-            "model": "Community need: reliable school and community food access. Jobs and roles: grocery workers, drivers, food program coordinators, cooks, warehouse staff, and volunteers supporting food programs. How the work contributes: these roles help people get what they need to stay healthy, learn, and function each day. What this shows about the value of work: a lot of important work is steady and essential even when it is not glamorous. Meaningful contribution for me: I care about roles that solve practical problems and make daily life more stable for people.",
+            "model": "Community need: reliable food access. Roles: grocery workers, drivers, food program staff, cooks, and volunteers. Contribution: they help people get what they need each day. For me, meaningful work solves practical problems and makes daily life more stable.",
             "supports": [
-              "Use one clear need instead of trying to cover everything.",
-              "Include roles that are visible and roles that are easy to overlook.",
-              "End with a short personal meaning reflection, not a long life plan."
+              "Keep one clear need.",
+              "Name visible and less-visible roles."
             ]
           }
         },
@@ -866,12 +863,12 @@
         },
         {
           "type": "REFLECT",
-          "title": "Short share-out",
+          "title": "Quick share",
           "layout": "reflect",
           "content": {
             "prompts": [
-              "What is one kind of work you respect more after this week?",
-              "What is one kind of contribution that feels meaningful to you right now?"
+              "What work do you respect more now?",
+              "What contribution feels meaningful to you?"
             ]
           }
         }
