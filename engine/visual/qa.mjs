@@ -15,6 +15,10 @@ function componentArea(component) {
   return width * height
 }
 
+function slideBudget(page, config) {
+  return config.layouts.slide_layouts?.[page.layout_id]?.budgets ?? {}
+}
+
 function evaluatePageRoleConsistency(page, artifactType, config) {
   const findings = []
   const knownPageRoles = new Set(config.layouts.page_roles?.[artifactType] ?? [])
@@ -25,6 +29,7 @@ function evaluatePageRoleConsistency(page, artifactType, config) {
   if (knownPageRoles.size > 0 && !knownPageRoles.has(page.page_role)) {
     findings.push({
       type: 'unknown_page_role',
+      severity: 'block',
       page_id: page.page_id,
       note: `Unknown page_role ${page.page_role} for artifact_type ${artifactType}.`,
     })
@@ -34,12 +39,89 @@ function evaluatePageRoleConsistency(page, artifactType, config) {
   if (layoutDefinition?.page_roles && !layoutDefinition.page_roles.includes(page.page_role)) {
     findings.push({
       type: 'layout_page_role_mismatch',
+      severity: 'block',
       page_id: page.page_id,
       note: `Layout ${page.layout_id} does not allow page_role ${page.page_role}.`,
     })
   }
 
   return findings
+}
+
+function evaluateSlideTextFloor(page) {
+  if (page.page_role == null) return []
+  const fontPt = Number(page.metrics?.body_font_pt ?? 0)
+  if (fontPt >= 24) return []
+  return [{ page_id: page.page_id, note: `Slide resolves body text at ${fontPt}pt; minimum is 24pt.` }]
+}
+
+function evaluateSlideWordBudget(page, config) {
+  const budget = slideBudget(page, config)
+  const visibleWords = Number(page.metrics?.visible_words ?? 0)
+  if (!budget.max_words || visibleWords <= budget.max_words) return []
+  return [{ page_id: page.page_id, note: `Slide resolves ${visibleWords} visible words; budget for ${page.layout_id} is ${budget.max_words}.` }]
+}
+
+function evaluateSlideDominantBlock(page) {
+  const dominantStructure = page.metrics?.dominant_structure
+  if (dominantStructure === 'title_hero' || dominantStructure === 'paired_compare') return []
+
+  const dominantCount = majorComponents(page).filter((component) => component.options?.dominance === 'dominant').length
+  if (dominantCount === 1) return []
+  return [{ page_id: page.page_id, note: `Slide is missing a single dominant reading path; found ${dominantCount} dominant blocks.` }]
+}
+
+function evaluateCompetingCards(page) {
+  const majorCount = majorComponents(page).length
+  if (page.page_role === 'compare') {
+    if (majorCount <= 3) return []
+    return [{ page_id: page.page_id, note: `Compare slide resolves ${majorCount} major blocks; expected a compare pair plus one quiet takeaway.` }]
+  }
+  if (majorCount <= 2) return []
+  return [{ page_id: page.page_id, note: `Slide resolves ${majorCount} competing major blocks; expected no more than 2.` }]
+}
+
+function evaluateReflectDensity(page, config) {
+  if (page.page_role !== 'reflect') return []
+  const budget = slideBudget(page, config)
+  const words = Number(page.metrics?.visible_words ?? 0)
+  const lines = Number(page.metrics?.visible_lines ?? 0)
+  const prompts = Number(page.metrics?.prompt_count ?? 0)
+  const majorCount = Number(page.metrics?.major_component_count ?? majorComponents(page).length)
+
+  if (
+    words <= Number(budget.max_words ?? 30)
+    && lines <= Number(budget.max_lines ?? 5)
+    && prompts <= Number(budget.max_prompts ?? 2)
+    && majorCount <= 2
+  ) {
+    return []
+  }
+
+  return [{
+    page_id: page.page_id,
+    note: `Reflect slide is too dense (${words} words, ${lines} lines, ${prompts} prompts, ${majorCount} blocks).`,
+  }]
+}
+
+function evaluatePromptDensity(page, config) {
+  if (page.page_role !== 'prompt') return []
+  const budget = slideBudget(page, config)
+  const words = Number(page.metrics?.visible_words ?? 0)
+  const prompts = Number(page.metrics?.prompt_count ?? 0)
+
+  if (prompts <= Number(budget.max_prompts ?? 3) && words <= Number(budget.max_words ?? 40)) return []
+  return [{
+    page_id: page.page_id,
+    note: `Prompt slide exceeds prompt density budget (${prompts} prompts, ${words} words).`,
+  }]
+}
+
+function evaluateSplitBeforeShrink(page) {
+  if (page.metrics?.content_shrunk_below_floor === true) {
+    return [{ page_id: page.page_id, note: 'Slide content was shrunk below the classroom text floor instead of split.' }]
+  }
+  return []
 }
 
 function evaluateMainTaskVisible(page) {
@@ -104,52 +186,6 @@ function evaluateSupportToolsVsSuccessCheck(page) {
   return []
 }
 
-function evaluateSlideSequenceVariety(pages) {
-  if (pages.length < 5) return []
-
-  const layoutIds = uniqueValues(pages.map((page) => page.layout_id))
-  if (layoutIds.length < 3) {
-    return [{ note: 'Five-slide sequence uses fewer than three distinct layout ids.' }]
-  }
-
-  let consecutive = 1
-  for (let i = 1; i < pages.length; i += 1) {
-    const prev = JSON.stringify(pages[i - 1].layout_id)
-    const next = JSON.stringify(pages[i].layout_id)
-    if (prev === next) {
-      consecutive += 1
-      if (consecutive >= 3) {
-        return [{ note: 'Three or more consecutive slides share the same layout id.' }]
-      }
-    } else {
-      consecutive = 1
-    }
-  }
-
-  return []
-}
-
-function evaluateReflectionBreathingRoom(pages) {
-  const reflectionPages = pages.filter((page) => page.page_role === 'reflect' || majorComponents(page).some((component) => component.visual_role === 'reflection'))
-  const comparisonPages = pages.filter((page) => page.page_role === 'model' || page.page_role === 'task')
-
-  if (reflectionPages.length === 0 || comparisonPages.length === 0) return []
-
-  const comparisonAverage = comparisonPages.reduce((sum, page) => sum + majorComponents(page).length, 0) / comparisonPages.length
-  const failures = []
-  for (const reflectionPage of reflectionPages) {
-    const reflectionCount = majorComponents(reflectionPage).length
-    if (reflectionCount >= comparisonAverage) {
-      failures.push({
-        page_id: reflectionPage.page_id,
-        note: `Reflection slide has ${reflectionCount} major blocks; expected fewer than model/task average of ${comparisonAverage.toFixed(2)}.`,
-      })
-    }
-  }
-
-  return failures
-}
-
 function evaluateAccentLimit(page) {
   const components = majorComponents(page)
   const accentRoles = uniqueValues(components.map((component) => {
@@ -164,13 +200,18 @@ function evaluateAccentLimit(page) {
 }
 
 const ruleEvaluators = {
+  'SL-TXT-002': ({ pages }) => pages.flatMap((page) => evaluateSlideTextFloor(page)),
+  'SL-WRD-001': ({ pages, config }) => pages.flatMap((page) => evaluateSlideWordBudget(page, config)),
+  'SL-DOM-002': ({ pages }) => pages.flatMap((page) => evaluateSlideDominantBlock(page)),
+  'SL-CRD-002': ({ pages }) => pages.flatMap((page) => evaluateCompetingCards(page)),
+  'SL-REF-002': ({ pages, config }) => pages.flatMap((page) => evaluateReflectDensity(page, config)),
+  'SL-PRM-002': ({ pages, config }) => pages.flatMap((page) => evaluatePromptDensity(page, config)),
+  'SL-SPL-001': ({ pages }) => pages.flatMap((page) => evaluateSplitBeforeShrink(page)),
   main_task_visible: ({ pages }) => pages.flatMap((page) => evaluateMainTaskVisible(page)),
   support_not_competing: ({ pages }) => pages.flatMap((page) => evaluateSupportNotCompeting(page)),
   not_all_rectangles: ({ pages }) => pages.flatMap((page) => evaluateNotAllRectangles(page)),
   writing_space_open: ({ pages }) => pages.flatMap((page) => evaluateWritingSpaceOpen(page)),
   support_tools_vs_success_check: ({ pages }) => pages.flatMap((page) => evaluateSupportToolsVsSuccessCheck(page)),
-  slide_sequence_variety: ({ pages }) => evaluateSlideSequenceVariety(pages),
-  reflection_breathing_room: ({ pages }) => evaluateReflectionBreathingRoom(pages),
   accent_limit: ({ pages }) => pages.flatMap((page) => evaluateAccentLimit(page)),
 }
 
@@ -192,14 +233,16 @@ export function runVisualQaOnPlan(visualPlan) {
     if (typeof evaluator !== 'function') {
       return {
         rule_id: rule.id,
+        severity: rule.severity ?? 'revise',
         status: 'missing_implementation',
         failures: [],
       }
     }
 
-    const failures = evaluator({ visualPlan, pages })
+    const failures = evaluator({ visualPlan, pages, config })
     return {
       rule_id: rule.id,
+      severity: rule.severity ?? 'revise',
       status: failures.length > 0 ? 'fail' : 'pass',
       failures,
     }
@@ -209,6 +252,7 @@ export function runVisualQaOnPlan(visualPlan) {
     ...structuralFindings,
     ...ruleResults.flatMap((result) => result.failures.map((failure) => ({
       type: result.rule_id,
+      severity: result.severity,
       ...failure,
     }))),
   ]
@@ -216,13 +260,16 @@ export function runVisualQaOnPlan(visualPlan) {
   for (const missingRuleId of missingImplementations) {
     findings.push({
       type: 'missing_required_rule_implementation',
+      severity: 'block',
       rule_id: missingRuleId,
-      note: `Required visual QA rule \"${missingRuleId}\" is missing executable logic.`,
+      note: `Required visual QA rule "${missingRuleId}" is missing executable logic.`,
     })
   }
 
+  const hasBlock = findings.some((finding) => finding.severity === 'block')
+
   return {
-    judgment: missingImplementations.length > 0 ? 'block' : findings.length > 0 ? 'revise' : 'pass',
+    judgment: hasBlock ? 'block' : findings.length > 0 ? 'revise' : 'pass',
     findings,
     rule_results: ruleResults,
     missing_required_rule_implementations: missingImplementations,

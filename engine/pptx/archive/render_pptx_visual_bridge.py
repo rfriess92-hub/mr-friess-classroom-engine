@@ -9,33 +9,11 @@ from pptx.util import Inches, Pt
 base = current.base
 
 
-def add_plain_card(slide, x: float, y: float, w: float, h: float, accent) -> None:
-    body = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(x), Inches(y), Inches(w), Inches(h))
-    body.fill.solid()
-    body.fill.fore_color.rgb = base.WHITE
-    body.line.color.rgb = base.BORDER
-    body.line.width = Pt(1.0)
-
-    strip = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(x), Inches(y), Inches(0.10), Inches(h))
-    strip.fill.solid()
-    strip.fill.fore_color.rgb = accent
-    strip.line.fill.background()
-
-
 def visual_page_for(packet: dict, slide_index: int) -> dict | None:
     visual = packet.get("visual") or {}
     pages = visual.get("pages") or []
     if 0 <= slide_index < len(pages):
         return pages[slide_index]
-    return None
-
-
-def first_visual_component(visual_page: dict | None, role: str | None = None) -> dict | None:
-    if not visual_page:
-        return None
-    for component in visual_page.get("components") or []:
-        if role is None or component.get("visual_role") == role:
-            return component
     return None
 
 
@@ -57,297 +35,241 @@ def token_rgb(tokens: dict, key: str, fallback):
     return fallback
 
 
+def type_size(tokens: dict, key: str, fallback: int) -> int:
+    value = (tokens.get("type") or {}).get(key)
+    try:
+        return int(value)
+    except Exception:
+        return fallback
+
+
 def page_accent(visual_page: dict | None, theme: dict):
     tokens = page_tokens(visual_page)
-    page_role = (visual_page or {}).get("page_role")
-    if page_role == "reflect":
+    role = (visual_page or {}).get("page_role")
+    if role == "reflect":
         return token_rgb(tokens, "reflection", theme["secondary"])
-    if page_role == "task":
+    if role == "compare":
         return token_rgb(tokens, "support", theme["secondary"])
     return token_rgb(tokens, "ink_primary", theme["primary"])
 
 
-def component_style_bundle(visual_page: dict | None, role: str, default_accent, default_tint, default_title: str):
-    component = first_visual_component(visual_page, role)
-    resolved = (component or {}).get("resolved_visual") or {}
-    style = resolved.get("style") or {}
-    tokens = resolved.get("tokens") or page_tokens(visual_page)
-
-    accent_role = style.get("accent_role")
-    if accent_role in {"support", "reflection", "extension", "success"}:
-        accent = token_rgb(tokens, accent_role, default_accent)
-    else:
-        accent = token_rgb(tokens, "ink_primary", default_accent)
-
-    fill_mode = style.get("fill_mode")
-    if fill_mode == "panel":
-        tint = token_rgb(tokens, "panel", default_tint)
-    elif fill_mode == "panel_alt":
-        tint = token_rgb(tokens, "panel_alt", default_tint)
-    elif fill_mode == "paper":
-        tint = token_rgb(tokens, "paper", default_tint)
-    elif fill_mode == "accent_tint":
-        tint = token_rgb(tokens, "panel_alt", default_tint)
-    else:
-        tint = default_tint
-
-    content = (component or {}).get("content") or {}
-    title = content.get("label") or content.get("title") or default_title
-    return {"accent": accent, "tint": tint, "title": title, "tokens": tokens}
+def course_label(packet: dict) -> str:
+    label = f"{packet.get('subject', 'Subject')} {packet.get('grade', '')}".strip()
+    if packet.get("lesson_label"):
+        label += f" · {packet['lesson_label']}"
+    return label
 
 
-def add_visual_title(slide, packet: dict, slide_spec: dict, visual_page: dict, theme: dict) -> None:
+def content_plan_for(visual_page: dict | None, slide_spec: dict) -> dict:
+    if visual_page and isinstance(visual_page.get("content_plan"), dict):
+        return visual_page.get("content_plan")
+    return {"title": slide_spec.get("title", "Untitled")}
+
+
+def add_panel(slide, x: float, y: float, w: float, h: float, fill, line, accent=None, radius: float = 0.08):
+    panel = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(x), Inches(y), Inches(w), Inches(h))
+    panel.fill.solid()
+    panel.fill.fore_color.rgb = fill
+    panel.line.color.rgb = line
+    panel.line.width = Pt(1.4)
+    if panel.adjustments:
+        panel.adjustments[0] = radius
+    if accent is not None:
+        bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(x), Inches(y), Inches(0.16), Inches(h))
+        bar.fill.solid()
+        bar.fill.fore_color.rgb = accent
+        bar.line.fill.background()
+    return panel
+
+
+def add_visual_title(slide, packet: dict, slide_spec: dict, visual_page: dict | None, theme: dict) -> None:
     tokens = page_tokens(visual_page)
+    accent = page_accent(visual_page, theme)
     ink = token_rgb(tokens, "ink_primary", base.NAVY)
     ink_secondary = token_rgb(tokens, "ink_secondary", base.SLATE)
-    panel_alt = token_rgb(tokens, "panel_alt", base.LIGHT)
     line = token_rgb(tokens, "line", base.BORDER)
-    accent = page_accent(visual_page, theme)
+    label_pt = type_size(tokens, "label", 18)
+    title_pt = type_size(tokens, "title_band", 30)
 
-    course_label = f"{packet.get('subject', 'Subject')} {packet.get('grade', '')}".strip()
-    if packet.get("lesson_label"):
-        course_label += f" · {packet['lesson_label']}"
+    top = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), Inches(13.333), Inches(0.14))
+    top.fill.solid()
+    top.fill.fore_color.rgb = accent
+    top.line.fill.background()
 
-    band = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.45), Inches(0.22), Inches(12.2), Inches(0.28))
-    band.fill.solid()
-    band.fill.fore_color.rgb = panel_alt
-    band.line.fill.background()
-    base.add_textbox(slide, 0.62, 0.24, 8.6, 0.18, course_label, font_size=10, color=ink_secondary, bold=True)
+    base.add_textbox(slide, 0.68, 0.26, 12.0, 0.24, course_label(packet), font_size=label_pt, color=ink_secondary, bold=True)
+    base.add_textbox(slide, 0.68, 0.66, 12.0, 0.52, slide_spec.get("title", "Untitled"), font_size=title_pt, color=ink, bold=True)
 
-    page_role = str(visual_page.get("page_role", "")).replace("_", " ").title()
-    if page_role:
-        pill = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(10.75), Inches(0.18), Inches(1.45), Inches(0.34))
-        pill.fill.solid()
-        pill.fill.fore_color.rgb = accent
-        pill.line.fill.background()
-        base.add_textbox(slide, 10.83, 0.24, 1.20, 0.16, page_role, font_size=10, color=base.WHITE, bold=True, align=PP_ALIGN.CENTER)
-
-    base.add_textbox(slide, 0.60, 0.58, 12.0, 0.46, slide_spec.get("title", "Untitled"), font_size=24, color=ink, bold=True)
-    sep = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.60), Inches(1.18), Inches(12.0), Inches(0.03))
+    sep = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.68), Inches(1.32), Inches(12.0), Inches(0.03))
     sep.fill.solid()
     sep.fill.fore_color.rgb = line
     sep.line.fill.background()
 
 
-def render_hero_plain(slide, packet: dict, slide_spec: dict, accent) -> None:
-    content = slide_spec.get("content", {})
-    title = slide_spec.get("title", packet.get("topic", "Lesson"))
-    subtitle = content.get("subtitle") or ""
+def render_hero_family(slide, packet: dict, slide_spec: dict, visual_page: dict | None, theme: dict) -> None:
+    tokens = page_tokens(visual_page)
+    accent = page_accent(visual_page, theme)
+    accent_dark = base.darken_rgb(accent, 0.72)
+    title_pt = type_size(tokens, "title_xl", 46)
+    subtitle_pt = type_size(tokens, "body_l", 28)
+    label_pt = type_size(tokens, "label", 18)
 
-    left_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.58), Inches(1.62), Inches(0.14), Inches(4.55))
-    left_bar.fill.solid()
-    left_bar.fill.fore_color.rgb = accent
-    left_bar.line.fill.background()
+    band = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), Inches(13.333), Inches(3.25))
+    band.line.fill.background()
+    base.apply_shape_gradient(
+        band,
+        [(0, accent_dark), (55000, accent), (100000, base.darken_rgb(accent, 0.88))],
+        angle_deg=90,
+    )
 
-    panel = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(7.95), Inches(1.62), Inches(3.65), Inches(2.20))
-    panel.fill.solid()
-    panel.fill.fore_color.rgb = base.LIGHT
-    panel.line.color.rgb = base.BORDER
-    panel.line.width = Pt(1.0)
+    plan = content_plan_for(visual_page, slide_spec)
+    base.add_textbox(slide, 0.72, 0.34, 12.0, 0.24, course_label(packet), font_size=label_pt, color=base.WHITE, bold=True)
+    base.add_textbox(slide, 0.72, 0.92, 11.3, 1.25, plan.get("title") or slide_spec.get("title", "Untitled"), font_size=title_pt, color=base.WHITE, bold=True)
 
-    base.add_textbox(slide, 0.95, 1.78, 6.35, 1.20, title, font_size=30, bold=True, color=base.NAVY)
+    subtitle = plan.get("subtitle") or ""
     if subtitle:
-        base.add_textbox(slide, 0.95, 3.10, 5.95, 1.20, subtitle, font_size=18, color=base.SLATE)
+        base.add_textbox(slide, 0.72, 2.36, 10.6, 0.62, subtitle, font_size=subtitle_pt, color=base.WHITE)
 
-    prompt_label = "Launch"
-    base.add_textbox(slide, 8.28, 1.90, 2.8, 0.28, prompt_label, font_size=12, color=accent, bold=True, align=PP_ALIGN.CENTER)
-    base.add_textbox(slide, 8.25, 2.35, 3.05, 0.92, "Start by orienting students to the big idea before moving into the first prompt.", font_size=16, color=base.NAVY, align=PP_ALIGN.CENTER)
-
-    meta = f"{packet.get('subject', 'Subject')} {packet.get('grade', '')}"
-    if packet.get("lesson_label"):
-        meta += f" · {packet['lesson_label']}"
-    base.add_textbox(slide, 0.95, 6.08, 5.8, 0.32, meta, font_size=14, color=accent, bold=True)
-
-    stripe = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.95), Inches(6.55), Inches(10.6), Inches(0.16))
+    stripe = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.72), Inches(6.82), Inches(11.8), Inches(0.16))
     stripe.fill.solid()
     stripe.fill.fore_color.rgb = accent
     stripe.line.fill.background()
 
 
-def render_prompt(slide, content: dict, theme: dict):
-    visual_page = content.get("_visual_page")
-    main_style = component_style_bundle(visual_page, "main_prompt", theme["secondary"], theme["tints"]["secondary"], "Start here")
-    task_style = component_style_bundle(visual_page, "task_step", theme["primary"], theme["tints"]["primary"], "Discuss")
-    body_color = token_rgb(page_tokens(visual_page), "ink_primary", base.NAVY)
+def render_prompt_family(slide, packet: dict, slide_spec: dict, visual_page: dict | None, theme: dict) -> None:
+    add_visual_title(slide, packet, slide_spec, visual_page, theme)
+    tokens = page_tokens(visual_page)
+    plan = content_plan_for(visual_page, slide_spec)
+    accent = page_accent(visual_page, theme)
+    panel = token_rgb(tokens, "paper", base.WHITE)
+    line = token_rgb(tokens, "line", base.BORDER)
+    ink = token_rgb(tokens, "ink_primary", base.NAVY)
+    body_pt = type_size(tokens, "body_l", 28)
+    support_pt = type_size(tokens, "body_m", 24)
+    label_pt = type_size(tokens, "label", 18)
 
-    scenario = content.get("scenario") or content.get("task") or ""
-    if scenario:
-        base.add_card(slide, 0.85, 1.55, 11.5, 1.65, main_style["title"], main_style["accent"], main_style["tint"])
-        base.add_textbox(slide, 1.15, 2.10, 10.8, 0.75, scenario, font_size=18, color=body_color)
+    add_panel(slide, 0.80, 1.68, 11.75, 2.18, panel, line, accent=accent, radius=0.05)
+    base.add_textbox(slide, 1.15, 1.90, 10.7, 0.24, "Start here", font_size=label_pt, color=accent, bold=True)
+    base.add_textbox(slide, 1.15, 2.34, 10.8, 1.08, plan.get("prompt") or "", font_size=body_pt, color=ink)
 
-    prompts = [str(x) for x in content.get("prompts", [])]
-    if prompts:
-        base.add_card(slide, 0.85, 3.45, 11.5, 2.30, task_style["title"], task_style["accent"], task_style["tint"])
-        base.add_card_bullets(slide, 1.12, 4.00, 10.8, 1.35, prompts, font_size=17)
-
-
-def render_prompt_card(slide, content: dict, theme: dict) -> None:
-    visual_page = content.get("_visual_page")
-    accent = base.hex_to_rgb(content.get("bar_color"), theme["primary"])
-    panel_tint = token_rgb(page_tokens(visual_page), "panel_alt", base.LIGHT)
-    title = content.get("card_title") or content.get("goal_title") or content.get("title") or "Prompt card"
-
-    panel = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(1.65), Inches(1.85), Inches(10.0), Inches(3.85))
-    panel.fill.solid()
-    panel.fill.fore_color.rgb = panel_tint
-    panel.line.color.rgb = base.BORDER
-    panel.line.width = Pt(1.0)
-
-    strip = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.65), Inches(1.85), Inches(0.14), Inches(3.85))
-    strip.fill.solid()
-    strip.fill.fore_color.rgb = accent
-    strip.line.fill.background()
-
-    base.add_textbox(slide, 2.05, 2.10, 8.8, 0.35, title, font_size=20, bold=True, color=base.NAVY, align=PP_ALIGN.CENTER)
-
-    lines = []
-    if content.get("goal"):
-        lines.append(str(content["goal"]))
-    for line in content.get("lines", []):
-        lines.append(line.get("text", "") if isinstance(line, dict) else str(line))
-    if content.get("prompts"):
-        lines.extend(str(x) for x in content.get("prompts", []))
-    if not lines and content.get("instruction"):
-        lines.append(str(content.get("instruction")))
-
-    if lines:
-        base.add_card_bullets(slide, 2.28, 2.70, 8.35, 1.95, lines, font_size=18)
-
-    instruction = content.get("instruction")
-    if instruction:
-        note = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(2.25), Inches(4.95), Inches(8.7), Inches(0.48))
-        note.fill.solid()
-        note.fill.fore_color.rgb = base.WHITE
-        note.line.color.rgb = base.BORDER
-        note.line.width = Pt(0.8)
-        base.add_textbox(slide, 2.45, 5.04, 8.3, 0.16, instruction, font_size=14, color=base.SLATE, align=PP_ALIGN.CENTER)
+    prompts = plan.get("prompts") or []
+    y = 4.34
+    for i, prompt in enumerate(prompts[:3], start=1):
+        badge = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.OVAL, Inches(0.92), Inches(y + 0.02), Inches(0.34), Inches(0.34))
+        badge.fill.solid()
+        badge.fill.fore_color.rgb = accent
+        badge.line.fill.background()
+        base.add_textbox(slide, 0.99, y + 0.06, 0.18, 0.16, str(i), font_size=16, color=base.WHITE, bold=True, align=PP_ALIGN.CENTER)
+        base.add_textbox(slide, 1.38, y, 10.8, 0.44, prompt, font_size=support_pt, color=ink)
+        y += 0.78
 
 
-def render_retrieval(slide, content: dict, theme: dict) -> None:
-    visual_page = content.get("_visual_page")
-    prompt_style = component_style_bundle(visual_page, "task_step", theme["primary"], theme["tints"]["primary"], "Prompt")
-    task = content.get("task", "Use the prompts below to build your response.")
-    base.add_textbox(slide, 0.95, 1.35, 11.4, 0.42, task, font_size=17, color=base.SLATE, align=PP_ALIGN.CENTER)
+def render_model_family(slide, packet: dict, slide_spec: dict, visual_page: dict | None, theme: dict) -> None:
+    add_visual_title(slide, packet, slide_spec, visual_page, theme)
+    tokens = page_tokens(visual_page)
+    plan = content_plan_for(visual_page, slide_spec)
+    accent = page_accent(visual_page, theme)
+    panel = token_rgb(tokens, "paper", base.WHITE)
+    panel_alt = token_rgb(tokens, "panel_alt", base.LIGHT)
+    line = token_rgb(tokens, "line", base.BORDER)
+    ink = token_rgb(tokens, "ink_primary", base.NAVY)
+    body_pt = type_size(tokens, "body_m", 24)
+    label_pt = type_size(tokens, "label", 18)
 
-    if content.get("prompts"):
-        prompt_items = [dict(x) if isinstance(x, dict) else {"text": str(x)} for x in content.get("prompts", [])]
-    elif content.get("events"):
-        prompt_items = [{"text": str(x)} for x in content.get("events", [])]
-    elif content.get("areas"):
-        prompt_items = [{"text": str(x)} for x in content.get("areas", [])]
-    else:
-        prompt_items = []
+    add_panel(slide, 0.92, 1.78, 11.2, 2.55, panel, line, accent=accent, radius=0.05)
+    base.add_textbox(slide, 1.28, 2.00, 10.2, 0.22, "One example", font_size=label_pt, color=accent, bold=True)
+    base.add_textbox(slide, 1.28, 2.42, 10.1, 1.38, plan.get("model") or "", font_size=body_pt, color=ink)
 
-    fallback_accents = [prompt_style["accent"], theme["secondary"], theme["tertiary"], theme["quaternary"]]
-    y = 1.80
-    for i, pr in enumerate(prompt_items[:4]):
-        accent = base.hex_to_rgb(pr.get("accent"), fallback_accents[i % len(fallback_accents)])
-        title = pr.get("title") or pr.get("head") or pr.get("label")
-        if title:
-            base.add_card(slide, 1.0, y, 11.0, 0.95, title, accent, prompt_style["tint"])
-            text_y = y + 0.34
-        else:
-            add_plain_card(slide, 1.0, y, 11.0, 0.95, accent)
-            text_y = y + 0.27
-        base.add_textbox(slide, 1.32, text_y, 10.2, 0.28, pr.get("text", ""), font_size=16, color=base.NAVY)
-        y += 1.10
+    support = plan.get("support") or ""
+    if support:
+        strip = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(1.10), Inches(4.72), Inches(10.8), Inches(0.72))
+        strip.fill.solid()
+        strip.fill.fore_color.rgb = panel_alt
+        strip.line.color.rgb = line
+        strip.line.width = Pt(1.0)
+        if strip.adjustments:
+            strip.adjustments[0] = 0.04
+        base.add_textbox(slide, 1.34, 4.91, 10.2, 0.22, support, font_size=body_pt, color=ink)
 
 
-def render_two_column(slide, content: dict, theme: dict) -> None:
-    cols = base.normalize_two_columns(content)
-    intro = content.get("task") or content.get("prompt") or "Compare the ideas in each column."
-    base.add_textbox(slide, 0.95, 1.36, 11.4, 0.34, intro, font_size=17, color=base.SLATE, align=PP_ALIGN.CENTER)
+def render_compare_family(slide, packet: dict, slide_spec: dict, visual_page: dict | None, theme: dict) -> None:
+    add_visual_title(slide, packet, slide_spec, visual_page, theme)
+    tokens = page_tokens(visual_page)
+    plan = content_plan_for(visual_page, slide_spec)
+    left_accent = theme["primary"]
+    right_accent = token_rgb(tokens, "support", theme["secondary"])
+    panel = token_rgb(tokens, "paper", base.WHITE)
+    line = token_rgb(tokens, "line", base.BORDER)
+    ink = token_rgb(tokens, "ink_primary", base.NAVY)
+    body_pt = type_size(tokens, "body_m", 24)
+    label_pt = type_size(tokens, "label", 18)
 
-    divider = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.33), Inches(1.82), Inches(0.03), Inches(4.55))
-    divider.fill.solid()
-    divider.fill.fore_color.rgb = base.BORDER
-    divider.line.fill.background()
+    add_panel(slide, 0.82, 1.88, 5.7, 3.95, panel, line, accent=left_accent, radius=0.05)
+    add_panel(slide, 6.78, 1.88, 5.7, 3.95, panel, line, accent=right_accent, radius=0.05)
 
-    positions = [(0.88, 5.15), (6.53, 5.15)]
-    for i, col in enumerate(cols[:2]):
-        x, width = positions[i]
-        fallback_accent = theme["primary"] if i == 0 else theme["secondary"]
-        fallback_tint = theme["tints"]["primary"] if i == 0 else theme["tints"]["secondary"]
-        accent = base.hex_to_rgb(col.get("accent"), fallback_accent)
-        tint = base.hex_to_rgb(col.get("tint"), fallback_tint)
-        base.add_card(slide, x, 1.78, width, 4.7, col.get("title", f"Column {i+1}"), accent, tint)
-        lines = [base.dict_item_to_line(item) for item in col.get("items", [])]
-        base.add_card_bullets(slide, x + 0.28, 2.35, width - 0.48, 3.75, lines, font_size=15)
+    base.add_textbox(slide, 1.14, 2.10, 4.9, 0.22, plan.get("left_title") or "Left", font_size=label_pt, color=left_accent, bold=True)
+    base.add_textbox(slide, 1.14, 2.48, 4.95, 2.65, plan.get("left_body") or "", font_size=body_pt, color=ink)
+
+    base.add_textbox(slide, 7.10, 2.10, 4.9, 0.22, plan.get("right_title") or "Right", font_size=label_pt, color=right_accent, bold=True)
+    base.add_textbox(slide, 7.10, 2.48, 4.95, 2.65, plan.get("right_body") or "", font_size=body_pt, color=ink)
+
+    takeaway = plan.get("takeaway") or ""
+    if takeaway:
+        base.add_textbox(slide, 1.05, 6.18, 11.0, 0.26, takeaway, font_size=body_pt, color=base.SLATE, align=PP_ALIGN.CENTER)
 
 
-def render_reflect(slide, content: dict, accent) -> None:
-    visual_page = content.get("_visual_page")
-    reflect_style = component_style_bundle(visual_page, "reflection", accent, base.LIGHT, "Reflect")
-    raw_items = content.get("goals") or content.get("prompts") or []
-    items = [dict(x) if isinstance(x, dict) else {"text": str(x)} for x in raw_items]
-    heading = "Check yourself against today’s goals." if content.get("goals") else "Finish by reflecting on these prompts."
-    base.add_textbox(slide, 1.15, 1.35, 9.5, 0.40, heading, font_size=18, color=base.SLATE, align=PP_ALIGN.CENTER)
+def render_reflect_family(slide, packet: dict, slide_spec: dict, visual_page: dict | None, theme: dict) -> None:
+    add_visual_title(slide, packet, slide_spec, visual_page, theme)
+    tokens = page_tokens(visual_page)
+    plan = content_plan_for(visual_page, slide_spec)
+    accent = page_accent(visual_page, theme)
+    ink = token_rgb(tokens, "ink_primary", base.NAVY)
+    invitation_pt = type_size(tokens, "body_l", 28)
+    prompt_pt = type_size(tokens, "body_m", 24)
 
-    y = 2.0
-    for item in items[:3]:
-        title = item.get("title") or item.get("head") or item.get("label")
-        if title:
-            base.add_card(slide, 1.45, y, 8.95, 0.95, title, reflect_style["accent"], reflect_style["tint"])
-            text_y = y + 0.33
-        else:
-            add_plain_card(slide, 1.45, y, 8.95, 0.95, reflect_style["accent"])
-            text_y = y + 0.27
-        text = item.get("text") or item.get("body", "")
-        base.add_textbox(slide, 1.78, text_y, 7.65, 0.30, str(text), font_size=16, color=base.NAVY)
-        y += 1.25
+    base.add_textbox(slide, 1.10, 2.00, 10.9, 0.68, plan.get("invitation") or "", font_size=invitation_pt, color=ink, align=PP_ALIGN.CENTER)
 
-    accent_strip = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(10.95), Inches(1.9), Inches(0.12), Inches(3.95))
-    accent_strip.fill.solid()
-    accent_strip.fill.fore_color.rgb = reflect_style["accent"]
-    accent_strip.line.fill.background()
+    prompts = plan.get("prompts") or []
+    y = 3.55
+    for prompt in prompts[:2]:
+        bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.12), Inches(y + 0.04), Inches(0.16), Inches(0.68))
+        bar.fill.solid()
+        bar.fill.fore_color.rgb = accent
+        bar.line.fill.background()
+        base.add_textbox(slide, 1.48, y, 10.4, 0.44, prompt, font_size=prompt_pt, color=ink)
+        y += 1.05
+
+
+def infer_family(visual_page: dict | None, slide_spec: dict) -> str:
+    if visual_page and visual_page.get("layout_id"):
+        return str(visual_page.get("layout_id"))
+    layout = str(slide_spec.get("layout", "") or "").lower()
+    if layout == "hero":
+        return "S_HERO"
+    if layout == "reflect":
+        return "S_REFLECT"
+    if "compare" in layout or layout == "two_column":
+        return "S_COMPARE"
+    if layout in {"planner_model", "bullet_focus", "summary_rows"}:
+        return "S_MODEL"
+    return "S_PROMPT"
 
 
 def render_slide(prs, slide, packet: dict, slide_spec: dict, theme: dict, slide_index: int) -> None:
     visual_page = visual_page_for(packet, slide_index)
-    accent = page_accent(visual_page, theme)
+    family = infer_family(visual_page, slide_spec)
     base.add_bg(prs, slide)
-    layout = slide_spec.get("layout", "")
-    content = dict(slide_spec.get("content", {}))
-    content["_visual_page"] = visual_page
 
-    if layout == "hero":
-        render_hero_plain(slide, packet, slide_spec, accent)
+    if family == "S_HERO":
+        render_hero_family(slide, packet, slide_spec, visual_page, theme)
+    elif family == "S_MODEL":
+        render_model_family(slide, packet, slide_spec, visual_page, theme)
+    elif family == "S_COMPARE":
+        render_compare_family(slide, packet, slide_spec, visual_page, theme)
+    elif family == "S_REFLECT":
+        render_reflect_family(slide, packet, slide_spec, visual_page, theme)
     else:
-        if visual_page:
-            add_visual_title(slide, packet, slide_spec, visual_page, theme)
-        else:
-            base.add_title(slide, slide_spec.get("title", "Untitled"), accent)
+        render_prompt_family(slide, packet, slide_spec, visual_page, theme)
 
-        if layout == "stat_discussion":
-            base.render_stat_discussion(slide, content, theme)
-        elif layout == "prompt":
-            render_prompt(slide, content, theme)
-        elif layout == "two_column":
-            render_two_column(slide, content, theme)
-        elif layout == "two_column_compare":
-            base.render_two_column_compare(slide, content, theme)
-        elif layout == "three_rows":
-            base.render_three_rows(slide, content, theme)
-        elif layout == "numbered_steps":
-            base.render_numbered_steps(slide, [str(x) for x in content.get("steps", [])], theme)
-        elif layout == "rows":
-            base.render_rows(slide, content, accent)
-        elif layout == "retrieval":
-            render_retrieval(slide, content, theme)
-        elif layout == "summary_rows":
-            base.render_summary_rows(slide, content, theme)
-        elif layout in {"single_card", "prompt_card"}:
-            render_prompt_card(slide, content, theme)
-        elif layout == "checklist":
-            base.render_checklist(slide, content, theme)
-        elif layout == "bullet_focus":
-            base.render_bullet_focus(slide, content, theme)
-        elif layout == "planner_model":
-            base.render_planner_model(slide, content, theme)
-        elif layout == "reflect":
-            render_reflect(slide, content, accent)
-        else:
-            base.render_fallback(slide, content, accent)
     base.add_footer(slide, packet.get("subject", "Subject"), packet.get("grade", ""), packet.get("topic", "Lesson"))
 
 
@@ -367,10 +289,6 @@ def build_deck(packet: dict, out_dir) -> object:
     return out_path
 
 
-base.render_prompt = render_prompt
-base.render_retrieval = render_retrieval
-base.render_reflect = render_reflect
-base.render_single_card = render_prompt_card
 base.build_deck = build_deck
 
 

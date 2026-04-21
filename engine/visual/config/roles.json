@@ -34,19 +34,19 @@
       "show_icon": true
     },
     "main_prompt": {
-      "fill_mode": "panel",
-      "border_mode": "thin",
-      "radius_token": "soft"
+      "fill_mode": "paper",
+      "border_mode": "medium",
+      "radius_token": "sharp"
     },
     "secondary_prompt": {
-      "fill_mode": "panel_alt",
+      "fill_mode": "paper",
       "border_mode": "thin",
-      "radius_token": "soft"
+      "radius_token": "sharp"
     },
     "example": {
-      "fill_mode": "panel_alt",
-      "border_mode": "thin",
-      "radius_token": "soft"
+      "fill_mode": "paper",
+      "border_mode": "medium",
+      "radius_token": "sharp"
     },
     "support_cue": {
       "accent_role": "support",
@@ -70,16 +70,16 @@
       "show_icon": true
     },
     "task_step": {
-      "fill_mode": "panel",
+      "fill_mode": "paper",
       "border_mode": "thin",
-      "radius_token": "soft"
+      "radius_token": "sharp"
     },
     "reflection": {
       "accent_role": "reflection",
-      "fill_mode": "accent_tint",
+      "fill_mode": "paper",
       "border_mode": "thin",
-      "radius_token": "round",
-      "show_icon": true
+      "radius_token": "sharp",
+      "show_icon": false
     },
     "image_anchor": {
       "fill_mode": "paper",

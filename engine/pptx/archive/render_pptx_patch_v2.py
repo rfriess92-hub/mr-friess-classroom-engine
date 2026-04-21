@@ -5,6 +5,7 @@ import argparse
 import json
 from pathlib import Path
 
+from lxml import etree
 from pptx import Presentation
 from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE, MSO_SHAPE
@@ -72,6 +73,48 @@ def hex_to_rgb(value: str | None, fallback: RGBColor) -> RGBColor:
 
 def theme_for(packet: dict) -> dict:
     return THEMES.get(packet.get("theme", "science"), THEMES["science"])
+
+
+def darken_rgb(color: RGBColor, factor: float) -> RGBColor:
+    factor = max(0.0, factor)
+    return RGBColor(
+        max(0, min(255, int(color[0] * factor))),
+        max(0, min(255, int(color[1] * factor))),
+        max(0, min(255, int(color[2] * factor))),
+    )
+
+
+def rgb_hex(color: RGBColor) -> str:
+    return f"{color[0]:02X}{color[1]:02X}{color[2]:02X}"
+
+
+def apply_shape_gradient(shape, stops: list[tuple[int, RGBColor]], angle_deg: int = 90) -> None:
+    namespace = "http://schemas.openxmlformats.org/drawingml/2006/main"
+    sp_pr = shape._element.spPr
+    solid = sp_pr.find(f"{{{namespace}}}solidFill")
+    if solid is not None:
+        sp_pr.remove(solid)
+    grad = sp_pr.find(f"{{{namespace}}}gradFill")
+    if grad is not None:
+        sp_pr.remove(grad)
+
+    grad = etree.Element(f"{{{namespace}}}gradFill")
+    gs_lst = etree.SubElement(grad, f"{{{namespace}}}gsLst")
+    for pos, color in stops:
+        gs = etree.SubElement(gs_lst, f"{{{namespace}}}gs")
+        gs.set("pos", str(pos))
+        srgb = etree.SubElement(gs, f"{{{namespace}}}srgbClr")
+        srgb.set("val", rgb_hex(color))
+
+    lin = etree.SubElement(grad, f"{{{namespace}}}lin")
+    lin.set("ang", str(int(angle_deg * 60000)))
+    lin.set("scaled", "0")
+
+    line = sp_pr.find(f"{{{namespace}}}ln")
+    if line is not None:
+        sp_pr.insert(list(sp_pr).index(line), grad)
+    else:
+        sp_pr.append(grad)
 
 
 def add_bg(prs: Presentation, slide) -> None:

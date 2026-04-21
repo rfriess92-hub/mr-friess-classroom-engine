@@ -3,27 +3,83 @@
   "schema_id": "mr_friess_visual_qa_rules",
   "qa_rules": [
     {
+      "id": "SL-TXT-002",
+      "applies_to": [
+        "slide_deck"
+      ],
+      "severity": "block",
+      "rule": "Body text below 24pt is invalid on slide decks."
+    },
+    {
+      "id": "SL-WRD-001",
+      "applies_to": [
+        "slide_deck"
+      ],
+      "severity": "block",
+      "rule": "Slides must stay within the word budget for their layout family."
+    },
+    {
+      "id": "SL-DOM-002",
+      "applies_to": [
+        "slide_deck"
+      ],
+      "severity": "block",
+      "rule": "Each slide family must resolve to one dominant reading path, or one deliberate compare pair."
+    },
+    {
+      "id": "SL-CRD-002",
+      "applies_to": [
+        "slide_deck"
+      ],
+      "severity": "revise",
+      "rule": "Slides may not resolve to too many equal competing cards."
+    },
+    {
+      "id": "SL-REF-002",
+      "applies_to": [
+        "slide_deck"
+      ],
+      "severity": "revise",
+      "rule": "Reflect slides must stay open, sparse, and below their density budget."
+    },
+    {
+      "id": "SL-PRM-002",
+      "applies_to": [
+        "slide_deck"
+      ],
+      "severity": "revise",
+      "rule": "Prompt slides may not exceed three open prompts or forty visible words."
+    },
+    {
+      "id": "SL-SPL-001",
+      "applies_to": [
+        "slide_deck"
+      ],
+      "severity": "block",
+      "rule": "Slides must not solve overflow by shrinking below the text floor instead of splitting."
+    },
+    {
       "id": "main_task_visible",
       "applies_to": [
-        "slide_deck",
         "worksheet"
       ],
+      "severity": "revise",
       "rule": "There must be exactly one visually dominant task or prompt region per page."
     },
     {
       "id": "support_not_competing",
       "applies_to": [
-        "slide_deck",
         "worksheet"
       ],
+      "severity": "revise",
       "rule": "Support cue regions must be smaller or lower contrast than main prompt regions."
     },
     {
       "id": "not_all_rectangles",
       "applies_to": [
-        "slide_deck",
         "worksheet"
       ],
+      "severity": "revise",
       "rule": "At least one component family per page must use softer corners or tab treatment."
     },
     {
@@ -31,6 +87,7 @@
       "applies_to": [
         "worksheet"
       ],
+      "severity": "revise",
       "rule": "Student writing regions must have more open white area than adjacent prompt boxes."
     },
     {
@@ -38,21 +95,8 @@
       "applies_to": [
         "worksheet"
       ],
+      "severity": "revise",
       "rule": "Support tools and success check cannot share identical fill, icon, and border treatment."
-    },
-    {
-      "id": "slide_sequence_variety",
-      "applies_to": [
-        "slide_deck"
-      ],
-      "rule": "A 5-slide sequence must use at least 3 layout patterns."
-    },
-    {
-      "id": "reflection_breathing_room",
-      "applies_to": [
-        "slide_deck"
-      ],
-      "rule": "Reflection slides must use fewer content blocks than model or task slides."
     },
     {
       "id": "accent_limit",
@@ -60,10 +104,47 @@
         "slide_deck",
         "worksheet"
       ],
+      "severity": "revise",
       "rule": "No page may use more than 3 accent roles."
     }
   ],
   "executable_checks": {
+    "SL-TXT-002": {
+      "fails_when": [
+        "a slide resolves body text below the 24pt floor"
+      ]
+    },
+    "SL-WRD-001": {
+      "fails_when": [
+        "a slide exceeds the word budget for its layout family"
+      ]
+    },
+    "SL-DOM-002": {
+      "fails_when": [
+        "a slide family is missing a dominant block or deliberate compare pair"
+      ]
+    },
+    "SL-CRD-002": {
+      "fails_when": [
+        "a slide uses more than two equal competing cards outside the compare family"
+      ]
+    },
+    "SL-REF-002": {
+      "fails_when": [
+        "a reflect slide exceeds its word budget, line budget, or block budget"
+      ]
+    },
+    "SL-PRM-002": {
+      "fails_when": [
+        "a prompt slide exceeds three open prompts",
+        "a prompt slide exceeds forty visible words"
+      ]
+    },
+    "SL-SPL-001": {
+      "fails_when": [
+        "content was shrunk below the text floor instead of split or rerouted"
+      ]
+    },
     "main_task_visible": {
       "fails_when": [
         "a page has more than one main_prompt region"
@@ -87,17 +168,6 @@
     "support_tools_vs_success_check": {
       "fails_when": [
         "support_tools and success_check share identical fill_mode, border_mode, and show_icon"
-      ]
-    },
-    "slide_sequence_variety": {
-      "fails_when": [
-        "five-slide sequence uses fewer than three unique layout ids",
-        "three or more consecutive slides share the same layout id"
-      ]
-    },
-    "reflection_breathing_room": {
-      "fails_when": [
-        "reflection slides use as many or more major content blocks than model/task slides on average"
       ]
     },
     "accent_limit": {
