@@ -9,6 +9,7 @@ import { buildDiscussionPrepSheetHTML } from './templates/discussion-prep-sheet.
 import { buildWorksheetHTML } from './templates/worksheet.mjs'
 import { buildPacingGuideHTML } from './templates/pacing-guide.mjs'
 import { buildSubPlanHTML } from './templates/sub-plan.mjs'
+import { buildMakeupPacketHTML } from './templates/makeup-packet.mjs'
 
 const TEMPLATE_MAP = {
   task_sheet: buildTaskSheetHTML,
@@ -18,6 +19,7 @@ const TEMPLATE_MAP = {
   worksheet: buildWorksheetHTML,
   pacing_guide: buildPacingGuideHTML,
   sub_plan: buildSubPlanHTML,
+  makeup_packet: buildMakeupPacketHTML,
 }
 
 let cachedFontFaceCSS = null
