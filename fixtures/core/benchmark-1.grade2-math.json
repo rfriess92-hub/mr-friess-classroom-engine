@@ -184,6 +184,34 @@
     ],
     "buffer_note": "If guided practice runs long, shorten independent work to 10 min and skip the whole-class share at the end."
   },
+  "makeup_packet": {
+    "title": "Making Ten to Add",
+    "what_we_did": "We learned a strategy called 'make ten.' Instead of adding two numbers straight across, you move some ones from one number to the other so that one number becomes exactly 10. Then it's easy to add on the rest.\n\nFor example: 8 + 5 → move 2 from the 5 to the 8 → now it's 10 + 3 = 13.",
+    "vocabulary": [
+      { "term": "make ten", "definition": "Move ones from one number to another so that one of the numbers becomes exactly 10." },
+      { "term": "ones", "definition": "Single units — the digits 1 through 9 that haven't been grouped into a ten yet." },
+      { "term": "equation", "definition": "A number sentence that shows two things are equal, like 8 + 5 = 13." }
+    ],
+    "catch_up_steps": [
+      {
+        "label": "Read the strategy",
+        "instructions": "Read the 'What we did in class' section above carefully. Make sure you understand what 'make ten' means before moving on.",
+        "hint": "Try drawing a ten-frame in the margin. Put 8 dots in one frame. Add 5 more — how many do you need to fill the frame?"
+      },
+      {
+        "label": "Try two examples",
+        "instructions": "Solve these two problems on your own. Show your thinking — draw the ten-frame, write the moves, or write the new equation.\n\n1. 9 + 4 = ?\n2. 7 + 6 = ?",
+        "hint": "Ask yourself: which number is closer to 10? Move ones from the other number to fill it up."
+      },
+      {
+        "label": "Complete the worksheet",
+        "instructions": "Pick up a copy of the worksheet from Mr. Friess or find it in the class folder. Complete all four questions using the make-ten strategy.",
+        "hint": "The anchor box at the top of the worksheet has reminders. Read it before you start."
+      }
+    ],
+    "exit_task": "Solve 8 + 6 by making a ten. Show your steps — draw the move, write the new equation, and write your final answer. Use the lines below.",
+    "return_by": "before your next class"
+  },
   "bundle": {
     "bundle_id": "benchmark_1_grade2_math_bundle",
     "declared_outputs": [
@@ -191,7 +219,8 @@
       "slides",
       "worksheet",
       "exit_ticket",
-      "pacing_guide"
+      "pacing_guide",
+      "makeup_packet"
     ]
   },
   "outputs": [
@@ -229,6 +258,13 @@
       "output_type": "pacing_guide",
       "audience": "teacher",
       "source_section": "pacing_guide",
+      "bundle": "benchmark_1_grade2_math_bundle"
+    },
+    {
+      "output_id": "makeup_packet_main",
+      "output_type": "makeup_packet",
+      "audience": "student",
+      "source_section": "makeup_packet",
       "bundle": "benchmark_1_grade2_math_bundle"
     }
   ]

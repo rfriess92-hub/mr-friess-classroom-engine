@@ -25,6 +25,8 @@ function rendererKeyFor(outputType) {
       return 'render_discussion_prep_sheet'
     case 'pacing_guide':
       return 'render_pacing_guide'
+    case 'makeup_packet':
+      return 'render_makeup_packet'
     default:
       return 'render_unknown_output'
   }
@@ -44,6 +46,7 @@ function rendererFamilyFor(outputType) {
     case 'graphic_organizer':
     case 'discussion_prep_sheet':
     case 'pacing_guide':
+    case 'makeup_packet':
       return 'pdf'
     default:
       return 'unknown'

@@ -31,6 +31,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'graphic_organizer',
     'discussion_prep_sheet',
     'pacing_guide',
+    'makeup_packet',
   ],
   multi_day_sequence: [
     'lesson_overview',
@@ -43,6 +44,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'graphic_organizer',
     'discussion_prep_sheet',
     'pacing_guide',
+    'makeup_packet',
   ],
   three_day_sequence: [
     'lesson_overview',
@@ -55,6 +57,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'graphic_organizer',
     'discussion_prep_sheet',
     'pacing_guide',
+    'makeup_packet',
   ],
   workshop_session: [
     'teacher_guide',
@@ -63,6 +66,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'graphic_organizer',
     'discussion_prep_sheet',
     'pacing_guide',
+    'makeup_packet',
   ],
   lab_investigation: [
     'teacher_guide',
@@ -71,6 +75,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'exit_ticket',
     'graphic_organizer',
     'pacing_guide',
+    'makeup_packet',
   ],
   seminar: [
     'teacher_guide',
@@ -78,6 +83,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'discussion_prep_sheet',
     'exit_ticket',
     'pacing_guide',
+    'makeup_packet',
   ],
   project_sprint: [
     'lesson_overview',
@@ -87,6 +93,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'final_response_sheet',
     'graphic_organizer',
     'pacing_guide',
+    'makeup_packet',
   ],
   station_rotation: [
     'teacher_guide',
@@ -95,6 +102,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'exit_ticket',
     'graphic_organizer',
     'pacing_guide',
+    'makeup_packet',
   ],
 }
 
@@ -105,6 +113,7 @@ export const STUDENT_FACING_OUTPUT_TYPES = new Set([
   'final_response_sheet',
   'graphic_organizer',
   'discussion_prep_sheet',
+  'makeup_packet',
 ])
 
 export const TEACHER_FACING_OUTPUT_TYPES = new Set([
