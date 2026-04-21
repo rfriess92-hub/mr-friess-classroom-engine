@@ -89,6 +89,7 @@ function buildChecklist(title, items, className) {
 
 export function buildWorksheetHTML(pkg, section, fontFaceCSS, designCSS) {
   const title = section.title ?? 'Worksheet'
+  const standards = Array.isArray(pkg.standards) ? pkg.standards : []
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -254,6 +255,8 @@ ${responsePatternCss}
     ${(Array.isArray(section.questions) ? section.questions : []).map(buildQuestion).join('\n')}
 
     ${buildChecklist('Quick self-check', section.self_check, 'self-check-box')}
+
+    ${standards.length > 0 ? `<div class="standards-footer"><span class="standards-footer-label">Standards: </span>${escapeHtml(standards.join(' · '))}</div>` : ''}
   </div>
 </body>
 </html>`

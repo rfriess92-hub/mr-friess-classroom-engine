@@ -23,6 +23,8 @@ function rendererKeyFor(outputType) {
       return 'render_graphic_organizer'
     case 'discussion_prep_sheet':
       return 'render_discussion_prep_sheet'
+    case 'pacing_guide':
+      return 'render_pacing_guide'
     default:
       return 'render_unknown_output'
   }
@@ -41,6 +43,7 @@ function rendererFamilyFor(outputType) {
     case 'final_response_sheet':
     case 'graphic_organizer':
     case 'discussion_prep_sheet':
+    case 'pacing_guide':
       return 'pdf'
     default:
       return 'unknown'
