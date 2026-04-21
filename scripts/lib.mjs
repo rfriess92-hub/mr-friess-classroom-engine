@@ -9,6 +9,10 @@ export const FIXTURE_MAP = {
   benchmark1: 'fixtures/core/benchmark-1.grade2-math.json',
   challenge7: 'fixtures/core/challenge-7.grade8-sequence.json',
   biology11: 'fixtures/generated/biology-11-enzyme-activity-factors.grade11-biology.json',
+  careers8_w1: 'fixtures/generated/careers-8-mosaic-week-1-know-yourself.grade8-careers.json',
+  careers8_w2: 'fixtures/generated/careers-8-mosaic-week-2-bias-and-decision-making.grade8-careers.json',
+  careers8_w3: 'fixtures/generated/careers-8-mosaic-week-3-community-and-meaning.grade8-careers.json',
+  careers8_w4: 'fixtures/generated/careers-8-mosaic-week-4-technology-and-identity.grade8-careers.json',
   careers8_bias: 'fixtures/generated/careers-8-bias-and-decision-making.grade8-careers.json',
   careers8_clusters: 'fixtures/generated/careers-8-career-clusters.grade8-careers.json',
   careers8_clusters_v2: 'fixtures/generated/careers-8-career-clusters-engagement-v2.grade8-careers.json',
@@ -28,6 +32,9 @@ export const FIXTURE_MAP = {
   pbg_english12: 'fixtures/plan-build-grow/pbg_english12.json',
   pbg_math8: 'fixtures/plan-build-grow/pbg_math8.json',
   pbg_workplace_math10: 'fixtures/plan-build-grow/pbg_workplace_math10.json',
+  seminar_proof: 'fixtures/tests/seminar-discussion-prep.proof.json',
+  station_rotation_proof: 'fixtures/tests/station-rotation-graphic-organizer.proof.json',
+  task_sheet_patterns: 'fixtures/tests/task-sheet-response-patterns.workshop-session.json',
 }
 
 export function ensureExists(path, label = path) {
