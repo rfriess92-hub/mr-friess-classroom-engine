@@ -24,9 +24,10 @@ function expectedArtifactsForRoutes(pkg, routes) {
       const section = route.output_type === 'task_sheet'
         ? resolveSourceSection(pkg, route.source_section)
         : null
+      const artifactId = route.artifact_id ?? route.output_id
       const filenames = route.output_type === 'task_sheet'
-        ? listTaskSheetArtifactFilenames(route.output_id, section, ext)
-        : [`${route.output_id}${ext}`]
+        ? listTaskSheetArtifactFilenames(artifactId, section, ext)
+        : [`${artifactId}${ext}`]
 
       return filenames.map((filename) => ({
         route_id: route.route_id,
@@ -40,7 +41,7 @@ function expectedArtifactsForRoutes(pkg, routes) {
         final_evidence_target: route.final_evidence_target ?? null,
         final_evidence_role: route.final_evidence_role,
         filename,
-        visual_sidecar: `${route.output_id}.visual.json`,
+        visual_sidecar: `${artifactId}.visual.json`,
       }))
     })
 }
