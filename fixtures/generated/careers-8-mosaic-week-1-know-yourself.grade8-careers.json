@@ -605,14 +605,14 @@
         },
         {
           "type": "ENGAGE",
-          "title": "When are you at your best?",
+          "title": "At your best",
           "layout": "prompt",
           "content": {
-            "scenario": "Think about school, sports, gaming, clubs, art, family responsibilities, or a time you solved a real problem. When do you feel switched on, useful, or most like yourself?",
+            "scenario": "Think about school, teams, art, gaming, home responsibilities, or a real problem you solved. When do you feel most useful?",
             "prompts": [
               "What were you doing?",
               "What helped you do well?",
-              "What would someone watching you notice?"
+              "What would someone notice?"
             ]
           }
         },
@@ -644,12 +644,12 @@
         },
         {
           "type": "REFLECT",
-          "title": "Write one note to keep",
+          "title": "One note to keep",
           "layout": "reflect",
           "content": {
             "prompts": [
-              "What does at my best mean for you right now?",
-              "What would you want a teacher or teammate to understand about how you work best?"
+              "When do you feel most like yourself?",
+              "What helps you work well with others?"
             ]
           }
         }
@@ -682,11 +682,11 @@
           "title": "What kinds of tasks pull you in?",
           "layout": "prompt",
           "content": {
-            "scenario": "Some people like solving, building, helping, organizing, designing, performing, or leading. None of those are better than the others. They just point to different patterns.",
+            "scenario": "People get pulled into different kinds of work: solving, building, helping, organizing, designing, performing, or leading.",
             "prompts": [
-              "What kinds of tasks do you start quickly?",
-              "What kinds of tasks drain you fast?",
-              "What do people often trust you to do?"
+              "What do you start fast?",
+              "What drains you fast?",
+              "What do people trust you with?"
             ]
           }
         },
@@ -709,9 +709,9 @@
           "content": {
             "items": [
               "What you do well",
-              "What you enjoy enough to stay with",
-              "What setting helps you do your best thinking",
-              "What role you often take in a group"
+              "What keeps your attention",
+              "What setting helps you think",
+              "What role you take in a group"
             ]
           }
         },
@@ -721,8 +721,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "What evidence do you actually have for the strength or preference you named?",
-              "Which notes from today belong in your final snapshot later in the week?"
+              "What real example backs up one note today?",
+              "Which note belongs in your final snapshot?"
             ]
           }
         }
@@ -755,11 +755,11 @@
           "title": "When work gets frustrating",
           "layout": "prompt",
           "content": {
-            "scenario": "Everybody hits moments where the work feels hard, awkward, slow, or annoying. What matters is not pretending that feeling disappears. What matters is what happens next.",
+            "scenario": "Everybody hits moments when the work feels hard or messy. What matters is what you do next.",
             "prompts": [
-              "What is your usual first reaction?",
+              "What is your first reaction?",
               "Which reactions help you grow?",
-              "Which reactions trap you in the same pattern?"
+              "Which reactions keep you stuck?"
             ]
           }
         },
@@ -777,14 +777,13 @@
         },
         {
           "type": "APPLY",
-          "title": "Model: honest reflection, not fake positivity",
+          "title": "Honest reflection",
           "layout": "planner_model",
           "content": {
-            "model": "When a task feels messy, I sometimes stall because I want to get it right immediately. A better next move for me is to start with one small section, ask one clarifying question, and keep working instead of waiting until I feel fully ready.",
+            "model": "When work feels messy, I sometimes stall because I want the first try to be good. A better next move is to start one part, ask one question, and keep going.",
             "supports": [
-              "The model names a real pattern instead of pretending there is no struggle.",
-              "The next move is small enough to try this week.",
-              "A realistic goal sounds startable, not dramatic."
+              "Name a real pattern.",
+              "Keep the next move small enough to try this week."
             ]
           }
         },
@@ -794,8 +793,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "What habit would actually improve your learning or work right now?",
-              "What is one next step you could try before next week?"
+              "What habit would help right now?",
+              "What next step can you try this week?"
             ]
           }
         }
@@ -843,9 +842,9 @@
           "layout": "checklist",
           "content": {
             "items": [
-              "Values help explain why two good options may still feel different.",
-              "A value is not a slogan; it shows up in real choices.",
-              "Values do not decide everything, but they help make choices feel more honest."
+              "Values explain why two good options can feel different.",
+              "They show up in real choices.",
+              "They help choices feel more honest."
             ]
           }
         },
@@ -854,11 +853,11 @@
           "title": "Rank what matters",
           "layout": "retrieval",
           "content": {
-            "task": "Work through the value pairs, then explain which values rose to the top and why they fit your real life.",
+            "task": "Work through the value pairs, then explain which values rose to the top.",
             "prompts": [
-              "What matters when you are working with others?",
-              "What matters when you are choosing how to spend time or effort?",
-              "What matters when you picture a future area worth exploring?"
+              "What matters with other people?",
+              "What matters when time gets tight?",
+              "What matters in a future path?"
             ]
           }
         },
@@ -941,11 +940,9 @@
           "title": "One way this could sound",
           "layout": "planner_model",
           "content": {
-            "model": "Strengths: I usually notice patterns pretty quickly, and I often end up helping a group get organized when things feel scattered. Interests: I stay with tasks more when they involve solving something, designing something, or helping people understand an idea. Values: I care about doing work that feels useful and creative. Learning or work preferences: I do better when I get a minute to think before I have to explain. Next-step goal: This week I am going to start one assignment earlier and make a short plan before I begin.",
+            "model": "Strengths: I notice patterns quickly and often help a group get organized. Interests: I stay with work longer when I get to solve or design something.",
             "supports": [
-              "Keep it specific.",
-              "Use your packet notes, then clean up the wording.",
-              "You can name a possible direction without pretending you already know the whole future."
+              "Then add values, one work preference, and one realistic next-step goal in the same plain style."
             ]
           }
         },
@@ -969,8 +966,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "What is one pattern you noticed about yourself this week?",
-              "What is one next step you are actually willing to try?"
+              "What pattern kept showing up this week?",
+              "What next step will you actually try?"
             ]
           }
         }

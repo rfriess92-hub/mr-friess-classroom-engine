@@ -8,6 +8,7 @@ import { buildExitTicketHTML } from './templates/exit-ticket.mjs'
 import { buildDiscussionPrepSheetHTML } from './templates/discussion-prep-sheet.mjs'
 import { buildWorksheetHTML } from './templates/worksheet.mjs'
 import { buildPacingGuideHTML } from './templates/pacing-guide.mjs'
+import { buildSubPlanHTML } from './templates/sub-plan.mjs'
 import { buildMakeupPacketHTML } from './templates/makeup-packet.mjs'
 
 const TEMPLATE_MAP = {
@@ -17,6 +18,7 @@ const TEMPLATE_MAP = {
   discussion_prep_sheet: buildDiscussionPrepSheetHTML,
   worksheet: buildWorksheetHTML,
   pacing_guide: buildPacingGuideHTML,
+  sub_plan: buildSubPlanHTML,
   makeup_packet: buildMakeupPacketHTML,
 }
 

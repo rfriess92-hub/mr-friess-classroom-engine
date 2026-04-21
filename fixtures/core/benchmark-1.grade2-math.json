@@ -184,6 +184,55 @@
     ],
     "buffer_note": "If guided practice runs long, shorten independent work to 10 min and skip the whole-class share at the end."
   },
+  "sub_plan": {
+    "title": "Making Ten to Add — Sub Plan",
+    "class_context": "Second-grade math. Students have been learning the make-ten strategy for addition. They know how to use ten-frames and can explain their moves with a partner. This is a standard lesson day — nothing new is being introduced.",
+    "materials_location": "Blue folder on my desk labeled 'Sub Plans'. Slide deck is open on the teacher laptop (password on sticky note inside folder). Worksheets and exit tickets are pre-printed in the folder.",
+    "classroom_notes": "Students sit in table groups of 3–4. Raise your voice slightly for transitions — they respond well to a count-down from 5. Two students (front-left table) have IEPs and may need extra time on the worksheet; just check in with them at the independent work step.",
+    "steps": [
+      {
+        "label": "Warm-Up",
+        "duration_min": 8,
+        "what_to_do": "Project Slide 1 (the ten-frame). Ask students to look quietly for 10 seconds, then share what they notice with a partner.",
+        "what_to_say": "Look at this ten-frame. You have 10 seconds to notice something — anything at all. Then turn and tell your partner what you see.",
+        "what_students_do": "Look at the ten-frame, think quietly, then share one observation with a partner.",
+        "materials": ["slide deck (Slide 1)"]
+      },
+      {
+        "label": "Model",
+        "duration_min": 10,
+        "what_to_do": "Use Slide 2. Read the think-aloud notes on the slide. Move counters (or draw) to show how to make a ten before adding. Do two examples.",
+        "what_to_say": "Watch me. I have 8 and 5. I need to make a ten first. I'll move 2 from the 5 over to the 8 — now I have 10 and 3 left. 10 plus 3 is 13. Did you see what I did? I made a ten first.",
+        "what_students_do": "Watch the model. Students may raise a hand when they see the ten being made.",
+        "materials": ["slide deck (Slide 2)", "counter chips or whiteboard markers"]
+      },
+      {
+        "label": "Guided Practice",
+        "duration_min": 17,
+        "what_to_do": "Hand out the worksheet. Students work problems 1–3 with a partner. Circulate and listen. If a pair finishes early, ask them to explain their thinking out loud.",
+        "what_to_say": "Work with your partner on problems 1 through 3. One person moves, one person explains. Switch for the next problem.",
+        "what_students_do": "Solve 3 problems with a partner, taking turns moving and explaining.",
+        "materials": ["worksheet (pre-printed — in folder)"]
+      },
+      {
+        "label": "Independent Work",
+        "duration_min": 17,
+        "what_to_do": "Students complete the rest of the worksheet on their own. Circulate quietly. Do not give answers — ask 'what could you make a ten with?'",
+        "what_to_say": "Now finish the rest of the worksheet on your own. If you get stuck, look at what you did with your partner and try the same moves.",
+        "what_students_do": "Complete the worksheet independently.",
+        "materials": ["worksheet (same sheet from guided practice)"]
+      },
+      {
+        "label": "Exit Ticket",
+        "duration_min": 8,
+        "what_to_do": "Distribute exit tickets. Give students 5 minutes to complete. Collect at the door as they leave. Leave completed exit tickets in the tray on my desk.",
+        "what_to_say": "We have about 8 minutes left. Put your worksheet face-down and pick up an exit ticket. Complete it on your own — this is just for you to show what you know.",
+        "what_students_do": "Complete the exit ticket independently, then hand it in on the way out.",
+        "materials": ["exit tickets (pre-printed — in folder)"]
+      }
+    ],
+    "if_stuck": "If students are confused during guided practice, slow down and do one more model together as a class before releasing them again. If the slide deck won't open, write the problems on the board: 8+5, 6+7, 9+4. The worksheet and exit ticket do not require slides."
+  },
   "makeup_packet": {
     "title": "Making Ten to Add",
     "what_we_did": "We learned a strategy called 'make ten.' Instead of adding two numbers straight across, you move some ones from one number to the other so that one number becomes exactly 10. Then it's easy to add on the rest.\n\nFor example: 8 + 5 → move 2 from the 5 to the 8 → now it's 10 + 3 = 13.",
@@ -220,6 +269,7 @@
       "worksheet",
       "exit_ticket",
       "pacing_guide",
+      "sub_plan",
       "makeup_packet"
     ]
   },
@@ -258,6 +308,13 @@
       "output_type": "pacing_guide",
       "audience": "teacher",
       "source_section": "pacing_guide",
+      "bundle": "benchmark_1_grade2_math_bundle"
+    },
+    {
+      "output_id": "sub_plan_main",
+      "output_type": "sub_plan",
+      "audience": "teacher",
+      "source_section": "sub_plan",
       "bundle": "benchmark_1_grade2_math_bundle"
     },
     {
