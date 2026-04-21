@@ -496,11 +496,11 @@
           "title": "Opening frame",
           "layout": "prompt",
           "content": {
-            "scenario": "Technology is not the villain here. The question is: when digital tools create problems, who notices, who gets affected, and who helps fix them?",
+            "scenario": "Technology is not the villain. When digital tools create problems, who is affected and who helps respond?",
             "prompts": [
-              "What opportunity do digital tools create in your life right now?",
-              "What risk or pressure comes with that opportunity?",
-              "Who else might be affected besides the person using the tool?"
+              "What opportunity do digital tools create?",
+              "What risk comes with it?",
+              "Who else gets affected?"
             ]
           }
         },
@@ -521,11 +521,11 @@
           "title": "Post-film debrief starter",
           "layout": "retrieval",
           "content": {
-            "task": "Use your packet notes to name one risk, one affected group, and one possible response role before the class debrief.",
+            "task": "Use your notes to name one risk, one affected group, and one response role.",
             "prompts": [
               "What stood out most?",
               "Who seemed most affected?",
-              "What response role feels realistic so far?"
+              "What response role feels realistic?"
             ]
           }
         },
@@ -535,8 +535,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "Why is it not enough to just say technology causes problems?",
-              "What new question do you want to carry into tomorrow?"
+              "Why is naming a problem not enough?",
+              "What question will you carry into tomorrow?"
             ]
           }
         }
@@ -569,11 +569,11 @@
           "title": "Bridge activity",
           "layout": "prompt",
           "content": {
-            "scenario": "Choose one digital risk from yesterday: privacy and data tracking, cyberbullying, misinformation, algorithm bias, screen addiction or attention, mental health and social media, digital footprint or reputation, or AI manipulation and deepfakes.",
+            "scenario": "Choose one digital risk from yesterday and trace who it affects and who helps respond.",
             "prompts": [
               "Who is affected by it?",
-              "What makes the impact real in school, work, or public life?",
-              "Who could help respond in a realistic way?"
+              "Where is the impact real?",
+              "Who could respond in a realistic way?"
             ]
           }
         },
@@ -594,11 +594,9 @@
           "title": "Teacher model of one full chain",
           "layout": "planner_model",
           "content": {
-            "model": "Digital risk: misinformation. Who is affected: students, families, and community members who need accurate information. Responding field: journalism. How the field responds: journalists verify sources, investigate claims, and help the public sort fact from manipulation. BC connection: local and provincial news still matters when people need trustworthy information close to home. Personal fit: this field could fit someone who likes research, asking careful questions, and helping others make informed decisions.",
+            "model": "Risk: misinformation. Affected group: students, families, and community members. Field: journalism. Response: journalists verify sources. BC link: local news still matters. Fit: good for someone who likes research and careful questions.",
             "supports": [
-              "The match is realistic because the role would actually do something about the problem.",
-              "The BC connection is not decorative. It shows where the issue and the response matter here.",
-              "The fit reflection stays short and specific."
+              "Keep the chain realistic and clear."
             ]
           }
         },
@@ -608,8 +606,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "Which risk are you most ready to explain clearly?",
-              "Which response field feels realistic, not random?"
+              "Which risk can you explain clearly?",
+              "Which response field feels realistic?"
             ]
           }
         }
@@ -642,11 +640,11 @@
           "title": "What makes a match realistic?",
           "layout": "prompt",
           "content": {
-            "scenario": "A strong match is not just a cool job name beside a risk. It is a role that would actually respond to the problem in a meaningful way.",
+            "scenario": "A strong match is a role that would actually respond to the problem.",
             "prompts": [
-              "What would this person or field really do?",
-              "Who would still be affected if the role disappeared?",
-              "Does the connection make sense in a BC setting?"
+              "What would the role really do?",
+              "Who is still affected if it disappears?",
+              "Does it make sense in BC?"
             ]
           }
         },
@@ -682,8 +680,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "What makes your match stronger than a random pairing?",
-              "What do you still need to clarify before Day 4?"
+              "What makes your match strong?",
+              "What still needs clarifying?"
             ]
           }
         }
@@ -757,12 +755,7 @@
           "title": "Model the structure, not the exact answer",
           "layout": "planner_model",
           "content": {
-            "model": "Digital risk: digital footprint and reputation. Who is affected: students, job applicants, and people whose online identity can affect opportunities. Career or field: education and counselling. How the role responds: teachers and counsellors help students understand digital choices, reputation, and how to protect future options. BC connection: this matters in BC schools and workplaces where public identity can affect school culture, hiring, and trust. Personal fit: this kind of role might fit me if I like helping people make better decisions and think ahead about real consequences.",
-            "supports": [
-              "Keep the risk statement clear and concrete.",
-              "Make sure the role actually helps respond to the selected problem.",
-              "Keep the personal-fit reflection short and specific."
-            ]
+            "model": "Risk: digital footprint and reputation. Affected group: students and job applicants. Field: education and counselling. Response: teachers and counsellors help students protect future options. BC link: this matters in BC schools. Fit: good for someone who likes helping people think ahead."
           }
         },
         {
@@ -785,8 +778,8 @@
           "layout": "reflect",
           "content": {
             "prompts": [
-              "What is one digital risk you understand more clearly now?",
-              "What is one role or field you respect more after this week?"
+              "What digital risk do you understand better now?",
+              "What role or field do you respect more now?"
             ]
           }
         }
