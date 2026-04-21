@@ -94,6 +94,11 @@
     "explain_content",
     "organize_attention"
   ],
+  "tier_levels": [
+    "scaffolded",
+    "core",
+    "extension"
+  ],
   "aliases": {
     "student_task": "task_sheet",
     "checkpoint": "checkpoint_sheet",

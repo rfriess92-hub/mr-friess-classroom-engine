@@ -65,7 +65,7 @@ function renderPdfOutput(packagePath, route, outDir) {
     process.exit(1)
   }
 
-  const grammarPath = resolve(outDir, `${route.output_id}.grammar.json`)
+  const grammarPath = resolve(outDir, `${route.artifact_id ?? route.output_id}.grammar.json`)
   const result = spawnSync(
     pythonCmd,
     ['engine/pdf/render_stable_core_output.py', '--package', packagePath, '--output-id', route.output_id, '--out', outDir, '--grammar', grammarPath],
@@ -79,7 +79,7 @@ function writeJsonSidecar(outDir, outputId, suffix, payload) {
 }
 
 function writeVisualSidecar(outDir, route, visualBundle) {
-  writeJsonSidecar(outDir, route.output_id, 'visual', visualBundle)
+  writeJsonSidecar(outDir, route.artifact_id, 'visual', visualBundle)
 }
 
 function writeImageSidecar(outDir, route, visualBundle) {
@@ -93,7 +93,7 @@ function writeImageSidecar(outDir, route, visualBundle) {
       image_plan: page.image_plan ?? { judgment: 'no_image', slots: [] },
     })),
   }
-  writeJsonSidecar(outDir, route.output_id, 'images', imagePayload)
+  writeJsonSidecar(outDir, route.artifact_id, 'images', imagePayload)
 }
 
 function writeGrammarSidecar(outDir, route, trace, templateRoute) {
@@ -114,19 +114,19 @@ function writeGrammarSidecar(outDir, route, trace, templateRoute) {
     selected_template: templateRoute.selected_template,
     template_sequence: templateRoute.template_sequence,
   }
-  writeJsonSidecar(outDir, route.output_id, 'grammar', grammarPayload)
+  writeJsonSidecar(outDir, route.artifact_id, 'grammar', grammarPayload)
 }
 
 function writeTraceSidecar(outDir, route, trace) {
-  writeJsonSidecar(outDir, route.output_id, 'trace', trace)
+  writeJsonSidecar(outDir, route.artifact_id, 'trace', trace)
 }
 
 function writeBlocksSidecar(outDir, route, payload) {
-  writeJsonSidecar(outDir, route.output_id, 'blocks', payload)
+  writeJsonSidecar(outDir, route.artifact_id, 'blocks', payload)
 }
 
 function writeQaSidecar(outDir, route, payload) {
-  writeJsonSidecar(outDir, route.output_id, 'qa', payload)
+  writeJsonSidecar(outDir, route.artifact_id, 'qa', payload)
 }
 
 function writePackageQaSidecar(outDir, payload) {
@@ -280,7 +280,7 @@ if (packageQa) {
 }
 
 for (const route of htmlRoutes) {
-  const outputPath = resolve(outDir, `${route.output_id}.pdf`)
+  const outputPath = resolve(outDir, `${route.artifact_id}.pdf`)
   await renderStudentDoc(pkg, route, outputPath)
 
   if (route.output_type === 'task_sheet') {

@@ -1,4 +1,4 @@
-import { normalizeOutputType } from '../schema/canonical.mjs'
+import { normalizeOutputType, TIER_LEVELS } from '../schema/canonical.mjs'
 import { normalizePackageToRenderPlan } from '../schema/render-plan.mjs'
 
 function rendererKeyFor(outputType) {
@@ -69,40 +69,60 @@ function audienceBucketFor(audience) {
   }
 }
 
+function buildRoute(output, normalizedOutputType, overrides = {}) {
+  return {
+    route_id: `${output.output_id}__${normalizedOutputType}`,
+    output_id: output.output_id,
+    output_type: normalizedOutputType,
+    audience: output.audience,
+    audience_bucket: audienceBucketFor(output.audience),
+    renderer_key: rendererKeyFor(normalizedOutputType),
+    renderer_family: rendererFamilyFor(normalizedOutputType),
+    artifact_family: output.artifact_family,
+    render_intent: output.render_intent,
+    evidence_role: output.evidence_role,
+    assessment_weight: output.assessment_weight,
+    density: output.density,
+    length_band: output.length_band,
+    bundle_id: output.bundle_id,
+    declared_bundle: output.declared_bundle,
+    primary_architecture: output.primary_architecture,
+    secondary_architecture_support: output.secondary_architecture_support,
+    architecture_role: output.architecture_role,
+    day_scope: output.day_scope,
+    continuity: output.continuity,
+    is_embedded: output.is_embedded,
+    final_evidence_role: output.final_evidence_role,
+    source_path: output.source_path,
+    source_section: output.source_section,
+    variant_group: output.variant_group,
+    variant_role: output.variant_role,
+    alignment_target: output.alignment_target,
+    final_evidence_target: output.final_evidence_target,
+    ...overrides,
+  }
+}
+
 export function routeRenderPlan(renderPlan) {
-  return renderPlan.outputs.map((output) => {
+  const routes = []
+  for (const output of renderPlan.outputs) {
     const normalizedOutputType = normalizeOutputType(output.output_type)
-    return {
-      route_id: `${output.output_id}__${normalizedOutputType}`,
-      output_id: output.output_id,
-      output_type: normalizedOutputType,
-      audience: output.audience,
-      audience_bucket: audienceBucketFor(output.audience),
-      renderer_key: rendererKeyFor(normalizedOutputType),
-      renderer_family: rendererFamilyFor(normalizedOutputType),
-      artifact_family: output.artifact_family,
-      render_intent: output.render_intent,
-      evidence_role: output.evidence_role,
-      assessment_weight: output.assessment_weight,
-      density: output.density,
-      length_band: output.length_band,
-      bundle_id: output.bundle_id,
-      declared_bundle: output.declared_bundle,
-      primary_architecture: output.primary_architecture,
-      secondary_architecture_support: output.secondary_architecture_support,
-      architecture_role: output.architecture_role,
-      day_scope: output.day_scope,
-      continuity: output.continuity,
-      is_embedded: output.is_embedded,
-      final_evidence_role: output.final_evidence_role,
-      source_path: output.source_path,
-      source_section: output.source_section,
-      variant_group: output.variant_group,
-      variant_role: output.variant_role,
-      alignment_target: output.alignment_target,
-      final_evidence_target: output.final_evidence_target,
+    if (output.tiered) {
+      for (const tier of TIER_LEVELS) {
+        routes.push(buildRoute(output, normalizedOutputType, {
+          route_id: `${output.output_id}__${normalizedOutputType}__${tier}`,
+          artifact_id: `${output.output_id}_${tier}`,
+          variant_group: 'tiers',
+          variant_role: tier,
+        }))
+      }
+    } else {
+      routes.push(buildRoute(output, normalizedOutputType, {
+        artifact_id: output.output_id,
+      }))
     }
-  })
+  }
+  return routes
 }
 
 export function planPackageRoutes(pkg) {

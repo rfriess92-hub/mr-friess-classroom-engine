@@ -87,9 +87,48 @@ function buildChecklist(title, items, className) {
 </div>`
 }
 
-export function buildWorksheetHTML(pkg, section, fontFaceCSS, designCSS) {
+const TIER_CONFIG = {
+  scaffolded: { label: 'Scaffolded Support', color: '#166534', bg: '#DCFCE7', border: '#86EFAC' },
+  core:       { label: null },
+  extension:  { label: 'Challenge Extension', color: '#4C1D95', bg: '#EDE9FE', border: '#C4B5FD' },
+}
+
+function buildWordBank(terms) {
+  if (!Array.isArray(terms) || terms.length === 0) return ''
+  return `
+<div class="tier-word-bank">
+  <div class="tier-box-label">Word Bank</div>
+  <div class="tier-word-list">${terms.map((t) => `<span class="tier-word">${escapeHtml(t)}</span>`).join('')}</div>
+</div>`
+}
+
+function buildSentenceStarters(starters) {
+  if (!Array.isArray(starters) || starters.length === 0) return ''
+  return `
+<div class="tier-starters">
+  <div class="tier-box-label">Sentence Starters</div>
+  <ul class="tier-starter-list">${starters.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}</ul>
+</div>`
+}
+
+function buildChallengeExtension(text) {
+  if (!text) return ''
+  return `
+<div class="tier-challenge">
+  <div class="tier-box-label">Go Deeper</div>
+  <div class="tier-challenge-text">${escapeHtml(text)}</div>
+  <div class="ws-lines">${buildResponseLines(4)}</div>
+</div>`
+}
+
+export function buildWorksheetHTML(pkg, section, fontFaceCSS, designCSS, tier = null) {
   const title = section.title ?? 'Worksheet'
   const standards = Array.isArray(pkg.standards) ? pkg.standards : []
+
+  const tierData = (tier && section.tiers?.[tier]) ? section.tiers[tier] : null
+  const activeQuestions = tierData?.questions ?? section.questions ?? []
+  const activeTip = tierData?.tip ?? section.tip
+  const tierCfg = tier ? (TIER_CONFIG[tier] ?? TIER_CONFIG.core) : null
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -232,6 +271,67 @@ ${responsePatternCss}
 .anchor-box {
   background: #F3F4F6;
 }
+
+.tier-badge {
+  display: inline-block;
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2pt 8pt;
+  border-radius: 3pt;
+  border: 1pt solid;
+  margin-bottom: 10pt;
+}
+
+.tier-word-bank,
+.tier-starters,
+.tier-challenge {
+  border: 1pt solid #D1D5DB;
+  border-radius: 4pt;
+  padding: 10pt 12pt;
+  margin-bottom: 14pt;
+}
+
+.tier-word-bank { background: #F0FDF4; border-color: #86EFAC; }
+.tier-starters  { background: #F0F9FF; border-color: #7DD3FC; }
+.tier-challenge { background: #FAF5FF; border-color: #C4B5FD; }
+
+.tier-box-label {
+  font-size: 7pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6B7280;
+  margin-bottom: 6pt;
+}
+
+.tier-word-list { display: flex; flex-wrap: wrap; gap: 5pt; }
+.tier-word {
+  font-size: 9.5pt;
+  font-weight: 600;
+  background: #FFFFFF;
+  border: 1pt solid #86EFAC;
+  border-radius: 2pt;
+  padding: 1pt 6pt;
+  color: #166534;
+}
+
+.tier-starter-list {
+  margin: 0;
+  padding-left: 14pt;
+  font-size: 9.5pt;
+  color: #1E40AF;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.tier-challenge-text {
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: #4C1D95;
+  margin-bottom: 8pt;
+}
   </style>
 </head>
 <body>
@@ -249,10 +349,17 @@ ${responsePatternCss}
     <div class="doc-eyebrow">Worksheet</div>
     <div class="doc-title">${escapeHtml(title)}</div>
 
-    ${section.tip ? `<div class="tip-box"><div class="section-kicker">Tip</div><div>${escapeHtml(section.tip)}</div></div>` : ''}
+    ${tierCfg?.label ? `<span class="tier-badge" style="color:${tierCfg.color};background:${tierCfg.bg};border-color:${tierCfg.border}">${tierCfg.label}</span>` : ''}
+
+    ${activeTip ? `<div class="tip-box"><div class="section-kicker">Tip</div><div>${escapeHtml(activeTip)}</div></div>` : ''}
     ${buildChecklist('Keep in mind', section.anchor, 'anchor-box')}
 
-    ${(Array.isArray(section.questions) ? section.questions : []).map(buildQuestion).join('\n')}
+    ${tier === 'scaffolded' ? buildWordBank(tierData?.word_bank) : ''}
+    ${tier === 'scaffolded' ? buildSentenceStarters(tierData?.sentence_starters) : ''}
+
+    ${activeQuestions.map(buildQuestion).join('\n')}
+
+    ${tier === 'extension' ? buildChallengeExtension(tierData?.challenge_extension) : ''}
 
     ${buildChecklist('Quick self-check', section.self_check, 'self-check-box')}
 
