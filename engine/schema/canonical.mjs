@@ -31,6 +31,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'graphic_organizer',
     'discussion_prep_sheet',
     'pacing_guide',
+    'sub_plan',
   ],
   multi_day_sequence: [
     'lesson_overview',
@@ -43,6 +44,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'graphic_organizer',
     'discussion_prep_sheet',
     'pacing_guide',
+    'sub_plan',
   ],
   three_day_sequence: [
     'lesson_overview',
@@ -55,6 +57,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'graphic_organizer',
     'discussion_prep_sheet',
     'pacing_guide',
+    'sub_plan',
   ],
   workshop_session: [
     'teacher_guide',
@@ -63,6 +66,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'graphic_organizer',
     'discussion_prep_sheet',
     'pacing_guide',
+    'sub_plan',
   ],
   lab_investigation: [
     'teacher_guide',
@@ -71,6 +75,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'exit_ticket',
     'graphic_organizer',
     'pacing_guide',
+    'sub_plan',
   ],
   seminar: [
     'teacher_guide',
@@ -78,6 +83,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'discussion_prep_sheet',
     'exit_ticket',
     'pacing_guide',
+    'sub_plan',
   ],
   project_sprint: [
     'lesson_overview',
@@ -87,6 +93,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'final_response_sheet',
     'graphic_organizer',
     'pacing_guide',
+    'sub_plan',
   ],
   station_rotation: [
     'teacher_guide',
@@ -95,6 +102,7 @@ export const OUTPUT_TYPES_BY_ARCHITECTURE = {
     'exit_ticket',
     'graphic_organizer',
     'pacing_guide',
+    'sub_plan',
   ],
 }
 
@@ -112,6 +120,7 @@ export const TEACHER_FACING_OUTPUT_TYPES = new Set([
   'lesson_overview',
   'checkpoint_sheet',
   'pacing_guide',
+  'sub_plan',
 ])
 
 export const SHARED_VIEW_OUTPUT_TYPES = new Set([
