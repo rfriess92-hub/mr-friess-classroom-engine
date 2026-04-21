@@ -16,6 +16,7 @@
     "select:assignment-family": "node scripts/select-assignment-family.mjs",
     "qa:assignment-family": "node scripts/validate-assignment-build.mjs",
     "generate:package": "node scripts/generate-package.mjs",
+    "weekly:overview": "node scripts/weekly-overview.mjs",
     "fonts:install": "npx playwright install chromium"
   },
   "devDependencies": {
