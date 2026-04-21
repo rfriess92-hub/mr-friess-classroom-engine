@@ -7,6 +7,7 @@ import { buildFinalResponseSheetHTML } from './templates/final-response-sheet.mj
 import { buildExitTicketHTML } from './templates/exit-ticket.mjs'
 import { buildDiscussionPrepSheetHTML } from './templates/discussion-prep-sheet.mjs'
 import { buildWorksheetHTML } from './templates/worksheet.mjs'
+import { buildPacingGuideHTML } from './templates/pacing-guide.mjs'
 
 const TEMPLATE_MAP = {
   task_sheet: buildTaskSheetHTML,
@@ -14,6 +15,7 @@ const TEMPLATE_MAP = {
   exit_ticket: buildExitTicketHTML,
   discussion_prep_sheet: buildDiscussionPrepSheetHTML,
   worksheet: buildWorksheetHTML,
+  pacing_guide: buildPacingGuideHTML,
 }
 
 let cachedFontFaceCSS = null

@@ -10,8 +10,9 @@ function buildTicket(pkg, section) {
   <div class="ticket-header">
     <div class="ticket-eyebrow">Exit Ticket</div>
     <div class="ticket-meta">
-      <span class="ticket-class">Mr. Friess - ${escapeHtml(pkg.subject ?? '')}</span>
-      <span class="ticket-namedate">Name: _________________________   Date: ___________</span>
+      <span class="ticket-class">Mr. Friess &nbsp;·&nbsp; ${escapeHtml(pkg.subject ?? '')}</span>
+      <span class="ticket-namedate">Name: _________________________ &nbsp; Date: ___________</span>
+      ${(Array.isArray(pkg.standards) && pkg.standards.length > 0) ? `<span class="ticket-standards">${escapeHtml(pkg.standards.join(' · '))}</span>` : ''}
     </div>
   </div>
 
@@ -101,6 +102,12 @@ body {
 .ticket-namedate {
   font-size: 8pt;
   color: #6B7280;
+}
+
+.ticket-standards {
+  font-size: 7pt;
+  color: #9CA3AF;
+  letter-spacing: 0.03em;
 }
 
 .ticket-topic {

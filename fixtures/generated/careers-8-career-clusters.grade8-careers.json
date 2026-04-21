@@ -7,6 +7,11 @@
   "grade": 8,
   "topic": "Exploring Career Clusters",
   "theme": "careers",
+  "standards": [
+    "ASCA.B-LS.1",
+    "ASCA.B-SMS.5",
+    "CLE.8.1"
+  ],
   "assignment_family": "short_inquiry_sequence",
   "grade_subject_fit": "Fits Grade 8 Careers exploration by helping students sort, compare, and interpret possible career pathways through broad cluster categories.",
   "unit_context": "Introductory career exploration task focused on organizing jobs into clusters and connecting those clusters to student interests, strengths, and curiosities.",

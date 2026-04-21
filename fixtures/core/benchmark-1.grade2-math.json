@@ -7,6 +7,10 @@
   "grade": 2,
   "topic": "Making Ten to Add",
   "theme": "science",
+  "standards": [
+    "CCSS.MATH.CONTENT.2.OA.B.2",
+    "CCSS.MATH.CONTENT.2.NBT.B.5"
+  ],
   "teacher_guide": {
     "big_idea": "Making a ten helps young mathematicians add more efficiently and explain their thinking clearly.",
     "learning_goals": [
@@ -140,13 +144,54 @@
       "8 + 6 = 10 + 4 = 14"
     ]
   },
+  "pacing_guide": {
+    "phases": [
+      {
+        "label": "Warm-Up",
+        "duration_min": 8,
+        "teacher_move": "Project ten-frame. Ask: what do you notice? Cold-call 2–3 students. No evaluation yet.",
+        "student_move": "Look, notice, share one observation with a partner.",
+        "checkpoint": null
+      },
+      {
+        "label": "Model",
+        "duration_min": 10,
+        "teacher_move": "Think aloud: move counters to make a ten, then count on. Show two examples. Name the strategy.",
+        "student_move": "Watch and track the moves — raise a hand when they see the ten being made.",
+        "checkpoint": null
+      },
+      {
+        "label": "Guided Practice",
+        "duration_min": 17,
+        "teacher_move": "Release to partners. Circulate. Listen for students saying 'I moved __ to make a ten.' Redirect if adding without making ten.",
+        "student_move": "Solve 3 problems with a partner using ten-frames. One person moves, one explains.",
+        "checkpoint": "By min 35: most pairs have solved at least 2 problems and can say what they moved."
+      },
+      {
+        "label": "Independent Work",
+        "duration_min": 17,
+        "teacher_move": "Release to worksheet. Pull a small group if any students struggled in guided practice.",
+        "student_move": "Complete worksheet independently. Draw pictures or write equations to show thinking.",
+        "checkpoint": null
+      },
+      {
+        "label": "Exit Ticket & Share",
+        "duration_min": 8,
+        "teacher_move": "Collect exit tickets at the door. Choose 1–2 to share under document camera (ask permission first).",
+        "student_move": "Complete exit ticket. Optional: share strategy with class.",
+        "checkpoint": null
+      }
+    ],
+    "buffer_note": "If guided practice runs long, shorten independent work to 10 min and skip the whole-class share at the end."
+  },
   "bundle": {
     "bundle_id": "benchmark_1_grade2_math_bundle",
     "declared_outputs": [
       "teacher_guide",
       "slides",
       "worksheet",
-      "exit_ticket"
+      "exit_ticket",
+      "pacing_guide"
     ]
   },
   "outputs": [
@@ -178,6 +223,13 @@
       "source_section": "exit_ticket",
       "bundle": "benchmark_1_grade2_math_bundle",
       "final_evidence": true
+    },
+    {
+      "output_id": "pacing_guide_main",
+      "output_type": "pacing_guide",
+      "audience": "teacher",
+      "source_section": "pacing_guide",
+      "bundle": "benchmark_1_grade2_math_bundle"
     }
   ]
 }

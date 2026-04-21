@@ -246,7 +246,7 @@ for (const route of routes) {
   }
 
   if (trace.mode === 'doc_mode') {
-    if (route.audience === 'student' && supportsHtmlRender(route.output_type)) {
+    if (supportsHtmlRender(route.output_type)) {
       htmlRoutes.push(route)
       continue
     }

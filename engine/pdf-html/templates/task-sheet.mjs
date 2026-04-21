@@ -148,6 +148,7 @@ ${responsePatternCss}
     ${bodyContent}
     ${supports}
     ${criteria}
+    ${(Array.isArray(pkg.standards) && pkg.standards.length > 0) ? `<div class="standards-footer"><span class="standards-footer-label">Standards: </span>${escapeHtml(pkg.standards.join(' · '))}</div>` : ''}
   </div>
 </body>
 </html>`

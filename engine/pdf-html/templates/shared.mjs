@@ -254,5 +254,19 @@ ul, ol { margin: 0; padding-left: 18pt; }
   color: #4B5563;
   line-height: 1.45;
 }
+
+.standards-footer {
+  margin-top: 20pt;
+  padding-top: 6pt;
+  border-top: 0.75pt solid #E5E7EB;
+  font-size: 7.5pt;
+  color: #9CA3AF;
+  line-height: 1.5;
+}
+.standards-footer-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
 `
 }
