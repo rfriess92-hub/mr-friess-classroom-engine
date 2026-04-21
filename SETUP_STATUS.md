@@ -13,15 +13,16 @@
 
 ## Scripts - wired operator surface
 
-- `npm run schema:check` - validate fixtures against schema
-- `npm run route:plan` - plan routes for a package
-- `npm run render:package` - render a full package (PPTX + PDF)
-- `npm run qa:render` / `qa:bundle` / `qa:visual` / `qa:pedagogy-variants` - QA helpers
-- `npm run generate:package` - generate a new package
-- `npm test` - Node tests in `tests/node`
-- `npm run test:all` - Node tests plus `pytest tests/python`
+- `pnpm run schema:check` - validate fixtures against schema
+- `pnpm run route:plan` - plan routes for a package
+- `pnpm run render:package` - render a full package (PPTX + PDF)
+- `pnpm run qa:render` / `qa:bundle` / `qa:visual` / `qa:pedagogy-variants` - QA helpers
+- `pnpm run generate:package` - generate a new package
+- `pnpm test` - Node tests in `tests/node`
+- `pnpm run test:all` - Node tests plus `pytest tests/python`
 - `tests/python/` is also exercised by `.github/workflows/ci.yml`
 - Legacy direct-builder scripts remain deprecated compatibility/debugging shims under `scripts/` and are invoked with `node scripts/...`; `package.json` does not expose `build:all`, `build:pptx`, or `build:pdf`
+- fixture shortcuts in `scripts/lib.mjs` cover core, generated, PBG, and proof/test packages used in current operator flows
 
 ## Declared live stable-core surface
 
@@ -36,6 +37,9 @@
 - `final_response_sheet`
 - `graphic_organizer`
 - `discussion_prep_sheet`
+- `pacing_guide`
+- `sub_plan`
+- `makeup_packet`
 
 ### Primary architectures
 - `single_period_full`
@@ -50,7 +54,9 @@
 ## Proven surface in CI today
 
 ### `CI` workflow
-- runs `npm test`
+- runs `pnpm install --no-frozen-lockfile`
+- runs `pnpm exec playwright install chromium`
+- runs `pnpm test`
 - runs `pytest tests/python`
 
 ### `stable-core` workflow
