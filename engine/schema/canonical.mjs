@@ -20,6 +20,7 @@ export const GRADE_BANDS = VOCABULARY.grade_bands ?? []
 export const SUPPORTED_THEMES = VOCABULARY.themes ?? []
 export const SUPPORTED_SLIDE_LAYOUTS = VOCABULARY.slide_layouts ?? []
 export const OUTPUT_TYPE_ALIASES = VOCABULARY.aliases ?? {}
+export const TIER_LEVELS = VOCABULARY.tier_levels ?? ['scaffolded', 'core', 'extension']
 export const SLIDE_LAYOUT_ALIASES = VOCABULARY.slide_layout_aliases ?? {}
 
 export const OUTPUT_TYPES_BY_ARCHITECTURE = {

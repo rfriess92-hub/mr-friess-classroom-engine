@@ -130,7 +130,40 @@
       "8 + 5 = 10 + 3 = 13",
       "9 + 4 = 10 + 3 = 13",
       "7 + 6 = 10 + 3 = 13"
-    ]
+    ],
+    "tiers": {
+      "scaffolded": {
+        "tip": "Use the word bank below. Circle the bigger number first, then fill the ten.",
+        "word_bank": ["ten", "ones", "move", "extra", "equation", "total"],
+        "sentence_starters": [
+          "First I move ___ ones to make a ___.",
+          "Now I have 10 and ___ ones left.",
+          "10 + ___ = ___."
+        ],
+        "questions": [
+          { "q_num": 1, "q_text": "Solve 8 + 5. Circle the 8. How many more make a ten? Move those ones. 8 + ___ = 10. Then add the rest: 10 + ___ = ___.", "n_lines": 3 },
+          { "q_num": 2, "q_text": "Solve 9 + 4. The 9 needs ___ more to make a ten. Move them: 9 + ___ = 10. Now add: 10 + ___ = ___.", "n_lines": 3 },
+          { "q_num": 3, "q_text": "Solve 7 + 6. The 7 needs ___ more to make a ten. 7 + ___ = 10. Then: 10 + ___ = ___.", "n_lines": 3 }
+        ]
+      },
+      "core": {
+        "questions": [
+          { "q_num": 1, "q_text": "Solve 8 + 5 by making a ten. Show the ten and the extra ones.", "n_lines": 3 },
+          { "q_num": 2, "q_text": "Solve 9 + 4 by making a ten. Write the new equation.", "n_lines": 3 },
+          { "q_num": 3, "q_text": "Solve 7 + 6 by making a ten. Draw or write your thinking.", "n_lines": 4 },
+          { "q_num": 4, "q_text": "Write your own make-ten problem and solve it.", "n_lines": 4 }
+        ]
+      },
+      "extension": {
+        "questions": [
+          { "q_num": 1, "q_text": "Solve 8 + 5 by making a ten. Now solve it a different way. Which way is faster? Why?", "n_lines": 4 },
+          { "q_num": 2, "q_text": "Solve 9 + 4 and 4 + 9 by making a ten. What do you notice about both answers?", "n_lines": 4 },
+          { "q_num": 3, "q_text": "Solve 7 + 6 by making a ten. Then write a story problem that matches 7 + 6.", "n_lines": 5 },
+          { "q_num": 4, "q_text": "Find three addition problems that equal 15. For each one, show how you could make a ten to solve it.", "n_lines": 5 }
+        ],
+        "challenge_extension": "Can you explain to a younger student why making a ten makes adding easier? Write your explanation like you're the teacher."
+      }
+    }
   },
   "exit_ticket": {
     "prompt": "Solve 8 + 6 by making a ten. Show your thinking with a picture, numbers, or words.",
@@ -293,7 +326,8 @@
       "output_type": "worksheet",
       "audience": "student",
       "source_section": "worksheet",
-      "bundle": "benchmark_1_grade2_math_bundle"
+      "bundle": "benchmark_1_grade2_math_bundle",
+      "tiered": true
     },
     {
       "output_id": "exit_ticket_main",

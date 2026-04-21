@@ -73,7 +73,8 @@ export async function renderStudentDoc(pkg, route, outPath) {
   }
 
   const section = resolveSourceSection(pkg, route.source_section)
-  const html = buildTemplate(pkg, section, getFontFaceCSS(), getDesignCSS())
+  const tier = route.variant_group === 'tiers' ? route.variant_role : null
+  const html = buildTemplate(pkg, section, getFontFaceCSS(), getDesignCSS(), tier)
   await renderHtmlToPdf(html, outPath)
 }
 

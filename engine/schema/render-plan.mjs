@@ -66,6 +66,7 @@ function normalizeOutputEntry(pkg, entry, index) {
     final_evidence_role: output.final_evidence === true ? 'primary' : 'none',
     source_path: entry.path,
     source_section: output.source_section ?? null,
+    tiered: output.tiered === true,
     variant_group: output.variant_group ?? null,
     variant_role: output.variant_role ?? null,
     alignment_target: output.alignment_target ?? null,
