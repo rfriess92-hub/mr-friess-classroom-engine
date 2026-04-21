@@ -148,6 +148,10 @@ function rowBodies(rows = [], maxItems = 2) {
   )
 }
 
+function joinedList(items, maxItems = 2, separator = ' • ') {
+  return normalizeList(items, maxItems).join(separator)
+}
+
 function columnBody(column) {
   if (!column) return ''
   if (typeof column === 'string') return column
@@ -175,7 +179,7 @@ function inferSlidePageRole(slide = {}) {
   ) {
     return 'compare'
   }
-  if (type === 'LEARN' || ['planner_model', 'bullet_focus', 'summary_rows'].includes(layout)) return 'model'
+  if (type === 'LEARN' || ['planner_model', 'bullet_focus', 'summary_rows', 'checklist'].includes(layout)) return 'model'
   return 'prompt'
 }
 
@@ -212,18 +216,20 @@ function buildPromptContentPlan(slide) {
 
 function buildModelContentPlan(slide) {
   const content = slide.content ?? {}
+  const itemModel = joinedList(content.items, 2)
+  const itemSupport = joinedList(content.items?.slice?.(2) ?? [], 3)
   const model = firstNonEmpty(
     content.model,
     content.headline,
     content.prompt,
-    normalizeList(content.items, 2).join(' '),
+    itemModel,
     ...rowBodies(content.rows ?? [], 1),
     ...rowBodies(content.examples ?? [], 1),
   )
   const support = firstNonEmpty(
-    normalizeList(content.supports, 2).join(' '),
-    normalizeList(content.prompts, 2).join(' '),
-    normalizeList(content.items, 3).join(' '),
+    joinedList(content.supports, 2),
+    joinedList(content.prompts, 2),
+    itemSupport,
     content.instruction,
   )
   return {
