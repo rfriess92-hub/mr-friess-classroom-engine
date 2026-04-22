@@ -298,11 +298,10 @@
   },
   "task_sheet": {
     "title": "Week 2 Career Mosaic Packet - Bias and Decision-Making",
-    "purpose_line": "Use this packet across the week to compare first impressions with better judgment and build toward your Day 5 Bias and Decision-Making Reflection.",
+    "purpose_line": "Collect short notes across the week that build toward your Day 5 Bias and Decision-Making Reflection.",
     "instructions": [
-      "Move through the packet across the week. Each section builds the next one.",
-      "Use partner talk before longer writing, then keep your own notes on this sheet.",
-      "You may use short phrases or bullets in the packet. Save the polished reflection for the Day 5 final response sheet. It is the only final evidence sheet for Week 2."
+      "Move through the packet across the week. Each section gives you notes you can reuse later.",
+      "Use partner talk before longer writing, then keep your own notes."
     ],
     "tasks": [
       {
@@ -469,17 +468,10 @@
       }
     ],
     "embedded_supports": [
-      "Partner talk first, then record your own thinking.",
-      "Use scenario cards and stereotype prompts as examples, not as fixed answers.",
-      "Bullet points are fine on planning pages; the final response should sound cleaner and more complete.",
-      "If a prompt feels too personal, use a public example, a media message, or a school-based scenario instead."
+      "Use short notes in the packet. The polished reflection belongs on the Day 5 final response sheet.",
+      "If a prompt feels personal, use a public example, a media message, or a school-based scenario instead."
     ],
-    "success_criteria": [
-      "I used the packet to compare quick judgments with better questions and missing information.",
-      "I challenged at least one narrow stereotype or assumption about work, people, or fit.",
-      "I mapped at least one influence on career thinking and planned a more thoughtful decision process.",
-      "I kept planning in the packet and saved my final evidence for the Day 5 Bias and Decision-Making Reflection."
-    ],
+    "success_criteria": [],
     "render_grammar": {
       "render_intent": "exploratory_planning",
       "evidence_role": "planning_only",
