@@ -1,64 +1,195 @@
-# Engine Workload
+# Engine Master Task List
 
-Living doc — update as items move.
+Living doc. Three tracks run in parallel. Update status as items move.
 
----
+**Track A** — Engine infrastructure (new output types, schema, templates)  
+**Track B** — Pedagogy + content quality (grade-band calibration, voice, artifact roles)  
+**Track C** — Teacher profile + personalization (turns engine into *your* machine)
 
-## Active Phase
-
-### Phase 1 — Assessment Foundation
-*Build the infrastructure everything else depends on.*
-
-- [x] Question bank schema (`schemas/question-bank.schema.json`)
-- [x] Tag vocabulary added to `canonical-vocabulary.json` (bloom_level, difficulty, question_type)
-- [x] `assessment` + `quiz` output types added to schema + vocabulary
-- [ ] `assessmentSection` + `quizSection` $defs in lesson-package.schema.json (Codex)
-- [ ] `questions/` directory + seed banks per subject (Codex)
-- [ ] `assessment` + `quiz` HTML templates (Codex)
-- [ ] `pull:questions` script (Codex)
-- [ ] `generate:package` question bank hook (Codex)
-- [ ] Proof fixture + CI smoke test (Codex)
+Dependency rule: B0 (grade-band contracts) must complete before Codex touches any content. C0 (profile layer schema) should be designed before new generation work starts.
 
 ---
 
-## Queued Phases
+## TRACK A — Engine Infrastructure
 
-### Phase 2 — Rubric + Feedback Loop
-- `rubric` output type (auto-built from `success_criteria` + `final_evidence_target`, BC proficiency scale)
-- `feedback_strip` output type (attach to returned work)
-- `formative_check` output type (faster than exit ticket — 3-2-1, traffic light, muddiest point)
-- Proof fixtures for all three
+### A1 — Assessment Foundation `IN PROGRESS — awaiting Codex execution`
+Schema merged (#166). Codex has the handoff.
 
-### Phase 3 — Daily Classroom Artifacts
-- `warm_up` output type (half-page bell ringer, feeds into pacing guide)
-- `vocabulary_card` output type (promote from makeup_packet.vocabulary)
-- `observation_grid` output type (teacher-only, pulled from success_criteria + checkpoints)
-- `lesson_reflection` output type (teacher-only, post-lesson structured note)
-- Proof fixtures for all four
+- [x] `schemas/question-bank.schema.json`
+- [x] `assessmentSection`, `quizSection`, `assessmentQuestion` $defs
+- [x] `assessment`, `quiz` in outputType enum + router + audience sets
+- [x] `proficiency_levels`, `bloom_levels`, `question_types` in vocabulary
+- [ ] `questions/` seed banks per subject — Codex
+- [ ] `engine/pdf-html/templates/assessment.mjs` + `quiz.mjs` — Codex
+- [ ] Wire into render pipeline — Codex
+- [ ] `scripts/pull-questions.mjs` — Codex
+- [ ] Proof fixture + smoke test — Codex
 
-### Phase 4 — Planning View
-- Finish `weekly:overview` → promote to `unit_overview` output type
-- Unit grid: weeks × days, key artifacts per cell, learning progression visible
-- Materials checklist auto-generated from package output types
-- Student conference note template
+### A2 — Rubric + Feedback Loop `QUEUED`
+Wait for A1 to merge.
 
-### Phase 5 — Render Hardening
-- Checkpoint sheet HTML template (currently Python-only)
-- PPTX pipeline out of archive delegation
-- Proof fixtures for `workshop_session`, `lab_investigation`, `seminar`, `station_rotation` architectures
+- [ ] `rubricSection` + `rubricCriterion` schema (BC proficiency scale, optional weights)
+- [ ] `formativeCheckSection` schema (check_type: three_two_one, traffic_light, muddiest_point, thumbs)
+- [ ] `rubric`, `formative_check` in outputType enum + router + audience sets
+- [ ] `engine/pdf-html/templates/rubric.mjs` — Codex
+- [ ] `engine/pdf-html/templates/formative-check.mjs` — Codex
+- [ ] Proof fixtures + smoke tests — Codex
+
+### A3 — Daily Classroom Artifacts `QUEUED`
+Wait for A2 to merge.
+
+- [ ] `warmUpSection` schema (activity_type, connection_to_lesson)
+- [ ] `vocabularyCardSection` schema
+- [ ] `observationGridSection` schema (teacher-only)
+- [ ] `lessonReflectionSection` schema (teacher-only)
+- [ ] All four in outputType enum + router + audience sets
+- [ ] HTML templates for all four — Codex
+- [ ] Proof fixtures + smoke tests — Codex
+
+### A4 — Planning View `QUEUED`
+Design session required before execution.
+
+- [ ] `unit_overview` output type (finish weekly:overview, proper unit grid)
+- [ ] Materials checklist auto-generated from package output types
+- [ ] Student conference note template
+
+### A5 — Render Hardening `QUEUED`
+Last. After content rules (Track B) are stable.
+
+- [ ] Checkpoint sheet HTML template (currently Python-only)
+- [ ] PPTX pipeline out of archive delegation
+- [ ] Proof fixtures for `workshop_session`, `lab_investigation`, `seminar`, `station_rotation`
 
 ---
 
-## Bug / Maintenance Queue
+## TRACK B — Pedagogy + Content Quality
 
-- [ ] `assignment-family/live-contract.mjs` path fix — PR #165 open, pending merge
+### B0 — Grade-Band Contracts `IN PROGRESS`
+Writing now. Codex must not touch lesson language until these exist.
+
+- [ ] `docs/grade-band-contracts/careers-8.md`
+- [ ] `docs/grade-band-contracts/english-10.md`
+- [ ] `docs/grade-band-contracts/english-11.md`
+- [ ] `docs/grade-band-contracts/english-12.md`
+- [ ] `docs/grade-band-contracts/math-8.md`
+- [ ] `docs/grade-band-contracts/workplace-math-10.md`
+
+### B1 — Artifact-Role Cleanup `QUEUED`
+After B0.
+
+- [ ] Audit: renderer-injected vs authored text
+- [ ] Remove teacher choreography from shared slides
+- [ ] Remove teacher/admin phrasing from student sheets
+- [ ] Confirm checkpoint language teacher-facing only
+- [ ] Extend daily-split boilerplate suppression beyond Week 1 (#160) to all packages
+
+### B2 — Grade 8 Career Mosaic Cleanup `QUEUED`
+After B1. Use as calibration model.
+
+- [ ] Cut: slogan lines, polished motivational contrasts, abstract senior-secondary phrasing
+- [ ] Simplify: self-concept vocabulary, adult-written sentence frames
+- [ ] Keep: concrete examples, real-life references, structured scaffolds
+- [ ] Target: Weeks 1–4 mosaic fixtures
+
+### B3 — English 10 / 11 / 12 Band Separation `QUEUED`
+After B2.
+
+- [ ] Side-by-side audit of same task family across 10/11/12
+- [ ] English 10: cut Grade 8 softness + 12 precision; keep structure + practical scaffolds
+- [ ] English 11: elevate audience awareness + evidence; cut over-scaffolded frames
+- [ ] English 12: elevate synthesis + justification; cut generic reflection voice
+
+### B4 — Math 8 / Workplace Math 10 Separation `QUEUED`
+After B3.
+
+- [ ] Math 8: cut trade/budget language; keep concrete structure + recording supports
+- [ ] WM10: cut juvenile framing; keep applied/practical/multi-step logic
+
+### B5 — Formatting Balance System `QUEUED`
+Can run alongside B2. Week 1 Career 8 focused first.
+
+- [ ] Baseline audit — ideal vs current, top 5 drift indicators
+- [ ] Hard constraints — slide text floor 24pt, word budget ≤40, packet footer suppression
+- [ ] Packet balance — reduce verbatim-repeated reminder language
+- [ ] Slide balance — check Day 2/3 for under-explanation
+- [ ] Encode engagement add-on taxonomy in `engine/generation/content-style-policy.json`
+- [ ] Formatting balance QA checklist
+
+### B6 — Drift QA Gate `QUEUED`
+After B5.
+
+- [ ] Grade-band check per package (vocabulary, abstraction, output demand)
+- [ ] Artifact-role check (teacher leakage, student admin language)
+- [ ] AI-tone check (slogans, symmetrical contrasts, framework language)
+- [ ] Difficulty spread check (within-week swings)
+- [ ] Pass/fail gate per package before merge
+
+---
+
+## TRACK C — Teacher Profile + Personalization
+
+### C0 — Profile Layer Schema `IN PROGRESS`
+Design session happening now. Biggest shift from "lesson engine" to "your machine."
+
+- [ ] `schemas/teacher-profile.schema.json`
+- [ ] `schemas/course-profile.schema.json`
+- [ ] `schemas/class-profile.schema.json`
+- [ ] `profiles/` directory + seed files (teacher.json, courses/, classes/)
+- [ ] Wire into `scripts/generate-package.mjs` (`--profile`, `--course`, `--section` args)
+- [ ] Replace hardcoded reference fixture with subject+grade-matched lookup
+
+### C1 — Teaching Mode Surface `QUEUED`
+After C0.
+
+- [ ] `teaching_mode` field: standard, sub_friendly, hands_on, low_tech, quiet_writing, recovery_reteach, conferencing
+- [ ] Mode → default output types mapping
+- [ ] Wire into `generate:package`
+
+### C2 — Generation Defaults for Pacing / Sub / Makeup `QUEUED`
+After C1.
+
+- [ ] `generate:package` always emits `pacing_guide` by default
+- [ ] `attendance_pattern: spotty` in class profile → include `makeup_packet`
+- [ ] `teaching_mode: sub_friendly` → include `sub_plan`
+
+### C3 — Differentiated Variants as Default Path `QUEUED`
+- [ ] `--tiered` flag on `generate:package`
+- [ ] Brief template gains `differentiation_model` field
+- [ ] At least two mainstream fixtures with `tiered: true`
+
+### C4 — Multiple Reference Fixtures in Generation `QUEUED`
+- [ ] Subject+grade-matched fixture selection in `generate:package`
+- [ ] `--reference <fixture_key>` override
+
+### C5 — Unit Memory + Evidence Map `QUEUED`
+Design session required.
+
+- [ ] `retro/` directory + `scripts/retro:package.mjs`
+- [ ] Evidence map: cross-lesson artifact + gaps view
+
+### C6 — Voice + Sameness QA `QUEUED`
+After B6.
+
+- [ ] `qa:voice` script
+- [ ] Extend `content-style-policy.json` with sameness indicators
+
+### C7 — Image + Diagram Asset Bank `QUEUED`
+- [ ] Minimum 20 assets per subject in `engine/image/asset-registry.json`
+
+---
+
+## Maintenance Queue
+
+- [x] PR #165 — `live-contract.mjs` path fix — merged with #166
 
 ---
 
 ## Done (recent)
 
-- [#164] Weeks 2–4 packet copy trim to match Week 1 style
-- [#163] Smoke tests for English 11/12 fixtures and tiered worksheet fan-out
+- [#166] Phase A1 assessment schema — question bank, assessment, quiz output types, vocabulary, router wiring
+- [#165] `live-contract.mjs` path fix
+- [#164] Weeks 2–4 packet copy trim
+- [#163] Smoke tests: English 11/12 + tiered worksheet fan-out
 - [#161] Schema voice descriptions for teacher-facing fields
 - [#160] Week 1 daily-sheet boilerplate suppression + copy trim
 - [#159] Pacing guide redesign — agenda rows
