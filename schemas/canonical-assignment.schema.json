@@ -92,12 +92,14 @@
     "teacher_implementation_notes": {
       "type": "array",
       "minItems": 1,
-      "items": { "type": "string", "minLength": 1 }
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Reference flags for the teacher — things worth noticing or deciding, not instructions on how to teach. Each item is a short observation or decision point, not a directive. Example: 'Students may need the word bank even if they don't ask — watch for blank stares during the launch.' Not: 'Make sure to provide the word bank to struggling students.'"
     },
     "likely_misconceptions": {
       "type": "array",
       "minItems": 1,
-      "items": { "type": "string", "minLength": 1 }
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Predictable student errors or confusions to watch for, stated as observations. Example: 'Students often conflate correlation with causation here.' Not: 'You should explicitly address the difference between correlation and causation.'"
     },
     "pacing_shape": { "type": "string" },
     "assessment_focus": {
