@@ -22,6 +22,43 @@ test('Careers 8 reference fixture passes grade-band contract validation', () => 
   assert.deepEqual(result.blockers, [])
 })
 
+test('multi-day Careers 8 bias fixture is recognized as scaffolded after scanning day content', () => {
+  const fixture = loadJson(repoPath('fixtures/generated/careers-8-bias-and-decision-making.grade8-careers.json'))
+  const result = validateGradeBandContractFit(fixture)
+  const findingCodes = result.findings.map((finding) => finding.code)
+
+  assert.equal(result.applies, true)
+  assert.ok(!findingCodes.includes('missing_concrete_scaffold'))
+})
+
+test('matching-bank role labels do not trigger unsupported vocabulary by default', () => {
+  const fixture = {
+    subject: 'Careers',
+    grade: 8,
+    topic: 'Technology and identity',
+    task_sheet: {
+      tasks: [
+        {
+          render_hints: {
+            heading: 'Risk-to-career matching bank',
+            help: 'Match each risk with the role that would actually respond.',
+            matching_columns: {
+              left_items: ['Cyberbullying'],
+              right_items: ['Counselling or youth work'],
+            },
+          },
+        },
+      ],
+    },
+  }
+
+  const result = validateGradeBandContractFit(fixture)
+  const findingCodes = result.findings.map((finding) => finding.code)
+
+  assert.equal(result.judgment, 'pass')
+  assert.ok(!findingCodes.includes('unsupported_vocabulary'))
+})
+
 test('off-band Careers 8 package is blocked for adult tone, unsupported vocabulary, and missing scaffold', () => {
   const fixture = {
     subject: 'Careers',
