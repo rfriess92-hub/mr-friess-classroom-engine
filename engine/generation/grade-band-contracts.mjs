@@ -28,8 +28,6 @@ const CAREERS_8_AVOID_DEFAULT_VOCAB = [
   'labor-market dynamics',
   'identity formation',
   'systemic bias',
-  'counseling',
-  'counselling',
   'therapeutic',
 ]
 
@@ -44,6 +42,8 @@ const CAREERS_8_ADULT_TONE_PATTERNS = [
   'resume',
   'interview training',
   'interview response',
+  'counseling-style',
+  'counselling-style',
 ]
 
 const CAREERS_8_TOO_EASY_PATTERNS = [
@@ -62,18 +62,39 @@ const CAREERS_8_SCAFFOLD_PATTERNS = [
   'comparison',
   'match',
   'matching',
+  'matching bank',
+  'paired choice',
+  'pair',
+  'pairs',
   'choose',
   'pick one',
   'list',
   'scenario',
+  'scenario sort',
   'role map',
+  'role-response',
+  'response role',
   'example',
   'examples',
   'organizer',
   'graphic organizer',
-  'look at these',
+  'matrix',
+  'card sort',
+  'category',
+  'categories',
   'which of these',
+  'look at these',
 ]
+
+const STUDENT_FACING_SECTION_KEYS = new Set([
+  'slides',
+  'worksheet',
+  'task_sheet',
+  'exit_ticket',
+  'final_response_sheet',
+  'graphic_organizer',
+  'discussion_prep_sheet',
+])
 
 function normalizeText(value) {
   return typeof value === 'string'
@@ -110,13 +131,49 @@ function collectStrings(value, path = '') {
   return Object.entries(value).flatMap(([key, child]) => collectStrings(child, path ? `${path}.${key}` : key))
 }
 
+function isStudentFacingDaySection(key) {
+  return STUDENT_FACING_SECTION_KEYS.has(key) || key.startsWith('task_sheet_') || key.startsWith('worksheet_')
+}
+
+function isExcludedStudentPath(path = '') {
+  return path.includes('answer_key') ||
+    /^outputs\[/.test(path) ||
+    /\.outputs\[/.test(path) ||
+    /\.(source_section|bundle|output_id|output_type|audience|variant_group|variant_role|alignment_target|final_evidence_target|final_evidence)$/.test(path) ||
+    /^days\[\d+\]\.(day_id|day_label|carryover_note)$/.test(path)
+}
+
+function collectStudentContentSections(pkg = {}) {
+  const sections = []
+
+  for (const key of STUDENT_FACING_SECTION_KEYS) {
+    if (pkg[key]) sections.push({ path: key, value: pkg[key] })
+  }
+
+  for (const [key, value] of Object.entries(pkg)) {
+    if ((key.startsWith('task_sheet_') || key.startsWith('worksheet_')) && value) {
+      sections.push({ path: key, value })
+    }
+  }
+
+  if (Array.isArray(pkg.days)) {
+    for (let index = 0; index < pkg.days.length; index += 1) {
+      const day = pkg.days[index]
+      if (!day || typeof day !== 'object') continue
+      for (const [key, value] of Object.entries(day)) {
+        if (!value || !isStudentFacingDaySection(key)) continue
+        sections.push({ path: `days[${index}].${key}`, value })
+      }
+    }
+  }
+
+  return sections
+}
+
 function collectStudentFacingStrings(pkg = {}) {
-  const sections = ['slides', 'worksheet', 'task_sheet', 'checkpoint_sheet', 'exit_ticket', 'final_response_sheet']
-  return sections.flatMap((section) => {
-    const value = pkg[section]
-    if (!value) return []
-    return collectStrings(value, section)
-  }).filter(({ path }) => !path.includes('answer_key'))
+  return collectStudentContentSections(pkg)
+    .flatMap(({ path, value }) => collectStrings(value, path))
+    .filter(({ path }) => !isExcludedStudentPath(path))
 }
 
 function collectLongResponseTargets(section = {}, path = '') {
@@ -144,6 +201,28 @@ function collectLongResponseTargets(section = {}, path = '') {
   return findings.concat(
     Object.entries(section).flatMap(([key, value]) => collectLongResponseTargets(value, path ? `${path}.${key}` : key))
   )
+}
+
+function collectStudentLongResponseTargets(pkg = {}) {
+  return collectStudentContentSections(pkg)
+    .flatMap(({ path, value }) => collectLongResponseTargets(value, path))
+    .filter(({ path }) => !isExcludedStudentPath(path))
+}
+
+function isConcreteListBankPath(path = '') {
+  return /(matching_columns|choice_pairs|left_items|right_items|record_fields|blank_prompts|structured_labels|table_rows|table_columns)/.test(path)
+}
+
+function isPromptLikePath(path = '') {
+  return /(scenario|task|prompt|q_text|instruction|instructions|tip|help|response_note|purpose_line)/i.test(path)
+}
+
+function hasConcreteScaffold(studentFacingStrings = []) {
+  return studentFacingStrings.some(({ path, text }) => {
+    const lowered = lowerText(text)
+    return includesAny(lowered, CAREERS_8_SCAFFOLD_PATTERNS) ||
+      /(activity_type|response_pattern|choice_pairs|matching_columns|record_fields|blank_prompts|table_rows|table_columns|structured_labels)/.test(path)
+  })
 }
 
 export function appliesCareers8GradeBandContract(context = {}) {
@@ -203,21 +282,19 @@ export function validateGradeBandContractFit(pkg = {}) {
   const findings = []
   const blockers = []
   const matchedContracts = [CAREERS_8_CONTRACT_ID]
-  const hasScaffold = includesAny(fullText, CAREERS_8_SCAFFOLD_PATTERNS)
-  const severeCodes = new Set()
+  const hasScaffold = hasConcreteScaffold(studentFacingStrings)
 
   for (const entry of studentFacingStrings) {
     const text = lowerText(entry.text)
     const words = wordCount(entry.text)
 
-    if (includesAny(text, CAREERS_8_AVOID_DEFAULT_VOCAB)) {
+    if (includesAny(text, CAREERS_8_AVOID_DEFAULT_VOCAB) && !isConcreteListBankPath(entry.path)) {
       findings.push({
         type: 'content_issue',
         code: 'unsupported_vocabulary',
         path: entry.path,
         note: `Student-facing text uses off-band adult vocabulary: "${entry.text}".`,
       })
-      severeCodes.add('unsupported_vocabulary')
     }
 
     if (includesAny(text, CAREERS_8_ADULT_TONE_PATTERNS)) {
@@ -227,7 +304,6 @@ export function validateGradeBandContractFit(pkg = {}) {
         path: entry.path,
         note: `Student-facing text sounds adult, slogan-like, or senior-secondary in tone: "${entry.text}".`,
       })
-      severeCodes.add('adult_tone_drift')
     }
 
     if (includesAny(text, CAREERS_8_TOO_EASY_PATTERNS)) {
@@ -246,11 +322,9 @@ export function validateGradeBandContractFit(pkg = {}) {
         path: entry.path,
         note: `Abstract Careers 8 language appears without a visible concrete scaffold: "${entry.text}".`,
       })
-      severeCodes.add('missing_concrete_scaffold')
     }
 
-    const isPromptLikePath = /scenario|task|prompt|q_text|instruction|tip/i.test(entry.path)
-    if (isPromptLikePath && words > 28) {
+    if (isPromptLikePath(entry.path) && words > 28) {
       findings.push({
         type: 'content_issue',
         code: words > 36 ? 'read_aloud_unfriendly' : 'output_overreach',
@@ -260,7 +334,7 @@ export function validateGradeBandContractFit(pkg = {}) {
     }
 
     const hiddenMoveCount = (text.match(/\b(and|or)\b/g) ?? []).length
-    if (isPromptLikePath && words > 24 && hiddenMoveCount >= 2 && (text.match(/\?/g) ?? []).length >= 2) {
+    if (isPromptLikePath(entry.path) && words > 24 && hiddenMoveCount >= 2 && (text.match(/\?/g) ?? []).length >= 2) {
       findings.push({
         type: 'content_issue',
         code: 'multi_hidden_thinking_moves',
@@ -270,11 +344,7 @@ export function validateGradeBandContractFit(pkg = {}) {
     }
   }
 
-  for (const target of collectLongResponseTargets(pkg.worksheet, 'worksheet').concat(
-    collectLongResponseTargets(pkg.task_sheet, 'task_sheet'),
-    collectLongResponseTargets(pkg.exit_ticket, 'exit_ticket'),
-    collectLongResponseTargets(pkg.final_response_sheet, 'final_response_sheet'),
-  )) {
+  for (const target of collectStudentLongResponseTargets(pkg)) {
     const promptText = lowerText(target.prompt)
     if (target.n_lines >= 8 && /\b(explain|justify|argue|recommend|analysis|analyze|essay|paragraph)\b/.test(promptText)) {
       findings.push({
@@ -293,15 +363,16 @@ export function validateGradeBandContractFit(pkg = {}) {
       path: 'student_facing_bundle',
       note: 'Careers 8 package does not clearly include a list, sort, ranking task, scenario, role map, comparison prompt, or visible example set.',
     })
-    severeCodes.add('missing_concrete_scaffold')
   }
 
+  const findingCodes = new Set(findings.map((finding) => finding.code).filter(Boolean))
+  const severeCount = Array.from(findingCodes).filter((code) => ['adult_tone_drift', 'missing_concrete_scaffold', 'unsupported_vocabulary'].includes(code)).length
+
   if (
-    findings.some((item) => item.code === 'unsupported_vocabulary' || item.code === 'adult_tone_drift') &&
-    findings.some((item) => item.code === 'missing_concrete_scaffold' || item.code === 'output_overreach' || item.code === 'multi_hidden_thinking_moves')
+    (findingCodes.has('adult_tone_drift') && (findingCodes.has('missing_concrete_scaffold') || findingCodes.has('unsupported_vocabulary'))) ||
+    (findingCodes.has('missing_concrete_scaffold') && findingCodes.has('unsupported_vocabulary') && findingCodes.has('multi_hidden_thinking_moves')) ||
+    severeCount >= 3
   ) {
-    blockers.push('careers8_contract_violation')
-  } else if (severeCodes.size >= 2) {
     blockers.push('careers8_contract_violation')
   }
 
