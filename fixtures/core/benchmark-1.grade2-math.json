@@ -182,40 +182,40 @@
       {
         "label": "Warm-Up",
         "duration_min": 8,
-        "teacher_move": "Project ten-frame. Ask: what do you notice? Cold-call 2–3 students. No evaluation yet.",
-        "student_move": "Look, notice, share one observation with a partner.",
+        "teacher_move": "Project ten-frame → cold-call 2–3 noticings. No evaluation yet.",
+        "student_move": "Notice first, then partner share one observation.",
         "checkpoint": null
       },
       {
         "label": "Model",
         "duration_min": 10,
-        "teacher_move": "Think aloud: move counters to make a ten, then count on. Show two examples. Name the strategy.",
-        "student_move": "Watch and track the moves — raise a hand when they see the ten being made.",
+        "teacher_move": "Think-aloud make-ten model with counters. Two examples, then name the strategy.",
+        "student_move": "Track the moves — hands up when the ten is made.",
         "checkpoint": null
       },
       {
         "label": "Guided Practice",
         "duration_min": 17,
-        "teacher_move": "Release to partners. Circulate. Listen for students saying 'I moved __ to make a ten.' Redirect if adding without making ten.",
-        "student_move": "Solve 3 problems with a partner using ten-frames. One person moves, one explains.",
-        "checkpoint": "By min 35: most pairs have solved at least 2 problems and can say what they moved."
+        "teacher_move": "Partner ten-frame practice. Circulate — listen for 'I moved __ to make a ten.' Redirect additive counting that skips the make-ten step.",
+        "student_move": "Partner solve 3 ten-frame problems; one moves, one explains.",
+        "checkpoint": "By min 35, most pairs have at least 2 problems solved and can say what they moved."
       },
       {
         "label": "Independent Work",
         "duration_min": 17,
-        "teacher_move": "Release to worksheet. Pull a small group if any students struggled in guided practice.",
-        "student_move": "Complete worksheet independently. Draw pictures or write equations to show thinking.",
+        "teacher_move": "Worksheet release. Pull a small group from guided-practice strugglers if needed.",
+        "student_move": "Independent worksheet; show thinking with pictures or equations.",
         "checkpoint": null
       },
       {
         "label": "Exit Ticket & Share",
         "duration_min": 8,
-        "teacher_move": "Collect exit tickets at the door. Choose 1–2 to share under document camera (ask permission first).",
-        "student_move": "Complete exit ticket. Optional: share strategy with class.",
+        "teacher_move": "Collect exit tickets at the door. Share 1–2 under the document camera if time and permission allow.",
+        "student_move": "Exit ticket, then optional share.",
         "checkpoint": null
       }
     ],
-    "buffer_note": "If guided practice runs long, shorten independent work to 10 min and skip the whole-class share at the end."
+    "buffer_note": "If guided practice runs long, trim independent work to 10 min and skip the whole-class share."
   },
   "sub_plan": {
     "title": "Making Ten to Add — Sub Plan",
