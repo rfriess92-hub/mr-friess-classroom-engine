@@ -61,3 +61,35 @@ test('task-sheet day render does not inject generic filler when no optional exte
   assert.doesNotMatch(html, /keyboard/i)
   assert.doesNotMatch(html, /echo/i)
 })
+
+test('task-sheet day render suppresses packet-level boilerplate by default', () => {
+  const section = {
+    title: 'Week 1 Packet',
+    purpose_line: 'Use this packet across the week to build toward the final snapshot.',
+    instructions: [
+      'Move through the packet across the week.',
+      'Save the polished snapshot for Day 5.',
+    ],
+    embedded_supports: ['This is a shared packet note.'],
+    success_criteria: ['This is a full-week check.'],
+    tasks: [
+      {
+        label: 'Day 1 / Part A',
+        prompt: 'Write one short note.',
+        lines: 2,
+        render_hints: {
+          response_pattern: 'compact_checkpoint',
+        },
+      },
+    ],
+  }
+
+  const html = buildTaskSheetHTMLForDay(pkg, section, 'Day 1', '', '')
+
+  assert.doesNotMatch(html, /Use this packet across the week/i)
+  assert.doesNotMatch(html, /Move through the packet across the week/i)
+  assert.doesNotMatch(html, /Save the polished snapshot for Day 5/i)
+  assert.doesNotMatch(html, /This is a shared packet note\./i)
+  assert.doesNotMatch(html, /This is a full-week check\./i)
+  assert.doesNotMatch(html, /Task Sheet/i)
+})

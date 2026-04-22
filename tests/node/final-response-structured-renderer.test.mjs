@@ -75,3 +75,31 @@ test('final-response renderer supports structured response layouts', () => {
   assert.match(roleHtml, /role-response-grid/)
   assert.match(roleHtml, /Why it matters/)
 })
+
+test('final-response renderer supports quieter framing when the source already provides the structure', () => {
+  const quietHtml = buildFinalResponseSheetHTML(pkg, {
+    title: 'Day 5 Career Identity Snapshot',
+    prompt: 'Write your final snapshot in clear labeled lines.',
+    planning_reminders: [
+      'Use details that feel true and specific.',
+      'Keep the future link light.',
+    ],
+    paragraph_support: {
+      frame_strip: ['Strengths: ___', 'Interests: ___'],
+      reminder_box: 'Keep it honest and specific.',
+    },
+    response_lines: 8,
+    render_hints: {
+      purpose_line: 'Use this page for your final snapshot.',
+      prompt_label: '',
+      quick_check_label: 'Before you hand it in',
+      quick_check_items: ['My response sounds like me.'],
+    },
+  }, '', '')
+
+  assert.doesNotMatch(quietHtml, /Final Response Sheet/)
+  assert.doesNotMatch(quietHtml, /Use your notes/)
+  assert.doesNotMatch(quietHtml, /Keep the shape simple/)
+  assert.doesNotMatch(quietHtml, /Snapshot guide/)
+  assert.match(quietHtml, /Before you hand it in/)
+})
