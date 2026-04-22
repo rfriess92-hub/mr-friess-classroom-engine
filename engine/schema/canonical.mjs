@@ -123,6 +123,11 @@ export const STUDENT_FACING_OUTPUT_TYPES = new Set([
   'graphic_organizer',
   'discussion_prep_sheet',
   'makeup_packet',
+  'assessment',
+  'quiz',
+  'formative_check',
+  'warm_up',
+  'vocabulary_card',
 ])
 
 export const TEACHER_FACING_OUTPUT_TYPES = new Set([
@@ -131,6 +136,9 @@ export const TEACHER_FACING_OUTPUT_TYPES = new Set([
   'checkpoint_sheet',
   'pacing_guide',
   'sub_plan',
+  'rubric',
+  'observation_grid',
+  'lesson_reflection',
 ])
 
 export const SHARED_VIEW_OUTPUT_TYPES = new Set([

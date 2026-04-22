@@ -29,7 +29,15 @@
     "discussion_prep_sheet",
     "pacing_guide",
     "sub_plan",
-    "makeup_packet"
+    "makeup_packet",
+    "assessment",
+    "quiz",
+    "rubric",
+    "formative_check",
+    "warm_up",
+    "vocabulary_card",
+    "observation_grid",
+    "lesson_reflection"
   ],
   "audiences": [
     "teacher",
@@ -98,6 +106,35 @@
     "scaffolded",
     "core",
     "extension"
+  ],
+  "proficiency_levels": [
+    "emerging",
+    "developing",
+    "proficient",
+    "extending"
+  ],
+  "bloom_levels": [
+    "recall",
+    "understand",
+    "apply",
+    "analyze",
+    "evaluate",
+    "create"
+  ],
+  "question_difficulty": [
+    "scaffolded",
+    "core",
+    "extension"
+  ],
+  "question_types": [
+    "multiple_choice",
+    "short_answer",
+    "extended_response",
+    "fill_in_blank",
+    "matching",
+    "true_false",
+    "calculation",
+    "diagram_label"
   ],
   "aliases": {
     "student_task": "task_sheet",
