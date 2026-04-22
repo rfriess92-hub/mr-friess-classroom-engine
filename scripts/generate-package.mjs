@@ -16,6 +16,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { basename, extname, join, resolve } from 'node:path'
 import process from 'node:process'
 import { spawnSync } from 'node:child_process'
+import { buildGradeBandGenerationPrompt } from '../engine/generation/grade-band-contracts.mjs'
 
 function argValue(flag) {
   const i = process.argv.indexOf(flag)
@@ -58,6 +59,7 @@ const contentStylePolicyPath = resolve(process.cwd(), 'engine', 'generation', 'c
 const contentStylePolicy = existsSync(contentStylePolicyPath)
   ? readFileSync(contentStylePolicyPath, 'utf-8')
   : null
+const gradeBandContractPrompt = buildGradeBandGenerationPrompt({ briefText })
 
 const SYSTEM_PROMPT = `You are generating a stable-core lesson package for the Mr. Friess Classroom Engine.
 
@@ -82,6 +84,7 @@ Hard requirements:
 15. Match artifact tone to artifact role instead of giving every artifact the same narrated voice.
 16. Avoid over-explaining artifact purpose when headings and layout already make it obvious.
 17. Student-facing models should sound plausible and human, not hyper-polished or unnaturally self-aware.
+18. When a grade-band contract applies, treat it as binding, not advisory.
 
 Required top-level fields:
 - schema_version: "2.1.0"
@@ -147,7 +150,7 @@ Slide content field guide:
 - numbered_steps: { steps: [...] }
 
 ${contentStylePolicy ? `Apply this content style policy:\n\n<content_style_policy>\n${contentStylePolicy}\n</content_style_policy>\n` : ''}
-
+${gradeBandContractPrompt ? `\n${gradeBandContractPrompt}\n` : ''}
 Return exactly one JSON object. No markdown. No explanation.`
 
 const USER_PROMPT = referenceFixture
