@@ -11,6 +11,7 @@
     "render:package": "node scripts/render-package.mjs",
     "qa:render": "node scripts/qa-render.mjs",
     "qa:bundle": "node scripts/qa-bundle.mjs",
+    "qa:grade-band": "node scripts/qa-grade-band-contracts.mjs",
     "qa:visual": "node scripts/qa-visual.mjs",
     "qa:pedagogy-variants": "node scripts/qa-pedagogy-variants.mjs",
     "select:assignment-family": "node scripts/select-assignment-family.mjs",
