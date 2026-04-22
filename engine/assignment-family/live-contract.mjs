@@ -1,7 +1,10 @@
-import { loadJson, repoPath } from '../../scripts/lib.mjs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { loadJson } from '../../scripts/lib.mjs'
 import { loadAssignmentFamilyConfig } from './load-config.mjs'
 
-const CANONICAL_ASSIGNMENT_SCHEMA = loadJson(repoPath('schemas', 'canonical-assignment.schema.json'))
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const CANONICAL_ASSIGNMENT_SCHEMA = loadJson(resolve(__dirname, '../../schemas/canonical-assignment.schema.json'))
 const CANONICAL_ASSIGNMENT_PROPERTIES = CANONICAL_ASSIGNMENT_SCHEMA.properties ?? {}
 const CANONICAL_RENDER_HOOKS = CANONICAL_ASSIGNMENT_PROPERTIES.render_hooks?.properties ?? {}
 
