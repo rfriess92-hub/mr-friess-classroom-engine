@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mr-friess-classroom-engine/schemas/question-bank.schema.json",
+  "title": "Question Bank Schema",
+  "description": "A bank of reusable questions tagged by subject, grade, topic, standard, difficulty, and Bloom level. Questions can be pulled into assessment and quiz output types or referenced inline.",
+  "type": "object",
+  "required": ["bank_id", "subject", "questions"],
+  "properties": {
+    "bank_id": {
+      "type": "string",
+      "description": "Unique identifier for this bank (e.g. 'ela-10-argument-writing', 'math-8-measurement')."
+    },
+    "subject": {
+      "type": "string",
+      "description": "Subject area this bank covers."
+    },
+    "grade": {
+      "oneOf": [
+        { "type": "integer", "minimum": 1, "maximum": 12 },
+        { "type": "string" }
+      ],
+      "description": "Grade level or range (e.g. 10, '9-12', '8')."
+    },
+    "topic": {
+      "type": "string",
+      "description": "Broad topic or unit this bank supports."
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/bankQuestion" }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "bankQuestion": {
+      "type": "object",
+      "required": ["question_id", "q_text", "question_type"],
+      "properties": {
+        "question_id": {
+          "type": "string",
+          "description": "Unique ID within the bank (e.g. 'ela10-arg-q01'). Used for pull:questions references."
+        },
+        "q_text": {
+          "type": "string",
+          "description": "The question text shown to students."
+        },
+        "question_type": {
+          "type": "string",
+          "enum": ["multiple_choice", "short_answer", "extended_response", "fill_in_blank", "matching", "true_false", "calculation", "diagram_label"],
+          "description": "Question format. Maps to response_pattern for rendering."
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": ["scaffolded", "core", "extension"],
+          "description": "Relative difficulty within the subject/topic. Scaffolded = entry-level; core = grade-level; extension = challenge."
+        },
+        "bloom_level": {
+          "type": "string",
+          "enum": ["recall", "understand", "apply", "analyze", "evaluate", "create"],
+          "description": "Bloom's Taxonomy level this question targets."
+        },
+        "standards": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Standard codes this question addresses (CCSS, BC curriculum, NGSS, etc.)."
+        },
+        "topic": {
+          "type": "string",
+          "description": "Specific topic or concept within the bank's broader subject (e.g. 'thesis statement', 'area of composite shapes')."
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Free-form tags for filtering (e.g. 'argument', 'week2', 'visual', 'calculator-ok')."
+        },
+        "answer_key": {
+          "type": "string",
+          "description": "Correct answer or model response. Rendered only on teacher-facing version."
+        },
+        "marking_notes": {
+          "type": "string",
+          "description": "Guidance for marking — what to look for, common errors, partial credit notes."
+        },
+        "point_value": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Point value for this question in a scored assessment. Omit for proficiency-only assessments."
+        },
+        "n_lines": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of response lines for open-format questions."
+        },
+        "choices": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Answer choices for multiple_choice and true_false questions."
+        },
+        "render_hints": {
+          "type": "object",
+          "description": "Optional render overrides — same surface as studentPdfTaskRenderHints.",
+          "additionalProperties": true
+        },
+        "source_package": {
+          "type": "string",
+          "description": "package_id this question was originally authored in, if any."
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
