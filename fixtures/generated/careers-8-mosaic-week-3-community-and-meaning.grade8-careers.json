@@ -437,16 +437,21 @@
         "lines": 1,
         "activity_type": "write_response",
         "render_hints": {
-          "response_pattern": "record_fields",
+          "response_pattern": "table_record",
           "heading": "Day 4 - Final artifact planner",
-          "help": "Choose the clearest example you can explain. Save the polished final version for the Day 5 final response sheet.",
-          "record_fields": [
-            "The community need I will focus on",
-            "Jobs or roles I will include",
-            "How those roles help the community keep going",
-            "What kind of contribution feels meaningful to me",
-            "My final format: Community Needs Map or Jobs That Keep Us Going"
-          ]
+          "help": "Use short notes. One strong example is better than several loose ones.",
+          "table_columns": [
+            "Need or role notes",
+            "Contribution or meaning notes"
+          ],
+          "table_rows": [
+            "Community need",
+            "Jobs or roles",
+            "How the work helps",
+            "Meaningful contribution for me",
+            "Final format choice"
+          ],
+          "table_cell_lines": 1
         }
       },
       {
@@ -875,22 +880,35 @@
       ],
       "final_response_sheet": {
         "title": "Day 5 Community Needs Map or Jobs That Keep Us Going",
-        "prompt": "Complete your final artifact in clear labeled lines or bullet clusters. Identify at least one real community need, name jobs or roles connected to that need, explain how the work helps people or systems keep going, and include a short reflection on what kind of contribution feels meaningful to you.",
+        "prompt": "Use the map to show one strong community need, the jobs or roles connected to it, how the work helps keep the community going, and what kind of contribution feels meaningful to you.",
         "planning_reminders": [
-          "Use labels such as Community need, Jobs or roles, How the work contributes, What this shows about the value of work, and Meaningful contribution for me.",
-          "Choose one need you can explain clearly instead of naming many loosely.",
-          "Include both the need and the roles connected to it so the career connection stays visible.",
-          "Write the polished final artifact here. This is the only final evidence sheet for Week 3."
+          "One strong row is enough. Add a second only if it stays clear.",
+          "Keep both the need and the roles visible so the career connection stays concrete."
         ],
-        "paragraph_support": {
-          "frame_strip": [
-            "Community need: ___",
-            "Jobs or roles connected to it: ___",
-            "How the work helps people or systems keep going: ___",
-            "What this shows about the value of work: ___",
-            "Meaningful contribution for me: ___"
+        "render_hints": {
+          "purpose_line": "Use the grid to keep the need, roles, contribution, and meaning visible at the same time.",
+          "prompt_label": "Final task",
+          "response_pattern": "map_or_matrix",
+          "response_label": "Complete the community needs map",
+          "response_note": "Short notes in the grid are enough.",
+          "table_columns": [
+            "Community need",
+            "Jobs or roles",
+            "How the work helps",
+            "Meaning for me"
           ],
-          "reminder_box": "show the need, the roles, the contribution, and the personal meaning"
+          "table_rows": [
+            "Main example",
+            "Optional second example"
+          ],
+          "table_cell_lines": 2,
+          "quick_check_label": "Before you hand it in",
+          "quick_check_items": [
+            "I named a real community need.",
+            "I connected that need to realistic jobs or roles.",
+            "I explained how the work helps the community keep going.",
+            "My reflection shows what kind of contribution feels meaningful to me."
+          ]
         },
         "success_criteria": [
           "My final artifact identifies at least one real community need.",
@@ -898,7 +916,7 @@
           "I explain how the work contributes to community well-being.",
           "My final evidence is recorded only on this sheet."
         ],
-        "response_lines": 16
+        "response_lines": 3
       },
       "outputs": [
         {

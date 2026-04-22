@@ -345,16 +345,19 @@
         "lines": 1,
         "activity_type": "scenario_sort",
         "render_hints": {
-          "response_pattern": "record_fields",
+          "response_pattern": "table_record",
           "heading": "Day 2 - Thinking trap scenario cards",
-          "help": "Use short notes. You are tracking how a quick story forms, not writing a full paragraph yet.",
-          "record_fields": [
-            "Scenario 1 - the fast story",
-            "Scenario 1 - missing information or another explanation",
-            "Scenario 2 - the fast story",
-            "Scenario 2 - missing information or another explanation",
-            "One better check I can use before deciding"
-          ]
+          "help": "Use short notes. Track the fast story, what is missing, and the better check.",
+          "table_columns": [
+            "Fast story",
+            "Missing information or another explanation",
+            "Better check"
+          ],
+          "table_rows": [
+            "Scenario 1",
+            "Scenario 2"
+          ],
+          "table_cell_lines": 1
         }
       },
       {
@@ -413,16 +416,20 @@
         "lines": 1,
         "activity_type": "write_response",
         "render_hints": {
-          "response_pattern": "record_fields",
+          "response_pattern": "table_record",
           "heading": "Day 4 - Influence map",
-          "help": "These messages can be helpful, mixed, or limiting. The goal is to notice them clearly.",
-          "record_fields": [
-            "A family message I hear about work, school, or success",
-            "A peer message I notice",
-            "A media or community message I notice",
-            "One message I agree with",
-            "One message I want to question more carefully"
-          ]
+          "help": "Notice the message, decide whether it helps or limits you, and name what you want to do with it.",
+          "table_columns": [
+            "Message I notice",
+            "Helpful, mixed, or limiting?",
+            "What I want to do with it"
+          ],
+          "table_rows": [
+            "Family",
+            "Peers",
+            "Media or community"
+          ],
+          "table_cell_lines": 1
         }
       },
       {
@@ -888,29 +895,36 @@
       ],
       "final_response_sheet": {
         "title": "Day 5 Bias and Decision-Making Reflection",
-        "prompt": "Complete your Bias and Decision-Making Reflection in clear labeled lines. Explain one thinking trap or bias, show how it could affect a career-related choice about yourself or other people, and describe one strategy for making a more thoughtful decision. End with one revised idea or insight.",
+        "prompt": "Use this page to build one clear decision chain. Name one thinking trap or bias, show how it could affect a career-related choice, describe a better decision strategy, and end with one revised idea or insight.",
         "planning_reminders": [
-          "Use labels such as Thinking trap or bias, Career-related choice, How it could affect the choice, Better decision strategy, and Revised idea or insight.",
           "Choose one example you can actually explain clearly instead of naming several loosely.",
-          "Keep the career connection visible: self-perception, job assumptions, pathway ideas, or who seems like the obvious fit.",
-          "Write your final reflection here."
+          "Keep the career connection visible: self-perception, job assumptions, pathway ideas, or who seems like the obvious fit."
         ],
-        "paragraph_support": {
-          "frame_strip": [
-            "Thinking trap or bias: ___",
-            "Career-related choice: ___",
-            "How it could affect the choice: ___",
-            "Better decision strategy: ___",
-            "Revised idea or insight: ___"
+        "render_hints": {
+          "purpose_line": "Use the chain to show the fast story and the better decision.",
+          "prompt_label": "Final task",
+          "response_pattern": "chain_explanation",
+          "response_label": "Build the decision chain",
+          "response_note": "Keep each box short and specific.",
+          "structured_labels": [
+            "Thinking trap or bias",
+            "Career-related choice and how the trap could affect it",
+            "Better decision strategy",
+            "Revised idea or insight"
           ],
-          "reminder_box": "Name the fast story, then show the better decision."
+          "quick_check_label": "Before you hand it in",
+          "quick_check_items": [
+            "I explained one clear thinking trap or bias.",
+            "I showed how it could affect a real career-related choice.",
+            "My strategy and revised idea make the decision feel more thoughtful."
+          ]
         },
         "success_criteria": [
           "My reflection explains one bias or thinking trap clearly.",
           "I show how it could affect a real career-related choice.",
           "I describe a strategy for making a more thoughtful decision."
         ],
-        "response_lines": 14
+        "response_lines": 3
       },
       "outputs": [
         {

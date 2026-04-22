@@ -364,17 +364,47 @@
       },
       {
         "label": "Day 2 / Part B",
-        "prompt": "Use the matching bank to test which career or field is a strong match for your selected risk.",
+        "prompt": "Match each digital risk with the responding career or field that makes the most sense. Star the pair you want to keep for your project.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "matching",
+          "heading": "Day 2 - Risk-to-career matching bank",
+          "help": "After you match, star one pair you want to keep. If you change the risk later, use the same logic: choose a role that would actually respond to the problem.",
+          "matching_columns": {
+            "left_label": "Digital risks",
+            "right_label": "Responding careers or fields",
+            "left_items": [
+              "Privacy and data tracking",
+              "Cyberbullying",
+              "Misinformation",
+              "Algorithm bias",
+              "Digital footprint or reputation",
+              "Deepfakes or AI manipulation"
+            ],
+            "right_items": [
+              "Counselling or youth work",
+              "Cybersecurity or privacy law",
+              "Journalism or media literacy education",
+              "Software testing, data ethics, or policy",
+              "Education, communications, or HR",
+              "Digital forensics, law, or investigative journalism"
+            ]
+          }
+        }
+      },
+      {
+        "label": "Day 2 / Part C",
+        "prompt": "Keep one strong pair from the bank and explain why it fits. Then name one weak or random match you ruled out.",
         "lines": 1,
         "activity_type": "write_response",
         "render_hints": {
           "response_pattern": "record_fields",
-          "heading": "Day 2 - Risk-to-career matching bank",
-          "help": "Bank ideas: privacy and data tracking -> cybersecurity, privacy law, digital policy; cyberbullying -> counselling, youth work, school leadership; misinformation -> journalism, teaching, communications; algorithm bias -> software testing, policy, data ethics; digital footprint or reputation -> education, counselling, communications, HR; deepfakes or AI manipulation -> digital forensics, journalism, law. Choose a role that would actually respond to the problem.",
+          "heading": "Day 2 - Match check",
+          "help": "This is the part where you prove the match is realistic, not random.",
           "record_fields": [
             "The risk I want to keep",
-            "A strong responding career or field from the bank",
-            "Why this is a realistic match",
+            "The strongest responding career or field and why it fits",
             "One weak or random match I ruled out and why"
           ]
         }
@@ -786,23 +816,32 @@
       ],
       "final_response_sheet": {
         "title": "Day 4 Digital Risk, Real Careers",
-        "prompt": "Complete your final product in clear labeled lines or bullet clusters. Explain one digital risk, identify one realistic career or field connected to that risk, explain how that role helps respond, include one BC connection, and include a short reflection on whether the role might fit you.",
+        "prompt": "Use this response map to show one digital risk, who is affected, the career or field that helps respond, one BC connection, and whether the role might fit you.",
         "planning_reminders": [
-          "Use labels such as Digital risk, Who is affected, Career or field, How the role responds, BC connection, and Personal-fit reflection.",
           "Choose one risk and one response field you can explain clearly instead of naming several loosely.",
-          "Make sure the field would realistically respond to the selected risk.",
-          "Write the polished final product here. This is the only final evidence sheet for Week 4."
+          "Make sure the role would realistically respond to the selected risk."
         ],
-        "paragraph_support": {
-          "frame_strip": [
-            "Digital risk: ___",
-            "Who is affected: ___",
-            "Career or field: ___",
-            "How the role responds: ___",
-            "BC connection: ___",
-            "Personal-fit reflection: ___"
+        "render_hints": {
+          "purpose_line": "Keep the risk, response role, BC connection, and fit in separate parts so each one stays clear.",
+          "prompt_label": "Final task",
+          "response_pattern": "role_need_response",
+          "response_label": "Complete the risk-to-response map",
+          "response_note": "Keep each section specific and believable.",
+          "structured_labels": [
+            "Digital risk",
+            "Who is affected",
+            "Career or field and how it responds",
+            "BC connection",
+            "Personal-fit reflection"
           ],
-          "reminder_box": "show the risk, the affected group, the response role, the BC connection, and the fit reflection"
+          "quick_check_label": "Before you hand it in",
+          "quick_check_items": [
+            "I explained one clear digital risk.",
+            "My career or field match is realistic.",
+            "I showed how the role helps respond.",
+            "My BC connection is concrete.",
+            "My fit reflection sounds honest and specific."
+          ]
         },
         "success_criteria": [
           "My final product explains one clear digital risk.",
@@ -811,7 +850,7 @@
           "I include one BC connection and one personal-fit reflection.",
           "My final evidence is recorded only on this sheet."
         ],
-        "response_lines": 16
+        "response_lines": 3
       },
       "outputs": [
         {
