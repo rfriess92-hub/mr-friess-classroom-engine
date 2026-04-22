@@ -1,14 +1,14 @@
 import { escapeHtml } from './shared.mjs'
 
-// Pacing Guide — single-page teacher reference for a timed lesson block.
-// Visual bar shows phase proportions at a glance; cards below give teacher/student moves.
+// Pacing Guide — single-page teacher agenda showing phase sequence and timing.
+// Timing bar gives proportional overview; rows below are a scannable lesson plan.
 
 function phaseColors(index, total) {
-  if (index === 0)           return { bg: '#1E3A5F', text: '#FFFFFF', bar: '#1E3A5F' }
-  if (index === total - 1)   return { bg: '#78350F', text: '#FFFFFF', bar: '#92400E' }
-  const workPalette = ['#1E40AF', '#065F46', '#5B21B6', '#075985']
-  const c = workPalette[(index - 1) % workPalette.length]
-  return { bg: c, text: '#FFFFFF', bar: c }
+  if (index === 0)           return { bar: '#1E3A5F', accent: '#1E3A5F' }
+  if (index === total - 1)   return { bar: '#92400E', accent: '#78350F' }
+  const palette = ['#1E40AF', '#065F46', '#5B21B6', '#075985']
+  const c = palette[(index - 1) % palette.length]
+  return { bar: c, accent: c }
 }
 
 function buildBar(phases) {
@@ -23,26 +23,21 @@ function buildBar(phases) {
   }).join('')
 }
 
-function buildCard(phase, index, total) {
-  const { bg, text } = phaseColors(index, total)
+function buildRow(phase, index, total) {
+  const { accent } = phaseColors(index, total)
+  const activity = phase.teacher_move ?? ''
+  const studentNote = phase.student_move ?? ''
   const checkpoint = phase.checkpoint ?? null
+
   return `
-<div class="pg-card">
-  <div class="pg-card-head" style="background:${bg};color:${text}">
-    <span class="pg-card-label">${escapeHtml(phase.label)}</span>
-    <span class="pg-card-dur">${phase.duration_min ?? 0} min</span>
+<div class="pg-row" style="border-left-color:${accent}">
+  <div class="pg-row-head">
+    <span class="pg-phase-name">${escapeHtml(phase.label)}</span>
+    <span class="pg-phase-dur">${phase.duration_min ?? 0} min</span>
   </div>
-  <div class="pg-card-body">
-    <div class="pg-move">
-      <span class="pg-move-role">Teacher</span>
-      <span class="pg-move-text">${escapeHtml(phase.teacher_move ?? '')}</span>
-    </div>
-    <div class="pg-move">
-      <span class="pg-move-role">Students</span>
-      <span class="pg-move-text">${escapeHtml(phase.student_move ?? '')}</span>
-    </div>
-    ${checkpoint ? `<div class="pg-checkpoint"><span class="pg-check-icon">✓</span>${escapeHtml(checkpoint)}</div>` : ''}
-  </div>
+  ${activity ? `<div class="pg-activity">${escapeHtml(activity)}</div>` : ''}
+  ${studentNote ? `<div class="pg-student-note">${escapeHtml(studentNote)}</div>` : ''}
+  ${checkpoint ? `<div class="pg-checkpoint"><span class="pg-check-icon">✓</span>${escapeHtml(checkpoint)}</div>` : ''}
 </div>`
 }
 
@@ -79,10 +74,10 @@ ${designCSS}
 .pg-bar {
   display: flex;
   width: 100%;
-  height: 30pt;
+  height: 28pt;
   border-radius: 4pt;
   overflow: hidden;
-  margin-bottom: 16pt;
+  margin-bottom: 18pt;
   gap: 2pt;
 }
 .pg-bar-seg {
@@ -105,54 +100,64 @@ ${designCSS}
 }
 .pg-bar-time { font-size: 6pt; color: rgba(255,255,255,0.72); }
 
-.pg-cards { display: flex; flex-direction: column; gap: 7pt; }
+.pg-rows { display: flex; flex-direction: column; gap: 0; }
 
-.pg-card {
-  border: 1pt solid #E5E7EB;
-  border-radius: 4pt;
-  overflow: hidden;
+.pg-row {
+  border-left: 4pt solid #E5E7EB;
+  padding: 9pt 0 9pt 14pt;
+  border-bottom: 0.75pt solid #F3F4F6;
   page-break-inside: avoid;
 }
-.pg-card-head {
+.pg-row:last-child { border-bottom: none; }
+
+.pg-row-head {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 5pt 11pt;
+  align-items: baseline;
+  margin-bottom: 4pt;
 }
-.pg-card-label { font-size: 10pt; font-weight: 700; }
-.pg-card-dur   { font-size: 9pt; font-weight: 600; opacity: 0.85; }
 
-.pg-card-body { padding: 9pt 11pt; display: flex; flex-direction: column; gap: 6pt; }
-
-.pg-move { display: flex; gap: 9pt; align-items: flex-start; }
-.pg-move-role {
-  font-size: 7pt;
+.pg-phase-name {
+  font-size: 11pt;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
+  color: #111827;
+}
+
+.pg-phase-dur {
+  font-size: 9pt;
+  font-weight: 700;
   color: #6B7280;
   white-space: nowrap;
-  width: 46pt;
-  flex-shrink: 0;
-  padding-top: 2pt;
+  padding-left: 12pt;
 }
-.pg-move-text { font-size: 10pt; color: #111827; line-height: 1.4; flex: 1; }
+
+.pg-activity {
+  font-size: 10pt;
+  color: #1F2937;
+  line-height: 1.45;
+}
+
+.pg-student-note {
+  font-size: 8.5pt;
+  color: #9CA3AF;
+  line-height: 1.4;
+  margin-top: 3pt;
+  font-style: italic;
+}
 
 .pg-checkpoint {
-  background: #F0FDF4;
-  border-left: 3pt solid #16A34A;
-  padding: 5pt 9pt;
-  font-size: 9pt;
-  color: #15803D;
-  border-radius: 0 3pt 3pt 0;
+  margin-top: 5pt;
   display: flex;
   align-items: center;
-  gap: 7pt;
+  gap: 6pt;
+  font-size: 8.5pt;
+  color: #15803D;
+  font-weight: 600;
 }
-.pg-check-icon { font-weight: 700; flex-shrink: 0; }
+.pg-check-icon { flex-shrink: 0; }
 
 .pg-buffer {
-  margin-top: 13pt;
+  margin-top: 16pt;
   background: #FEF3C7;
   border-left: 3pt solid #D97706;
   padding: 6pt 11pt;
@@ -174,11 +179,11 @@ ${designCSS}
 
   <div class="pg-bar">${buildBar(phases)}</div>
 
-  <div class="pg-cards">
-    ${phases.map((p, i) => buildCard(p, i, phases.length)).join('\n')}
+  <div class="pg-rows">
+    ${phases.map((p, i) => buildRow(p, i, phases.length)).join('\n')}
   </div>
 
-  ${bufferNote ? `<div class="pg-buffer"><strong>If behind:</strong>${escapeHtml(bufferNote)}</div>` : ''}
+  ${bufferNote ? `<div class="pg-buffer"><strong>If behind:</strong> ${escapeHtml(bufferNote)}</div>` : ''}
 </body>
 </html>`
 }
