@@ -378,15 +378,35 @@
               "Privacy and data tracking",
               "Cyberbullying",
               "Misinformation",
-              "Algorithm bias"
+              "Algorithm bias",
+              "Digital footprint or reputation",
+              "Deepfakes or AI manipulation"
             ],
             "right_items": [
               "Counselling or youth work",
               "Cybersecurity or privacy law",
               "Journalism or media literacy education",
-              "Software testing, data ethics, or policy"
+              "Software testing, data ethics, or policy",
+              "Education, communications, or HR",
+              "Digital forensics, law, or investigative journalism"
             ]
           }
+        }
+      },
+      {
+        "label": "Day 2 / Part C",
+        "prompt": "Keep one strong pair from the bank and explain why it fits. Then name one weak or random match you ruled out.",
+        "lines": 1,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "heading": "Day 2 - Match check",
+          "help": "This is the part where you prove the match is realistic, not random.",
+          "record_fields": [
+            "The risk I want to keep",
+            "The strongest responding career or field and why it fits",
+            "One weak or random match I ruled out and why"
+          ]
         }
       },
       {
