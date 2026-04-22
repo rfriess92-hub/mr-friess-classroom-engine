@@ -7,7 +7,6 @@ function buildTaskHeading(task, hints, isPrimary) {
   const help = hints.help ? `<div class="task-help">${escapeHtml(hints.help)}</div>` : ''
   return `
 <div class="task-label-row${isPrimary ? ' primary' : ' secondary'}">
-  ${isPrimary ? '<div class="task-kicker">Main task</div>' : ''}
   <span class="task-badge${isPrimary ? '' : ' secondary'}">${escapeHtml(heading || 'Task')}</span>
 </div>
 ${help}`
@@ -80,12 +79,13 @@ function buildDaySection(section, group, isFirst, suppressHeader = false) {
 ${optionalExtension}`
 }
 
-function buildEntryStrip(items) {
+function buildEntryStrip(items, label = '') {
   if (!Array.isArray(items) || items.length === 0) return ''
+  const stripLabel = String(label ?? '').trim()
 
   return `
 <div class="entry-strip">
-  <div class="entry-strip-label">Start here</div>
+  ${stripLabel ? `<div class="entry-strip-label">${escapeHtml(stripLabel)}</div>` : ''}
   <div class="entry-strip-items">
     ${items.map((item) => `<div class="entry-strip-item">${escapeHtml(item)}</div>`).join('\n')}
   </div>
@@ -105,7 +105,7 @@ function buildPageToolPanel(items, label, kind) {
 }
 
 function buildPageToolsRow(section) {
-  const supportPanel = buildPageToolPanel(section.embedded_supports, 'Helpful reminder', 'support')
+  const supportPanel = buildPageToolPanel(section.embedded_supports, 'Keep in mind', 'support')
   const criteriaPanel = buildPageToolPanel(section.success_criteria, 'Check before you move on', 'success')
 
   if (!supportPanel && !criteriaPanel) return ''
@@ -117,10 +117,18 @@ function buildPageToolsRow(section) {
 </div>`
 }
 
+function shouldShowDailySplitPacketLevelCopy(section, flagName) {
+  return section?.render_hints?.[flagName] === true
+}
+
 function buildTaskSheetPage(pkg, section, title, groups, fontFaceCSS, designCSS, { singleDay = false } = {}) {
-  const purposeLine = section.purpose_line ?? section.render_hints?.purpose_line ?? ''
-  const instructions = buildEntryStrip(section.instructions)
-  const pageTools = buildPageToolsRow(section)
+  const showPacketPurpose = !singleDay || shouldShowDailySplitPacketLevelCopy(section, 'daily_split_show_purpose')
+  const showPacketInstructions = !singleDay || shouldShowDailySplitPacketLevelCopy(section, 'daily_split_show_instructions')
+  const showPacketTools = !singleDay || shouldShowDailySplitPacketLevelCopy(section, 'daily_split_show_page_tools')
+  const showPacketStandards = !singleDay || shouldShowDailySplitPacketLevelCopy(section, 'daily_split_show_standards')
+  const purposeLine = showPacketPurpose ? (section.purpose_line ?? section.render_hints?.purpose_line ?? '') : ''
+  const instructions = showPacketInstructions ? buildEntryStrip(section.instructions) : ''
+  const pageTools = showPacketTools ? buildPageToolsRow(section) : ''
   const bodyContent = groups.map((group, index) => buildDaySection(section, group, index === 0, singleDay)).join('\n')
 
   return `<!DOCTYPE html>
@@ -164,22 +172,14 @@ ${responsePatternCss}
   gap: 4pt;
 }
 
-.task-kicker {
-  font-size: 7.5pt;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #6B7280;
-}
-
 .task-badge {
   display: inline-block;
   border: 1.5pt solid #111827;
   color: #111827;
-  font-size: 8.5pt;
+  font-size: 9.5pt;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  text-transform: none;
+  letter-spacing: 0.01em;
   padding: 3pt 10pt;
   border-radius: 3pt;
 }
@@ -206,10 +206,10 @@ ${responsePatternCss}
 }
 
 .entry-strip-label {
-  font-size: 7.75pt;
+  font-size: 8pt;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  text-transform: none;
+  letter-spacing: 0.01em;
   color: #6B7280;
   margin-bottom: 7pt;
 }
@@ -261,10 +261,10 @@ ${responsePatternCss}
 }
 
 .page-tool-label {
-  font-size: 8pt;
+  font-size: 8.25pt;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
+  text-transform: none;
+  letter-spacing: 0.01em;
   color: #6B7280;
   margin-bottom: 6pt;
 }
@@ -328,13 +328,12 @@ ${responsePatternCss}
       <span class="date-slot"><span class="slot-label">Date:</span></span>
     </div>
 
-    <div class="doc-eyebrow">Task Sheet</div>
     <div class="doc-title">${escapeHtml(title)}</div>
     ${purposeLine ? `<div class="purpose-line">${escapeHtml(purposeLine)}</div>` : ''}
     ${instructions}
     ${bodyContent}
     ${pageTools}
-    ${(Array.isArray(pkg.standards) && pkg.standards.length > 0) ? `<div class="standards-footer"><span class="standards-footer-label">Standards: </span>${escapeHtml(pkg.standards.join(' · '))}</div>` : ''}
+    ${(showPacketStandards && Array.isArray(pkg.standards) && pkg.standards.length > 0) ? `<div class="standards-footer"><span class="standards-footer-label">Standards: </span>${escapeHtml(pkg.standards.join(' · '))}</div>` : ''}
   </div>
 </body>
 </html>`

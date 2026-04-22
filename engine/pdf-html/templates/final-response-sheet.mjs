@@ -33,40 +33,34 @@ function normalizeTableRows(tableRows, fallbackRows) {
 }
 
 function buildPrepPanels(section) {
-  const panels = []
   const planningReminders = Array.isArray(section.planning_reminders) ? section.planning_reminders : []
   const paragraphSupport = section.paragraph_support ?? {}
   const frameStrip = Array.isArray(paragraphSupport.frame_strip) ? paragraphSupport.frame_strip : []
   const reminderBox = String(paragraphSupport.reminder_box ?? '').trim()
+  const content = []
 
   if (planningReminders.length > 0) {
-    panels.push(`
-<div class="prep-panel">
-  <div class="prep-label">Use your notes</div>
+    content.push(`
   <ul class="prep-list">
     ${planningReminders.map((item) => `<li>${escapeHtml(item)}</li>`).join('\n')}
-  </ul>
-</div>`)
+  </ul>`)
   }
 
   if (frameStrip.length > 0 || reminderBox) {
-    panels.push(`
-<div class="prep-panel">
-  <div class="prep-label">Keep the shape simple</div>
+    content.push(`
   ${frameStrip.length > 0 ? `
     <div class="prep-chip-row">
       ${frameStrip.map((frame) => `<span class="prep-chip">${escapeHtml(frame)}</span>`).join('\n')}
     </div>
   ` : ''}
-  ${reminderBox ? `<div class="prep-note">${escapeHtml(reminderBox)}</div>` : ''}
-</div>`)
+  ${reminderBox ? `<div class="prep-note">${escapeHtml(reminderBox)}</div>` : ''}`)
   }
 
-  if (panels.length === 0) return ''
+  if (content.length === 0) return ''
 
   return `
-<div class="prep-strip">
-  ${panels.join('\n')}
+<div class="prep-panel">
+  ${content.join('\n')}
 </div>`
 }
 
@@ -263,8 +257,8 @@ ${designCSS}
 .structured-panel-label {
   font-size: 8pt;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
+  text-transform: none;
+  letter-spacing: 0.01em;
   color: #6B7280;
   margin-bottom: 6pt;
 }
@@ -275,16 +269,12 @@ ${designCSS}
   color: #111827;
 }
 
-.prep-strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210pt, 1fr));
-  gap: 10pt;
-  margin-bottom: 12pt;
-}
-
 .prep-panel {
-  border-top: 1pt solid #D1D5DB;
-  padding-top: 8pt;
+  border: 1pt solid #E5E7EB;
+  border-radius: 10pt;
+  padding: 10pt 12pt;
+  margin-bottom: 12pt;
+  background: #FFFFFF;
 }
 
 .prep-list {
@@ -511,12 +501,11 @@ ${designCSS}
       <span class="date-slot"><span class="slot-label">Date:</span></span>
     </div>
 
-    <div class="doc-eyebrow">Final Response Sheet</div>
     <div class="doc-title">${escapeHtml(title)}</div>
     ${purposeLine}
 
     <div class="prompt-box">
-      <div class="prompt-box-label">${escapeHtml(promptLabel)}</div>
+      ${promptLabel ? `<div class="prompt-box-label">${escapeHtml(promptLabel)}</div>` : ''}
       <div class="prompt-text">${formatPrompt(prompt)}</div>
     </div>
 
