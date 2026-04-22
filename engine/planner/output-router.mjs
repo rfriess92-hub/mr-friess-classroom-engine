@@ -29,6 +29,22 @@ function rendererKeyFor(outputType) {
       return 'render_sub_plan'
     case 'makeup_packet':
       return 'render_makeup_packet'
+    case 'assessment':
+      return 'render_assessment'
+    case 'quiz':
+      return 'render_quiz'
+    case 'rubric':
+      return 'render_rubric'
+    case 'formative_check':
+      return 'render_formative_check'
+    case 'warm_up':
+      return 'render_warm_up'
+    case 'vocabulary_card':
+      return 'render_vocabulary_card'
+    case 'observation_grid':
+      return 'render_observation_grid'
+    case 'lesson_reflection':
+      return 'render_lesson_reflection'
     default:
       return 'render_unknown_output'
   }
@@ -50,6 +66,14 @@ function rendererFamilyFor(outputType) {
     case 'pacing_guide':
     case 'sub_plan':
     case 'makeup_packet':
+    case 'assessment':
+    case 'quiz':
+    case 'rubric':
+    case 'formative_check':
+    case 'warm_up':
+    case 'vocabulary_card':
+    case 'observation_grid':
+    case 'lesson_reflection':
       return 'pdf'
     default:
       return 'unknown'
