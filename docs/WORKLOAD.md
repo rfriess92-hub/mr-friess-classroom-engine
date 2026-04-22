@@ -12,8 +12,9 @@ Dependency rule: B0 (grade-band contracts) must complete before Codex touches an
 
 ## TRACK A — Engine Infrastructure
 
-### A1 — Assessment Foundation `IN PROGRESS — awaiting Codex execution`
-Schema merged (#166). Codex has the handoff.
+### A1 — Assessment Foundation `STALLED — implementation not started`
+Schema merged (#166). Implementation handoff to Codex has not been picked up.
+`questions/` dir, templates, and render wiring are all absent from main as of #169.
 
 - [x] `schemas/question-bank.schema.json`
 - [x] `assessmentSection`, `quizSection`, `assessmentQuestion` $defs
@@ -64,15 +65,27 @@ Last. After content rules (Track B) are stable.
 
 ## TRACK B — Pedagogy + Content Quality
 
-### B0 — Grade-Band Contracts `IN PROGRESS`
-Writing now. Codex must not touch lesson language until these exist.
+### B0 — Grade-Band Contracts `COMPLETE`
+All six contracts landed in `engine/generation/contracts/` (#169).
+Codex extended Careers 8 into a live validator + QA gate (wired into `qa-bundle`).
+Remaining five bands have contract files — validator extension for those is queued as B0a.
 
-- [ ] `docs/grade-band-contracts/careers-8.md`
-- [ ] `docs/grade-band-contracts/english-10.md`
-- [ ] `docs/grade-band-contracts/english-11.md`
-- [ ] `docs/grade-band-contracts/english-12.md`
-- [ ] `docs/grade-band-contracts/math-8.md`
-- [ ] `docs/grade-band-contracts/workplace-math-10.md`
+- [x] `engine/generation/contracts/careers-8-grade-band.md` + validator in `grade-band-contracts.mjs`
+- [x] `engine/generation/contracts/english-10-grade-band.md`
+- [x] `engine/generation/contracts/english-11-grade-band.md`
+- [x] `engine/generation/contracts/english-12-grade-band.md`
+- [x] `engine/generation/contracts/math-8-grade-band.md`
+- [x] `engine/generation/contracts/workplace-math-10-grade-band.md`
+
+### B0a — Grade-Band Validator Extension `QUEUED — Codex`
+Extend `grade-band-contracts.mjs` to cover the five remaining bands (ELA 10/11/12, Math 8, WM10).
+Careers 8 validator is the model. Wire all into `qa-bundle` and add smoke tests.
+
+- [ ] ELA 10 validator + tests — Codex
+- [ ] ELA 11 validator + tests — Codex
+- [ ] ELA 12 validator + tests — Codex
+- [ ] Math 8 validator + tests — Codex
+- [ ] WM10 validator + tests — Codex
 
 ### B1 — Artifact-Role Cleanup `QUEUED`
 After B0.
@@ -128,8 +141,8 @@ After B5.
 
 ## TRACK C — Teacher Profile + Personalization
 
-### C0 — Profile Layer Schema `IN PROGRESS`
-Design session happening now. Biggest shift from "lesson engine" to "your machine."
+### C0 — Profile Layer Schema `NEXT — design session`
+Design session starting now. Biggest shift from "lesson engine" to "your machine."
 
 - [ ] `schemas/teacher-profile.schema.json`
 - [ ] `schemas/course-profile.schema.json`
@@ -186,12 +199,19 @@ After B6.
 
 ## Done (recent)
 
+- [#169] B0 grade-band contracts (all six) + restore three-track WORKLOAD.md
+- [#167] Student-facing voice pass v2
 - [#166] Phase A1 assessment schema — question bank, assessment, quiz output types, vocabulary, router wiring
 - [#165] `live-contract.mjs` path fix
 - [#164] Weeks 2–4 packet copy trim
 - [#163] Smoke tests: English 11/12 + tiered worksheet fan-out
+- [#162] Teacher-facing fixture voice rewrite
 - [#161] Schema voice descriptions for teacher-facing fields
 - [#160] Week 1 daily-sheet boilerplate suppression + copy trim
 - [#159] Pacing guide redesign — agenda rows
 - [#158] Weeks 1–4 richer response patterns
 - [#157] Differentiated worksheet tiers (scaffolded/core/extension)
+
+## Open / Unmerged (Codex branches)
+
+- `render/careers8-presentation-station-challenge` — Careers 8 presentation + station challenge fixture (no PR yet)
