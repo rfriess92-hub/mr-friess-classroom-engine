@@ -294,11 +294,11 @@
   },
   "task_sheet": {
     "title": "Week 1 Career Mosaic Packet - Know Yourself",
-    "purpose_line": "Collect short notes across the week that build toward your Day 5 Career Identity Snapshot.",
+    "purpose_line": "Collect notes across the week for your Day 5 Career Identity Snapshot.",
     "output_packaging": "packet_and_days",
     "instructions": [
-      "Move through the packet across the week. Each section gives you notes you can reuse later.",
-      "Use partner talk before longer writing, then keep your own notes."
+      "Work through the packet across the week. Each part helps with the next one.",
+      "Talk first when useful, then keep your own notes."
     ],
     "tasks": [
       {
@@ -510,7 +510,7 @@
         "render_hints": {
           "response_pattern": "table_record",
           "heading": "Day 4 - Snapshot planner for Day 5",
-          "help": "Use short notes. Save the polished snapshot for the Day 5 final response sheet.",
+          "help": "Short notes are fine here. Save the final version for Day 5.",
           "table_columns": [
             "Notes to carry forward",
             "Most specific detail to keep"
@@ -550,7 +550,7 @@
       }
     ],
     "embedded_supports": [
-      "Use short notes in the packet. The polished snapshot belongs on the Day 5 final response sheet.",
+      "Short notes are fine here. Save the final version for Day 5.",
       "If a prompt feels personal, use a real example from school, an activity, a hobby, or a responsibility."
     ],
     "success_criteria": [],
@@ -954,7 +954,7 @@
               "Drop filler language.",
               "Make the next-step goal realistic enough to start."
             ],
-            "instruction": "Use the Day 5 final response sheet."
+            "instruction": "Move your final version onto the Day 5 sheet."
           }
         },
         {
@@ -971,10 +971,10 @@
       ],
       "final_response_sheet": {
         "title": "Day 5 Career Identity Snapshot",
-        "prompt": "Write your final snapshot in clear labeled lines. Include at least two strengths, two interests, two values, two learning or work preferences, and one realistic next-step goal. End with one short sentence about who you are at your best as a learner or worker.",
+        "prompt": "Write your final snapshot in labeled lines. Include at least two strengths, two interests, two values, two learning or work preferences, and one realistic next-step goal. End with one short sentence about who you are at your best as a learner or worker.",
         "planning_reminders": [
           "Use details from your packet that feel true and specific.",
-          "Keep the future link light: name one area worth exploring, not a lifetime decision."
+          "Name one area worth exploring, not a lifetime decision."
         ],
         "paragraph_support": {
           "frame_strip": [

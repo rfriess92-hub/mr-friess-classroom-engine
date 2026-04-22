@@ -284,7 +284,7 @@ function buildReflectContentPlan(slide) {
     content.prompt,
     content.body,
     content.task,
-    'Take a minute. Then share if you want to.',
+    'Think first. Share if useful.',
   )
   return {
     title: slide.title ?? 'Untitled',

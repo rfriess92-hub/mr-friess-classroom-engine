@@ -148,7 +148,7 @@ def render_prompt_family(slide, packet: dict, slide_spec: dict, visual_page: dic
     label_pt = type_size(tokens, "label", 18)
 
     add_panel(slide, 0.80, 1.68, 11.75, 2.18, panel, line, accent=accent, radius=0.05)
-    base.add_textbox(slide, 1.15, 1.90, 10.7, 0.24, "Start here", font_size=label_pt, color=accent, bold=True)
+    base.add_textbox(slide, 1.15, 1.90, 10.7, 0.24, "Think about this", font_size=label_pt, color=accent, bold=True)
     base.add_textbox(slide, 1.15, 2.34, 10.8, 1.08, plan.get("prompt") or "", font_size=body_pt, color=ink)
 
     prompts = plan.get("prompts") or []
@@ -176,7 +176,7 @@ def render_model_family(slide, packet: dict, slide_spec: dict, visual_page: dict
     label_pt = type_size(tokens, "label", 18)
 
     add_panel(slide, 0.92, 1.78, 11.2, 2.55, panel, line, accent=accent, radius=0.05)
-    base.add_textbox(slide, 1.28, 2.00, 10.2, 0.22, "One example", font_size=label_pt, color=accent, bold=True)
+    base.add_textbox(slide, 1.28, 2.00, 10.2, 0.22, "Example", font_size=label_pt, color=accent, bold=True)
     base.add_textbox(slide, 1.28, 2.42, 10.1, 1.38, plan.get("model") or "", font_size=body_pt, color=ink)
 
     support = plan.get("support") or ""

@@ -22,5 +22,6 @@ test('content style policy encodes tone differentiation and model realism guidan
   assert.ok(Array.isArray(contentStylePolicy.artifact_tone_profiles?.weekly_packet))
   assert.ok(Array.isArray(contentStylePolicy.artifact_tone_profiles?.final_response_sheet))
   assert.ok(Array.isArray(contentStylePolicy.anti_sameness_rules))
+  assert.ok(Array.isArray(contentStylePolicy.student_facing_voice_rules))
   assert.ok(Array.isArray(contentStylePolicy.model_language_realism))
 })

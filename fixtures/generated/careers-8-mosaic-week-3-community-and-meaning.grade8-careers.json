@@ -305,10 +305,10 @@
   },
   "task_sheet": {
     "title": "Week 3 Career Mosaic Packet - Community and Meaning",
-    "purpose_line": "Collect short notes across the week that build toward your Day 5 Community Needs Map.",
+    "purpose_line": "Collect notes across the week, then build your Day 5 community map.",
     "instructions": [
-      "Move through the packet across the week. Each section gives you notes you can reuse later.",
-      "Use partner talk before longer writing, then keep your own notes."
+      "Work through the packet across the week. Each part helps with the next one.",
+      "Talk first when useful, then keep your own notes."
     ],
     "tasks": [
       {
@@ -461,7 +461,7 @@
         "render_hints": {
           "response_pattern": "fill_in_blank",
           "heading": "Day 4 - Ready for Day 5",
-          "help": "This is planning only. Move the polished final artifact to the Day 5 final response sheet.",
+          "help": "Plan here. Move your final version to Day 5.",
           "blank_prompts": [
             "The need matters because ___.",
             "One role connected to that need is ___.",
@@ -853,7 +853,7 @@
         },
         {
           "type": "APPLY",
-          "title": "Before you write",
+          "title": "Build your map",
           "layout": "prompt_card",
           "content": {
             "goal": "Turn your packet notes into one clear final artifact.",
@@ -862,7 +862,7 @@
               "Use clear labels, bullets, or a map-style structure if that helps.",
               "Make the personal meaning reflection short and specific."
             ],
-            "instruction": "Use the Day 5 final response sheet. It is the only final evidence sheet for Week 3."
+            "instruction": "Move your final version onto the Day 5 sheet."
           }
         },
         {
@@ -879,16 +879,16 @@
       ],
       "final_response_sheet": {
         "title": "Day 5 Community Needs Map or Jobs That Keep Us Going",
-        "prompt": "Use the map to show one strong community need, the jobs or roles connected to it, how the work helps keep the community going, and what kind of contribution feels meaningful to you.",
+        "prompt": "Show one strong community need, the jobs or roles connected to it, how the work helps keep the community going, and what kind of contribution feels meaningful to you.",
         "planning_reminders": [
-          "One strong row is enough. Add a second only if it stays clear.",
+          "One strong row is enough. Add a second only if it still feels clear.",
           "Keep both the need and the roles visible so the career connection stays concrete."
         ],
         "render_hints": {
-          "purpose_line": "Use the grid to keep the need, roles, contribution, and meaning visible at the same time.",
-          "prompt_label": "Final task",
+          "purpose_line": "Use the grid to keep the need, roles, contribution, and meaning visible at once.",
+          "prompt_label": "",
           "response_pattern": "map_or_matrix",
-          "response_label": "Complete the community needs map",
+          "response_label": "Complete your community map",
           "response_note": "Short notes in the grid are enough.",
           "table_columns": [
             "Community need",
@@ -913,7 +913,7 @@
           "My final artifact identifies at least one real community need.",
           "I name jobs or roles connected to that need.",
           "I explain how the work contributes to community well-being.",
-          "My final evidence is recorded only on this sheet."
+          "My reflection shows what kind of contribution feels meaningful to me."
         ],
         "response_lines": 3
       },
