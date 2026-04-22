@@ -285,10 +285,10 @@
   },
   "task_sheet": {
     "title": "Week 4 Career Mosaic Packet - Technology and Identity",
-    "purpose_line": "Collect short notes across the week that build toward your Day 4 Digital Risk, Real Careers product.",
+    "purpose_line": "Collect notes across the week, then build one clear Digital Risk, Real Careers product.",
     "instructions": [
-      "Move through the packet across the week. Each section gives you notes you can reuse later.",
-      "Use partner talk before longer writing, then keep your own notes."
+      "Work through the packet across the week. Each part helps with the next one.",
+      "Talk first when useful, then keep your own notes."
     ],
     "tasks": [
       {
@@ -451,7 +451,7 @@
         "render_hints": {
           "response_pattern": "fill_in_blank",
           "heading": "Day 3 - Ready for Day 4",
-          "help": "This is planning only. Move the polished final product to the Day 4 final response sheet.",
+          "help": "Plan here. Move your final version to Day 4.",
           "blank_prompts": [
             "The digital risk I will explain is ___.",
             "The career or field I will connect to it is ___.",
@@ -463,13 +463,13 @@
       },
       {
         "label": "Day 4 / Part A",
-        "prompt": "Use this checklist to make sure your final product has every required part before you transfer it to the final response sheet.",
+        "prompt": "Use this checklist to make sure your final product has each part before you move it to the Day 4 sheet.",
         "lines": 1,
         "activity_type": "write_response",
         "render_hints": {
           "response_pattern": "record_fields",
           "heading": "Day 4 - Product checklist and transfer plan",
-          "help": "Choose the clearest structure for Chromebook writing: labeled bullets or short explanation blocks. The final evidence still belongs on the Day 4 final response sheet.",
+          "help": "Choose the clearest structure: labeled bullets or short explanation blocks.",
           "record_fields": [
             "My structure choice: labeled bullets or short explanation blocks",
             "My risk statement is ready",
@@ -789,7 +789,7 @@
         },
         {
           "type": "APPLY",
-          "title": "Before you write",
+          "title": "Build your response map",
           "layout": "prompt_card",
           "content": {
             "goal": "Turn your packet notes into one clear final product.",
@@ -798,7 +798,7 @@
               "Keep the BC connection visible.",
               "Show why the role matters, not just its name."
             ],
-            "instruction": "Use the Day 4 final response sheet. It is the only final evidence sheet for Week 4."
+            "instruction": "Move your final version onto the Day 4 sheet."
           }
         },
         {
@@ -815,16 +815,16 @@
       ],
       "final_response_sheet": {
         "title": "Day 4 Digital Risk, Real Careers",
-        "prompt": "Use this response map to show one digital risk, who is affected, the career or field that helps respond, one BC connection, and whether the role might fit you.",
+        "prompt": "Show one digital risk, who is affected, the career or field that helps respond, one BC connection, and whether the role might fit you.",
         "planning_reminders": [
-          "Choose one risk and one response field you can explain clearly instead of naming several loosely.",
+          "Choose one risk and one response field you can explain clearly.",
           "Make sure the role would realistically respond to the selected risk."
         ],
         "render_hints": {
-          "purpose_line": "Keep the risk, response role, BC connection, and fit in separate parts so each one stays clear.",
-          "prompt_label": "Final task",
+          "purpose_line": "Keep the risk, response role, BC connection, and fit in separate parts.",
+          "prompt_label": "",
           "response_pattern": "role_need_response",
-          "response_label": "Complete the risk-to-response map",
+          "response_label": "Build your risk-to-response map",
           "response_note": "Keep each section specific and believable.",
           "structured_labels": [
             "Digital risk",
@@ -847,7 +847,7 @@
           "I identify one realistic career or field connected to that risk.",
           "I explain how that role helps respond.",
           "I include one BC connection and one personal-fit reflection.",
-          "My final evidence is recorded only on this sheet."
+          "My fit reflection sounds honest and specific."
         ],
         "response_lines": 3
       },

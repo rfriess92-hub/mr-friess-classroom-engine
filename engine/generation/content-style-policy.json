@@ -58,6 +58,13 @@
     "Prefer one short aligned extension over stacked support reminders plus filler.",
     "Allow consistency, but avoid cloned phrasing across days or artifact roles."
   ],
+  "student_facing_voice_rules": [
+    "Use shorter, more direct classroom language in student-facing fields.",
+    "Prefer spoken phrasing over polished instructional-product wording.",
+    "Trust layout and task structure so the prose can do less.",
+    "Avoid repeated compliance language and artifact-management reminders unless they are instructionally necessary.",
+    "When a task is concrete, use concrete verbs and nouns instead of abstract framing."
+  ],
   "model_language_realism": [
     "Student-facing models should sound plausible, not perfected.",
     "Avoid hyper-polished, morally over-finished, or unnaturally self-aware model language.",

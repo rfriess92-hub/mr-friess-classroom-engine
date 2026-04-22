@@ -298,10 +298,10 @@
   },
   "task_sheet": {
     "title": "Week 2 Career Mosaic Packet - Bias and Decision-Making",
-    "purpose_line": "Collect short notes across the week that build toward your Day 5 Bias and Decision-Making Reflection.",
+    "purpose_line": "Collect notes across the week, then build your Day 5 reflection.",
     "instructions": [
-      "Move through the packet across the week. Each section gives you notes you can reuse later.",
-      "Use partner talk before longer writing, then keep your own notes."
+      "Work through the packet across the week. Each part helps with the next one.",
+      "Talk first when useful, then keep your own notes."
     ],
     "tasks": [
       {
@@ -456,7 +456,7 @@
         "render_hints": {
           "response_pattern": "record_fields",
           "heading": "Day 4 - Reflection planner for Day 5",
-          "help": "This is planning only. Move the polished reflection to the Day 5 final response sheet.",
+          "help": "Plan here. Move your final version to Day 5.",
           "record_fields": [
             "The thinking trap or bias I will explain",
             "The career-related choice it could affect",
@@ -468,7 +468,7 @@
       }
     ],
     "embedded_supports": [
-      "Use short notes in the packet. The polished reflection belongs on the Day 5 final response sheet.",
+      "Short notes are fine here. Save the final version for Day 5.",
       "If a prompt feels personal, use a public example, a media message, or a school-based scenario instead."
     ],
     "success_criteria": [],
@@ -870,7 +870,7 @@
               "Name the fast story and the better strategy.",
               "End with what you think differently now."
             ],
-            "instruction": "Use the Day 5 final response sheet."
+            "instruction": "Move your final version onto the Day 5 sheet."
           }
         },
         {
@@ -887,16 +887,16 @@
       ],
       "final_response_sheet": {
         "title": "Day 5 Bias and Decision-Making Reflection",
-        "prompt": "Use this page to build one clear decision chain. Name one thinking trap or bias, show how it could affect a career-related choice, describe a better decision strategy, and end with one revised idea or insight.",
+        "prompt": "Show one clear decision chain. Name one thinking trap or bias, show how it could affect a career-related choice, describe a better decision strategy, and end with one revised idea or insight.",
         "planning_reminders": [
-          "Choose one example you can actually explain clearly instead of naming several loosely.",
+          "Choose one example you can explain clearly.",
           "Keep the career connection visible: self-perception, job assumptions, pathway ideas, or who seems like the obvious fit."
         ],
         "render_hints": {
-          "purpose_line": "Use the chain to show the fast story and the better decision.",
-          "prompt_label": "Final task",
+          "purpose_line": "Use the chain to show the fast story and the better move.",
+          "prompt_label": "",
           "response_pattern": "chain_explanation",
-          "response_label": "Build the decision chain",
+          "response_label": "Build your decision chain",
           "response_note": "Keep each box short and specific.",
           "structured_labels": [
             "Thinking trap or bias",
