@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mr-friess-classroom-engine/schemas/activity-family.schema.json",
+  "title": "Activity Family Schema",
+  "type": "object",
+  "required": [
+    "family_id",
+    "title",
+    "strand",
+    "subtype",
+    "main_student_action",
+    "skill_focus",
+    "best_fit",
+    "time_minutes",
+    "materials",
+    "grouping",
+    "what_it_is",
+    "why_it_stays_in_bank",
+    "non_negotiable_game_rule",
+    "teacher_script",
+    "student_job",
+    "required_round_structure",
+    "versions",
+    "required_fun_protections",
+    "required_literacy_protections",
+    "best_response_modes",
+    "easier_version",
+    "harder_version",
+    "good_teacher_language",
+    "material_bank",
+    "extension_questions",
+    "exit_slip_options",
+    "supported_output_types",
+    "compatible_bank_types",
+    "qc"
+  ],
+  "properties": {
+    "family_id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "strand": { "type": "string", "enum": ["morphology_word_knowledge", "foundational_word_reading", "bridge"] },
+    "subtype": { "type": "string", "minLength": 1 },
+    "main_student_action": { "type": "string", "minLength": 1 },
+    "skill_focus": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "best_fit": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "time_minutes": { "type": "array", "minItems": 1, "items": { "type": "integer", "minimum": 1 } },
+    "materials": { "type": "array", "items": { "type": "string" } },
+    "grouping": { "type": "array", "items": { "type": "string", "enum": ["whole_class", "pairs", "small_group", "station_rotation"] } },
+    "what_it_is": { "type": "string", "minLength": 1 },
+    "why_it_stays_in_bank": { "type": "string", "minLength": 1 },
+    "non_negotiable_game_rule": { "type": "string", "minLength": 1 },
+    "teacher_script": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "student_job": { "type": "string", "minLength": 1 },
+    "required_round_structure": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "versions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["label", "purpose", "structure"],
+        "properties": {
+          "label": { "type": "string", "minLength": 1 },
+          "purpose": { "type": "string", "minLength": 1 },
+          "structure": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+        },
+        "additionalProperties": true
+      }
+    },
+    "required_fun_protections": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "required_literacy_protections": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "best_response_modes": { "type": "array", "minItems": 1, "items": { "type": "string", "enum": ["movement_choice", "whiteboard_reveal", "sort_and_defend", "relay_build", "oral_explain", "written_quick_prove"] } },
+    "easier_version": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "harder_version": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "good_teacher_language": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "material_bank": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "extension_questions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "exit_slip_options": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "supported_output_types": { "type": "array", "items": { "type": "string", "enum": ["activity_card", "bank_card", "bridge_pack_card", "quick_game_card", "relay_card", "station_card", "boss_round_card", "deployment_template_card", "lesson_extension_block", "early_finisher_card", "worksheet_companion"] } },
+    "compatible_bank_types": { "type": "array", "minItems": 1, "items": { "type": "string", "enum": ["prefix", "suffix", "root", "mixed", "foundational"] } },
+    "qc": {
+      "type": "object",
+      "required": ["gate_result", "rating_result", "final_bank_verdict"],
+      "properties": {
+        "gate_result": {
+          "type": "object",
+          "required": ["instructional_precision", "age_respect", "run_cold_reality", "game_worthiness", "content_depth"],
+          "properties": {
+            "instructional_precision": { "type": "boolean" },
+            "age_respect": { "type": "boolean" },
+            "run_cold_reality": { "type": "boolean" },
+            "game_worthiness": { "type": "boolean" },
+            "content_depth": { "type": "boolean" }
+          },
+          "additionalProperties": true
+        },
+        "rating_result": {
+          "type": "object",
+          "required": ["instructional_precision", "age_respect", "game_energy", "replay_value", "content_bank_depth", "implementation_reliability", "total"],
+          "properties": {
+            "instructional_precision": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "age_respect": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "game_energy": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "replay_value": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "content_bank_depth": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "implementation_reliability": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "total": { "type": "integer", "minimum": 6, "maximum": 30 }
+          },
+          "additionalProperties": true
+        },
+        "final_bank_verdict": { "type": "string", "enum": ["ready", "strong_needs_polish", "promising_not_stable", "rebuild"] }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
