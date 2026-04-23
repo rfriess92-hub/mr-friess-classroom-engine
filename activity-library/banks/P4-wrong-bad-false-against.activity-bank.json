@@ -1,0 +1,109 @@
+{
+  "type": "activity_bank",
+  "bank_id": "P4_wrong_bad_false_against",
+  "bank_type": "prefix",
+  "strand": "morphology_word_knowledge",
+  "theme": "wrong / bad / false / against",
+  "difficulty": "core",
+  "transparency_level": "medium",
+  "bank_purpose": "Give students repeated practice with prefixes that signal wrong, bad, false, or against in real academic and everyday words.",
+  "core_items": ["mis", "mal", "pseudo", "anti"],
+  "core_meanings": ["wrong", "bad", "false", "against"],
+  "teacher_note_on_meaning": "Keep the meaning signal visible, but return to real word use so students do not overgeneralize every prefix.",
+  "starter_examples": [
+    {
+      "item_id": "P4_S_01",
+      "difficulty_tag": "starter",
+      "display_prompt": "Which prefix makes a real word with behave?",
+      "response_options": ["mis", "anti", "pre", "sub"],
+      "correct_responses": ["mis"],
+      "answer_pattern": "single_correct",
+      "explanation": "misbehave is a real word and carries the sense of wrong behaviour."
+    }
+  ],
+  "core_examples": [
+    {
+      "item_id": "P4_C_01",
+      "difficulty_tag": "core",
+      "display_prompt": "Which prefix makes a real word with information to mean false information?",
+      "response_options": ["mis", "anti", "mal", "sub"],
+      "correct_responses": ["mis"],
+      "answer_pattern": "single_correct",
+      "explanation": "misinformation is a real word and signals false or misleading information."
+    },
+    {
+      "item_id": "P4_C_02",
+      "difficulty_tag": "core",
+      "display_prompt": "Which prefix makes a real word with social to mean against social systems or behaviour?",
+      "response_options": ["anti", "mis", "mal", "pseudo"],
+      "correct_responses": ["anti"],
+      "answer_pattern": "single_correct",
+      "explanation": "antisocial is a real word in this context."
+    }
+  ],
+  "stretch_examples": [
+    {
+      "item_id": "P4_X_01",
+      "difficulty_tag": "stretch",
+      "display_prompt": "Which prefix makes a real word with science to mean false science?",
+      "response_options": ["pseudo", "anti", "mis", "mal"],
+      "correct_responses": ["pseudo"],
+      "answer_pattern": "single_correct",
+      "explanation": "pseudoscience is a real academic word and signals false science."
+    }
+  ],
+  "trap_bank": {
+    "fake": [
+      {
+        "item_id": "P4_TF_01",
+        "difficulty_tag": "starter",
+        "trap_tag": "fake",
+        "display_prompt": "Which prefix makes a real word with kind to mean bad kind?",
+        "response_options": ["mal", "mis", "anti", "pseudo"],
+        "correct_responses": [],
+        "answer_pattern": "none_correct",
+        "explanation": "None of these create a standard real word with kind in this sense."
+      }
+    ],
+    "near_miss": [
+      {
+        "item_id": "P4_TN_01",
+        "difficulty_tag": "core",
+        "trap_tag": "near_miss",
+        "display_prompt": "Which prefixes make real words with trust?",
+        "response_options": ["mis", "anti", "mal", "pseudo"],
+        "correct_responses": ["mis"],
+        "answer_pattern": "single_correct",
+        "explanation": "mistrust is standard; antitrust is real but changes the stem and meaning pattern, so use only if taught explicitly.",
+        "teacher_note": "Good arguable discussion if antitrust has not been taught."
+      }
+    ],
+    "arguable": [
+      {
+        "item_id": "P4_TA_01",
+        "difficulty_tag": "stretch",
+        "trap_tag": "arguable",
+        "display_prompt": "Which prefix best fits social to signal opposition or harmful behaviour?",
+        "response_options": ["anti", "mis", "mal", "pseudo"],
+        "correct_responses": ["anti"],
+        "answer_pattern": "single_correct",
+        "explanation": "antisocial is the strongest standard form, but discussion may pull in misconduct language instead of a direct word build.",
+        "teacher_note": "Use only when discussion time exists."
+      }
+    ]
+  },
+  "teacher_note_on_traps": "Use fake traps to protect precision, near-miss traps to surface overgeneralization, and arguable traps only when you are ready to name why one answer wins.",
+  "best_fit_families": ["wrong_corner_trap"],
+  "acceptable_families": ["sort_and_defend"],
+  "use_carefully_families": [],
+  "sentence_target_bank": ["The report spread misinformation online.", "His behaviour at lunch was antisocial and rude."],
+  "repair_target_bank": ["The poster shared missinformation about the event.", "The word antisocial does not mean anti-friends in every context."],
+  "sort_target_bank": ["wrong meaning signal", "against meaning signal", "false meaning signal"],
+  "build_target_bank": ["behave", "information", "science", "social"],
+  "relay_target_bank": ["misbehave", "misinformation", "pseudoscience", "antisocial"],
+  "starter_notes": ["Keep the meaning signal visible beside the prefix."],
+  "core_notes": ["Mix real words with one fake or none-correct round to stop guessing."],
+  "stretch_notes": ["Use academic words like pseudoscience only after the base meaning is secure."],
+  "answer_key_language": ["real word", "fake build", "arguable but not strongest", "best fit"],
+  "usage_notes": ["This bank is strongest when students must explain why the form is real, not just identify the prefix."]
+}
