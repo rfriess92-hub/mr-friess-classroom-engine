@@ -1,0 +1,53 @@
+import test from 'node:test'
+import assert from 'node:assert/strict'
+
+import { getActivityFamilyDefinition, supportedOutputTypesForActivityFamily } from '../../engine/activity-family/family-registry.mjs'
+import { selectActivityFamilyFromActivity } from '../../engine/activity-family/family-selector.mjs'
+import { validateClassroomActivity } from '../../engine/activity-family/preflight.mjs'
+import { normalizeActivityToRenderPlan } from '../../engine/activity-family/render-plan.mjs'
+import { classifyContentRequest } from '../../engine/activity-family/request-router.mjs'
+import { loadJson, repoPath } from '../../scripts/lib.mjs'
+
+test('classroom activity registry exposes the morphology pilot family', () => {
+  const family = getActivityFamilyDefinition('morphology_word_parts')
+
+  assert.equal(family.family_id, 'morphology_word_parts')
+  assert.ok(family.supported_subtypes.includes('prefix_corners'))
+  assert.ok(supportedOutputTypesForActivityFamily('morphology_word_parts').includes('activity_card'))
+})
+
+test('classroom activity request router distinguishes activity, lesson, hybrid, and bank requests', () => {
+  assert.equal(classifyContentRequest('Give me a quick 10-minute morphology corners activity.').route, 'activity_only')
+  assert.equal(classifyContentRequest('Build a full lesson with a quick game extension.').route, 'lesson_plus_activity')
+  assert.equal(classifyContentRequest('I need a categorized master bank of word-part activities and stations.').route, 'activity_bank_request')
+  assert.equal(classifyContentRequest('Create a multi-day lesson on ecosystems.').route, 'lesson_only')
+})
+
+test('classroom activity fixture validates cleanly', () => {
+  const activity = loadJson(repoPath('fixtures/activities/morphology-word-parts-prefix-corners.classroom-activity.json'))
+  const validation = validateClassroomActivity(activity)
+
+  assert.equal(validation.valid, true)
+  assert.deepEqual(validation.errors, [])
+})
+
+test('classroom activity selector preserves declared family metadata', () => {
+  const activity = loadJson(repoPath('fixtures/activities/morphology-word-parts-prefix-corners.classroom-activity.json'))
+  const selection = selectActivityFamilyFromActivity(activity)
+
+  assert.equal(selection.activity_family, 'morphology_word_parts')
+  assert.equal(selection.activity_subtype, 'prefix_corners')
+  assert.equal(selection.family_confidence, 'high')
+  assert.equal(selection.valid, true)
+})
+
+test('classroom activity render plan normalizes compact outputs for the pilot fixture', () => {
+  const activity = loadJson(repoPath('fixtures/activities/morphology-word-parts-prefix-corners.classroom-activity.json'))
+  const result = normalizeActivityToRenderPlan(activity)
+
+  assert.equal(result.validation.valid, true)
+  assert.equal(result.render_plan.content_type, 'classroom_activity')
+  assert.equal(result.render_plan.outputs.length, 3)
+  assert.ok(result.render_plan.outputs.every((output) => output.renderer_family === 'compact_activity_pdf'))
+  assert.deepEqual(result.render_plan.outputs.map((output) => output.audience_bucket), ['teacher_only', 'shared_view', 'student_facing'])
+})
