@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mr-friess-classroom-engine/schemas/competition-shell.schema.json",
+  "title": "Competition Shell Schema",
+  "type": "object",
+  "required": ["shell_id", "title", "purpose", "scoring_default", "round_flow", "teacher_note"],
+  "properties": {
+    "shell_id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "scoring_default": {
+      "type": "object",
+      "required": ["accurate_foundational_move", "accurate_plus_meaning_or_morphology", "accurate_plus_meaning_plus_explanation"],
+      "properties": {
+        "accurate_foundational_move": { "type": "integer", "minimum": 1 },
+        "accurate_plus_meaning_or_morphology": { "type": "integer", "minimum": 1 },
+        "accurate_plus_meaning_plus_explanation": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": true
+    },
+    "round_flow": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "teacher_note": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": true
+}
