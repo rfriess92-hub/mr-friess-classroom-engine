@@ -37,6 +37,10 @@ export const FIXTURE_MAP = {
   task_sheet_patterns: 'fixtures/tests/task-sheet-response-patterns.workshop-session.json',
 }
 
+export const ACTIVITY_FIXTURE_MAP = {
+  morphology_prefix_corners: 'fixtures/activities/morphology-word-parts-prefix-corners.classroom-activity.json',
+}
+
 export function ensureExists(path, label = path) {
   if (!existsSync(path)) {
     console.error(`Missing required path: ${label}`)
@@ -71,4 +75,8 @@ export function loadJson(path) {
 
 export function resolvePackageArg(packageArg, fixtureArg) {
   return fixtureArg ? FIXTURE_MAP[fixtureArg] : packageArg
+}
+
+export function resolveActivityArg(activityArg, fixtureArg) {
+  return fixtureArg ? ACTIVITY_FIXTURE_MAP[fixtureArg] : activityArg
 }
