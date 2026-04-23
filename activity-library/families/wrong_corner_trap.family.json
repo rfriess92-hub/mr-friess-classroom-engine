@@ -1,0 +1,85 @@
+{
+  "family_id": "wrong_corner_trap",
+  "title": "Wrong Corner Trap",
+  "strand": "morphology_word_knowledge",
+  "subtype": "movement_choice",
+  "main_student_action": "Move to a corner, commit to a word-part choice, and defend it.",
+  "skill_focus": ["morphology", "word formation", "meaning check", "trap detection"],
+  "best_fit": ["Grade 8/9 literacy intervention", "quick intervention block", "whole-class reset with thinking"],
+  "time_minutes": [5, 10, 15],
+  "materials": ["corner labels", "prompt display or board", "optional whiteboards"],
+  "grouping": ["whole_class"],
+  "what_it_is": "A movement-based routine where students choose a response location based on which prefix, suffix, root, or mixed word-part option makes sense.",
+  "why_it_stays_in_bank": "It runs cold, scales easily, and keeps explanation pressure attached to real literacy thinking instead of speed alone.",
+  "non_negotiable_game_rule": "Students must be able to defend their corner using real-word or meaning logic, not only speed or guessing.",
+  "teacher_script": [
+    "Move when you know your answer, then be ready to defend it.",
+    "Some rounds have one correct answer, some have more than one, and some are traps with none."
+  ],
+  "student_job": "Choose a corner, justify the choice, and stay alert for trap rounds.",
+  "required_round_structure": [
+    "confidence-builder round",
+    "trap or multi-answer round",
+    "brief defend-and-reset moment",
+    "short debrief"
+  ],
+  "versions": [
+    {
+      "label": "movement core",
+      "purpose": "Fast whole-class engagement with visible commitment.",
+      "structure": ["teacher displays prompt", "students move", "students defend", "teacher confirms"]
+    },
+    {
+      "label": "whiteboard fallback",
+      "purpose": "Keep the same logic when movement is not practical.",
+      "structure": ["teacher displays prompt", "students write response", "show boards", "students defend"]
+    }
+  ],
+  "required_fun_protections": [
+    "keep rounds brisk",
+    "use real trap moments",
+    "do not over-explain before reveal"
+  ],
+  "required_literacy_protections": [
+    "every reveal must return to word logic",
+    "traps must be plausible, not random",
+    "teacher names why an answer is real, fake, or arguable"
+  ],
+  "best_response_modes": ["movement_choice", "whiteboard_reveal", "oral_explain"],
+  "easier_version": ["limit to single-correct rounds", "keep one clearly unrelated option visible"],
+  "harder_version": ["use multi-answer rounds", "use none-correct trap rounds", "require a second example before awarding full points"],
+  "good_teacher_language": [
+    "Pick your corner and be ready to prove it.",
+    "Do not follow the crowd unless you can explain the move."
+  ],
+  "material_bank": ["prefix banks", "suffix banks", "root banks", "mixed morphology banks"],
+  "extension_questions": [
+    "What made this trap believable?",
+    "What clue helped you know the word was real or not real?"
+  ],
+  "exit_slip_options": [
+    "Use one winning word part in a real word.",
+    "Name one trap and explain why it failed."
+  ],
+  "supported_output_types": ["activity_card", "quick_game_card", "station_card", "boss_round_card", "lesson_extension_block", "early_finisher_card", "worksheet_companion"],
+  "compatible_bank_types": ["prefix", "suffix", "root", "mixed"],
+  "qc": {
+    "gate_result": {
+      "instructional_precision": true,
+      "age_respect": true,
+      "run_cold_reality": true,
+      "game_worthiness": true,
+      "content_depth": true
+    },
+    "rating_result": {
+      "instructional_precision": 5,
+      "age_respect": 5,
+      "game_energy": 5,
+      "replay_value": 5,
+      "content_bank_depth": 4,
+      "implementation_reliability": 5,
+      "total": 29
+    },
+    "final_bank_verdict": "ready"
+  }
+}
