@@ -1,0 +1,39 @@
+{
+  "family_id": "morphology_word_parts",
+  "label": "Morphology Word Parts",
+  "description": "Short, high-engagement literacy intervention routines using prefixes, suffixes, roots, and mixed word-part prompts.",
+  "pilot_domain": "literacy_intervention",
+  "supported_subtypes": [
+    "prefix_corners",
+    "suffix_corners",
+    "root_corners",
+    "mixed_word_parts_corners",
+    "whiteboard_word_parts"
+  ],
+  "supported_output_types": [
+    "activity_card",
+    "lesson_extension_block",
+    "station_card",
+    "early_finisher_card",
+    "worksheet_companion"
+  ],
+  "render_compatibility": {
+    "compact_teacher_card": true,
+    "compact_student_card": true,
+    "worksheet_companion": true,
+    "full_lesson_renderer_required": false
+  },
+  "qa_rules": {
+    "require_teacher_student_separation": true,
+    "require_bank_logic_validation": true,
+    "require_time_plausibility": true,
+    "require_variation_support": true
+  },
+  "bank_index_axes": [
+    "word_part_focus",
+    "difficulty_ladder",
+    "delivery_modes",
+    "time_bands",
+    "support_bands"
+  ]
+}
