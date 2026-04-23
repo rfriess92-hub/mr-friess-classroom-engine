@@ -1,0 +1,58 @@
+{
+  "family_id": "sort_and_defend",
+  "title": "Sort and Defend",
+  "strand": "morphology_word_knowledge",
+  "subtype": "category_sort",
+  "main_student_action": "Sort items into categories and defend the choice with word-part logic.",
+  "skill_focus": ["morphology", "categorization", "explanation", "compare-and-justify"],
+  "best_fit": ["small-group intervention", "station work", "extension round after movement"],
+  "time_minutes": [10, 15],
+  "materials": ["sort cards or board list", "category headers", "optional recording strip"],
+  "grouping": ["small_group", "station_rotation", "pairs"],
+  "what_it_is": "A classification routine where students place words or word parts into categories, then defend why the sort makes sense.",
+  "why_it_stays_in_bank": "It slows down the thinking just enough to reveal misconceptions without losing game energy.",
+  "non_negotiable_game_rule": "Students cannot score from a sort alone; they must defend the move with visible evidence.",
+  "teacher_script": [
+    "Sort first, then prove the sort.",
+    "If the sort is arguable, your explanation has to carry the point."
+  ],
+  "student_job": "Place the item, defend the choice, and revise if the explanation does not hold.",
+  "required_round_structure": ["category reveal", "sort attempt", "defend or challenge", "teacher confirm and reset"],
+  "versions": [
+    {
+      "label": "station core",
+      "purpose": "Small-group sort with shared defense.",
+      "structure": ["students sort", "group checks", "defend one hard item", "teacher confirms"]
+    }
+  ],
+  "required_fun_protections": ["include one arguable placement", "keep challenges brief and evidence-based"],
+  "required_literacy_protections": ["categories must map to real meaning or form logic", "teacher must resolve arguable items explicitly"],
+  "best_response_modes": ["sort_and_defend", "oral_explain", "written_quick_prove"],
+  "easier_version": ["pre-label categories", "use fewer items"],
+  "harder_version": ["add arguable traps", "require a second example from the same category"],
+  "good_teacher_language": ["Place it, then prove it.", "If you can defend it, keep it there."] ,
+  "material_bank": ["prefix banks", "suffix banks", "root banks", "mixed banks"],
+  "extension_questions": ["Which item was hardest to place and why?"],
+  "exit_slip_options": ["Write one category and one item that clearly belongs there."],
+  "supported_output_types": ["activity_card", "station_card", "lesson_extension_block", "worksheet_companion"],
+  "compatible_bank_types": ["prefix", "suffix", "root", "mixed", "foundational"],
+  "qc": {
+    "gate_result": {
+      "instructional_precision": true,
+      "age_respect": true,
+      "run_cold_reality": true,
+      "game_worthiness": true,
+      "content_depth": true
+    },
+    "rating_result": {
+      "instructional_precision": 5,
+      "age_respect": 5,
+      "game_energy": 4,
+      "replay_value": 4,
+      "content_bank_depth": 4,
+      "implementation_reliability": 4,
+      "total": 26
+    },
+    "final_bank_verdict": "strong_needs_polish"
+  }
+}
