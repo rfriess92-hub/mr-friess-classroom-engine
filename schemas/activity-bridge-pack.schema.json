@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mr-friess-classroom-engine/schemas/activity-bridge-pack.schema.json",
+  "title": "Activity Bridge Pack Schema",
+  "type": "object",
+  "required": ["bridge_id", "title", "purpose", "starting_strand", "ending_strand", "anchor_skill", "anchor_banks", "family_sequence", "competition_shell", "timing_format", "easier_path", "harder_path", "win_condition", "teacher_note"],
+  "properties": {
+    "bridge_id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "starting_strand": { "type": "string", "enum": ["morphology_word_knowledge", "foundational_word_reading"] },
+    "ending_strand": { "type": "string", "enum": ["morphology_word_knowledge", "foundational_word_reading"] },
+    "anchor_skill": { "type": "string", "minLength": 1 },
+    "anchor_banks": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "family_sequence": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "competition_shell": { "type": "string", "minLength": 1 },
+    "timing_format": { "type": "string", "enum": ["quick_bridge_burst", "standard_bridge_round", "full_bridge_challenge"] },
+    "easier_path": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "harder_path": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "win_condition": { "type": "string", "minLength": 1 },
+    "teacher_note": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": true
+}
