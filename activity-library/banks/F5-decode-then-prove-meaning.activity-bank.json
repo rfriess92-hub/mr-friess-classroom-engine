@@ -1,0 +1,109 @@
+{
+  "type": "activity_bank",
+  "bank_id": "F5_decode_then_prove_meaning",
+  "bank_type": "foundational",
+  "strand": "foundational_word_reading",
+  "theme": "decode then prove meaning",
+  "difficulty": "core",
+  "transparency_level": "medium",
+  "bank_purpose": "Move students from accurate decoding into quick meaning proof so decoding and language stay linked.",
+  "core_items": ["transport", "misread", "lifeless", "geology"],
+  "core_meanings": ["carry across", "read wrongly", "without life", "earth study"],
+  "teacher_note_on_meaning": "Students should decode accurately, then name the meaning clue that proves they understood the word.",
+  "starter_examples": [
+    {
+      "item_id": "F5_S_01",
+      "difficulty_tag": "starter",
+      "display_prompt": "Decode and prove: misread",
+      "response_options": ["read wrongly", "read again", "not read", "read under"],
+      "correct_responses": ["read wrongly"],
+      "answer_pattern": "single_correct",
+      "explanation": "mis- signals wrong; misread means read wrongly."
+    }
+  ],
+  "core_examples": [
+    {
+      "item_id": "F5_C_01",
+      "difficulty_tag": "core",
+      "display_prompt": "Decode and prove: transport",
+      "response_options": ["carry across", "say across", "look across", "place across"],
+      "correct_responses": ["carry across"],
+      "answer_pattern": "single_correct",
+      "explanation": "port signals carry; transport connects across + carry."
+    },
+    {
+      "item_id": "F5_C_02",
+      "difficulty_tag": "core",
+      "display_prompt": "Decode and prove: lifeless",
+      "response_options": ["full of life", "without life", "against life", "false life"],
+      "correct_responses": ["without life"],
+      "answer_pattern": "single_correct",
+      "explanation": "-less signals without; lifeless means without life."
+    }
+  ],
+  "stretch_examples": [
+    {
+      "item_id": "F5_X_01",
+      "difficulty_tag": "stretch",
+      "display_prompt": "Decode and prove: geology",
+      "response_options": ["earth study", "sound study", "life study", "time study"],
+      "correct_responses": ["earth study"],
+      "answer_pattern": "single_correct",
+      "explanation": "geo signals earth; geology is the study of earth."
+    }
+  ],
+  "trap_bank": {
+    "fake": [
+      {
+        "item_id": "F5_TF_01",
+        "difficulty_tag": "starter",
+        "trap_tag": "fake",
+        "display_prompt": "Decode and prove: mallook",
+        "response_options": ["look badly", "look wrongly", "not a real word", "look under"],
+        "correct_responses": ["not a real word"],
+        "answer_pattern": "single_correct",
+        "explanation": "mallook is not a standard real word."
+      }
+    ],
+    "near_miss": [
+      {
+        "item_id": "F5_TN_01",
+        "difficulty_tag": "core",
+        "trap_tag": "near_miss",
+        "display_prompt": "Decode and prove: transportable",
+        "response_options": ["able to be carried", "able to be seen", "able to be read", "able to be thrown"],
+        "correct_responses": ["able to be carried"],
+        "answer_pattern": "single_correct",
+        "explanation": "Students may stop at transport and miss the ending signal.",
+        "teacher_note": "Good for proving full-word reading, not just chunk spotting."
+      }
+    ],
+    "arguable": [
+      {
+        "item_id": "F5_TA_01",
+        "difficulty_tag": "stretch",
+        "trap_tag": "arguable",
+        "display_prompt": "Decode and prove: antisocial",
+        "response_options": ["against social behaviour", "not friendly", "without friends", "socially wrong"],
+        "correct_responses": ["against social behaviour", "not friendly"],
+        "answer_pattern": "multi_correct",
+        "explanation": "One option is the cleaner morphology read; one is the more common everyday interpretation.",
+        "teacher_note": "Use only if you want to compare formal meaning with student language."
+      }
+    ]
+  },
+  "teacher_note_on_traps": "Trap rounds should expose partial decoding or loose meaning proof, not punish effort.",
+  "best_fit_families": ["sort_and_defend"],
+  "acceptable_families": ["wrong_corner_trap"],
+  "use_carefully_families": [],
+  "sentence_target_bank": ["The crate is transportable because two people can carry it.", "He misread the schedule and missed the bus."],
+  "repair_target_bank": ["She transport the boxes yesterday.", "The word geology means the study of life."],
+  "sort_target_bank": ["decode only", "decode plus prove meaning", "not enough evidence yet"],
+  "build_target_bank": ["transport", "misread", "lifeless", "geology"],
+  "relay_target_bank": ["read it", "chunk it", "prove it"],
+  "starter_notes": ["Keep the prove-it options concrete and short."],
+  "core_notes": ["Require students to name the meaning signal after accurate reading."],
+  "stretch_notes": ["Use arguable meanings only if you will resolve the stronger interpretation clearly."],
+  "answer_key_language": ["decoded accurately", "proved meaning", "partial proof", "not enough evidence"],
+  "usage_notes": ["This bank works best when decoding and meaning happen in the same turn."]
+}
