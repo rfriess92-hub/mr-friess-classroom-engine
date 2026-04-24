@@ -3,6 +3,13 @@
   "title": "Wrong Corner Trap",
   "strand": "morphology_word_knowledge",
   "subtype": "movement_choice",
+  "supported_subtypes": [
+    "prefix_corners",
+    "suffix_corners",
+    "root_corners",
+    "mixed_word_parts_corners",
+    "whiteboard_word_parts"
+  ],
   "main_student_action": "Move to a corner, commit to a word-part choice, and defend it.",
   "skill_focus": ["morphology", "word formation", "meaning check", "trap detection"],
   "best_fit": ["Grade 8/9 literacy intervention", "quick intervention block", "whole-class reset with thinking"],
