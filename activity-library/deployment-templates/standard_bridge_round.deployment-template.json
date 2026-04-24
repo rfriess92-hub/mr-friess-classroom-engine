@@ -1,0 +1,13 @@
+{
+  "template_id": "standard_bridge_round",
+  "title": "Standard Bridge Round",
+  "time_minutes": 10,
+  "phase_sequence": [
+    "foundational setup",
+    "foundational application",
+    "morphology extension",
+    "boss or prove-it round"
+  ],
+  "win_condition": "Students complete the decode/build move and then prove meaning or function with evidence.",
+  "teacher_note": "Keep transitions tight so the bridge feels like one sequence, not two disconnected mini-games."
+}
