@@ -9,6 +9,7 @@
     "activity_family",
     "activity_subtype",
     "title",
+    "strand",
     "skill_focus",
     "grade_band",
     "subject",
@@ -24,10 +25,16 @@
     "student_directions",
     "round_structure",
     "response_set",
-    "content_bank",
+    "activity_bank_refs",
+    "selected_item_ids",
+    "competition_shell_ref",
+    "deployment_template_ref",
     "variations",
     "answer_key",
+    "teacher_notes",
+    "differentiation_notes",
     "render_hints",
+    "bank_index_tags",
     "outputs"
   ],
   "properties": {
@@ -36,6 +43,7 @@
     "activity_family": { "type": "string", "minLength": 1 },
     "activity_subtype": { "type": "string", "minLength": 1 },
     "title": { "type": "string", "minLength": 1 },
+    "strand": { "type": "string", "enum": ["morphology_word_knowledge", "foundational_word_reading", "bridge"] },
     "skill_focus": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
     "grade_band": { "type": "string", "enum": ["K-2", "3-5", "6-8", "9-12"] },
     "subject": { "type": "string", "minLength": 1 },
@@ -46,94 +54,92 @@
     "support_level": { "$ref": "#/$defs/supportLevel" },
     "thinking_level": { "$ref": "#/$defs/thinkingLevel" },
     "materials": { "type": "array", "items": { "type": "string" } },
-    "setup": { "type": "object", "required": ["prep_level"], "properties": {
-      "prep_level": { "type": "string", "enum": ["none", "low", "medium"] },
-      "room_setup": { "type": "array", "items": { "type": "string" } },
-      "grouping": { "type": "string" },
-      "reset_notes": { "type": "array", "items": { "type": "string" } }
-    }, "additionalProperties": true },
-    "teacher_script": { "type": "object", "properties": {
-      "launch": { "type": "array", "items": { "type": "string" } },
-      "between_rounds": { "type": "array", "items": { "type": "string" } },
-      "debrief": { "type": "array", "items": { "type": "string" } }
-    }, "additionalProperties": true },
+    "setup": {
+      "type": "object",
+      "required": ["prep_level"],
+      "properties": {
+        "prep_level": { "type": "string", "enum": ["none", "low", "medium"] },
+        "room_setup": { "type": "array", "items": { "type": "string" } },
+        "grouping": { "type": "string" },
+        "reset_notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "teacher_script": {
+      "type": "object",
+      "properties": {
+        "launch": { "type": "array", "items": { "type": "string" } },
+        "between_rounds": { "type": "array", "items": { "type": "string" } },
+        "debrief": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
     "student_directions": { "type": "array", "items": { "type": "string" } },
-    "round_structure": { "type": "object", "properties": {
-      "round_count": { "type": "integer", "minimum": 1 },
-      "round_sequence": { "type": "array", "items": { "$ref": "#/$defs/roundNode" } },
-      "debrief_questions": { "type": "array", "items": { "type": "string" } }
-    }, "additionalProperties": true },
-    "response_set": { "type": "object", "required": ["mode", "options"], "properties": {
-      "mode": { "type": "string", "enum": ["corners", "whiteboard", "station_card", "mixed"] },
-      "options": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
-    }, "additionalProperties": true },
-    "content_bank": { "$ref": "#/$defs/contentBank" },
-    "variations": { "type": "object", "properties": {
-      "whiteboard": { "$ref": "#/$defs/variationBlock" },
-      "easier": { "$ref": "#/$defs/variationBlock" },
-      "harder": { "$ref": "#/$defs/variationBlock" },
-      "station": { "$ref": "#/$defs/variationBlock" },
-      "worksheet_companion": { "$ref": "#/$defs/variationBlock" }
-    }, "additionalProperties": true },
+    "round_structure": {
+      "type": "object",
+      "properties": {
+        "round_count": { "type": "integer", "minimum": 1 },
+        "round_sequence": { "type": "array", "items": { "$ref": "#/$defs/roundNode" } },
+        "debrief_questions": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "response_set": {
+      "type": "object",
+      "required": ["mode", "options"],
+      "properties": {
+        "mode": { "type": "string", "enum": ["corners", "whiteboard", "station_card", "mixed"] },
+        "options": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      },
+      "additionalProperties": true
+    },
+    "activity_bank_refs": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "selected_item_ids": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "activity_bridge_pack_ref": { "type": "string", "minLength": 1 },
+    "competition_shell_ref": { "type": "string", "minLength": 1 },
+    "deployment_template_ref": { "type": "string", "minLength": 1 },
+    "variations": {
+      "type": "object",
+      "properties": {
+        "whiteboard": { "$ref": "#/$defs/variationBlock" },
+        "easier": { "$ref": "#/$defs/variationBlock" },
+        "harder": { "$ref": "#/$defs/variationBlock" },
+        "station": { "$ref": "#/$defs/variationBlock" },
+        "worksheet_companion": { "$ref": "#/$defs/variationBlock" }
+      },
+      "additionalProperties": true
+    },
     "extension_questions": { "type": "array", "items": { "type": "string" } },
-    "exit_slip": { "type": "object", "properties": {
-      "prompt": { "type": "string" },
-      "response_lines": { "type": "integer", "minimum": 1 }
-    }, "additionalProperties": true },
+    "exit_slip": {
+      "type": "object",
+      "properties": {
+        "prompt": { "type": "string" },
+        "response_lines": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": true
+    },
     "answer_key": { "type": "array", "items": { "type": "string" } },
     "teacher_notes": { "type": "array", "items": { "type": "string" } },
     "differentiation_notes": { "type": "array", "items": { "type": "string" } },
     "curricular_links": { "type": "array", "items": { "type": "string" } },
-    "render_hints": { "type": "object", "properties": {
-      "teacher_card_style": { "type": "string" },
-      "student_surface_style": { "type": "string" },
-      "compactness": { "type": "string", "enum": ["tight", "standard"] }
-    }, "additionalProperties": true },
+    "render_hints": {
+      "type": "object",
+      "properties": {
+        "teacher_card_style": { "type": "string" },
+        "student_surface_style": { "type": "string" },
+        "compactness": { "type": "string", "enum": ["tight", "standard"] }
+      },
+      "additionalProperties": true
+    },
     "bank_index_tags": { "type": "array", "items": { "type": "string" } },
     "outputs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/output" } }
   },
   "$defs": {
-    "deliveryTag": { "type": "string", "enum": ["movement", "game", "whiteboard", "station", "quick_practice", "early_finisher", "low_prep", "teacher_led", "small_group", "whole_class"] },
+    "deliveryTag": { "type": "string", "enum": ["movement", "game", "whiteboard", "station", "quick_practice", "early_finisher", "low_prep", "teacher_led", "small_group", "whole_class", "bridge"] },
     "useCase": { "type": "string", "enum": ["activity_only", "lesson_extension", "intervention_station", "early_finisher", "worksheet_companion"] },
-    "difficultyTier": { "type": "string", "enum": ["easiest", "easy", "core", "stretch"] },
+    "difficultyTier": { "type": "string", "enum": ["starter", "core", "stretch"] },
     "supportLevel": { "type": "string", "enum": ["high_support", "medium_support", "low_support"] },
     "thinkingLevel": { "type": "string", "enum": ["recall", "understand", "apply", "analyze", "evaluate", "create"] },
-    "promptType": { "type": "string", "enum": ["real_word_build", "word_meaning_match", "root_meaning_match", "mixed_word_part_build", "trap_round", "teacher_readaloud"] },
-    "answerPattern": { "type": "string", "enum": ["single_correct", "multi_correct", "none_correct"] },
-    "validationStatus": { "type": "string", "enum": ["draft", "verified"] },
-    "bankItem": {
-      "type": "object",
-      "required": ["item_id", "prompt_type", "stem", "display_prompt", "response_options", "correct_responses", "answer_pattern", "trap_flag", "difficulty_tier", "support_level", "whiteboard_compatible", "movement_compatible", "explanation", "validation_status"],
-      "properties": {
-        "item_id": { "type": "string", "minLength": 1 },
-        "prompt_type": { "$ref": "#/$defs/promptType" },
-        "stem": { "type": "string", "minLength": 1 },
-        "display_prompt": { "type": "string", "minLength": 1 },
-        "response_options": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
-        "correct_responses": { "type": "array", "items": { "type": "string", "minLength": 1 } },
-        "answer_pattern": { "$ref": "#/$defs/answerPattern" },
-        "trap_flag": { "type": "boolean" },
-        "trap_type": { "type": "string" },
-        "difficulty_tier": { "$ref": "#/$defs/difficultyTier" },
-        "support_level": { "$ref": "#/$defs/supportLevel" },
-        "whiteboard_compatible": { "type": "boolean" },
-        "movement_compatible": { "type": "boolean" },
-        "explanation": { "type": "string", "minLength": 1 },
-        "teacher_note": { "type": "string" },
-        "validation_status": { "$ref": "#/$defs/validationStatus" }
-      },
-      "additionalProperties": true
-    },
-    "contentBank": {
-      "type": "object",
-      "required": ["bank_id", "items"],
-      "properties": {
-        "bank_id": { "type": "string", "minLength": 1 },
-        "selection_note": { "type": "string" },
-        "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/bankItem" } }
-      },
-      "additionalProperties": true
-    },
     "variationBlock": {
       "type": "object",
       "properties": {
@@ -147,7 +153,6 @@
       "type": "object",
       "properties": {
         "label": { "type": "string" },
-        "prompt_type": { "$ref": "#/$defs/promptType" },
         "item_ids": { "type": "array", "items": { "type": "string" } },
         "teacher_move": { "type": "string" }
       },
@@ -158,7 +163,7 @@
       "required": ["output_id", "output_type", "audience", "source_section"],
       "properties": {
         "output_id": { "type": "string", "minLength": 1 },
-        "output_type": { "type": "string", "enum": ["activity_card", "lesson_extension_block", "station_card", "early_finisher_card", "worksheet_companion"] },
+        "output_type": { "type": "string", "enum": ["activity_card", "bank_card", "bridge_pack_card", "quick_game_card", "relay_card", "station_card", "boss_round_card", "deployment_template_card", "lesson_extension_block", "early_finisher_card", "worksheet_companion"] },
         "audience": { "type": "string", "enum": ["teacher", "student", "shared_view"] },
         "source_section": { "type": "string", "minLength": 1 }
       },
