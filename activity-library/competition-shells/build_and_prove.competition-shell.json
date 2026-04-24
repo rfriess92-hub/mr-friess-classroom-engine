@@ -1,0 +1,18 @@
+{
+  "shell_id": "build_and_prove",
+  "title": "Build and Prove",
+  "purpose": "Reward accuracy plus explanation so students cannot win on speed alone.",
+  "scoring_default": {
+    "accurate_foundational_move": 1,
+    "accurate_plus_meaning_or_morphology": 2,
+    "accurate_plus_meaning_plus_explanation": 3
+  },
+  "round_flow": [
+    "teacher presents prompt",
+    "students make the move",
+    "teacher checks accuracy",
+    "students prove with meaning or morphology",
+    "teacher awards points"
+  ],
+  "teacher_note": "Do not award top points unless the explanation is actually tied to the word or pattern signal."
+}
