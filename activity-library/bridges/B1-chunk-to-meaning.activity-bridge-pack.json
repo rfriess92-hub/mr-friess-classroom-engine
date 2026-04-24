@@ -1,0 +1,16 @@
+{
+  "bridge_id": "B1_chunk_to_meaning",
+  "title": "Chunk to Meaning",
+  "purpose": "Link accurate chunk-based reading moves to morphology-based meaning proof in one short sequence.",
+  "starting_strand": "foundational_word_reading",
+  "ending_strand": "morphology_word_knowledge",
+  "anchor_skill": "decode accurately, then prove meaning with a word-part signal",
+  "anchor_banks": ["F5_decode_then_prove_meaning", "P4_wrong_bad_false_against"],
+  "family_sequence": ["sort_and_defend", "wrong_corner_trap"],
+  "competition_shell": "build_and_prove",
+  "timing_format": "standard_bridge_round",
+  "easier_path": ["use starter bank items only", "keep all rounds single-correct", "skip arguable traps"],
+  "harder_path": ["add stretch bank items", "require a second proof word", "finish with one arguable trap"],
+  "win_condition": "Students score best when they decode accurately, choose the strongest meaning, and explain the signal that proves it.",
+  "teacher_note": "Run the foundational move first so the morphology extension feels like payoff, not a disconnected second task."
+}
