@@ -106,7 +106,7 @@ test('package contract QA blocks when route traces collapse back to generic flow
   weeklyPacket.trace.template_family = 'GENERIC_FLOW'
 
   const checkpoint = routeBundles.find(({ route }) => route.output_id === 'day4_checkpoint_sheet')
-  checkpoint.trace.artifact_class = 'student_checkpoint'
+  checkpoint.trace.artifact_class = 'teacher_checkpoint'
   checkpoint.trace.template_family = 'GENERIC_FLOW'
 
   const day1Slides = routeBundles.find(({ route }) => route.output_id === 'day1_slides')
