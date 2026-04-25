@@ -205,6 +205,64 @@ describe('profile loader', () => {
     assert.ok(block.includes('sub_plan'), 'prompt block should mention sub_plan when include_sub_plan is set')
   })
 
+  // ---------------------------------------------------------------------------
+  // C2 — Generation defaults for pacing / sub / makeup
+  // ---------------------------------------------------------------------------
+
+  it('pacing_guide is in every mode default_output_types', () => {
+    for (const [mode, def] of Object.entries(TEACHING_MODE_DEFAULTS)) {
+      assert.ok(
+        def.default_output_types.includes('pacing_guide'),
+        `"${mode}" default_output_types should include pacing_guide`,
+      )
+    }
+  })
+
+  it('spotty attendance auto-sets include_makeup_packet', () => {
+    const classProfile = { section_id: 'test', course_id: 'test', attendance_pattern: 'spotty' }
+    const ctx = mergeProfileContext({ classProfile })
+    assert.equal(ctx.include_makeup_packet, true)
+  })
+
+  it('very_spotty attendance auto-sets include_makeup_packet', () => {
+    const classProfile = { section_id: 'test', course_id: 'test', attendance_pattern: 'very_spotty' }
+    const ctx = mergeProfileContext({ classProfile })
+    assert.equal(ctx.include_makeup_packet, true)
+  })
+
+  it('regular attendance does not auto-set include_makeup_packet', () => {
+    const classProfile = { section_id: 'test', course_id: 'test', attendance_pattern: 'regular' }
+    const ctx = mergeProfileContext({ classProfile })
+    assert.equal(ctx.include_makeup_packet, undefined)
+  })
+
+  it('generation_overrides false suppresses auto makeup packet for spotty attendance', () => {
+    const classProfile = {
+      section_id: 'test',
+      course_id: 'test',
+      attendance_pattern: 'spotty',
+      generation_overrides: { include_makeup_packet: false },
+    }
+    const ctx = mergeProfileContext({ classProfile })
+    assert.equal(ctx.include_makeup_packet, false, 'explicit false in generation_overrides should suppress auto-flag')
+  })
+
+  it('BPG class auto-sets include_makeup_packet from spotty attendance', () => {
+    const classProfile = loadClassProfile('workplace_readiness_bpg')
+    // Remove the explicit override to confirm auto-flag works independently
+    const profileWithoutOverride = { ...classProfile, generation_overrides: {} }
+    const ctx = mergeProfileContext({ classProfile: profileWithoutOverride })
+    assert.equal(ctx.include_makeup_packet, true)
+  })
+
+  it('reading intervention suppresses makeup packet despite spotty attendance', () => {
+    const teacher = loadTeacherProfile()
+    const course = loadCourseProfile('reading_intervention')
+    const classProfile = loadClassProfile('reading_intervention_block')
+    const ctx = mergeProfileContext({ teacher, course, classProfile })
+    assert.equal(ctx.include_makeup_packet, false, 'reading intervention explicitly suppresses makeup packet')
+  })
+
   it('BPG class hands_on mode injects mode notes into prompt block', () => {
     const teacher = loadTeacherProfile()
     const course = loadCourseProfile('workplace_readiness')
