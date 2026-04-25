@@ -6,8 +6,12 @@
  * stable-core package JSON, then runs schema:check automatically.
  *
  * Usage:
- *   pnpm run generate:package -- --brief briefs/my-lesson.md --out fixtures/generated/
- *   pnpm run generate:package -- --brief briefs/my-lesson.md  (writes to briefs/generated/)
+ *   pnpm run generate:package -- --brief briefs/my-lesson.md [--out dir] [--dry-run]
+ *   pnpm run generate:package -- --brief briefs/my-lesson.md --course careers_8 --section careers8_mosaic
+ *
+ * Profile args:
+ *   --course    course_id from profiles/courses/ (e.g. careers_8, workplace_readiness)
+ *   --section   section_id from profiles/classes/ (e.g. workplace_readiness_bpg)
  *
  * Requires: ANTHROPIC_API_KEY in environment
  */
@@ -17,22 +21,35 @@ import { basename, extname, join, resolve } from 'node:path'
 import process from 'node:process'
 import { spawnSync } from 'node:child_process'
 import { buildGradeBandGenerationPrompt } from '../engine/generation/grade-band-contracts.mjs'
+import {
+  loadTeacherProfile,
+  loadCourseProfile,
+  loadClassProfile,
+  mergeProfileContext,
+  buildProfilePromptBlock,
+  findReferenceFixture,
+  loadGradeBandContract,
+} from '../engine/generation/profile-loader.mjs'
 
 function argValue(flag) {
   const i = process.argv.indexOf(flag)
   return i >= 0 ? process.argv[i + 1] ?? null : null
 }
 
-const briefArg = argValue('--brief')
-const outArg   = argValue('--out') ?? 'briefs/generated'
-const dryRun   = process.argv.includes('--dry-run')
+const briefArg   = argValue('--brief')
+const outArg     = argValue('--out') ?? 'briefs/generated'
+const courseArg  = argValue('--course')
+const sectionArg = argValue('--section')
+const dryRun     = process.argv.includes('--dry-run')
 
 if (!briefArg) {
-  console.error('Usage: pnpm run generate:package -- --brief <path> [--out <dir>] [--dry-run]')
+  console.error('Usage: pnpm run generate:package -- --brief <path> [--out <dir>] [--course <id>] [--section <id>] [--dry-run]')
   console.error('')
-  console.error('  --brief   Path to a completed teacher lesson brief (.md or .txt)')
-  console.error('  --out     Output directory for the generated package JSON (default: briefs/generated/)')
-  console.error('  --dry-run Print the prompt that would be sent, without calling the API')
+  console.error('  --brief    Path to a completed teacher lesson brief (.md or .txt)')
+  console.error('  --out      Output directory for the generated package JSON (default: briefs/generated/)')
+  console.error('  --course   course_id from profiles/courses/ — loads course profile')
+  console.error('  --section  section_id from profiles/classes/ — loads class profile and overrides')
+  console.error('  --dry-run  Print the prompt that would be sent, without calling the API')
   process.exit(1)
 }
 
@@ -49,17 +66,61 @@ if (!apiKey && !dryRun) {
   process.exit(1)
 }
 
+// --- Load profiles ---
+
+const teacher     = loadTeacherProfile()
+const course      = courseArg ? loadCourseProfile(courseArg) : null
+const classProfile = sectionArg ? loadClassProfile(sectionArg) : null
+
+if (courseArg && !course) {
+  console.error(`Course profile not found for course_id: ${courseArg}`)
+  console.error(`Expected a file in profiles/courses/ with course_id: "${courseArg}"`)
+  process.exit(1)
+}
+if (sectionArg && !classProfile) {
+  console.error(`Class profile not found for section_id: ${sectionArg}`)
+  console.error(`Expected a file in profiles/classes/ with section_id: "${sectionArg}"`)
+  process.exit(1)
+}
+
+const profileCtx = mergeProfileContext({ teacher, course, classProfile })
+
+// Log which profiles were loaded
+if (teacher?.name) console.log(`Teacher profile: ${teacher.name}`)
+if (course) console.log(`Course profile: ${course.subject} (${course.course_id})`)
+if (classProfile) {
+  const projectLabel = classProfile.project ? ` — project: ${classProfile.project.name}` : ''
+  console.log(`Class profile: ${classProfile.section_id}${projectLabel}`)
+}
+
+// --- Load content ---
+
 const briefText = readFileSync(briefPath, 'utf-8')
 
-const referenceFixturePath = resolve(process.cwd(), 'fixtures/generated/careers-8-career-clusters.grade8-careers.json')
+const referenceFixturePath = findReferenceFixture(profileCtx)
 const referenceFixture = existsSync(referenceFixturePath)
   ? readFileSync(referenceFixturePath, 'utf-8')
   : null
+
+if (referenceFixturePath) console.log(`Reference fixture: ${referenceFixturePath}`)
+
 const contentStylePolicyPath = resolve(process.cwd(), 'engine', 'generation', 'content-style-policy.json')
 const contentStylePolicy = existsSync(contentStylePolicyPath)
   ? readFileSync(contentStylePolicyPath, 'utf-8')
   : null
-const gradeBandContractPrompt = buildGradeBandGenerationPrompt({ briefText })
+
+// Grade-band contract: prefer explicit profile contract over brief-inferred
+let gradeBandContractBlock = ''
+if (profileCtx.grade_band_contract) {
+  const contractText = loadGradeBandContract(profileCtx.grade_band_contract)
+  if (contractText) {
+    gradeBandContractBlock = `This package uses the ${profileCtx.grade_band_contract} grade-band contract. Treat it as binding for student-facing content, output demand, vocabulary, abstraction level, and tone.\n\n<${profileCtx.grade_band_contract}>\n${contractText}\n</${profileCtx.grade_band_contract}>`
+  }
+} else {
+  gradeBandContractBlock = buildGradeBandGenerationPrompt({ briefText })
+}
+
+const profileBlock = buildProfilePromptBlock(profileCtx)
 
 const SYSTEM_PROMPT = `You are generating a stable-core lesson package for the Mr. Friess Classroom Engine.
 
@@ -85,16 +146,17 @@ Hard requirements:
 16. Avoid over-explaining artifact purpose when headings and layout already make it obvious.
 17. Student-facing models should sound plausible and human, not hyper-polished or unnaturally self-aware.
 18. When a grade-band contract applies, treat it as binding, not advisory.
+19. When a class context is provided, treat all class-level instructions as binding overrides.
 
 Required top-level fields:
 - schema_version: "2.1.0"
 - package_id: snake_case identifier derived from subject, grade, and topic
 - primary_architecture: "single_period_full" or "multi_day_sequence"
 - grade_band: e.g. "6-8" or "9-12"
-- subject: from brief
+- subject: from brief or class context
 - grade: integer
 - topic: short canonical topic label
-- theme: one of "science", "careers" (use "science" for most subjects, "careers" for Careers class)
+- theme: one of "science", "careers", "english_language_arts", "mathematics", "humanities", "social_science", "health_science"
 - teacher_guide: object with learning_goals, big_idea, timing, teacher_notes
 - slides: array of slide objects (each with type, title, layout, content)
 - worksheet OR task_sheet: object with prompts/sections for student work
@@ -123,7 +185,7 @@ Task-sheet add-on rule:
 
 Each output object must include:
 - output_id: snake_case identifier
-- output_type: one of teacher_guide, slides, worksheet, task_sheet, checkpoint_sheet, exit_ticket, final_response_sheet, lesson_overview
+- output_type: one of teacher_guide, slides, worksheet, task_sheet, checkpoint_sheet, exit_ticket, final_response_sheet, lesson_overview, pacing_guide, sub_plan, makeup_packet, rubric_sheet, station_cards, answer_key, discussion_prep_sheet, graphic_organizer
 - audience: "teacher", "student", or "shared_view"
 - source_section: the top-level key in the package where this content lives
 - bundle: { bundle_id: same as package bundle_id }
@@ -150,7 +212,8 @@ Slide content field guide:
 - numbered_steps: { steps: [...] }
 
 ${contentStylePolicy ? `Apply this content style policy:\n\n<content_style_policy>\n${contentStylePolicy}\n</content_style_policy>\n` : ''}
-${gradeBandContractPrompt ? `\n${gradeBandContractPrompt}\n` : ''}
+${profileBlock ? `${profileBlock}\n` : ''}
+${gradeBandContractBlock ? `\n${gradeBandContractBlock}\n` : ''}
 Return exactly one JSON object. No markdown. No explanation.`
 
 const USER_PROMPT = referenceFixture
