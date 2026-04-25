@@ -110,6 +110,12 @@ export function mergeProfileContext({ teacher = {}, course = null, classProfile 
       if (modeDefaults.prompt_notes) ctx.mode_prompt_notes = modeDefaults.prompt_notes
     }
 
+    // Auto-flag makeup packet for spotty/very_spotty attendance.
+    // generation_overrides can suppress this with an explicit false.
+    if (ctx.attendance_pattern === 'spotty' || ctx.attendance_pattern === 'very_spotty') {
+      ctx.include_makeup_packet = true
+    }
+
     // generation_overrides always win over mode and course defaults
     const overrides = classProfile.generation_overrides ?? {}
     if (overrides.default_output_types) ctx.default_output_types = overrides.default_output_types
