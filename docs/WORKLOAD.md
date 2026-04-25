@@ -77,15 +77,16 @@ Remaining five bands have contract files — validator extension for those is qu
 - [x] `engine/generation/contracts/math-8-grade-band.md`
 - [x] `engine/generation/contracts/workplace-math-10-grade-band.md`
 
-### B0a — Grade-Band Validator Extension `QUEUED — Codex`
-Extend `grade-band-contracts.mjs` to cover the five remaining bands (ELA 10/11/12, Math 8, WM10).
-Careers 8 validator is the model. Wire all into `qa-bundle` and add smoke tests.
+### B0a — Grade-Band Validator Extension `COMPLETE`
+All five bands landed in `grade-band-contracts.mjs` (#176). Unified band registry
+feeds `getApplicableGradeBandContracts` and `buildGradeBandGenerationPrompt`.
+22 new tests added in `grade-band-contracts-extended.test.mjs`.
 
-- [ ] ELA 10 validator + tests — Codex
-- [ ] ELA 11 validator + tests — Codex
-- [ ] ELA 12 validator + tests — Codex
-- [ ] Math 8 validator + tests — Codex
-- [ ] WM10 validator + tests — Codex
+- [x] ELA 10 validator + tests
+- [x] ELA 11 validator + tests
+- [x] ELA 12 validator + tests
+- [x] Math 8 validator + tests
+- [x] WM10 validator + tests
 
 ### B0b — Docs Grade-Band Contracts `QUEUED — canon rule`
 Publish the normalized docs-first contract set under `docs/grade-band-contracts/` as its own canon-rule PR.
@@ -153,18 +154,25 @@ After B5.
 
 ## TRACK C — Teacher Profile + Personalization
 
-### C0 — Profile Layer Schema `NEXT — design session`
-Design session starting now. Biggest shift from "lesson engine" to "your machine."
+### C0 — Profile Layer Schema `COMPLETE`
+All three schemas landed (#171). Profiles seeded for Mr. Friess, three courses
+(careers_8, reading_intervention, workplace_readiness), and three class sections
+(careers8_mosaic, reading_intervention, workplace_readiness_bpg with BPG project).
+`generate-package.mjs` wired with `--course` and `--section` args (#174).
+`profile-loader.mjs` with `mergeProfileContext`, `buildProfilePromptBlock`,
+`findReferenceFixture`, and `loadGradeBandContract` (#174). 14 tests added.
 
-- [ ] `schemas/teacher-profile.schema.json`
-- [ ] `schemas/course-profile.schema.json`
-- [ ] `schemas/class-profile.schema.json`
-- [ ] `profiles/` directory + seed files (teacher.json, courses/, classes/)
-- [ ] Wire into `scripts/generate-package.mjs` (`--profile`, `--course`, `--section` args)
-- [ ] Replace hardcoded reference fixture with subject+grade-matched lookup
+- [x] `schemas/teacher-profile.schema.json`
+- [x] `schemas/course-profile.schema.json`
+- [x] `schemas/class-profile.schema.json`
+- [x] `profiles/` directory + seed files (teacher.json, courses/, classes/)
+- [x] Wire into `scripts/generate-package.mjs` (`--course`, `--section` args)
+- [x] Replace hardcoded reference fixture with subject+grade-matched lookup
 
-### C1 — Teaching Mode Surface `QUEUED`
-After C0.
+### C1 — Teaching Mode Surface `NEXT`
+C0 complete. `teaching_mode` field is already in `class-profile.schema.json`
+and wired through `mergeProfileContext` → `buildProfilePromptBlock`. Remaining
+work is the mode→default output types mapping and generate-package awareness.
 
 - [ ] `teaching_mode` field: standard, sub_friendly, hands_on, low_tech, quiet_writing, recovery_reteach, conferencing
 - [ ] Mode → default output types mapping
@@ -211,6 +219,12 @@ After B6.
 
 ## Done (recent)
 
+- [#176] B0a grade-band validator extension — ELA 10/11/12, Math 8, WM10 (22 new tests)
+- [#175] Phase 3 render proof fixtures for lesson_overview + checkpoint_sheet
+- [#174] C0 profile integration — generate-package.mjs `--course`/`--section`, profile-loader.mjs
+- [#173] Phase 1 output-contract fixes — KNOWN_UNIMPLEMENTED_TYPES guard, variant_role sync
+- [#172] Phase 0 audit — output-contract-drift inventory + test
+- [#171] C0 profile layer schema — three schemas + seed profiles for all three classes
 - [#169] B0 grade-band contracts (all six) + restore three-track WORKLOAD.md
 - [#167] Student-facing voice pass v2
 - [#166] Phase A1 assessment schema — question bank, assessment, quiz output types, vocabulary, router wiring
