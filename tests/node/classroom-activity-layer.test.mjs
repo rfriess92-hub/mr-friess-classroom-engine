@@ -44,13 +44,22 @@ test('classroom activity request router distinguishes activity, lesson, hybrid, 
 
 test('activity bank, bridge pack, shell, and deployment template validate cleanly', () => {
   assert.equal(validateActivityBank(getActivityBank('P4_wrong_bad_false_against')).valid, true)
+  assert.equal(validateActivityBank(getActivityBank('F5_decode_then_prove_meaning')).valid, true)
   assert.equal(validateActivityBridgePack(getActivityBridgePack('B1_chunk_to_meaning')).valid, true)
   assert.equal(validateCompetitionShell(getCompetitionShell('build_and_prove')).valid, true)
   assert.equal(validateDeploymentTemplate(getDeploymentTemplate('standard_bridge_round')).valid, true)
 })
 
-test('classroom activity fixture validates cleanly against reusable object references', () => {
+test('morphology classroom activity fixture validates cleanly against reusable object references', () => {
   const activity = loadJson(repoPath('fixtures/activities/morphology-word-parts-prefix-corners.classroom-activity.json'))
+  const validation = validateClassroomActivity(activity)
+
+  assert.equal(validation.valid, true)
+  assert.deepEqual(validation.errors, [])
+})
+
+test('bridge classroom activity fixture validates cleanly against reusable object references', () => {
+  const activity = loadJson(repoPath('fixtures/activities/bridge-chunk-to-meaning.classroom-activity.json'))
   const validation = validateClassroomActivity(activity)
 
   assert.equal(validation.valid, true)
@@ -67,7 +76,7 @@ test('classroom activity selector preserves declared family metadata', () => {
   assert.equal(selection.valid, true)
 })
 
-test('classroom activity render plan normalizes compact outputs for the pilot fixture', () => {
+test('classroom activity render plan normalizes compact outputs for the morphology fixture', () => {
   const activity = loadJson(repoPath('fixtures/activities/morphology-word-parts-prefix-corners.classroom-activity.json'))
   const result = normalizeActivityToRenderPlan(activity)
 
@@ -76,4 +85,14 @@ test('classroom activity render plan normalizes compact outputs for the pilot fi
   assert.equal(result.render_plan.outputs.length, 3)
   assert.ok(result.render_plan.outputs.every((output) => output.renderer_family === 'compact_activity_pdf'))
   assert.deepEqual(result.render_plan.outputs.map((output) => output.audience_bucket), ['teacher_only', 'shared_view', 'student_facing'])
+})
+
+test('classroom activity render plan normalizes compact outputs for the bridge fixture', () => {
+  const activity = loadJson(repoPath('fixtures/activities/bridge-chunk-to-meaning.classroom-activity.json'))
+  const result = normalizeActivityToRenderPlan(activity)
+
+  assert.equal(result.validation.valid, true)
+  assert.equal(result.render_plan.content_type, 'classroom_activity')
+  assert.equal(result.render_plan.outputs.length, 3)
+  assert.ok(result.render_plan.outputs.every((output) => output.renderer_family === 'compact_activity_pdf'))
 })
