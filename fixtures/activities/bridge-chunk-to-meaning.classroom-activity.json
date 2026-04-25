@@ -1,0 +1,123 @@
+{
+  "type": "classroom_activity",
+  "activity_id": "bridge_chunk_to_meaning_round_a",
+  "activity_family": "sort_and_defend",
+  "activity_subtype": "category_sort",
+  "title": "Bridge Round: Chunk to Meaning",
+  "strand": "bridge",
+  "skill_focus": ["decoding", "morphology", "meaning proof"],
+  "grade_band": "6-8",
+  "subject": "literacy_intervention",
+  "time_minutes": 10,
+  "delivery_tags": ["bridge", "station", "game", "teacher_led"],
+  "use_cases": ["activity_only", "lesson_extension", "intervention_station", "worksheet_companion"],
+  "difficulty_tier": "core",
+  "support_level": "medium_support",
+  "thinking_level": "analyze",
+  "materials": ["Prompt cards", "Sort headers"],
+  "setup": {
+    "prep_level": "low",
+    "room_setup": ["Display three headers: decode only, decode plus prove meaning, not enough evidence yet."],
+    "grouping": "small_group",
+    "reset_notes": ["Restack the cards by round."]
+  },
+  "teacher_script": {
+    "launch": [
+      "Read the word accurately first, then prove what it means.",
+      "A point does not count unless the group can defend the meaning signal."
+    ],
+    "between_rounds": [
+      "Sort it, then prove it.",
+      "Push past the first chunk you notice."
+    ],
+    "debrief": [
+      "Which item was easy to read but harder to prove?",
+      "Where did a word part help the most?"
+    ]
+  },
+  "student_directions": [
+    "Read the word or prompt accurately first.",
+    "Sort it under the best header and defend the choice with a meaning clue.",
+    "Revise if your proof does not hold."
+  ],
+  "round_structure": {
+    "round_count": 4,
+    "round_sequence": [
+      { "label": "Round 1", "item_ids": ["F5_S_01"], "teacher_move": "Start with a clean foundational confidence builder." },
+      { "label": "Round 2", "item_ids": ["F5_C_01"], "teacher_move": "Require decode plus prove, not decoding alone." },
+      { "label": "Round 3", "item_ids": ["P4_S_01"], "teacher_move": "Bridge into a familiar prefix round." },
+      { "label": "Round 4", "item_ids": ["P4_C_01"], "teacher_move": "Finish with a stronger academic word." }
+    ],
+    "debrief_questions": [
+      "Which rounds felt more like decoding?",
+      "Which rounds needed stronger meaning proof?"
+    ]
+  },
+  "response_set": {
+    "mode": "mixed",
+    "options": ["decode only", "decode plus prove meaning", "not enough evidence yet"]
+  },
+  "activity_bank_refs": ["F5_decode_then_prove_meaning", "P4_wrong_bad_false_against"],
+  "selected_item_ids": ["F5_S_01", "F5_C_01", "P4_S_01", "P4_C_01"],
+  "activity_bridge_pack_ref": "B1_chunk_to_meaning",
+  "competition_shell_ref": "build_and_prove",
+  "deployment_template_ref": "standard_bridge_round",
+  "variations": {
+    "whiteboard": {
+      "label": "Whiteboard bridge",
+      "notes": ["Students show the category and proof on whiteboards instead of sorting cards."],
+      "prompt_adjustments": ["Use one word at a time."]
+    },
+    "easier": {
+      "label": "Easier bridge",
+      "notes": ["Use only starter and core items.", "Model the first proof sentence."],
+      "prompt_adjustments": ["Keep the headers visible the whole time."]
+    },
+    "harder": {
+      "label": "Harder bridge",
+      "notes": ["Add one arguable or near-miss trap.", "Require a second example after each correct proof."],
+      "prompt_adjustments": ["Do not tell students which strand the item comes from."]
+    },
+    "worksheet_companion": {
+      "label": "Bridge recording strip",
+      "notes": ["Students record the word, the chosen header, and the proof signal after each round."],
+      "prompt_adjustments": ["Use after oral defense, not before."]
+    }
+  },
+  "extension_questions": [
+    "Which words were easy to read but harder to prove?",
+    "Which clue helped you most?"
+  ],
+  "exit_slip": {
+    "prompt": "Write one word from today and prove its meaning with a chunk or word-part clue.",
+    "response_lines": 2
+  },
+  "answer_key": [
+    "Round 1: decode plus prove meaning",
+    "Round 2: decode plus prove meaning",
+    "Round 3: decode plus prove meaning",
+    "Round 4: decode plus prove meaning"
+  ],
+  "teacher_notes": [
+    "This bridge only works if you insist on proof after the reading move.",
+    "Keep the transition from foundational to morphology visible in the debrief."
+  ],
+  "differentiation_notes": [
+    "Use the easier path when students still need visible category headers.",
+    "Use the harder path only when students are ready for borderline cases."
+  ],
+  "curricular_links": [
+    "This bridge links foundational word reading with morphology-based meaning work in Grade 6-8 literacy intervention."
+  ],
+  "render_hints": {
+    "teacher_card_style": "quick_teacher_card",
+    "student_surface_style": "compact_station_prompt",
+    "compactness": "tight"
+  },
+  "bank_index_tags": ["bridge", "foundational_to_morphology", "10_min", "core"],
+  "outputs": [
+    { "output_id": "activity_card_main", "output_type": "activity_card", "audience": "teacher", "source_section": "teacher_script" },
+    { "output_id": "station_card_main", "output_type": "station_card", "audience": "shared_view", "source_section": "student_directions" },
+    { "output_id": "worksheet_companion_main", "output_type": "worksheet_companion", "audience": "student", "source_section": "variations.worksheet_companion" }
+  ]
+}
