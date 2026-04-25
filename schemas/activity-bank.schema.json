@@ -32,7 +32,8 @@
     "core_notes",
     "stretch_notes",
     "answer_key_language",
-    "usage_notes"
+    "usage_notes",
+    "qc"
   ],
   "properties": {
     "type": { "type": "string", "const": "activity_bank" },
@@ -72,7 +73,41 @@
     "core_notes": { "type": "array", "items": { "type": "string", "minLength": 1 } },
     "stretch_notes": { "type": "array", "items": { "type": "string", "minLength": 1 } },
     "answer_key_language": { "type": "array", "items": { "type": "string", "minLength": 1 } },
-    "usage_notes": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+    "usage_notes": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "qc": {
+      "type": "object",
+      "required": ["gate_result", "rating_result", "final_bank_verdict"],
+      "properties": {
+        "gate_result": {
+          "type": "object",
+          "required": ["instructional_precision", "age_respect", "run_cold_reality", "game_worthiness", "content_depth"],
+          "properties": {
+            "instructional_precision": { "type": "boolean" },
+            "age_respect": { "type": "boolean" },
+            "run_cold_reality": { "type": "boolean" },
+            "game_worthiness": { "type": "boolean" },
+            "content_depth": { "type": "boolean" }
+          },
+          "additionalProperties": true
+        },
+        "rating_result": {
+          "type": "object",
+          "required": ["instructional_precision", "age_respect", "game_energy", "replay_value", "content_bank_depth", "implementation_reliability", "total"],
+          "properties": {
+            "instructional_precision": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "age_respect": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "game_energy": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "replay_value": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "content_bank_depth": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "implementation_reliability": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "total": { "type": "integer", "minimum": 6, "maximum": 30 }
+          },
+          "additionalProperties": true
+        },
+        "final_bank_verdict": { "type": "string", "enum": ["ready", "strong_needs_polish", "promising_not_stable", "rebuild"] }
+      },
+      "additionalProperties": true
+    }
   },
   "$defs": {
     "difficultyTag": { "type": "string", "enum": ["starter", "core", "stretch"] },
