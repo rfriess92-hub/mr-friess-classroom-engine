@@ -2,18 +2,37 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 
 import { getActivityFamilyDefinition, supportedOutputTypesForActivityFamily } from '../../engine/activity-family/family-registry.mjs'
+import {
+  getActivityBank,
+  getActivityBridgePack,
+  getCompetitionShell,
+  getDeploymentTemplate,
+} from '../../engine/activity-family/object-registry.mjs'
 import { selectActivityFamilyFromActivity } from '../../engine/activity-family/family-selector.mjs'
-import { validateClassroomActivity } from '../../engine/activity-family/preflight.mjs'
+import {
+  validateActivityBank,
+  validateActivityBridgePack,
+  validateClassroomActivity,
+  validateCompetitionShell,
+  validateDeploymentTemplate,
+} from '../../engine/activity-family/preflight.mjs'
 import { normalizeActivityToRenderPlan } from '../../engine/activity-family/render-plan.mjs'
 import { classifyContentRequest } from '../../engine/activity-family/request-router.mjs'
 import { loadJson, repoPath } from '../../scripts/lib.mjs'
 
-test('classroom activity registry exposes the morphology pilot family', () => {
-  const family = getActivityFamilyDefinition('morphology_word_parts')
+test('classroom activity registry exposes the wrong corner trap family', () => {
+  const family = getActivityFamilyDefinition('wrong_corner_trap')
 
-  assert.equal(family.family_id, 'morphology_word_parts')
+  assert.equal(family.family_id, 'wrong_corner_trap')
   assert.ok(family.supported_subtypes.includes('prefix_corners'))
-  assert.ok(supportedOutputTypesForActivityFamily('morphology_word_parts').includes('activity_card'))
+  assert.ok(supportedOutputTypesForActivityFamily('wrong_corner_trap').includes('activity_card'))
+})
+
+test('classroom activity object registry exposes bank, bridge, shell, and template objects', () => {
+  assert.equal(getActivityBank('P4_wrong_bad_false_against').bank_id, 'P4_wrong_bad_false_against')
+  assert.equal(getActivityBridgePack('B1_chunk_to_meaning').bridge_id, 'B1_chunk_to_meaning')
+  assert.equal(getCompetitionShell('build_and_prove').shell_id, 'build_and_prove')
+  assert.equal(getDeploymentTemplate('standard_bridge_round').template_id, 'standard_bridge_round')
 })
 
 test('classroom activity request router distinguishes activity, lesson, hybrid, and bank requests', () => {
@@ -23,7 +42,14 @@ test('classroom activity request router distinguishes activity, lesson, hybrid, 
   assert.equal(classifyContentRequest('Create a multi-day lesson on ecosystems.').route, 'lesson_only')
 })
 
-test('classroom activity fixture validates cleanly', () => {
+test('activity bank, bridge pack, shell, and deployment template validate cleanly', () => {
+  assert.equal(validateActivityBank(getActivityBank('P4_wrong_bad_false_against')).valid, true)
+  assert.equal(validateActivityBridgePack(getActivityBridgePack('B1_chunk_to_meaning')).valid, true)
+  assert.equal(validateCompetitionShell(getCompetitionShell('build_and_prove')).valid, true)
+  assert.equal(validateDeploymentTemplate(getDeploymentTemplate('standard_bridge_round')).valid, true)
+})
+
+test('classroom activity fixture validates cleanly against reusable object references', () => {
   const activity = loadJson(repoPath('fixtures/activities/morphology-word-parts-prefix-corners.classroom-activity.json'))
   const validation = validateClassroomActivity(activity)
 
@@ -35,7 +61,7 @@ test('classroom activity selector preserves declared family metadata', () => {
   const activity = loadJson(repoPath('fixtures/activities/morphology-word-parts-prefix-corners.classroom-activity.json'))
   const selection = selectActivityFamilyFromActivity(activity)
 
-  assert.equal(selection.activity_family, 'morphology_word_parts')
+  assert.equal(selection.activity_family, 'wrong_corner_trap')
   assert.equal(selection.activity_subtype, 'prefix_corners')
   assert.equal(selection.family_confidence, 'high')
   assert.equal(selection.valid, true)
