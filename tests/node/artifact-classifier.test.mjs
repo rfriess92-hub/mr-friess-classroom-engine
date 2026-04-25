@@ -32,6 +32,36 @@ const basePackage = {
     discussion_prompt: 'What is your position?',
     position_label: 'My position is...',
   },
+  rubric_sheet: {
+    title: 'Peer review rubric',
+    scale: {
+      min: 1,
+      max: 4,
+      labels: {
+        1: 'Needs work',
+        2: 'Developing',
+        3: 'Proficient',
+        4: 'Strong',
+      },
+    },
+    criteria: [
+      { name: 'Clear speaking', descriptor: 'The presenter spoke clearly.' },
+      { name: 'Evidence', descriptor: 'The presentation used supporting details.' },
+    ],
+    comment_fields: ['Strong point', 'One suggestion'],
+  },
+  station_cards: {
+    title: 'Outdoor challenge stations',
+    cards: [
+      { station_number: 1, title: 'Guess the career', prompt: 'I help patients in a clinic.', task: 'Write the career.' },
+    ],
+  },
+  answer_key: {
+    title: 'Challenge answer key',
+    entries: [
+      { artifact_ref: 'station_1', expected_answer: 'Nurse', teacher_note: 'Accept clinic nurse.' },
+    ],
+  },
   final_response_sheet: {
     prompt: 'Write your final response.',
     planning_reminders: ['Use evidence.'],
@@ -130,6 +160,27 @@ test('artifact classifier resolves discussion_prep_sheet to student_discussion_p
   const route = { route_id: 'discussion__discussion_prep_sheet', output_id: 'discussion', output_type: 'discussion_prep_sheet', renderer_family: 'pdf', audience: 'student', source_section: 'discussion_prep_sheet' }
   const trace = buildArtifactTrace(basePackage, route)
   assert.equal(trace.artifact_class, 'student_discussion_prep')
+  assert.equal(trace.fallback_reason, null)
+})
+
+test('artifact classifier resolves rubric_sheet to student_rubric_sheet', () => {
+  const route = { route_id: 'rubric__rubric_sheet', output_id: 'rubric', output_type: 'rubric_sheet', renderer_family: 'pdf', audience: 'student', source_section: 'rubric_sheet' }
+  const trace = buildArtifactTrace(basePackage, route)
+  assert.equal(trace.artifact_class, 'student_rubric_sheet')
+  assert.equal(trace.fallback_reason, null)
+})
+
+test('artifact classifier resolves station_cards to student_station_cards', () => {
+  const route = { route_id: 'stations__station_cards', output_id: 'stations', output_type: 'station_cards', renderer_family: 'pdf', audience: 'student', source_section: 'station_cards' }
+  const trace = buildArtifactTrace(basePackage, route)
+  assert.equal(trace.artifact_class, 'student_station_cards')
+  assert.equal(trace.fallback_reason, null)
+})
+
+test('artifact classifier resolves answer_key to teacher_answer_key', () => {
+  const route = { route_id: 'answer_key__answer_key', output_id: 'answer_key', output_type: 'answer_key', renderer_family: 'pdf', audience: 'teacher', source_section: 'answer_key' }
+  const trace = buildArtifactTrace(basePackage, route)
+  assert.equal(trace.artifact_class, 'teacher_answer_key')
   assert.equal(trace.fallback_reason, null)
 })
 

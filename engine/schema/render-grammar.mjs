@@ -12,6 +12,20 @@ export const ARTIFACT_FAMILIES = [
   'final_response_sheet',
   'graphic_organizer',
   'discussion_prep_sheet',
+  'rubric_sheet',
+  'station_cards',
+  'answer_key',
+  'pacing_guide',
+  'sub_plan',
+  'makeup_packet',
+  'assessment',
+  'quiz',
+  'rubric',
+  'formative_check',
+  'warm_up',
+  'vocabulary_card',
+  'observation_grid',
+  'lesson_reflection',
 ]
 
 export const RENDER_INTENTS = [
@@ -25,6 +39,9 @@ export const RENDER_INTENTS = [
   'final_evidence',
   'reflection_closure',
   'operational_reference',
+  'evaluate_or_feedback',
+  'rotation_prompt',
+  'reference_key',
 ]
 
 export const EVIDENCE_ROLES = [
@@ -96,6 +113,9 @@ function inferRenderIntent(outputType, output, sourceSection) {
   if (output?.final_evidence === true || outputType === 'final_response_sheet') return 'final_evidence'
   if (outputType === 'checkpoint_sheet') return 'checkpoint_prep'
   if (outputType === 'exit_ticket') return 'reflection_closure'
+  if (outputType === 'rubric_sheet') return 'evaluate_or_feedback'
+  if (outputType === 'station_cards') return 'rotation_prompt'
+  if (outputType === 'answer_key') return 'reference_key'
   if (outputType === 'teacher_guide' || outputType === 'lesson_overview') return 'operational_reference'
   if (outputType === 'graphic_organizer') return 'compare_sort'
   if (outputType === 'discussion_prep_sheet') return 'exploratory_planning'
@@ -150,6 +170,7 @@ function inferEvidenceRole(renderIntent, output) {
 
 function inferAssessmentWeight(outputType, output) {
   if (output?.final_evidence === true || outputType === 'final_response_sheet') return 'high'
+  if (outputType === 'rubric_sheet') return 'standard'
   if (outputType === 'checkpoint_sheet') return 'standard'
   if (outputType === 'task_sheet' || outputType === 'worksheet') return 'standard'
   return 'light'
@@ -158,6 +179,8 @@ function inferAssessmentWeight(outputType, output) {
 function inferDensity(outputType, sourceSection) {
   if (outputType === 'lesson_overview' || outputType === 'teacher_guide') return 'heavy'
   if (outputType === 'slides' || outputType === 'exit_ticket') return 'light'
+  if (outputType === 'answer_key') return 'light'
+  if (outputType === 'station_cards' || outputType === 'rubric_sheet') return 'medium'
   if (outputType === 'graphic_organizer' || outputType === 'discussion_prep_sheet') return 'medium'
 
   const taskCount = safeArray(sourceSection?.tasks).length
@@ -172,6 +195,20 @@ function inferDensity(outputType, sourceSection) {
 
 function inferLengthBand(outputType, sourceSection) {
   if (outputType === 'exit_ticket') return 'short'
+  if (outputType === 'station_cards') {
+    const cardCount = safeArray(sourceSection?.cards).length
+    if (cardCount >= 7) return 'extended'
+    if (cardCount >= 4) return 'standard'
+    return 'short'
+  }
+  if (outputType === 'answer_key') {
+    const entryCount = safeArray(sourceSection?.entries).length
+    return entryCount >= 6 ? 'standard' : 'short'
+  }
+  if (outputType === 'rubric_sheet') {
+    const criteriaCount = safeArray(sourceSection?.criteria).length
+    return criteriaCount >= 5 ? 'extended' : 'standard'
+  }
   if (outputType === 'slides') {
     const slideCount = safeArray(sourceSection).length
     if (slideCount >= 8) return 'extended'

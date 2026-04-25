@@ -9,6 +9,9 @@ test('html renderer supports the intended student-facing PDF output types', () =
   assert.equal(supportsHtmlRender('exit_ticket'), true)
   assert.equal(supportsHtmlRender('discussion_prep_sheet'), true)
   assert.equal(supportsHtmlRender('worksheet'), true)
+  assert.equal(supportsHtmlRender('rubric_sheet'), true)
+  assert.equal(supportsHtmlRender('station_cards'), true)
+  assert.equal(supportsHtmlRender('answer_key'), true)
 })
 
 test('html renderer does not claim teacher-facing or unsupported doc types', () => {

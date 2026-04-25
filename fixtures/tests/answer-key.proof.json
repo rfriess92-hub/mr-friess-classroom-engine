@@ -1,0 +1,53 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "answer_key_proof",
+  "primary_architecture": "single_period_full",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Career challenge key",
+  "theme": "careers",
+  "answer_key": {
+    "title": "Career Challenge Answer Key",
+    "entries": [
+      {
+        "artifact_ref": "station_1",
+        "expected_answer": "Nurse",
+        "acceptable_variants": [],
+        "teacher_note": "Accept equivalent nursing roles only if the clues still fit."
+      },
+      {
+        "artifact_ref": "station_2",
+        "expected_answer": "Dental assistant",
+        "acceptable_variants": [
+          "Dental hygienist"
+        ],
+        "teacher_note": "Accept hygienist if students justify the close-attention clue."
+      },
+      {
+        "artifact_ref": "station_3",
+        "expected_answer": "Surveyor",
+        "acceptable_variants": [],
+        "teacher_note": "Do not accept architect here; the outside measurement clue matters."
+      }
+    ],
+    "scoring_guidance": [
+      "1 point per correctly completed station.",
+      "Use teacher notes when a student gives a close but not exact answer."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "answer_key_proof_bundle",
+    "declared_outputs": [
+      "answer_key"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "answer_key_main",
+      "output_type": "answer_key",
+      "audience": "teacher",
+      "source_section": "answer_key",
+      "bundle": "answer_key_proof_bundle"
+    }
+  ]
+}

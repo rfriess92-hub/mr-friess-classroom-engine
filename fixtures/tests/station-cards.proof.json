@@ -1,0 +1,71 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "station_cards_proof",
+  "primary_architecture": "station_rotation",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Outdoor career challenge",
+  "theme": "careers",
+  "station_cards": {
+    "title": "Outdoor Career Challenge Stations",
+    "instructions": [
+      "Work in pairs or groups of 3.",
+      "Move safely.",
+      "Complete as many stations as you can."
+    ],
+    "cards": [
+      {
+        "station_number": 1,
+        "title": "Guess the career",
+        "prompt": "I work with patients. I need strong communication skills. I may work in a hospital or clinic.",
+        "task": "Write the career.",
+        "response_mode": "short_answer",
+        "answer_key": "Nurse"
+      },
+      {
+        "station_number": 2,
+        "title": "Spot the strength",
+        "prompt": "This job often needs patience, close attention, and steady hands.",
+        "task": "Name one career that fits those strengths.",
+        "response_mode": "short_answer",
+        "answer_key": "Dental assistant"
+      },
+      {
+        "station_number": 3,
+        "title": "Match the setting",
+        "prompt": "This person may work outside, measure land, and help plan what gets built.",
+        "task": "Write the career.",
+        "response_mode": "short_answer",
+        "answer_key": "Surveyor"
+      },
+      {
+        "station_number": 4,
+        "title": "Follow the clues",
+        "prompt": "This person explains ideas clearly and helps others learn new skills.",
+        "task": "Write the career.",
+        "response_mode": "short_answer",
+        "answer_key": "Teacher"
+      }
+    ],
+    "print_layout": {
+      "cards_per_page": 4,
+      "show_station_number": true,
+      "cut_guides": true
+    }
+  },
+  "bundle": {
+    "bundle_id": "station_cards_proof_bundle",
+    "declared_outputs": [
+      "station_cards"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "station_cards_main",
+      "output_type": "station_cards",
+      "audience": "student",
+      "source_section": "station_cards",
+      "bundle": "station_cards_proof_bundle"
+    }
+  ]
+}

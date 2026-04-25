@@ -34,6 +34,10 @@ export const FIXTURE_MAP = {
   pbg_workplace_math10: 'fixtures/plan-build-grow/pbg_workplace_math10.json',
   seminar_proof: 'fixtures/tests/seminar-discussion-prep.proof.json',
   station_rotation_proof: 'fixtures/tests/station-rotation-graphic-organizer.proof.json',
+  rubric_sheet_proof: 'fixtures/tests/rubric-sheet.proof.json',
+  station_cards_proof: 'fixtures/tests/station-cards.proof.json',
+  answer_key_proof: 'fixtures/tests/answer-key.proof.json',
+  station_rotation_faithful_proof: 'fixtures/tests/station-rotation-rubric-cards-answer-key.proof.json',
   task_sheet_patterns: 'fixtures/tests/task-sheet-response-patterns.workshop-session.json',
 }
 

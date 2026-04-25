@@ -53,6 +53,18 @@ function discussionPrepSignals(section) {
   return hasObject(section) && (typeof section.discussion_prompt === 'string' || typeof section.position_label === 'string')
 }
 
+function rubricSheetSignals(section) {
+  return hasObject(section) && Array.isArray(section.criteria) && section.criteria.length > 0
+}
+
+function stationCardsSignals(section) {
+  return hasObject(section) && Array.isArray(section.cards) && section.cards.length > 0
+}
+
+function answerKeySignals(section) {
+  return hasObject(section) && Array.isArray(section.entries) && section.entries.length > 0
+}
+
 function finalResponseSignals(section) {
   return hasObject(section) && typeof section.prompt === 'string'
 }
@@ -166,6 +178,45 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
       classification_confidence: 0.92,
       fallback_reason: null,
       classifier_basis: ['output_type:discussion_prep_sheet', 'section discussion_prompt/position_label present'],
+      package_contract_family: null,
+      package_system_role: null,
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? null,
+    }
+  }
+
+  if (outputType === 'rubric_sheet' && rubricSheetSignals(section)) {
+    return {
+      artifact_class: route.audience === 'teacher' ? 'teacher_rubric_sheet' : 'student_rubric_sheet',
+      classification_confidence: 0.94,
+      fallback_reason: null,
+      classifier_basis: ['output_type:rubric_sheet', 'section.criteria present'],
+      package_contract_family: null,
+      package_system_role: null,
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? null,
+    }
+  }
+
+  if (outputType === 'station_cards' && stationCardsSignals(section)) {
+    return {
+      artifact_class: 'student_station_cards',
+      classification_confidence: 0.95,
+      fallback_reason: null,
+      classifier_basis: ['output_type:station_cards', 'section.cards present'],
+      package_contract_family: null,
+      package_system_role: null,
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? null,
+    }
+  }
+
+  if (outputType === 'answer_key' && answerKeySignals(section)) {
+    return {
+      artifact_class: 'teacher_answer_key',
+      classification_confidence: 0.95,
+      fallback_reason: null,
+      classifier_basis: ['output_type:answer_key', 'section.entries present'],
       package_contract_family: null,
       package_system_role: null,
       page_roles: null,

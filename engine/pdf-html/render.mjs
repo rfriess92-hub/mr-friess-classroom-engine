@@ -7,6 +7,9 @@ import { buildFinalResponseSheetHTML } from './templates/final-response-sheet.mj
 import { buildExitTicketHTML } from './templates/exit-ticket.mjs'
 import { buildDiscussionPrepSheetHTML } from './templates/discussion-prep-sheet.mjs'
 import { buildWorksheetHTML } from './templates/worksheet.mjs'
+import { buildRubricSheetHTML } from './templates/rubric-sheet.mjs'
+import { buildStationCardsHTML } from './templates/station-cards.mjs'
+import { buildAnswerKeyHTML } from './templates/answer-key.mjs'
 import { buildPacingGuideHTML } from './templates/pacing-guide.mjs'
 import { buildSubPlanHTML } from './templates/sub-plan.mjs'
 import { buildMakeupPacketHTML } from './templates/makeup-packet.mjs'
@@ -17,6 +20,9 @@ const TEMPLATE_MAP = {
   exit_ticket: buildExitTicketHTML,
   discussion_prep_sheet: buildDiscussionPrepSheetHTML,
   worksheet: buildWorksheetHTML,
+  rubric_sheet: buildRubricSheetHTML,
+  station_cards: buildStationCardsHTML,
+  answer_key: buildAnswerKeyHTML,
   pacing_guide: buildPacingGuideHTML,
   sub_plan: buildSubPlanHTML,
   makeup_packet: buildMakeupPacketHTML,

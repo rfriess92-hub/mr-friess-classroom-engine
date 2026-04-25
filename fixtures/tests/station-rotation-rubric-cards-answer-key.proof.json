@@ -1,0 +1,268 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "station_rotation_rubric_cards_answer_key_proof",
+  "primary_architecture": "station_rotation",
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Career pathways presentation and station challenge",
+  "theme": "careers",
+  "teacher_guide": {
+    "big_idea": "Students can build career awareness by listening to classmates, rotating through short challenges, and giving structured feedback.",
+    "learning_goals": [
+      "I can listen for useful career details in a presentation.",
+      "I can use station clues to identify or compare career options.",
+      "I can give respectful feedback that matches my ratings."
+    ],
+    "materials": [
+      "slides",
+      "peer-review rubric",
+      "station cards",
+      "team organizer",
+      "answer key",
+      "exit ticket"
+    ],
+    "timing": [
+      { "time": "0:00-0:08", "activity": "Set the challenge and review rotation routines." },
+      { "time": "0:08-0:25", "activity": "Short presentation share and peer rubric notes." },
+      { "time": "0:25-0:48", "activity": "Outdoor or hallway station challenge." },
+      { "time": "0:48-0:58", "activity": "Debrief patterns and complete exit ticket." }
+    ],
+    "teacher_notes": [
+      "Keep the rubric focused on listening quality and respectful feedback, not polished speaking alone.",
+      "Use the answer key as a quick reference during the station rotation instead of stopping the flow for every close answer."
+    ]
+  },
+  "slides": [
+    {
+      "type": "TITLE",
+      "title": "Career Pathways Challenge",
+      "layout": "hero",
+      "content": {
+        "subtitle": "Listen, rotate, solve, and give useful feedback."
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "How today works",
+      "layout": "three_rows",
+      "content": {
+        "rows": [
+          "Use the peer-review rubric while you listen to one presentation.",
+          "Move through the station cards and record strong answers in your organizer.",
+          "Use the exit ticket to name one career clue pattern you noticed."
+        ]
+      }
+    }
+  ],
+  "rubric_sheet": {
+    "title": "Career Presentation Peer Review",
+    "purpose_line": "Use fair, respectful, and specific feedback.",
+    "scale": {
+      "min": 1,
+      "max": 4,
+      "labels": {
+        "1": "Needs improvement",
+        "2": "Developing",
+        "3": "Proficient",
+        "4": "Strong"
+      }
+    },
+    "criteria": [
+      {
+        "name": "Clear speaking",
+        "descriptor": "The presenter spoke clearly enough for the audience to understand."
+      },
+      {
+        "name": "Organization",
+        "descriptor": "The presentation was organized and easy to follow."
+      },
+      {
+        "name": "Useful details",
+        "descriptor": "Specific details helped the audience learn about the career."
+      }
+    ],
+    "comment_fields": [
+      "Strong point",
+      "One suggestion for improvement",
+      "One thing I learned"
+    ],
+    "repeat_for_subjects": 3,
+    "subject_label": "Presenter",
+    "include_signature_line": true,
+    "success_criteria": [
+      "I gave fair and respectful feedback.",
+      "My comments matched my ratings."
+    ]
+  },
+  "station_cards": {
+    "title": "Outdoor Career Challenge Stations",
+    "instructions": [
+      "Work in pairs or groups of 3.",
+      "Move safely.",
+      "Complete as many stations as you can."
+    ],
+    "cards": [
+      {
+        "station_number": 1,
+        "title": "Guess the career",
+        "prompt": "I work with patients. I need strong communication skills. I may work in a hospital or clinic.",
+        "task": "Write the career.",
+        "response_mode": "short_answer",
+        "answer_key": "Nurse",
+        "teacher_note": "Confidence-building opener."
+      },
+      {
+        "station_number": 2,
+        "title": "Name the strength match",
+        "prompt": "This job often needs patience, close attention, and steady hands.",
+        "task": "Write one career that matches those strengths.",
+        "response_mode": "short_answer",
+        "answer_key": "Dental assistant",
+        "teacher_note": "Good chance to talk about more than one acceptable answer."
+      },
+      {
+        "station_number": 3,
+        "title": "Where might they work?",
+        "prompt": "This person may work outside, measure land, and help plan what gets built.",
+        "task": "Write the career.",
+        "response_mode": "short_answer",
+        "answer_key": "Surveyor",
+        "teacher_note": "Push students to use the clue, not just guess a building job."
+      },
+      {
+        "station_number": 4,
+        "title": "Follow the clues",
+        "prompt": "This person explains ideas clearly and helps others learn new skills.",
+        "task": "Write the career.",
+        "response_mode": "short_answer",
+        "answer_key": "Teacher",
+        "teacher_note": "Useful closer before the debrief."
+      }
+    ],
+    "print_layout": {
+      "cards_per_page": 4,
+      "show_station_number": true,
+      "cut_guides": true
+    }
+  },
+  "graphic_organizer": {
+    "title": "Career Challenge Organizer",
+    "organizer_type": "three_column",
+    "columns": ["Station", "Best answer", "Clue that helped"],
+    "rows": 4,
+    "prompt": "Use this organizer to keep the strongest answer and the clue that helped your team decide.",
+    "success_criteria": [
+      "I recorded the best answer and the clue that helped us decide."
+    ]
+  },
+  "answer_key": {
+    "title": "Career Challenge Answer Key",
+    "entries": [
+      {
+        "artifact_ref": "station_1",
+        "expected_answer": "Nurse",
+        "acceptable_variants": [],
+        "teacher_note": "Accept equivalent nursing roles only if the clues still fit."
+      },
+      {
+        "artifact_ref": "station_2",
+        "expected_answer": "Dental assistant",
+        "acceptable_variants": [
+          "Dental hygienist"
+        ],
+        "teacher_note": "Accept hygienist if students justify the close-attention clue."
+      },
+      {
+        "artifact_ref": "station_3",
+        "expected_answer": "Surveyor",
+        "acceptable_variants": [],
+        "teacher_note": "Do not accept architect here; the outside measurement clue matters."
+      },
+      {
+        "artifact_ref": "station_4",
+        "expected_answer": "Teacher",
+        "acceptable_variants": [
+          "Tutor"
+        ],
+        "teacher_note": "Accept tutor only if students explain the teaching clue clearly."
+      }
+    ],
+    "scoring_guidance": [
+      "1 point per correctly completed station.",
+      "Use teacher notes when a student gives a close but not exact answer."
+    ]
+  },
+  "exit_ticket": {
+    "title": "Exit Ticket",
+    "prompt": "What is one clue pattern you noticed across the station cards, and how did it help your team decide?",
+    "n_lines": 3,
+    "success_criteria": [
+      "I named one pattern and explained how it helped."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "station_rotation_rubric_cards_answer_key_proof_bundle",
+    "declared_outputs": [
+      "teacher_guide",
+      "slides",
+      "rubric_sheet",
+      "station_cards",
+      "graphic_organizer",
+      "answer_key",
+      "exit_ticket"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "teacher_guide_main",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "station_rotation_rubric_cards_answer_key_proof_bundle"
+    },
+    {
+      "output_id": "slides_main",
+      "output_type": "slides",
+      "audience": "shared_view",
+      "source_section": "slides",
+      "bundle": "station_rotation_rubric_cards_answer_key_proof_bundle"
+    },
+    {
+      "output_id": "rubric_sheet_main",
+      "output_type": "rubric_sheet",
+      "audience": "student",
+      "source_section": "rubric_sheet",
+      "bundle": "station_rotation_rubric_cards_answer_key_proof_bundle"
+    },
+    {
+      "output_id": "station_cards_main",
+      "output_type": "station_cards",
+      "audience": "student",
+      "source_section": "station_cards",
+      "bundle": "station_rotation_rubric_cards_answer_key_proof_bundle"
+    },
+    {
+      "output_id": "graphic_organizer_main",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "graphic_organizer",
+      "bundle": "station_rotation_rubric_cards_answer_key_proof_bundle"
+    },
+    {
+      "output_id": "answer_key_main",
+      "output_type": "answer_key",
+      "audience": "teacher",
+      "source_section": "answer_key",
+      "bundle": "station_rotation_rubric_cards_answer_key_proof_bundle"
+    },
+    {
+      "output_id": "exit_ticket_main",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "exit_ticket",
+      "bundle": "station_rotation_rubric_cards_answer_key_proof_bundle",
+      "final_evidence": true
+    }
+  ]
+}

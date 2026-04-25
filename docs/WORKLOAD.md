@@ -87,6 +87,18 @@ Careers 8 validator is the model. Wire all into `qa-bundle` and add smoke tests.
 - [ ] Math 8 validator + tests — Codex
 - [ ] WM10 validator + tests — Codex
 
+### B0b — Docs Grade-Band Contracts `QUEUED — canon rule`
+Publish the normalized docs-first contract set under `docs/grade-band-contracts/` as its own canon-rule PR.
+This is documentation only and should not be mixed with content cleanup, renderer edits, fixture rewrites, or QA-gate implementation.
+
+- [ ] `docs/grade-band-contracts/README.md`
+- [ ] `docs/grade-band-contracts/careers-8.md`
+- [ ] `docs/grade-band-contracts/english-10.md`
+- [ ] `docs/grade-band-contracts/english-11.md`
+- [ ] `docs/grade-band-contracts/english-12.md`
+- [ ] `docs/grade-band-contracts/math-8.md`
+- [ ] `docs/grade-band-contracts/workplace-math-10.md`
+
 ### B1 — Artifact-Role Cleanup `QUEUED`
 After B0.
 

@@ -4,8 +4,8 @@ import {
   REQUIRED_PACKAGE_FIELDS,
   SUPPORTED_SLIDE_LAYOUTS,
   SUPPORTED_THEMES,
+  allowedAudiencesForOutputType,
   allowedOutputTypesForArchitecture,
-  expectedAudienceForOutputType,
   isCanonicalOutputType,
   isSupportedSlideLayout,
   isSupportedTheme,
@@ -244,9 +244,9 @@ export function validatePackage(pkg) {
     } else if (!isValidAudience(audience)) {
       pushIssue(errors, 'invalid_audience', `Invalid audience value: ${audience}. Expected one of ${AUDIENCES.join(', ')}.`, `${entry.path}.audience`)
     } else {
-      const expectedAudience = expectedAudienceForOutputType(outputType)
-      if (expectedAudience && audience !== expectedAudience) {
-        pushIssue(errors, 'audience_output_mismatch', `${outputType} must use audience=${expectedAudience}, received ${audience}.`, `${entry.path}.audience`)
+      const allowedAudiences = allowedAudiencesForOutputType(outputType)
+      if (Array.isArray(allowedAudiences) && !allowedAudiences.includes(audience)) {
+        pushIssue(errors, 'audience_output_mismatch', `${outputType} must use one of ${allowedAudiences.join(', ')}, received ${audience}.`, `${entry.path}.audience`)
       }
     }
 
