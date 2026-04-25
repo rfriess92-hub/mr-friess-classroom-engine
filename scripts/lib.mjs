@@ -39,6 +39,7 @@ export const FIXTURE_MAP = {
 
 export const ACTIVITY_FIXTURE_MAP = {
   morphology_prefix_corners: 'fixtures/activities/morphology-word-parts-prefix-corners.classroom-activity.json',
+  bridge_chunk_to_meaning: 'fixtures/activities/bridge-chunk-to-meaning.classroom-activity.json',
 }
 
 export function ensureExists(path, label = path) {
