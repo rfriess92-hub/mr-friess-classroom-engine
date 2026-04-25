@@ -150,6 +150,14 @@ function logTrace(trace) {
 
 const DOC_OUTPUT_TYPES = new Set(['teacher_guide', 'lesson_overview', 'worksheet', 'task_sheet', 'checkpoint_sheet', 'exit_ticket', 'final_response_sheet', 'graphic_organizer', 'discussion_prep_sheet'])
 
+// Output types that exist in schema/vocabulary but have no render implementation yet.
+// Declaring these in a package fails loudly rather than silently skipping.
+const KNOWN_UNIMPLEMENTED_TYPES = new Set([
+  'assessment', 'quiz',          // A1 — queued
+  'rubric', 'formative_check',   // A2 — queued
+  'warm_up', 'vocabulary_card', 'observation_grid', 'lesson_reflection', // A3 — queued
+])
+
 const packageArg = argValue('--package')
 const fixtureArg = argValue('--fixture')
 const outArg = argValue('--out') ?? 'output'
@@ -246,6 +254,11 @@ for (const route of routes) {
   }
 
   if (trace.mode === 'doc_mode') {
+    if (KNOWN_UNIMPLEMENTED_TYPES.has(route.output_type)) {
+      console.error(`Output type '${route.output_type}' is declared in the package but has no render implementation yet.`)
+      console.error(`Route ${route.route_id} cannot produce an artifact. Remove this output type or wait for its template to be implemented.`)
+      process.exit(1)
+    }
     if (supportsHtmlRender(route.output_type)) {
       htmlRoutes.push(route)
       continue

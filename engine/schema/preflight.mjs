@@ -18,7 +18,7 @@ function pushIssue(collection, code, message, path = null) {
   collection.push({ code, message, path })
 }
 
-const VARIANT_ROLES = new Set(['shared_core', 'core', 'supported', 'extension'])
+const VARIANT_ROLES = new Set(['shared_core', 'scaffolded', 'core', 'supported', 'extension'])
 
 function collectOutputEntries(pkg) {
   const entries = []
