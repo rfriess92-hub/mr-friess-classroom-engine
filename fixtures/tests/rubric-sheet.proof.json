@@ -1,0 +1,64 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "rubric_sheet_proof",
+  "primary_architecture": "single_period_full",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Presentation peer feedback",
+  "theme": "careers",
+  "rubric_sheet": {
+    "title": "Career Presentation Peer Review",
+    "purpose_line": "Use fair, respectful, and specific feedback.",
+    "scale": {
+      "min": 1,
+      "max": 4,
+      "labels": {
+        "1": "Needs improvement",
+        "2": "Developing",
+        "3": "Proficient",
+        "4": "Strong"
+      }
+    },
+    "criteria": [
+      {
+        "name": "Clear speaking",
+        "descriptor": "The presenter spoke clearly enough for the audience to follow."
+      },
+      {
+        "name": "Organization",
+        "descriptor": "The presentation was organized and easy to follow."
+      },
+      {
+        "name": "Evidence",
+        "descriptor": "Examples or details helped the audience understand the point."
+      }
+    ],
+    "comment_fields": [
+      "Strong point",
+      "One suggestion for improvement",
+      "One thing I learned"
+    ],
+    "repeat_for_subjects": 2,
+    "subject_label": "Presenter",
+    "include_signature_line": true,
+    "success_criteria": [
+      "I gave fair and respectful feedback.",
+      "My comments matched my ratings."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "rubric_sheet_proof_bundle",
+    "declared_outputs": [
+      "rubric_sheet"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "rubric_sheet_main",
+      "output_type": "rubric_sheet",
+      "audience": "student",
+      "source_section": "rubric_sheet",
+      "bundle": "rubric_sheet_proof_bundle"
+    }
+  ]
+}

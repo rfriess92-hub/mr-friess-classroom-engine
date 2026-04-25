@@ -131,6 +131,36 @@ export function resolveTemplateRoute(trace) {
     }
   }
 
+  if (['student_rubric_sheet', 'teacher_rubric_sheet'].includes(trace?.artifact_class)) {
+    return {
+      template_family: 'RUBRIC_SHEET',
+      template_sequence: ['RS_MATRIX_FEEDBACK'],
+      selected_template: 'RS_MATRIX_FEEDBACK',
+      rejected_templates: [],
+      template_reason: 'rubric_sheet routes through a rubric-specific matrix and feedback layout.',
+    }
+  }
+
+  if (trace?.artifact_class === 'student_station_cards') {
+    return {
+      template_family: 'STATION_CARDS',
+      template_sequence: ['SC_CARD_GRID'],
+      selected_template: 'SC_CARD_GRID',
+      rejected_templates: [],
+      template_reason: 'station_cards routes through a card-grid layout for posting and rotation use.',
+    }
+  }
+
+  if (trace?.artifact_class === 'teacher_answer_key') {
+    return {
+      template_family: 'ANSWER_KEY_REFERENCE',
+      template_sequence: ['AK_REFERENCE_TABLE'],
+      selected_template: 'AK_REFERENCE_TABLE',
+      rejected_templates: [],
+      template_reason: 'answer_key routes through a compact teacher-facing reference table.',
+    }
+  }
+
   return {
     template_family: 'GENERIC_FLOW',
     template_sequence: ['GENERIC_FLOW'],

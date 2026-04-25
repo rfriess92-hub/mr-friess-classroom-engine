@@ -28,6 +28,9 @@ export function inferAudienceBucket(name) {
   if (stem.includes('teacher_guide') || stem.includes('lesson_overview') || stem.includes('checkpoint_sheet')) {
     return 'teacher_only'
   }
+  if (stem.includes('answer_key')) {
+    return 'teacher_only'
+  }
   if (
     stem.includes('worksheet')
     || stem.includes('task_sheet')
@@ -35,6 +38,8 @@ export function inferAudienceBucket(name) {
     || stem.includes('exit_ticket')
     || stem.includes('graphic_organizer')
     || stem.includes('discussion_prep_sheet')
+    || stem.includes('rubric_sheet')
+    || stem.includes('station_cards')
   ) {
     return 'student_facing'
   }
@@ -57,6 +62,9 @@ export function expectedArtifactTypeFromName(name) {
     || stem.includes('exit_ticket')
     || stem.includes('graphic_organizer')
     || stem.includes('discussion_prep_sheet')
+    || stem.includes('rubric_sheet')
+    || stem.includes('station_cards')
+    || stem.includes('answer_key')
   ) {
     return 'pdf'
   }
@@ -257,6 +265,9 @@ export function expectedPdfIdentityPhrase(artifactName) {
   if (stem.includes('final_response_sheet')) return 'final response sheet'
   if (stem.includes('graphic_organizer')) return 'graphic organizer'
   if (stem.includes('discussion_prep_sheet')) return 'discussion prep'
+  if (stem.includes('rubric_sheet')) return 'rubric sheet'
+  if (stem.includes('station_cards')) return 'station cards'
+  if (stem.includes('answer_key')) return 'answer key'
   if (stem.includes('worksheet')) return 'worksheet'
   if (stem.includes('exit_ticket')) return 'exit ticket'
   return null

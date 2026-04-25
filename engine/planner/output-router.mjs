@@ -23,6 +23,12 @@ function rendererKeyFor(outputType) {
       return 'render_graphic_organizer'
     case 'discussion_prep_sheet':
       return 'render_discussion_prep_sheet'
+    case 'rubric_sheet':
+      return 'render_rubric_sheet'
+    case 'station_cards':
+      return 'render_station_cards'
+    case 'answer_key':
+      return 'render_answer_key'
     case 'pacing_guide':
       return 'render_pacing_guide'
     case 'sub_plan':
@@ -63,6 +69,9 @@ function rendererFamilyFor(outputType) {
     case 'final_response_sheet':
     case 'graphic_organizer':
     case 'discussion_prep_sheet':
+    case 'rubric_sheet':
+    case 'station_cards':
+    case 'answer_key':
     case 'pacing_guide':
     case 'sub_plan':
     case 'makeup_packet':

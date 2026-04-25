@@ -56,3 +56,18 @@ test('template router maps week-sequence packet system artifacts to explicit tem
   assert.equal(finalResponse.template_family, 'WEEK_SEQUENCE_FINAL_RESPONSE')
   assert.equal(finalResponse.selected_template, 'WSF_SINGLE_EVIDENCE')
 })
+
+test('template router gives pedagogy-faithful artifact classes explicit template families', () => {
+  const rubric = resolveTemplateRoute({ artifact_class: 'student_rubric_sheet', page_roles: [] })
+  const stationCards = resolveTemplateRoute({ artifact_class: 'student_station_cards', page_roles: [] })
+  const answerKey = resolveTemplateRoute({ artifact_class: 'teacher_answer_key', page_roles: [] })
+
+  assert.equal(rubric.template_family, 'RUBRIC_SHEET')
+  assert.equal(rubric.selected_template, 'RS_MATRIX_FEEDBACK')
+
+  assert.equal(stationCards.template_family, 'STATION_CARDS')
+  assert.equal(stationCards.selected_template, 'SC_CARD_GRID')
+
+  assert.equal(answerKey.template_family, 'ANSWER_KEY_REFERENCE')
+  assert.equal(answerKey.selected_template, 'AK_REFERENCE_TABLE')
+})

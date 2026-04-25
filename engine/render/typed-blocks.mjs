@@ -16,6 +16,13 @@ export const ALLOWED_BLOCK_TYPES = new Set([
   'differentiation_section',
   'exemplar',
   'quick_tool',
+  'rating_legend',
+  'rubric_matrix',
+  'comment_box_group',
+  'card_set',
+  'station_card',
+  'answer_key_table',
+  'scoring_guidance',
   'image',
   'caption',
   'footer_meta',
@@ -233,6 +240,134 @@ function buildDiscussionPrepBlocks(route, section) {
   return blocks
 }
 
+function buildRubricSheetBlocks(route, section) {
+  const blocks = []
+  pushTextBlock(blocks, route, 'title', section.title, { priority: 'high', source_key: 'title' })
+  pushTextBlock(blocks, route, 'intro', section.purpose_line, { priority: 'high', source_key: 'purpose_line' })
+
+  if (isObject(section.scale)) {
+    const scaleLabels = Object.entries(section.scale.labels ?? {})
+      .sort(([left], [right]) => Number(left) - Number(right))
+      .map(([score, label]) => `${score}: ${label}`)
+    pushListBlock(blocks, route, 'rating_legend', scaleLabels, {
+      priority: 'high',
+      source_key: 'scale',
+      label: 'scale',
+    })
+  }
+
+  const repeatCount = Math.max(1, Number(section.repeat_for_subjects ?? 1))
+  const subjectLabel = String(section.subject_label ?? 'Subject').trim() || 'Subject'
+  for (let index = 0; index < repeatCount; index += 1) {
+    blocks.push(makeBlock(route, 'rubric_matrix', {
+      priority: 'high',
+      source_key: `criteria.${index + 1}`,
+      label: `${subjectLabel} ${index + 1}`,
+      estimated_lines: Math.max(4, Number(section.criteria?.length ?? 1) + 2),
+    }))
+  }
+
+  pushListBlock(blocks, route, 'comment_box_group', section.comment_fields, {
+    priority: 'normal',
+    source_key: 'comment_fields',
+    label: 'comment_fields',
+    estimated_lines: Math.max(3, estimateLinesForList(section.comment_fields, 48) + 2),
+  })
+
+  if (section.include_signature_line) {
+    blocks.push(makeBlock(route, 'response_area', {
+      priority: 'support',
+      source_key: 'include_signature_line',
+      label: 'signature_line',
+      estimated_lines: 2,
+    }))
+  }
+
+  pushListBlock(blocks, route, 'checklist', section.success_criteria, {
+    priority: 'normal',
+    source_key: 'success_criteria',
+    label: 'success_criteria',
+  })
+
+  if (isObject(section.teacher_meta_rubric)) {
+    pushTextBlock(blocks, route, 'scoring_guidance', section.teacher_meta_rubric.title, {
+      priority: 'support',
+      source_key: 'teacher_meta_rubric.title',
+      teacher_only: true,
+      student_facing: false,
+    })
+    const levelLines = (Array.isArray(section.teacher_meta_rubric.levels) ? section.teacher_meta_rubric.levels : [])
+      .map((level) => `${level.label}: ${level.descriptor}`)
+    pushListBlock(blocks, route, 'teacher_note', levelLines, {
+      priority: 'support',
+      source_key: 'teacher_meta_rubric.levels',
+      label: 'teacher_meta_rubric.levels',
+      teacher_only: true,
+      student_facing: false,
+    })
+  }
+
+  return blocks
+}
+
+function buildStationCardsBlocks(route, section) {
+  const blocks = []
+  pushTextBlock(blocks, route, 'title', section.title, { priority: 'high', source_key: 'title' })
+  pushListBlock(blocks, route, 'instruction', section.instructions, {
+    priority: 'high',
+    source_key: 'instructions',
+    label: 'instructions',
+  })
+  blocks.push(makeBlock(route, 'card_set', {
+    priority: 'high',
+    source_key: 'cards',
+    label: 'cards',
+    estimated_lines: Math.max(3, Number(section.cards?.length ?? 1) * 2),
+  }))
+
+  for (const [index, card] of (Array.isArray(section.cards) ? section.cards : []).entries()) {
+    blocks.push(makeBlock(route, 'station_card', {
+      priority: 'high',
+      source_key: `cards.${index + 1}`,
+      label: card.title || `Station ${index + 1}`,
+      estimated_lines: Math.max(3, estimateLinesForText(`${card.prompt ?? ''} ${card.task ?? ''}`, 56)),
+    }))
+  }
+
+  pushListBlock(blocks, route, 'checklist', section.success_criteria, {
+    priority: 'normal',
+    source_key: 'success_criteria',
+    label: 'success_criteria',
+  })
+  return blocks
+}
+
+function buildAnswerKeyBlocks(route, section) {
+  const blocks = []
+  pushTextBlock(blocks, route, 'title', section.title, {
+    priority: 'high',
+    source_key: 'title',
+    teacher_only: true,
+    student_facing: false,
+  })
+  blocks.push(makeBlock(route, 'answer_key_table', {
+    priority: 'high',
+    source_key: 'entries',
+    label: 'entries',
+    estimated_lines: Math.max(3, Number(section.entries?.length ?? 1) * 2),
+    teacher_only: true,
+    student_facing: false,
+  }))
+  pushListBlock(blocks, route, 'scoring_guidance', section.scoring_guidance, {
+    priority: 'normal',
+    source_key: 'scoring_guidance',
+    label: 'scoring_guidance',
+    teacher_only: true,
+    student_facing: false,
+  })
+  return blocks
+}
+
 function buildCheckpointSheetBlocks(route, section) {
   const blocks = []
   pushTextBlock(blocks, route, 'title', section.title, { priority: 'high', source_key: 'title' })
@@ -335,6 +470,12 @@ export function buildTypedLayoutBlocks(pkg, route) {
       return buildSlidesBlocks(route, section)
     case 'task_sheet':
       return buildTaskSheetBlocks(route, section)
+    case 'rubric_sheet':
+      return buildRubricSheetBlocks(route, section)
+    case 'station_cards':
+      return buildStationCardsBlocks(route, section)
+    case 'answer_key':
+      return buildAnswerKeyBlocks(route, section)
     case 'worksheet':
       return buildWorksheetBlocks(route, section)
     case 'final_response_sheet':

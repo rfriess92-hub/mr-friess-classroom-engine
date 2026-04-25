@@ -45,6 +45,36 @@ const pkgSlides = {
   ],
 }
 
+const routeRubric = {
+  route_id: 'rubric_sheet_main__rubric_sheet',
+  output_id: 'rubric_sheet_main',
+  output_type: 'rubric_sheet',
+  audience: 'student',
+  source_section: 'rubric_sheet',
+}
+
+const pkgRubric = {
+  rubric_sheet: {
+    title: 'Peer review rubric',
+    scale: {
+      min: 1,
+      max: 4,
+      labels: {
+        1: 'Needs work',
+        2: 'Developing',
+        3: 'Proficient',
+        4: 'Strong',
+      },
+    },
+    criteria: [
+      { name: 'Clear speaking', descriptor: 'Spoke clearly.' },
+      { name: 'Organization', descriptor: 'Easy to follow.' },
+    ],
+    comment_fields: ['Strong point', 'One suggestion'],
+    repeat_for_subjects: 2,
+  },
+}
+
 test('typed block builder produces valid task-sheet blocks before composition', () => {
   const blocks = buildTypedLayoutBlocks(pkgTaskSheet, routeTaskSheet)
   const validation = validateTypedLayoutBlocks(blocks)
@@ -68,6 +98,18 @@ test('typed block builder produces slide blocks with supported block types', () 
   assert.equal(counts.subtitle, 1)
   assert.equal(counts.intro, 1)
   assert.equal(counts.bullets, 1)
+})
+
+test('typed block builder produces rubric blocks with semantic rubric types', () => {
+  const blocks = buildTypedLayoutBlocks(pkgRubric, routeRubric)
+  const validation = validateTypedLayoutBlocks(blocks)
+  const counts = countBlocksByType(blocks)
+
+  assert.equal(validation.valid, true)
+  assert.equal(counts.title, 1)
+  assert.equal(counts.rating_legend, 1)
+  assert.equal(counts.rubric_matrix, 2)
+  assert.equal(counts.comment_box_group, 1)
 })
 
 test('typed block validator rejects untyped blocks', () => {
