@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "course-profile.schema.json",
+  "title": "Course Profile",
+  "description": "Curriculum identity for one course. One file per course taught. Referenced by class profiles.",
+  "type": "object",
+  "required": ["course_id", "subject", "grade", "theme"],
+  "additionalProperties": false,
+  "properties": {
+    "course_id": {
+      "type": "string",
+      "description": "Short identifier matched by class profiles and generate-package --course."
+    },
+    "subject": {
+      "type": "string",
+      "description": "Human-readable course name."
+    },
+    "grade": {
+      "type": ["integer", "string"],
+      "description": "Grade level. String allowed for multi-grade or non-standard (e.g. 'K-12')."
+    },
+    "theme": {
+      "type": "string",
+      "enum": ["english_language_arts", "mathematics", "careers", "science", "humanities", "social_science", "health_science"],
+      "description": "Engine theme — controls generation vocabulary and tone defaults."
+    },
+    "grade_band_contract": {
+      "type": "string",
+      "description": "Filename stem of the grade-band contract in engine/generation/contracts/. Omit for non-standard courses."
+    },
+    "curriculum_anchor": {
+      "type": "string",
+      "description": "For non-standard courses, the closest standard curriculum this maps to (e.g. 'wm10' for a designated workplace readiness class)."
+    },
+    "default_output_types": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Output types always included when generating a package for this course. Overridden per class."
+    },
+    "tiered_by_default": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, generate-package fans out worksheets into scaffolded/core/extension variants by default."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Anything about this course worth flagging for generation — structure, assessment style, special constraints."
+    }
+  }
+}

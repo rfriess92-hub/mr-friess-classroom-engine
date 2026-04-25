@@ -1,0 +1,20 @@
+{
+  "section_id": "workplace_readiness_bpg",
+  "course_id": "workplace_readiness",
+  "class_type": "designated_program",
+  "primary_designations": ["K"],
+  "lesson_length_minutes": 79,
+  "attendance_pattern": "spotty",
+  "teaching_mode": "hands_on",
+  "project": {
+    "name": "Build, Plant, Grow",
+    "short_id": "bpg",
+    "description": "Hands-on workplace readiness project where students build planters, grow plants, and connect tasks to real work skills. Math, planning, and communication tasks are grounded in the project.",
+    "phases": ["build", "plant", "grow"],
+    "current_phase": "plant"
+  },
+  "generation_overrides": {
+    "include_makeup_packet": true
+  },
+  "notes": "K designation students. All tasks should connect to the active BPG project phase. Concrete, visual, and short — no abstract or decontextualized tasks. Project context is the hook."
+}

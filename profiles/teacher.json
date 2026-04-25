@@ -1,0 +1,7 @@
+{
+  "teacher_id": "mr_friess",
+  "name": "Mr. Friess",
+  "default_lesson_length_minutes": 79,
+  "default_teaching_mode": "standard",
+  "voice_notes": "Direct, no motivational language or slogans. Teacher-facing content in reference/agenda voice. Student-facing content plain and task-focused. No sentence frames unless the task genuinely needs them."
+}

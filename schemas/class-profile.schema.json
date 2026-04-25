@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "class-profile.schema.json",
+  "title": "Class Profile",
+  "description": "One specific section or block. Inherits from course profile; overrides anything class-specific.",
+  "type": "object",
+  "required": ["section_id", "course_id"],
+  "additionalProperties": false,
+  "properties": {
+    "section_id": {
+      "type": "string",
+      "description": "Short identifier used in filenames and logs. e.g. 'careers8_block1'"
+    },
+    "course_id": {
+      "type": "string",
+      "description": "Must match a course_id in profiles/courses/."
+    },
+    "class_type": {
+      "type": "string",
+      "enum": ["mainstream", "intervention", "designated_program"],
+      "default": "mainstream",
+      "description": "mainstream = standard academic class; intervention = targeted support class; designated_program = class built around student designations."
+    },
+    "primary_designations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["K", "Q", "H", "P", "R", "G", "D", "F", "A", "B", "C", "E"]
+      },
+      "description": "BC Ministry designation codes that describe most students in this class."
+    },
+    "size": {
+      "type": "integer",
+      "description": "Approximate number of students."
+    },
+    "lesson_length_minutes": {
+      "type": "integer",
+      "description": "Overrides teacher profile default if set."
+    },
+    "attendance_pattern": {
+      "type": "string",
+      "enum": ["regular", "spotty", "very_spotty"],
+      "default": "regular"
+    },
+    "teaching_mode": {
+      "type": "string",
+      "enum": ["standard", "sub_friendly", "hands_on", "low_tech", "quiet_writing", "recovery_reteach", "conversational"],
+      "description": "Overrides teacher profile default for this class."
+    },
+    "project": {
+      "type": "object",
+      "description": "Active project anchor for this class. When set, generated content references the project context.",
+      "required": ["name", "short_id"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full project name as it appears in student-facing content."
+        },
+        "short_id": {
+          "type": "string",
+          "description": "Slug used in filenames and cross-references."
+        },
+        "description": {
+          "type": "string",
+          "description": "What the project is — used to ground generation context."
+        },
+        "phases": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Ordered list of project phases."
+        },
+        "current_phase": {
+          "type": "string",
+          "description": "Which phase is active now. Must match an entry in phases if phases is set."
+        }
+      }
+    },
+    "generation_overrides": {
+      "type": "object",
+      "description": "Explicit overrides to course-level generation defaults for this class only.",
+      "additionalProperties": false,
+      "properties": {
+        "default_output_types": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "include_makeup_packet": {
+          "type": "boolean"
+        },
+        "include_sub_plan": {
+          "type": "boolean"
+        },
+        "tiered": {
+          "type": "boolean"
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-text notes about this class that should inform generation — dynamics, what works, what doesn't."
+    }
+  }
+}

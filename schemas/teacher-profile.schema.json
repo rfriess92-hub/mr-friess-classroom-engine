@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "teacher-profile.schema.json",
+  "title": "Teacher Profile",
+  "description": "Stable identity and preference layer for the teacher. Overridden at course or class level where needed.",
+  "type": "object",
+  "required": ["teacher_id", "name"],
+  "additionalProperties": false,
+  "properties": {
+    "teacher_id": {
+      "type": "string",
+      "description": "Short identifier used in generated filenames and logs."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name for headers, pacing guides, sub plans."
+    },
+    "school": {
+      "type": "string"
+    },
+    "school_district": {
+      "type": "string"
+    },
+    "default_lesson_length_minutes": {
+      "type": "integer",
+      "description": "Default block length. Overridden per class profile."
+    },
+    "default_teaching_mode": {
+      "type": "string",
+      "enum": ["standard", "sub_friendly", "hands_on", "low_tech", "quiet_writing", "recovery_reteach", "conversational"],
+      "description": "Global default. Set at class level for classes that differ."
+    },
+    "voice_notes": {
+      "type": "string",
+      "description": "Free-text style reminder for generation — what this teacher does and does not want in generated content."
+    }
+  }
+}

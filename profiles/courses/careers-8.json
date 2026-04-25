@@ -1,0 +1,10 @@
+{
+  "course_id": "careers_8",
+  "subject": "Career Education 8",
+  "grade": 8,
+  "theme": "careers",
+  "grade_band_contract": "careers-8-grade-band",
+  "default_output_types": ["task_sheet", "checkpoint_sheet", "pacing_guide"],
+  "tiered_by_default": false,
+  "notes": "Delivered as 6-week mosaic blocks. One block per cohort. Concrete, exploratory tone — not pathway planning or motivational. Students need to see the point before engaging."
+}
