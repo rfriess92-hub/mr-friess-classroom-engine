@@ -225,6 +225,10 @@ function hasConcreteScaffold(studentFacingStrings = []) {
   })
 }
 
+// ---------------------------------------------------------------------------
+// Band detection helpers
+// ---------------------------------------------------------------------------
+
 export function appliesCareers8GradeBandContract(context = {}) {
   const subject = lowerText(context.subject)
   const topic = lowerText(context.topic)
@@ -237,19 +241,80 @@ export function appliesCareers8GradeBandContract(context = {}) {
   return gradeMatch && careersMatch
 }
 
-export function getApplicableGradeBandContracts(context = {}) {
-  if (!appliesCareers8GradeBandContract(context)) return []
+function appliesElaBand(context = {}, targetGrade) {
+  const theme = lowerText(context.theme)
+  const grade = Number(context.grade ?? Number.NaN)
+  return (theme === 'english_language_arts' || theme === 'ela') && grade === targetGrade
+}
 
-  const contractText = existsSync(CAREERS_8_CONTRACT_PATH)
-    ? readFileSync(CAREERS_8_CONTRACT_PATH, 'utf-8').trim()
-    : ''
+function appliesMath8Band(context = {}) {
+  const theme = lowerText(context.theme)
+  const subject = lowerText(context.subject)
+  const grade = Number(context.grade ?? Number.NaN)
+  const isWorkplace = subject.includes('workplace') || subject.includes('applied')
+  return theme === 'mathematics' && grade === 8 && !isWorkplace
+}
 
-  return [{
+function appliesWorkplaceMath10Band(context = {}) {
+  const theme = lowerText(context.theme)
+  const subject = lowerText(context.subject)
+  const grade = Number(context.grade ?? Number.NaN)
+  const isWorkplace = subject.includes('workplace') || subject.includes('applied') || lowerText(context.course_id).includes('workplace')
+  return theme === 'mathematics' && grade === 10 && isWorkplace
+}
+
+// ---------------------------------------------------------------------------
+// Contract registry
+// ---------------------------------------------------------------------------
+
+const BAND_REGISTRY = [
+  {
     id: CAREERS_8_CONTRACT_ID,
     label: 'Careers 8 grade-band contract',
     path: CAREERS_8_CONTRACT_PATH,
-    text: contractText,
-  }]
+    applies: appliesCareers8GradeBandContract,
+  },
+  {
+    id: 'english_10_grade_band',
+    label: 'English 10 grade-band contract',
+    path: repoPath('engine', 'generation', 'contracts', 'english-10-grade-band.md'),
+    applies: (ctx) => appliesElaBand(ctx, 10),
+  },
+  {
+    id: 'english_11_grade_band',
+    label: 'English 11 grade-band contract',
+    path: repoPath('engine', 'generation', 'contracts', 'english-11-grade-band.md'),
+    applies: (ctx) => appliesElaBand(ctx, 11),
+  },
+  {
+    id: 'english_12_grade_band',
+    label: 'English 12 grade-band contract',
+    path: repoPath('engine', 'generation', 'contracts', 'english-12-grade-band.md'),
+    applies: (ctx) => appliesElaBand(ctx, 12),
+  },
+  {
+    id: 'math_8_grade_band',
+    label: 'Math 8 grade-band contract',
+    path: repoPath('engine', 'generation', 'contracts', 'math-8-grade-band.md'),
+    applies: appliesMath8Band,
+  },
+  {
+    id: 'workplace_math_10_grade_band',
+    label: 'Workplace Math 10 grade-band contract',
+    path: repoPath('engine', 'generation', 'contracts', 'workplace-math-10-grade-band.md'),
+    applies: appliesWorkplaceMath10Band,
+  },
+]
+
+export function getApplicableGradeBandContracts(context = {}) {
+  return BAND_REGISTRY
+    .filter((band) => band.applies(context))
+    .map((band) => ({
+      id: band.id,
+      label: band.label,
+      path: band.path,
+      text: existsSync(band.path) ? readFileSync(band.path, 'utf-8').trim() : '',
+    }))
 }
 
 export function buildGradeBandGenerationPrompt(context = {}) {
@@ -265,23 +330,18 @@ ${contract.text}
 </${contract.id}>`).join('\n\n')
 }
 
-export function validateGradeBandContractFit(pkg = {}) {
-  if (!appliesCareers8GradeBandContract(pkg)) {
-    return {
-      applies: false,
-      contract_id: null,
-      judgment: 'pass',
-      blockers: [],
-      findings: [],
-      matched_contracts: [],
-    }
-  }
+// ---------------------------------------------------------------------------
+// Band-specific validators
+// ---------------------------------------------------------------------------
 
+function makeFinding(code, path, note) {
+  return { type: 'content_issue', code, path, note }
+}
+
+function validateCareers8(pkg) {
   const studentFacingStrings = collectStudentFacingStrings(pkg)
-  const fullText = studentFacingStrings.map(({ text }) => lowerText(text)).join('\n')
   const findings = []
   const blockers = []
-  const matchedContracts = [CAREERS_8_CONTRACT_ID]
   const hasScaffold = hasConcreteScaffold(studentFacingStrings)
 
   for (const entry of studentFacingStrings) {
@@ -289,84 +349,39 @@ export function validateGradeBandContractFit(pkg = {}) {
     const words = wordCount(entry.text)
 
     if (includesAny(text, CAREERS_8_AVOID_DEFAULT_VOCAB) && !isConcreteListBankPath(entry.path)) {
-      findings.push({
-        type: 'content_issue',
-        code: 'unsupported_vocabulary',
-        path: entry.path,
-        note: `Student-facing text uses off-band adult vocabulary: "${entry.text}".`,
-      })
+      findings.push(makeFinding('unsupported_vocabulary', entry.path, `Student-facing text uses off-band adult vocabulary: "${entry.text}".`))
     }
-
     if (includesAny(text, CAREERS_8_ADULT_TONE_PATTERNS)) {
-      findings.push({
-        type: 'content_issue',
-        code: 'adult_tone_drift',
-        path: entry.path,
-        note: `Student-facing text sounds adult, slogan-like, or senior-secondary in tone: "${entry.text}".`,
-      })
+      findings.push(makeFinding('adult_tone_drift', entry.path, `Student-facing text sounds adult, slogan-like, or senior-secondary in tone: "${entry.text}".`))
     }
-
     if (includesAny(text, CAREERS_8_TOO_EASY_PATTERNS)) {
-      findings.push({
-        type: 'content_issue',
-        code: 'too_easy',
-        path: entry.path,
-        note: `Student-facing text risks shallow or fake-choice reflection: "${entry.text}".`,
-      })
+      findings.push(makeFinding('too_easy', entry.path, `Student-facing text risks shallow or fake-choice reflection: "${entry.text}".`))
     }
-
     if (includesAny(text, CAREERS_8_ALLOWED_WITH_SUPPORT) && !hasScaffold && !includesAny(text, CAREERS_8_SCAFFOLD_PATTERNS)) {
-      findings.push({
-        type: 'content_issue',
-        code: 'missing_concrete_scaffold',
-        path: entry.path,
-        note: `Abstract Careers 8 language appears without a visible concrete scaffold: "${entry.text}".`,
-      })
+      findings.push(makeFinding('missing_concrete_scaffold', entry.path, `Abstract Careers 8 language appears without a visible concrete scaffold: "${entry.text}".`))
     }
-
     if (isPromptLikePath(entry.path) && words > 28) {
-      findings.push({
-        type: 'content_issue',
-        code: words > 36 ? 'read_aloud_unfriendly' : 'output_overreach',
-        path: entry.path,
-        note: `Student-facing instruction is too long for quick read-aloud use (${words} words): "${entry.text}".`,
-      })
+      findings.push(makeFinding(words > 36 ? 'read_aloud_unfriendly' : 'output_overreach', entry.path, `Student-facing instruction is too long for quick read-aloud use (${words} words): "${entry.text}".`))
     }
-
     const hiddenMoveCount = (text.match(/\b(and|or)\b/g) ?? []).length
     if (isPromptLikePath(entry.path) && words > 24 && hiddenMoveCount >= 2 && (text.match(/\?/g) ?? []).length >= 2) {
-      findings.push({
-        type: 'content_issue',
-        code: 'multi_hidden_thinking_moves',
-        path: entry.path,
-        note: `Student-facing prompt appears to bundle multiple thinking moves into one task: "${entry.text}".`,
-      })
+      findings.push(makeFinding('multi_hidden_thinking_moves', entry.path, `Student-facing prompt appears to bundle multiple thinking moves into one task: "${entry.text}".`))
     }
   }
 
   for (const target of collectStudentLongResponseTargets(pkg)) {
     const promptText = lowerText(target.prompt)
     if (target.n_lines >= 8 && /\b(explain|justify|argue|recommend|analysis|analyze|essay|paragraph)\b/.test(promptText)) {
-      findings.push({
-        type: 'content_issue',
-        code: 'output_overreach',
-        path: target.path,
-        note: `Student response demand looks too long for a default Careers 8 task (${target.n_lines} lines): "${target.prompt}".`,
-      })
+      findings.push(makeFinding('output_overreach', target.path, `Student response demand looks too long for a default Careers 8 task (${target.n_lines} lines): "${target.prompt}".`))
     }
   }
 
   if (!hasScaffold) {
-    findings.push({
-      type: 'content_issue',
-      code: 'missing_concrete_scaffold',
-      path: 'student_facing_bundle',
-      note: 'Careers 8 package does not clearly include a list, sort, ranking task, scenario, role map, comparison prompt, or visible example set.',
-    })
+    findings.push(makeFinding('missing_concrete_scaffold', 'student_facing_bundle', 'Careers 8 package does not clearly include a list, sort, ranking task, scenario, role map, comparison prompt, or visible example set.'))
   }
 
-  const findingCodes = new Set(findings.map((finding) => finding.code).filter(Boolean))
-  const severeCount = Array.from(findingCodes).filter((code) => ['adult_tone_drift', 'missing_concrete_scaffold', 'unsupported_vocabulary'].includes(code)).length
+  const findingCodes = new Set(findings.map((f) => f.code).filter(Boolean))
+  const severeCount = Array.from(findingCodes).filter((c) => ['adult_tone_drift', 'missing_concrete_scaffold', 'unsupported_vocabulary'].includes(c)).length
 
   if (
     (findingCodes.has('adult_tone_drift') && (findingCodes.has('missing_concrete_scaffold') || findingCodes.has('unsupported_vocabulary'))) ||
@@ -376,14 +391,291 @@ export function validateGradeBandContractFit(pkg = {}) {
     blockers.push('careers8_contract_violation')
   }
 
-  const judgment = blockers.length > 0 ? 'block' : findings.length > 0 ? 'revise' : 'pass'
+  return { findings, blockers }
+}
+
+// ELA shared helpers
+
+// Vocabulary that signals register drift above grade 10
+const ELA_GRADE12_DRIFT_VOCAB = [
+  'recommendation memo',
+  'policy proposal',
+  'formal synthesis',
+  'multi-source synthesis',
+  'post-secondary',
+  'academic citation',
+  'literature review',
+  'formal argument essay',
+]
+
+// Vocabulary that signals literary criticism overreach above grade 10 level
+const ELA_LITERARY_CRIT_VOCAB = [
+  'rhetorical strategies',
+  'rhetorical analysis',
+  'analytical essay',
+  'theoretical lens',
+  'discourse analysis',
+  'nuanced argumentation',
+  'epistemic',
+]
+
+// Signals that a prompt is over-scaffolded for grade 11/12
+const ELA_OVER_SCAFFOLD_SIGNALS = [
+  'use the sentence frames',
+  'use the frames',
+  'fill in the sentence',
+  'word bank',
+]
+
+// Grade 10 down-drift signals (too simple for 11/12)
+const ELA_GRADE10_DRIFT_VOCAB = [
+  'write one sentence',
+  'do you agree or disagree? write one',
+  'fill in the blank',
+]
+
+function validateEla10(pkg) {
+  const studentFacingStrings = collectStudentFacingStrings(pkg)
+  const findings = []
+  const blockers = []
+
+  for (const entry of studentFacingStrings) {
+    const text = lowerText(entry.text)
+    if (isConcreteListBankPath(entry.path)) continue
+
+    if (includesAny(text, ELA_LITERARY_CRIT_VOCAB)) {
+      findings.push(makeFinding('register_drift_up', entry.path, `English 10 student-facing text uses literary criticism vocabulary that belongs at Grade 11/12: "${entry.text}".`))
+    }
+    if (includesAny(text, ELA_GRADE12_DRIFT_VOCAB)) {
+      findings.push(makeFinding('register_drift_up', entry.path, `English 10 student-facing text expects Grade 12 synthesis or formal writing: "${entry.text}".`))
+    }
+  }
+
+  const findingCodes = new Set(findings.map((f) => f.code).filter(Boolean))
+  if (findingCodes.has('register_drift_up')) {
+    blockers.push('ela10_contract_violation')
+  }
+
+  return { findings, blockers }
+}
+
+function validateEla11(pkg) {
+  const studentFacingStrings = collectStudentFacingStrings(pkg)
+  const findings = []
+  const blockers = []
+
+  for (const entry of studentFacingStrings) {
+    const text = lowerText(entry.text)
+    if (isConcreteListBankPath(entry.path)) continue
+
+    // Drift upward: Grade 12 tasks appearing in Grade 11
+    if (includesAny(text, ELA_GRADE12_DRIFT_VOCAB)) {
+      findings.push(makeFinding('register_drift_up', entry.path, `English 11 student-facing text expects Grade 12-level synthesis or formal products: "${entry.text}".`))
+    }
+
+    // Drift downward: Grade 10 scaffolding in Grade 11
+    if (includesAny(text, ELA_OVER_SCAFFOLD_SIGNALS)) {
+      findings.push(makeFinding('register_drift_down', entry.path, `English 11 student-facing text over-scaffolds with sentence frames that belong at Grade 10: "${entry.text}".`))
+    }
+    if (includesAny(text, ELA_GRADE10_DRIFT_VOCAB)) {
+      findings.push(makeFinding('register_drift_down', entry.path, `English 11 prompt sounds like a Grade 10 task: "${entry.text}".`))
+    }
+  }
+
+  const findingCodes = new Set(findings.map((f) => f.code).filter(Boolean))
+  if (findingCodes.has('register_drift_up') && findingCodes.has('register_drift_down')) {
+    blockers.push('ela11_contract_violation')
+  }
+
+  return { findings, blockers }
+}
+
+function validateEla12(pkg) {
+  const studentFacingStrings = collectStudentFacingStrings(pkg)
+  const findings = []
+  const blockers = []
+
+  for (const entry of studentFacingStrings) {
+    const text = lowerText(entry.text)
+    if (isConcreteListBankPath(entry.path)) continue
+
+    // Grade 12 must not over-scaffold argument structure
+    if (includesAny(text, ELA_OVER_SCAFFOLD_SIGNALS)) {
+      findings.push(makeFinding('register_drift_down', entry.path, `English 12 student-facing text uses sentence frames for argument structure that belong at Grade 10: "${entry.text}".`))
+    }
+    // Grade 12 must not reduce to one-sentence answers
+    if (includesAny(text, ELA_GRADE10_DRIFT_VOCAB)) {
+      findings.push(makeFinding('register_drift_down', entry.path, `English 12 prompt sounds like a Grade 10 task: "${entry.text}".`))
+    }
+  }
+
+  const findingCodes = new Set(findings.map((f) => f.code).filter(Boolean))
+  if (findingCodes.has('register_drift_down')) {
+    blockers.push('ela12_contract_violation')
+  }
+
+  return { findings, blockers }
+}
+
+// Math 8: vocabulary that belongs in Workplace Math 10, not Math 8
+const MATH8_TRADE_VOCAB = [
+  'invoice',
+  'markup',
+  'material cost',
+  'project budget',
+  'overhead',
+  'labour cost',
+  'labor cost',
+  'contractor',
+  'bid',
+  'estimate the cost',
+  'unit cost',
+]
+
+// Math 8: abstract algebra drift (belongs in senior math)
+const MATH8_ADVANCED_VOCAB = [
+  'domain',
+  'range',
+  'function notation',
+  'f(x)',
+  'g(x)',
+  'optimization',
+  'theorem',
+  'conjecture',
+  'formal proof',
+]
+
+function validateMath8(pkg) {
+  const studentFacingStrings = collectStudentFacingStrings(pkg)
+  const findings = []
+  const blockers = []
+
+  for (const entry of studentFacingStrings) {
+    const text = lowerText(entry.text)
+    if (isConcreteListBankPath(entry.path)) continue
+
+    if (includesAny(text, MATH8_TRADE_VOCAB)) {
+      findings.push(makeFinding('register_drift_up', entry.path, `Math 8 student-facing text uses trade/budget vocabulary that belongs in Workplace Math 10: "${entry.text}".`))
+    }
+    if (includesAny(text, MATH8_ADVANCED_VOCAB)) {
+      findings.push(makeFinding('register_drift_up', entry.path, `Math 8 student-facing text uses senior-secondary math vocabulary not appropriate at this level: "${entry.text}".`))
+    }
+  }
+
+  const findingCodes = new Set(findings.map((f) => f.code).filter(Boolean))
+  if (findingCodes.has('register_drift_up')) {
+    blockers.push('math8_contract_violation')
+  }
+
+  return { findings, blockers }
+}
+
+// Workplace Math 10: abstract/pre-calculus drift
+const WM10_ABSTRACT_VOCAB = [
+  'derive',
+  'formal proof',
+  'theorem',
+  'f(x)',
+  'domain and range',
+  'transformation of',
+  'limit as',
+  'pre-calculus',
+  'precalculus',
+]
+
+// Workplace Math 10: must have scenario — warn if no scenario signal
+const WM10_SCENARIO_SIGNALS = [
+  'budget',
+  'invoice',
+  'material',
+  'floor plan',
+  'blueprint',
+  'scale',
+  'estimate',
+  'client',
+  'contractor',
+  'cost',
+  'measure',
+  'proportion',
+  'perimeter',
+  'area',
+  'volume',
+]
+
+function validateWorkplaceMath10(pkg) {
+  const studentFacingStrings = collectStudentFacingStrings(pkg)
+  const findings = []
+  const blockers = []
+  const fullText = studentFacingStrings.map(({ text }) => lowerText(text)).join('\n')
+
+  for (const entry of studentFacingStrings) {
+    const text = lowerText(entry.text)
+    if (isConcreteListBankPath(entry.path)) continue
+
+    if (includesAny(text, WM10_ABSTRACT_VOCAB)) {
+      findings.push(makeFinding('register_drift_up', entry.path, `Workplace Math 10 student-facing text uses pre-calculus or formal proof vocabulary: "${entry.text}".`))
+    }
+  }
+
+  if (!includesAny(fullText, WM10_SCENARIO_SIGNALS)) {
+    findings.push(makeFinding('missing_applied_scenario', 'student_facing_bundle', 'Workplace Math 10 package does not appear to include applied scenario vocabulary (budget, cost, measurement, scale, proportion, etc.).'))
+  }
+
+  const findingCodes = new Set(findings.map((f) => f.code).filter(Boolean))
+  if (findingCodes.has('register_drift_up') || findingCodes.has('missing_applied_scenario')) {
+    blockers.push('wm10_contract_violation')
+  }
+
+  return { findings, blockers }
+}
+
+// ---------------------------------------------------------------------------
+// Public validator dispatcher
+// ---------------------------------------------------------------------------
+
+export function validateGradeBandContractFit(pkg = {}) {
+  if (appliesCareers8GradeBandContract(pkg)) {
+    const { findings, blockers } = validateCareers8(pkg)
+    const judgment = blockers.length > 0 ? 'block' : findings.length > 0 ? 'revise' : 'pass'
+    return { applies: true, contract_id: CAREERS_8_CONTRACT_ID, judgment, blockers, findings, matched_contracts: [CAREERS_8_CONTRACT_ID] }
+  }
+
+  if (appliesElaBand(pkg, 10)) {
+    const { findings, blockers } = validateEla10(pkg)
+    const judgment = blockers.length > 0 ? 'block' : findings.length > 0 ? 'revise' : 'pass'
+    return { applies: true, contract_id: 'english_10_grade_band', judgment, blockers, findings, matched_contracts: ['english_10_grade_band'] }
+  }
+
+  if (appliesElaBand(pkg, 11)) {
+    const { findings, blockers } = validateEla11(pkg)
+    const judgment = blockers.length > 0 ? 'block' : findings.length > 0 ? 'revise' : 'pass'
+    return { applies: true, contract_id: 'english_11_grade_band', judgment, blockers, findings, matched_contracts: ['english_11_grade_band'] }
+  }
+
+  if (appliesElaBand(pkg, 12)) {
+    const { findings, blockers } = validateEla12(pkg)
+    const judgment = blockers.length > 0 ? 'block' : findings.length > 0 ? 'revise' : 'pass'
+    return { applies: true, contract_id: 'english_12_grade_band', judgment, blockers, findings, matched_contracts: ['english_12_grade_band'] }
+  }
+
+  if (appliesMath8Band(pkg)) {
+    const { findings, blockers } = validateMath8(pkg)
+    const judgment = blockers.length > 0 ? 'block' : findings.length > 0 ? 'revise' : 'pass'
+    return { applies: true, contract_id: 'math_8_grade_band', judgment, blockers, findings, matched_contracts: ['math_8_grade_band'] }
+  }
+
+  if (appliesWorkplaceMath10Band(pkg)) {
+    const { findings, blockers } = validateWorkplaceMath10(pkg)
+    const judgment = blockers.length > 0 ? 'block' : findings.length > 0 ? 'revise' : 'pass'
+    return { applies: true, contract_id: 'workplace_math_10_grade_band', judgment, blockers, findings, matched_contracts: ['workplace_math_10_grade_band'] }
+  }
 
   return {
-    applies: true,
-    contract_id: CAREERS_8_CONTRACT_ID,
-    judgment,
-    blockers,
-    findings,
-    matched_contracts: matchedContracts,
+    applies: false,
+    contract_id: null,
+    judgment: 'pass',
+    blockers: [],
+    findings: [],
+    matched_contracts: [],
   }
 }
