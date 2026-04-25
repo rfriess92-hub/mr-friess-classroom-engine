@@ -9,6 +9,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { resolve, join } from 'node:path'
 import { repoPath } from '../../scripts/lib.mjs'
+import { getModeDefaults } from './teaching-mode-defaults.mjs'
 
 function loadJson(path) {
   if (!existsSync(path)) return null
@@ -102,7 +103,14 @@ export function mergeProfileContext({ teacher = {}, course = null, classProfile 
     if (classProfile.project) ctx.project = classProfile.project
     if (classProfile.notes) ctx.class_notes = classProfile.notes
 
-    // generation_overrides override course defaults
+    // Apply mode defaults when no course-level output types were set
+    if (ctx.teaching_mode && !ctx.default_output_types) {
+      const modeDefaults = getModeDefaults(ctx.teaching_mode)
+      ctx.default_output_types = modeDefaults.default_output_types
+      if (modeDefaults.prompt_notes) ctx.mode_prompt_notes = modeDefaults.prompt_notes
+    }
+
+    // generation_overrides always win over mode and course defaults
     const overrides = classProfile.generation_overrides ?? {}
     if (overrides.default_output_types) ctx.default_output_types = overrides.default_output_types
     if (overrides.include_makeup_packet != null) ctx.include_makeup_packet = overrides.include_makeup_packet
@@ -130,7 +138,10 @@ export function buildProfilePromptBlock(ctx) {
   if (ctx.class_size) lines.push(`Class size: approximately ${ctx.class_size} students`)
   if (ctx.lesson_length_minutes) lines.push(`Lesson length: ${ctx.lesson_length_minutes} minutes`)
   if (ctx.attendance_pattern && ctx.attendance_pattern !== 'regular') lines.push(`Attendance: ${ctx.attendance_pattern} — include makeup packet support`)
-  if (ctx.teaching_mode && ctx.teaching_mode !== 'standard') lines.push(`Teaching mode: ${ctx.teaching_mode}`)
+  if (ctx.teaching_mode && ctx.teaching_mode !== 'standard') {
+    lines.push(`Teaching mode: ${ctx.teaching_mode}`)
+    if (ctx.mode_prompt_notes) lines.push(ctx.mode_prompt_notes)
+  }
 
   if (ctx.project) {
     lines.push(``)
@@ -148,6 +159,10 @@ export function buildProfilePromptBlock(ctx) {
 
   if (ctx.include_makeup_packet) {
     lines.push(`Include a makeup_packet output for students who miss class.`)
+  }
+
+  if (ctx.include_sub_plan) {
+    lines.push(`Include a sub_plan output — instructions must be self-running for a substitute teacher.`)
   }
 
   if (ctx.voice_notes) {
