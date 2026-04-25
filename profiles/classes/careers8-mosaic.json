@@ -1,0 +1,13 @@
+{
+  "section_id": "careers8_mosaic",
+  "course_id": "careers_8",
+  "class_type": "mainstream",
+  "size": 13,
+  "lesson_length_minutes": 79,
+  "attendance_pattern": "spotty",
+  "teaching_mode": "standard",
+  "generation_overrides": {
+    "include_makeup_packet": true
+  },
+  "notes": "Currently halfway through second 6-week mosaic cohort. Third mosaic starts in a couple weeks. Students have K designations. Concrete anchoring essential — peer talk before writing."
+}

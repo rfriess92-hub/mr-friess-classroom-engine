@@ -1,0 +1,11 @@
+{
+  "course_id": "workplace_readiness",
+  "subject": "Workplace Readiness",
+  "grade": "8-12",
+  "theme": "mathematics",
+  "grade_band_contract": "workplace-math-10-grade-band",
+  "curriculum_anchor": "wm10",
+  "default_output_types": ["task_sheet", "pacing_guide"],
+  "tiered_by_default": false,
+  "notes": "Designated program for students with K designations. Project-based delivery. Curriculum maps loosely to WM10 applied math but adapted for accessibility. Tasks must be concrete, visual where possible, and tied to the active project context."
+}

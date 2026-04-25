@@ -1,0 +1,14 @@
+{
+  "section_id": "reading_intervention_block",
+  "course_id": "reading_intervention",
+  "class_type": "intervention",
+  "primary_designations": ["Q"],
+  "lesson_length_minutes": 79,
+  "attendance_pattern": "spotty",
+  "teaching_mode": "conversational",
+  "generation_overrides": {
+    "default_output_types": ["pacing_guide"],
+    "include_makeup_packet": false
+  },
+  "notes": "Students are generally unwilling to do work. Keep things conversational and whole-class. Do not generate packet-style worksheets. A pacing guide and a discussion anchor prompt are the ceiling for useful artifacts."
+}

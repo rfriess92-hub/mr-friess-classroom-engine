@@ -1,0 +1,9 @@
+{
+  "course_id": "reading_intervention",
+  "subject": "Reading Intervention",
+  "grade": "8-12",
+  "theme": "english_language_arts",
+  "default_output_types": ["pacing_guide"],
+  "tiered_by_default": false,
+  "notes": "Responsive and flexible — no fixed curriculum sequence. Whole-class conversational instruction. Students are generally reluctant to produce written work. Generate minimal written artifacts. Pacing guide and a single discussion anchor are the useful outputs. No packet-style worksheets."
+}
