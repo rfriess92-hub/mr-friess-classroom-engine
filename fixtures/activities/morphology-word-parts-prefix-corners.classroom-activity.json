@@ -1,9 +1,10 @@
 {
   "type": "classroom_activity",
   "activity_id": "morphology_word_parts_prefix_corners_set_a",
-  "activity_family": "morphology_word_parts",
+  "activity_family": "wrong_corner_trap",
   "activity_subtype": "prefix_corners",
   "title": "Word Part Corners: Prefix Trap Round",
+  "strand": "morphology_word_knowledge",
   "skill_focus": ["morphology", "prefixes", "word formation"],
   "grade_band": "6-8",
   "subject": "literacy_intervention",
@@ -42,10 +43,10 @@
   "round_structure": {
     "round_count": 4,
     "round_sequence": [
-      { "label": "Round 1", "prompt_type": "real_word_build", "item_ids": ["prefix_001"], "teacher_move": "Start with a single-correct confidence builder." },
-      { "label": "Round 2", "prompt_type": "trap_round", "item_ids": ["prefix_002"], "teacher_move": "Run the multiple-answer trap and ask for evidence." },
-      { "label": "Round 3", "prompt_type": "real_word_build", "item_ids": ["mixed_001"], "teacher_move": "Switch to a meaning-focused round without changing the routine." },
-      { "label": "Round 4", "prompt_type": "root_meaning_match", "item_ids": ["root_002"], "teacher_move": "Finish with a none-correct trap or whiteboard reveal." }
+      { "label": "Round 1", "item_ids": ["P4_S_01"], "teacher_move": "Start with a single-correct confidence builder." },
+      { "label": "Round 2", "item_ids": ["P4_C_01"], "teacher_move": "Run a core round with visible word logic." },
+      { "label": "Round 3", "item_ids": ["P4_C_02"], "teacher_move": "Shift into a meaning decision with a stronger abstract word." },
+      { "label": "Round 4", "item_ids": ["P4_TF_01"], "teacher_move": "Finish with a none-correct trap." }
     ],
     "debrief_questions": [
       "Which round was the biggest trap?",
@@ -54,82 +55,12 @@
   },
   "response_set": {
     "mode": "corners",
-    "options": ["un", "re", "mis", "none"]
+    "options": ["mis", "anti", "pseudo", "none"]
   },
-  "content_bank": {
-    "bank_id": "morphology_word_parts_master_bank",
-    "selection_note": "Pilot prefix-heavy set with one mixed round and one root trap.",
-    "items": [
-      {
-        "item_id": "prefix_001",
-        "prompt_type": "real_word_build",
-        "stem": "___ + happy",
-        "display_prompt": "Which prefix makes a real word with happy?",
-        "response_options": ["un", "re", "mis", "pre"],
-        "correct_responses": ["un"],
-        "answer_pattern": "single_correct",
-        "trap_flag": false,
-        "difficulty_tier": "easiest",
-        "support_level": "high_support",
-        "whiteboard_compatible": true,
-        "movement_compatible": true,
-        "explanation": "unhappy is a real word.",
-        "validation_status": "verified"
-      },
-      {
-        "item_id": "prefix_002",
-        "prompt_type": "trap_round",
-        "stem": "___ + cover",
-        "display_prompt": "Which prefixes make a real word with cover?",
-        "response_options": ["dis", "re", "un", "mis"],
-        "correct_responses": ["re", "un", "dis"],
-        "answer_pattern": "multi_correct",
-        "trap_flag": true,
-        "trap_type": "multi_answer_trap",
-        "difficulty_tier": "core",
-        "support_level": "medium_support",
-        "whiteboard_compatible": true,
-        "movement_compatible": true,
-        "explanation": "recover, uncover, and discover are real words; miscover is not standard.",
-        "teacher_note": "Use this as a multiple-answer trap round.",
-        "validation_status": "verified"
-      },
-      {
-        "item_id": "mixed_001",
-        "prompt_type": "mixed_word_part_build",
-        "stem": "transportation",
-        "display_prompt": "Which word part means carry in transportation?",
-        "response_options": ["port", "trans", "tion", "pre"],
-        "correct_responses": ["port"],
-        "answer_pattern": "single_correct",
-        "trap_flag": false,
-        "difficulty_tier": "core",
-        "support_level": "low_support",
-        "whiteboard_compatible": true,
-        "movement_compatible": true,
-        "explanation": "port means carry.",
-        "validation_status": "verified"
-      },
-      {
-        "item_id": "root_002",
-        "prompt_type": "root_meaning_match",
-        "stem": "Which root means write?",
-        "display_prompt": "Which root means write?",
-        "response_options": ["geo", "spect", "port", "tract"],
-        "correct_responses": [],
-        "answer_pattern": "none_correct",
-        "trap_flag": true,
-        "trap_type": "none_correct_trap",
-        "difficulty_tier": "core",
-        "support_level": "low_support",
-        "whiteboard_compatible": true,
-        "movement_compatible": true,
-        "explanation": "None of the offered roots mean write.",
-        "teacher_note": "Use when you want a none-correct corner or whiteboard reveal.",
-        "validation_status": "verified"
-      }
-    ]
-  },
+  "activity_bank_refs": ["P4_wrong_bad_false_against"],
+  "selected_item_ids": ["P4_S_01", "P4_C_01", "P4_C_02", "P4_TF_01"],
+  "competition_shell_ref": "build_and_prove",
+  "deployment_template_ref": "standard_bridge_round",
   "variations": {
     "whiteboard": {
       "label": "Whiteboard version",
@@ -138,13 +69,13 @@
     },
     "easier": {
       "label": "Easier variation",
-      "notes": ["Use only single-correct rounds.", "Keep one response option as obviously unrelated."],
+      "notes": ["Use only starter and single-correct rounds.", "Keep one response option as obviously unrelated."],
       "prompt_adjustments": ["Preteach the prefixes on the board before the first round."]
     },
     "harder": {
       "label": "Harder variation",
-      "notes": ["Add more multi-answer and none-correct rounds.", "Ask students to give a second valid example before scoring the point."],
-      "prompt_adjustments": ["Swap in mixed word-part and root meaning rounds."]
+      "notes": ["Add near-miss or arguable traps.", "Ask students to give a second valid example before scoring the point."],
+      "prompt_adjustments": ["Swap in stretch items from the same bank."]
     },
     "worksheet_companion": {
       "label": "Companion sheet",
@@ -157,13 +88,13 @@
     "What made one prefix feel plausible even when it did not make a real word?"
   ],
   "exit_slip": {
-    "prompt": "Name one prefix that helped you today and use it in a real word.",
+    "prompt": "Use one of today’s prefixes in a real word and explain the meaning signal.",
     "response_lines": 2
   },
   "answer_key": [
-    "Round 1: un",
-    "Round 2: dis, re, un",
-    "Round 3: port",
+    "Round 1: mis",
+    "Round 2: mis",
+    "Round 3: anti",
     "Round 4: none"
   ],
   "teacher_notes": [
@@ -182,7 +113,7 @@
     "student_surface_style": "compact_station_prompt",
     "compactness": "tight"
   },
-  "bank_index_tags": ["prefixes", "movement", "10_min", "core", "trap_rounds"],
+  "bank_index_tags": ["prefixes", "movement", "core", "trap_rounds"],
   "outputs": [
     { "output_id": "activity_card_main", "output_type": "activity_card", "audience": "teacher", "source_section": "teacher_script" },
     { "output_id": "station_card_main", "output_type": "station_card", "audience": "shared_view", "source_section": "student_directions" },
