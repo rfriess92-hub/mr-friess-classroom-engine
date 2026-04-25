@@ -239,7 +239,7 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
 
   if (outputType === 'checkpoint_sheet' && checkpointSignals(section)) {
     return {
-      artifact_class: 'student_checkpoint',
+      artifact_class: 'teacher_checkpoint',
       classification_confidence: 0.92,
       fallback_reason: null,
       classifier_basis: ['output_type:checkpoint_sheet', 'section look_fors/checkpoint_focus present'],

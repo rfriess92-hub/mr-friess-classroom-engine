@@ -191,10 +191,10 @@ test('artifact classifier resolves final_response_sheet to student_final_respons
   assert.equal(trace.fallback_reason, null)
 })
 
-test('artifact classifier resolves checkpoint_sheet to student_checkpoint', () => {
+test('artifact classifier resolves checkpoint_sheet to teacher_checkpoint', () => {
   const route = { route_id: 'checkpoint__checkpoint_sheet', output_id: 'checkpoint', output_type: 'checkpoint_sheet', renderer_family: 'pdf', audience: 'student', source_section: 'checkpoint_sheet' }
   const trace = buildArtifactTrace(basePackage, route)
-  assert.equal(trace.artifact_class, 'student_checkpoint')
+  assert.equal(trace.artifact_class, 'teacher_checkpoint')
   assert.equal(trace.fallback_reason, null)
 })
 

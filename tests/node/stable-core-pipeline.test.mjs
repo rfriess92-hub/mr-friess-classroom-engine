@@ -82,6 +82,32 @@ test('visual QA rule outputs are deterministic for good vs intentionally bad pla
   )
 })
 
+test('preflight blocks teacher-only output types declared with student audience', () => {
+  // checkpoint_sheet, lesson_overview, pacing_guide, sub_plan, answer_key are teacher-only.
+  // Declaring any of them with audience: student must produce an audience_output_mismatch error.
+  const pkg = {
+    schema_version: '2.1.0',
+    package_id: 'audience_mismatch_test',
+    primary_architecture: 'single_period_full',
+    exit_ticket: { prompt: 'What did you learn?' },
+    outputs: [
+      { output_id: 'wrong_checkpoint', output_type: 'checkpoint_sheet', audience: 'student', source_section: 'exit_ticket' },
+      { output_id: 'wrong_overview',   output_type: 'lesson_overview',   audience: 'student', source_section: 'exit_ticket' },
+      { output_id: 'wrong_pacing',     output_type: 'pacing_guide',      audience: 'student', source_section: 'exit_ticket' },
+    ],
+    bundle: { bundle_id: 'test', declared_outputs: ['checkpoint_sheet', 'lesson_overview', 'pacing_guide'] },
+  }
+
+  const result = validatePackage(pkg)
+  assert.equal(result.valid, false)
+  const mismatchErrors = result.errors.filter((e) => e.code === 'audience_output_mismatch')
+  assert.equal(mismatchErrors.length, 3, 'each teacher-only type with student audience should produce an error')
+  const mismatchTypes = mismatchErrors.map((e) => e.message)
+  assert.ok(mismatchTypes.some((m) => m.includes('checkpoint_sheet')))
+  assert.ok(mismatchTypes.some((m) => m.includes('lesson_overview')))
+  assert.ok(mismatchTypes.some((m) => m.includes('pacing_guide')))
+})
+
 test('bundle QA judgment derivation is stable', () => {
   const passCase = deriveBundleJudgment({ blockers: [], findings: [] })
   assert.deepEqual(passCase, {
