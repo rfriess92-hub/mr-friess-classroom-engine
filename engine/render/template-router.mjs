@@ -131,6 +131,46 @@ export function resolveTemplateRoute(trace) {
     }
   }
 
+  if (trace?.artifact_class === 'student_worksheet') {
+    return {
+      template_family: 'CLASSROOM_WORKSHEET',
+      template_sequence: ['CWS_STUDENT_WORKSHEET'],
+      selected_template: 'CWS_STUDENT_WORKSHEET',
+      rejected_templates: [],
+      template_reason: 'student_worksheet routes through the classroom worksheet template system when a layout_template_id is present.',
+    }
+  }
+
+  if (trace?.artifact_class === 'student_exit_ticket') {
+    return {
+      template_family: 'CLASSROOM_WORKSHEET',
+      template_sequence: ['CWS_EXIT_REFLECTION'],
+      selected_template: 'CWS_EXIT_REFLECTION',
+      rejected_templates: [],
+      template_reason: 'student_exit_ticket routes through the reusable classroom quick-check layout family.',
+    }
+  }
+
+  if (trace?.artifact_class === 'student_graphic_organizer') {
+    return {
+      template_family: 'CLASSROOM_WORKSHEET',
+      template_sequence: ['CWS_GRAPHIC_ORGANIZER'],
+      selected_template: 'CWS_GRAPHIC_ORGANIZER',
+      rejected_templates: [],
+      template_reason: 'student_graphic_organizer routes through reusable classroom organizer layouts.',
+    }
+  }
+
+  if (trace?.artifact_class === 'student_discussion_prep') {
+    return {
+      template_family: 'CLASSROOM_WORKSHEET',
+      template_sequence: ['CWS_DISCUSSION_PREP'],
+      selected_template: 'CWS_DISCUSSION_PREP',
+      rejected_templates: [],
+      template_reason: 'student_discussion_prep routes through the classroom worksheet layout family.',
+    }
+  }
+
   if (['student_rubric_sheet', 'teacher_rubric_sheet'].includes(trace?.artifact_class)) {
     return {
       template_family: 'RUBRIC_SHEET',
