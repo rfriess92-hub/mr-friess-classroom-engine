@@ -1,0 +1,63 @@
+name: Agent Task
+description: Request a small guarded task for the nightly repo agent.
+title: "[agent] "
+labels:
+  - agent:nightly
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for small repo-maintenance tasks only. The agent starts in dry-run/reporting mode and will not merge changes.
+  - type: textarea
+    id: task
+    attributes:
+      label: Task
+      description: State the exact task the agent should inspect or prepare.
+      placeholder: "Refresh output contract inventory after schema changes."
+    validations:
+      required: true
+  - type: dropdown
+    id: task_type
+    attributes:
+      label: Task type
+      options:
+        - contract audit
+        - docs
+        - tests
+        - repo qa
+        - fixture proof
+        - other small maintenance
+    validations:
+      required: true
+  - type: textarea
+    id: allowed_paths
+    attributes:
+      label: Allowed paths
+      description: List paths the agent may touch if write mode is later enabled.
+      placeholder: |
+        docs/
+        tests/node/
+        scripts/audit-output-contracts.mjs
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Required validation
+      description: Commands that should pass before a human considers the work complete.
+      placeholder: |
+        pnpm test
+        node scripts/audit-output-contracts.mjs
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of scope
+      description: Name anything the agent must not change.
+      placeholder: |
+        Do not modify renderer templates.
+        Do not change schemas.
+        Do not update classroom content fixtures.
+    validations:
+      required: false
