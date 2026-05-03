@@ -45,14 +45,10 @@ test('graphic organizer pack renders the six reusable organizer families', () =>
     designCSS,
   )
 
-  for (const label of [
-    'Compare &amp; Contrast',
-    'Main Idea + Details',
-    'Cause and Effect',
-    'Timeline',
-    'Problem / Solution',
-    'Question Web',
-  ]) {
-    assert.match(html, new RegExp(label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
-  }
+  assert.match(html, /Compare &amp; Contrast/)
+  assert.match(html, /Main Idea \+ Details/)
+  assert.match(html, /Cause and Effect/)
+  assert.match(html, /Timeline/)
+  assert.match(html, /Problem \/ Solution/)
+  assert.match(html, /Question Web/)
 })
