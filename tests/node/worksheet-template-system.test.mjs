@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
-import { buildClassroomWorksheetTemplateHTML, isClassroomTemplateLayout } from '../../engine/pdf-html/templates/classroom-worksheet-system.mjs'
+import { buildClassroomWorksheetTemplateHTML, isClassroomTemplateLayout } from '../../engine/pdf-html/templates/classroom-worksheet-system-v2.mjs'
 
 const fontFaceCSS = ''
 const designCSS = ''
@@ -18,7 +18,7 @@ test('reading response classroom template renders reusable worksheet sections', 
     { subject: 'English', grade: 8, topic: 'Close reading' },
     {
       layout_template_id: 'english_reading_response',
-      title: 'English 8 – Reading Response Template',
+      title: 'English 8 - Reading Response Template',
       learning_target: 'I can read closely and respond with evidence.',
       directions: 'Read, think, and respond.',
       prompt: 'Insert a passage here.',
@@ -29,7 +29,7 @@ test('reading response classroom template renders reusable worksheet sections', 
     designCSS,
   )
 
-  assert.match(html, /English 8 – Reading Response Template/)
+  assert.match(html, /English 8 - Reading Response Template/)
   assert.match(html, /Text \/ Prompt/)
   assert.match(html, /Vocabulary Support/)
   assert.match(html, /Success Criteria/)
