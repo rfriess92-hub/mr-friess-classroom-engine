@@ -13,7 +13,7 @@ import { buildAnswerKeyHTML } from './templates/answer-key.mjs'
 import { buildPacingGuideHTML } from './templates/pacing-guide.mjs'
 import { buildSubPlanHTML } from './templates/sub-plan.mjs'
 import { buildMakeupPacketHTML } from './templates/makeup-packet.mjs'
-import { buildClassroomWorksheetTemplateHTML, isClassroomTemplateLayout } from './templates/classroom-worksheet-system.mjs'
+import { buildClassroomWorksheetTemplateHTML, isClassroomTemplateLayout } from './templates/classroom-worksheet-system-render.mjs'
 
 const TEMPLATE_MAP = {
   task_sheet: buildTaskSheetHTML,
