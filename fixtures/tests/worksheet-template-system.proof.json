@@ -1,0 +1,132 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "worksheet_template_system_proof",
+  "primary_architecture": "workshop_session",
+  "grade_band": "6-8",
+  "subject": "English",
+  "grade": 8,
+  "topic": "Reusable worksheet template system",
+  "theme": "literacy",
+  "reading_response_template": {
+    "layout_template_id": "english_reading_response",
+    "title": "English 8 – Reading Response Template",
+    "subtitle": "Reusable close-reading and written-response layout",
+    "learning_target": "I can read closely and respond with clear reasoning and evidence.",
+    "directions": "Read the text, think about the prompt, and respond in complete sentences.",
+    "prompt": "Insert a passage, quotation, image prompt, or discussion question here.",
+    "vocabulary": [
+      { "word": "claim", "definition": "an answer or position you can support" },
+      { "word": "evidence", "definition": "details that support an answer" },
+      { "word": "reasoning", "definition": "an explanation of how the evidence connects" }
+    ],
+    "questions": [
+      { "q_text": "What is the main idea of the text?", "n_lines": 3 },
+      { "q_text": "What detail supports your answer?", "n_lines": 3 },
+      { "q_text": "How does your evidence connect to your thinking?", "n_lines": 3 }
+    ],
+    "success_criteria": [
+      "I answered in complete sentences.",
+      "I used details or ideas from the text.",
+      "I explained my thinking clearly.",
+      "I checked my work for spelling and grammar."
+    ],
+    "self_check": [
+      "I used evidence.",
+      "I explained my thinking."
+    ]
+  },
+  "cer_template": {
+    "layout_template_id": "cross_curricular_cer",
+    "title": "Cross-Curricular CER Template",
+    "subtitle": "Claim, evidence, and reasoning organizer",
+    "question": "What are you answering?",
+    "learning_target": "I can make a clear claim and support it.",
+    "directions": "Use evidence and explain your reasoning.",
+    "questions": [
+      { "q_text": "Write your claim.", "n_lines": 4 },
+      { "q_text": "Record your evidence.", "n_lines": 4 },
+      { "q_text": "Explain your reasoning.", "n_lines": 5 }
+    ],
+    "sentence_starters": [
+      "My claim is...",
+      "One piece of evidence is...",
+      "This shows...",
+      "Therefore..."
+    ],
+    "success_criteria": [
+      "My claim answers the question.",
+      "I included strong evidence.",
+      "I explained how my evidence supports my claim.",
+      "I used complete sentences."
+    ],
+    "self_check": [
+      "My claim answers the question.",
+      "I used evidence."
+    ]
+  },
+  "organizer_template": {
+    "layout_template_id": "graphic_organizer_pack",
+    "title": "Graphic Organizer Template Pack",
+    "subtitle": "Reusable thinking tools for English, science, socials, and Careers",
+    "organizer_type": "template_pack",
+    "prompt": "Use these layouts to organize ideas before writing, speaking, or discussing.",
+    "columns": ["Idea A", "Idea B"],
+    "rows": 4,
+    "success_criteria": [
+      "I organized my ideas before writing.",
+      "I chose a layout that matched the task."
+    ]
+  },
+  "exit_reflection_template": {
+    "layout_template_id": "exit_reflection",
+    "title": "Exit Ticket + Reflection Template",
+    "subtitle": "Reusable quick-check page for any subject",
+    "learning_target": "I can explain what I learned today.",
+    "topic_prompt": "Insert topic",
+    "prompt": "Show one thing you learned today.",
+    "n_lines": 3,
+    "success_criteria": [
+      "I named one thing I learned.",
+      "I asked one useful question.",
+      "I chose a next step."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "worksheet_template_system_bundle",
+    "declared_outputs": [
+      "worksheet",
+      "graphic_organizer",
+      "exit_ticket"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "reading_response_template",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "reading_response_template",
+      "bundle": "worksheet_template_system_bundle"
+    },
+    {
+      "output_id": "cer_template",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "cer_template",
+      "bundle": "worksheet_template_system_bundle"
+    },
+    {
+      "output_id": "organizer_template",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "organizer_template",
+      "bundle": "worksheet_template_system_bundle"
+    },
+    {
+      "output_id": "exit_reflection_template",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "exit_reflection_template",
+      "bundle": "worksheet_template_system_bundle"
+    }
+  ]
+}
