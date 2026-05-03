@@ -1,0 +1,81 @@
+name: Nightly Repo Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Run without committing changes"
+        required: true
+        default: "true"
+      task_label:
+        description: "Issue label to select work from"
+        required: true
+        default: "agent:nightly"
+      max_task_count:
+        description: "Maximum candidate task count to inspect"
+        required: true
+        default: "1"
+  schedule:
+    # GitHub cron is UTC. This approximates an overnight Vancouver run.
+    - cron: "0 9 * * *"
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+  actions: read
+
+jobs:
+  nightly-agent:
+    name: Select task and report repo status
+    runs-on: ubuntu-latest
+    env:
+      AGENT_OUTPUT_DIR: agent-output
+      AGENT_DRY_RUN: ${{ github.event.inputs.dry_run || 'true' }}
+      AGENT_TASK_LABEL: ${{ github.event.inputs.task_label || 'agent:nightly' }}
+      AGENT_MAX_TASK_COUNT: ${{ github.event.inputs.max_task_count || '1' }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.9.0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Select eligible task
+        run: node scripts/agent/select-task.mjs
+
+      - name: Run output contract audit
+        id: contract_audit
+        continue-on-error: true
+        run: node scripts/audit-output-contracts.mjs
+
+      - name: Run Node tests
+        id: node_tests
+        continue-on-error: true
+        run: pnpm test
+
+      - name: Write agent report
+        env:
+          AGENT_AUDIT_STATUS: ${{ steps.contract_audit.outcome }}
+          AGENT_TEST_STATUS: ${{ steps.node_tests.outcome }}
+        run: node scripts/agent/write-run-report.mjs
+
+      - name: Upload agent report
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-agent-report
+          path: agent-output/
+          if-no-files-found: error
