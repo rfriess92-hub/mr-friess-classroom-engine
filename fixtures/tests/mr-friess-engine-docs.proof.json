@@ -1,0 +1,155 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "mr_friess_engine_docs_proof",
+  "primary_architecture": "single_period_full",
+  "grade_band": "6-8",
+  "subject": "Mixed",
+  "grade": 8,
+  "topic": "Classroom document templates and planter volume task",
+  "theme": "english_language_arts",
+  "teacher_overview": {
+    "layout_template_id": "worksheet_template_system",
+    "title": "Teacher Overview - Engine Document Samples",
+    "subtitle": "What this repo-generated sample pack is meant to prove",
+    "directions": "Use this sample pack to inspect whether the engine can produce classroom-ready student documents from structured package JSON.",
+    "prompt": "Check visual hierarchy, writing space, artifact-role separation, and print usability before moving into assessment implementation.",
+    "success_criteria": [
+      "Student-facing documents are readable and not overcrowded.",
+      "Teacher-facing notes do not leak into student artifacts.",
+      "Graphic organizers have visible structure and enough writing space.",
+      "The math task feels like a real classroom decision, not a generic worksheet."
+    ]
+  },
+  "reading_response_template": {
+    "layout_template_id": "english_reading_response",
+    "title": "Reading Response Template",
+    "subtitle": "Read, notice, explain, connect",
+    "learning_target": "I can read closely and explain my thinking with evidence.",
+    "directions": "Read the text or prompt. Write short, clear answers that use details from the text.",
+    "prompt": "Text or image prompt goes here. Students should have enough information to notice details and explain their thinking.",
+    "vocabulary": [
+      { "word": "claim", "definition": "your answer or position" },
+      { "word": "evidence", "definition": "a detail that supports your answer" },
+      { "word": "reasoning", "definition": "how your evidence connects to your claim" }
+    ],
+    "success_criteria": [
+      "I answered in complete sentences.",
+      "I used a detail from the text.",
+      "I explained why the detail matters.",
+      "I checked that my answer makes sense."
+    ]
+  },
+  "cer_organizer_template": {
+    "layout_template_id": "cross_curricular_cer",
+    "title": "CER Organizer",
+    "subtitle": "Claim, evidence, reasoning",
+    "question": "What answer can you support?",
+    "learning_target": "I can make a clear claim and support it with evidence and reasoning.",
+    "directions": "Start with a claim. Add evidence. Explain how the evidence proves or supports the claim.",
+    "sentence_starters": [
+      "My claim is...",
+      "One piece of evidence is...",
+      "This matters because...",
+      "This supports my claim because..."
+    ],
+    "success_criteria": [
+      "My claim answers the question.",
+      "My evidence is specific.",
+      "My reasoning explains the connection.",
+      "I wrote clearly enough for someone else to follow."
+    ]
+  },
+  "graphic_organizer_template": {
+    "layout_template_id": "graphic_organizer_pack",
+    "title": "Graphic Organizer Pack",
+    "subtitle": "Pick the thinking layout that matches the task",
+    "organizer_type": "template_pack",
+    "prompt": "Use one organizer to collect ideas before writing, discussing, or solving.",
+    "columns": ["Idea A", "Idea B"],
+    "rows": 4,
+    "success_criteria": [
+      "I chose a layout that matched the task.",
+      "I organized my ideas before writing.",
+      "I left enough detail to explain my thinking."
+    ]
+  },
+  "planter_volume_template": {
+    "layout_template_id": "generic_graphic_organizer",
+    "title": "Planter Box Volume Decision Sheet",
+    "subtitle": "Graphic Organizer - soil, water, and materials estimate",
+    "prompt": "Our class is filling planter boxes. Use volume to estimate how much soil and water we need, then make a practical buying decision.",
+    "columns": [
+      "Question",
+      "Estimate / Calculation",
+      "Decision"
+    ],
+    "rows": 6,
+    "success_criteria": [
+      "I used length × width × height to estimate planter volume.",
+      "I included units in my calculations.",
+      "I explained what we should actually buy or prepare.",
+      "I checked whether my answer is reasonable."
+    ]
+  },
+  "exit_reflection_template": {
+    "layout_template_id": "exit_reflection",
+    "title": "Exit Ticket + Reflection",
+    "subtitle": "What did you learn, and what is your next step?",
+    "learning_target": "I can explain one thing I learned and one thing I still need to work on.",
+    "topic_prompt": "Today’s topic",
+    "prompt": "Show one thing you learned today.",
+    "success_criteria": [
+      "I named one thing I learned.",
+      "I asked one useful question or named a next step.",
+      "I was honest about my level of understanding."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "mr_friess_engine_docs_bundle",
+    "declared_outputs": ["worksheet", "graphic_organizer", "exit_ticket"]
+  },
+  "outputs": [
+    {
+      "output_id": "teacher_overview",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "teacher_overview",
+      "bundle": "mr_friess_engine_docs_bundle"
+    },
+    {
+      "output_id": "reading_response_template",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "reading_response_template",
+      "bundle": "mr_friess_engine_docs_bundle"
+    },
+    {
+      "output_id": "cer_organizer_template",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "cer_organizer_template",
+      "bundle": "mr_friess_engine_docs_bundle"
+    },
+    {
+      "output_id": "graphic_organizer_template",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "graphic_organizer_template",
+      "bundle": "mr_friess_engine_docs_bundle"
+    },
+    {
+      "output_id": "planter_volume_template",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "planter_volume_template",
+      "bundle": "mr_friess_engine_docs_bundle"
+    },
+    {
+      "output_id": "exit_reflection_template",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "exit_reflection_template",
+      "bundle": "mr_friess_engine_docs_bundle"
+    }
+  ]
+}
