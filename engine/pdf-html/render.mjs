@@ -14,6 +14,7 @@ import { buildPacingGuideHTML } from './templates/pacing-guide.mjs'
 import { buildSubPlanHTML } from './templates/sub-plan.mjs'
 import { buildMakeupPacketHTML } from './templates/makeup-packet.mjs'
 import { buildClassroomWorksheetTemplateHTML, isClassroomTemplateLayout } from './templates/classroom-worksheet-system.mjs'
+import { buildPlanterVolumeDecisionHTML, isPlanterVolumeDecisionLayout } from './templates/planter-volume-decision.mjs'
 
 const TEMPLATE_MAP = {
   task_sheet: buildTaskSheetHTML,
@@ -87,9 +88,11 @@ export async function renderStudentDoc(pkg, route, outPath) {
   const section = resolveSourceSection(pkg, route.source_section)
   const tier = route.variant_group === 'tiers' ? route.variant_role : null
   const layoutTemplateId = resolveLayoutTemplateId(route, section)
-  const html = isClassroomTemplateLayout(layoutTemplateId)
-    ? buildClassroomWorksheetTemplateHTML(pkg, section, getFontFaceCSS(), getDesignCSS(), layoutTemplateId)
-    : buildTemplate(pkg, section, getFontFaceCSS(), getDesignCSS(), tier)
+  const html = isPlanterVolumeDecisionLayout(layoutTemplateId)
+    ? buildPlanterVolumeDecisionHTML(pkg, section, getFontFaceCSS(), getDesignCSS())
+    : isClassroomTemplateLayout(layoutTemplateId)
+      ? buildClassroomWorksheetTemplateHTML(pkg, section, getFontFaceCSS(), getDesignCSS(), layoutTemplateId)
+      : buildTemplate(pkg, section, getFontFaceCSS(), getDesignCSS(), tier)
   await renderHtmlToPdf(html, outPath)
 }
 
