@@ -13,6 +13,7 @@ import { buildAnswerKeyHTML } from './templates/answer-key.mjs'
 import { buildPacingGuideHTML } from './templates/pacing-guide.mjs'
 import { buildSubPlanHTML } from './templates/sub-plan.mjs'
 import { buildMakeupPacketHTML } from './templates/makeup-packet.mjs'
+import { buildClassroomWorksheetTemplateHTML, isClassroomTemplateLayout } from './templates/classroom-worksheet-system.mjs'
 
 const TEMPLATE_MAP = {
   task_sheet: buildTaskSheetHTML,
@@ -20,6 +21,7 @@ const TEMPLATE_MAP = {
   exit_ticket: buildExitTicketHTML,
   discussion_prep_sheet: buildDiscussionPrepSheetHTML,
   worksheet: buildWorksheetHTML,
+  graphic_organizer: buildClassroomWorksheetTemplateHTML,
   rubric_sheet: buildRubricSheetHTML,
   station_cards: buildStationCardsHTML,
   answer_key: buildAnswerKeyHTML,
@@ -64,6 +66,10 @@ async function renderHtmlToPdf(html, outPath) {
   }
 }
 
+function resolveLayoutTemplateId(route, section) {
+  return route?.layout_template_id ?? section?.layout_template_id ?? section?.template_id ?? section?.template ?? null
+}
+
 export function supportsHtmlRender(outputType) {
   return Object.prototype.hasOwnProperty.call(TEMPLATE_MAP, outputType)
 }
@@ -80,7 +86,10 @@ export async function renderStudentDoc(pkg, route, outPath) {
 
   const section = resolveSourceSection(pkg, route.source_section)
   const tier = route.variant_group === 'tiers' ? route.variant_role : null
-  const html = buildTemplate(pkg, section, getFontFaceCSS(), getDesignCSS(), tier)
+  const layoutTemplateId = resolveLayoutTemplateId(route, section)
+  const html = isClassroomTemplateLayout(layoutTemplateId)
+    ? buildClassroomWorksheetTemplateHTML(pkg, section, getFontFaceCSS(), getDesignCSS(), layoutTemplateId)
+    : buildTemplate(pkg, section, getFontFaceCSS(), getDesignCSS(), tier)
   await renderHtmlToPdf(html, outPath)
 }
 

@@ -56,6 +56,24 @@ function weekSequenceSlideTemplate(pageRoles) {
   }
 }
 
+function classroomWorksheetTemplate(trace) {
+  const templateMap = {
+    student_worksheet: 'CWS_STUDENT_WORKSHEET',
+    student_exit_ticket: 'CWS_EXIT_REFLECTION',
+    student_graphic_organizer: 'CWS_GRAPHIC_ORGANIZER',
+    student_discussion_prep: 'CWS_DISCUSSION_PREP',
+  }
+  const selected = templateMap[trace?.artifact_class]
+  if (!selected) return null
+  return {
+    template_family: 'CLASSROOM_WORKSHEET',
+    template_sequence: [selected],
+    selected_template: selected,
+    rejected_templates: Object.values(templateMap).filter((templateId) => templateId !== selected),
+    template_reason: `${trace.artifact_class} routes through the reusable classroom worksheet layout family.`,
+  }
+}
+
 export function resolveTemplateRoute(trace) {
   const pageRoles = Array.isArray(trace?.page_roles) ? trace.page_roles : []
 
@@ -130,6 +148,9 @@ export function resolveTemplateRoute(trace) {
       template_reason: 'week_sequence_final_response routes through an explicit single-evidence final response contract.',
     }
   }
+
+  const classroomTemplate = classroomWorksheetTemplate(trace)
+  if (classroomTemplate) return classroomTemplate
 
   if (['student_rubric_sheet', 'teacher_rubric_sheet'].includes(trace?.artifact_class)) {
     return {
