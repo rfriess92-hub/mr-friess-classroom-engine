@@ -199,8 +199,13 @@ function buildExitReflection(pkg, section, fontFaceCSS, designCSS) {
 function buildGenericOrganizer(pkg, section, fontFaceCSS, designCSS) {
   const columns = list(section.columns, ['Side A', 'Side B'])
   const rowCount = Math.max(3, Number(section.rows) || 4)
+  const title = text(section.title, 'Graphic Organizer')
+  const rawSubtitle = text(section.subtitle, 'Reusable thinking tool')
+  const subtitle = `${title} ${rawSubtitle}`.toLowerCase().includes('graphic organizer')
+    ? rawSubtitle
+    : `Graphic Organizer - ${rawSubtitle}`
   const body = `${section.prompt ? sectionBox('Directions', escapeHtml(section.prompt), { icon: 'DIR' }) : ''}${sectionBox('Organizer', `<table class="cws-matrix"><thead><tr>${columns.map((column) => `<th>${escapeHtml(column)}</th>`).join('')}</tr></thead><tbody>${Array.from({ length: rowCount }, () => `<tr>${columns.map(() => '<td style="height:.58in;"></td>').join('')}</tr>`).join('')}</tbody></table>`)}${section.success_criteria ? sectionBox('Before you move on', checkboxList(section.success_criteria), { icon: 'CHK' }) : ''}`
-  return buildShell(pkg, section, text(section.title, 'Graphic Organizer'), text(section.subtitle, 'Reusable thinking tool'), body, fontFaceCSS, designCSS)
+  return buildShell(pkg, section, title, subtitle, body, fontFaceCSS, designCSS)
 }
 
 function buildSimpleTemplate(pkg, section, fontFaceCSS, designCSS, fallbackTitle, fallbackSubtitle) {
