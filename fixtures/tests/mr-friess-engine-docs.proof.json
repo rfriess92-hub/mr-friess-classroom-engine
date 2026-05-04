@@ -74,16 +74,12 @@
     ]
   },
   "planter_volume_template": {
-    "layout_template_id": "generic_graphic_organizer",
+    "layout_template_id": "planter_volume_decision",
     "title": "Planter Box Volume Decision Sheet",
-    "subtitle": "Graphic Organizer - soil, water, and materials estimate",
+    "subtitle": "Soil, water, and materials estimate",
     "prompt": "Our class is filling planter boxes. Use volume to estimate how much soil and water we need, then make a practical buying decision.",
-    "columns": [
-      "Question",
-      "Estimate / Calculation",
-      "Decision"
-    ],
-    "rows": 6,
+    "soil_bag_volume": "1 soil bag = ______ L",
+    "watering_can_volume": "1 watering can = ______ L",
     "success_criteria": [
       "I used length × width × height to estimate planter volume.",
       "I included units in my calculations.",
