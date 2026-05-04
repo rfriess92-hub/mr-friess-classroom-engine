@@ -1,6 +1,6 @@
 # Contract Drift Inventory
 
-**Audited:** 2026-04-24  
+**Audited:** 2026-05-04  
 **Scope:** Output-type support across schema, canonical vocabulary, router, renderer, classifier, template, QA, and fixtures.  
 **Machine-readable source:** `engine/contracts/output-type-inventory.json`  
 **Audit script:** `node scripts/audit-output-contracts.mjs`
@@ -11,8 +11,8 @@
 
 | Status | Count | Output Types |
 |--------|-------|-------------|
-| `production` | 12 | task_sheet, final_response_sheet, exit_ticket, worksheet, discussion_prep_sheet, rubric_sheet, station_cards, answer_key, pacing_guide, sub_plan, makeup_packet, slides |
-| `partial` | 4 | teacher_guide, lesson_overview, checkpoint_sheet, graphic_organizer |
+| `production` | 13 | task_sheet, final_response_sheet, exit_ticket, worksheet, discussion_prep_sheet, rubric_sheet, station_cards, answer_key, pacing_guide, sub_plan, makeup_packet, slides, graphic_organizer |
+| `partial` | 3 | teacher_guide, lesson_overview, checkpoint_sheet |
 | `schema_only` | 8 | assessment, quiz, rubric, formative_check, warm_up, vocabulary_card, observation_grid, lesson_reflection |
 | `experimental` | 0 | — |
 | `drifted` | 0 | — |
@@ -36,84 +36,76 @@ answer_key             [HTML]
 pacing_guide           [HTML]
 sub_plan               [HTML]
 makeup_packet          [HTML]
+graphic_organizer      [HTML] [Python]
 slides                          [PPTX]
 teacher_guide                  [Python]
 lesson_overview                [Python]
 checkpoint_sheet               [Python]
-graphic_organizer              [Python]
-assessment             ← SILENT SKIP
-quiz                   ← SILENT SKIP
-rubric                 ← SILENT SKIP
-formative_check        ← SILENT SKIP
-warm_up                ← SILENT SKIP
-vocabulary_card        ← SILENT SKIP
-observation_grid       ← SILENT SKIP
-lesson_reflection      ← SILENT SKIP
+assessment             ← BLOCKED_UNIMPLEMENTED
+quiz                   ← BLOCKED_UNIMPLEMENTED
+rubric                 ← BLOCKED_UNIMPLEMENTED
+formative_check        ← BLOCKED_UNIMPLEMENTED
+warm_up                ← BLOCKED_UNIMPLEMENTED
+vocabulary_card        ← BLOCKED_UNIMPLEMENTED
+observation_grid       ← BLOCKED_UNIMPLEMENTED
+lesson_reflection      ← BLOCKED_UNIMPLEMENTED
 ```
 
----
-
-## Top Drift Findings
-
-### 1. Eight schema-only types silently skip rendering (HIGH)
-
-`assessment`, `quiz`, `rubric`, `formative_check`, `warm_up`, `vocabulary_card`, `observation_grid`, and `lesson_reflection` exist in canonical vocabulary, the lesson schema enum, the output router, and the canonical audience/architecture maps — but have no HTML template and are not in `DOC_OUTPUT_TYPES`.
-
-**What happens:** `render-package.mjs` hits the `supportsHtmlRender()` check (false), then the `DOC_OUTPUT_TYPES` check (not present), then logs `Skipping unsupported doc-mode route` and continues. The package appears to render successfully. No artifact is produced. QA does not catch the miss because these types have no expected-artifact definition.
-
-**Risk:** A package declaring `assessment` in its outputs passes `schema:check`, routes cleanly, but produces nothing. The teacher gets an incomplete bundle with no error.
-
-**Recommended fix (Phase 1):** Add a `KNOWN_UNIMPLEMENTED_TYPES` set in `render-package.mjs` that exits with a clear error message rather than silently continuing, until each type has a real template.
+`planter_volume_decision` is a dedicated `layout_template_id` path inside the HTML renderer, not a standalone output type.
 
 ---
 
-### 2. `variant_role` schema enum and preflight validator disagree (HIGH)
+## Current Findings
 
-`schemas/lesson-package.schema.json` declares:
-```json
-"variant_role": { "enum": ["scaffolded", "core", "shared_core", "supported", "support", "extension"] }
-```
+### 1. Eight schema-only types are blocked until implemented (MEDIUM)
 
-`engine/schema/preflight.mjs` `VARIANT_ROLES` set contains:
-```javascript
-['shared_core', 'core', 'supported', 'extension']
-```
+`assessment`, `quiz`, `rubric`, `formative_check`, `warm_up`, `vocabulary_card`, `observation_grid`, and `lesson_reflection` exist in canonical vocabulary, the lesson schema enum, the output router, and the canonical audience/architecture maps. They still have no render implementation.
 
-**What happens:** A package using `variant_role: "scaffolded"` or `variant_role: "support"` passes `schema:check` but is rejected by `preflight` with `unsupported_variant_role`. The two validation layers disagree.
+**Current behavior:** `render-package.mjs` lists these output types in `KNOWN_UNIMPLEMENTED_TYPES`. If a package declares one, rendering exits with a clear error instead of logging a skip and producing an incomplete artifact bundle.
 
-**Recommended fix (Phase 1):** Choose one canonical set. The tiered worksheet fan-out uses `scaffolded`/`core`/`extension` — if those are valid roles they must be added to the preflight set. If they are not, remove them from the schema enum.
+**Next fix:** Implement `assessment` and `quiz` first in A1. Remove each type from `KNOWN_UNIMPLEMENTED_TYPES` only when its renderer, proof fixture, and smoke test are in place.
 
 ---
 
-### 3. Partial types (`lesson_overview`, `checkpoint_sheet`) have no dedicated Python renderer (MEDIUM)
+### 2. `teacher_guide` remains Python-only (LOW)
 
-`lesson_overview` and `checkpoint_sheet` are in `DOC_OUTPUT_TYPES` in `render-package.mjs` (so they attempt Python rendering), but `engine/pdf/render_stable_core_output.py` has no dedicated `render_lesson_overview` or `render_checkpoint_sheet` function. They fall through to a base renderer that may or may not produce a usable artifact.
+`teacher_guide` renders through the Python PDF path. It is valid and proof-covered, but it is not yet consolidated onto the HTML/Playwright renderer surface.
 
-**Risk:** These types appear to work because the process doesn't fail, but the output quality or completeness is unverified.
-
-**Recommended fix:** Verify what the base Python renderer produces for these types. Add proof fixtures or promote to HTML templates.
+**Next fix:** Add a teacher-guide HTML template in A5 after A1/A2 are stable.
 
 ---
 
-### 4. Render path split is implicit (LOW)
+### 3. `lesson_overview` and `checkpoint_sheet` remain partial (MEDIUM)
 
-The decision between HTML/Playwright and Python/ReportLab rendering is embedded in `render-package.mjs` logic (`supportsHtmlRender()` first, then `DOC_OUTPUT_TYPES`). There is no single source of truth that documents which path each output type takes. This makes it easy to add a type to one layer and miss the other.
+`lesson_overview` and `checkpoint_sheet` are in `DOC_OUTPUT_TYPES` and remain proof-backed through the Python path. They still have no dedicated HTML template.
 
-**Recommended fix:** The inventory in `engine/contracts/output-type-inventory.json` now serves as this source of truth. Reference it when adding new output types.
+**Next fix:** Keep current proof coverage, then add HTML templates during A5 if render consolidation remains the goal.
 
 ---
 
-### 5. Grade-band validators exist for Careers 8 only (LOW — tracked in WORKLOAD.md as B0a)
+### 4. Render path split is documented by the inventory (LOW)
 
-`engine/generation/grade-band-contracts.mjs` implements contract validation for Careers 8. Contracts for ELA 10/11/12, Math 8, and Workplace Math 10 exist as markdown files in `engine/generation/contracts/` but have no validator implementation. They are present but unenforced.
+The decision between HTML/Playwright, Python/ReportLab, and PPTX rendering is still controlled by `render-package.mjs` and `supportsHtmlRender()`. The machine-readable inventory is the current human-readable map for that split.
+
+**Next fix:** Update `engine/contracts/output-type-inventory.json` whenever output types or layout-template render paths change.
+
+---
+
+## Resolved Since Initial Audit
+
+- Schema-only output types no longer silently skip render; they fail loudly through `KNOWN_UNIMPLEMENTED_TYPES`.
+- `variant_role` schema/preflight compatibility is aligned for `scaffolded`, `core`, `shared_core`, `supported`, `support`, and `extension`.
+- `graphic_organizer` is now HTML-backed through the classroom worksheet template system.
+- The sample-output-review workflow renders representative Mr Friess engine docs.
+- `planter_volume_decision` is wired as a dedicated classroom worksheet layout path.
 
 ---
 
 ## What Is Production-Ready
 
-The following 12 output types are coherent across all layers: schema, vocabulary, audience/architecture canonicals, router, HTML template (or PPTX path), typed blocks, artifact classifier, template router, QA, and fixture proof:
+The following 13 output types are coherent across render path, routing, typed blocks, classifier/template support, QA, and fixture proof:
 
-- **Student-facing:** task_sheet, final_response_sheet, exit_ticket, worksheet, discussion_prep_sheet, rubric_sheet, station_cards, makeup_packet
+- **Student-facing:** task_sheet, final_response_sheet, exit_ticket, worksheet, discussion_prep_sheet, rubric_sheet, station_cards, makeup_packet, graphic_organizer
 - **Teacher-facing:** answer_key, pacing_guide, sub_plan
 - **Shared:** slides
 
@@ -124,27 +116,21 @@ The following 12 output types are coherent across all layers: schema, vocabulary
 | Type | Missing |
 |------|---------|
 | `teacher_guide` | No HTML template — Python path only. Works but not on the HTML consolidation path. |
-| `lesson_overview` | No HTML template, no dedicated Python renderer. Python fallback unverified. |
-| `checkpoint_sheet` | No HTML template, no dedicated Python renderer. Python fallback unverified. |
-| `graphic_organizer` | No HTML template — dedicated Python renderer exists. Works but not consolidated. |
+| `lesson_overview` | No HTML template. Python path is proof-backed. |
+| `checkpoint_sheet` | No HTML template. Python path is proof-backed. |
 
 ---
 
-## Recommended Phase 1 Actions
+## Recommended Next Actions
 
-In priority order:
-
-1. **Fix variant_role drift** — decide canonical set, align schema enum and preflight VARIANT_ROLES in one PR. This is a correctness bug, not just drift.
-
-2. **Block schema-only types at render time** — add `KNOWN_UNIMPLEMENTED_TYPES` check in `render-package.mjs` that exits loudly. Prevents silent package corruption. Small, safe change.
-
-3. **Verify lesson_overview and checkpoint_sheet Python rendering** — add proof fixtures or a smoke test that confirms actual artifacts are produced.
-
-4. **Track schema-only types in CI** — the `output-contract-drift.test.mjs` test now guards against unclassified types entering the inventory silently.
+1. **A1 assessment foundation** — add question banks, assessment/quiz HTML templates, render wiring, proof fixture, smoke test, and answer-key separation.
+2. **Verify nightly repo agent dry run** — use Issue #183 and inspect the report artifact.
+3. **Review sample-output-review artifact** — confirm the rendered Mr Friess sample docs match the new classroom worksheet formatting expectations.
+4. **A5 later** — consolidate `teacher_guide`, `lesson_overview`, and `checkpoint_sheet` onto HTML only after A1/A2 stabilize.
 
 ---
 
-## Files Created
+## Files
 
 | File | Purpose |
 |------|---------|
