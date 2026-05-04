@@ -10,7 +10,7 @@ Current working rule: keep contract/rendering work separate from pedagogy/conten
 
 ---
 
-## Current Checkpoint — 2026-05-03
+## Current Checkpoint — 2026-05-04
 
 Recent stabilization work has landed:
 
@@ -20,8 +20,18 @@ Recent stabilization work has landed:
 - [x] Guarded nightly repo-agent scaffold (#182)
 - [x] Clean classroom worksheet template system (#184)
 - [x] `graphic_organizer` now has an HTML-backed classroom-template render path (#184)
+- [x] Sample-output-review workflow for representative Mr Friess engine docs (#187)
+- [x] Repo-generated Mr Friess document sample fixture and planter-volume decision template (#188)
 
-There are currently no open PRs.
+Current open repo-maintenance PR:
+
+- [ ] #189 refreshes the output-type inventory and contract drift report after the worksheet-formatting merges. It is docs/audit only and does not change renderer behavior.
+
+Next recommended cleanup checks:
+
+1. Verify the guarded nightly repo-agent dry run using Issue #183.
+2. Review the latest `sample-output-review` artifact from `main` for visual/pedagogical alignment.
+3. Continue B5 formatting balance work or start A1 assessment foundation implementation.
 
 Next recommended implementation target: **A1 assessment foundation implementation**.
 
@@ -57,8 +67,10 @@ Merged in #184.
 - [x] `layout_template_id` support wired through `engine/pdf-html/render.mjs`
 - [x] Existing worksheet renderer remains default when no classroom layout id is present
 - [x] `graphic_organizer` moved onto the HTML renderer surface
+- [x] Dedicated `planter_volume_decision` classroom worksheet layout wired through `engine/pdf-html/render.mjs`
 - [x] Explicit `CLASSROOM_WORKSHEET` routing in `engine/render/template-router.mjs`
 - [x] Proof fixture: `fixtures/tests/worksheet-template-system.proof.json`
+- [x] Mr Friess document sample proof fixture: `fixtures/tests/mr-friess-engine-docs.proof.json`
 - [x] Unit and smoke tests added
 
 Follow-up later:
@@ -359,6 +371,9 @@ Only after repeated clean D0/D1 runs.
 
 # Done Log
 
+- [#188] Format: render Mr Friess engine document samples
+- [#187] Sample-output-review workflow
+- [#186] WORKLOAD roadmap refresh
 - [#185] Variant-role schema/preflight compatibility
 - [#184] Clean classroom worksheet template system
 - [#182] Guarded nightly repo-agent scaffold
