@@ -14,6 +14,13 @@ function text(value, fallback = '') {
   return normalized || fallback
 }
 
+function capWords(value, maxWords = 72) {
+  const normalized = text(value)
+  const words = normalized.match(/\b[\w'-]+\b/g) ?? []
+  if (words.length <= maxWords) return normalized
+  return `${words.slice(0, maxWords).join(' ')}…`
+}
+
 function htmlLines(value) {
   return escapeHtml(String(value ?? '')).replace(/\n/g, '<br>')
 }
@@ -321,5 +328,6 @@ export function buildClassroomSlideSemanticText(packet, slideSpec, slideIndex) {
   if (Array.isArray(slide.rows)) {
     for (const row of slide.rows) pieces.push(...row)
   }
-  return pieces.map((item) => text(item)).filter(Boolean).join(' · ')
+  const semanticText = pieces.map((item) => text(item)).filter(Boolean).join(' · ')
+  return capWords(semanticText, 72)
 }
