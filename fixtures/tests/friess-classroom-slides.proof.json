@@ -15,6 +15,7 @@
   "slides": [
     {
       "type": "title",
+      "layout": "hero",
       "accent": "teal",
       "title": "BIOLOGY\n12",
       "subtitle": "CELL BIOLOGY  |  GENETICS  |  EVOLUTION  |  ECOSYSTEMS",
@@ -25,6 +26,7 @@
     },
     {
       "type": "how_it_works",
+      "layout": "how_it_works",
       "title": "HOW THIS DECK WORKS",
       "accent": "teal",
       "cards": [
@@ -51,6 +53,7 @@
     },
     {
       "type": "scope_sequence",
+      "layout": "scope_sequence",
       "title": "SCOPE & SEQUENCE — BIOLOGY 12",
       "accent": "teal",
       "columns": ["#", "Unit", "Key Concept", "Core Activities", "Assessment"],
@@ -64,6 +67,8 @@
     },
     {
       "type": "unit_overview",
+      "layout": "unit_overview",
+      "title": "Unit 1 — Cell Biology",
       "unit_number": "1",
       "unit_name": "Cell Biology",
       "accent": "teal",
@@ -93,6 +98,7 @@
     },
     {
       "type": "lesson_days12",
+      "layout": "lesson_days12",
       "unit": "1",
       "accent": "teal",
       "breadcrumb": "UNIT 1  •  DAYS 1 & 2",
@@ -119,6 +125,7 @@
     },
     {
       "type": "lesson_day3",
+      "layout": "lesson_day3",
       "unit": "1",
       "breadcrumb": "UNIT 1  •  DAY 3",
       "title": "Review: Mitosis & Meiosis  +  Lab Extension",
