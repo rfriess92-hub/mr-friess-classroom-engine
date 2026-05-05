@@ -9,11 +9,13 @@ import { buildDiscussionPrepSheetHTML } from './templates/discussion-prep-sheet.
 import { buildWorksheetHTML } from './templates/worksheet.mjs'
 import { buildRubricSheetHTML } from './templates/rubric-sheet.mjs'
 import { buildStationCardsHTML } from './templates/station-cards.mjs'
+import { buildAnswerKeyHTML } from './templates/answer-key.mjs'
+import { buildPacingGuideHTML } from './templates/pacing-guide.mjs'
+import { buildSubPlanHTML } from './templates/sub-plan.mjs'
 import { buildMakeupPacketHTML } from './templates/makeup-packet.mjs'
 import { buildClassroomWorksheetTemplateHTML, isClassroomTemplateLayout } from './templates/classroom-worksheet-system.mjs'
 import { buildLiteracyVocabularyToolHTML, isLiteracyVocabularyToolLayout } from './templates/literacy-vocabulary-tools.mjs'
 import { buildAssessmentVisualToolHTML, isAssessmentVisualToolLayout } from './templates/assessment-visual-tools.mjs'
-import { buildPacingGuideHTML, buildSubPlanHTML, buildAnswerKeyHTML } from './templates/teacher-support.mjs'
 import { buildPlanterVolumeDecisionHTML, isPlanterVolumeDecisionLayout } from './templates/planter-volume-decision.mjs'
 
 const TEMPLATE_MAP = {
