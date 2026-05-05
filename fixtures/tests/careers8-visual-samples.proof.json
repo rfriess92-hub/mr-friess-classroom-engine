@@ -1,0 +1,130 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers8_visual_samples_proof",
+  "primary_architecture": "single_period_full",
+  "grade_band": "6-8",
+  "subject": "Career Education",
+  "grade": 8,
+  "topic": "Careers 8: identity, strengths, and career pathways",
+  "theme": "career_education",
+  "teacher_overview": {
+    "layout_template_id": "worksheet_template_system",
+    "title": "Careers 8 Teacher Overview",
+    "subtitle": "Identity, strengths, pathways, and practical next steps",
+    "directions": "Use this sample pack to review whether the engine can produce useful Careers 8 classroom documents with clear student-facing structure.",
+    "prompt": "Students connect personal strengths and interests to possible pathways, then practise asking better questions about work, learning, and community contribution.",
+    "success_criteria": [
+      "Students name strengths using specific evidence.",
+      "Students connect interests to possible career clusters or pathways.",
+      "Students ask realistic questions about training, work conditions, and community impact.",
+      "Students leave with one practical next step."
+    ]
+  },
+  "strengths_inventory": {
+    "layout_template_id": "english_reading_response",
+    "title": "Careers 8 Strengths Inventory",
+    "subtitle": "What I notice about how I work, learn, and contribute",
+    "learning_target": "I can identify strengths and explain how they might connect to future opportunities.",
+    "directions": "Choose three strengths that describe you. For each one, give a real example from school, home, sports, work, volunteering, or community life.",
+    "prompt": "A strength is more useful when you can prove it with an example. Avoid one-word answers. Explain what you did, what helped, and where that strength might matter later.",
+    "vocabulary": [
+      { "word": "strength", "definition": "a skill, habit, or quality that helps you contribute" },
+      { "word": "evidence", "definition": "a real example that proves your idea" },
+      { "word": "pathway", "definition": "a possible direction for learning, work, or service" }
+    ],
+    "success_criteria": [
+      "I named three strengths.",
+      "I gave a specific example for each strength.",
+      "I connected at least one strength to a possible pathway.",
+      "I wrote in a way that sounds honest and specific to me."
+    ]
+  },
+  "career_cluster_cer": {
+    "layout_template_id": "cross_curricular_cer",
+    "title": "Career Cluster CER",
+    "subtitle": "Choose a pathway and support your thinking",
+    "question": "Which career cluster or pathway seems worth exploring next, and why?",
+    "learning_target": "I can make a supported career-learning claim using evidence from my strengths, interests, and questions.",
+    "directions": "Pick one pathway to explore. Use evidence from your strengths inventory, interests, and research questions. Explain why this pathway is worth learning more about.",
+    "sentence_starters": [
+      "A pathway I want to explore is...",
+      "One strength that connects to this pathway is...",
+      "One question I still have is...",
+      "This pathway is worth exploring because..."
+    ],
+    "success_criteria": [
+      "My claim names a specific pathway or career cluster.",
+      "My evidence includes something true about me.",
+      "My reasoning explains the connection.",
+      "I included at least one question for future research."
+    ]
+  },
+  "career_interview_organizer": {
+    "layout_template_id": "graphic_organizer_pack",
+    "title": "Career Interview Question Planner",
+    "subtitle": "Ask better questions before judging a career",
+    "organizer_type": "template_pack",
+    "prompt": "Plan questions for a short career conversation with an adult, guest speaker, family member, community member, or video profile.",
+    "columns": ["Question I will ask", "What the answer might help me learn"],
+    "rows": 5,
+    "success_criteria": [
+      "I wrote open-ended questions, not yes/no questions.",
+      "I asked about daily work, training, challenges, and advice.",
+      "I connected at least one question to my own interests or strengths."
+    ]
+  },
+  "next_step_reflection": {
+    "layout_template_id": "exit_reflection",
+    "title": "Careers 8 Exit Reflection",
+    "subtitle": "One thing I learned, one thing I will try next",
+    "learning_target": "I can reflect on my career-learning process and name a practical next step.",
+    "topic_prompt": "Careers 8 pathway exploration",
+    "prompt": "What did you learn about yourself or a possible pathway today? What is one realistic next step?",
+    "success_criteria": [
+      "I named one thing I learned about myself or a pathway.",
+      "I named one specific next step.",
+      "My next step is realistic for a Grade 8 student."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "careers8_visual_samples_bundle",
+    "declared_outputs": ["worksheet", "graphic_organizer", "exit_ticket"]
+  },
+  "outputs": [
+    {
+      "output_id": "careers8_teacher_overview",
+      "output_type": "worksheet",
+      "audience": "teacher",
+      "source_section": "teacher_overview",
+      "bundle": "careers8_visual_samples_bundle"
+    },
+    {
+      "output_id": "careers8_strengths_inventory",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "strengths_inventory",
+      "bundle": "careers8_visual_samples_bundle"
+    },
+    {
+      "output_id": "careers8_career_cluster_cer",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "career_cluster_cer",
+      "bundle": "careers8_visual_samples_bundle"
+    },
+    {
+      "output_id": "careers8_career_interview_organizer",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "career_interview_organizer",
+      "bundle": "careers8_visual_samples_bundle"
+    },
+    {
+      "output_id": "careers8_next_step_reflection",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "next_step_reflection",
+      "bundle": "careers8_visual_samples_bundle"
+    }
+  ]
+}
