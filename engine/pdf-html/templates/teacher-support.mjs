@@ -7,7 +7,12 @@ function text(value, fallback = '') {
 
 function list(value, fallback = []) {
   if (Array.isArray(value)) {
-    const normalized = value.map((item) => String(item ?? '').trim()).filter(Boolean)
+    const normalized = value.map((item) => {
+      if (item && typeof item === 'object' && !Array.isArray(item)) {
+        return text(item.label ?? item.title ?? item.focus ?? item.task ?? item.note ?? item.support ?? item.student_output ?? item.reading ?? JSON.stringify(item), '')
+      }
+      return String(item ?? '').trim()
+    }).filter(Boolean)
     if (normalized.length > 0) return normalized
   }
   if (typeof value === 'string' && value.trim()) return [value.trim()]
@@ -57,8 +62,12 @@ function panel(title, body, badge = '') {
   return `<section class="tsup-panel"><div class="tsup-panel-head">${badge ? `<span class="tsup-badge">${escapeHtml(badge)}</span>` : ''}<span>${escapeHtml(title)}</span></div><div class="tsup-panel-body">${body}</div></section>`
 }
 
-function bulletList(items) {
-  return `<ul class="tsup-list">${list(items, ['No notes provided.']).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
+function bulletList(items, fallback = ['No notes provided.']) {
+  return `<ul class="tsup-list">${list(items, fallback).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
+}
+
+function row(value, fields) {
+  return `<tr>${fields.map((field) => `<td>${escapeHtml(text(value?.[field] ?? value?.[field.replace(/_/g, ' ')] ?? '', ''))}</td>`).join('')}</tr>`
 }
 
 export function buildTeacherGuideHTML(pkg, section, fontFaceCSS, designCSS) {
@@ -85,4 +94,34 @@ export function buildLessonOverviewHTML(pkg, section, fontFaceCSS, designCSS) {
     panel('Integrity checks', bulletList(section?.integrity_checks), 'CHK')
   ].join('')
   return shell(pkg, section, text(section?.title, `${text(pkg?.topic, 'Unit')} Overview`), 'Unit arc, essential question, and day-by-day structure', body, fontFaceCSS, designCSS)
+}
+
+export function buildPacingGuideHTML(pkg, section, fontFaceCSS, designCSS) {
+  const days = objectList(section?.days ?? pkg?.days)
+  const rows = days.map((item, index) => `<tr><td>${escapeHtml(text(item.day ?? item.day_label, `Day ${index + 1}`))}</td><td>${escapeHtml(text(item.focus ?? item.reading_focus, ''))}</td><td>${escapeHtml(text(item.reading, ''))}</td><td>${escapeHtml(text(item.student_output ?? item.carryover_note, ''))}</td></tr>`).join('')
+  const body = [
+    panel('How to use this pacing guide', `<div class="tsup-note">Move quickly enough to preserve the momentum of the novel, but return to key pages for evidence, character impact, visual choices, and theme.</div>`, 'USE'),
+    panel('15-day sequence', `<table class="tsup-table"><thead><tr><th>Day</th><th>Focus</th><th>Reading</th><th>Student output</th></tr></thead><tbody>${rows}</tbody></table>`, 'PACE')
+  ].join('')
+  return shell(pkg, section, text(section?.title, `${text(pkg?.topic, 'Unit')} Pacing Guide`), 'Daily focus, reading target, and student output', body, fontFaceCSS, designCSS)
+}
+
+export function buildSubPlanHTML(pkg, section, fontFaceCSS, designCSS) {
+  const body = [
+    panel('Sub summary', `<div class="tsup-note">${escapeHtml(text(section?.summary, 'Students complete a standalone reading, organizer, or short written response connected to the current unit focus.'))}</div>`, 'SUB'),
+    panel('Student tasks', bulletList(section?.student_tasks ?? section?.tasks, ['Read or reread the assigned section.', 'Complete the current organizer.', 'Submit the page before leaving.']), 'TASK'),
+    panel('Teacher notes', bulletList(section?.teacher_notes ?? section?.notes, ['No sensitive personal sharing is required.', 'Students may work silently or with one partner if class norms allow.']), 'NOTE'),
+    panel('If students finish early', bulletList(section?.extensions ?? ['Choose one discussion question and write a short response.', 'Review the symbolism or character tracker and add one detail.']), 'EXT')
+  ].join('')
+  return shell(pkg, section, text(section?.title, `${text(pkg?.topic, 'Unit')} Sub Plan`), 'A clean fallback plan for a guest teacher', body, fontFaceCSS, designCSS)
+}
+
+export function buildAnswerKeyHTML(pkg, section, fontFaceCSS, designCSS) {
+  const body = [
+    panel('Use as teacher notes', `<div class="tsup-note">${escapeHtml(text(section?.note, 'These are possible responses and discussion supports, not a fixed answer key.'))}</div>`, 'KEY'),
+    panel('Possible themes', bulletList(section?.possible_themes), 'THEME'),
+    panel('Possible character impacts', bulletList(section?.possible_character_impacts), 'CHAR'),
+    panel('Teacher caution', `<div class="tsup-note">${escapeHtml(text(section?.teacher_caution, 'Require evidence for interpretations rather than one official answer.'))}</div>`, 'CAUT')
+  ].join('')
+  return shell(pkg, section, text(section?.title, 'Teacher Notes and Possible Responses'), 'Possible interpretations, themes, and discussion supports', body, fontFaceCSS, designCSS)
 }
