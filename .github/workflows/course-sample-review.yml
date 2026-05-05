@@ -1,0 +1,67 @@
+name: course-sample-review
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/course-sample-review.yml'
+      - 'engine/**'
+      - 'fixtures/tests/mr-friess-course-sample-packs.proof.json'
+      - 'scripts/**'
+      - 'schemas/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+
+jobs:
+  course-sample-review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install Node dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install chromium
+
+      - name: Verify and render Mr Friess course sample pack
+        run: |
+          set -euo pipefail
+          mkdir -p output-samples/mr-friess-course-sample-packs
+          pnpm run doctor
+          pnpm test
+          node scripts/audit-output-contracts.mjs
+          pnpm run schema:check -- --package fixtures/tests/mr-friess-course-sample-packs.proof.json
+          pnpm run route:plan -- --package fixtures/tests/mr-friess-course-sample-packs.proof.json --print-routes
+          pnpm run render:package -- --package fixtures/tests/mr-friess-course-sample-packs.proof.json --out output-samples/mr-friess-course-sample-packs --flat-out
+
+      - name: Prepare visual artifact
+        if: always()
+        run: |
+          set -euo pipefail
+          rm -rf output-visuals
+          mkdir -p output-visuals
+          find output-samples -type f \( -name '*.pdf' -o -name '*.pptx' -o -name '*.docx' \) | sort | while read -r file; do
+            target="output-visuals/${file#output-samples/}"
+            mkdir -p "$(dirname "$target")"
+            cp "$file" "$target"
+          done
+          find output-visuals -type f | sort
+
+      - name: Upload course visual sample outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: course-sample-visual-review
+          path: output-visuals
+          if-no-files-found: error
