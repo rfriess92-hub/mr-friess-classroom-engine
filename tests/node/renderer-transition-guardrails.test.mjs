@@ -10,7 +10,7 @@ function read(path) {
   return readFileSync(path, 'utf-8')
 }
 
-test('active PPTX renderer chain keeps required archive-backed modules present', () => {
+test('active PPTX renderer keeps archive modules preserved but no longer delegates through them', () => {
   const requiredPaths = [
     repoPath('engine', 'pptx', 'renderer.py'),
     repoPath('engine', 'pptx', 'archive', 'render_pptx_image_bridge.py'),
@@ -20,14 +20,17 @@ test('active PPTX renderer chain keeps required archive-backed modules present',
 
   const missing = requiredPaths.filter((path) => !existsSync(path))
   assert.deepEqual(missing, [])
+
+  const renderer = read(repoPath('engine', 'pptx', 'renderer.py'))
+  assert.doesNotMatch(renderer, /^import render_pptx_image_bridge/m)
+  assert.match(renderer, /First-class deterministic classroom slide renderer/)
+  assert.match(renderer, /def build_deck/)
 })
 
-test('active PPTX renderer chain still points through the documented transitional modules', () => {
-  const renderer = read(repoPath('engine', 'pptx', 'renderer.py'))
+test('archived PPTX bridge chain remains inspectable during transition', () => {
   const imageBridge = read(repoPath('engine', 'pptx', 'archive', 'render_pptx_image_bridge.py'))
   const visualBridge = read(repoPath('engine', 'pptx', 'archive', 'render_pptx_visual_bridge.py'))
 
-  assert.match(renderer, /render_pptx_image_bridge/)
   assert.match(imageBridge, /render_pptx_visual_bridge/)
   assert.match(visualBridge, /render_pptx_patch_v3/)
 })
