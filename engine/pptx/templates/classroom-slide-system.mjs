@@ -1,3 +1,5 @@
+const ACCENTS = new Set(['teal', 'teal2', 'amber', 'red', 'purple'])
+
 function escapeHtml(value) {
   return String(value ?? '')
     .replaceAll('&', '&amp;')
@@ -12,17 +14,25 @@ function text(value, fallback = '') {
   return normalized || fallback
 }
 
-function words(value) {
-  return text(value).match(/\b[\w'-]+\b/g) ?? []
+function htmlLines(value) {
+  return escapeHtml(String(value ?? '')).replace(/\n/g, '<br>')
 }
 
-function clamp(value, maxWords = 18) {
-  const tokenized = words(value)
-  if (tokenized.length <= maxWords) return text(value)
-  return `${tokenized.slice(0, maxWords).join(' ')}…`
+function accent(value, fallback = 'teal') {
+  const normalized = text(value, fallback).toLowerCase().replace(/[^a-z0-9]/g, '')
+  return ACCENTS.has(normalized) ? normalized : fallback
 }
 
-function flattenItems(value, limit = 4) {
+function termBox(value, fallbackAccent = 'teal') {
+  const normalized = text(value).toLowerCase().replace(/_/g, '-')
+  if (normalized.includes('amber')) return 'term-amber'
+  if (normalized.includes('red')) return 'term-red'
+  if (normalized.includes('purple')) return 'term-purple'
+  if (normalized.includes('teal')) return 'term-teal'
+  return `term-${fallbackAccent === 'teal2' ? 'teal' : fallbackAccent}`
+}
+
+function flattenItems(value, limit = 6) {
   const out = []
   const visit = (entry) => {
     if (out.length >= limit || entry == null) return
@@ -43,16 +53,24 @@ function flattenItems(value, limit = 4) {
         if (joined) out.push(joined)
         return
       }
-      if (entry.title != null && entry.items != null) {
-        out.push([text(entry.title), ...flattenItems(entry.items, 2)].filter(Boolean).join(' — '))
+      if (entry.head != null || entry.heading != null || entry.title != null) {
+        const joined = [entry.head ?? entry.heading ?? entry.title, entry.body].map((item) => text(item)).filter(Boolean).join(' — ')
+        if (joined) out.push(joined)
         return
       }
-      const pieces = Object.values(entry).filter((item) => typeof item === 'string' || typeof item === 'number').map((item) => text(item)).filter(Boolean)
+      const pieces = Object.values(entry)
+        .filter((item) => typeof item === 'string' || typeof item === 'number')
+        .map((item) => text(item))
+        .filter(Boolean)
       if (pieces.length > 0) out.push(pieces.join(' — '))
     }
   }
   visit(value)
   return out.slice(0, limit)
+}
+
+function subjectLabel(packet) {
+  return [packet.subject, packet.grade].map((item) => text(item)).filter(Boolean).join(' ')
 }
 
 function slideVisualPage(packet, slideIndex) {
@@ -62,180 +80,246 @@ function slideVisualPage(packet, slideIndex) {
   return page && typeof page === 'object' ? page : null
 }
 
-function contentPlan(packet, slideSpec, slideIndex) {
-  const page = slideVisualPage(packet, slideIndex)
-  if (page?.content_plan && typeof page.content_plan === 'object') return page.content_plan
-
+function normalizeSlide(packet, slideSpec, slideIndex) {
+  const rawType = text(slideSpec?.type).toLowerCase()
+  const layout = text(slideSpec?.layout).toLowerCase()
   const content = slideSpec?.content && typeof slideSpec.content === 'object' ? slideSpec.content : {}
-  const layout = text(slideSpec?.layout, 'prompt').toLowerCase()
-  const title = text(slideSpec?.title, 'Classroom slide')
+  const page = slideVisualPage(packet, slideIndex)
+  const visualPlan = page?.content_plan && typeof page.content_plan === 'object' ? page.content_plan : null
 
-  if (layout === 'hero') return { title, subtitle: text(content.subtitle) }
+  if (rawType === 'title' || layout === 'hero' || rawType === 'title_slide') {
+    return {
+      type: 'title',
+      accent: accent(slideSpec?.accent ?? packet.accent ?? packet.theme, 'teal'),
+      title: text(slideSpec?.title ?? visualPlan?.title ?? packet.topic, 'Classroom Deck'),
+      subtitle: text(slideSpec?.subtitle ?? content.subtitle ?? visualPlan?.subtitle ?? packet.topic, ''),
+      meta: Array.isArray(slideSpec?.meta)
+        ? slideSpec.meta
+        : [subjectLabel(packet), text(packet.lesson_label ?? packet.topic)],
+    }
+  }
+
+  if (rawType === 'unit_overview') return { ...slideSpec, type: 'unit_overview' }
+  if (rawType === 'scope_sequence') return { ...slideSpec, type: 'scope_sequence' }
+  if (rawType === 'how_it_works') return { ...slideSpec, type: 'how_it_works' }
+  if (rawType === 'lesson_day3') return { ...slideSpec, type: 'lesson_day3' }
+  if (rawType === 'lesson_days12') return { ...slideSpec, type: 'lesson_days12' }
 
   if (layout.includes('compare') || layout === 'two_column') {
     const columns = Array.isArray(content.columns) ? content.columns : []
-    if (columns.length >= 2) {
-      const left = typeof columns[0] === 'object' ? columns[0] : { title: 'First idea', items: [columns[0]] }
-      const right = typeof columns[1] === 'object' ? columns[1] : { title: 'Second idea', items: [columns[1]] }
-      return {
-        left_title: text(left.title, 'First idea'),
-        left_body: flattenItems(left.items, 3).join(' · '),
-        right_title: text(right.title, 'Second idea'),
-        right_body: flattenItems(right.items, 3).join(' · '),
-        takeaway: text(content.takeaway),
-      }
-    }
+    const left = columns[0] && typeof columns[0] === 'object'
+      ? columns[0]
+      : { title: 'First idea', items: [content.left ?? columns[0] ?? ''] }
+    const right = columns[1] && typeof columns[1] === 'object'
+      ? columns[1]
+      : { title: 'Second idea', items: [content.right ?? columns[1] ?? ''] }
     return {
-      left_title: 'First idea',
-      left_body: text(content.left),
-      right_title: 'Second idea',
-      right_body: text(content.right),
-      takeaway: text(content.takeaway),
+      type: 'lesson_days12',
+      accent: accent(packet.theme, 'teal'),
+      breadcrumb: text(packet.lesson_label, 'CLASSROOM VIEW'),
+      title: text(slideSpec?.title, 'Compare ideas'),
+      left_card: {
+        label: text(left.title, 'FIRST IDEA'),
+        term: text(left.title, 'FIRST IDEA'),
+        definition: '',
+        secondary_label: 'KEY DETAILS',
+        content: flattenItems(left.items ?? content.left, 5).join('\n'),
+      },
+      right_cards: [{ label: text(right.title, 'SECOND IDEA'), content: flattenItems(right.items ?? content.right, 5).join('\n') }],
     }
   }
 
-  if (layout === 'reflect' || layout === 'reflection') {
-    return {
-      invitation: text(content.task ?? content.headline, title),
-      prompts: flattenItems(content.prompts ?? content.goals, 2),
-    }
-  }
-
-  if (layout === 'planner_model' || layout === 'summary_rows' || layout === 'bullet_focus') {
-    return {
-      model: text(content.model ?? content.headline ?? content.task, title),
-      support: flattenItems(content.supports ?? content.items ?? content.rows, 3).join(' · '),
-    }
-  }
-
+  const prompts = flattenItems(content.prompts ?? content.goals ?? content.rows ?? content.items ?? visualPlan?.prompts, 5)
   return {
-    prompt: text(content.task ?? content.scenario ?? content.headline, title),
-    prompts: flattenItems(content.prompts ?? content.rows ?? content.items ?? content.goals, 3),
+    type: layout === 'reflect' || rawType === 'reflect' ? 'lesson_day3' : 'lesson_days12',
+    accent: accent(packet.theme, 'teal'),
+    breadcrumb: text(packet.lesson_label, 'CLASSROOM VIEW'),
+    title: text(slideSpec?.title, 'Classroom task'),
+    left_card: {
+      label: layout === 'reflect' ? 'REFLECTION' : 'CLASSROOM ANCHOR',
+      term: text(content.term ?? visualPlan?.term ?? slideSpec?.title, 'FOCUS'),
+      definition: text(content.definition ?? content.subtitle ?? visualPlan?.subtitle, ''),
+      secondary_label: 'START HERE',
+      content: text(content.task ?? content.scenario ?? content.model ?? visualPlan?.prompt ?? slideSpec?.title, ''),
+    },
+    right_cards: prompts.length > 0
+      ? [{ label: 'PROMPTS', content: prompts.join('\n') }]
+      : [{ label: 'SUPPORT', content: flattenItems(content.supports ?? content.rows, 4).join('\n') }],
   }
 }
 
-function slideFamily(packet, slideSpec, slideIndex) {
-  const page = slideVisualPage(packet, slideIndex)
-  if (page?.layout_id) return text(page.layout_id)
-  const layout = text(slideSpec?.layout, 'prompt').toLowerCase()
-  if (layout === 'hero') return 'S_HERO'
-  if (layout.includes('compare') || layout === 'two_column') return 'S_COMPARE'
-  if (layout === 'reflect' || layout === 'reflection') return 'S_REFLECT'
-  if (layout === 'planner_model' || layout === 'summary_rows' || layout === 'bullet_focus') return 'S_MODEL'
-  return 'S_PROMPT'
-}
-
-function theme(packet) {
-  const subject = text(packet.subject).toLowerCase()
-  const declared = text(packet.theme).toLowerCase()
-  if (declared.includes('ela') || subject.includes('english')) return { name: 'ela', accent: '#6d28d9', accent2: '#2563eb', support: '#b45309' }
-  if (declared.includes('career') || subject.includes('career')) return { name: 'careers', accent: '#2563eb', accent2: '#b45309', support: '#15803d' }
-  if (declared.includes('math') || subject.includes('math')) return { name: 'math', accent: '#1d4ed8', accent2: '#15803d', support: '#b45309' }
-  return { name: 'default', accent: '#b91c1c', accent2: '#b45309', support: '#15803d' }
-}
-
-function css(tokens) {
+function css() {
   return `
+    :root {
+      --bg-dark:#161C2D; --bg-light:#F0F2F5; --card-dark:#222B3A; --card-light:#FFFFFF; --navy-bar:#1B2235;
+      --teal:#2D9E95; --teal2:#1E7A72; --amber:#E9A825; --red:#E05A5A; --purple:#7B4FBE;
+      --white:#FFFFFF; --dark:#1E2738; --muted:#78879C; --muted-dk:#8892A4; --border:#D8DDE8;
+      --term-teal:#E8F5F3; --term-amber:#FDF6DC; --term-red:#FDE8E8; --term-purple:#EDE5F8;
+    }
     @page { size: 16in 9in; margin: 0; }
     * { box-sizing: border-box; }
-    body { margin: 0; background: #e5e7eb; font-family: Arial, Helvetica, sans-serif; color: #111827; }
-    .slide { width: 1600px; height: 900px; background: #f8fafc; position: relative; overflow: hidden; padding: 74px 92px 64px; }
-    .topline { position: absolute; inset: 0 0 auto 0; height: 16px; background: ${tokens.accent}; }
-    .meta { color: #64748b; font-size: 24px; font-weight: 700; letter-spacing: .02em; margin-bottom: 22px; }
-    h1 { font-size: 64px; line-height: .98; margin: 0; letter-spacing: -.04em; max-width: 1280px; }
-    .rule { width: 100%; height: 3px; background: #cbd5e1; margin: 28px 0 42px; }
-    .footer { position: absolute; left: 92px; right: 92px; bottom: 28px; color: #64748b; font-size: 18px; }
-    .hero { background: ${tokens.accent}; color: white; padding: 96px 108px; display: flex; flex-direction: column; justify-content: center; }
-    .hero .eyebrow { font-size: 28px; font-weight: 800; opacity: .88; margin-bottom: 44px; }
-    .hero h1 { color: white; font-size: 88px; max-width: 1260px; }
-    .hero .subtitle { font-size: 44px; line-height: 1.08; margin-top: 46px; max-width: 1160px; opacity: .94; }
-    .panel { background: white; border: 3px solid #cbd5e1; border-left: 18px solid ${tokens.accent}; border-radius: 30px; padding: 36px 44px; box-shadow: 0 18px 38px rgba(15, 23, 42, .08); }
-    .panel.secondary { border-left-color: ${tokens.accent2}; }
-    .panel.support { border-left-color: ${tokens.support}; background: #ffffff; }
-    .label { color: ${tokens.accent}; font-size: 28px; font-weight: 900; margin-bottom: 18px; letter-spacing: .01em; }
-    .label.secondary { color: ${tokens.accent2}; }
-    .label.support { color: ${tokens.support}; }
-    .big { font-size: 52px; line-height: 1.06; letter-spacing: -.03em; font-weight: 800; }
-    .medium { font-size: 38px; line-height: 1.15; font-weight: 700; }
-    .body { font-size: 34px; line-height: 1.18; font-weight: 600; }
-    .muted { color: #475569; }
-    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
-    .prompt-list { display: grid; gap: 20px; margin-top: 34px; }
-    .prompt-item { display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start; font-size: 32px; line-height: 1.18; font-weight: 700; }
-    .num { width: 56px; height: 56px; border-radius: 999px; background: #e2e8f0; display: grid; place-items: center; color: #0f172a; font-weight: 900; }
-    .reflect-stack { display: grid; gap: 28px; margin-top: 44px; }
-    .reflect-card { background: white; border: 3px solid #cbd5e1; border-left: 18px solid ${tokens.support}; border-radius: 26px; padding: 28px 36px; font-size: 34px; line-height: 1.15; font-weight: 700; }
+    body { margin: 0; background: #0a0a0a; font-family: Arial, Helvetica, sans-serif; }
+    .slide { position: relative; width: 1600px; height: 900px; overflow: hidden; font-family: Arial, Helvetica, sans-serif; }
+    .slide-dark { background: var(--bg-dark); }
+    .slide-light { background: var(--bg-light); }
+    .accent-bar { position: absolute; left: 0; right: 0; height: 10px; }
+    .accent-bar.top { top: 0; } .accent-bar.bottom { bottom: 0; }
+    .bg-teal { background: var(--teal); } .bg-teal2 { background: var(--teal2); } .bg-amber { background: var(--amber); } .bg-red { background: var(--red); } .bg-purple { background: var(--purple); }
+    .c-teal { color: var(--teal); } .c-teal2 { color: var(--teal2); } .c-amber { color: var(--amber); } .c-red { color: var(--red); } .c-purple { color: var(--purple); }
+    .title-h1 { position: absolute; left: 70px; top: 70px; width: 900px; height: 250px; font-size: 88px; line-height: 1.05; font-weight: 700; color: var(--white); white-space: pre-line; letter-spacing: -2px; }
+    .title-subtitle { position: absolute; left: 70px; top: 345px; width: 1260px; height: 40px; font-size: 13px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; }
+    .title-rule { position: absolute; left: 70px; top: 395px; width: 280px; height: 7px; }
+    .title-meta { position: absolute; left: 70px; top: 415px; width: 900px; color: var(--muted-dk); font-size: 13px; line-height: 1.65; }
+    .title-bar { position:absolute; left:0; right:0; top:0; height:75px; background:var(--navy-bar); display:flex; align-items:center; padding:0 40px; }
+    .title-bar h2 { color: var(--white); font-size:22px; font-weight:700; text-transform:uppercase; }
+    .title-bar-underline { position:absolute; left:0; right:0; top:75px; height:4px; }
+    .breadcrumb { position:absolute; left:0; right:0; top:79px; height:28px; display:flex; align-items:center; padding:0 40px; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
+    .lesson-title-bar { position:absolute; left:0; right:0; top:107px; height:65px; display:flex; align-items:center; padding:0 40px; }
+    .lesson-title-bar h2 { color: var(--white); font-size:20px; font-weight:700; }
+    .card { position:absolute; background:var(--card-light); border:1px solid var(--border); box-shadow:0 1px 4px rgba(0,0,0,.07); overflow:hidden; }
+    .card-dark { background:var(--card-dark); border:none; }
+    .card-pad { padding:18px 20px; }
+    .card-header { height:42px; display:flex; align-items:center; padding:0 16px; }
+    .card-header span { font-size:10px; font-weight:700; color:var(--white); text-transform:uppercase; letter-spacing:3px; }
+    .section-label { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:3px; margin-bottom:8px; }
+    .key-term-box { border-radius:2px; padding:10px 16px; text-align:center; margin-bottom:10px; }
+    .key-term-box .term { font-size:28px; font-weight:700; line-height:1.1; }
+    .key-term-box .definition { font-size:12px; font-style:italic; color:var(--muted); margin-top:6px; }
+    .body-text { font-size:13px; line-height:1.5; color:var(--dark); white-space:pre-line; }
+    .body-small { font-size:12px; line-height:1.45; color:var(--dark); white-space:pre-line; }
+    .muted { color:var(--muted); }
+    .overview-title { position:absolute; left:50px; top:30px; color:var(--white); font-size:62px; font-weight:700; }
+    .overview-name { position:absolute; left:50px; top:125px; color:var(--muted-dk); font-size:16px; }
+    .overview-col { position:absolute; top:188px; width:456px; }
+    .overview-header { height:55px; display:flex; align-items:center; justify-content:center; color:var(--white); font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; }
+    .overview-card { height:280px; background:var(--card-dark); display:flex; flex-direction:column; align-items:center; justify-content:flex-start; padding:32px 20px 20px; }
+    .overview-term { font-size:30px; font-weight:700; line-height:1.08; text-align:center; margin-bottom:10px; }
+    .overview-def { color:var(--muted-dk); font-size:12px; line-height:1.25; text-align:center; font-style:italic; min-height:58px; }
+    .overview-activity { color:var(--muted-dk); font-size:12px; line-height:1.35; text-align:center; margin-top:24px; }
+    table.scope { position:absolute; top:110px; left:30px; width:1504px; border-collapse:collapse; font-size:12px; color:var(--dark); }
+    table.scope th { color:var(--white); padding:10px 12px; text-align:left; font-size:11px; letter-spacing:1px; text-transform:uppercase; }
+    table.scope td { background:var(--card-light); border-bottom:1px solid var(--border); padding:14px 12px; line-height:1.35; vertical-align:top; }
+    .how-card { position:absolute; top:107px; width:728px; height:672px; }
+    .how-body { position:absolute; left:0; top:55px; width:728px; height:617px; background:var(--card-light); border:1px solid var(--border); padding:24px 32px; }
+    .how-section { margin-bottom:28px; }
+    .how-section h3 { color:var(--dark); font-size:13px; font-weight:700; margin-bottom:8px; }
+    .how-section p { color:var(--muted); font-size:12px; line-height:1.5; }
   `
 }
 
-function frame(packet, slideSpec, inner) {
-  const tokens = theme(packet)
-  const title = escapeHtml(text(slideSpec?.title, text(packet.topic, 'Lesson')))
-  const meta = escapeHtml([packet.subject, packet.grade, packet.lesson_label].map((item) => text(item)).filter(Boolean).join(' · '))
-  const footer = escapeHtml([packet.subject, packet.grade, packet.topic].map((item) => text(item)).filter(Boolean).join(' · '))
-  return `<!doctype html><html><head><meta charset="utf-8"><style>${css(tokens)}</style></head><body><main class="slide"><div class="topline"></div><div class="meta">${meta}</div><h1>${title}</h1><div class="rule"></div>${inner}<div class="footer">${footer}</div></main></body></html>`
+function htmlDoc(inner) {
+  return `<!doctype html><html><head><meta charset="utf-8"><style>${css()}</style></head><body>${inner}</body></html>`
 }
 
-function hero(packet, slideSpec, plan) {
-  const tokens = theme(packet)
-  const meta = escapeHtml([packet.subject, packet.grade, packet.lesson_label].map((item) => text(item)).filter(Boolean).join(' · '))
-  const title = escapeHtml(clamp(plan.title ?? slideSpec?.title ?? packet.topic, 12))
-  const subtitle = text(plan.subtitle) ? `<div class="subtitle">${escapeHtml(clamp(plan.subtitle, 18))}</div>` : ''
-  return `<!doctype html><html><head><meta charset="utf-8"><style>${css(tokens)}</style></head><body><main class="slide hero"><div class="eyebrow">${meta}</div><h1>${title}</h1>${subtitle}</main></body></html>`
+function accentBackgroundStyle(accentKey, alpha = 0.12) {
+  const rgb = {
+    teal: '45,158,149', teal2: '30,122,114', amber: '233,168,37', red: '224,90,90', purple: '123,79,190',
+  }[accentKey] ?? '45,158,149'
+  return `background:rgba(${rgb},${alpha});`
 }
 
-function prompt(packet, slideSpec, plan) {
-  const items = flattenItems(plan.prompts, 3).map((item, index) => `<div class="prompt-item"><div class="num">${index + 1}</div><div>${escapeHtml(clamp(item, 16))}</div></div>`).join('')
-  const inner = `<section class="panel"><div class="label">Start here</div><div class="big">${escapeHtml(clamp(plan.prompt ?? slideSpec?.title, 16))}</div></section>${items ? `<section class="prompt-list">${items}</section>` : ''}`
-  return frame(packet, slideSpec, inner)
+function renderTitle(slide) {
+  const a = accent(slide.accent, 'teal')
+  const meta = Array.isArray(slide.meta) ? slide.meta : []
+  return htmlDoc(`<div class="slide slide-dark">
+    <div class="accent-bar top bg-${a}"></div><div class="accent-bar bottom bg-${a}"></div>
+    <div class="title-h1">${htmlLines(slide.title)}</div>
+    <div class="title-subtitle c-${a}">${escapeHtml(text(slide.subtitle).toUpperCase())}</div>
+    <div class="title-rule bg-${a}"></div>
+    <div class="title-meta">${meta.map((line) => `<div>${escapeHtml(line)}</div>`).join('')}</div>
+  </div>`)
 }
 
-function model(packet, slideSpec, plan) {
-  const support = text(plan.support) ? `<section class="panel support" style="margin-top:32px;"><div class="label support">Useful support</div><div class="body muted">${escapeHtml(clamp(plan.support, 20))}</div></section>` : ''
-  const inner = `<section class="panel secondary"><div class="label secondary">Model</div><div class="medium">${escapeHtml(clamp(plan.model ?? slideSpec?.title, 24))}</div></section>${support}`
-  return frame(packet, slideSpec, inner)
+function renderHowItWorks(slide) {
+  const a = accent(slide.accent, 'teal')
+  const cards = Array.isArray(slide.cards) ? slide.cards.slice(0, 2) : []
+  const renderedCards = cards.map((card, index) => {
+    const x = index === 0 ? 30 : 824
+    const ca = accent(card.accent, index === 0 ? a : 'amber')
+    const sections = Array.isArray(card.sections) ? card.sections : []
+    return `<div class="how-card" style="left:${x}px;"><div class="card-header bg-${ca}" style="height:55px;"><span>${escapeHtml(text(card.label).toUpperCase())}</span></div><div class="how-body">${sections.map((section) => `<div class="how-section"><h3>${escapeHtml(text(section.heading ?? section.head))}</h3><p>${escapeHtml(text(section.body))}</p></div>`).join('')}</div></div>`
+  }).join('')
+  return htmlDoc(`<div class="slide slide-light"><div class="title-bar"><h2>${escapeHtml(text(slide.title, 'HOW THIS DECK WORKS'))}</h2></div><div class="title-bar-underline bg-${a}"></div>${renderedCards}<div style="position:absolute;left:30px;right:30px;top:845px;text-align:center;color:var(--muted);font-size:11px;">${escapeHtml(text(slide.footer))}</div></div>`)
 }
 
-function compare(packet, slideSpec, plan) {
-  const inner = `<section class="grid2"><div class="panel"><div class="label">${escapeHtml(clamp(plan.left_title, 5))}</div><div class="body">${escapeHtml(clamp(plan.left_body, 22))}</div></div><div class="panel secondary"><div class="label secondary">${escapeHtml(clamp(plan.right_title, 5))}</div><div class="body">${escapeHtml(clamp(plan.right_body, 22))}</div></div></section>${text(plan.takeaway) ? `<div class="body muted" style="text-align:center;margin-top:34px;">${escapeHtml(clamp(plan.takeaway, 18))}</div>` : ''}`
-  return frame(packet, slideSpec, inner)
+function renderScopeSequence(slide) {
+  const a = accent(slide.accent, 'teal')
+  const columns = Array.isArray(slide.columns) ? slide.columns : ['#', 'Unit', 'Key Concept', 'Core Activities', 'Assessment']
+  const rows = Array.isArray(slide.rows) ? slide.rows : []
+  const widths = Array.isArray(slide.col_widths) ? slide.col_widths : [0.05, 0.16, 0.29, 0.30, 0.20]
+  const total = widths.reduce((sum, value) => sum + Number(value || 0), 0) || columns.length
+  const header = columns.map((col, index) => `<th style="width:${Math.round((Number(widths[index]) || 1) * 100 / total)}%">${escapeHtml(col)}</th>`).join('')
+  const body = rows.map((row) => `<tr>${columns.map((_, index) => `<td>${escapeHtml(row[index] ?? '')}</td>`).join('')}</tr>`).join('')
+  return htmlDoc(`<div class="slide slide-light"><div class="title-bar"><h2>${escapeHtml(text(slide.title, 'SCOPE & SEQUENCE'))}</h2></div><div class="title-bar-underline bg-${a}"></div><table class="scope"><thead><tr class="bg-${a}">${header}</tr></thead><tbody>${body}</tbody></table></div>`)
 }
 
-function reflect(packet, slideSpec, plan) {
-  const cards = flattenItems(plan.prompts, 2).map((item, index) => `<div class="reflect-card">${index + 1}. ${escapeHtml(clamp(item, 18))}</div>`).join('')
-  const inner = `<div class="big" style="text-align:center;margin-top:12px;">${escapeHtml(clamp(plan.invitation ?? slideSpec?.title, 18))}</div>${cards ? `<section class="reflect-stack">${cards}</section>` : ''}`
-  return frame(packet, slideSpec, inner)
+function renderUnitOverview(slide) {
+  const a = accent(slide.accent, 'teal')
+  const cols = Array.isArray(slide.columns) ? slide.columns.slice(0, 3) : []
+  const positions = [25, 561, 1097]
+  const renderedCols = cols.map((col, index) => {
+    const ca = accent(col.accent, index === 2 ? 'amber' : a)
+    return `<div class="overview-col" style="left:${positions[index]}px;"><div class="overview-header bg-${ca}">${escapeHtml(text(col.label).toUpperCase())}</div><div class="overview-card"><div class="overview-term c-${ca}">${htmlLines(col.term)}</div><div class="overview-def">${htmlLines(col.definition)}</div><div class="overview-activity">${htmlLines(col.activity)}</div></div></div>`
+  }).join('')
+  return htmlDoc(`<div class="slide slide-dark"><div class="accent-bar bottom bg-${a}"></div><div class="overview-title">UNIT ${escapeHtml(text(slide.unit_number ?? slide.unit, '1'))}</div><div class="overview-name">${escapeHtml(text(slide.unit_name, 'Unit Overview'))}</div>${renderedCols}</div>`)
+}
+
+function renderLeftCard(card, a, day3 = false) {
+  const termAccent = accent(card.term_accent, a)
+  const boxClass = termBox(card.term_box, termAccent)
+  const highlight = text(card.highlight_instruction) ? `<div class="body-small c-${a}" style="font-style:italic;margin:4px 0 12px;">${htmlLines(card.highlight_instruction)}</div>` : ''
+  return `<div class="card card-pad" style="left:30px;top:185px;width:728px;height:568px;">
+    <div class="section-label c-${a}">${escapeHtml(text(card.label, day3 ? 'REVIEW' : 'VOCABULARY ANCHOR').toUpperCase())}</div>
+    <div class="key-term-box" style="background:var(--${boxClass});"><div class="term c-${termAccent}">${htmlLines(card.term)}</div>${text(card.definition) ? `<div class="definition">${htmlLines(card.definition)}</div>` : ''}</div>
+    ${highlight}
+    <div class="section-label ${day3 ? 'muted' : `c-${a}`}">${escapeHtml(text(card.secondary_label, 'START HERE').toUpperCase())}</div>
+    <div class="body-text" style="margin-top:8px;">${htmlLines(card.content)}</div>
+  </div>`
+}
+
+function renderRightCards(cards, a, day3 = false) {
+  const list = Array.isArray(cards) && cards.length > 0 ? cards.slice(0, 2) : [{ label: 'SUPPORT', content: '' }]
+  const heights = list.length === 1 ? [568] : [268, 278]
+  const tops = list.length === 1 ? [185] : [185, 475]
+  return list.map((card, index) => {
+    const ca = accent(card.accent, day3 ? (index === 0 ? 'red' : 'purple') : a)
+    if (day3) {
+      return `<div class="card" style="left:824px;top:${tops[index]}px;width:728px;height:${heights[index]}px;"><div class="card-header bg-${ca}"><span>${escapeHtml(text(card.label).toUpperCase())}</span></div><div style="padding:22px 32px;"><div class="body-text">${htmlLines(card.content)}</div></div></div>`
+    }
+    return `<div class="card card-pad" style="left:824px;top:${tops[index]}px;width:728px;height:${heights[index]}px;"><div class="section-label c-${a}">${escapeHtml(text(card.label).toUpperCase())}</div><div class="body-text">${htmlLines(card.content)}</div></div>`
+  }).join('')
+}
+
+function renderLesson(slide, day3 = false) {
+  const a = day3 ? 'amber' : accent(slide.accent, 'teal')
+  const title = text(slide.title, day3 ? 'Review + Extension' : 'Lesson')
+  const breadcrumb = text(slide.breadcrumb, day3 ? `UNIT ${text(slide.unit, '1')} • DAY 3` : `UNIT ${text(slide.unit, '1')} • DAYS 1 & 2`)
+  return htmlDoc(`<div class="slide slide-light"><div class="accent-bar top bg-${a}"></div><div class="breadcrumb c-${a}" style="${accentBackgroundStyle(a)}">${escapeHtml(breadcrumb.toUpperCase())}</div><div class="lesson-title-bar bg-${a}"><h2>${escapeHtml(title)}</h2></div>${renderLeftCard(slide.left_card ?? {}, a, day3)}${renderRightCards(slide.right_cards, a, day3)}</div>`)
 }
 
 export function buildClassroomSlideHTML(packet, slideSpec, slideIndex) {
-  const plan = contentPlan(packet, slideSpec, slideIndex)
-  const family = slideFamily(packet, slideSpec, slideIndex)
-  if (family === 'S_HERO') return hero(packet, slideSpec, plan)
-  if (family === 'S_COMPARE') return compare(packet, slideSpec, plan)
-  if (family === 'S_MODEL') return model(packet, slideSpec, plan)
-  if (family === 'S_REFLECT') return reflect(packet, slideSpec, plan)
-  return prompt(packet, slideSpec, plan)
+  const slide = normalizeSlide(packet, slideSpec, slideIndex)
+  if (slide.type === 'title') return renderTitle(slide)
+  if (slide.type === 'unit_overview') return renderUnitOverview(slide)
+  if (slide.type === 'scope_sequence') return renderScopeSequence(slide)
+  if (slide.type === 'how_it_works') return renderHowItWorks(slide)
+  if (slide.type === 'lesson_day3') return renderLesson(slide, true)
+  return renderLesson(slide, false)
 }
 
 export function buildClassroomSlideSemanticText(packet, slideSpec, slideIndex) {
-  const plan = contentPlan(packet, slideSpec, slideIndex)
-  const values = [
-    packet.subject,
-    packet.grade,
-    packet.topic,
-    slideSpec?.title,
-    plan.title,
-    plan.subtitle,
-    plan.prompt,
-    plan.model,
-    plan.support,
-    plan.left_title,
-    plan.left_body,
-    plan.right_title,
-    plan.right_body,
-    plan.takeaway,
-    plan.invitation,
-    ...flattenItems(plan.prompts, 4),
-  ]
-  return values.map((item) => text(item)).filter(Boolean).join(' · ')
+  const slide = normalizeSlide(packet, slideSpec, slideIndex)
+  const pieces = [packet.subject, packet.grade, packet.topic, slide.type, slide.title, slide.subtitle, slide.breadcrumb, slide.unit_name]
+  if (Array.isArray(slide.meta)) pieces.push(...slide.meta)
+  if (Array.isArray(slide.columns)) {
+    for (const col of slide.columns) pieces.push(col.label, col.term, col.definition, col.activity)
+  }
+  if (slide.left_card) pieces.push(slide.left_card.label, slide.left_card.term, slide.left_card.definition, slide.left_card.secondary_label, slide.left_card.content)
+  if (Array.isArray(slide.right_cards)) {
+    for (const card of slide.right_cards) pieces.push(card.label, card.content)
+  }
+  if (Array.isArray(slide.rows)) {
+    for (const row of slide.rows) pieces.push(...row)
+  }
+  return pieces.map((item) => text(item)).filter(Boolean).join(' · ')
 }
