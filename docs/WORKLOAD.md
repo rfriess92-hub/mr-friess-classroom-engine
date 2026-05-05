@@ -22,18 +22,20 @@ Recent stabilization work has landed:
 - [x] `graphic_organizer` now has an HTML-backed classroom-template render path (#184)
 - [x] Sample-output-review workflow for representative Mr Friess engine docs (#187)
 - [x] Repo-generated Mr Friess document sample fixture and planter-volume decision template (#188)
+- [x] Output-type inventory and contract drift report refreshed after worksheet-formatting merges (#189)
+- [x] Nightly agent install path aligned with CI (#190)
+- [x] First guarded Nightly Repo Agent dry run verified successfully using Issue #183
 
-Current open repo-maintenance PR:
+Current open repo-maintenance PRs/issues:
 
-- [ ] #189 refreshes the output-type inventory and contract drift report after the worksheet-formatting merges. It is docs/audit only and does not change renderer behavior.
+- None.
 
 Next recommended cleanup checks:
 
-1. Verify the guarded nightly repo-agent dry run using Issue #183.
-2. Review the latest `sample-output-review` artifact from `main` for visual/pedagogical alignment.
-3. Continue B5 formatting balance work or start A1 assessment foundation implementation.
+1. Review the latest `sample-output-review` artifact from `main` for visual/pedagogical alignment.
+2. Continue B5 formatting balance work or start A1 assessment foundation implementation.
 
-Next recommended implementation target: **A1 assessment foundation implementation**.
+Next recommended implementation target: **A1 assessment foundation implementation**, unless the sample-output review shows visual/pedagogical drift that should be corrected through B5 first.
 
 ---
 
@@ -325,9 +327,9 @@ After B6.
 
 # Automation / Agent Track
 
-## D0 — Guarded Nightly Repo Agent `COMPLETE — REPORTING ONLY`
+## D0 — Guarded Nightly Repo Agent `COMPLETE — VERIFIED REPORTING ONLY`
 
-Merged in #182.
+Merged in #182; install path fixed in #190; first dry run verified through Issue #183.
 
 - [x] `.github/AGENT_POLICY.md`
 - [x] `docs/AGENT_RUNBOOK.md`
@@ -335,6 +337,7 @@ Merged in #182.
 - [x] `.github/workflows/nightly-agent.yml`
 - [x] `scripts/agent/select-task.mjs`
 - [x] `scripts/agent/write-run-report.mjs`
+- [x] First manual dry run with `dry_run=true` verified and Issue #183 closed
 
 Current capability:
 
@@ -345,10 +348,6 @@ Current capability:
 - Does not modify code
 - Does not open PRs
 - Does not merge
-
-Next check:
-
-- [ ] Use Issue #183 to manually trigger one dry run and inspect the uploaded report artifact
 
 ## D1 — Agent Comment/Report Upgrade `QUEUED`
 
@@ -371,6 +370,8 @@ Only after repeated clean D0/D1 runs.
 
 # Done Log
 
+- [#190] Nightly agent install path aligned with CI
+- [#189] Output-type inventory and contract drift report refresh
 - [#188] Format: render Mr Friess engine document samples
 - [#187] Sample-output-review workflow
 - [#186] WORKLOAD roadmap refresh
