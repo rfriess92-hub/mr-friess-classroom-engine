@@ -60,13 +60,13 @@
     ]
   },
   "career_interview_organizer": {
-    "layout_template_id": "graphic_organizer_pack",
+    "layout_template_id": "generic_graphic_organizer",
     "title": "Career Interview Question Planner",
     "subtitle": "Ask better questions before judging a career",
-    "organizer_type": "template_pack",
+    "organizer_type": "two_column_table",
     "prompt": "Plan questions for a short career conversation with an adult, guest speaker, family member, community member, or video profile.",
     "columns": ["Question I will ask", "What the answer might help me learn"],
-    "rows": 5,
+    "rows": 8,
     "success_criteria": [
       "I wrote open-ended questions, not yes/no questions.",
       "I asked about daily work, training, challenges, and advice.",
