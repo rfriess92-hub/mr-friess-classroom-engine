@@ -8,6 +8,7 @@ on:
       - 'engine/**'
       - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json'
       - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v2.json'
+      - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v3.json'
       - 'scripts/**'
       - 'schemas/**'
       - 'package.json'
@@ -46,7 +47,7 @@ jobs:
       - name: Run requested generated package checks
         run: |
           set -euo pipefail
-          PACKAGE=fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v2.json
+          PACKAGE=fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v3.json
           pnpm run schema:check -- --package "$PACKAGE"
           pnpm run route:plan -- --package "$PACKAGE" --print-routes
           pnpm run render:package -- --package "$PACKAGE" --out output
