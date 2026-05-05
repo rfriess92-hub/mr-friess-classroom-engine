@@ -7,6 +7,7 @@ on:
       - '.github/workflows/course-sample-review.yml'
       - 'engine/**'
       - 'fixtures/tests/mr-friess-course-sample-packs.proof.json'
+      - 'fixtures/tests/literacy-vocabulary-tools.proof.json'
       - 'scripts/**'
       - 'schemas/**'
       - 'package.json'
@@ -44,6 +45,14 @@ jobs:
           pnpm run schema:check -- --package fixtures/tests/mr-friess-course-sample-packs.proof.json
           pnpm run route:plan -- --package fixtures/tests/mr-friess-course-sample-packs.proof.json --print-routes
           pnpm run render:package -- --package fixtures/tests/mr-friess-course-sample-packs.proof.json --out output-samples/mr-friess-course-sample-packs --flat-out
+
+      - name: Verify and render literacy vocabulary tools
+        run: |
+          set -euo pipefail
+          mkdir -p output-samples/literacy-vocabulary-tools
+          pnpm run schema:check -- --package fixtures/tests/literacy-vocabulary-tools.proof.json
+          pnpm run route:plan -- --package fixtures/tests/literacy-vocabulary-tools.proof.json --print-routes
+          pnpm run render:package -- --package fixtures/tests/literacy-vocabulary-tools.proof.json --out output-samples/literacy-vocabulary-tools --flat-out
 
       - name: Prepare visual artifact
         if: always()
