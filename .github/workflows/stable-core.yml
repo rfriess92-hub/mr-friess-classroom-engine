@@ -126,6 +126,18 @@ jobs:
       - name: Render PBG Workplace Math 10 fixture
         run: pnpm run render:package -- --fixture pbg_workplace_math10 --out output
 
+      - name: Schema check LWD graphic novel package
+        run: pnpm run schema:check -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json
+
+      - name: Route plan LWD graphic novel package
+        run: pnpm run route:plan -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json --print-routes
+
+      - name: Render LWD graphic novel package
+        run: pnpm run render:package -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json --out output
+
+      - name: Bundle QA LWD graphic novel package
+        run: pnpm run qa:bundle -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json --out output
+
       - name: Upload rendered bundle evidence
         if: always()
         uses: actions/upload-artifact@v4
