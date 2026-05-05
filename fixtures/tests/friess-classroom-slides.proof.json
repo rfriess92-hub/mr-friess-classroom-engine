@@ -1,0 +1,158 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "friess_classroom_slides_proof",
+  "primary_architecture": "single_period_full",
+  "grade_band": "11-12",
+  "subject": "Biology",
+  "grade": 12,
+  "topic": "Biology 12 Friess Classroom Slide System",
+  "theme": "science",
+  "accent": "teal",
+  "bundle": {
+    "bundle_id": "friess_classroom_slides_bundle",
+    "declared_outputs": ["slides"]
+  },
+  "slides": [
+    {
+      "type": "title",
+      "accent": "teal",
+      "title": "BIOLOGY\n12",
+      "subtitle": "CELL BIOLOGY  |  GENETICS  |  EVOLUTION  |  ECOSYSTEMS",
+      "meta": [
+        "Grade 12  •  Term 3–4  •  September – June",
+        "BC Curriculum  •  Science for Citizens of BC"
+      ]
+    },
+    {
+      "type": "how_it_works",
+      "title": "HOW THIS DECK WORKS",
+      "accent": "teal",
+      "cards": [
+        {
+          "label": "DAYS 1 & 2  —  CONCEPT DEVELOPMENT",
+          "accent": "teal",
+          "sections": [
+            {"heading": "Vocabulary Anchor", "body": "Introduce the key term, definition, and examples."},
+            {"heading": "Core Reading / Lab", "body": "Students engage with text or lab, building understanding."},
+            {"heading": "Concept Mapping", "body": "Students create a graphic organiser connecting to prior knowledge."}
+          ]
+        },
+        {
+          "label": "DAY 3  —  APPLICATION & EXTENSION",
+          "accent": "amber",
+          "sections": [
+            {"heading": "Review & Retrieval", "body": "Quick retrieval practice with target vocabulary."},
+            {"heading": "Extension Activity", "body": "Apply the concept to a new scenario or problem set."},
+            {"heading": "Small Group / Lab", "body": "Hands-on lab or small group inquiry task."}
+          ]
+        }
+      ],
+      "footer": "Each unit = multiple cycles of 3 days  •  Assessment embedded throughout"
+    },
+    {
+      "type": "scope_sequence",
+      "title": "SCOPE & SEQUENCE — BIOLOGY 12",
+      "accent": "teal",
+      "columns": ["#", "Unit", "Key Concept", "Core Activities", "Assessment"],
+      "col_widths": [0.4, 1.5, 2.8, 2.9, 1.8],
+      "rows": [
+        ["1", "Cell Biology", "Cell structure, membrane transport, cell division", "Microscopy lab, osmosis lab, mitosis model", "Lab report + unit quiz"],
+        ["2", "DNA & Genetics", "DNA structure, replication, protein synthesis, heredity", "DNA extraction lab, Punnett square problems", "Genetics problem set"],
+        ["3", "Evolution", "Natural selection, adaptation, speciation, evidence", "Peppered moth simulation, fossil analysis", "Case study essay"],
+        ["4", "Ecosystems", "Energy flow, nutrient cycles, biodiversity, human impact", "Food web construction, field investigation", "Research report"]
+      ]
+    },
+    {
+      "type": "unit_overview",
+      "unit_number": "1",
+      "unit_name": "Cell Biology",
+      "accent": "teal",
+      "columns": [
+        {
+          "label": "VOCABULARY",
+          "accent": "teal",
+          "term": "MITOSIS",
+          "definition": "\"division of the nucleus\"",
+          "activity": "Vocabulary Anchor\n+ Concept Map"
+        },
+        {
+          "label": "CORE CONCEPT",
+          "accent": "teal2",
+          "term": "OSMOSIS",
+          "definition": "\"movement of water\nacross a membrane\"",
+          "activity": "Days 1 & 2\nLab + Reading"
+        },
+        {
+          "label": "DAY 3 REVIEW",
+          "accent": "amber",
+          "term": "MEIOSIS",
+          "definition": "\"division producing\ngametes\"",
+          "activity": "Lab Report\n+ Extension"
+        }
+      ]
+    },
+    {
+      "type": "lesson_days12",
+      "unit": "1",
+      "accent": "teal",
+      "breadcrumb": "UNIT 1  •  DAYS 1 & 2",
+      "title": "Cell Structure: Organelles + Membrane Transport",
+      "left_card": {
+        "label": "VOCABULARY ANCHOR",
+        "term": "ORGANELLE",
+        "term_accent": "teal",
+        "term_box": "term_teal",
+        "definition": "\"a specialised structure within a cell\"",
+        "secondary_label": "IDENTIFY THE ORGANELLE:",
+        "content": "1. Nucleus    2. Mitochondria\n3. Ribosome   4. Cell membrane\n5. Endoplasmic reticulum  6. Golgi apparatus\n7. Chloroplast (plant)    8. Vacuole"
+      },
+      "right_cards": [
+        {
+          "label": "MEMBRANE TRANSPORT",
+          "content": "Diffusion  →  movement from high to low concentration\nOsmosis  →  diffusion of water across a membrane\nActive transport  →  requires energy, moves against gradient"
+        },
+        {
+          "label": "CONCEPT MAPPING",
+          "content": "Draw and label a plant cell and an animal cell.\nMark the following on each:\n  •  Nucleus   •  Cell membrane   •  Mitochondria\n  •  Ribosome   •  Vacuole   •  Chloroplast (plant only)"
+        }
+      ]
+    },
+    {
+      "type": "lesson_day3",
+      "unit": "1",
+      "breadcrumb": "UNIT 1  •  DAY 3",
+      "title": "Review: Mitosis & Meiosis  +  Lab Extension",
+      "left_card": {
+        "label": "CELL DIVISION REVIEW",
+        "term": "MITOSIS vs MEIOSIS",
+        "term_accent": "amber",
+        "term_box": "term_amber",
+        "definition": "Passage: \"The Cell Cycle Explained\"",
+        "highlight_instruction": "Highlight all MITOSIS steps in yellow.\nHighlight all MEIOSIS steps in blue.",
+        "secondary_label": "AFTER READING:",
+        "content": "1. What is the purpose of mitosis?\n2. How many cells does meiosis produce?\n3. Where does meiosis occur in the body?"
+      },
+      "right_cards": [
+        {
+          "label": "LAB ACTIVITY",
+          "accent": "red",
+          "content": "Onion Root Tip Lab: Use a prepared slide to observe and sketch cells in different phases of mitosis. Identify: interphase, prophase, metaphase, anaphase, telophase."
+        },
+        {
+          "label": "ENRICHMENT",
+          "accent": "purple",
+          "content": "Cancer Connection: Research how uncontrolled mitosis leads to tumour formation. Use the class article set to answer: What goes wrong in the cell cycle during cancer?"
+        }
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "output_id": "friess_classroom_slides",
+      "output_type": "slides",
+      "audience": "shared_view",
+      "source_section": "slides",
+      "bundle": "friess_classroom_slides_bundle"
+    }
+  ]
+}
