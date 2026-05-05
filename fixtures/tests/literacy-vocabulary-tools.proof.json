@@ -1,0 +1,93 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "literacy_vocabulary_tools_proof",
+  "primary_architecture": "single_period_full",
+  "grade_band": "6-10",
+  "subject": "Literacy Support",
+  "grade": 8,
+  "topic": "Vocabulary, morphology, and word-study tools",
+  "theme": "english_language_arts",
+  "frayer_barnum_effect": {
+    "layout_template_id": "frayer_vocabulary",
+    "metadata_subject": "Careers 8 / Literacy Support",
+    "metadata_topic": "Vocabulary: Barnum Effect",
+    "title": "Frayer Vocabulary Organizer",
+    "subtitle": "Barnum Effect",
+    "focus_word": "Barnum Effect",
+    "directions": "Use each box to show that you understand the word. Focus on meaning, examples, non-examples, and an accurate sentence.",
+    "success_criteria": [
+      "I wrote the meaning in my own words.",
+      "I included examples and non-examples.",
+      "My sentence shows the word accurately."
+    ]
+  },
+  "prefix_root_practice": {
+    "layout_template_id": "prefix_root_word_study",
+    "metadata_subject": "Literacy Support",
+    "metadata_topic": "Prefix and root word study",
+    "title": "Word Study: Prefix + Root",
+    "subtitle": "Break the word before guessing the meaning",
+    "directions": "Break each word into parts before guessing the meaning. Use the word parts to make a meaning prediction.",
+    "words": [
+      { "word": "reconsider", "prefix": "re-", "root": "consider" },
+      { "word": "preview", "prefix": "pre-", "root": "view" },
+      { "word": "unreliable", "prefix": "un-", "root": "rely" },
+      { "word": "disconnect", "prefix": "dis-", "root": "connect" },
+      { "word": "predict", "prefix": "pre-", "root": "dict" },
+      { "word": "reflection", "prefix": "re-", "root": "flect" }
+    ],
+    "success_criteria": [
+      "I marked the prefix and root or base.",
+      "I used word parts to predict meaning.",
+      "I used one word in a clear sentence."
+    ]
+  },
+  "vocabulary_cards_long_way_down": {
+    "layout_template_id": "vocabulary_cards",
+    "metadata_subject": "Literacy / ELA",
+    "metadata_topic": "Long Way Down vocabulary support",
+    "title": "Vocabulary Cards",
+    "subtitle": "Meaning, word-part clue, and original sentence",
+    "directions": "Add a meaning, clue, and original sentence for each word. Cut apart or fold the cards for review.",
+    "words": [
+      { "word": "grief", "definition": "deep sadness after loss" },
+      { "word": "revenge", "definition": "hurting back because of harm" },
+      { "word": "conflict", "definition": "a struggle or problem" },
+      { "word": "choice", "definition": "a decision between options" },
+      { "word": "pressure", "definition": "a force or stress that pushes someone" },
+      { "word": "rule", "definition": "an expected way to act" }
+    ],
+    "success_criteria": [
+      "Each card has a meaning.",
+      "Each card has a clue or sentence.",
+      "I can explain the word without only reading the card."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "literacy_vocabulary_tools_bundle",
+    "declared_outputs": ["worksheet"]
+  },
+  "outputs": [
+    {
+      "output_id": "literacy_frayer_barnum_effect",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "frayer_barnum_effect",
+      "bundle": "literacy_vocabulary_tools_bundle"
+    },
+    {
+      "output_id": "literacy_prefix_root_practice",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "prefix_root_practice",
+      "bundle": "literacy_vocabulary_tools_bundle"
+    },
+    {
+      "output_id": "literacy_vocabulary_cards_long_way_down",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "vocabulary_cards_long_way_down",
+      "bundle": "literacy_vocabulary_tools_bundle"
+    }
+  ]
+}
