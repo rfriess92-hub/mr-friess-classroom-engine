@@ -8,16 +8,17 @@
   "topic": "Novel Study: Long Way Down by Jason Reynolds",
   "theme": "english_language_arts",
   "classroom_overview": {
-    "layout_template_id": "worksheet_template_system",
-    "title": "Novel Study Classroom Overview",
-    "subtitle": "Long Way Down by Jason Reynolds — structure, choice, grief, and voice",
-    "directions": "Use this page to understand the reading focus. These materials reference the novel but do not reproduce passage text.",
-    "prompt": "Track how Jason Reynolds uses verse structure, repetition, memory, and elevator-floor encounters to build tension and develop Will's internal conflict.",
+    "layout_template_id": "generic_graphic_organizer",
+    "title": "Long Way Down Launch Organizer",
+    "subtitle": "Structure, pressure, questions, and early thinking",
+    "organizer_type": "three_column_table",
+    "prompt": "Before or during the next reading section, track what you notice about structure, what pressure Will is facing, and what question you are carrying forward. Use page references or short evidence notes, not copied passages.",
+    "columns": ["Structure or pattern I notice", "Pressure or conflict", "Question I am carrying"],
+    "rows": 7,
     "success_criteria": [
-      "I can make observations about structure and voice without copying long text from the novel.",
-      "I can support interpretations with page references or short evidence notes.",
-      "I can separate what a character believes from what the reader is invited to question.",
-      "I can reflect on choice, grief, rules, and consequences with care and specificity."
+      "I noticed something about structure, repetition, or pattern.",
+      "I connected a moment to Will's pressure or conflict.",
+      "I wrote a genuine question for the next section."
     ]
   },
   "reading_response": {
