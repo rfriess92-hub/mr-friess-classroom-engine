@@ -11,35 +11,35 @@
     "layout_template_id": "note_template",
     "note_type": "cornell_notes",
     "title": "Career Research Cornell Notes",
-    "subtitle": "Record useful information before judging a pathway",
-    "learning_target": "I can collect career information and summarize what matters most to me.",
-    "directions": "Use the cue column for categories and questions. Use the notes column for facts, examples, and details from a profile, website, video, or guest speaker.",
+    "subtitle": "Sort facts, questions, and personal fit",
+    "learning_target": "I can collect career information and summarize what matters most.",
+    "directions": "Put categories and questions in the cue column. Put facts, examples, and useful details in the notes column.",
     "cue_labels": ["Daily tasks", "Skills", "Training", "Work conditions", "Questions"],
     "row_count": 10,
-    "summary_prompt": "Would I want to learn more about this pathway? Why?",
-    "reflection_prompt": "What is one question I still need answered?"
+    "summary_prompt": "Would I learn more about this pathway? Why?",
+    "reflection_prompt": "What question still needs an answer?"
   },
   "guest_speaker_guided_notes": {
     "layout_template_id": "note_template",
     "note_type": "guided_notes",
     "title": "Guest Speaker Guided Notes",
-    "subtitle": "Listen for practical details about work and pathways",
-    "learning_target": "I can listen for useful career information and connect it to my own strengths or questions.",
-    "directions": "Use each box during the presentation or video profile. Write short notes, not full paragraphs.",
+    "subtitle": "Daily work, skills, challenges, and advice",
+    "learning_target": "I can listen for career details and connect them to my own strengths or questions.",
+    "directions": "Write short notes during the presentation, video profile, or interview. Focus on details you could use later.",
     "headings": ["Job / pathway", "Daily tasks", "Skills used", "Challenges", "Advice", "My connection"],
-    "prompts": ["What is this person's work or pathway?", "What do they actually do?", "What skills or habits matter?", "What is difficult or surprising?", "What advice did they give?", "What connects to my strengths or interests?"],
-    "success_criteria": ["I captured specific details.", "I wrote at least one useful question.", "I connected the pathway to myself in an honest way."]
+    "prompts": ["What work or pathway is being described?", "What happens during a typical day?", "Which skills or habits matter?", "What is difficult or surprising?", "What advice is useful?", "What connects to my strengths or interests?"],
+    "success_criteria": ["I captured specific details.", "I wrote at least one useful question.", "I connected the pathway to myself honestly."]
   },
   "pathway_comparison_notes": {
     "layout_template_id": "note_template",
     "note_type": "two_column_notes",
     "title": "Pathway Comparison Notes",
-    "subtitle": "Compare what I learned with why it matters to me",
-    "learning_target": "I can compare pathway information and explain what feels relevant to me.",
-    "directions": "Use the left column for career facts or observations. Use the right column for your reaction, connection, or question.",
-    "columns": ["What I learned", "Why it matters to me"],
+    "subtitle": "Facts on one side, personal fit on the other",
+    "learning_target": "I can compare pathway information and explain what fits me.",
+    "directions": "Put career facts on the left. Put reactions, connections, or questions on the right.",
+    "columns": ["Career fact or observation", "Connection or question"],
     "row_count": 10,
-    "summary_prompt": "Which pathway seems most worth exploring next?"
+    "summary_prompt": "Which pathway should I explore next?"
   },
   "bundle": {
     "bundle_id": "careers8_notes_samples_bundle",
