@@ -29,7 +29,13 @@
       "type": "how_it_works",
       "layout": "two_column",
       "title": "HOW THIS DECK WORKS",
-      "content": {"mode": "friess_how_it_works"},
+      "content": {
+        "mode": "friess_how_it_works",
+        "columns": [
+          {"title": "Days 1 & 2", "items": ["Vocabulary anchor", "Core reading or lab", "Concept mapping"]},
+          {"title": "Day 3", "items": ["Review and retrieval", "Extension activity", "Small group or lab"]}
+        ]
+      },
       "accent": "teal",
       "cards": [
         {
@@ -107,7 +113,13 @@
       "accent": "teal",
       "breadcrumb": "UNIT 1  •  DAYS 1 & 2",
       "title": "Cell Structure: Organelles + Membrane Transport",
-      "content": {"mode": "friess_lesson_days12"},
+      "content": {
+        "mode": "friess_lesson_days12",
+        "columns": [
+          {"title": "Vocabulary Anchor", "items": ["Organelle: a specialised structure within a cell", "Identify the organelles in the cell model"]},
+          {"title": "Membrane Transport", "items": ["Diffusion", "Osmosis", "Active transport", "Concept mapping"]}
+        ]
+      },
       "left_card": {
         "label": "VOCABULARY ANCHOR",
         "term": "ORGANELLE",
@@ -134,7 +146,14 @@
       "unit": "1",
       "breadcrumb": "UNIT 1  •  DAY 3",
       "title": "Review: Mitosis & Meiosis  +  Lab Extension",
-      "content": {"mode": "friess_lesson_day3"},
+      "content": {
+        "mode": "friess_lesson_day3",
+        "prompts": [
+          "What is the purpose of mitosis?",
+          "How many cells does meiosis produce?",
+          "Where does meiosis occur in the body?"
+        ]
+      },
       "left_card": {
         "label": "CELL DIVISION REVIEW",
         "term": "MITOSIS vs MEIOSIS",
