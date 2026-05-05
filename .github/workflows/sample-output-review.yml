@@ -80,6 +80,11 @@ jobs:
           pnpm run route:plan -- --package fixtures/tests/long-way-down-notes-samples.proof.json --print-routes
           pnpm run render:package -- --package fixtures/tests/long-way-down-notes-samples.proof.json --out output-samples/long-way-down-notes-samples --flat-out
 
+          echo '=== random-class-visual-sampling ==='
+          pnpm run schema:check -- --package fixtures/tests/random-class-visual-sampling.proof.json
+          pnpm run route:plan -- --package fixtures/tests/random-class-visual-sampling.proof.json --print-routes
+          pnpm run render:package -- --package fixtures/tests/random-class-visual-sampling.proof.json --out output-samples/random-class-visual-sampling --flat-out
+
           echo '=== mr-friess-engine-docs ==='
           pnpm run schema:check -- --package fixtures/tests/mr-friess-engine-docs.proof.json
           pnpm run route:plan -- --package fixtures/tests/mr-friess-engine-docs.proof.json --print-routes
