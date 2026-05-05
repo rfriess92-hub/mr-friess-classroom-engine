@@ -10,24 +10,24 @@
   "classroom_overview": {
     "layout_template_id": "generic_graphic_organizer",
     "title": "Careers 8 Launch Organizer",
-    "subtitle": "Strengths, interests, questions, and next steps",
+    "subtitle": "Strengths, pathways, and questions",
     "organizer_type": "three_column_table",
-    "prompt": "Before starting the Careers 8 tasks, record what you already know about yourself, what you want to explore, and one useful question to carry forward.",
-    "columns": ["What I know about myself", "Pathways I might explore", "Questions I need answered"],
+    "prompt": "Start with what you know about yourself. List possible pathways, then write questions that could guide your research or a conversation.",
+    "columns": ["Strengths or interests", "Pathways to explore", "Questions to ask"],
     "rows": 7,
     "success_criteria": [
       "I named specific strengths or interests.",
-      "I listed possible pathways without judging them too quickly.",
-      "I wrote questions that could guide research or a conversation."
+      "I listed pathways without deciding too quickly.",
+      "I wrote questions that could guide my next step."
     ]
   },
   "strengths_inventory": {
     "layout_template_id": "english_reading_response",
     "title": "Careers 8 Strengths Inventory",
-    "subtitle": "What I notice about how I work, learn, and contribute",
-    "learning_target": "I can identify strengths and explain how they might connect to future opportunities.",
-    "directions": "Choose three strengths that describe you. For each one, give a real example from school, home, sports, work, volunteering, or community life.",
-    "prompt": "A strength is more useful when you can prove it with an example. Avoid one-word answers. Explain what you did, what helped, and where that strength might matter later.",
+    "subtitle": "Use real examples to name how you contribute",
+    "learning_target": "I can name strengths and connect them to possible pathways.",
+    "directions": "Choose three strengths. For each one, give a real example from school, home, sports, work, volunteering, or community life.",
+    "prompt": "A strength is more useful when you can prove it. Explain what you did, what helped, and where that strength might matter later.",
     "vocabulary": [
       { "word": "strength", "definition": "a skill, habit, or quality that helps you contribute" },
       { "word": "evidence", "definition": "a real example that proves your idea" },
@@ -36,55 +36,55 @@
     "success_criteria": [
       "I named three strengths.",
       "I gave a specific example for each strength.",
-      "I connected at least one strength to a possible pathway.",
-      "I wrote in a way that sounds honest and specific to me."
+      "I connected at least one strength to a pathway.",
+      "My writing sounds specific to me."
     ]
   },
   "career_cluster_cer": {
     "layout_template_id": "cross_curricular_cer",
     "title": "Career Cluster CER",
     "subtitle": "Choose a pathway and support your thinking",
-    "question": "Which career cluster or pathway seems worth exploring next, and why?",
-    "learning_target": "I can make a supported career-learning claim using evidence from my strengths, interests, and questions.",
-    "directions": "Pick one pathway to explore. Use evidence from your strengths inventory, interests, and research questions. Explain why this pathway is worth learning more about.",
+    "question": "Which career pathway is worth exploring next, and why?",
+    "learning_target": "I can support a career-learning claim with evidence about myself.",
+    "directions": "Pick one pathway. Use evidence from your strengths, interests, and questions. Explain why this pathway is worth another look.",
     "sentence_starters": [
       "A pathway I want to explore is...",
-      "One strength that connects to this pathway is...",
+      "One strength that connects is...",
       "One question I still have is...",
       "This pathway is worth exploring because..."
     ],
     "success_criteria": [
-      "My claim names a specific pathway or career cluster.",
+      "My claim names a specific pathway.",
       "My evidence includes something true about me.",
       "My reasoning explains the connection.",
-      "I included at least one question for future research."
+      "I included one useful research question."
     ]
   },
   "career_interview_organizer": {
     "layout_template_id": "generic_graphic_organizer",
     "title": "Career Interview Question Planner",
-    "subtitle": "Ask better questions before judging a career",
+    "subtitle": "Prepare questions that get useful answers",
     "organizer_type": "two_column_table",
-    "prompt": "Plan questions for a short career conversation with an adult, guest speaker, family member, community member, or video profile.",
-    "columns": ["Question I will ask", "What the answer might help me learn"],
+    "prompt": "Write questions for an adult, guest speaker, family member, community member, video profile, or career article.",
+    "columns": ["Question I will ask", "What this could help me learn"],
     "rows": 8,
     "success_criteria": [
-      "I wrote open-ended questions, not yes/no questions.",
-      "I asked about daily work, training, challenges, and advice.",
-      "I connected at least one question to my own interests or strengths."
+      "My questions are open-ended.",
+      "I ask about daily work, training, challenges, and advice.",
+      "At least one question connects to my strengths or interests."
     ]
   },
   "next_step_reflection": {
     "layout_template_id": "exit_reflection",
     "title": "Careers 8 Exit Reflection",
-    "subtitle": "One thing I learned, one thing I will try next",
-    "learning_target": "I can reflect on my career-learning process and name a practical next step.",
+    "subtitle": "Name one learning and one next step",
+    "learning_target": "I can reflect on career learning and choose a realistic next step.",
     "topic_prompt": "Careers 8 pathway exploration",
-    "prompt": "What did you learn about yourself or a possible pathway today? What is one realistic next step?",
+    "prompt": "What did you learn about yourself or a pathway today? What will you do next?",
     "success_criteria": [
-      "I named one thing I learned about myself or a pathway.",
+      "I named one thing I learned.",
       "I named one specific next step.",
-      "My next step is realistic for a Grade 8 student."
+      "My next step is realistic for Grade 8."
     ]
   },
   "bundle": {
