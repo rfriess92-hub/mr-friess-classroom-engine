@@ -18,6 +18,7 @@
       "layout": "hero",
       "accent": "teal",
       "title": "BIOLOGY\n12",
+      "content": {"subtitle": "CELL BIOLOGY  |  GENETICS  |  EVOLUTION  |  ECOSYSTEMS"},
       "subtitle": "CELL BIOLOGY  |  GENETICS  |  EVOLUTION  |  ECOSYSTEMS",
       "meta": [
         "Grade 12  •  Term 3–4  •  September – June",
@@ -26,8 +27,9 @@
     },
     {
       "type": "how_it_works",
-      "layout": "how_it_works",
+      "layout": "two_column",
       "title": "HOW THIS DECK WORKS",
+      "content": {"mode": "friess_how_it_works"},
       "accent": "teal",
       "cards": [
         {
@@ -53,8 +55,9 @@
     },
     {
       "type": "scope_sequence",
-      "layout": "scope_sequence",
+      "layout": "rows",
       "title": "SCOPE & SEQUENCE — BIOLOGY 12",
+      "content": {"mode": "friess_scope_sequence"},
       "accent": "teal",
       "columns": ["#", "Unit", "Key Concept", "Core Activities", "Assessment"],
       "col_widths": [0.4, 1.5, 2.8, 2.9, 1.8],
@@ -67,8 +70,9 @@
     },
     {
       "type": "unit_overview",
-      "layout": "unit_overview",
+      "layout": "three_rows",
       "title": "Unit 1 — Cell Biology",
+      "content": {"mode": "friess_unit_overview"},
       "unit_number": "1",
       "unit_name": "Cell Biology",
       "accent": "teal",
@@ -98,11 +102,12 @@
     },
     {
       "type": "lesson_days12",
-      "layout": "lesson_days12",
+      "layout": "two_column",
       "unit": "1",
       "accent": "teal",
       "breadcrumb": "UNIT 1  •  DAYS 1 & 2",
       "title": "Cell Structure: Organelles + Membrane Transport",
+      "content": {"mode": "friess_lesson_days12"},
       "left_card": {
         "label": "VOCABULARY ANCHOR",
         "term": "ORGANELLE",
@@ -125,10 +130,11 @@
     },
     {
       "type": "lesson_day3",
-      "layout": "lesson_day3",
+      "layout": "reflect",
       "unit": "1",
       "breadcrumb": "UNIT 1  •  DAY 3",
       "title": "Review: Mitosis & Meiosis  +  Lab Extension",
+      "content": {"mode": "friess_lesson_day3"},
       "left_card": {
         "label": "CELL DIVISION REVIEW",
         "term": "MITOSIS vs MEIOSIS",
