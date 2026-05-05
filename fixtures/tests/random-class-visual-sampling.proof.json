@@ -1,0 +1,249 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "random_class_visual_sampling_proof",
+  "primary_architecture": "single_period_full",
+  "grade_band": "6-12",
+  "subject": "Cross-Curricular Classroom Sampling",
+  "grade": 8,
+  "topic": "Random class visual sampling across subjects",
+  "theme": "english_language_arts",
+  "science8_ecosystem_cer": {
+    "layout_template_id": "cross_curricular_cer",
+    "metadata_subject": "Science 8",
+    "metadata_topic": "Ecosystem change",
+    "title": "Science 8 CER: Ecosystem Change",
+    "subtitle": "Use evidence to explain a food-web shift",
+    "question": "How could removing one species change the rest of an ecosystem?",
+    "learning_target": "I can explain an ecosystem change using evidence and reasoning.",
+    "directions": "Choose one organism from the food web. Explain what could change if that organism disappeared or increased suddenly.",
+    "sentence_starters": [
+      "My claim is...",
+      "One food-web detail that supports this is...",
+      "This matters because...",
+      "Another organism that could be affected is..."
+    ],
+    "success_criteria": [
+      "My claim answers the question.",
+      "My evidence uses a food-web detail.",
+      "My reasoning explains the connection.",
+      "I named more than one affected organism."
+    ]
+  },
+  "math8_ratio_decision": {
+    "layout_template_id": "generic_graphic_organizer",
+    "metadata_subject": "Math 8",
+    "metadata_topic": "Ratio and unit rate",
+    "title": "Math 8 Unit Rate Decision Matrix",
+    "subtitle": "Compare options before choosing the better value",
+    "organizer_type": "decision_matrix",
+    "prompt": "Compare three snack-pack options. Use unit rate, total cost, and serving size before deciding which option is the best value.",
+    "columns": ["Option", "Unit rate", "Trade-off", "Decision note"],
+    "rows": 7,
+    "success_criteria": [
+      "I calculated or estimated unit rate.",
+      "I compared at least two options.",
+      "I explained my choice using math vocabulary."
+    ]
+  },
+  "socials9_primary_source_notes": {
+    "layout_template_id": "note_template",
+    "note_type": "two_column_notes",
+    "metadata_subject": "Social Studies 9",
+    "metadata_topic": "Primary source analysis",
+    "title": "Primary Source Two-Column Notes",
+    "subtitle": "Evidence on one side, interpretation on the other",
+    "learning_target": "I can separate what a source says from what I infer.",
+    "directions": "Put source details on the left. Put inferences, questions, or reliability notes on the right.",
+    "columns": ["Source detail", "Inference or question"],
+    "row_count": 10,
+    "summary_prompt": "What does this source help us understand?"
+  },
+  "careers8_workplace_scenario": {
+    "layout_template_id": "generic_graphic_organizer",
+    "metadata_subject": "Career Education 8",
+    "metadata_topic": "Workplace communication",
+    "title": "Workplace Scenario Planner",
+    "subtitle": "Choose a response and explain the impact",
+    "organizer_type": "three_column_table",
+    "prompt": "Read a short workplace scenario. List possible responses, possible impacts, and the response you would choose.",
+    "columns": ["Possible response", "Impact on people", "Best choice and why"],
+    "rows": 7,
+    "success_criteria": [
+      "I considered more than one response.",
+      "I explained how people could be affected.",
+      "My choice is respectful and realistic."
+    ]
+  },
+  "english8_short_story_response": {
+    "layout_template_id": "english_reading_response",
+    "metadata_subject": "English 8",
+    "metadata_topic": "Short story inference",
+    "title": "Short Story Inference Response",
+    "subtitle": "Use a moment from the story to explain character change",
+    "learning_target": "I can make an inference about a character and support it with evidence.",
+    "directions": "Choose one moment where the character's thinking or behaviour changes. Use a short evidence note and explain your inference.",
+    "prompt": "What does this moment reveal about the character?",
+    "vocabulary": [
+      { "word": "inference", "definition": "an idea based on evidence and reasoning" },
+      { "word": "motivation", "definition": "the reason a character acts or reacts" },
+      { "word": "turning point", "definition": "a moment when something important changes" }
+    ],
+    "success_criteria": [
+      "I named a specific moment.",
+      "I used an evidence note.",
+      "I explained what the moment reveals.",
+      "I connected the moment to character change."
+    ]
+  },
+  "adst8_design_brief": {
+    "layout_template_id": "generic_graphic_organizer",
+    "metadata_subject": "ADST 8",
+    "metadata_topic": "Design thinking",
+    "title": "ADST Design Brief Organizer",
+    "subtitle": "Problem, users, constraints, and prototype idea",
+    "organizer_type": "decision_matrix",
+    "prompt": "Plan a simple classroom prototype. Identify the user, the problem, the constraints, and one design choice you will test first.",
+    "columns": ["User need", "Constraint", "Prototype idea", "Test question"],
+    "rows": 7,
+    "success_criteria": [
+      "I named the user and problem.",
+      "I listed at least one constraint.",
+      "My prototype idea can be tested."
+    ]
+  },
+  "health8_media_balance_exit": {
+    "layout_template_id": "exit_reflection",
+    "metadata_subject": "Health 8",
+    "metadata_topic": "Media balance",
+    "title": "Media Balance Exit Reflection",
+    "subtitle": "Notice one habit and choose one adjustment",
+    "learning_target": "I can reflect on a media habit and choose a realistic next step.",
+    "topic_prompt": "Media balance and personal routines",
+    "prompt": "Which media habit helps you, and which one might need an adjustment?",
+    "success_criteria": [
+      "I named one specific habit.",
+      "I explained how it affects me.",
+      "I chose one realistic adjustment."
+    ]
+  },
+  "science9_lab_cornell": {
+    "layout_template_id": "note_template",
+    "note_type": "cornell_notes",
+    "metadata_subject": "Science 9",
+    "metadata_topic": "Lab observation notes",
+    "title": "Science Lab Cornell Notes",
+    "subtitle": "Observations, patterns, and questions",
+    "learning_target": "I can record observations and separate them from inferences.",
+    "directions": "Use the cue column for variables, safety notes, and questions. Use the notes column for observations and measurements.",
+    "cue_labels": ["Variable", "Observation", "Measurement", "Pattern", "Question"],
+    "row_count": 10,
+    "summary_prompt": "What pattern or result matters most?",
+    "reflection_prompt": "What should we test or clarify next?"
+  },
+  "workplace_math10_budget": {
+    "layout_template_id": "generic_graphic_organizer",
+    "metadata_subject": "Workplace Math 10",
+    "metadata_topic": "Budget comparison",
+    "title": "Budget Comparison Organizer",
+    "subtitle": "Needs, wants, costs, and trade-offs",
+    "organizer_type": "decision_matrix",
+    "prompt": "Compare two monthly budget choices. Consider fixed costs, flexible spending, savings, and one trade-off.",
+    "columns": ["Budget choice", "Cost", "Trade-off", "Recommendation"],
+    "rows": 7,
+    "success_criteria": [
+      "I separated needs from wants.",
+      "I included a cost or estimate.",
+      "I explained a trade-off."
+    ]
+  },
+  "literacy_word_study_prefix": {
+    "layout_template_id": "vocabulary_morphology",
+    "metadata_subject": "Literacy Support",
+    "metadata_topic": "Prefix and root word study",
+    "title": "Word Study: Prefix + Root",
+    "subtitle": "Break the word before guessing the meaning",
+    "directions": "Choose four words. Circle the prefix, underline the root, and use both parts to predict the meaning.",
+    "prompt": "Focus prefix: re- / pre- / un-. Explain how the prefix changes the meaning of the root word.",
+    "success_criteria": [
+      "I marked the prefix and root.",
+      "I predicted the meaning before checking.",
+      "I used one word in a clear sentence."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "random_class_visual_sampling_bundle",
+    "declared_outputs": ["worksheet", "graphic_organizer", "exit_ticket"]
+  },
+  "outputs": [
+    {
+      "output_id": "science8_ecosystem_cer",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "science8_ecosystem_cer",
+      "bundle": "random_class_visual_sampling_bundle"
+    },
+    {
+      "output_id": "math8_ratio_decision",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "math8_ratio_decision",
+      "bundle": "random_class_visual_sampling_bundle"
+    },
+    {
+      "output_id": "socials9_primary_source_notes",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "socials9_primary_source_notes",
+      "bundle": "random_class_visual_sampling_bundle"
+    },
+    {
+      "output_id": "careers8_workplace_scenario",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "careers8_workplace_scenario",
+      "bundle": "random_class_visual_sampling_bundle"
+    },
+    {
+      "output_id": "english8_short_story_response",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "english8_short_story_response",
+      "bundle": "random_class_visual_sampling_bundle"
+    },
+    {
+      "output_id": "adst8_design_brief",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "adst8_design_brief",
+      "bundle": "random_class_visual_sampling_bundle"
+    },
+    {
+      "output_id": "health8_media_balance_exit",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "health8_media_balance_exit",
+      "bundle": "random_class_visual_sampling_bundle"
+    },
+    {
+      "output_id": "science9_lab_cornell",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "science9_lab_cornell",
+      "bundle": "random_class_visual_sampling_bundle"
+    },
+    {
+      "output_id": "workplace_math10_budget",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "workplace_math10_budget",
+      "bundle": "random_class_visual_sampling_bundle"
+    },
+    {
+      "output_id": "literacy_word_study_prefix",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "literacy_word_study_prefix",
+      "bundle": "random_class_visual_sampling_bundle"
+    }
+  ]
+}
