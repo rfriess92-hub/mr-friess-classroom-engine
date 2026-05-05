@@ -1,0 +1,66 @@
+name: lwd-graphic-novel-unit
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json'
+      - '.github/workflows/lwd-graphic-novel-unit.yml'
+  workflow_dispatch:
+
+jobs:
+  render-lwd-graphic-novel-unit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install Node dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install chromium
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
+
+      - name: Repo doctor
+        run: pnpm run doctor
+
+      - name: Contract tests
+        run: pnpm test
+
+      - name: Schema check LWD graphic novel package
+        run: pnpm run schema:check -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json
+
+      - name: Route plan LWD graphic novel package
+        run: pnpm run route:plan -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json --print-routes
+
+      - name: Render LWD graphic novel package
+        run: pnpm run render:package -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json --out output
+
+      - name: Bundle QA LWD graphic novel package
+        run: pnpm run qa:bundle -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json --out output
+
+      - name: Upload LWD rendered bundle evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lwd-graphic-novel-output
+          path: output
+          if-no-files-found: ignore
