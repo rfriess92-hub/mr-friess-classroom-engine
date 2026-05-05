@@ -7,6 +7,7 @@ on:
       - '.github/workflows/lwd-graphic-novel-render.yml'
       - 'engine/**'
       - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json'
+      - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v2.json'
       - 'scripts/**'
       - 'schemas/**'
       - 'package.json'
@@ -42,59 +43,10 @@ jobs:
       - name: Install Python dependencies
         run: python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
 
-      - name: Normalize generated package for current contract
-        run: |
-          set -euo pipefail
-          mkdir -p output/_render-input
-          node <<'NODE'
-          const fs = require('node:fs')
-          const sourcePath = 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json'
-          const targetPath = 'output/_render-input/long-way-down-graphic-novel-study.normalized.json'
-          const pkg = JSON.parse(fs.readFileSync(sourcePath, 'utf8'))
-
-          // The generated source is a multi-day unit, but its top-level outputs include
-          // `worksheet`, which is currently valid for single-period packages only.
-          // Normalize the temporary render input so the authored worksheet page renders
-          // through the correct existing template without mutating the source fixture.
-          pkg.primary_architecture = 'single_period_full'
-
-          if (pkg.bundle?.declared_outputs && !pkg.bundle.declared_outputs.includes('pacing_guide')) {
-            pkg.bundle.declared_outputs.push('pacing_guide')
-          }
-
-          pkg.outputs = Array.isArray(pkg.outputs) ? pkg.outputs : []
-          if (!pkg.outputs.some((output) => output.output_type === 'pacing_guide')) {
-            pkg.outputs.splice(1, 0, {
-              output_id: 'pacing_guide_doc',
-              output_type: 'pacing_guide',
-              audience: 'teacher',
-              source_section: 'pacing_guide',
-              bundle: pkg.bundle?.bundle_id ?? 'lwd_graphic_novel_unit_bundle'
-            })
-          }
-
-          for (const output of pkg.outputs) {
-            if (output.output_type === 'rubric_sheet' && output.audience === 'shared_view') {
-              output.audience = 'student'
-            }
-          }
-
-          if (Array.isArray(pkg.days)) {
-            pkg.days = pkg.days.map((day, index) => ({
-              day_id: day.day_id ?? `day_${String(index + 1).padStart(2, '0')}`,
-              day_label: day.day_label ?? `Day ${index + 1}: ${day.focus ?? 'Lesson'}`,
-              ...day
-            }))
-          }
-
-          fs.writeFileSync(targetPath, `${JSON.stringify(pkg, null, 2)}\n`)
-          console.log(`Wrote normalized render input: ${targetPath}`)
-          NODE
-
       - name: Run requested generated package checks
         run: |
           set -euo pipefail
-          PACKAGE=output/_render-input/long-way-down-graphic-novel-study.normalized.json
+          PACKAGE=fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v2.json
           pnpm run schema:check -- --package "$PACKAGE"
           pnpm run route:plan -- --package "$PACKAGE" --print-routes
           pnpm run render:package -- --package "$PACKAGE" --out output
