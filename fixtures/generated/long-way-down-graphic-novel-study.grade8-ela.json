@@ -1,1 +1,605 @@
-{}
+{
+  "schema_version": "2.1.0",
+  "package_id": "long_way_down_graphic_novel_study_g8_9_literacy_support",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 15,
+  "grade_band": "8-9",
+  "subject": "English Language Arts / Reading Support",
+  "grade_subject_fit": "Fits Grade 8/9 literacy intervention by using a multimodal graphic novel to support inference, visual literacy, character analysis, theme, discussion, and short evidence-based writing.",
+  "unit_context": "Adapted from an existing Long Way Down unit study into a graphic novel study for a reading support/literacy intervention class.",
+  "assignment_family": "evidence_based_writing_task",
+  "assignment_purpose": "Students read and reread Long Way Down as a graphic novel, learn how visual and written features make meaning, track character impact and symbolism, and complete a concise final visual analysis response.",
+  "final_evidence_target": "Final visual analysis short response that uses one character interaction and one visual choice to explain Will's likely decision at the end, supported by the student completion check.",
+  "student_task_flow": [
+    "Notice graphic novel features and learn core visual vocabulary.",
+    "Read the graphic novel for plot, character, and conflict.",
+    "Reread key pages to collect visual and written evidence.",
+    "Analyze how each elevator-floor character affects Will.",
+    "Track symbols and visual motifs across the graphic novel.",
+    "Connect the text to nonfiction ideas about revenge or emotional response.",
+    "Prepare and write a final short analytical response."
+  ],
+  "success_criteria": [
+    "I can use visual and written evidence to support an inference.",
+    "I can explain how a character interaction changes Will or challenges his thinking.",
+    "I can track symbols and visual motifs across a graphic novel.",
+    "I can write a short analytical response with a clear claim, evidence, and explanation."
+  ],
+  "supports_scaffolds": [
+    {
+      "label": "Visual vocabulary",
+      "support": "Panel/gutter/caption/colour/angle/close-up terms are embedded in the learning guide.",
+      "embedded": true
+    },
+    {
+      "label": "Evidence frames",
+      "support": "Sentence frames support claim, visual evidence, written evidence, and explanation.",
+      "embedded": true
+    },
+    {
+      "label": "Choice and reduction",
+      "support": "Students can be assigned selected organizers rather than the full packet.",
+      "embedded": false
+    },
+    {
+      "label": "Completion check",
+      "support": "Final student-facing checklist confirms core evidence before the summative response.",
+      "embedded": true
+    }
+  ],
+  "differentiation_model": {
+    "support_pathway": "Use read-aloud, panel selection, oral rehearsal, sentence frames, and reduced organizer requirements.",
+    "core_pathway": "Complete assigned organizers and final response using at least one visual and one written evidence point.",
+    "extension_pathway": "Compare two visual choices, two character interactions, or the graphic novel and verse versions."
+  },
+  "checkpoint_release_logic": [
+    "Students complete a visual evidence practice before character-floor analysis.",
+    "Students complete at least four floor organizers and three symbol rows before final response planning.",
+    "Completion check must confirm written evidence, visual evidence, and claim before final response submission."
+  ],
+  "teacher_implementation_notes": [
+    "Read quickly for story momentum, then reread key pages slowly for visual analysis.",
+    "Keep discussion text-focused and avoid asking for personal disclosure about violence or grief.",
+    "Student-facing pages do not include teacher keys or sensitive facilitation notes.",
+    "Use project_tools section in teacher guide for quick conferring and grouping decisions."
+  ],
+  "likely_misconceptions": [
+    "Students may treat illustrations as decoration instead of evidence.",
+    "Students may identify symbols but not explain how symbols connect to theme.",
+    "Students may summarize the plot rather than explaining how a character interaction affects Will.",
+    "Students may believe the ambiguous ending has one correct hidden answer."
+  ],
+  "pacing_shape": "multi_day_read_reread_analyze_write",
+  "assessment_focus": [
+    "Visual inference",
+    "Character impact",
+    "Symbolism and theme",
+    "Evidence-based short response",
+    "Discussion preparation"
+  ],
+  "standards": [
+    "BC ELA 8/9 - Comprehend and connect using oral, written, visual, and digital texts",
+    "BC ELA 8/9 - Respond to text and explain how features and devices shape meaning",
+    "BC ELA 8/9 - Elements of visual/graphic texts, text features, literary elements, literary devices"
+  ],
+  "teacher_guide": {
+    "big_idea": "Graphic novels use words and images together to show pressure, grief, revenge, and choice.",
+    "project_prompt": "Build a final response that explains Will's likely decision at the end using one character interaction and one visual choice.",
+    "project_tools": [
+      "Panel Read-Aloud",
+      "Evidence Ladder",
+      "Gutter Pause",
+      "Theme Pressure Test"
+    ],
+    "matching_bank": [
+      "decoding support",
+      "writing support",
+      "behavioural structure",
+      "extension"
+    ],
+    "learning_goals": [
+      "I can use visual and written evidence to support an inference.",
+      "I can explain how a character interaction changes Will or challenges his thinking.",
+      "I can track symbols and visual motifs across a graphic novel.",
+      "I can write a short analytical response with a clear claim, evidence, and explanation."
+    ],
+    "materials": [
+      "Long Way Down graphic novel",
+      "student learning guide",
+      "graphic organizers",
+      "assignment pages",
+      "rubrics",
+      "sub notes",
+      "teacher keys"
+    ],
+    "teacher_notes": [
+      "Maintain teacher/student separation.",
+      "Use final response as summative evidence.",
+      "Use completion check before final submission."
+    ]
+  },
+  "pacing_guide": {
+    "phases": [
+      {
+        "label": "Launch graphic novel reading",
+        "duration_min": 60,
+        "teacher_move": "Notice/wonder samples; build visual-text vocabulary.",
+        "student_move": "Notice/Wonder organizer",
+        "checkpoint": "Notice/Wonder organizer"
+      },
+      {
+        "label": "How panels make meaning",
+        "duration_min": 60,
+        "teacher_move": "Mini-lesson on panels, gutters, captions, bubbles, framing, colour, and inference.",
+        "student_move": "Visual evidence practice",
+        "checkpoint": "Visual evidence practice"
+      },
+      {
+        "label": "Opening and setting",
+        "duration_min": 60,
+        "teacher_move": "Shared read; students track how setting is built through words and images.",
+        "student_move": "Setting tracker",
+        "checkpoint": "Setting tracker"
+      },
+      {
+        "label": "The Rules",
+        "duration_min": 60,
+        "teacher_move": "Reread The Rules; map pressure, loyalty, masculinity, and inherited codes.",
+        "student_move": "Rules pressure map",
+        "checkpoint": "Rules pressure map"
+      },
+      {
+        "label": "Buck - Floor 7",
+        "duration_min": 60,
+        "teacher_move": "Track first elevator interaction and the gun as power/pressure.",
+        "student_move": "Floor organizer",
+        "checkpoint": "Floor organizer"
+      },
+      {
+        "label": "Dani - Floor 6",
+        "duration_min": 60,
+        "teacher_move": "Focus on innocence, memory, and the question that challenges certainty.",
+        "student_move": "Floor organizer",
+        "checkpoint": "Floor organizer"
+      },
+      {
+        "label": "Uncle Mark - Floor 5",
+        "duration_min": 60,
+        "teacher_move": "Analyze storytelling, movie framing, and consequences.",
+        "student_move": "Floor organizer",
+        "checkpoint": "Floor organizer"
+      },
+      {
+        "label": "Will's father - Floor 4",
+        "duration_min": 60,
+        "teacher_move": "Examine family loyalty, fear, and the cost of revenge.",
+        "student_move": "Floor organizer",
+        "checkpoint": "Floor organizer"
+      },
+      {
+        "label": "Frick - Floor 3",
+        "duration_min": 60,
+        "teacher_move": "Sort character connections and clarify the cycle of violence.",
+        "student_move": "Connection board",
+        "checkpoint": "Connection board"
+      },
+      {
+        "label": "Shawn - Floor 2 and ending",
+        "duration_min": 60,
+        "teacher_move": "Read ending; interpret silence, tears, and the unresolved question.",
+        "student_move": "Ending decision planner",
+        "checkpoint": "Ending decision planner"
+      },
+      {
+        "label": "Symbolism and visual motifs",
+        "duration_min": 60,
+        "teacher_move": "Track elevator, gun, L button, smoke, shadows, colour, and repeated images.",
+        "student_move": "Symbol tracker",
+        "checkpoint": "Symbol tracker"
+      },
+      {
+        "label": "Nonfiction connection",
+        "duration_min": 60,
+        "teacher_move": "Connect revenge/crying article to Will and theme.",
+        "student_move": "Article connection sheet",
+        "checkpoint": "Article connection sheet"
+      },
+      {
+        "label": "Discussion preparation",
+        "duration_min": 60,
+        "teacher_move": "Prepare for structured discussion using visual and written evidence.",
+        "student_move": "Discussion prep sheet",
+        "checkpoint": "Discussion prep sheet"
+      },
+      {
+        "label": "Final response drafting",
+        "duration_min": 60,
+        "teacher_move": "Plan and draft short analytical response with one visual and one written evidence point.",
+        "student_move": "Final response draft",
+        "checkpoint": "Final response draft"
+      },
+      {
+        "label": "Assessment and reflection",
+        "duration_min": 60,
+        "teacher_move": "Complete final response; self-check and completion conference.",
+        "student_move": "Final response + completion check",
+        "checkpoint": "Final response + completion check"
+      }
+    ],
+    "buffer_note": "If behind, reduce optional organizer rows and preserve final response planning."
+  },
+  "task_sheet": {
+    "title": "Student Learning Guide",
+    "purpose_line": "Guide students through visual literacy, reading, evidence collection, and final response completion.",
+    "instructions": [
+      "Use this guide every class.",
+      "Complete the reading tracker and completion check."
+    ],
+    "tasks": [
+      {
+        "label": "Graphic novel vocabulary",
+        "prompt": "Define panel, gutter, caption, speech bubble, close-up, shadow, colour, and visual evidence in student-friendly language.",
+        "lines": 8,
+        "activity_type": "write_response"
+      },
+      {
+        "label": "Reading tracker",
+        "prompt": "For each assigned reading day, record what happened, one image that mattered, and one question you have.",
+        "lines": 10,
+        "activity_type": "close_reading"
+      },
+      {
+        "label": "Completion check",
+        "prompt": "Before submitting the final response, confirm: I have a claim, one visual evidence point, one written evidence point, and an explanation that connects both to Will's decision.",
+        "lines": 4,
+        "activity_type": "write_response"
+      }
+    ],
+    "embedded_supports": [
+      "A visual detail can be evidence when you explain what it shows.",
+      "Use this frame: The artist shows ____. This suggests ____ because ____."
+    ],
+    "success_criteria": [
+      "I track meaning from words and images.",
+      "I explain my evidence, not just list it.",
+      "I complete the final checklist before submitting."
+    ]
+  },
+  "graphic_organizer": {
+    "title": "Graphic Organizer Packet",
+    "organizer_type": "three_column",
+    "columns": [
+      "Detail",
+      "Evidence",
+      "Inference"
+    ],
+    "rows": 8,
+    "prompt": "Use words and images from the graphic novel to support inferences.",
+    "success_criteria": [
+      "I describe the visual or written evidence accurately.",
+      "I explain what the evidence suggests.",
+      "I connect evidence to character, symbol, or theme."
+    ]
+  },
+  "worksheet": {
+    "title": "Assignment Pages",
+    "anchor": [
+      "Words and images both count as text evidence in a graphic novel.",
+      "A strong response explains how the evidence creates meaning."
+    ],
+    "questions": [
+      {
+        "q_num": 1,
+        "q_text": "Notice/Wonder: What do you notice about how graphic novels are built? What do you wonder about how to read them?",
+        "n_lines": 6
+      },
+      {
+        "q_num": 2,
+        "q_text": "Visual Evidence Practice: Choose one panel. What do the words say? What do the images show? What do you infer?",
+        "n_lines": 8
+      },
+      {
+        "q_num": 3,
+        "q_text": "Character Floor Analysis: Choose one ghost. How does this character challenge Will's thinking? Include one visual detail.",
+        "n_lines": 8
+      },
+      {
+        "q_num": 4,
+        "q_text": "Symbol Tracker: Choose one symbol or visual motif. What might it represent? How does the graphic novel show this meaning visually?",
+        "n_lines": 8
+      },
+      {
+        "q_num": 5,
+        "q_text": "Final Planning: What decision do you think Will makes? What character interaction and visual choice support your inference?",
+        "n_lines": 8
+      }
+    ],
+    "self_check": [
+      "I used at least one visual detail.",
+      "I used at least one written detail.",
+      "I explained how the evidence supports my thinking."
+    ]
+  },
+  "rubric_sheet": {
+    "title": "Final Visual Analysis Rubric",
+    "purpose_line": "Assess the final response about Will's likely decision using visual and written evidence.",
+    "scale": {
+      "min": 1,
+      "max": 4,
+      "labels": {
+        "1": "Incomplete",
+        "2": "Developing",
+        "3": "Proficient",
+        "4": "Extending"
+      }
+    },
+    "criteria": [
+      {
+        "name": "Claim",
+        "descriptor": "Clear inference about Will's decision."
+      },
+      {
+        "name": "Character impact",
+        "descriptor": "Explains how one character interaction affects Will's thinking."
+      },
+      {
+        "name": "Visual evidence",
+        "descriptor": "Uses a visual choice as evidence and explains what it suggests."
+      },
+      {
+        "name": "Written evidence",
+        "descriptor": "Uses a written detail, dialogue, caption, or narration as evidence."
+      },
+      {
+        "name": "Explanation",
+        "descriptor": "Connects evidence to meaning rather than only summarizing the story."
+      }
+    ],
+    "comment_fields": [
+      "One strength",
+      "One next step"
+    ],
+    "success_criteria": [
+      "Claim is clear.",
+      "Visual evidence is explained.",
+      "Written evidence is explained.",
+      "The response connects to character, theme, or choice."
+    ]
+  },
+  "sub_plan": {
+    "title": "Sub Notes",
+    "class_context": "Students are in a Grade 8/9 literacy intervention unit studying Long Way Down as a graphic novel. Work should stay calm, structured, and text-focused.",
+    "materials_location": "Use the printed student learning guide, assignment pages, and graphic organizer packet prepared for the day.",
+    "classroom_notes": "Students may need help starting. Keep directions short. Circulate and redirect to the written task.",
+    "steps": [
+      {
+        "label": "Settle and read directions",
+        "duration_min": 10,
+        "what_to_do": "Give students the assigned packet page and read the task aloud.",
+        "what_to_say": "Today you are continuing the Long Way Down graphic novel work. Use the page in front of you. Focus on evidence from words and images.",
+        "what_students_do": "Students write name/date and underline the task question.",
+        "materials": [
+          "assigned page",
+          "graphic novel"
+        ]
+      },
+      {
+        "label": "Independent or partner work",
+        "duration_min": 35,
+        "what_to_do": "Students complete the assigned page. Quiet partner talk is allowed if useful.",
+        "what_to_say": "Your job is to finish the page with enough detail that Mr. Friess can see your thinking.",
+        "what_students_do": "Students complete written responses and cite visual or written evidence.",
+        "materials": [
+          "assigned page",
+          "pencil"
+        ]
+      },
+      {
+        "label": "Exit collection",
+        "duration_min": 15,
+        "what_to_do": "Collect pages. Ask students to circle the response they want feedback on.",
+        "what_to_say": "Circle the answer you want feedback on before handing it in.",
+        "what_students_do": "Students finish, circle one response, and submit work.",
+        "materials": [
+          "completed pages"
+        ]
+      }
+    ],
+    "if_stuck": "Have students choose one panel and answer: What do I see? What does it make me think? Why?"
+  },
+  "answer_key": {
+    "title": "Teacher Keys",
+    "entries": [
+      {
+        "artifact_ref": "Notice/Wonder",
+        "expected_answer": "Students should notice panels, gutters, speech bubbles, captions, images, facial expressions, action, page layout, and how words and images work together.",
+        "acceptable_variants": [
+          "Noticing fewer words than a novel is acceptable if students also move toward visual features."
+        ],
+        "teacher_note": "Redirect students from plot-only noticing to structure and visual-text features."
+      },
+      {
+        "artifact_ref": "Visual Evidence Practice",
+        "expected_answer": "A strong response describes a panel accurately and explains an inference based on image, words, or both.",
+        "teacher_note": "Look for 'This suggests...' reasoning."
+      },
+      {
+        "artifact_ref": "Character Floor Analysis",
+        "expected_answer": "Buck pressures Will and exposes the gun as power/pressure; Dani forces Will to think about missing and innocent victims; Uncle Mark makes Will imagine consequences; Will's father shows the terror and cost of revenge; Frick clarifies the cycle; Shawn's silence and tears make the ending morally unresolved.",
+        "teacher_note": "Students do not need identical interpretations, but they must connect the character to Will's thinking."
+      },
+      {
+        "artifact_ref": "Symbol Tracker",
+        "expected_answer": "Common symbols include elevator as pause/decision space, gun as inherited violence and pressure, smoke/shadow as confusion or grief, L button as exit/lobby/life choice, and repeated close-ups as emotional pressure.",
+        "teacher_note": "Accept multiple interpretations when evidence is explained."
+      },
+      {
+        "artifact_ref": "Final Response",
+        "expected_answer": "A strong response makes a reasonable inference about Will's decision and supports it with one character interaction and one visual choice.",
+        "teacher_note": "There is no single required answer for Will's final choice. Score reasoning and evidence."
+      }
+    ],
+    "scoring_guidance": [
+      "Do not require students to solve the ending definitively.",
+      "Prioritize visual evidence explanation because that is the graphic novel study skill.",
+      "Support students who summarize by asking: What does this detail show about Will?"
+    ]
+  },
+  "bundle": {
+    "bundle_id": "lwd_graphic_novel_unit_bundle",
+    "declared_outputs": [
+      "teacher_guide",
+      "pacing_guide",
+      "task_sheet",
+      "graphic_organizer",
+      "worksheet",
+      "rubric_sheet",
+      "sub_plan",
+      "answer_key"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "teacher_guide_doc",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "lwd_graphic_novel_unit_bundle"
+    },
+    {
+      "output_id": "student_learning_guide_doc",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "lwd_graphic_novel_unit_bundle"
+    },
+    {
+      "output_id": "graphic_organizers_doc",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "graphic_organizer",
+      "bundle": "lwd_graphic_novel_unit_bundle"
+    },
+    {
+      "output_id": "assignment_pages_doc",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "worksheet",
+      "bundle": "lwd_graphic_novel_unit_bundle"
+    },
+    {
+      "output_id": "assessment_rubrics_doc",
+      "output_type": "rubric_sheet",
+      "audience": "shared_view",
+      "source_section": "rubric_sheet",
+      "bundle": "lwd_graphic_novel_unit_bundle",
+      "final_evidence": true
+    },
+    {
+      "output_id": "sub_notes_doc",
+      "output_type": "sub_plan",
+      "audience": "teacher",
+      "source_section": "sub_plan",
+      "bundle": "lwd_graphic_novel_unit_bundle"
+    },
+    {
+      "output_id": "teacher_keys_doc",
+      "output_type": "answer_key",
+      "audience": "teacher",
+      "source_section": "answer_key",
+      "bundle": "lwd_graphic_novel_unit_bundle"
+    }
+  ],
+  "days": [
+    {
+      "day": 1,
+      "focus": "Launch graphic novel reading",
+      "teacher_move": "Notice/wonder samples; build visual-text vocabulary.",
+      "student_evidence": "Notice/Wonder organizer"
+    },
+    {
+      "day": 2,
+      "focus": "How panels make meaning",
+      "teacher_move": "Mini-lesson on panels, gutters, captions, bubbles, framing, colour, and inference.",
+      "student_evidence": "Visual evidence practice"
+    },
+    {
+      "day": 3,
+      "focus": "Opening and setting",
+      "teacher_move": "Shared read; students track how setting is built through words and images.",
+      "student_evidence": "Setting tracker"
+    },
+    {
+      "day": 4,
+      "focus": "The Rules",
+      "teacher_move": "Reread The Rules; map pressure, loyalty, masculinity, and inherited codes.",
+      "student_evidence": "Rules pressure map"
+    },
+    {
+      "day": 5,
+      "focus": "Buck - Floor 7",
+      "teacher_move": "Track first elevator interaction and the gun as power/pressure.",
+      "student_evidence": "Floor organizer"
+    },
+    {
+      "day": 6,
+      "focus": "Dani - Floor 6",
+      "teacher_move": "Focus on innocence, memory, and the question that challenges certainty.",
+      "student_evidence": "Floor organizer"
+    },
+    {
+      "day": 7,
+      "focus": "Uncle Mark - Floor 5",
+      "teacher_move": "Analyze storytelling, movie framing, and consequences.",
+      "student_evidence": "Floor organizer"
+    },
+    {
+      "day": 8,
+      "focus": "Will's father - Floor 4",
+      "teacher_move": "Examine family loyalty, fear, and the cost of revenge.",
+      "student_evidence": "Floor organizer"
+    },
+    {
+      "day": 9,
+      "focus": "Frick - Floor 3",
+      "teacher_move": "Sort character connections and clarify the cycle of violence.",
+      "student_evidence": "Connection board"
+    },
+    {
+      "day": 10,
+      "focus": "Shawn - Floor 2 and ending",
+      "teacher_move": "Read ending; interpret silence, tears, and the unresolved question.",
+      "student_evidence": "Ending decision planner"
+    },
+    {
+      "day": 11,
+      "focus": "Symbolism and visual motifs",
+      "teacher_move": "Track elevator, gun, L button, smoke, shadows, colour, and repeated images.",
+      "student_evidence": "Symbol tracker"
+    },
+    {
+      "day": 12,
+      "focus": "Nonfiction connection",
+      "teacher_move": "Connect revenge/crying article to Will and theme.",
+      "student_evidence": "Article connection sheet"
+    },
+    {
+      "day": 13,
+      "focus": "Discussion preparation",
+      "teacher_move": "Prepare for structured discussion using visual and written evidence.",
+      "student_evidence": "Discussion prep sheet"
+    },
+    {
+      "day": 14,
+      "focus": "Final response drafting",
+      "teacher_move": "Plan and draft short analytical response with one visual and one written evidence point.",
+      "student_evidence": "Final response draft"
+    },
+    {
+      "day": 15,
+      "focus": "Assessment and reflection",
+      "teacher_move": "Complete final response; self-check and completion conference.",
+      "student_evidence": "Final response + completion check"
+    }
+  ]
+}
