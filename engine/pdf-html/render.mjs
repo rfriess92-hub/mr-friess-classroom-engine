@@ -14,6 +14,7 @@ import { buildPacingGuideHTML } from './templates/pacing-guide.mjs'
 import { buildSubPlanHTML } from './templates/sub-plan.mjs'
 import { buildMakeupPacketHTML } from './templates/makeup-packet.mjs'
 import { buildClassroomWorksheetTemplateHTML, isClassroomTemplateLayout } from './templates/classroom-worksheet-system.mjs'
+import { buildLiteracyVocabularyToolHTML, isLiteracyVocabularyToolLayout } from './templates/literacy-vocabulary-tools.mjs'
 import { buildPlanterVolumeDecisionHTML, isPlanterVolumeDecisionLayout } from './templates/planter-volume-decision.mjs'
 
 const TEMPLATE_MAP = {
@@ -309,12 +310,15 @@ export async function renderStudentDoc(pkg, route, outPath) {
   const section = resolveSourceSection(pkg, route.source_section)
   const tier = route.variant_group === 'tiers' ? route.variant_role : null
   const layoutTemplateId = resolveLayoutTemplateId(route, section)
+  const usesLiteracyVocabularyTool = isLiteracyVocabularyToolLayout(layoutTemplateId)
   const usesClassroomTemplate = isClassroomTemplateLayout(layoutTemplateId)
   const html = isPlanterVolumeDecisionLayout(layoutTemplateId)
     ? buildPlanterVolumeDecisionHTML(pkg, section, getFontFaceCSS(), getDesignCSS())
-    : usesClassroomTemplate
-      ? applyMrFriessVisualShell(buildClassroomWorksheetTemplateHTML(pkg, section, getFontFaceCSS(), getDesignCSS(), layoutTemplateId))
-      : buildTemplate(pkg, section, getFontFaceCSS(), getDesignCSS(), tier)
+    : usesLiteracyVocabularyTool
+      ? buildLiteracyVocabularyToolHTML(pkg, section, getFontFaceCSS(), getDesignCSS(), layoutTemplateId)
+      : usesClassroomTemplate
+        ? applyMrFriessVisualShell(buildClassroomWorksheetTemplateHTML(pkg, section, getFontFaceCSS(), getDesignCSS(), layoutTemplateId))
+        : buildTemplate(pkg, section, getFontFaceCSS(), getDesignCSS(), tier)
   await renderHtmlToPdf(html, outPath)
 }
 
