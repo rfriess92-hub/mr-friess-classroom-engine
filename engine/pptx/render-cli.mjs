@@ -19,6 +19,37 @@ function pickPython() {
   return null
 }
 
+function applyClassroomReadabilityScale(html) {
+  const override = `
+    <style id="classroom-readability-scale">
+      .title-h1 { font-size: 112px !important; line-height: 1 !important; }
+      .title-subtitle { font-size: 28px !important; }
+      .title-meta { font-size: 25px !important; line-height: 1.45 !important; }
+      .title-bar h2 { font-size: 40px !important; }
+      .breadcrumb { font-size: 22px !important; }
+      .lesson-title-bar h2 { font-size: 39px !important; }
+      .section-label { font-size: 21px !important; }
+      .card-header span { font-size: 22px !important; }
+      .key-term-box .term { font-size: 58px !important; }
+      .key-term-box .definition { font-size: 25px !important; }
+      .body-text { font-size: 32px !important; line-height: 1.22 !important; }
+      .body-small { font-size: 27px !important; line-height: 1.23 !important; }
+      .overview-title { font-size: 86px !important; }
+      .overview-name { font-size: 34px !important; }
+      .overview-header { font-size: 22px !important; }
+      .overview-term { font-size: 56px !important; }
+      .overview-def { font-size: 26px !important; line-height: 1.16 !important; }
+      .overview-activity { font-size: 26px !important; line-height: 1.18 !important; }
+      table.scope { font-size: 24px !important; }
+      table.scope th { font-size: 21px !important; }
+      table.scope td { font-size: 24px !important; line-height: 1.2 !important; }
+      .how-section h3 { font-size: 32px !important; }
+      .how-section p { font-size: 29px !important; line-height: 1.26 !important; }
+    </style>
+  `
+  return html.replace('</head>', `${override}</head>`)
+}
+
 async function renderSlidesToImages(packet, tempDir) {
   let chromium
   try {
@@ -34,7 +65,7 @@ async function renderSlidesToImages(packet, tempDir) {
     const rendered = []
     for (let index = 0; index < slides.length; index += 1) {
       const slideSpec = slides[index] && typeof slides[index] === 'object' ? slides[index] : {}
-      const html = buildClassroomSlideHTML(packet, slideSpec, index)
+      const html = applyClassroomReadabilityScale(buildClassroomSlideHTML(packet, slideSpec, index))
       const imagePath = join(tempDir, `slide-${String(index + 1).padStart(2, '0')}.png`)
       await page.setContent(html, { waitUntil: 'domcontentloaded' })
       await page.screenshot({ path: imagePath, type: 'png', fullPage: false })
