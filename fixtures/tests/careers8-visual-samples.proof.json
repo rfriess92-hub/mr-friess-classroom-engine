@@ -6,18 +6,18 @@
   "subject": "Career Education",
   "grade": 8,
   "topic": "Careers 8: identity, strengths, and career pathways",
-  "theme": "career_education",
-  "teacher_overview": {
+  "theme": "careers",
+  "classroom_overview": {
     "layout_template_id": "worksheet_template_system",
-    "title": "Careers 8 Teacher Overview",
+    "title": "Careers 8 Classroom Overview",
     "subtitle": "Identity, strengths, pathways, and practical next steps",
-    "directions": "Use this sample pack to review whether the engine can produce useful Careers 8 classroom documents with clear student-facing structure.",
-    "prompt": "Students connect personal strengths and interests to possible pathways, then practise asking better questions about work, learning, and community contribution.",
+    "directions": "Use this page to understand the learning sequence before starting the student tasks.",
+    "prompt": "You will connect personal strengths and interests to possible pathways, then practise asking better questions about work, learning, and community contribution.",
     "success_criteria": [
-      "Students name strengths using specific evidence.",
-      "Students connect interests to possible career clusters or pathways.",
-      "Students ask realistic questions about training, work conditions, and community impact.",
-      "Students leave with one practical next step."
+      "I can name strengths using specific evidence.",
+      "I can connect interests to possible career clusters or pathways.",
+      "I can ask realistic questions about training, work conditions, and community impact.",
+      "I can leave with one practical next step."
     ]
   },
   "strengths_inventory": {
@@ -92,10 +92,10 @@
   },
   "outputs": [
     {
-      "output_id": "careers8_teacher_overview",
+      "output_id": "careers8_classroom_overview",
       "output_type": "worksheet",
-      "audience": "teacher",
-      "source_section": "teacher_overview",
+      "audience": "student",
+      "source_section": "classroom_overview",
       "bundle": "careers8_visual_samples_bundle"
     },
     {
