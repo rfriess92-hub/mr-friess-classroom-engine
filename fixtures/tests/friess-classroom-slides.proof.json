@@ -63,7 +63,10 @@
       "type": "scope_sequence",
       "layout": "rows",
       "title": "SCOPE & SEQUENCE — BIOLOGY 12",
-      "content": {"mode": "friess_scope_sequence"},
+      "content": {
+        "mode": "friess_scope_sequence",
+        "prompt": "Biology 12 moves from cell structures and membrane transport into genetics, evolution, and ecosystems. Each unit pairs a key concept with classroom activities and assessment evidence."
+      },
       "accent": "teal",
       "columns": ["#", "Unit", "Key Concept", "Core Activities", "Assessment"],
       "col_widths": [0.4, 1.5, 2.8, 2.9, 1.8],
@@ -78,7 +81,10 @@
       "type": "unit_overview",
       "layout": "three_rows",
       "title": "Unit 1 — Cell Biology",
-      "content": {"mode": "friess_unit_overview"},
+      "content": {
+        "mode": "friess_unit_overview",
+        "prompt": "Unit 1 anchors cell biology through mitosis, osmosis, and meiosis. Students build vocabulary, connect organelle function to cell processes, and apply the ideas in lab work."
+      },
       "unit_number": "1",
       "unit_name": "Cell Biology",
       "accent": "teal",
