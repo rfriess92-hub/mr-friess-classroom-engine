@@ -54,6 +54,12 @@ jobs:
           set -euo pipefail
           mkdir -p output-samples
 
+          echo '=== friess-classroom-slides ==='
+          pnpm run schema:check -- --package fixtures/tests/friess-classroom-slides.proof.json
+          pnpm run route:plan -- --package fixtures/tests/friess-classroom-slides.proof.json --print-routes
+          pnpm run render:package -- --package fixtures/tests/friess-classroom-slides.proof.json --out output-samples/friess-classroom-slides --flat-out
+          pnpm run qa:bundle -- --package fixtures/tests/friess-classroom-slides.proof.json --out output-samples/friess-classroom-slides --flat-dir
+
           echo '=== mr-friess-engine-docs ==='
           pnpm run schema:check -- --package fixtures/tests/mr-friess-engine-docs.proof.json
           pnpm run route:plan -- --package fixtures/tests/mr-friess-engine-docs.proof.json --print-routes
