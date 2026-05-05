@@ -11,35 +11,35 @@
     "layout_template_id": "note_template",
     "note_type": "cornell_notes",
     "title": "Long Way Down Cornell Notes",
-    "subtitle": "Track elevator encounters, pressure, and choice",
-    "learning_target": "I can track how structure and encounter moments shape my understanding of Will.",
-    "directions": "Use page references or short evidence notes. Do not copy long passages from the novel.",
+    "subtitle": "Encounters, pressure, and choice",
+    "learning_target": "I can track how structure and encounters shape Will's conflict.",
+    "directions": "Use page references or short evidence notes. Do not copy long passages.",
     "cue_labels": ["Floor / encounter", "What is revealed", "Memory", "Pressure", "Choice"],
     "row_count": 10,
     "summary_prompt": "How did today's section change your understanding of Will?",
-    "reflection_prompt": "What question are you carrying into the next section?"
+    "reflection_prompt": "What question are you carrying forward?"
   },
   "guided_reading_notes": {
     "layout_template_id": "note_template",
     "note_type": "guided_notes",
     "title": "Long Way Down Guided Reading Notes",
     "subtitle": "Structure, repetition, memory, rules, and choice",
-    "learning_target": "I can notice how the novel's structure shapes tension and meaning.",
-    "directions": "Use brief notes, page references, or short evidence notes. Avoid copying long passages from the book.",
+    "learning_target": "I can notice how structure builds tension and meaning.",
+    "directions": "Write brief notes or page references. Focus on patterns, pressure, and choice.",
     "headings": ["Structure", "Repetition", "Memory", "Rules", "Pressure", "Choice"],
-    "prompts": ["How is the section organized?", "What words, ideas, or patterns repeat?", "What memory matters here?", "Which rule or belief is present?", "What pressure is Will feeling?", "What choice is becoming clearer or harder?"],
-    "success_criteria": ["I noticed structure or repetition.", "I connected a moment to Will's internal conflict.", "I used page references or brief evidence notes instead of long copied text."]
+    "prompts": ["How is this section organized?", "What repeats?", "Which memory matters?", "Which rule or belief appears?", "What pressure is Will feeling?", "What choice is becoming harder?"],
+    "success_criteria": ["I noticed structure or repetition.", "I connected a moment to Will's conflict.", "I used page references or brief evidence notes."]
   },
   "discussion_notes": {
     "layout_template_id": "note_template",
     "note_type": "two_column_notes",
     "title": "Long Way Down Discussion Notes",
-    "subtitle": "Track ideas from discussion and how your thinking changes",
-    "learning_target": "I can listen to discussion and record how my thinking develops.",
-    "directions": "Use the left column for a classmate's idea, question, or evidence note. Use the right column for your response or changed thinking.",
-    "columns": ["Idea / evidence note", "My thinking now"],
+    "subtitle": "Class ideas and my thinking",
+    "learning_target": "I can record discussion ideas and revise my thinking.",
+    "directions": "Put a classmate's idea, question, or evidence note on the left. Put your response on the right.",
+    "columns": ["Idea or evidence note", "My response"],
     "row_count": 10,
-    "summary_prompt": "What idea from discussion changed or sharpened your thinking?"
+    "summary_prompt": "Which discussion idea changed or sharpened your thinking?"
   },
   "bundle": {
     "bundle_id": "long_way_down_notes_samples_bundle",
