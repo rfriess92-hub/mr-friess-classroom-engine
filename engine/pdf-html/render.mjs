@@ -13,12 +13,10 @@ import { buildMakeupPacketHTML } from './templates/makeup-packet.mjs'
 import { buildClassroomWorksheetTemplateHTML, isClassroomTemplateLayout } from './templates/classroom-worksheet-system.mjs'
 import { buildLiteracyVocabularyToolHTML, isLiteracyVocabularyToolLayout } from './templates/literacy-vocabulary-tools.mjs'
 import { buildAssessmentVisualToolHTML, isAssessmentVisualToolLayout } from './templates/assessment-visual-tools.mjs'
-import { buildTeacherGuideHTML, buildLessonOverviewHTML, buildPacingGuideHTML, buildSubPlanHTML, buildAnswerKeyHTML } from './templates/teacher-support.mjs'
+import { buildPacingGuideHTML, buildSubPlanHTML, buildAnswerKeyHTML } from './templates/teacher-support.mjs'
 import { buildPlanterVolumeDecisionHTML, isPlanterVolumeDecisionLayout } from './templates/planter-volume-decision.mjs'
 
 const TEMPLATE_MAP = {
-  teacher_guide: buildTeacherGuideHTML,
-  lesson_overview: buildLessonOverviewHTML,
   task_sheet: buildTaskSheetHTML,
   final_response_sheet: buildFinalResponseSheetHTML,
   exit_ticket: buildExitTicketHTML,
