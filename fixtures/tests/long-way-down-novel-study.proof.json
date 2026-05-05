@@ -7,17 +7,17 @@
   "grade": 9,
   "topic": "Novel Study: Long Way Down by Jason Reynolds",
   "theme": "english_language_arts",
-  "teacher_overview": {
+  "classroom_overview": {
     "layout_template_id": "worksheet_template_system",
-    "title": "Novel Study Teacher Overview",
+    "title": "Novel Study Classroom Overview",
     "subtitle": "Long Way Down by Jason Reynolds — structure, choice, grief, and voice",
-    "directions": "Use this sample pack to review a copyright-safe novel-study workflow. The materials reference the novel but do not reproduce passage text.",
-    "prompt": "Students track how Jason Reynolds uses verse structure, repetition, memory, and elevator-floor encounters to build tension and develop Will's internal conflict.",
+    "directions": "Use this page to understand the reading focus. These materials reference the novel but do not reproduce passage text.",
+    "prompt": "Track how Jason Reynolds uses verse structure, repetition, memory, and elevator-floor encounters to build tension and develop Will's internal conflict.",
     "success_criteria": [
-      "Students make observations about structure and voice without needing copied text on the worksheet.",
-      "Students support interpretations with page references or short teacher-approved evidence notes.",
-      "Students separate what a character believes from what the reader is invited to question.",
-      "Students reflect on choice, grief, rules, and consequences with care and specificity."
+      "I can make observations about structure and voice without copying long text from the novel.",
+      "I can support interpretations with page references or short evidence notes.",
+      "I can separate what a character believes from what the reader is invited to question.",
+      "I can reflect on choice, grief, rules, and consequences with care and specificity."
     ]
   },
   "reading_response": {
@@ -92,10 +92,10 @@
   },
   "outputs": [
     {
-      "output_id": "long_way_down_teacher_overview",
+      "output_id": "long_way_down_classroom_overview",
       "output_type": "worksheet",
-      "audience": "teacher",
-      "source_section": "teacher_overview",
+      "audience": "student",
+      "source_section": "classroom_overview",
       "bundle": "long_way_down_novel_study_bundle"
     },
     {
