@@ -1,0 +1,243 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "mr_friess_course_sample_packs_proof",
+  "primary_architecture": "single_period_full",
+  "grade_band": "6-10",
+  "subject": "Mr Friess Course Samples",
+  "grade": 8,
+  "topic": "Careers 8, literacy, and Long Way Down classroom materials",
+  "theme": "careers",
+  "careers8_personality_core_notes": {
+    "layout_template_id": "note_template",
+    "note_type": "two_column_notes",
+    "metadata_subject": "Careers 8",
+    "metadata_topic": "Personality, science, and the limits of labels",
+    "title": "Careers 8 Guided Notes",
+    "subtitle": "MBTI, Big Five, and the limits of labels",
+    "learning_target": "I can explain one difference between MBTI and the Big Five.",
+    "directions": "Use the left column for key questions. Use the right column for lesson notes, examples, and reminders.",
+    "columns": ["Key question", "Notes, examples, and reminders"],
+    "row_count": 10,
+    "summary_prompt": "What is the most important idea from today's lesson?"
+  },
+  "careers8_personality_extension": {
+    "layout_template_id": "note_template",
+    "note_type": "guided_notes",
+    "metadata_subject": "Careers 8",
+    "metadata_topic": "Personality, science, and the limits of labels",
+    "title": "Careers 8 Extension Notes",
+    "subtitle": "Apply the Barnum Effect and critique personality labels",
+    "learning_target": "I can evaluate how personality labels can help and limit people.",
+    "directions": "Go beyond copying notes. Add examples, connections, and a clear claim about personality testing.",
+    "headings": ["Framework", "Evidence", "Barnum Effect", "Real example", "Critique", "Claim"],
+    "prompts": ["Which framework are you using?", "What fact or detail matters?", "How does a vague description feel personal?", "Where do we see this outside class?", "Where does the label break down?", "Should employers use this kind of test?"],
+    "success_criteria": [
+      "I used at least two lesson details.",
+      "I added my own example or critique.",
+      "My claim is clear and supported."
+    ]
+  },
+  "careers8_personality_compare": {
+    "layout_template_id": "generic_graphic_organizer",
+    "metadata_subject": "Careers 8",
+    "metadata_topic": "MBTI and Big Five comparison",
+    "title": "MBTI vs. Big Five Organizer",
+    "subtitle": "Compare the models before judging usefulness",
+    "organizer_type": "three_column_table",
+    "prompt": "Compare MBTI and the Big Five. Focus on evidence, reliability, and how each model describes people.",
+    "columns": ["MBTI", "Both", "Big Five"],
+    "rows": 8,
+    "success_criteria": [
+      "I included specific details, not vague similarities.",
+      "I wrote at least one genuine overlap.",
+      "My final judgment uses evidence from the comparison."
+    ]
+  },
+  "careers8_personality_exit": {
+    "layout_template_id": "exit_reflection",
+    "metadata_subject": "Careers 8",
+    "metadata_topic": "Personality labels exit check",
+    "title": "Careers 8 Exit Ticket",
+    "subtitle": "MBTI and Big Five exit check",
+    "learning_target": "I can explain one key difference between MBTI and the Big Five.",
+    "topic_prompt": "Personality frameworks and labels",
+    "prompt": "In your own words, what is one key difference between MBTI and the Big Five?",
+    "success_criteria": [
+      "I answered in my own words.",
+      "I named one clear difference.",
+      "I used accurate vocabulary from the lesson."
+    ]
+  },
+  "long_way_down_floor_notes": {
+    "layout_template_id": "note_template",
+    "note_type": "two_column_notes",
+    "metadata_subject": "Literacy / ELA",
+    "metadata_topic": "Long Way Down encounter tracking",
+    "title": "Long Way Down Encounter Notes",
+    "subtitle": "What is revealed and how Will is affected",
+    "learning_target": "I can track how an encounter changes pressure, memory, or choice.",
+    "directions": "Use page references or short evidence notes. Do not copy long passages from the novel.",
+    "columns": ["What the encounter reveals", "How Will is affected"],
+    "row_count": 10,
+    "summary_prompt": "How did this encounter change your understanding of Will?"
+  },
+  "long_way_down_theme_tracker": {
+    "layout_template_id": "generic_graphic_organizer",
+    "metadata_subject": "Literacy / ELA",
+    "metadata_topic": "Long Way Down theme tracking",
+    "title": "Long Way Down Theme Tracker",
+    "subtitle": "Rules, grief, revenge, and choice",
+    "organizer_type": "theme_tracker",
+    "prompt": "Track one theme idea across several moments. Use page references or short evidence notes instead of copied passages.",
+    "columns": ["Theme idea", "Moment or evidence note", "What the novel may be suggesting"],
+    "rows": 8,
+    "success_criteria": [
+      "My theme idea is not just a plot event.",
+      "My evidence points to a specific moment.",
+      "My explanation connects the moment to a bigger idea."
+    ]
+  },
+  "long_way_down_cer": {
+    "layout_template_id": "cross_curricular_cer",
+    "metadata_subject": "Literacy / ELA",
+    "metadata_topic": "Long Way Down theme CER",
+    "title": "Long Way Down Theme CER",
+    "subtitle": "Build a claim about rules, grief, revenge, or choice",
+    "question": "What is the novel suggesting about rules, grief, revenge, or choice?",
+    "learning_target": "I can build a theme claim and support it with evidence.",
+    "directions": "Choose one theme idea. Make a claim, point to a specific moment, and explain how that moment supports your thinking.",
+    "sentence_starters": [
+      "The novel suggests that...",
+      "One moment that supports this is...",
+      "This matters because...",
+      "The reader is invited to question..."
+    ],
+    "success_criteria": [
+      "My claim is about a theme.",
+      "My evidence points to a specific moment.",
+      "My reasoning explains the connection.",
+      "I avoided copying long passages."
+    ]
+  },
+  "long_way_down_exit": {
+    "layout_template_id": "exit_reflection",
+    "metadata_subject": "Literacy / ELA",
+    "metadata_topic": "Long Way Down reading reflection",
+    "title": "Long Way Down Exit Reflection",
+    "subtitle": "Question, detail, and next reading move",
+    "learning_target": "I can reflect on how today's reading changed my thinking.",
+    "topic_prompt": "Long Way Down reading reflection",
+    "prompt": "What question are you carrying into the next section? Which detail created that question?",
+    "success_criteria": [
+      "I wrote one genuine question.",
+      "I named the detail or structure that created it.",
+      "I explained why the question matters."
+    ]
+  },
+  "literacy_prefix_word_study": {
+    "layout_template_id": "vocabulary_morphology",
+    "metadata_subject": "Literacy Support",
+    "metadata_topic": "Prefix and root word study",
+    "title": "Word Study: Prefix + Root",
+    "subtitle": "Break the word before guessing the meaning",
+    "directions": "Choose four words. Circle the prefix, underline the root, and use both parts to predict the meaning.",
+    "prompt": "Focus prefixes: re-, pre-, un-. Explain how the prefix changes the meaning of the root word.",
+    "success_criteria": [
+      "I marked the prefix and root.",
+      "I predicted the meaning before checking.",
+      "I used one word in a clear sentence."
+    ]
+  },
+  "literacy_comprehension_ladder": {
+    "layout_template_id": "generic_graphic_organizer",
+    "metadata_subject": "Literacy Support",
+    "metadata_topic": "Reading comprehension ladder",
+    "title": "Reading Thinking Ladder",
+    "subtitle": "Notice, wonder, connect, and explain",
+    "organizer_type": "reflection_ladder",
+    "prompt": "Use this after a short reading, article, or class excerpt. Move from noticing to explaining your thinking.",
+    "columns": ["I noticed", "I wondered", "I connected", "My explanation"],
+    "rows": 7,
+    "success_criteria": [
+      "I wrote at least one specific notice.",
+      "I asked a real question.",
+      "I explained one connection or idea."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "mr_friess_course_sample_packs_bundle",
+    "declared_outputs": ["worksheet", "graphic_organizer", "exit_ticket"]
+  },
+  "outputs": [
+    {
+      "output_id": "careers8_personality_core_notes",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "careers8_personality_core_notes",
+      "bundle": "mr_friess_course_sample_packs_bundle"
+    },
+    {
+      "output_id": "careers8_personality_extension",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "careers8_personality_extension",
+      "bundle": "mr_friess_course_sample_packs_bundle"
+    },
+    {
+      "output_id": "careers8_personality_compare",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "careers8_personality_compare",
+      "bundle": "mr_friess_course_sample_packs_bundle"
+    },
+    {
+      "output_id": "careers8_personality_exit",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "careers8_personality_exit",
+      "bundle": "mr_friess_course_sample_packs_bundle"
+    },
+    {
+      "output_id": "long_way_down_floor_notes",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "long_way_down_floor_notes",
+      "bundle": "mr_friess_course_sample_packs_bundle"
+    },
+    {
+      "output_id": "long_way_down_theme_tracker",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "long_way_down_theme_tracker",
+      "bundle": "mr_friess_course_sample_packs_bundle"
+    },
+    {
+      "output_id": "long_way_down_cer",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "long_way_down_cer",
+      "bundle": "mr_friess_course_sample_packs_bundle"
+    },
+    {
+      "output_id": "long_way_down_exit",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "long_way_down_exit",
+      "bundle": "mr_friess_course_sample_packs_bundle"
+    },
+    {
+      "output_id": "literacy_prefix_word_study",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "literacy_prefix_word_study",
+      "bundle": "mr_friess_course_sample_packs_bundle"
+    },
+    {
+      "output_id": "literacy_comprehension_ladder",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "literacy_comprehension_ladder",
+      "bundle": "mr_friess_course_sample_packs_bundle"
+    }
+  ]
+}
