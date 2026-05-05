@@ -8,16 +8,17 @@
   "topic": "Careers 8: identity, strengths, and career pathways",
   "theme": "careers",
   "classroom_overview": {
-    "layout_template_id": "worksheet_template_system",
-    "title": "Careers 8 Classroom Overview",
-    "subtitle": "Identity, strengths, pathways, and practical next steps",
-    "directions": "Use this page to understand the learning sequence before starting the student tasks.",
-    "prompt": "You will connect personal strengths and interests to possible pathways, then practise asking better questions about work, learning, and community contribution.",
+    "layout_template_id": "generic_graphic_organizer",
+    "title": "Careers 8 Launch Organizer",
+    "subtitle": "Strengths, interests, questions, and next steps",
+    "organizer_type": "three_column_table",
+    "prompt": "Before starting the Careers 8 tasks, record what you already know about yourself, what you want to explore, and one useful question to carry forward.",
+    "columns": ["What I know about myself", "Pathways I might explore", "Questions I need answered"],
+    "rows": 7,
     "success_criteria": [
-      "I can name strengths using specific evidence.",
-      "I can connect interests to possible career clusters or pathways.",
-      "I can ask realistic questions about training, work conditions, and community impact.",
-      "I can leave with one practical next step."
+      "I named specific strengths or interests.",
+      "I listed possible pathways without judging them too quickly.",
+      "I wrote questions that could guide research or a conversation."
     ]
   },
   "strengths_inventory": {
