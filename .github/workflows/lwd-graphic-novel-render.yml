@@ -25,6 +25,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - name: Enable corepack
         run: corepack enable
 
@@ -33,6 +38,9 @@ jobs:
 
       - name: Install Playwright Chromium
         run: pnpm exec playwright install chromium
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
 
       - name: Normalize generated package for current contract
         run: |
