@@ -60,13 +60,13 @@
     ]
   },
   "floor_encounter_organizer": {
-    "layout_template_id": "graphic_organizer_pack",
+    "layout_template_id": "generic_graphic_organizer",
     "title": "Elevator Encounter Tracker",
     "subtitle": "How each encounter changes the pressure on Will",
-    "organizer_type": "template_pack",
+    "organizer_type": "two_column_table",
     "prompt": "Track the assigned elevator-floor encounter. Focus on what the encounter reveals, what it makes Will remember, and how it affects his decision-making.",
     "columns": ["What the encounter reveals", "How Will is affected"],
-    "rows": 5,
+    "rows": 8,
     "success_criteria": [
       "I identified what the encounter reveals about the past.",
       "I explained how the encounter changes tension or uncertainty.",
