@@ -54,6 +54,32 @@ jobs:
           set -euo pipefail
           mkdir -p output-samples
 
+          echo '=== friess-classroom-slides ==='
+          pnpm run schema:check -- --package fixtures/tests/friess-classroom-slides.proof.json
+          pnpm run route:plan -- --package fixtures/tests/friess-classroom-slides.proof.json --print-routes
+          pnpm run render:package -- --package fixtures/tests/friess-classroom-slides.proof.json --out output-samples/friess-classroom-slides --flat-out
+          pnpm run qa:render -- --artifact output-samples/friess-classroom-slides/friess_classroom_slides.pptx
+
+          echo '=== careers8-visual-samples ==='
+          pnpm run schema:check -- --package fixtures/tests/careers8-visual-samples.proof.json
+          pnpm run route:plan -- --package fixtures/tests/careers8-visual-samples.proof.json --print-routes
+          pnpm run render:package -- --package fixtures/tests/careers8-visual-samples.proof.json --out output-samples/careers8-visual-samples --flat-out
+
+          echo '=== long-way-down-novel-study ==='
+          pnpm run schema:check -- --package fixtures/tests/long-way-down-novel-study.proof.json
+          pnpm run route:plan -- --package fixtures/tests/long-way-down-novel-study.proof.json --print-routes
+          pnpm run render:package -- --package fixtures/tests/long-way-down-novel-study.proof.json --out output-samples/long-way-down-novel-study --flat-out
+
+          echo '=== careers8-notes-samples ==='
+          pnpm run schema:check -- --package fixtures/tests/careers8-notes-samples.proof.json
+          pnpm run route:plan -- --package fixtures/tests/careers8-notes-samples.proof.json --print-routes
+          pnpm run render:package -- --package fixtures/tests/careers8-notes-samples.proof.json --out output-samples/careers8-notes-samples --flat-out
+
+          echo '=== long-way-down-notes-samples ==='
+          pnpm run schema:check -- --package fixtures/tests/long-way-down-notes-samples.proof.json
+          pnpm run route:plan -- --package fixtures/tests/long-way-down-notes-samples.proof.json --print-routes
+          pnpm run render:package -- --package fixtures/tests/long-way-down-notes-samples.proof.json --out output-samples/long-way-down-notes-samples --flat-out
+
           echo '=== mr-friess-engine-docs ==='
           pnpm run schema:check -- --package fixtures/tests/mr-friess-engine-docs.proof.json
           pnpm run route:plan -- --package fixtures/tests/mr-friess-engine-docs.proof.json --print-routes
@@ -91,6 +117,19 @@ jobs:
           pnpm run route:plan -- --fixture pbg_workplace_math10 --print-routes
           pnpm run render:package -- --fixture pbg_workplace_math10 --out output-samples/pbg_workplace_math10
 
+      - name: Prepare visual sample artifact
+        if: always()
+        run: |
+          set -euo pipefail
+          rm -rf output-visuals
+          mkdir -p output-visuals
+          find output-samples -type f \( -name '*.pdf' -o -name '*.pptx' -o -name '*.docx' \) | sort | while read -r file; do
+            target="output-visuals/${file#output-samples/}"
+            mkdir -p "$(dirname "$target")"
+            cp "$file" "$target"
+          done
+          find output-visuals -type f | sort
+
       - name: Write sample output manifest
         if: always()
         run: |
@@ -118,6 +157,14 @@ jobs:
               echo
             done
           } | tee output-samples/SAMPLE_OUTPUT_MANIFEST.md
+
+      - name: Upload visual sample outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-output-review
+          path: output-visuals
+          if-no-files-found: error
 
       - name: Upload sample output evidence
         if: always()

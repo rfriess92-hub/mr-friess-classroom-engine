@@ -1,0 +1,71 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers8_notes_samples_proof",
+  "primary_architecture": "single_period_full",
+  "grade_band": "6-8",
+  "subject": "Career Education",
+  "grade": 8,
+  "topic": "Careers 8 notes templates",
+  "theme": "careers",
+  "career_research_cornell": {
+    "layout_template_id": "note_template",
+    "note_type": "cornell_notes",
+    "title": "Career Research Cornell Notes",
+    "subtitle": "Record useful information before judging a pathway",
+    "learning_target": "I can collect career information and summarize what matters most to me.",
+    "directions": "Use the cue column for categories and questions. Use the notes column for facts, examples, and details from a profile, website, video, or guest speaker.",
+    "cue_labels": ["Daily tasks", "Skills", "Training", "Work conditions", "Questions"],
+    "row_count": 10,
+    "summary_prompt": "Would I want to learn more about this pathway? Why?",
+    "reflection_prompt": "What is one question I still need answered?"
+  },
+  "guest_speaker_guided_notes": {
+    "layout_template_id": "note_template",
+    "note_type": "guided_notes",
+    "title": "Guest Speaker Guided Notes",
+    "subtitle": "Listen for practical details about work and pathways",
+    "learning_target": "I can listen for useful career information and connect it to my own strengths or questions.",
+    "directions": "Use each box during the presentation or video profile. Write short notes, not full paragraphs.",
+    "headings": ["Job / pathway", "Daily tasks", "Skills used", "Challenges", "Advice", "My connection"],
+    "prompts": ["What is this person's work or pathway?", "What do they actually do?", "What skills or habits matter?", "What is difficult or surprising?", "What advice did they give?", "What connects to my strengths or interests?"],
+    "success_criteria": ["I captured specific details.", "I wrote at least one useful question.", "I connected the pathway to myself in an honest way."]
+  },
+  "pathway_comparison_notes": {
+    "layout_template_id": "note_template",
+    "note_type": "two_column_notes",
+    "title": "Pathway Comparison Notes",
+    "subtitle": "Compare what I learned with why it matters to me",
+    "learning_target": "I can compare pathway information and explain what feels relevant to me.",
+    "directions": "Use the left column for career facts or observations. Use the right column for your reaction, connection, or question.",
+    "columns": ["What I learned", "Why it matters to me"],
+    "row_count": 10,
+    "summary_prompt": "Which pathway seems most worth exploring next?"
+  },
+  "bundle": {
+    "bundle_id": "careers8_notes_samples_bundle",
+    "declared_outputs": ["worksheet"]
+  },
+  "outputs": [
+    {
+      "output_id": "careers8_career_research_cornell",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "career_research_cornell",
+      "bundle": "careers8_notes_samples_bundle"
+    },
+    {
+      "output_id": "careers8_guest_speaker_guided_notes",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "guest_speaker_guided_notes",
+      "bundle": "careers8_notes_samples_bundle"
+    },
+    {
+      "output_id": "careers8_pathway_comparison_notes",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "pathway_comparison_notes",
+      "bundle": "careers8_notes_samples_bundle"
+    }
+  ]
+}

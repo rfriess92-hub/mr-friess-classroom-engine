@@ -12,9 +12,14 @@ const TEMPLATE_IDS = new Set([
   'careers_decision_making',
   'literacy_word_study',
   'graphic_organizer_pack',
+  'graphic_organizer_sampler_pack',
   'exit_reflection',
   'exit_ticket_reflection',
   'generic_graphic_organizer',
+  'note_template',
+  'cornell_notes',
+  'guided_notes',
+  'two_column_notes',
 ])
 
 const ALIASES = {
@@ -27,8 +32,16 @@ const ALIASES = {
   decision_making: 'careers_decision',
   careers_8_decision_making: 'careers_decision',
   word_study: 'literacy_word_study',
-  graphic_organizer: 'graphic_organizer_pack',
-  graphic_organizers: 'graphic_organizer_pack',
+  graphic_organizer: 'generic_graphic_organizer',
+  graphic_organizers: 'generic_graphic_organizer',
+  organizer_pack: 'graphic_organizer_sampler_pack',
+  graphic_organizer_toolkit: 'graphic_organizer_sampler_pack',
+  note_taking: 'note_template',
+  notes_template: 'note_template',
+  cornell: 'cornell_notes',
+  cornell_note: 'cornell_notes',
+  guided_note: 'guided_notes',
+  two_column_note: 'two_column_notes',
   exit_ticket: 'exit_reflection',
   reflection_ticket: 'exit_reflection',
 }
@@ -156,6 +169,16 @@ function worksheetCss() {
 .cws-problem { display:grid; gap:5pt; text-align:center; } .cws-problem-top,.cws-problem-bottom { border:1.15pt solid #111; border-radius:5pt; padding:5pt; min-height:.5in; font-size:8pt; } .cws-problem-pair { display:grid; grid-template-columns:1fr 1fr; gap:8pt; }
 .cws-question-web { display:grid; grid-template-columns:1fr 1fr; gap:6pt; } .cws-question-web .cws-mini-prompt { border:1pt solid #111; border-radius:5pt; min-height:.48in; padding:4pt; font-size:7.8pt; }
 .cws-matrix { width:100%; border-collapse:collapse; font-size:8.8pt; } .cws-matrix th,.cws-matrix td { border:1.1pt solid #111; padding:5pt; height:.34in; } .cws-matrix th { background:#f1f5f9; font-weight:800; }
+.cws-organizer-table { font-size:9.3pt; } .cws-organizer-table td { height:.6in; }
+.cws-note-meta { display:grid; grid-template-columns:1.2fr 1fr; gap:8pt; margin-bottom:8pt; }
+.cws-cornell { display:grid; grid-template-columns:1.55in 1fr; border:1.35pt solid #111; border-radius:8pt; overflow:hidden; min-height:5.65in; }
+.cws-cornell-cues { border-right:1.25pt solid #111; background:#f8fafc; padding:8pt; }
+.cws-cornell-notes { padding:8pt 10pt; }
+.cws-cornell-label { font-size:10pt; font-weight:800; text-transform:uppercase; letter-spacing:.08em; margin-bottom:6pt; }
+.cws-cue-chip { border:1pt solid #111; border-radius:5pt; padding:4pt; margin-bottom:5pt; font-size:8.2pt; background:#fff; }
+.cws-summary-grid { display:grid; grid-template-columns:1.45fr 1fr; gap:8pt; margin-top:8pt; }
+.cws-guided-grid { display:grid; grid-template-columns:1fr 1fr; gap:8pt; margin-top:8pt; }
+.cws-guided-card .cws-box-body { min-height:1.1in; }
 .cws-tight .cws-title-block h1 { font-size:22pt; } .cws-tight .cws-title-block { margin-bottom:8pt; } .cws-tight .cws-box-body { padding:6pt 8pt; } .cws-tight .cws-response-box { padding:7pt 9pt 6pt; } .cws-tight .cws-line { height:.2in; }
 `
 }
@@ -186,9 +209,35 @@ function buildCer(pkg, section, fontFaceCSS, designCSS) {
   return buildShell(pkg, section, text(section.title, 'Cross-Curricular CER Template'), text(section.subtitle, 'Claim - Evidence - Reasoning organizer for science, socials, and English'), body, fontFaceCSS, designCSS)
 }
 
-function buildGraphicOrganizerPack(pkg, section, fontFaceCSS, designCSS) {
+function buildGraphicOrganizerSamplerPack(pkg, section, fontFaceCSS, designCSS) {
   const body = `<div class="cws-grid cws-organizer-grid">${sectionBox('1 Compare & Contrast', `<div class="cws-venn"><div class="cws-venn-circle cws-venn-left">[Idea A]<div class="cws-blank-zone"></div></div><div class="cws-venn-circle cws-venn-right">[Idea B]<div class="cws-blank-zone"></div></div><div class="cws-venn-both">Both</div></div>`, { icon: 'CMP' })}${sectionBox('2 Main Idea + Details', `<div class="cws-web"><div class="cws-web-line l1"></div><div class="cws-web-line l2"></div><div class="cws-web-line l3"></div><div class="cws-web-line l4"></div><div class="cws-web-center">Main Idea</div><div class="cws-web-node n1">Detail</div><div class="cws-web-node n2">Detail</div><div class="cws-web-node n3">Detail</div><div class="cws-web-node n4">Detail</div></div>`, { icon: 'WEB' })}${sectionBox('3 Cause and Effect', `<div class="cws-flow"><div class="cws-flow-card">Cause${lines(2, 'short')}</div><div class="cws-arrow">&gt;</div><div class="cws-flow-card">Effect${lines(2, 'short')}</div><div class="cws-arrow">&gt;</div><div class="cws-flow-card">Next Effect${lines(2, 'short')}</div></div>`, { icon: 'C/E' })}${sectionBox('4 Timeline', `<div class="cws-timeline"><div class="cws-timeline-line"></div><div class="cws-timeline-events">${Array.from({ length: 5 }, () => `<div class="cws-event"><div class="cws-event-dot"></div><div class="cws-event-box">Event${lines(1, 'short')}</div></div>`).join('')}</div></div>`, { icon: 'TIME' })}${sectionBox('5 Problem / Solution', `<div class="cws-problem"><div class="cws-problem-top">Problem${lines(2, 'short')}</div><div class="cws-problem-pair"><div class="cws-problem-bottom">Possible Solution${lines(1, 'short')}</div><div class="cws-problem-bottom">Best Solution${lines(1, 'short')}</div></div></div>`, { icon: 'SOL' })}${sectionBox('6 Question Web', `<div class="cws-question-web"><div class="cws-mini-prompt">Big Question${lines(1, 'short')}</div><div class="cws-mini-prompt">Who / What?</div><div class="cws-mini-prompt">Why?</div><div class="cws-mini-prompt">How?</div><div class="cws-mini-prompt">Evidence</div><div class="cws-mini-prompt">Connection</div></div>`, { icon: 'Q' })}</div><div class="cws-footer-banner">Use these layouts to organize ideas before writing, speaking, or discussing.</div>`
-  return buildShell(pkg, { ...section, compact: true, hide_metadata: true }, text(section.title, 'Graphic Organizer Template Pack'), text(section.subtitle, 'Reusable thinking tools for English, science, socials, and Careers'), body, fontFaceCSS, designCSS)
+  return buildShell(pkg, { ...section, compact: true, hide_metadata: true }, text(section.title, 'Graphic Organizer Sampler Pack'), text(section.subtitle, 'Reusable thinking tools for English, science, socials, and Careers'), body, fontFaceCSS, designCSS)
+}
+
+function organizerColumns(section) {
+  const provided = list(section.columns)
+  if (provided.length > 0) return provided
+  const type = normalizeTemplateId(section.organizer_type ?? section.note_type) ?? 'two_column_table'
+  if (type === 'three_column_table') return ['Evidence / moment', 'What I infer', 'Why it matters']
+  if (type === 'evidence_tracker') return ['Evidence / detail', 'Inference', 'Connection']
+  if (type === 'theme_tracker') return ['Theme idea', 'Moment / evidence note', 'Pattern or message']
+  if (type === 'character_map') return ['Words / actions', 'Pressure or conflict', 'What this reveals']
+  if (type === 'decision_matrix') return ['Option', 'Pros', 'Cons', 'Questions / next step']
+  if (type === 'sequence_tracker') return ['Step / event', 'What happens', 'Why it matters']
+  if (type === 'reflection_ladder') return ['I noticed', 'I wondered', 'I connected', 'My next step']
+  return ['What I notice', 'What it means']
+}
+
+function buildGenericOrganizer(pkg, section, fontFaceCSS, designCSS) {
+  const columns = organizerColumns(section)
+  const rowCount = Math.max(4, Number(section.rows ?? section.row_count) || (columns.length > 3 ? 7 : 8))
+  const title = text(section.title, 'Graphic Organizer')
+  const rawSubtitle = text(section.subtitle, 'Reusable thinking tool')
+  const subtitle = `${title} ${rawSubtitle}`.toLowerCase().includes('graphic organizer') ? rawSubtitle : `Graphic Organizer - ${rawSubtitle}`
+  const prompt = text(section.prompt ?? section.directions, '')
+  const table = `<table class="cws-matrix cws-organizer-table"><thead><tr>${columns.map((column) => `<th>${escapeHtml(column)}</th>`).join('')}</tr></thead><tbody>${Array.from({ length: rowCount }, () => `<tr>${columns.map(() => '<td></td>').join('')}</tr>`).join('')}</tbody></table>`
+  const body = `${prompt ? sectionBox('Directions', escapeHtml(prompt), { icon: 'DIR' }) : ''}${sectionBox('Organizer', table, { icon: 'ORG' })}${section.success_criteria ? sectionBox('Before you move on', checkboxList(section.success_criteria), { icon: 'CHK' }) : ''}`
+  return buildShell(pkg, section, title, subtitle, body, fontFaceCSS, designCSS)
 }
 
 function buildExitReflection(pkg, section, fontFaceCSS, designCSS) {
@@ -196,16 +245,39 @@ function buildExitReflection(pkg, section, fontFaceCSS, designCSS) {
   return buildShell(pkg, section, text(section.title, 'Exit Ticket + Reflection Template'), text(section.subtitle, 'Reusable quick-check page for any subject'), body, fontFaceCSS, designCSS)
 }
 
-function buildGenericOrganizer(pkg, section, fontFaceCSS, designCSS) {
-  const columns = list(section.columns, ['Side A', 'Side B'])
-  const rowCount = Math.max(3, Number(section.rows) || 4)
-  const title = text(section.title, 'Graphic Organizer')
-  const rawSubtitle = text(section.subtitle, 'Reusable thinking tool')
-  const subtitle = `${title} ${rawSubtitle}`.toLowerCase().includes('graphic organizer')
-    ? rawSubtitle
-    : `Graphic Organizer - ${rawSubtitle}`
-  const body = `${section.prompt ? sectionBox('Directions', escapeHtml(section.prompt), { icon: 'DIR' }) : ''}${sectionBox('Organizer', `<table class="cws-matrix"><thead><tr>${columns.map((column) => `<th>${escapeHtml(column)}</th>`).join('')}</tr></thead><tbody>${Array.from({ length: rowCount }, () => `<tr>${columns.map(() => '<td style="height:.58in;"></td>').join('')}</tr>`).join('')}</tbody></table>`)}${section.success_criteria ? sectionBox('Before you move on', checkboxList(section.success_criteria), { icon: 'CHK' }) : ''}`
-  return buildShell(pkg, section, title, subtitle, body, fontFaceCSS, designCSS)
+function noteType(section, fallback = 'cornell_notes') {
+  return normalizeTemplateId(section.note_type ?? section.notes_type ?? section.layout_template_id ?? section.template_id) ?? fallback
+}
+
+function buildCornellNotes(pkg, section, fontFaceCSS, designCSS) {
+  const cueLabels = list(section.cue_labels, ['Key idea / term', 'Question', 'Pattern', 'Connection', 'Evidence note'])
+  const rowCount = Math.max(8, Number(section.row_count ?? section.rows) || 10)
+  const body = `<div class="cws-note-meta">${headerBox('Learning Target', text(section.learning_target, '[I can take useful notes and summarize the main idea.]'), 'LT')}${headerBox('Directions', text(section.directions ?? section.prompt, 'Use the cue column for questions or key terms. Use the notes column for important ideas, evidence, and examples.'), 'DIR')}</div><section class="cws-cornell"><div class="cws-cornell-cues"><div class="cws-cornell-label">Cues / Questions</div>${cueLabels.map((label) => `<div class="cws-cue-chip">${escapeHtml(label)}</div>`).join('')}${lines(Math.max(2, rowCount - cueLabels.length), 'short dotted')}</div><div class="cws-cornell-notes"><div class="cws-cornell-label">Notes</div>${lines(rowCount)}</div></section><div class="cws-summary-grid">${sectionBox('Summary', `${escapeHtml(text(section.summary_prompt, 'What is the most important idea from these notes?'))}${lines(3)}`, { icon: 'SUM' })}${sectionBox('Question I still have', `${escapeHtml(text(section.reflection_prompt ?? section.question_prompt, 'What do you still need to clarify?'))}${lines(3)}`, { icon: 'Q' })}</div>`
+  return buildShell(pkg, section, text(section.title, 'Cornell Notes'), text(section.subtitle, 'Cue column, notes column, summary'), body, fontFaceCSS, designCSS)
+}
+
+function buildGuidedNotes(pkg, section, fontFaceCSS, designCSS) {
+  const headings = list(section.headings ?? section.note_sections, ['Key vocabulary', 'Important idea', 'Example / evidence', 'Question', 'Check for understanding', 'Connection'])
+  const prompts = list(section.prompts, [])
+  const body = `<div class="cws-grid two">${headerBox('Learning Target', text(section.learning_target, '[I can follow the lesson and record important ideas.]'), 'LT')}${headerBox('Directions', text(section.directions ?? section.prompt, 'Use each box to capture key ideas during the lesson, reading, or video.'), 'DIR')}</div><div class="cws-guided-grid">${headings.slice(0, 6).map((heading, index) => sectionBox(heading, `${escapeHtml(prompts[index] ?? '')}${lines(index < 2 ? 4 : 3)}`, { icon: String(index + 1), className: 'cws-guided-card' })).join('')}</div>${section.success_criteria ? sectionBox('Before you move on', checkboxList(section.success_criteria), { icon: 'CHK' }) : ''}`
+  return buildShell(pkg, section, text(section.title, 'Guided Notes'), text(section.subtitle, 'Structured notes for lesson, reading, or video'), body, fontFaceCSS, designCSS)
+}
+
+function buildTwoColumnNotes(pkg, section, fontFaceCSS, designCSS) {
+  const columns = list(section.columns, ['What I noticed', 'What it means'])
+  const rowCount = Math.max(8, Number(section.row_count ?? section.rows) || 10)
+  const title = text(section.title, 'Two-Column Notes')
+  const prompt = text(section.prompt ?? section.directions, 'Record important details in the left column and your thinking in the right column.')
+  const table = `<table class="cws-matrix cws-organizer-table"><thead><tr>${columns.map((column) => `<th>${escapeHtml(column)}</th>`).join('')}</tr></thead><tbody>${Array.from({ length: rowCount }, () => `<tr>${columns.map(() => '<td></td>').join('')}</tr>`).join('')}</tbody></table>`
+  const body = `${sectionBox('Directions', escapeHtml(prompt), { icon: 'DIR' })}${sectionBox('Notes', table, { icon: 'N' })}${section.summary_prompt ? sectionBox('Summary / Next Step', `${escapeHtml(section.summary_prompt)}${lines(2)}`, { icon: 'SUM' }) : ''}`
+  return buildShell(pkg, section, title, text(section.subtitle, 'Capture details and thinking side-by-side'), body, fontFaceCSS, designCSS)
+}
+
+function buildNotesTemplate(pkg, section, fontFaceCSS, designCSS, forcedType = null) {
+  const type = forcedType ?? noteType(section)
+  if (type === 'guided_notes') return buildGuidedNotes(pkg, section, fontFaceCSS, designCSS)
+  if (type === 'two_column_notes') return buildTwoColumnNotes(pkg, section, fontFaceCSS, designCSS)
+  return buildCornellNotes(pkg, section, fontFaceCSS, designCSS)
 }
 
 function buildSimpleTemplate(pkg, section, fontFaceCSS, designCSS, fallbackTitle, fallbackSubtitle) {
@@ -213,15 +285,27 @@ function buildSimpleTemplate(pkg, section, fontFaceCSS, designCSS, fallbackTitle
   return buildShell(pkg, section, text(section.title, fallbackTitle), text(section.subtitle, fallbackSubtitle), body, fontFaceCSS, designCSS)
 }
 
+function shouldUseSampler(section) {
+  const type = normalizeTemplateId(section?.organizer_type ?? section?.template_variant)
+  if (type === 'sampler_pack' || type === 'template_pack' || type === 'graphic_organizer_sampler_pack') return true
+  return !section?.prompt && !Array.isArray(section?.columns) && !section?.success_criteria
+}
+
 export function buildClassroomWorksheetTemplateHTML(pkg, section, fontFaceCSS, designCSS, layoutId = null) {
-  const normalized = normalizeTemplateId(layoutId ?? section?.layout_template_id ?? section?.template_id ?? section?.template) ?? (section?.organizer_type ? 'generic_graphic_organizer' : 'worksheet_template_system')
+  const normalized = normalizeTemplateId(layoutId ?? section?.layout_template_id ?? section?.template_id ?? section?.template) ?? (section?.note_type ? 'note_template' : section?.organizer_type ? 'generic_graphic_organizer' : 'worksheet_template_system')
   switch (normalized) {
     case 'worksheet_template_system': return buildTemplateSystem(pkg, section, fontFaceCSS, designCSS)
     case 'english_reading_response':
     case 'reading_response': return buildReadingResponse(pkg, section, fontFaceCSS, designCSS)
     case 'cross_curricular_cer':
     case 'cer_cross_curricular': return buildCer(pkg, section, fontFaceCSS, designCSS)
-    case 'graphic_organizer_pack': return buildGraphicOrganizerPack(pkg, section, fontFaceCSS, designCSS)
+    case 'graphic_organizer_pack': return shouldUseSampler(section) ? buildGraphicOrganizerSamplerPack(pkg, section, fontFaceCSS, designCSS) : buildGenericOrganizer(pkg, section, fontFaceCSS, designCSS)
+    case 'graphic_organizer_sampler_pack': return buildGraphicOrganizerSamplerPack(pkg, section, fontFaceCSS, designCSS)
+    case 'generic_graphic_organizer': return buildGenericOrganizer(pkg, section, fontFaceCSS, designCSS)
+    case 'note_template': return buildNotesTemplate(pkg, section, fontFaceCSS, designCSS)
+    case 'cornell_notes': return buildNotesTemplate(pkg, section, fontFaceCSS, designCSS, 'cornell_notes')
+    case 'guided_notes': return buildNotesTemplate(pkg, section, fontFaceCSS, designCSS, 'guided_notes')
+    case 'two_column_notes': return buildNotesTemplate(pkg, section, fontFaceCSS, designCSS, 'two_column_notes')
     case 'exit_reflection':
     case 'exit_ticket_reflection': return buildExitReflection(pkg, section, fontFaceCSS, designCSS)
     case 'vocabulary_morphology':
@@ -229,7 +313,6 @@ export function buildClassroomWorksheetTemplateHTML(pkg, section, fontFaceCSS, d
     case 'careers_decision':
     case 'careers_decision_making': return buildSimpleTemplate(pkg, section, fontFaceCSS, designCSS, 'Careers 8 - Decision-Making Template', 'Reusable planning and prioritizing worksheet')
     case 'literacy_word_study': return buildSimpleTemplate(pkg, section, fontFaceCSS, designCSS, 'Literacy Intervention - Word Study Template', 'Reusable decoding, spelling, and word-analysis page')
-    case 'generic_graphic_organizer':
     default: return buildGenericOrganizer(pkg, section, fontFaceCSS, designCSS)
   }
 }

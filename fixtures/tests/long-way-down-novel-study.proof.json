@@ -1,0 +1,131 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "long_way_down_novel_study_proof",
+  "primary_architecture": "single_period_full",
+  "grade_band": "8-10",
+  "subject": "English Language Arts",
+  "grade": 9,
+  "topic": "Novel Study: Long Way Down by Jason Reynolds",
+  "theme": "english_language_arts",
+  "classroom_overview": {
+    "layout_template_id": "generic_graphic_organizer",
+    "title": "Long Way Down Launch Organizer",
+    "subtitle": "Structure, pressure, questions, and early thinking",
+    "organizer_type": "three_column_table",
+    "prompt": "Before or during the next reading section, track what you notice about structure, what pressure Will is facing, and what question you are carrying forward. Use page references or short evidence notes, not copied passages.",
+    "columns": ["Structure or pattern I notice", "Pressure or conflict", "Question I am carrying"],
+    "rows": 7,
+    "success_criteria": [
+      "I noticed something about structure, repetition, or pattern.",
+      "I connected a moment to Will's pressure or conflict.",
+      "I wrote a genuine question for the next section."
+    ]
+  },
+  "reading_response": {
+    "layout_template_id": "english_reading_response",
+    "title": "Long Way Down Reading Response",
+    "subtitle": "Track structure, tension, and character choice",
+    "learning_target": "I can explain how structure and voice shape my understanding of a character's conflict.",
+    "directions": "After reading the assigned section, choose one moment that changes how you understand Will. Use a page reference or brief evidence note. Do not copy a long passage.",
+    "prompt": "Focus question: How does the elevator structure affect the way we understand Will's thoughts, memories, or choices?",
+    "vocabulary": [
+      { "word": "verse novel", "definition": "a novel told through poems or poetic sections" },
+      { "word": "internal conflict", "definition": "a struggle happening inside a character" },
+      { "word": "structure", "definition": "how a text is organized and how that organization shapes meaning" }
+    ],
+    "success_criteria": [
+      "I named a specific moment or section.",
+      "I used a page reference or brief evidence note.",
+      "I explained how the structure affects meaning.",
+      "I connected the moment to Will's conflict or choice."
+    ]
+  },
+  "theme_cer": {
+    "layout_template_id": "cross_curricular_cer",
+    "title": "Long Way Down CER Organizer",
+    "subtitle": "Claim, evidence, reasoning about theme",
+    "question": "What is the novel suggesting about rules, grief, revenge, or choice?",
+    "learning_target": "I can develop a theme claim and support it with evidence from the novel.",
+    "directions": "Choose one theme idea. Make a claim about what the novel is suggesting. Use page references, short evidence notes, or teacher-approved brief quotations. Explain how the evidence supports your claim.",
+    "sentence_starters": [
+      "The novel suggests that...",
+      "One moment that supports this is when...",
+      "This matters because...",
+      "The reader is invited to question..."
+    ],
+    "success_criteria": [
+      "My claim is about a theme, not just a plot event.",
+      "My evidence points to a specific moment in the novel.",
+      "My reasoning explains how the evidence supports the theme.",
+      "I avoided copying long passages from the book."
+    ]
+  },
+  "floor_encounter_organizer": {
+    "layout_template_id": "generic_graphic_organizer",
+    "title": "Elevator Encounter Tracker",
+    "subtitle": "How each encounter changes the pressure on Will",
+    "organizer_type": "two_column_table",
+    "prompt": "Track the assigned elevator-floor encounter. Focus on what the encounter reveals, what it makes Will remember, and how it affects his decision-making.",
+    "columns": ["What the encounter reveals", "How Will is affected"],
+    "rows": 8,
+    "success_criteria": [
+      "I identified what the encounter reveals about the past.",
+      "I explained how the encounter changes tension or uncertainty.",
+      "I connected the encounter to Will's choice."
+    ]
+  },
+  "exit_reflection": {
+    "layout_template_id": "exit_reflection",
+    "title": "Long Way Down Exit Reflection",
+    "subtitle": "Question, tension, and next reading move",
+    "learning_target": "I can reflect on how my thinking changed during today's reading.",
+    "topic_prompt": "Long Way Down reading reflection",
+    "prompt": "What question are you carrying into the next section? What detail or structural choice created that question?",
+    "success_criteria": [
+      "I wrote one genuine question.",
+      "I named the detail or structure that created the question.",
+      "I explained why the question matters to my understanding of Will."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "long_way_down_novel_study_bundle",
+    "declared_outputs": ["worksheet", "graphic_organizer", "exit_ticket"]
+  },
+  "outputs": [
+    {
+      "output_id": "long_way_down_classroom_overview",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "classroom_overview",
+      "bundle": "long_way_down_novel_study_bundle"
+    },
+    {
+      "output_id": "long_way_down_reading_response",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "reading_response",
+      "bundle": "long_way_down_novel_study_bundle"
+    },
+    {
+      "output_id": "long_way_down_theme_cer",
+      "output_type": "worksheet",
+      "audience": "student",
+      "source_section": "theme_cer",
+      "bundle": "long_way_down_novel_study_bundle"
+    },
+    {
+      "output_id": "long_way_down_floor_encounter_organizer",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "floor_encounter_organizer",
+      "bundle": "long_way_down_novel_study_bundle"
+    },
+    {
+      "output_id": "long_way_down_exit_reflection",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "exit_reflection",
+      "bundle": "long_way_down_novel_study_bundle"
+    }
+  ]
+}
