@@ -10,6 +10,7 @@ on:
       - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v2.json'
       - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v3.json'
       - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v4.json'
+      - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v5.json'
       - 'scripts/**'
       - 'schemas/**'
       - 'package.json'
@@ -45,10 +46,13 @@ jobs:
       - name: Install Python dependencies
         run: python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
 
+      - name: Build v5 generated package
+        run: node scripts/build-lwd-v5-package.mjs
+
       - name: Run requested generated package checks
         run: |
           set -euo pipefail
-          PACKAGE=fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v4.json
+          PACKAGE=fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v5.json
           pnpm run schema:check -- --package "$PACKAGE"
           pnpm run route:plan -- --package "$PACKAGE" --print-routes
           pnpm run render:package -- --package "$PACKAGE" --out output
