@@ -11,6 +11,18 @@ function slug(value) {
   return String(value).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 }
 
+function toolSubtitle(config, purpose) {
+  return `${config.course} · ${config.shortTitle} · ${purpose}`
+}
+
+function toolMeta(config) {
+  return `${config.course} · Toolkit sample`
+}
+
+function toolFooter(config) {
+  return `${config.course} · ${config.shortTitle} · Mr. Friess · SD73 Kamloops`
+}
+
 function toolkitPackage(config) {
   const packageId = `toolkit_${slug(config.course).replaceAll('-', '_')}`
   const bundleId = `${packageId}_bundle`
@@ -58,10 +70,11 @@ function toolkitPackage(config) {
     success_criteria: config.successCriteria,
     kwhl_chart: {
       layout_template_id: 'kwhl_chart',
-      title: `${config.shortTitle} KWHL`,
-      subtitle: config.kwhlSubtitle,
+      title: 'KWHL Chart',
+      subtitle: toolSubtitle(config, 'Lesson launch and closure'),
       doc_type: 'Lesson Launch & Closure Tool',
-      meta: `${config.course} · Reusable thinking tool`,
+      meta: toolMeta(config),
+      footer: toolFooter(config),
       directions: config.kwhlDirections,
       learning_target: config.learningTarget,
       checklist: [
@@ -72,9 +85,11 @@ function toolkitPackage(config) {
     },
     fishbone_diagram: {
       layout_template_id: 'fishbone_diagram',
-      title: `${config.shortTitle} Fishbone`,
-      subtitle: config.fishboneSubtitle,
+      title: 'Fishbone Diagram',
+      subtitle: toolSubtitle(config, 'Cause, factor, and constraint analysis'),
       doc_type: 'Graphic Organizer — Cause & Effect Analysis',
+      meta: toolMeta(config),
+      footer: toolFooter(config),
       directions: config.fishboneDirections,
       tip: config.fishboneTip,
       cause_categories: config.causeCategories,
@@ -86,17 +101,20 @@ function toolkitPackage(config) {
     },
     sentence_frame_card: {
       layout_template_id: 'sentence_frame_card',
-      title: `${config.shortTitle} Sentence Frames`,
-      subtitle: 'Use these frames to explain thinking, support discussion, and write responses.',
+      title: 'Sentence Frame Card',
+      subtitle: toolSubtitle(config, 'Discussion and written-response support'),
       doc_type: 'EA & Student Reference Tool',
-      meta: config.course,
+      meta: toolMeta(config),
+      footer: toolFooter(config),
       frame_groups: config.frameGroups
     },
     choice_board: {
       layout_template_id: 'choice_board',
-      title: `${config.shortTitle} Choice Board`,
-      subtitle: 'Pick your tasks. Show what you know in a way that fits the learning target.',
+      title: 'Choice Board',
+      subtitle: toolSubtitle(config, 'Differentiated task pathway'),
       doc_type: 'Differentiated Task Menu',
+      meta: toolMeta(config),
+      footer: toolFooter(config),
       directions: 'Choose 3 tasks that connect like a line — across, down, or diagonal.',
       learning_target: config.learningTarget,
       tasks: config.choiceTasks,
@@ -108,9 +126,11 @@ function toolkitPackage(config) {
     },
     scaffolded_quiz: {
       layout_template_id: 'scaffolded_quiz',
-      title: `${config.shortTitle} Low-Stakes Check`,
-      subtitle: 'Scaffolded support with word bank and hints',
+      title: 'Low-Stakes Check',
+      subtitle: toolSubtitle(config, 'Word bank and hints provided'),
       doc_type: 'Low-Stakes Check',
+      meta: toolMeta(config),
+      footer: toolFooter(config),
       support_label: 'Scaffolded Support — word bank & hints provided',
       learning_target: config.learningTarget,
       word_bank: config.wordBank,
@@ -145,9 +165,7 @@ const samples = [
     course: 'Math 11', grade: 11, theme: 'mathematics', shortTitle: 'Quadratic Models', topic: 'Quadratic models and real-world constraints',
     unitContext: 'Students connect quadratic graphs, intercepts, vertex form, and realistic constraints in modelling situations.',
     learningTarget: 'I can use a quadratic model to explain a relationship and identify meaningful features.',
-    kwhlSubtitle: 'Use this before and after modelling a real-world quadratic situation.',
     kwhlDirections: 'Before modelling, record what you know about parabolas and what you need to find. During the task, track how you will solve. Afterward, summarize what the model tells you.',
-    fishboneSubtitle: 'Analyze the factors that affect a quadratic model.',
     fishboneDirections: 'Write the modelling problem or outcome in the box. Use each category to identify factors that affect the model.',
     fishboneTip: 'Look for assumptions, units, domain restrictions, and what each feature means in context.',
     causeCategories: ['Initial value', 'Rate of change', 'Vertex', 'Intercepts', 'Domain', 'Assumptions'],
@@ -179,9 +197,7 @@ const samples = [
     course: 'Foods 9', grade: 9, theme: 'health_science', shortTitle: 'Kitchen Safety', topic: 'Kitchen safety and recipe workflow',
     unitContext: 'Students prepare for a kitchen lab by reviewing safety, sanitation, timing, and equipment decisions.',
     learningTarget: 'I can follow a safe kitchen workflow and explain how safety choices prevent problems.',
-    kwhlSubtitle: 'Use this before and after a kitchen safety and workflow lesson.',
     kwhlDirections: 'Before the lab, record what you know about safety and sanitation. During the lesson, track how you will find answers. Afterward, summarize the most important safety learning.',
-    fishboneSubtitle: 'Analyze what can cause a kitchen lab problem.',
     fishboneDirections: 'Write the kitchen problem or possible accident in the box. Use the categories to identify causes and prevention moves.',
     fishboneTip: 'Good causes are specific: equipment location, timing, heat, contamination, communication, or cleanup.',
     causeCategories: ['Equipment', 'Heat', 'Sanitation', 'Timing', 'Communication', 'Cleanup'],
@@ -213,9 +229,7 @@ const samples = [
     course: 'Art 12', grade: 12, theme: 'humanities', shortTitle: 'Portfolio Critique', topic: 'Portfolio development and critique language',
     unitContext: 'Students use critique language to refine a portfolio piece and explain artistic decisions.',
     learningTarget: 'I can explain artistic choices and use critique feedback to refine a portfolio piece.',
-    kwhlSubtitle: 'Use this to launch and close a portfolio critique cycle.',
     kwhlDirections: 'Before critique, record what you know about your piece and what feedback you need. During critique, track how you will gather useful feedback. Afterward, summarize your revision plan.',
-    fishboneSubtitle: 'Analyze what affects the impact of an artwork.',
     fishboneDirections: 'Write the intended effect or current problem in the box. Use the categories to identify what affects the piece.',
     fishboneTip: 'Focus on evidence in the work: composition, contrast, material, scale, focal point, and intention.',
     causeCategories: ['Composition', 'Contrast', 'Material', 'Technique', 'Symbolism', 'Audience'],
@@ -247,9 +261,7 @@ const samples = [
     course: 'Woodworking 10', grade: 10, theme: 'careers', shortTitle: 'Joinery Plan', topic: 'Woodworking joinery, measurement, and safe process',
     unitContext: 'Students plan a small woodworking build by connecting joinery choice, measurement accuracy, tool safety, and process sequence.',
     learningTarget: 'I can choose an appropriate joint and explain how measurement and safety affect build quality.',
-    kwhlSubtitle: 'Use this before and after planning a woodworking joint or small build.',
     kwhlDirections: 'Before building, record what you know about joints, tools, and measurements. During planning, track how you will find missing information. Afterward, summarize what affects build quality.',
-    fishboneSubtitle: 'Analyze what can cause a woodworking build problem.',
     fishboneDirections: 'Write the build problem or quality issue in the box. Use each category to identify possible causes.',
     fishboneTip: 'Look for measurement, grain direction, tool setup, clamping, glue, and safety sequence.',
     causeCategories: ['Measurement', 'Material', 'Tool setup', 'Joinery', 'Clamping', 'Safety sequence'],
@@ -281,9 +293,7 @@ const samples = [
     course: 'Leadership 12', grade: 12, theme: 'social_science', shortTitle: 'Event Planning', topic: 'Leadership event planning and team decision-making',
     unitContext: 'Students plan a leadership event by considering audience needs, team roles, logistics, communication, and risk management.',
     learningTarget: 'I can plan a leadership action by identifying needs, roles, risks, and communication moves.',
-    kwhlSubtitle: 'Use this to launch and close a leadership planning cycle.',
     kwhlDirections: 'Before planning, record what you know about the group or event. During planning, track how you will find missing information. Afterward, summarize the decision or next step.',
-    fishboneSubtitle: 'Analyze what can affect an event outcome.',
     fishboneDirections: 'Write the event outcome or problem in the box. Use each category to identify causes, constraints, or risks.',
     fishboneTip: 'Look beyond ideas: audience, communication, permissions, time, materials, and backup plans matter.',
     causeCategories: ['Audience', 'Roles', 'Communication', 'Timeline', 'Resources', 'Risk plan'],
@@ -315,9 +325,7 @@ const samples = [
     course: 'Chemistry 11', grade: 11, theme: 'science', shortTitle: 'Reaction Evidence', topic: 'Chemical reaction evidence and lab reasoning',
     unitContext: 'Students connect observations, chemical reaction evidence, particle reasoning, and lab safety in an introductory chemistry investigation.',
     learningTarget: 'I can use observations as evidence to explain whether a chemical reaction occurred.',
-    kwhlSubtitle: 'Use this before and after a chemical reaction evidence lab.',
     kwhlDirections: 'Before the lab, record what you know about reaction evidence. During the lab, track how you will gather observations safely. Afterward, summarize what the evidence showed.',
-    fishboneSubtitle: 'Analyze factors that affect lab evidence and interpretation.',
     fishboneDirections: 'Write the reaction question or evidence problem in the box. Use each category to identify causes or factors.',
     fishboneTip: 'Separate observations from interpretations. Evidence includes temperature change, gas, precipitate, color change, and light.',
     causeCategories: ['Reactants', 'Temperature', 'Concentration', 'Observation', 'Safety', 'Measurement'],
