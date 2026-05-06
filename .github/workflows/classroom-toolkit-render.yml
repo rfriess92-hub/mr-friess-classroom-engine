@@ -5,8 +5,10 @@ on:
   pull_request:
     paths:
       - '.github/workflows/classroom-toolkit-render.yml'
+      - 'engine/pdf-html/render.mjs'
       - 'engine/pdf-html/templates/classroom-toolkit-templates.mjs'
       - 'fixtures/generated/classroom-toolkit-sample.grade8-all.json'
+      - 'fixtures/tests/classroom-toolkit-central-routing.proof.json'
       - 'scripts/render-classroom-toolkit-sample.mjs'
       - 'package.json'
       - 'pnpm-lock.yaml'
@@ -24,6 +26,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - name: Enable corepack
         run: corepack enable
 
@@ -33,12 +40,24 @@ jobs:
       - name: Install Playwright Chromium
         run: pnpm exec playwright install chromium
 
-      - name: Render classroom toolkit sample
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
+
+      - name: Render direct classroom toolkit sample
         run: |
           set -euo pipefail
           node scripts/render-classroom-toolkit-sample.mjs \
             --package fixtures/generated/classroom-toolkit-sample.grade8-all.json \
-            --out output/classroom-toolkit-sample
+            --out output/classroom-toolkit-sample/direct
+
+      - name: Render central routed classroom toolkit proof package
+        run: |
+          set -euo pipefail
+          PACKAGE=fixtures/tests/classroom-toolkit-central-routing.proof.json
+          pnpm run schema:check -- --package "$PACKAGE"
+          pnpm run route:plan -- --package "$PACKAGE" --print-routes
+          pnpm run render:package -- --package "$PACKAGE" --out output/classroom-toolkit-sample/central
+          pnpm run qa:bundle -- --package "$PACKAGE" --out output/classroom-toolkit-sample/central
 
       - name: List rendered docs
         run: find output/classroom-toolkit-sample -type f | sort
