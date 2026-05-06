@@ -1,0 +1,62 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "classroom_toolkit_sample_grade8_all",
+  "primary_architecture": "single_period_full",
+  "grade_band": "6-8",
+  "subject": "All Classes",
+  "grade": 8,
+  "topic": "Reusable classroom tools",
+  "theme": "classroom_tools",
+  "assignment_family": "reusable_classroom_toolkit",
+  "assignment_purpose": "Render reusable classroom tools based on uploaded Mr. Friess worksheet references.",
+  "success_criteria": ["Tools are student-facing.", "Pages are print-friendly.", "Layouts preserve clear writing space."],
+  "kwhl_chart": {
+    "layout_template_id": "kwhl_chart",
+    "title": "KWHL Chart",
+    "subtitle": "Know — Want to know — How will I find out — Learned",
+    "doc_type": "Lesson Launch & Closure Tool",
+    "meta": "Careers 8 · All classes · Reusable thinking tool",
+    "directions": "Before: Fill in K and W. During: Add to H as you discover sources or strategies. After: Complete the L column.",
+    "checklist": ["K column was filled in before the lesson started.", "L column is in my own words.", "I noted any W questions that were not answered."]
+  },
+  "fishbone_diagram": {
+    "layout_template_id": "fishbone_diagram",
+    "title": "Fishbone Diagram",
+    "subtitle": "Identify the causes that lead to a problem, event, or outcome.",
+    "doc_type": "Graphic Organizer — Cause & Effect Analysis",
+    "directions": "Write the problem or effect in the box. Label each cause category, then fill in specific causes.",
+    "tip": "Causes are not always obvious. Ask why this happened for each cause you write.",
+    "cause_categories": ["Cause Category 1", "Cause Category 2", "Cause Category 3", "Cause Category 4", "Cause Category 5", "Cause Category 6"],
+    "checklist": ["The Problem / Effect box is filled in.", "All 6 cause categories are labelled.", "Each category has at least 2 specific causes.", "I identified the root cause and explained why it matters most."]
+  },
+  "sentence_frame_card": {
+    "layout_template_id": "sentence_frame_card",
+    "title": "Sentence Frame Card",
+    "subtitle": "Use these frames to help explain thinking, support discussion, and write responses.",
+    "doc_type": "EA & Student Reference Tool"
+  },
+  "choice_board": {
+    "layout_template_id": "choice_board",
+    "title": "Choice Board",
+    "subtitle": "Pick your tasks. Show what you know in the way that works best for you.",
+    "doc_type": "K-Designation · Differentiated Task Menu",
+    "directions": "Choose 3 tasks that connect like a line — across, down, or diagonal. Check the box when you finish each one.",
+    "checklist": ["I completed 3 tasks in a row.", "I checked the box on each finished task.", "I can explain what I did to my teacher or partner."]
+  },
+  "scaffolded_quiz": {
+    "layout_template_id": "scaffolded_quiz",
+    "title": "Unit 2 Quiz",
+    "subtitle": "Personality, Science & the Limits of Labels — Careers 8",
+    "doc_type": "Low-Stakes Check",
+    "support_label": "Scaffolded Support — word bank & hints provided",
+    "word_bank": ["MBTI", "Big Five", "personality", "Barnum Effect", "spectrum", "stable", "16", "confirmation bias", "scientific", "OCEAN"],
+    "multiple_choice": [
+      {"question":"What is MBTI?","options":["A personality framework based on 60+ years of peer-reviewed research","A personality test that sorts people into 16 types using 4 pairs of opposites","A five-trait spectrum model used to predict job performance","A government tool used to decide career pathways"]},
+      {"question":"The Barnum Effect describes the tendency for people to","options":["reject personality labels","accept vague descriptions as personally meaningful","prefer Big Five over MBTI","change type every few months"]}
+    ],
+    "short_answer": [
+      {"question":"Name one difference between MBTI and the Big Five. Explain why that difference matters.","hint":"Think about categories vs. spectrum or result stability."},
+      {"question":"Explain what the Barnum Effect is and give one real-life example.","hint":"Think about horoscopes, personality tests, or fortune-cookie messages."}
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+name: lwd-graphic-novel-render
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/lwd-graphic-novel-render.yml'
+      - 'engine/**'
+      - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json'
+      - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v2.json'
+      - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v3.json'
+      - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v4.json'
+      - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v5.json'
+      - 'scripts/**'
+      - 'schemas/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+
+jobs:
+  render-lwd-graphic-novel:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install Node dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install chromium
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
+
+      - name: Build v5 generated package
+        run: node scripts/build-lwd-v5-package.mjs
+
+      - name: Run requested generated package checks
+        run: |
+          set -euo pipefail
+          PACKAGE=fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.v5.json
+          pnpm run schema:check -- --package "$PACKAGE"
+          pnpm run route:plan -- --package "$PACKAGE" --print-routes
+          pnpm run render:package -- --package "$PACKAGE" --out output
+          pnpm run qa:bundle -- --package "$PACKAGE" --out output
+
+      - name: Prepare rendered docs artifact
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p rendered-docs
+          if [ -d output ]; then
+            find output -type f \( -name '*.pdf' -o -name '*.pptx' -o -name '*.docx' -o -name '*.json' -o -name '*.md' \) | sort | while read -r file; do
+              target="rendered-docs/${file#output/}"
+              mkdir -p "$(dirname "$target")"
+              cp "$file" "$target"
+            done
+          fi
+          find rendered-docs -type f | sort
+
+      - name: Upload rendered Long Way Down docs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lwd-graphic-novel-rendered-docs
+          path: rendered-docs
+          if-no-files-found: error
