@@ -1,0 +1,86 @@
+name: toolkit-multi-class-samples
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/toolkit-multi-class-samples.yml'
+      - 'engine/pdf-html/render.mjs'
+      - 'engine/pdf-html/templates/classroom-toolkit-templates.mjs'
+      - 'scripts/build-toolkit-multi-class-samples.mjs'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+
+jobs:
+  render-toolkit-multi-class-samples:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install Node dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install chromium
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
+
+      - name: Build six class sample packages
+        run: |
+          set -euo pipefail
+          node scripts/build-toolkit-multi-class-samples.mjs --out output/toolkit-multi-class-samples/packages
+          find output/toolkit-multi-class-samples/packages -type f -name '*.json' | sort
+
+      - name: Render six class sample packages
+        run: |
+          set -euo pipefail
+          for PACKAGE in $(find output/toolkit-multi-class-samples/packages -type f -name '*.json' | sort); do
+            echo "--- $PACKAGE ---"
+            pnpm run schema:check -- --package "$PACKAGE"
+            pnpm run route:plan -- --package "$PACKAGE" --print-routes
+            pnpm run render:package -- --package "$PACKAGE" --out output/toolkit-multi-class-samples/rendered
+          done
+
+      - name: Assert rendered artifacts exist
+        run: |
+          set -euo pipefail
+          ROOT=output/toolkit-multi-class-samples/rendered
+          for PACKAGE_ID in \
+            toolkit_math_11 \
+            toolkit_foods_9 \
+            toolkit_art_12 \
+            toolkit_woodworking_10 \
+            toolkit_leadership_12 \
+            toolkit_chemistry_11; do
+            test -f "$ROOT/$PACKAGE_ID/kwhl_chart_doc.pdf"
+            test -f "$ROOT/$PACKAGE_ID/fishbone_diagram_doc.pdf"
+            test -f "$ROOT/$PACKAGE_ID/sentence_frame_card_doc.pdf"
+            test -f "$ROOT/$PACKAGE_ID/choice_board_doc.pdf"
+            test -f "$ROOT/$PACKAGE_ID/scaffolded_quiz_doc.pdf"
+          done
+
+      - name: List rendered docs
+        run: find output/toolkit-multi-class-samples -type f | sort
+
+      - name: Upload multi-class toolkit sample docs
+        uses: actions/upload-artifact@v4
+        with:
+          name: toolkit-multi-class-sample-docs
+          path: output/toolkit-multi-class-samples
+          if-no-files-found: error
