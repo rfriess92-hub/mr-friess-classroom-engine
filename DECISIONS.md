@@ -4,6 +4,22 @@ Running record of architectural and structural decisions for repo operation.
 
 ---
 
+## 2026-05-06 - Assessment and quiz use the existing pdf-html renderer path
+
+**Decision:** Schema-level `assessment` and `quiz` output types render through the existing `engine/pdf-html/render.mjs` Playwright/Chromium path.
+
+**Decision:** Do not add a parallel `engine/html/renderer.js` or `--format html` acceptance path unless the project deliberately chooses a future renderer refactor.
+
+**Decision:** Student-facing `assessment` and `quiz` PDFs must not render `answer_key`, `marking_notes`, model answers, or teacher-only scoring notes.
+
+**Decision:** Traditional test formatting is the default direction for `assessment` and `quiz`: plain title, name/date/score lines, simple instructions, numbered questions, inline marks, and minimal decoration.
+
+**Reason:** PR #205 implemented the first A1.2 renderer slice by following the repo's existing HTML/PDF architecture: register the output types in `engine/pdf-html/render.mjs`, remove only those types from `KNOWN_UNIMPLEMENTED_TYPES`, and prove rendering through the normal `render:package` path. This avoided creating a second renderer system and reduced contract drift.
+
+**Implementation note:** The current implementation is a first student-facing slice. Future work should improve test formatting and add a teacher-only marking guide / answer-key route without leaking answer fields into student PDFs.
+
+---
+
 ## 2026-04-19 - Assignment-family cutover is complete in the live render-plan path
 
 **Decision:** `engine/assignment-family/*` is now the live family-selection authority for the stable-core render-plan path.
