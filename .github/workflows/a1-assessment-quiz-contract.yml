@@ -1,0 +1,54 @@
+name: a1-assessment-quiz-contract
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/a1-assessment-quiz-contract.yml'
+      - 'docs/assessment-quiz-render-contract.md'
+      - 'fixtures/tests/a1-assessment-quiz.blocked-proof.json'
+      - 'scripts/render-package.mjs'
+      - 'schemas/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+
+jobs:
+  assessment-quiz-contract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install Node dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Verify schema and route planning pass
+        run: |
+          set -euo pipefail
+          PACKAGE=fixtures/tests/a1-assessment-quiz.blocked-proof.json
+          pnpm run schema:check -- --package "$PACKAGE"
+          pnpm run route:plan -- --package "$PACKAGE" --print-routes
+
+      - name: Verify render is blocked until A1.2 implementation
+        run: |
+          set -euo pipefail
+          PACKAGE=fixtures/tests/a1-assessment-quiz.blocked-proof.json
+          set +e
+          pnpm run render:package -- --package "$PACKAGE" --out output/a1-assessment-quiz-blocked > render.log 2>&1
+          STATUS=$?
+          set -e
+          cat render.log
+          if [ "$STATUS" -eq 0 ]; then
+            echo "Expected render to fail while assessment/quiz remain in KNOWN_UNIMPLEMENTED_TYPES."
+            exit 1
+          fi
+          grep -E "Output type '(assessment|quiz)' is declared in the package but has no render implementation yet" render.log
