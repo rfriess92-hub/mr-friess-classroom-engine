@@ -32,10 +32,15 @@ Recent stabilization work has landed:
 - [x] Mr Friess visual shell formatting update (#197)
 - [x] Literacy vocabulary tool templates (#198)
 - [x] Long Way Down v5 focused render workflow and classroom toolkit focused renderer (#200)
+- [x] Post-LWD/toolkit repo-state docs reconciliation (#201)
+- [x] Classroom toolkit layouts centrally routed (#202)
+- [x] Six-class toolkit transfer sample proof (#203)
+- [x] A1.1 assessment/quiz render contract (#204)
+- [x] A1.2 first student-facing schema-level assessment/quiz render slice (#205)
 
 Current open repo-maintenance PRs/issues:
 
-- PR #199 is stale/superseded by #200. It targets the older Long Way Down base package in `stable-core`; do not merge as-is.
+- None known at this checkpoint.
 
 Current important distinction:
 
@@ -45,13 +50,13 @@ Current important distinction:
 
 Next recommended cleanup checks:
 
-1. Close or supersede stale PR #199.
-2. Decide whether `classroom-toolkit-templates.mjs` should remain focused-render-only for now or be wired into central `render.mjs` via a small router patch.
-3. Review the latest `sample-output-review`, `lwd-graphic-novel-rendered-docs`, and `classroom-toolkit-sample-docs` artifacts for visual/pedagogical alignment.
+1. Review the latest assessment/quiz student PDFs for traditional test formatting quality.
+2. Decide A1.3 teacher marking-guide routing: auto-generated alongside student assessment/quiz vs explicit teacher-only output route.
+3. Add answer-leak QA for `answer_key` and `marking_notes` once the teacher marking-guide path exists.
 4. Normalize Long Way Down v5 source-of-truth: either keep the v5 builder workflow explicitly documented or commit the generated v5 fixture as a stable fixture.
 5. Align Nightly Repo Agent Node version with stable/render workflows unless Node 22 is intentional.
 
-Next recommended implementation target: **A1 assessment foundation implementation**, unless the artifact review shows visual/pedagogical drift that should be corrected through B5 first.
+Next recommended implementation target: **A1.3 teacher-facing marking guide / answer-key separation**, unless the assessment/quiz student PDF review shows formatting drift that should be corrected first.
 
 ---
 
@@ -71,9 +76,9 @@ Remaining caution:
 - `support` is accepted for compatibility. Long-term canonical role should remain `supported` unless a future schema cleanup deliberately preserves both.
 - Contract docs must distinguish output-type implementation from layout-template implementation.
 
-## A0b — Classroom Worksheet Template System `COMPLETE`
+## A0b — Classroom Worksheet + Toolkit Template System `COMPLETE`
 
-Merged in #184, extended by #188, #197, #198, and #200.
+Merged in #184, extended by #188, #197, #198, #200, #202, and #203.
 
 Production / central-rendered layout systems:
 
@@ -82,22 +87,17 @@ Production / central-rendered layout systems:
 - [x] Dedicated `planter_volume_decision` layout wired through `engine/pdf-html/render.mjs`
 - [x] Dedicated literacy vocabulary layouts through `literacy-vocabulary-tools.mjs`
 - [x] Dedicated assessment visual layouts through `assessment-visual-tools.mjs`
+- [x] Classroom toolkit layouts centrally routed through `classroom-toolkit-templates.mjs`
 - [x] Proof fixtures and sample-output-review coverage
+- [x] Six-class transfer sample workflow for toolkit layouts
 
-Focused-render-only toolkit proof from #200:
+Current note:
 
-- [x] `engine/pdf-html/templates/classroom-toolkit-templates.mjs`
-- [x] `scripts/render-classroom-toolkit-sample.mjs`
-- [x] `.github/workflows/classroom-toolkit-render.yml`
-- [x] Sample PDFs for KWHL, fishbone, sentence frame card, choice board, and scaffolded quiz
+- Claude's corrected v2 brief requests broader integration of 22 classroom document templates using the existing `engine/pdf-html/render.mjs` architecture, not a new `engine/html` renderer. That work should be split into focused phases, starting with graphic organizers, and should not be mixed with A1.3 unless explicitly chosen.
 
-Follow-up decision:
+## A1 — Assessment Foundation `PARTIAL — STUDENT RENDER SLICE LANDED`
 
-- [ ] Wire classroom toolkit layout IDs into central `render.mjs`, or deliberately keep them focused-render-only until A1/B5 stabilize.
-
-## A1 — Assessment Foundation `NEXT`
-
-Schema foundation merged in #166. Implementation is still missing at output-type level.
+Schema foundation merged in #166. Contract slice merged in #204. First student-facing renderer slice merged in #205.
 
 Already complete:
 
@@ -105,37 +105,60 @@ Already complete:
 - [x] `assessmentSection`, `quizSection`, `assessmentQuestion` `$defs`
 - [x] `assessment`, `quiz` in output type enum, router, and audience sets
 - [x] `proficiency_levels`, `bloom_levels`, `question_difficulty`, `question_types` vocabulary
-- [x] Schema-only output types are blocked at render until implementation lands
+- [x] A1.1 render contract document and proof fixture
+- [x] `engine/pdf-html/templates/assessment-quiz.mjs`
+- [x] `assessment` and `quiz` wired into `engine/pdf-html/render.mjs`
+- [x] `assessment` and `quiz` removed from `KNOWN_UNIMPLEMENTED_TYPES`
+- [x] Focused A1 render proof workflow asserts student quiz and assessment PDFs exist
+- [x] Student templates omit `answer_key` and `marking_notes`
+
+Remaining for A1:
+
+- [ ] Improve traditional test formatting based on artifact review
+- [ ] Decide teacher marking-guide routing: explicit output route vs auto-generated companion PDF
+- [ ] Add teacher-facing marking guide / answer-key PDF
+- [ ] Add QA guard against answer leakage into student PDFs/sidecars where feasible
+- [ ] Add question-bank pulling only after render/marking-guide behavior is stable
+- [ ] Update machine-readable `engine/contracts/output-type-inventory.json` after the audit script is refreshed
 
 Do not confuse with existing layout-template support:
 
-- `scaffolded_quiz` currently exists as a focused classroom toolkit layout, not as the schema-level `quiz` output type.
+- `scaffolded_quiz` exists as a classroom toolkit layout, not as the schema-level `quiz` output type.
 - `bc_rubric` and `student_self_assessment` exist as `layout_template_id` render paths under existing output types, not as the schema-level `rubric` / `formative_check` types.
 
-Next implementation slice:
-
-- [ ] Add `questions/` seed banks per subject
-- [ ] Add `engine/pdf-html/templates/assessment.mjs`
-- [ ] Add `engine/pdf-html/templates/quiz.mjs`
-- [ ] Wire assessment + quiz into HTML render path
-- [ ] Add typed-block/classifier/template-router support as needed
-- [ ] Add `scripts/pull-questions.mjs`
-- [ ] Add proof fixture + render smoke test
-- [ ] Add answer-key handling without leaking answers into student artifacts
-
-Acceptance for A1:
+Acceptance for next A1 slice:
 
 ```bash
 pnpm test
 node scripts/audit-output-contracts.mjs
-pnpm run schema:check -- --package fixtures/tests/<assessment-proof>.json
-pnpm run render:package -- --package fixtures/tests/<assessment-proof>.json --out output --flat-out
-pnpm run qa:bundle -- --package fixtures/tests/<assessment-proof>.json --out output
+pnpm run schema:check -- --package fixtures/tests/a1-assessment-quiz.blocked-proof.json
+pnpm run route:plan -- --package fixtures/tests/a1-assessment-quiz.blocked-proof.json --print-routes
+pnpm run render:package -- --package fixtures/tests/a1-assessment-quiz.blocked-proof.json --out output
 ```
+
+## A1.3 — Teacher Marking Guide `NEXT`
+
+Start after A1.2 docs cleanup.
+
+Decision needed before implementation:
+
+- Option A: auto-generate a teacher-only companion PDF whenever a student `assessment` or `quiz` output includes `answer_key` / `marking_notes`.
+- Option B: require an explicit teacher-only output route such as `assessment_marking_guide` or `answer_key`.
+
+Recommended default: **explicit teacher-only route first**, because it is easier to audit and less surprising in bundles. Auto-generation can come later.
+
+Implementation slice:
+
+- [ ] Teacher-only HTML template for marking guide
+- [ ] Render all question text, correct answers, marking notes, point values, total marks
+- [ ] Include score-recording grid
+- [ ] Ensure teacher-only artifact is never labelled student-facing
+- [ ] Add QA guard that student PDFs do not include answer fields
+- [ ] Add proof fixture/workflow
 
 ## A2 — Rubric + Feedback Loop `QUEUED`
 
-Start after A1 implementation lands.
+Start after A1 teacher marking guide is stable.
 
 - [ ] `rubricSection` + `rubricCriterion` schema if not already sufficient
 - [ ] `formativeCheckSection` schema
@@ -216,7 +239,7 @@ Do not mix this with renderer edits, schema changes, fixture rewrites, or conten
 
 ## B1 — Artifact-Role Cleanup `PARTIAL`
 
-Some role enforcement landed in #179. Continued visual/content review through #194-#200 found fewer blanks and stronger student-facing surfaces, but role leakage still needs audit coverage.
+Some role enforcement landed in #179. Continued visual/content review through #194-#205 found fewer blanks and stronger student-facing surfaces, but role leakage still needs audit coverage.
 
 Complete:
 
@@ -255,7 +278,7 @@ Use Careers 8 as the calibration model.
 
 ## B5 — Formatting Balance System `QUEUED`
 
-Can run before A1 if artifact review shows visual drift.
+Can run before the next A1 implementation if assessment/quiz artifact review shows visual drift.
 
 - [ ] Baseline audit: ideal vs current formatting drift
 - [ ] Slide text floor and word-budget guardrails
@@ -396,6 +419,11 @@ Only after repeated clean D0/D1 runs.
 
 # Done Log
 
+- [#205] A1.2 first student-facing schema-level assessment/quiz render slice
+- [#204] A1.1 assessment/quiz render contract
+- [#203] Six-class toolkit transfer sample proof
+- [#202] Classroom toolkit central routing
+- [#201] Post-LWD/toolkit repo-state docs reconciliation
 - [#200] Long Way Down v5 focused render workflow and classroom toolkit focused renderer
 - [#198] Literacy vocabulary tool templates
 - [#197] Mr Friess visual shell formatting update
@@ -431,6 +459,7 @@ Only after repeated clean D0/D1 runs.
 
 # Superseded / Do Not Revive
 
+- v1 Claude brief requesting `engine/html/renderer.js` and `--format html` — superseded by corrected v2 brief that uses `engine/pdf-html/render.mjs`.
 - PR #199 / `lwd-unit-render-proof` — superseded by #200 unless deliberately re-scoped to the v5 source-of-truth decision.
 - PR #181 / `feat/worksheet-template-system` — superseded by #184.
 - PR #168 / `render/careers8-presentation-station-challenge` — closed draft with no commits; treat as abandoned unless deliberately re-scoped.
