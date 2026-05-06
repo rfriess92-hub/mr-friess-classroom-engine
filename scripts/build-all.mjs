@@ -1,3 +1,8 @@
+// DEPRECATED — debug/compatibility surface only.
+// This script is NOT a stable-core acceptance path.
+// Do not use for package proof or CI validation.
+// Use: pnpm run render:package && pnpm run qa:bundle instead.
+// See docs/legacy-direct-builders.md for full context.
 import process from 'node:process'
 
 import { repoPath, ensureExists, run, argValue } from './lib.mjs'
