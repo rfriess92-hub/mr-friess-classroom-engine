@@ -13,6 +13,7 @@ import { buildAnswerKeyHTML } from './templates/answer-key.mjs'
 import { buildPacingGuideHTML } from './templates/pacing-guide.mjs'
 import { buildSubPlanHTML } from './templates/sub-plan.mjs'
 import { buildMakeupPacketHTML } from './templates/makeup-packet.mjs'
+import { buildAssessmentHTML, buildQuizHTML } from './templates/assessment-quiz.mjs'
 import { buildClassroomWorksheetTemplateHTML, isClassroomTemplateLayout } from './templates/classroom-worksheet-system.mjs'
 import { buildClassroomToolkitHTML, isClassroomToolkitLayout } from './templates/classroom-toolkit-templates.mjs'
 import { buildLiteracyVocabularyToolHTML, isLiteracyVocabularyToolLayout } from './templates/literacy-vocabulary-tools.mjs'
@@ -32,6 +33,8 @@ const TEMPLATE_MAP = {
   pacing_guide: buildPacingGuideHTML,
   sub_plan: buildSubPlanHTML,
   makeup_packet: buildMakeupPacketHTML,
+  assessment: buildAssessmentHTML,
+  quiz: buildQuizHTML,
 }
 
 let cachedFontFaceCSS = null
