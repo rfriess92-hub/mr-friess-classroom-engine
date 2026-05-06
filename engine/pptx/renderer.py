@@ -1,3 +1,9 @@
+# RENDERER_CONSOLIDATION NOTE
+# This file is the declared public entrypoint for PPTX rendering.
+# During transition, it delegates to engine/pptx/archive/ modules.
+# Consolidation target: complete before adding any new slide layout type.
+# Until then, treat archive/ modules as implementation detail — do not import them directly.
+# See DECISIONS.md (2026-04-10) for full context.
 #!/usr/bin/env python3
 """
 Mr. Friess Classroom Engine — PPTX Image Deck Packer
