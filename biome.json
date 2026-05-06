@@ -18,7 +18,19 @@
     "lineWidth": 100
   },
   "linter": {
-    "enabled": true
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "recommended": true
+      },
+      "correctness": {
+        "recommended": true
+      },
+      "style": {
+        "recommended": true
+      }
+    }
   },
   "javascript": {
     "formatter": {
