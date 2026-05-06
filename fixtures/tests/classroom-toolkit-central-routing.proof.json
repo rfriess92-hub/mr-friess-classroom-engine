@@ -1,0 +1,92 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "classroom_toolkit_central_routing_proof",
+  "primary_architecture": "single_period_full",
+  "grade_band": "6-8",
+  "subject": "All Classes",
+  "grade": 8,
+  "topic": "Reusable classroom toolkit central routing",
+  "theme": "classroom_tools",
+  "assignment_family": "reusable_classroom_toolkit",
+  "assignment_purpose": "Prove classroom toolkit layout_template_id routes through the normal render:package pipeline.",
+  "success_criteria": [
+    "Each page is student-facing.",
+    "Each page renders through outputs[] using an existing output type.",
+    "The toolkit layouts keep clear writing space and print-friendly structure."
+  ],
+  "kwhl_chart": {
+    "layout_template_id": "kwhl_chart",
+    "title": "KWHL Chart",
+    "subtitle": "Know — Want to know — How will I find out — Learned",
+    "doc_type": "Lesson Launch & Closure Tool",
+    "meta": "All classes · Reusable thinking tool",
+    "directions": "Before: Fill in K and W. During: Add to H as you discover sources or strategies. After: Complete the L column.",
+    "learning_target": "I can organize what I know, what I wonder, how I will learn, and what I learned.",
+    "checklist": [
+      "K and W were started before the lesson.",
+      "H includes sources, strategies, or people I can ask.",
+      "L is written in my own words."
+    ]
+  },
+  "fishbone_diagram": {
+    "layout_template_id": "fishbone_diagram",
+    "title": "Fishbone Diagram",
+    "subtitle": "Identify the causes that lead to a problem, event, or outcome.",
+    "doc_type": "Graphic Organizer — Cause & Effect Analysis",
+    "directions": "Write the problem or effect in the box. Label each cause category, then fill in specific causes.",
+    "tip": "Ask why this happened for each cause you write.",
+    "cause_categories": ["People", "Environment", "Rules", "Resources", "Choices", "Timing"],
+    "checklist": [
+      "The problem or effect is clear.",
+      "Each category has at least one specific cause.",
+      "I identified a likely root cause."
+    ]
+  },
+  "sentence_frame_card": {
+    "layout_template_id": "sentence_frame_card",
+    "title": "Sentence Frame Card",
+    "subtitle": "Use these frames to explain thinking, discuss respectfully, and write responses.",
+    "doc_type": "EA & Student Reference Tool"
+  },
+  "choice_board": {
+    "layout_template_id": "choice_board",
+    "title": "Choice Board",
+    "subtitle": "Pick your tasks. Show what you know in a way that works for you.",
+    "doc_type": "K-Designation · Differentiated Task Menu",
+    "directions": "Choose 3 tasks that connect like a line — across, down, or diagonal.",
+    "learning_target": "I can show my understanding through a task pathway that matches my strengths.",
+    "checklist": [
+      "I completed 3 connected tasks.",
+      "I checked off each finished task.",
+      "I can explain my strongest choice."
+    ]
+  },
+  "scaffolded_quiz": {
+    "layout_template_id": "scaffolded_quiz",
+    "title": "Low-Stakes Unit Check",
+    "subtitle": "Scaffolded support with word bank and hints",
+    "doc_type": "Low-Stakes Check",
+    "support_label": "Scaffolded Support — word bank & hints provided",
+    "learning_target": "I can show what I know using vocabulary and complete explanations.",
+    "word_bank": ["claim", "evidence", "reasoning", "example", "compare", "explain", "reflect", "strategy"],
+    "multiple_choice": [
+      {"question": "What should evidence do in a response?", "options": ["Replace the claim", "Support the claim", "Make the response longer", "Avoid explanation"]},
+      {"question": "A strong reflection usually includes", "options": ["Only a score", "Only a copied sentence", "What I learned and what I need next", "A random fact"]}
+    ],
+    "short_answer": [
+      {"question": "Explain one strategy that helps you learn difficult material.", "hint": "Name the strategy and explain how it helps."},
+      {"question": "Use one word from the word bank in a complete sentence.", "hint": "Make the meaning clear from the sentence."}
+    ]
+  },
+  "bundle": {
+    "bundle_id": "classroom_toolkit_central_routing_bundle",
+    "declared_outputs": ["worksheet", "graphic_organizer"]
+  },
+  "outputs": [
+    {"output_id": "kwhl_chart_doc", "output_type": "graphic_organizer", "audience": "student", "source_section": "kwhl_chart", "bundle": "classroom_toolkit_central_routing_bundle"},
+    {"output_id": "fishbone_diagram_doc", "output_type": "graphic_organizer", "audience": "student", "source_section": "fishbone_diagram", "bundle": "classroom_toolkit_central_routing_bundle"},
+    {"output_id": "sentence_frame_card_doc", "output_type": "worksheet", "audience": "student", "source_section": "sentence_frame_card", "bundle": "classroom_toolkit_central_routing_bundle"},
+    {"output_id": "choice_board_doc", "output_type": "worksheet", "audience": "student", "source_section": "choice_board", "bundle": "classroom_toolkit_central_routing_bundle"},
+    {"output_id": "scaffolded_quiz_doc", "output_type": "worksheet", "audience": "student", "source_section": "scaffolded_quiz", "bundle": "classroom_toolkit_central_routing_bundle"}
+  ]
+}
