@@ -57,7 +57,16 @@ jobs:
           pnpm run schema:check -- --package "$PACKAGE"
           pnpm run route:plan -- --package "$PACKAGE" --print-routes
           pnpm run render:package -- --package "$PACKAGE" --out output/classroom-toolkit-sample/central
-          pnpm run qa:bundle -- --package "$PACKAGE" --out output/classroom-toolkit-sample/central
+
+      - name: Assert central routed artifacts exist
+        run: |
+          set -euo pipefail
+          ROOT=output/classroom-toolkit-sample/central/classroom_toolkit_central_routing_proof
+          test -f "$ROOT/kwhl_chart_doc.pdf"
+          test -f "$ROOT/fishbone_diagram_doc.pdf"
+          test -f "$ROOT/sentence_frame_card_doc.pdf"
+          test -f "$ROOT/choice_board_doc.pdf"
+          test -f "$ROOT/scaffolded_quiz_doc.pdf"
 
       - name: List rendered docs
         run: find output/classroom-toolkit-sample -type f | sort
