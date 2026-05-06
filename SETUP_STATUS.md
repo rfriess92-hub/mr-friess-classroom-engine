@@ -5,7 +5,7 @@
 - `engine/schema/` - canonical vocabulary, lesson-package schema validation, preflight
 - `engine/pdf-html/` - Playwright/Chromium HTML-to-PDF renderer for the active document surface
 - `engine/pdf/` - Python/ReportLab fallback and transitional document renderer for remaining non-consolidated doc types
-- `engine/pptx/` - PPTX slide renderer; current classroom slide path uses HTML/Playwright screenshots before PPTX assembly
+- `engine/pptx/` - PPTX slide renderer; current classroom slide path uses HTML/Playwright screenshots before PPTX assembly — consolidation target: before any new slide layout type is added
 - `engine/render/` - typed block validation, artifact classification, multipage page-role classification, template routing
 - `engine/planner/` - output router and route planning
 - `engine/visual/` - visual plan builder and token system
