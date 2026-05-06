@@ -4,38 +4,54 @@ Living roadmap for the Mr. Friess Classroom Engine.
 
 **Track A** — Engine infrastructure: schemas, output types, templates, rendering, fixtures, QA.  
 **Track B** — Pedagogy + content quality: grade-band calibration, voice, artifact roles, classroom realism.  
-**Track C** — Teacher profile + personalization: course/class context, teaching modes, generation defaults.
+**Track C** — Teacher profile + personalization: course/class context, teaching modes, generation defaults.  
+**Track D** — Guarded automation / repo agent work.
 
-Current working rule: keep contract/rendering work separate from pedagogy/content cleanup unless a task explicitly joins them.
+Working rule: keep contract/rendering work separate from pedagogy/content cleanup unless a task explicitly joins them.
 
 ---
 
-## Current Checkpoint — 2026-05-04
+## Current Checkpoint — 2026-05-06
 
 Recent stabilization work has landed:
 
-- [x] Phase 0 output-contract inventory and drift guard (#172, refreshed by #180)
+- [x] Phase 0 output-contract inventory and drift guard (#172, refreshed by #180 and #189)
 - [x] Phase 1 output-contract render guard for schema-only types (#173, refreshed by #180)
 - [x] Variant-role schema/preflight compatibility for legacy `support` (#185)
 - [x] Guarded nightly repo-agent scaffold (#182)
+- [x] Nightly agent install path aligned with CI (#190)
+- [x] First guarded Nightly Repo Agent dry run verified successfully using Issue #183
 - [x] Clean classroom worksheet template system (#184)
 - [x] `graphic_organizer` now has an HTML-backed classroom-template render path (#184)
 - [x] Sample-output-review workflow for representative Mr Friess engine docs (#187)
 - [x] Repo-generated Mr Friess document sample fixture and planter-volume decision template (#188)
-- [x] Output-type inventory and contract drift report refreshed after worksheet-formatting merges (#189)
-- [x] Nightly agent install path aligned with CI (#190)
-- [x] First guarded Nightly Repo Agent dry run verified successfully using Issue #183
+- [x] PPTX classroom renderer reset through HTML/Playwright screenshot slides (#193)
+- [x] Student-facing sample language hygiene pass (#194)
+- [x] Random class visual sampling proof pack (#195)
+- [x] Mr Friess course sample pack focused on actual course surfaces (#196)
+- [x] Mr Friess visual shell formatting update (#197)
+- [x] Literacy vocabulary tool templates (#198)
+- [x] Long Way Down v5 focused render workflow and classroom toolkit focused renderer (#200)
 
 Current open repo-maintenance PRs/issues:
 
-- None.
+- PR #199 is stale/superseded by #200. It targets the older Long Way Down base package in `stable-core`; do not merge as-is.
+
+Current important distinction:
+
+- **Output types** are the schema/router-level artifact types, such as `quiz`, `vocabulary_card`, and `assessment`.
+- **Layout template IDs** are specialized HTML surfaces under existing output types, such as `frayer_model`, `vocabulary_cards`, `bc_rubric`, `student_self_assessment`, `kwhl_chart`, `fishbone_diagram`, `sentence_frame_card`, `choice_board`, and `scaffolded_quiz`.
+- **Focused renderers/workflows** may prove a template module directly before it is wired into the central `render:package` path.
 
 Next recommended cleanup checks:
 
-1. Review the latest `sample-output-review` artifact from `main` for visual/pedagogical alignment.
-2. Continue B5 formatting balance work or start A1 assessment foundation implementation.
+1. Close or supersede stale PR #199.
+2. Decide whether `classroom-toolkit-templates.mjs` should remain focused-render-only for now or be wired into central `render.mjs` via a small router patch.
+3. Review the latest `sample-output-review`, `lwd-graphic-novel-rendered-docs`, and `classroom-toolkit-sample-docs` artifacts for visual/pedagogical alignment.
+4. Normalize Long Way Down v5 source-of-truth: either keep the v5 builder workflow explicitly documented or commit the generated v5 fixture as a stable fixture.
+5. Align Nightly Repo Agent Node version with stable/render workflows unless Node 22 is intentional.
 
-Next recommended implementation target: **A1 assessment foundation implementation**, unless the sample-output review shows visual/pedagogical drift that should be corrected through B5 first.
+Next recommended implementation target: **A1 assessment foundation implementation**, unless the artifact review shows visual/pedagogical drift that should be corrected through B5 first.
 
 ---
 
@@ -53,36 +69,35 @@ Next recommended implementation target: **A1 assessment foundation implementatio
 Remaining caution:
 
 - `support` is accepted for compatibility. Long-term canonical role should remain `supported` unless a future schema cleanup deliberately preserves both.
+- Contract docs must distinguish output-type implementation from layout-template implementation.
 
 ## A0b — Classroom Worksheet Template System `COMPLETE`
 
-Merged in #184.
+Merged in #184, extended by #188, #197, #198, and #200.
+
+Production / central-rendered layout systems:
 
 - [x] Canonical module: `engine/pdf-html/templates/classroom-worksheet-system.mjs`
-- [x] Reusable templates:
-  - English reading response
-  - Cross-curricular CER
-  - Graphic organizer pack
-  - Exit ticket + reflection
-  - Generic organizer fallback
-  - Simple fallbacks for vocabulary/morphology, Careers decision-making, and literacy word study
-- [x] `layout_template_id` support wired through `engine/pdf-html/render.mjs`
-- [x] Existing worksheet renderer remains default when no classroom layout id is present
 - [x] `graphic_organizer` moved onto the HTML renderer surface
-- [x] Dedicated `planter_volume_decision` classroom worksheet layout wired through `engine/pdf-html/render.mjs`
-- [x] Explicit `CLASSROOM_WORKSHEET` routing in `engine/render/template-router.mjs`
-- [x] Proof fixture: `fixtures/tests/worksheet-template-system.proof.json`
-- [x] Mr Friess document sample proof fixture: `fixtures/tests/mr-friess-engine-docs.proof.json`
-- [x] Unit and smoke tests added
+- [x] Dedicated `planter_volume_decision` layout wired through `engine/pdf-html/render.mjs`
+- [x] Dedicated literacy vocabulary layouts through `literacy-vocabulary-tools.mjs`
+- [x] Dedicated assessment visual layouts through `assessment-visual-tools.mjs`
+- [x] Proof fixtures and sample-output-review coverage
 
-Follow-up later:
+Focused-render-only toolkit proof from #200:
 
-- Add more class-specific template IDs only after A1/A2 are stable.
-- Keep worksheet templates deterministic, black-and-white, print-friendly, and text-extractable.
+- [x] `engine/pdf-html/templates/classroom-toolkit-templates.mjs`
+- [x] `scripts/render-classroom-toolkit-sample.mjs`
+- [x] `.github/workflows/classroom-toolkit-render.yml`
+- [x] Sample PDFs for KWHL, fishbone, sentence frame card, choice board, and scaffolded quiz
+
+Follow-up decision:
+
+- [ ] Wire classroom toolkit layout IDs into central `render.mjs`, or deliberately keep them focused-render-only until A1/B5 stabilize.
 
 ## A1 — Assessment Foundation `NEXT`
 
-Schema foundation merged in #166. Implementation is still missing.
+Schema foundation merged in #166. Implementation is still missing at output-type level.
 
 Already complete:
 
@@ -91,6 +106,11 @@ Already complete:
 - [x] `assessment`, `quiz` in output type enum, router, and audience sets
 - [x] `proficiency_levels`, `bloom_levels`, `question_difficulty`, `question_types` vocabulary
 - [x] Schema-only output types are blocked at render until implementation lands
+
+Do not confuse with existing layout-template support:
+
+- `scaffolded_quiz` currently exists as a focused classroom toolkit layout, not as the schema-level `quiz` output type.
+- `bc_rubric` and `student_self_assessment` exist as `layout_template_id` render paths under existing output types, not as the schema-level `rubric` / `formative_check` types.
 
 Next implementation slice:
 
@@ -123,17 +143,19 @@ Start after A1 implementation lands.
 - [ ] Proof fixtures + smoke tests
 - [ ] QA checks for BC proficiency language and teacher/student separation
 
-Note: `rubric_sheet` is already production-ready. A2 is about the separate schema-only `rubric` and `formative_check` output types.
+Note: `rubric_sheet` is already production-ready. `bc_rubric` and `student_self_assessment` are layout-template paths. A2 is about separate schema-level `rubric` and `formative_check` output types.
 
 ## A3 — Daily Classroom Artifacts `QUEUED`
 
 Start after A2.
 
 - [ ] `warm_up` template + proof fixture
-- [ ] `vocabulary_card` template + proof fixture
+- [ ] `vocabulary_card` output-type template + proof fixture
 - [ ] `observation_grid` template + proof fixture
 - [ ] `lesson_reflection` template + proof fixture
 - [ ] QA for teacher-only daily artifacts
+
+Note: vocabulary card layouts already exist under literacy vocabulary tools. A3 is about the separate output type.
 
 ## A4 — Planning View `QUEUED`
 
@@ -194,7 +216,7 @@ Do not mix this with renderer edits, schema changes, fixture rewrites, or conten
 
 ## B1 — Artifact-Role Cleanup `PARTIAL`
 
-Some role enforcement landed in #179.
+Some role enforcement landed in #179. Continued visual/content review through #194-#200 found fewer blanks and stronger student-facing surfaces, but role leakage still needs audit coverage.
 
 Complete:
 
@@ -233,7 +255,7 @@ Use Careers 8 as the calibration model.
 
 ## B5 — Formatting Balance System `QUEUED`
 
-Can run alongside B2.
+Can run before A1 if artifact review shows visual drift.
 
 - [ ] Baseline audit: ideal vs current formatting drift
 - [ ] Slide text floor and word-budget guardrails
@@ -349,9 +371,13 @@ Current capability:
 - Does not open PRs
 - Does not merge
 
+Follow-up cleanup:
+
+- [ ] Align Node version with stable/render workflows, or document why nightly intentionally uses Node 22.
+
 ## D1 — Agent Comment/Report Upgrade `QUEUED`
 
-Only after D0 dry run is verified.
+Only after repeated clean D0 runs.
 
 - [ ] Allow the workflow to comment a report link back onto the selected issue
 - [ ] Keep permissions narrow
@@ -370,6 +396,13 @@ Only after repeated clean D0/D1 runs.
 
 # Done Log
 
+- [#200] Long Way Down v5 focused render workflow and classroom toolkit focused renderer
+- [#198] Literacy vocabulary tool templates
+- [#197] Mr Friess visual shell formatting update
+- [#196] Mr Friess course sample packs
+- [#195] Random class visual sampling pack
+- [#194] Student-facing sample language hygiene
+- [#193] PPTX classroom renderer reset
 - [#190] Nightly agent install path aligned with CI
 - [#189] Output-type inventory and contract drift report refresh
 - [#188] Format: render Mr Friess engine document samples
@@ -398,5 +431,6 @@ Only after repeated clean D0/D1 runs.
 
 # Superseded / Do Not Revive
 
+- PR #199 / `lwd-unit-render-proof` — superseded by #200 unless deliberately re-scoped to the v5 source-of-truth decision.
 - PR #181 / `feat/worksheet-template-system` — superseded by #184.
 - PR #168 / `render/careers8-presentation-station-challenge` — closed draft with no commits; treat as abandoned unless deliberately re-scoped.
