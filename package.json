@@ -22,6 +22,7 @@
     "generate:package": "node scripts/generate-package.mjs",
     "generate:activity": "node scripts/generate-activity.mjs",
     "weekly:overview": "node scripts/weekly-overview.mjs",
+    "audit:family-residue": "node scripts/audit-family-residue.mjs",
     "fonts:install": "npx playwright install chromium"
   },
   "devDependencies": {
