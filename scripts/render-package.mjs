@@ -153,7 +153,6 @@ const DOC_OUTPUT_TYPES = new Set(['teacher_guide', 'lesson_overview', 'worksheet
 // Output types that exist in schema/vocabulary but have no render implementation yet.
 // Declaring these in a package fails loudly rather than silently skipping.
 const KNOWN_UNIMPLEMENTED_TYPES = new Set([
-  'assessment', 'quiz',          // A1 — queued
   'rubric', 'formative_check',   // A2 — queued
   'warm_up', 'vocabulary_card', 'observation_grid', 'lesson_reflection', // A3 — queued
 ])

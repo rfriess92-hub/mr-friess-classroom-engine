@@ -1,4 +1,4 @@
-name: a1-assessment-quiz-contract
+name: a1-assessment-quiz-render
 
 on:
   workflow_dispatch:
@@ -6,6 +6,8 @@ on:
     paths:
       - '.github/workflows/a1-assessment-quiz-contract.yml'
       - 'docs/assessment-quiz-render-contract.md'
+      - 'engine/pdf-html/render.mjs'
+      - 'engine/pdf-html/templates/assessment-quiz.mjs'
       - 'fixtures/tests/a1-assessment-quiz.blocked-proof.json'
       - 'scripts/render-package.mjs'
       - 'schemas/**'
@@ -13,7 +15,7 @@ on:
       - 'pnpm-lock.yaml'
 
 jobs:
-  assessment-quiz-contract:
+  assessment-quiz-render:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,30 +27,44 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - name: Enable corepack
         run: corepack enable
 
       - name: Install Node dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Verify schema and route planning pass
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install chromium
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
+
+      - name: Verify schema, route planning, and render pass
         run: |
           set -euo pipefail
           PACKAGE=fixtures/tests/a1-assessment-quiz.blocked-proof.json
           pnpm run schema:check -- --package "$PACKAGE"
           pnpm run route:plan -- --package "$PACKAGE" --print-routes
+          pnpm run render:package -- --package "$PACKAGE" --out output/a1-assessment-quiz-render
 
-      - name: Verify render is blocked until A1.2 implementation
+      - name: Assert assessment and quiz artifacts exist
         run: |
           set -euo pipefail
-          PACKAGE=fixtures/tests/a1-assessment-quiz.blocked-proof.json
-          set +e
-          pnpm run render:package -- --package "$PACKAGE" --out output/a1-assessment-quiz-blocked > render.log 2>&1
-          STATUS=$?
-          set -e
-          cat render.log
-          if [ "$STATUS" -eq 0 ]; then
-            echo "Expected render to fail while assessment/quiz remain in KNOWN_UNIMPLEMENTED_TYPES."
-            exit 1
-          fi
-          grep -E "Output type '(assessment|quiz)' is declared in the package but has no render implementation yet" render.log
+          ROOT=output/a1-assessment-quiz-render/a1_assessment_quiz_blocked_proof
+          test -f "$ROOT/reaction_evidence_quiz.pdf"
+          test -f "$ROOT/reaction_evidence_assessment.pdf"
+
+      - name: List rendered docs
+        run: find output/a1-assessment-quiz-render -type f | sort
+
+      - name: Upload assessment quiz render docs
+        uses: actions/upload-artifact@v4
+        with:
+          name: a1-assessment-quiz-render-docs
+          path: output/a1-assessment-quiz-render
+          if-no-files-found: error
