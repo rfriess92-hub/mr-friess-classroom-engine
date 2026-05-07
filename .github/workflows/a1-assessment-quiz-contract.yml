@@ -9,7 +9,7 @@ on:
       - 'engine/pdf-html/render.mjs'
       - 'engine/pdf-html/templates/assessment-quiz.mjs'
       - 'engine/pdf-html/templates/answer-key.mjs'
-      - 'fixtures/tests/a1-assessment-quiz.blocked-proof.json'
+      - 'fixtures/tests/a1-assessment-quiz.proof.json'
       - 'scripts/render-package.mjs'
       - 'schemas/**'
       - 'package.json'
@@ -48,7 +48,7 @@ jobs:
       - name: Verify schema, route planning, and render pass
         run: |
           set -euo pipefail
-          PACKAGE=fixtures/tests/a1-assessment-quiz.blocked-proof.json
+          PACKAGE=fixtures/tests/a1-assessment-quiz.proof.json
           pnpm run schema:check -- --package "$PACKAGE"
           pnpm run route:plan -- --package "$PACKAGE" --print-routes
           pnpm run render:package -- --package "$PACKAGE" --out output/a1-assessment-quiz-render
@@ -56,7 +56,7 @@ jobs:
       - name: Assert assessment, quiz, and marking guide artifacts exist
         run: |
           set -euo pipefail
-          ROOT=output/a1-assessment-quiz-render/a1_assessment_quiz_blocked_proof
+          ROOT=output/a1-assessment-quiz-render/a1_assessment_quiz_proof
           test -f "$ROOT/reaction_evidence_quiz.pdf"
           test -f "$ROOT/reaction_evidence_assessment.pdf"
           test -f "$ROOT/reaction_evidence_quiz_marking_guide.pdf"
