@@ -1,6 +1,6 @@
 {
   "schema_version": "2.1.0",
-  "package_id": "a1_assessment_quiz_blocked_proof",
+  "package_id": "a1_assessment_quiz_proof",
   "primary_architecture": "single_period_full",
   "grade_band": "9-12",
   "subject": "Chemistry 11",
@@ -122,7 +122,7 @@
     ]
   },
   "bundle": {
-    "bundle_id": "a1_assessment_quiz_blocked_proof_bundle",
+    "bundle_id": "a1_assessment_quiz_proof_bundle",
     "declared_outputs": ["quiz", "assessment", "answer_key"]
   },
   "outputs": [
@@ -131,28 +131,28 @@
       "output_type": "quiz",
       "audience": "student",
       "source_section": "quiz",
-      "bundle": "a1_assessment_quiz_blocked_proof_bundle"
+      "bundle": "a1_assessment_quiz_proof_bundle"
     },
     {
       "output_id": "reaction_evidence_assessment",
       "output_type": "assessment",
       "audience": "student",
       "source_section": "assessment",
-      "bundle": "a1_assessment_quiz_blocked_proof_bundle"
+      "bundle": "a1_assessment_quiz_proof_bundle"
     },
     {
       "output_id": "reaction_evidence_quiz_marking_guide",
       "output_type": "answer_key",
       "audience": "teacher",
       "source_section": "quiz",
-      "bundle": "a1_assessment_quiz_blocked_proof_bundle"
+      "bundle": "a1_assessment_quiz_proof_bundle"
     },
     {
       "output_id": "reaction_evidence_assessment_marking_guide",
       "output_type": "answer_key",
       "audience": "teacher",
       "source_section": "assessment",
-      "bundle": "a1_assessment_quiz_blocked_proof_bundle"
+      "bundle": "a1_assessment_quiz_proof_bundle"
     }
   ]
 }

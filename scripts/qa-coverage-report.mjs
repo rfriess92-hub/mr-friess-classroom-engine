@@ -29,6 +29,11 @@ const DECLARED_OUTPUT_TYPES = [
   'pacing_guide',
   'sub_plan',
   'makeup_packet',
+  'rubric_sheet',
+  'station_cards',
+  'answer_key',
+  'assessment',
+  'quiz',
 ]
 
 import { readdirSync, readFileSync } from 'node:fs'
@@ -51,23 +56,34 @@ function collectJsonFiles(dir) {
   return results
 }
 
+function readPackageArchitecture(json) {
+  return json.primary_architecture ?? json.architecture ?? null
+}
+
+function readOutputType(output) {
+  return output?.output_type ?? output?.type ?? null
+}
+
 const files = collectJsonFiles(FIXTURES_DIR)
 
 const seenArchitectures = new Set()
 const seenOutputTypes = new Set()
+const skippedFiles = []
 
 for (const file of files) {
   try {
     const content = readFileSync(file, 'utf8')
     const json = JSON.parse(content)
-    if (json.architecture) seenArchitectures.add(json.architecture)
+    const architecture = readPackageArchitecture(json)
+    if (architecture) seenArchitectures.add(architecture)
     if (Array.isArray(json.outputs)) {
       for (const out of json.outputs) {
-        if (out.type) seenOutputTypes.add(out.type)
+        const outputType = readOutputType(out)
+        if (outputType) seenOutputTypes.add(outputType)
       }
     }
   } catch {
-    // skip malformed fixtures
+    skippedFiles.push(path.relative(ROOT, file))
   }
 }
 
@@ -81,6 +97,11 @@ console.log('\n=== Output Type Coverage ===')
 for (const type of DECLARED_OUTPUT_TYPES) {
   const status = seenOutputTypes.has(type) ? '✓ covered' : '✗ NO FIXTURE'
   console.log(`  ${status.padEnd(12)} ${type}`)
+}
+
+if (skippedFiles.length > 0) {
+  console.log('\n=== Skipped malformed/unreadable fixture files ===')
+  for (const file of skippedFiles) console.log(`  ${file}`)
 }
 
 console.log('')
