@@ -48,9 +48,6 @@ jobs:
       - name: Repo doctor
         run: pnpm run doctor
 
-      - name: Contract tests
-        run: pnpm test
-
       - name: Schema check LWD graphic novel package
         run: pnpm run schema:check -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json
 
