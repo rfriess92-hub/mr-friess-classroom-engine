@@ -1,328 +1,545 @@
 {
   "schema_version": "2.1.0",
-  "package_id": "long_way_down_graphic_novel_study_g8_9_literacy_support",
+  "package_id": "long_way_down_elevator_evidence_project_g8_9_literacy_support",
   "primary_architecture": "multi_day_sequence",
-  "session_count": 15,
+  "session_count": 9,
   "grade_band": "8-9",
   "subject": "English Language Arts / Reading Support",
-  "grade_subject_fit": "Fits Grade 8/9 literacy intervention by using a multimodal graphic novel to support inference, visual literacy, character analysis, theme, discussion, and short evidence-based writing.",
-  "unit_context": "Adapted from an existing Long Way Down unit study into a graphic novel study for a reading support/literacy intervention class.",
-  "assignment_family": "evidence_based_writing_task",
-  "assignment_purpose": "Students read and reread Long Way Down as a graphic novel, learn how visual and written features make meaning, track character impact and symbolism, and complete a concise final visual analysis response.",
-  "final_evidence_target": "Final visual analysis short response that uses one character interaction and one visual choice to explain Will's likely decision at the end, supported by the student completion check.",
+  "grade_subject_fit": "Post-reading Grade 8/9 literacy intervention unit. Students have already finished Long Way Down and now reread key moments to build visual, oral, dramatic, written, and symbolic analysis.",
+  "unit_context": "Students have finished reading Long Way Down. This unit reopens the book through fast-paced post-reading analysis, using the existing novel-study work as evidence-building stations for a final Elevator Evidence Board project.",
+  "assignment_family": "performance_task",
+  "assignment_purpose": "Students investigate Will's likely decision at the end of Long Way Down by collecting evidence from character interactions, symbols, visual/author choices, discussion, drawing, writing, and short dramatic reenactments.",
+  "final_evidence_target": "Elevator Evidence Board plus a short oral or written defence answering: What does Will decide at the end, and what evidence proves your thinking?",
   "student_task_flow": [
-    "Notice graphic novel features and learn core visual vocabulary.",
-    "Read the graphic novel for plot, character, and conflict.",
-    "Reread key pages to collect visual and written evidence.",
-    "Analyze how each elevator-floor character affects Will.",
-    "Track symbols and visual motifs across the graphic novel.",
-    "Connect the text to nonfiction ideas about revenge or emotional response.",
-    "Prepare and write a final short analytical response."
+    "Rebuild the elevator sequence from memory using movement, sketching, and quick notes.",
+    "Choose differentiated entry points for character impact: draw it, act it, map it, or write it.",
+    "Analyze two ghosts and explain how each one changes or challenges Will's thinking.",
+    "Track one symbol and show its meaning through drawing, labels, and a short explanation.",
+    "Practice author/artist choice analysis by studying panel layout, close-up, shadow, silence, repetition, or verse structure.",
+    "Use structured discussion or mini-performance to test which evidence is strongest.",
+    "Build an Elevator Evidence Board with claim, character impact, symbol, author/artist choice, theme, and final defence."
   ],
   "success_criteria": [
-    "I can use visual and written evidence to support an inference.",
-    "I can explain how a character interaction changes Will or challenges his thinking.",
-    "I can track symbols and visual motifs across a graphic novel.",
-    "I can write a short analytical response with a clear claim, evidence, and explanation."
+    "I can make a clear claim about Will's decision at the end.",
+    "I can explain how two elevator characters affect Will.",
+    "I can explain one symbol and connect it to theme or choice.",
+    "I can use at least one visual or author choice as evidence.",
+    "I can show my thinking through drawing, writing, speaking, or acting, then explain it clearly."
   ],
   "supports_scaffolds": [
     {
-      "label": "Visual vocabulary",
-      "support": "Panel/gutter/caption/colour/angle/close-up terms are embedded in the learning guide.",
+      "label": "Differentiated entry points",
+      "support": "Every major task offers draw it, act it, map it, or write it options before students convert thinking into project evidence.",
+      "embedded": true
+    },
+    {
+      "label": "Low-floor / high-ceiling product",
+      "support": "Support path uses labelled boxes and sentence frames; core path uses a structured evidence board; extension path adds comparison or alternate ending analysis.",
+      "embedded": true
+    },
+    {
+      "label": "Multiple senses",
+      "support": "Tasks include sketching symbols, placing floor cards, acting freeze-frames, partner oral rehearsal, gallery walk, and short written defence.",
       "embedded": true
     },
     {
       "label": "Evidence frames",
-      "support": "Sentence frames support claim, visual evidence, written evidence, and explanation.",
+      "support": "Students use repeated frames: This shows..., This suggests..., This changes Will because..., This connects to the theme that....",
       "embedded": true
     },
     {
-      "label": "Choice and reduction",
-      "support": "Students can be assigned selected organizers rather than the full packet.",
-      "embedded": false
-    },
-    {
       "label": "Completion check",
-      "support": "Final student-facing checklist confirms core evidence before the summative response.",
+      "support": "Students must confirm claim, two ghosts, one symbol, one author/artist choice, theme, and final defence before submission.",
       "embedded": true
     }
   ],
   "differentiation_model": {
-    "support_pathway": "Use read-aloud, panel selection, oral rehearsal, sentence frames, and reduced organizer requirements.",
-    "core_pathway": "Complete assigned organizers and final response using at least one visual and one written evidence point.",
-    "extension_pathway": "Compare two visual choices, two character interactions, or the graphic novel and verse versions."
+    "support_pathway": "Use pre-selected ghost cards, a boxed evidence-board template, drawing labels, oral rehearsal, and sentence frames. Final defence may be a teacher conference instead of a full paragraph.",
+    "core_pathway": "Students choose evidence from the novel-study work, complete the organizer packet, and build a complete Elevator Evidence Board with a written or oral defence.",
+    "extension_pathway": "Students compare the graphic novel with the verse version, add a nonfiction revenge connection, create an alternate final panel/poem, or defend two possible interpretations of Will's decision."
   },
   "checkpoint_release_logic": [
-    "Students complete a visual evidence practice before character-floor analysis.",
-    "Students complete at least four floor organizers and three symbol rows before final response planning.",
-    "Completion check must confirm written evidence, visual evidence, and claim before final response submission."
+    "Students complete the elevator map before selecting evidence for the final board.",
+    "Students complete at least two character-impact entries and one symbol entry before building the project.",
+    "Students rehearse their claim orally with a partner or teacher before drafting the final defence.",
+    "Completion check must confirm claim, character evidence, symbol evidence, author/artist choice, theme, and defence before final submission."
   ],
   "teacher_implementation_notes": [
-    "Read quickly for story momentum, then reread key pages slowly for visual analysis.",
-    "Keep discussion text-focused and avoid asking for personal disclosure about violence or grief.",
-    "Student-facing pages do not include teacher keys or sensitive facilitation notes.",
-    "Use project_tools section in teacher guide for quick conferring and grouping decisions."
+    "This is a post-reading unit. Do not reread the whole book. Revisit short, high-impact sections only.",
+    "Keep the pace active: map, move, discuss, sketch, write briefly, then build.",
+    "Avoid personal disclosure prompts about violence or grief. Keep analysis anchored in Will, the text, and author/artist choices.",
+    "Use the acting tasks as freeze-frames or tableaus, not improvised violence scenes.",
+    "Student-facing pages must not include teacher keys or sensitive facilitation notes.",
+    "Use project_tools section in the teacher guide for quick conferring and grouping decisions."
   ],
   "likely_misconceptions": [
-    "Students may treat illustrations as decoration instead of evidence.",
-    "Students may identify symbols but not explain how symbols connect to theme.",
-    "Students may summarize the plot rather than explaining how a character interaction affects Will.",
-    "Students may believe the ambiguous ending has one correct hidden answer."
+    "Students may think there is only one correct answer to the ending.",
+    "Students may summarize a ghost scene instead of explaining how the interaction affects Will.",
+    "Students may identify a symbol but not connect it to theme or Will's decision.",
+    "Students may treat drawing or acting as the final evidence without explaining the meaning.",
+    "Students may use a visual detail as decoration instead of analytical evidence."
   ],
-  "pacing_shape": "multi_day_read_reread_analyze_write",
+  "pacing_shape": "nine_day_post_reading_analysis_project",
   "assessment_focus": [
-    "Visual inference",
+    "Inference about ambiguous ending",
     "Character impact",
     "Symbolism and theme",
-    "Evidence-based short response",
-    "Discussion preparation"
+    "Author or artist choice",
+    "Multimodal evidence communication",
+    "Short oral or written defence"
   ],
   "standards": [
     "BC ELA 8/9 - Comprehend and connect using oral, written, visual, and digital texts",
     "BC ELA 8/9 - Respond to text and explain how features and devices shape meaning",
+    "BC ELA 8/9 - Transform ideas and information to create original texts",
     "BC ELA 8/9 - Elements of visual/graphic texts, text features, literary elements, literary devices"
   ],
   "teacher_guide": {
-    "big_idea": "Graphic novels use words and images together to show pressure, grief, revenge, and choice.",
-    "project_prompt": "Build a final response that explains Will's likely decision at the end using one character interaction and one visual choice.",
+    "big_idea": "After finishing Long Way Down, students return to the elevator as investigators. Their job is to prove what Will decides using character impact, symbols, author/artist choices, and theme.",
+    "project_prompt": "Create an Elevator Evidence Board that answers: What does Will decide at the end, and what evidence proves your thinking?",
     "project_tools": [
-      "Panel Read-Aloud",
-      "Evidence Ladder",
-      "Gutter Pause",
-      "Theme Pressure Test"
+      "Elevator Floor Map",
+      "Ghost Impact Cards",
+      "Symbol Sketch Box",
+      "Freeze-Frame Rehearsal",
+      "Evidence Board Template",
+      "Claim Conference",
+      "Gallery Walk Feedback"
     ],
     "matching_bank": [
-      "decoding support",
-      "writing support",
-      "behavioural structure",
-      "extension"
+      "Draw it: sketch a symbol, scene, or evidence board section before writing.",
+      "Act it: create a freeze-frame showing how one ghost pressures or challenges Will.",
+      "Map it: place floor cards and arrows to show how Will's thinking changes.",
+      "Write it: use claim-evidence-explanation frames to build the final defence.",
+      "Speak it: rehearse the final claim in a partner talk or teacher conference."
     ],
     "learning_goals": [
-      "I can use visual and written evidence to support an inference.",
-      "I can explain how a character interaction changes Will or challenges his thinking.",
-      "I can track symbols and visual motifs across a graphic novel.",
-      "I can write a short analytical response with a clear claim, evidence, and explanation."
+      "I can infer Will's decision and support it with evidence.",
+      "I can explain how two ghosts affect Will's thinking.",
+      "I can explain one symbol and connect it to theme.",
+      "I can explain how an author or artist choice shapes meaning.",
+      "I can present my thinking visually, orally, and/or in writing."
     ],
     "materials": [
-      "Long Way Down graphic novel",
+      "Long Way Down text or graphic novel",
+      "Elevator map cards",
       "student learning guide",
-      "graphic organizers",
+      "graphic organizer packet",
       "assignment pages",
-      "rubrics",
+      "rubric",
       "sub notes",
-      "teacher keys"
+      "teacher keys",
+      "blank paper or poster paper for the Evidence Board",
+      "sticky notes for gallery walk"
     ],
     "teacher_notes": [
-      "Maintain teacher/student separation.",
-      "Use final response as summative evidence.",
-      "Use completion check before final submission."
+      "Use student choice strategically. Students choose how to enter the task, but everyone must explain evidence.",
+      "The final board may be paper, digital slide, folder-style case file, or one-page poster.",
+      "Teacher conference can count as the final defence for students who struggle to write extended responses.",
+      "The unit should feel like investigation and construction, not worksheet completion."
     ]
   },
   "pacing_guide": {
     "phases": [
       {
-        "label": "Launch graphic novel reading",
+        "label": "Day 1 - Re-enter the elevator",
         "duration_min": 60,
-        "teacher_move": "Notice/wonder samples; build visual-text vocabulary.",
-        "student_move": "Notice/Wonder organizer",
-        "checkpoint": "Notice/Wonder organizer"
+        "teacher_move": "Students rebuild the elevator sequence using floor cards, movement, sketching, and quick memory notes.",
+        "student_move": "Move floor cards, sketch the elevator map, and identify which ghost affected Will most.",
+        "checkpoint": "Elevator map completed with at least one note per selected floor."
       },
       {
-        "label": "How panels make meaning",
+        "label": "Day 2 - Character impact choices",
         "duration_min": 60,
-        "teacher_move": "Mini-lesson on panels, gutters, captions, bubbles, framing, colour, and inference.",
-        "student_move": "Visual evidence practice",
-        "checkpoint": "Visual evidence practice"
+        "teacher_move": "Model one ghost impact entry, then release students to draw, act, map, or write two character-impact entries.",
+        "student_move": "Choose two ghosts and show how each one changes or challenges Will's thinking.",
+        "checkpoint": "Two character-impact entries drafted."
       },
       {
-        "label": "Opening and setting",
+        "label": "Day 3 - Symbol sketch and meaning",
         "duration_min": 60,
-        "teacher_move": "Shared read; students track how setting is built through words and images.",
-        "student_move": "Setting tracker",
-        "checkpoint": "Setting tracker"
+        "teacher_move": "Launch with everyday symbols, then move to Long Way Down symbols and visual motifs.",
+        "student_move": "Sketch one symbol, label evidence, and explain what it represents.",
+        "checkpoint": "One symbol sketch plus explanation."
       },
       {
-        "label": "The Rules",
+        "label": "Day 4 - Author and artist choices",
         "duration_min": 60,
-        "teacher_move": "Reread The Rules; map pressure, loyalty, masculinity, and inherited codes.",
-        "student_move": "Rules pressure map",
-        "checkpoint": "Rules pressure map"
+        "teacher_move": "Students examine how close-up, shadow, silence, repetition, line breaks, or page layout shapes meaning.",
+        "student_move": "Choose one author/artist choice and explain its effect using the frame provided.",
+        "checkpoint": "One author/artist choice entry completed."
       },
       {
-        "label": "Buck - Floor 7",
+        "label": "Day 5 - Theme pressure test",
         "duration_min": 60,
-        "teacher_move": "Track first elevator interaction and the gun as power/pressure.",
-        "student_move": "Floor organizer",
-        "checkpoint": "Floor organizer"
+        "teacher_move": "Students sort topic cards, turn one topic into a theme statement, and connect it to evidence.",
+        "student_move": "Build a theme statement and test it against a character, symbol, and moment.",
+        "checkpoint": "Theme statement drafted."
       },
       {
-        "label": "Dani - Floor 6",
+        "label": "Day 6 - Discussion and freeze-frame rehearsal",
         "duration_min": 60,
-        "teacher_move": "Focus on innocence, memory, and the question that challenges certainty.",
-        "student_move": "Floor organizer",
-        "checkpoint": "Floor organizer"
+        "teacher_move": "Students rehearse claims through partner discussion, freeze-frames, and evidence challenge questions.",
+        "student_move": "Speak or act out evidence, then revise claim based on feedback.",
+        "checkpoint": "Claim revised after oral rehearsal."
       },
       {
-        "label": "Uncle Mark - Floor 5",
+        "label": "Day 7 - Build the Evidence Board",
         "duration_min": 60,
-        "teacher_move": "Analyze storytelling, movie framing, and consequences.",
-        "student_move": "Floor organizer",
-        "checkpoint": "Floor organizer"
+        "teacher_move": "Students assemble claim, two ghosts, one symbol, one author/artist choice, theme, and defence planning.",
+        "student_move": "Build the board using template, poster, slide, or case-file format.",
+        "checkpoint": "All required sections placed on board."
       },
       {
-        "label": "Will's father - Floor 4",
+        "label": "Day 8 - Finish and conference",
         "duration_min": 60,
-        "teacher_move": "Examine family loyalty, fear, and the cost of revenge.",
-        "student_move": "Floor organizer",
-        "checkpoint": "Floor organizer"
+        "teacher_move": "Students finish board and complete short teacher or peer conference on their evidence.",
+        "student_move": "Polish visuals, rehearse defence, and complete completion check.",
+        "checkpoint": "Completion check signed off."
       },
       {
-        "label": "Frick - Floor 3",
+        "label": "Day 9 - Gallery walk and reflection",
         "duration_min": 60,
-        "teacher_move": "Sort character connections and clarify the cycle of violence.",
-        "student_move": "Connection board",
-        "checkpoint": "Connection board"
-      },
-      {
-        "label": "Shawn - Floor 2 and ending",
-        "duration_min": 60,
-        "teacher_move": "Read ending; interpret silence, tears, and the unresolved question.",
-        "student_move": "Ending decision planner",
-        "checkpoint": "Ending decision planner"
-      },
-      {
-        "label": "Symbolism and visual motifs",
-        "duration_min": 60,
-        "teacher_move": "Track elevator, gun, L button, smoke, shadows, colour, and repeated images.",
-        "student_move": "Symbol tracker",
-        "checkpoint": "Symbol tracker"
-      },
-      {
-        "label": "Nonfiction connection",
-        "duration_min": 60,
-        "teacher_move": "Connect revenge/crying article to Will and theme.",
-        "student_move": "Article connection sheet",
-        "checkpoint": "Article connection sheet"
-      },
-      {
-        "label": "Discussion preparation",
-        "duration_min": 60,
-        "teacher_move": "Prepare for structured discussion using visual and written evidence.",
-        "student_move": "Discussion prep sheet",
-        "checkpoint": "Discussion prep sheet"
-      },
-      {
-        "label": "Final response drafting",
-        "duration_min": 60,
-        "teacher_move": "Plan and draft short analytical response with one visual and one written evidence point.",
-        "student_move": "Final response draft",
-        "checkpoint": "Final response draft"
-      },
-      {
-        "label": "Assessment and reflection",
-        "duration_min": 60,
-        "teacher_move": "Complete final response; self-check and completion conference.",
-        "student_move": "Final response + completion check",
-        "checkpoint": "Final response + completion check"
+        "teacher_move": "Students share boards through a low-pressure gallery walk and final reflection.",
+        "student_move": "Leave feedback, compare interpretations, and reflect on whether their thinking changed.",
+        "checkpoint": "Final reflection submitted."
       }
     ],
-    "buffer_note": "If behind, reduce optional organizer rows and preserve final response planning."
+    "buffer_note": "If behind, cut the nonfiction extension and gallery walk feedback count. Preserve Day 7 board build and Day 8 conference."
   },
   "task_sheet": {
-    "title": "Student Learning Guide",
-    "purpose_line": "Guide students through visual literacy, reading, evidence collection, and final response completion.",
+    "title": "Student Learning Guide - Elevator Evidence Project",
+    "purpose_line": "You already finished Long Way Down. Now you are going back as an investigator to prove what Will decides at the end.",
     "instructions": [
-      "Use this guide every class.",
-      "Complete the reading tracker and completion check."
+      "Use the work from each day to build your final Elevator Evidence Board.",
+      "You can enter the work by drawing, acting, mapping, speaking, or writing.",
+      "Every piece of evidence needs an explanation."
     ],
     "tasks": [
       {
-        "label": "Graphic novel vocabulary",
-        "prompt": "Define panel, gutter, caption, speech bubble, close-up, shadow, colour, and visual evidence in student-friendly language.",
-        "lines": 8,
-        "activity_type": "write_response"
+        "label": "Project question",
+        "prompt": "What does Will decide at the end, and what evidence proves your thinking?",
+        "lines": 3,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "open_response",
+          "heading": "Project Question",
+          "help": "There is no single correct answer. Your evidence and explanation matter."
+        }
       },
       {
-        "label": "Reading tracker",
-        "prompt": "For each assigned reading day, record what happened, one image that mattered, and one question you have.",
-        "lines": 10,
-        "activity_type": "close_reading"
+        "label": "Entry-point choice",
+        "prompt": "Choose how you want to begin today: draw it, act it, map it, speak it, or write it. Explain why this entry point helps you think.",
+        "lines": 4,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "choice_select",
+          "choice_options": [
+            "Draw it",
+            "Act it",
+            "Map it",
+            "Speak it",
+            "Write it"
+          ],
+          "help": "You still need to explain your thinking after using your entry point."
+        }
+      },
+      {
+        "label": "Claim builder",
+        "prompt": "I think Will chooses to ______ because ______.",
+        "lines": 4,
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "fill_in_blank",
+          "blank_prompts": [
+            "Will chooses to...",
+            "because..."
+          ]
+        }
       },
       {
         "label": "Completion check",
-        "prompt": "Before submitting the final response, confirm: I have a claim, one visual evidence point, one written evidence point, and an explanation that connects both to Will's decision.",
+        "prompt": "Before submitting, check that your board includes: claim, two ghosts, one symbol, one author/artist choice, one theme statement, and a defence.",
         "lines": 4,
-        "activity_type": "write_response"
+        "activity_type": "write_response",
+        "render_hints": {
+          "response_pattern": "compact_checkpoint",
+          "choice_options": [
+            "Claim",
+            "Ghost 1",
+            "Ghost 2",
+            "Symbol",
+            "Author/artist choice",
+            "Theme",
+            "Defence"
+          ]
+        }
       }
     ],
     "embedded_supports": [
-      "A visual detail can be evidence when you explain what it shows.",
-      "Use this frame: The artist shows ____. This suggests ____ because ____."
+      "Frame 1: This shows ______ because ______.",
+      "Frame 2: This changes Will because ______.",
+      "Frame 3: This connects to the theme that ______.",
+      "Frame 4: The author/artist uses ______ to make the reader feel or understand ______."
     ],
     "success_criteria": [
-      "I track meaning from words and images.",
-      "I explain my evidence, not just list it.",
-      "I complete the final checklist before submitting."
+      "I make a clear claim about Will's decision.",
+      "I explain two ghosts, one symbol, one author/artist choice, and one theme.",
+      "I use a visual, oral, dramatic, or written entry point to build my thinking.",
+      "I explain my evidence clearly."
+    ],
+    "optional_extensions": [
+      {
+        "day_label": "Extension",
+        "label": "Two possible endings",
+        "body": "Defend two different possible choices Will could make, then explain which one is better supported."
+      },
+      {
+        "day_label": "Extension",
+        "label": "Alternate ending panel or poem",
+        "body": "Create one final panel or short verse section and explain how it changes the theme."
+      }
     ]
   },
   "graphic_organizer": {
-    "title": "Graphic Organizer Packet",
+    "title": "Elevator Evidence Organizer",
     "organizer_type": "three_column",
     "columns": [
-      "Detail",
-      "Evidence",
-      "Inference"
+      "Evidence piece",
+      "What it shows",
+      "How it proves my claim"
     ],
-    "rows": 8,
-    "prompt": "Use words and images from the graphic novel to support inferences.",
+    "rows": 9,
+    "prompt": "Collect project evidence from two ghosts, one symbol, one author/artist choice, one theme, and one final claim.",
     "success_criteria": [
-      "I describe the visual or written evidence accurately.",
-      "I explain what the evidence suggests.",
-      "I connect evidence to character, symbol, or theme."
-    ]
+      "I describe evidence accurately.",
+      "I explain what the evidence shows.",
+      "I connect each evidence piece back to Will's decision."
+    ],
+    "render_hints": {
+      "response_pattern": "map_or_matrix",
+      "purpose_line": "Use this page as your planning board before building the final project."
+    }
   },
   "worksheet": {
-    "title": "Assignment Pages",
+    "title": "Assignment Pages - Elevator Evidence Project",
     "anchor": [
-      "Words and images both count as text evidence in a graphic novel.",
-      "A strong response explains how the evidence creates meaning."
+      "The final project is not about guessing. It is about proving your thinking.",
+      "Drawing, acting, mapping, speaking, and writing can all help you analyze, but your final board must explain the meaning."
     ],
+    "tip": "Keep asking: What does this evidence show about Will's decision?",
+    "tiers": {
+      "scaffolded": {
+        "questions": [
+          {
+            "q_num": "S1",
+            "q_text": "Choose from the list: Buck, Dani, Uncle Mark, Will's father, Frick, Shawn. Pick two ghosts and complete: This ghost makes Will think about ______.",
+            "n_lines": 6
+          },
+          {
+            "q_num": "S2",
+            "q_text": "Draw one symbol from the book. Label it. Finish: This symbol could represent ______.",
+            "n_lines": 5
+          },
+          {
+            "q_num": "S3",
+            "q_text": "Use the frame: I think Will chooses to ______ because ______.",
+            "n_lines": 4
+          }
+        ],
+        "sentence_starters": [
+          "This ghost affects Will because...",
+          "This symbol matters because...",
+          "This shows Will might choose to..."
+        ],
+        "tip": "Start with drawing or speaking before writing."
+      },
+      "core": {
+        "questions": [
+          {
+            "q_num": "C1",
+            "q_text": "Explain how two ghosts change or challenge Will's thinking. Use one detail for each ghost.",
+            "n_lines": 8
+          },
+          {
+            "q_num": "C2",
+            "q_text": "Choose one symbol. Explain what it represents and how it connects to the ending.",
+            "n_lines": 6
+          },
+          {
+            "q_num": "C3",
+            "q_text": "Choose one author or artist choice. Explain how it shapes the reader's understanding of Will.",
+            "n_lines": 6
+          },
+          {
+            "q_num": "C4",
+            "q_text": "Draft your final claim and theme statement.",
+            "n_lines": 6
+          }
+        ],
+        "sentence_starters": [
+          "The strongest evidence is...",
+          "This matters because...",
+          "The book suggests that..."
+        ],
+        "tip": "Use your strongest evidence, not the easiest evidence."
+      },
+      "extension": {
+        "questions": [
+          {
+            "q_num": "E1",
+            "q_text": "Defend two possible interpretations of Will's decision. Which one has stronger evidence?",
+            "n_lines": 8
+          },
+          {
+            "q_num": "E2",
+            "q_text": "Compare the graphic novel's visual choices with Reynolds' verse choices. What changes in meaning or impact?",
+            "n_lines": 8
+          },
+          {
+            "q_num": "E3",
+            "q_text": "Create an alternate final panel or short verse ending. Explain how it changes the theme.",
+            "n_lines": 8
+          }
+        ],
+        "challenge_extension": "Add a nonfiction connection about revenge, grief, or emotional pressure and explain how it strengthens your project.",
+        "tip": "Extension work should complicate the argument, not just add decoration."
+      }
+    },
     "questions": [
       {
         "q_num": 1,
-        "q_text": "Notice/Wonder: What do you notice about how graphic novels are built? What do you wonder about how to read them?",
-        "n_lines": 6
+        "q_text": "Elevator Map: Rebuild the elevator floors. For each ghost, write one phrase about what they make Will think about.",
+        "n_lines": 8
       },
       {
         "q_num": 2,
-        "q_text": "Visual Evidence Practice: Choose one panel. What do the words say? What do the images show? What do you infer?",
-        "n_lines": 8
+        "q_text": "Freeze-Frame Reflection: After acting or observing a scene, explain what the body positions, facial expressions, or silence showed about Will's pressure.",
+        "n_lines": 6
       },
       {
         "q_num": 3,
-        "q_text": "Character Floor Analysis: Choose one ghost. How does this character challenge Will's thinking? Include one visual detail.",
-        "n_lines": 8
+        "q_text": "Symbol Sketch: Draw one symbol and explain how it connects to Will's decision.",
+        "n_lines": 6
       },
       {
         "q_num": 4,
-        "q_text": "Symbol Tracker: Choose one symbol or visual motif. What might it represent? How does the graphic novel show this meaning visually?",
-        "n_lines": 8
+        "q_text": "Theme Test: Turn one topic into a theme statement and connect it to one ghost and one symbol.",
+        "n_lines": 6
       },
       {
         "q_num": 5,
-        "q_text": "Final Planning: What decision do you think Will makes? What character interaction and visual choice support your inference?",
+        "q_text": "Final Board Plan: What claim, evidence, symbol, author/artist choice, and theme will go on your board?",
         "n_lines": 8
       }
     ],
     "self_check": [
-      "I used at least one visual detail.",
-      "I used at least one written detail.",
-      "I explained how the evidence supports my thinking."
+      "I chose an entry point that helped me think.",
+      "I used at least two ghosts as evidence.",
+      "I explained one symbol.",
+      "I connected my evidence to Will's decision."
     ]
   },
+  "discussion_prep_sheet": {
+    "title": "Discussion Prep - What Does Will Decide?",
+    "discussion_prompt": "What does Will decide at the end of Long Way Down, and what evidence best supports your answer?",
+    "position_label": "My claim",
+    "evidence_count": 3,
+    "include_question": true,
+    "include_counterargument": true,
+    "success_criteria": [
+      "I state a claim clearly.",
+      "I use evidence from character, symbol, or author/artist choice.",
+      "I listen for evidence that might change or sharpen my thinking."
+    ]
+  },
+  "station_cards": {
+    "title": "Elevator Evidence Stations",
+    "instructions": [
+      "Move through the stations with your partner or group.",
+      "Each station gives you a different way to enter the analysis.",
+      "Record evidence you might use on your final board."
+    ],
+    "print_layout": {
+      "cards_per_page": 2,
+      "show_station_number": true,
+      "cut_guides": true
+    },
+    "cards": [
+      {
+        "station_number": 1,
+        "title": "Map It - Elevator Sequence",
+        "prompt": "Place the ghosts in order and add one pressure word beside each character.",
+        "task": "Create a quick floor map showing how Will's thinking changes as the elevator moves down.",
+        "response_mode": "record_fields",
+        "teacher_note": "Strong for students who need spatial structure."
+      },
+      {
+        "station_number": 2,
+        "title": "Act It - Freeze Frame",
+        "prompt": "Choose one elevator interaction and show it as a silent freeze-frame.",
+        "task": "Hold the pose for ten seconds. Observers identify what pressure, fear, doubt, or memory is being shown.",
+        "response_mode": "short_answer",
+        "teacher_note": "No weapon gestures. Keep it symbolic and silent."
+      },
+      {
+        "station_number": 3,
+        "title": "Draw It - Symbol Sketch",
+        "prompt": "Choose a symbol: elevator, gun, L button, smoke, tears, nighttime, middle drawer, or The Rules.",
+        "task": "Sketch the symbol and add three labels explaining what it might represent.",
+        "response_mode": "open_response"
+      },
+      {
+        "station_number": 4,
+        "title": "Write It - Claim Builder",
+        "prompt": "Use the frame: I think Will chooses to ______ because ______.",
+        "task": "Write two possible claims. Circle the stronger one and explain why.",
+        "response_mode": "short_answer"
+      },
+      {
+        "station_number": 5,
+        "title": "Speak It - Evidence Challenge",
+        "prompt": "Tell a partner your claim. Your partner asks: What is your strongest evidence?",
+        "task": "Revise your claim after hearing the challenge question.",
+        "response_mode": "short_answer"
+      }
+    ],
+    "success_criteria": [
+      "I tried more than one way to think about the text.",
+      "I recorded evidence that could help my project.",
+      "I explained the meaning of the evidence."
+    ]
+  },
+  "final_response_sheet": {
+    "title": "Final Defence - Elevator Evidence Board",
+    "prompt": "What does Will decide at the end? Defend your answer using your Evidence Board. You may write a paragraph or complete this as a short teacher conference.",
+    "planning_reminders": [
+      "Name your claim clearly.",
+      "Use two ghosts, one symbol, and one author/artist choice.",
+      "Explain how your evidence connects to the theme."
+    ],
+    "paragraph_support": {
+      "frame_strip": [
+        "I think Will decides to...",
+        "One ghost who affects him is...",
+        "Another important ghost is...",
+        "The symbol of... shows...",
+        "The author/artist choice of... helps the reader understand...",
+        "Together, this evidence shows..."
+      ],
+      "reminder_box": "A strong defence explains. It does not just list evidence."
+    },
+    "success_criteria": [
+      "My claim is clear.",
+      "I use evidence from my board.",
+      "I explain the meaning of the evidence.",
+      "I connect my thinking to a theme."
+    ],
+    "response_lines": 14
+  },
   "rubric_sheet": {
-    "title": "Final Visual Analysis Rubric",
-    "purpose_line": "Assess the final response about Will's likely decision using visual and written evidence.",
+    "title": "Elevator Evidence Board Rubric",
+    "purpose_line": "Assess the final multimodal project and oral/written defence.",
     "scale": {
       "min": 1,
       "max": 4,
@@ -335,124 +552,145 @@
     },
     "criteria": [
       {
-        "name": "Claim",
-        "descriptor": "Clear inference about Will's decision."
+        "name": "Claim about Will's decision",
+        "descriptor": "The project makes a clear, reasonable claim about what Will decides at the end."
       },
       {
-        "name": "Character impact",
-        "descriptor": "Explains how one character interaction affects Will's thinking."
+        "name": "Character impact evidence",
+        "descriptor": "The project explains how two elevator characters affect or challenge Will's thinking."
       },
       {
-        "name": "Visual evidence",
-        "descriptor": "Uses a visual choice as evidence and explains what it suggests."
+        "name": "Symbolism",
+        "descriptor": "The project explains one symbol and connects it to Will's decision, theme, or the cycle of violence."
       },
       {
-        "name": "Written evidence",
-        "descriptor": "Uses a written detail, dialogue, caption, or narration as evidence."
+        "name": "Author/artist choice",
+        "descriptor": "The project explains how a visual, structural, or writing choice shapes meaning."
       },
       {
-        "name": "Explanation",
-        "descriptor": "Connects evidence to meaning rather than only summarizing the story."
+        "name": "Multimodal communication",
+        "descriptor": "The project uses drawing, mapping, speaking, acting, or writing in a purposeful way that supports analysis."
+      },
+      {
+        "name": "Final defence",
+        "descriptor": "The student explains how the evidence fits together and connects to a theme."
       }
     ],
     "comment_fields": [
-      "One strength",
-      "One next step"
+      "Strongest evidence",
+      "Most effective mode used",
+      "Next step for analysis"
     ],
     "success_criteria": [
       "Claim is clear.",
-      "Visual evidence is explained.",
-      "Written evidence is explained.",
-      "The response connects to character, theme, or choice."
+      "Evidence is explained.",
+      "Visual/oral/dramatic/written choices support analysis.",
+      "The final defence connects to theme."
     ]
   },
   "sub_plan": {
-    "title": "Sub Notes",
-    "class_context": "Students are in a Grade 8/9 literacy intervention unit studying Long Way Down as a graphic novel. Work should stay calm, structured, and text-focused.",
-    "materials_location": "Use the printed student learning guide, assignment pages, and graphic organizer packet prepared for the day.",
-    "classroom_notes": "Students may need help starting. Keep directions short. Circulate and redirect to the written task.",
+    "title": "Sub Notes - Long Way Down Elevator Evidence Project",
+    "class_context": "Students have finished Long Way Down and are working on a post-reading evidence project. The unit uses drawing, writing, mapping, speaking, and controlled freeze-frame acting to help students analyze the ending.",
+    "materials_location": "Use the student learning guide, assignment pages, station cards, and current project organizer prepared for the day.",
+    "classroom_notes": "Keep the class text-focused and calm. Freeze-frame acting must be silent and symbolic. No weapon gestures or improvised violence scenes.",
     "steps": [
       {
-        "label": "Settle and read directions",
+        "label": "Settle and review goal",
         "duration_min": 10,
-        "what_to_do": "Give students the assigned packet page and read the task aloud.",
-        "what_to_say": "Today you are continuing the Long Way Down graphic novel work. Use the page in front of you. Focus on evidence from words and images.",
-        "what_students_do": "Students write name/date and underline the task question.",
+        "what_to_do": "Tell students today they are collecting or improving evidence for their final board.",
+        "what_to_say": "Your goal today is to improve one part of your Elevator Evidence Board. You can draw, map, speak, or write, but you must explain what your evidence shows.",
+        "what_students_do": "Students open to the assigned page and write the date.",
         "materials": [
-          "assigned page",
-          "graphic novel"
+          "assigned student page",
+          "Long Way Down text or graphic novel"
         ]
       },
       {
-        "label": "Independent or partner work",
+        "label": "Work block",
         "duration_min": 35,
-        "what_to_do": "Students complete the assigned page. Quiet partner talk is allowed if useful.",
-        "what_to_say": "Your job is to finish the page with enough detail that Mr. Friess can see your thinking.",
-        "what_students_do": "Students complete written responses and cite visual or written evidence.",
+        "what_to_do": "Students complete the assigned organizer, station card, or board section. Circulate and redirect to evidence/explanation.",
+        "what_to_say": "If you are stuck, choose one ghost or one symbol and answer: What does this show about Will?",
+        "what_students_do": "Students work independently or with a partner using the approved entry point.",
         "materials": [
-          "assigned page",
-          "pencil"
+          "organizer",
+          "pencil",
+          "project board or planning sheet"
         ]
       },
       {
-        "label": "Exit collection",
+        "label": "Exit check",
         "duration_min": 15,
-        "what_to_do": "Collect pages. Ask students to circle the response they want feedback on.",
-        "what_to_say": "Circle the answer you want feedback on before handing it in.",
-        "what_students_do": "Students finish, circle one response, and submit work.",
+        "what_to_do": "Students circle their strongest evidence and hand in or store work in the project folder.",
+        "what_to_say": "Circle the evidence you think is strongest. That is what Mr. Friess should look at first.",
+        "what_students_do": "Students circle evidence, clean up, and submit or store work.",
         "materials": [
-          "completed pages"
+          "project folder"
         ]
       }
     ],
-    "if_stuck": "Have students choose one panel and answer: What do I see? What does it make me think? Why?"
+    "if_stuck": "Use the sentence frame: This shows Will might choose to ______ because ______."
   },
   "answer_key": {
-    "title": "Teacher Keys",
+    "title": "Teacher Keys - Elevator Evidence Project",
     "entries": [
       {
-        "artifact_ref": "Notice/Wonder",
-        "expected_answer": "Students should notice panels, gutters, speech bubbles, captions, images, facial expressions, action, page layout, and how words and images work together.",
+        "artifact_ref": "Elevator Map",
+        "expected_answer": "Students should place Buck, Dani, Uncle Mark, Will's father, Frick, and Shawn in descending floor order and identify a pressure, question, or realization connected to each.",
         "acceptable_variants": [
-          "Noticing fewer words than a novel is acceptable if students also move toward visual features."
+          "Students may focus on four key ghosts if using the support pathway."
         ],
-        "teacher_note": "Redirect students from plot-only noticing to structure and visual-text features."
+        "teacher_note": "Look for change in Will's thinking, not just plot recall."
       },
       {
-        "artifact_ref": "Visual Evidence Practice",
-        "expected_answer": "A strong response describes a panel accurately and explains an inference based on image, words, or both.",
-        "teacher_note": "Look for 'This suggests...' reasoning."
+        "artifact_ref": "Character Impact",
+        "expected_answer": "Buck pressures Will and exposes the gun/rules; Dani forces Will to consider innocent victims and missing; Uncle Mark makes Will play out consequences; Will's father shows fear and the cost of revenge; Frick clarifies the chain of violence; Shawn's silence/tears make the ending morally unresolved.",
+        "acceptable_variants": [
+          "Any two ghosts can work if the student explains impact on Will."
+        ],
+        "teacher_note": "A strong response uses the word because or shows cause/effect."
       },
       {
-        "artifact_ref": "Character Floor Analysis",
-        "expected_answer": "Buck pressures Will and exposes the gun as power/pressure; Dani forces Will to think about missing and innocent victims; Uncle Mark makes Will imagine consequences; Will's father shows the terror and cost of revenge; Frick clarifies the cycle; Shawn's silence and tears make the ending morally unresolved.",
-        "teacher_note": "Students do not need identical interpretations, but they must connect the character to Will's thinking."
+        "artifact_ref": "Symbol Sketch",
+        "expected_answer": "Common interpretations: elevator as decision space/pause; gun as inherited violence/pressure; smoke or shadow as confusion/grief; L button as exit/lobby/life choice; The Rules as social code/trap; tears as emotional truth; middle drawer as hidden danger/inheritance.",
+        "acceptable_variants": [
+          "Multiple interpretations are acceptable if evidence is explained."
+        ],
+        "teacher_note": "Do not score drawing skill. Score symbolic explanation."
       },
       {
-        "artifact_ref": "Symbol Tracker",
-        "expected_answer": "Common symbols include elevator as pause/decision space, gun as inherited violence and pressure, smoke/shadow as confusion or grief, L button as exit/lobby/life choice, and repeated close-ups as emotional pressure.",
-        "teacher_note": "Accept multiple interpretations when evidence is explained."
+        "artifact_ref": "Author/Artist Choice",
+        "expected_answer": "Students may discuss close-ups, silence, shadows, page layout, panel size, repetition, line breaks, anagrams, second-person address, or elevator-floor structure. The key is explaining the effect on meaning.",
+        "teacher_note": "Prompt with: What does this choice make the reader notice or feel?"
       },
       {
-        "artifact_ref": "Final Response",
-        "expected_answer": "A strong response makes a reasonable inference about Will's decision and supports it with one character interaction and one visual choice.",
-        "teacher_note": "There is no single required answer for Will's final choice. Score reasoning and evidence."
+        "artifact_ref": "Final Claim",
+        "expected_answer": "There is no single correct answer. Students may argue that Will does not shoot, does shoot, freezes, returns upstairs, or remains undecided. The claim must be supported by evidence.",
+        "teacher_note": "Assess reasoning and evidence, not agreement with a preferred interpretation."
+      },
+      {
+        "artifact_ref": "Theme Statement",
+        "expected_answer": "Strong themes move beyond topics. Examples: Revenge can feel like loyalty, but it often continues pain. Rules can protect people, but they can also trap them. Grief can pressure people into choices they have not truly thought through. Seeing other perspectives can interrupt a cycle.",
+        "teacher_note": "If students give a topic, ask: What does the book teach about that topic?"
       }
     ],
     "scoring_guidance": [
-      "Do not require students to solve the ending definitively.",
-      "Prioritize visual evidence explanation because that is the graphic novel study skill.",
-      "Support students who summarize by asking: What does this detail show about Will?"
+      "A conference defence may replace a written paragraph for support-pathway students.",
+      "Drawing, acting, mapping, and speaking are valid entry points, but each must lead to an explanation.",
+      "No single interpretation of the ending is required.",
+      "Prioritize evidence explanation over decorative project design."
     ]
   },
   "bundle": {
-    "bundle_id": "lwd_graphic_novel_unit_bundle",
+    "bundle_id": "lwd_elevator_evidence_project_bundle",
     "declared_outputs": [
       "teacher_guide",
       "pacing_guide",
       "task_sheet",
       "graphic_organizer",
       "worksheet",
+      "discussion_prep_sheet",
+      "station_cards",
+      "final_response_sheet",
       "rubric_sheet",
       "sub_plan",
       "answer_key"
@@ -464,142 +702,127 @@
       "output_type": "teacher_guide",
       "audience": "teacher",
       "source_section": "teacher_guide",
-      "bundle": "lwd_graphic_novel_unit_bundle"
+      "bundle": "lwd_elevator_evidence_project_bundle"
     },
     {
       "output_id": "student_learning_guide_doc",
       "output_type": "task_sheet",
       "audience": "student",
       "source_section": "task_sheet",
-      "bundle": "lwd_graphic_novel_unit_bundle"
+      "bundle": "lwd_elevator_evidence_project_bundle"
     },
     {
       "output_id": "graphic_organizers_doc",
       "output_type": "graphic_organizer",
       "audience": "student",
       "source_section": "graphic_organizer",
-      "bundle": "lwd_graphic_novel_unit_bundle"
+      "bundle": "lwd_elevator_evidence_project_bundle"
     },
     {
       "output_id": "assignment_pages_doc",
       "output_type": "worksheet",
       "audience": "student",
       "source_section": "worksheet",
-      "bundle": "lwd_graphic_novel_unit_bundle"
+      "bundle": "lwd_elevator_evidence_project_bundle"
+    },
+    {
+      "output_id": "discussion_prep_doc",
+      "output_type": "discussion_prep_sheet",
+      "audience": "student",
+      "source_section": "discussion_prep_sheet",
+      "bundle": "lwd_elevator_evidence_project_bundle"
+    },
+    {
+      "output_id": "station_cards_doc",
+      "output_type": "station_cards",
+      "audience": "student",
+      "source_section": "station_cards",
+      "bundle": "lwd_elevator_evidence_project_bundle"
+    },
+    {
+      "output_id": "final_response_doc",
+      "output_type": "final_response_sheet",
+      "audience": "student",
+      "source_section": "final_response_sheet",
+      "bundle": "lwd_elevator_evidence_project_bundle",
+      "final_evidence": true
     },
     {
       "output_id": "assessment_rubrics_doc",
       "output_type": "rubric_sheet",
       "audience": "shared_view",
       "source_section": "rubric_sheet",
-      "bundle": "lwd_graphic_novel_unit_bundle",
-      "final_evidence": true
+      "bundle": "lwd_elevator_evidence_project_bundle"
     },
     {
       "output_id": "sub_notes_doc",
       "output_type": "sub_plan",
       "audience": "teacher",
       "source_section": "sub_plan",
-      "bundle": "lwd_graphic_novel_unit_bundle"
+      "bundle": "lwd_elevator_evidence_project_bundle"
     },
     {
       "output_id": "teacher_keys_doc",
       "output_type": "answer_key",
       "audience": "teacher",
       "source_section": "answer_key",
-      "bundle": "lwd_graphic_novel_unit_bundle"
+      "bundle": "lwd_elevator_evidence_project_bundle"
     }
   ],
   "days": [
     {
       "day": 1,
-      "focus": "Launch graphic novel reading",
-      "teacher_move": "Notice/wonder samples; build visual-text vocabulary.",
-      "student_evidence": "Notice/Wonder organizer"
+      "focus": "Re-enter the elevator",
+      "teacher_move": "Students rebuild the elevator sequence using movement, sketching, and floor cards.",
+      "student_evidence": "Elevator map"
     },
     {
       "day": 2,
-      "focus": "How panels make meaning",
-      "teacher_move": "Mini-lesson on panels, gutters, captions, bubbles, framing, colour, and inference.",
-      "student_evidence": "Visual evidence practice"
+      "focus": "Character impact choices",
+      "teacher_move": "Students use draw/act/map/write options to analyze two ghosts.",
+      "student_evidence": "Two ghost impact entries"
     },
     {
       "day": 3,
-      "focus": "Opening and setting",
-      "teacher_move": "Shared read; students track how setting is built through words and images.",
-      "student_evidence": "Setting tracker"
+      "focus": "Symbol sketch and meaning",
+      "teacher_move": "Students sketch and explain one symbol.",
+      "student_evidence": "Symbol sketch"
     },
     {
       "day": 4,
-      "focus": "The Rules",
-      "teacher_move": "Reread The Rules; map pressure, loyalty, masculinity, and inherited codes.",
-      "student_evidence": "Rules pressure map"
+      "focus": "Author and artist choices",
+      "teacher_move": "Students analyze one visual, structural, or writing choice.",
+      "student_evidence": "Author/artist choice entry"
     },
     {
       "day": 5,
-      "focus": "Buck - Floor 7",
-      "teacher_move": "Track first elevator interaction and the gun as power/pressure.",
-      "student_evidence": "Floor organizer"
+      "focus": "Theme pressure test",
+      "teacher_move": "Students build and test a theme statement.",
+      "student_evidence": "Theme statement"
     },
     {
       "day": 6,
-      "focus": "Dani - Floor 6",
-      "teacher_move": "Focus on innocence, memory, and the question that challenges certainty.",
-      "student_evidence": "Floor organizer"
+      "focus": "Discussion and freeze-frame rehearsal",
+      "teacher_move": "Students rehearse claims orally and physically before revising.",
+      "student_evidence": "Revised claim"
     },
     {
       "day": 7,
-      "focus": "Uncle Mark - Floor 5",
-      "teacher_move": "Analyze storytelling, movie framing, and consequences.",
-      "student_evidence": "Floor organizer"
+      "focus": "Build the Evidence Board",
+      "teacher_move": "Students assemble the final project.",
+      "student_evidence": "Draft Evidence Board"
     },
     {
       "day": 8,
-      "focus": "Will's father - Floor 4",
-      "teacher_move": "Examine family loyalty, fear, and the cost of revenge.",
-      "student_evidence": "Floor organizer"
+      "focus": "Finish and conference",
+      "teacher_move": "Students finish and complete a written or oral defence conference.",
+      "student_evidence": "Final board + completion check"
     },
     {
       "day": 9,
-      "focus": "Frick - Floor 3",
-      "teacher_move": "Sort character connections and clarify the cycle of violence.",
-      "student_evidence": "Connection board"
-    },
-    {
-      "day": 10,
-      "focus": "Shawn - Floor 2 and ending",
-      "teacher_move": "Read ending; interpret silence, tears, and the unresolved question.",
-      "student_evidence": "Ending decision planner"
-    },
-    {
-      "day": 11,
-      "focus": "Symbolism and visual motifs",
-      "teacher_move": "Track elevator, gun, L button, smoke, shadows, colour, and repeated images.",
-      "student_evidence": "Symbol tracker"
-    },
-    {
-      "day": 12,
-      "focus": "Nonfiction connection",
-      "teacher_move": "Connect revenge/crying article to Will and theme.",
-      "student_evidence": "Article connection sheet"
-    },
-    {
-      "day": 13,
-      "focus": "Discussion preparation",
-      "teacher_move": "Prepare for structured discussion using visual and written evidence.",
-      "student_evidence": "Discussion prep sheet"
-    },
-    {
-      "day": 14,
-      "focus": "Final response drafting",
-      "teacher_move": "Plan and draft short analytical response with one visual and one written evidence point.",
-      "student_evidence": "Final response draft"
-    },
-    {
-      "day": 15,
-      "focus": "Assessment and reflection",
-      "teacher_move": "Complete final response; self-check and completion conference.",
-      "student_evidence": "Final response + completion check"
+      "focus": "Gallery walk and reflection",
+      "teacher_move": "Students share boards and reflect on how their thinking changed.",
+      "student_evidence": "Final reflection"
     }
   ]
 }
