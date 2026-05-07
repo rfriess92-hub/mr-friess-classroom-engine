@@ -1,1 +1,5 @@
-packages: []
+# pnpm-workspace.yaml
+# No sub-packages are currently declared.
+# This file is retained as a placeholder for future workspace expansion.
+# If a sub-package is added (e.g., engine/ as a published package), declare it here.
+# See DECISIONS.md for the decision trail.
