@@ -5,12 +5,12 @@ on:
     branches:
       - main
     paths:
-      - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json'
+      - 'fixtures/generated/lwd-elevator-evidence-project.renderable.json'
       - '.github/workflows/lwd-graphic-novel-unit.yml'
       - 'docs/lwd-render-proof-trigger.md'
   pull_request:
     paths:
-      - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json'
+      - 'fixtures/generated/lwd-elevator-evidence-project.renderable.json'
       - '.github/workflows/lwd-graphic-novel-unit.yml'
       - 'docs/lwd-render-proof-trigger.md'
   workflow_dispatch:
@@ -48,17 +48,17 @@ jobs:
       - name: Repo doctor
         run: pnpm run doctor
 
-      - name: Schema check LWD graphic novel package
-        run: pnpm run schema:check -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json
+      - name: Schema check LWD elevator evidence package
+        run: pnpm run schema:check -- --package fixtures/generated/lwd-elevator-evidence-project.renderable.json
 
-      - name: Route plan LWD graphic novel package
-        run: pnpm run route:plan -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json --print-routes
+      - name: Route plan LWD elevator evidence package
+        run: pnpm run route:plan -- --package fixtures/generated/lwd-elevator-evidence-project.renderable.json --print-routes
 
-      - name: Render LWD graphic novel package
-        run: pnpm run render:package -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json --out output
+      - name: Render LWD elevator evidence package
+        run: pnpm run render:package -- --package fixtures/generated/lwd-elevator-evidence-project.renderable.json --out output
 
-      - name: Bundle QA LWD graphic novel package
-        run: pnpm run qa:bundle -- --package fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json --out output
+      - name: Bundle QA LWD elevator evidence package
+        run: pnpm run qa:bundle -- --package fixtures/generated/lwd-elevator-evidence-project.renderable.json --out output
 
       - name: Upload LWD rendered bundle evidence
         if: always()
