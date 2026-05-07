@@ -7,10 +7,12 @@ on:
     paths:
       - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json'
       - '.github/workflows/lwd-graphic-novel-unit.yml'
+      - 'docs/lwd-render-proof-trigger.md'
   pull_request:
     paths:
       - 'fixtures/generated/long-way-down-graphic-novel-study.grade8-ela.json'
       - '.github/workflows/lwd-graphic-novel-unit.yml'
+      - 'docs/lwd-render-proof-trigger.md'
   workflow_dispatch:
 
 jobs:
