@@ -1,0 +1,86 @@
+name: kamloops-growth-project-render
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/kamloops-growth-project-render.yml'
+      - 'scripts/build-kamloops-growth-project.mjs'
+      - 'scripts/patch-kamloops-final-evidence.mjs'
+      - 'fixtures/generated/kamloops-growth-project/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'engine/**'
+      - 'scripts/**'
+      - 'schemas/**'
+
+jobs:
+  render-kamloops-growth-project:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - kamloops-growth-project-overview.grade8-math-ela.json
+          - kamloops-growth-project-week-01.grade8-math-ela.json
+          - kamloops-growth-project-week-02.grade8-math-ela.json
+          - kamloops-growth-project-week-03.grade8-math-ela.json
+          - kamloops-growth-project-week-04.grade8-math-ela.json
+          - kamloops-growth-project-week-05.grade8-math-ela.json
+          - kamloops-growth-project-week-06.grade8-math-ela.json
+          - kamloops-growth-project-week-07.grade8-math-ela.json
+          - kamloops-growth-project-week-08.grade8-math-ela.json
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install Node dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install chromium
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
+
+      - name: Generate Kamloops Growth Project weekly packs
+        run: node scripts/build-kamloops-growth-project.mjs
+
+      - name: Mark final evidence in generated packs
+        run: node scripts/patch-kamloops-final-evidence.mjs
+
+      - name: Schema check pack
+        run: pnpm run schema:check -- --package fixtures/generated/kamloops-growth-project/${{ matrix.package }}
+
+      - name: Route plan pack
+        run: pnpm run route:plan -- --package fixtures/generated/kamloops-growth-project/${{ matrix.package }} --print-routes
+
+      - name: Render pack
+        run: pnpm run render:package -- --package fixtures/generated/kamloops-growth-project/${{ matrix.package }} --out output
+
+      - name: Bundle QA pack
+        run: pnpm run qa:bundle -- --package fixtures/generated/kamloops-growth-project/${{ matrix.package }} --out output
+
+      - name: List rendered artifacts
+        run: find output -type f | sort
+
+      - name: Upload rendered artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: kamloops-growth-project-${{ matrix.package }}
+          path: output
+          if-no-files-found: error
