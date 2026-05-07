@@ -10,7 +10,7 @@
   "assignment_family": "short_inquiry_sequence",
   "grade_subject_fit": "Chemistry 11 assessment/quiz proof using inline assessmentQuestion items already supported by schema.",
   "unit_context": "Students are learning to separate observations from inferences and use evidence to support claims about chemical reactions.",
-  "assignment_purpose": "Define a blocked proof for schema-level assessment and quiz output types before render implementation.",
+  "assignment_purpose": "Define a proof for schema-level assessment and quiz output types with explicit teacher-only marking guide routes.",
   "final_evidence_target": "Students complete a short quiz and a more formal assessment that both require evidence-based reasoning.",
   "student_task_flow": [
     "Complete the low-stakes quiz first.",
@@ -31,20 +31,21 @@
     "core_pathway": "Complete all questions with evidence and reasoning.",
     "extension_pathway": "Use precise vocabulary and explain why alternative interpretations are weaker."
   },
-  "checkpoint_release_logic": "This is a blocked proof fixture. It should pass schema and route planning, then fail loudly at render until A1.2 implements assessment and quiz templates.",
+  "checkpoint_release_logic": "Student assessment and quiz PDFs render separately from explicit teacher-only answer_key marking guide routes.",
   "teacher_implementation_notes": [
-    "Do not use this as a classroom-ready package until A1.2 is complete.",
-    "This fixture intentionally includes answer_key and marking_notes to test future student/teacher separation."
+    "Student assessment and quiz outputs must not show answer_key or marking_notes fields.",
+    "Teacher-only answer_key routes render marking guides from the same quiz and assessment source sections."
   ],
   "likely_misconceptions": [
     "Students may treat any visible change as proof of a chemical reaction.",
     "Students may write an inference before recording the observation that supports it."
   ],
-  "pacing_shape": "Single-period proof fixture with one quiz and one assessment route.",
+  "pacing_shape": "Single-period proof fixture with student quiz, student assessment, and teacher-only marking guide routes.",
   "assessment_focus": "Evidence of chemical reactions, observation versus inference, and claim-evidence-reasoning.",
   "quiz": {
     "title": "Reaction Evidence Quiz",
     "instructions": "Answer each question using the best evidence from class and lab observations.",
+    "teacher_notes": ["Suggested time: 12 minutes.", "Use as a low-stakes check before the formal assessment."],
     "time_limit_min": 12,
     "total_points": 8,
     "questions": [
@@ -79,6 +80,7 @@
   "assessment": {
     "title": "Chemical Reaction Evidence Assessment",
     "instructions": "Use complete sentences. Support your claim with specific observations and reasoning.",
+    "teacher_notes": ["Suggested time: 30 minutes.", "Students may use their observation notes, but not the marking guide."],
     "time_limit_min": 30,
     "total_points": 14,
     "proficiency_scale": true,
@@ -121,7 +123,7 @@
   },
   "bundle": {
     "bundle_id": "a1_assessment_quiz_blocked_proof_bundle",
-    "declared_outputs": ["quiz", "assessment"]
+    "declared_outputs": ["quiz", "assessment", "answer_key"]
   },
   "outputs": [
     {
@@ -135,6 +137,20 @@
       "output_id": "reaction_evidence_assessment",
       "output_type": "assessment",
       "audience": "student",
+      "source_section": "assessment",
+      "bundle": "a1_assessment_quiz_blocked_proof_bundle"
+    },
+    {
+      "output_id": "reaction_evidence_quiz_marking_guide",
+      "output_type": "answer_key",
+      "audience": "teacher",
+      "source_section": "quiz",
+      "bundle": "a1_assessment_quiz_blocked_proof_bundle"
+    },
+    {
+      "output_id": "reaction_evidence_assessment_marking_guide",
+      "output_type": "answer_key",
+      "audience": "teacher",
       "source_section": "assessment",
       "bundle": "a1_assessment_quiz_blocked_proof_bundle"
     }
