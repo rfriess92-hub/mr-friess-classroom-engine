@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
+// CI helper: generated packs need one final-evidence artifact and full audience coverage.
 const dir = 'fixtures/generated/kamloops-growth-project'
 
 for (const file of readdirSync(dir).filter((name) => name.endsWith('.json'))) {
