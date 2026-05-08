@@ -167,6 +167,21 @@ function validateVariantGroups(expectedArtifacts) {
   return { findings, blockers, group_count: groups.size }
 }
 
+function requiresSharedViewCoverage(pkg, expectedArtifacts) {
+  if (expectedArtifacts.some((artifact) => artifact.audience_bucket === 'shared_view')) return true
+
+  const qaContract = pkg.qa_contract ?? pkg.qa ?? pkg.bundle_qa ?? null
+  const bundleContract = pkg.bundle ?? pkg.render_plan?.bundle ?? null
+  return Boolean(
+    pkg.requires_shared_view
+    || pkg.shared_view_required
+    || qaContract?.requires_shared_view
+    || qaContract?.required_audience_buckets?.includes?.('shared_view')
+    || bundleContract?.requires_shared_view
+    || bundleContract?.required_audience_buckets?.includes?.('shared_view')
+  )
+}
+
 function emit(result) {
   console.log(JSON.stringify({ bundle_qa: result }, null, 2))
 }
@@ -294,7 +309,10 @@ if (primaryFinalEvidence.length !== 1) {
 }
 
 const audienceBuckets = new Set(expectedArtifacts.map((artifact) => artifact.audience_bucket))
-for (const requiredBucket of ['teacher_only', 'student_facing', 'shared_view']) {
+const requiredAudienceBuckets = ['teacher_only', 'student_facing']
+if (requiresSharedViewCoverage(pkg, expectedArtifacts)) requiredAudienceBuckets.push('shared_view')
+
+for (const requiredBucket of requiredAudienceBuckets) {
   if (!audienceBuckets.has(requiredBucket)) {
     blockers.push(`missing_audience_bucket_${requiredBucket}`)
     findings.push({
@@ -386,6 +404,7 @@ emit({
   revised_artifacts: revisedArtifacts.map((item) => item.filename),
   revised_visual_artifacts: revisedVisualArtifacts.map((item) => item.output_id),
   primary_final_evidence_artifacts: primaryFinalEvidence.map((item) => item.filename),
+  required_audience_buckets: requiredAudienceBuckets,
   findings,
   top_3_patches: buildPatches(),
   ship_rule: shipRule,
