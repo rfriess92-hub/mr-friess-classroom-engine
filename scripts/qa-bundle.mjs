@@ -7,6 +7,7 @@ import { resolveSourceSection } from '../engine/schema/source-section.mjs'
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
 import { listTaskSheetArtifactFilenames } from '../engine/pdf-html/task-sheet-packaging.mjs'
 import { validateGradeBandContractFit } from '../engine/generation/grade-band-contracts.mjs'
+import { runAssessmentAnswerLeakQa } from '../engine/render/assessment-answer-leak-qa.mjs'
 import { deriveBundleJudgment } from './bundle-judgment.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
@@ -118,7 +119,7 @@ function buildPatches() {
     {
       rank: 3,
       type: 'content_issue',
-      patch: 'Extend bundle QA to inspect text content across teacher/student artifacts so audience separation is checked semantically, not just structurally.'
+      patch: 'Use assessment answer-leak QA findings to remove teacher-only answer or marking fields from student-facing assessment and quiz artifacts.'
     }
   ]
 }
@@ -256,6 +257,7 @@ const blockers = []
 let fastScore = 0
 const variantValidation = validateVariantGroups(expectedArtifacts)
 const gradeBandValidation = validateGradeBandContractFit(pkg)
+const assessmentAnswerLeakQa = runAssessmentAnswerLeakQa({ pkg, routes, outDir })
 
 if (!validation.valid) {
   blockers.push('package_validation_failed')
@@ -337,6 +339,13 @@ if (blockedArtifacts.length > 0) {
   fastScore += 2
 }
 
+if (assessmentAnswerLeakQa.blockers.length > 0) {
+  blockers.push(...assessmentAnswerLeakQa.blockers)
+  findings.push(...assessmentAnswerLeakQa.findings)
+} else if (assessmentAnswerLeakQa.applies) {
+  fastScore += 2
+}
+
 if (variantValidation.blockers.length > 0) {
   blockers.push(...variantValidation.blockers)
   findings.push(...variantValidation.findings)
@@ -401,6 +410,7 @@ emit({
   blocked_artifacts: blockedArtifacts.map((item) => item.filename),
   variant_group_count: variantValidation.group_count,
   grade_band_contract_validation: gradeBandValidation,
+  assessment_answer_leak_qa: assessmentAnswerLeakQa,
   revised_artifacts: revisedArtifacts.map((item) => item.filename),
   revised_visual_artifacts: revisedVisualArtifacts.map((item) => item.output_id),
   primary_final_evidence_artifacts: primaryFinalEvidence.map((item) => item.filename),
