@@ -50,6 +50,28 @@ function applyClassroomReadabilityScale(html) {
   return html.replace('</head>', `${override}</head>`)
 }
 
+async function prepareSlidePage(page, html) {
+  await page.setViewportSize({ width: 1600, height: 900 })
+  await page.setContent(html, { waitUntil: 'domcontentloaded', timeout: 30000 })
+  await page.evaluate(() => document.fonts?.ready ?? Promise.resolve())
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))))
+}
+
+async function captureSlideScreenshot(page, html, imagePath) {
+  let lastError = null
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      await prepareSlidePage(page, html)
+      await page.screenshot({ path: imagePath, type: 'png', fullPage: false, timeout: 30000 })
+      return
+    } catch (error) {
+      lastError = error
+      await page.waitForTimeout(150 * attempt)
+    }
+  }
+  throw lastError
+}
+
 async function renderSlidesToImages(packet, tempDir) {
   let chromium
   try {
@@ -67,8 +89,7 @@ async function renderSlidesToImages(packet, tempDir) {
       const slideSpec = slides[index] && typeof slides[index] === 'object' ? slides[index] : {}
       const html = applyClassroomReadabilityScale(buildClassroomSlideHTML(packet, slideSpec, index))
       const imagePath = join(tempDir, `slide-${String(index + 1).padStart(2, '0')}.png`)
-      await page.setContent(html, { waitUntil: 'domcontentloaded' })
-      await page.screenshot({ path: imagePath, type: 'png', fullPage: false })
+      await captureSlideScreenshot(page, html, imagePath)
       rendered.push({
         image_path: imagePath,
         semantic_text: buildClassroomSlideSemanticText(packet, slideSpec, index),
