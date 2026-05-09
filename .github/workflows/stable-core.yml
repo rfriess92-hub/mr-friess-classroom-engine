@@ -126,6 +126,54 @@ jobs:
       - name: Render PBG Workplace Math 10 fixture
         run: pnpm run render:package -- --fixture pbg_workplace_math10 --out output
 
+      - name: Simulation schema check Math 8 garden add-on
+        run: pnpm run schema:check -- --package fixtures/plan-build-grow/pbg_math8_complete_coverage_addon.json
+
+      - name: Simulation route plan Math 8 garden add-on
+        run: pnpm run route:plan -- --package fixtures/plan-build-grow/pbg_math8_complete_coverage_addon.json --print-routes
+
+      - name: Simulation render Math 8 garden add-on
+        run: pnpm run render:package -- --package fixtures/plan-build-grow/pbg_math8_complete_coverage_addon.json --out output
+
+      - name: Simulation bundle QA Math 8 garden add-on
+        run: pnpm run qa:bundle -- --package fixtures/plan-build-grow/pbg_math8_complete_coverage_addon.json --out output
+
+      - name: Simulation schema check Science 8 garden add-on
+        run: pnpm run schema:check -- --package fixtures/plan-build-grow/pbg_science8_ecosystems_garden_addon.json
+
+      - name: Simulation route plan Science 8 garden add-on
+        run: pnpm run route:plan -- --package fixtures/plan-build-grow/pbg_science8_ecosystems_garden_addon.json --print-routes
+
+      - name: Simulation render Science 8 garden add-on
+        run: pnpm run render:package -- --package fixtures/plan-build-grow/pbg_science8_ecosystems_garden_addon.json --out output
+
+      - name: Simulation bundle QA Science 8 garden add-on
+        run: pnpm run qa:bundle -- --package fixtures/plan-build-grow/pbg_science8_ecosystems_garden_addon.json --out output
+
+      - name: Simulation schema check ELA 8 garden add-on
+        run: pnpm run schema:check -- --package fixtures/plan-build-grow/pbg_ela8_community_garden_evidence_addon.json
+
+      - name: Simulation route plan ELA 8 garden add-on
+        run: pnpm run route:plan -- --package fixtures/plan-build-grow/pbg_ela8_community_garden_evidence_addon.json --print-routes
+
+      - name: Simulation render ELA 8 garden add-on
+        run: pnpm run render:package -- --package fixtures/plan-build-grow/pbg_ela8_community_garden_evidence_addon.json --out output
+
+      - name: Simulation bundle QA ELA 8 garden add-on
+        run: pnpm run qa:bundle -- --package fixtures/plan-build-grow/pbg_ela8_community_garden_evidence_addon.json --out output
+
+      - name: Simulation render assessment proof
+        run: pnpm run render:package -- --package fixtures/tests/a1-assessment-quiz.proof.json --out output
+
+      - name: Simulation answer-leak QA assessment proof
+        run: pnpm run qa:assessment-answer-leak -- --package fixtures/tests/a1-assessment-quiz.proof.json --out output
+
+      - name: Simulation bundle QA assessment proof
+        run: pnpm run qa:bundle -- --package fixtures/tests/a1-assessment-quiz.proof.json --out output
+
+      - name: Simulation coverage report
+        run: pnpm run qa:coverage-report
+
       - name: Upload rendered bundle evidence
         if: always()
         uses: actions/upload-artifact@v4
