@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "updated_by": "agent-scaffold",
+  "phases": {
+    "phase-001-agent-scaffold": {
+      "status": "in_progress",
+      "branch": "agent/phase-and-qa-scaffold-v2",
+      "implementation_report": null,
+      "qa_report": null,
+      "last_check": null
+    },
+    "phase-002-careers-guest-speaker-package": {
+      "status": "planned",
+      "branch": null,
+      "implementation_report": null,
+      "qa_report": null,
+      "last_check": null
+    }
+  }
+}

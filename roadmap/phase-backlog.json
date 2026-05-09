@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "phases": [
+    {
+      "id": "phase-001-agent-scaffold",
+      "title": "Install phase implementation and QA agent workflow",
+      "mode": "repo-build-rendering-qa",
+      "type": "qa-phase",
+      "status": "in_progress",
+      "goal": "Add repo-level agent prompts, contracts, roadmap files, and lightweight guard scripts for phase implementation and QA cleanup.",
+      "allowed_areas": ["agents/", "contracts/", "roadmap/", "scripts/agent/", "package.json"],
+      "protected_areas": ["renderer/", "schemas/", "tests/", "fixtures/", "packages/"],
+      "required_outputs": [
+        "agents/phase-implementation.agent.md",
+        "agents/qa-cleanup.agent.md",
+        "contracts/engine-expansion-contract.md",
+        "contracts/page-role-contract.md",
+        "contracts/package-render-contract.md",
+        "contracts/classroom-content-contract.md",
+        "scripts/agent/run-phase-check.mjs",
+        "scripts/agent/run-qa-check.mjs"
+      ],
+      "required_checks": ["pnpm run agent:phase-check", "pnpm run agent:qa-check"],
+      "notes": "This phase installs workflow scaffolding only. It must not change renderer behavior or classroom content."
+    },
+    {
+      "id": "phase-002-careers-guest-speaker-package",
+      "title": "Create Careers 8 guest speaker package proof",
+      "mode": "pedagogy-content-generation",
+      "type": "content-phase",
+      "status": "planned",
+      "goal": "Create a renderable Careers 8 guest speaker package with teacher guide, student question sheet, reflection, and rubric outputs.",
+      "allowed_areas": ["packages/", "fixtures/", "docs/content-expansion/"],
+      "protected_areas": ["renderer/", "schemas/", "scripts/", "contracts/"],
+      "required_outputs": ["teacher_guide", "student_packet", "question_sheet", "reflection_sheet", "rubric_sheet"],
+      "required_checks": [
+        "pnpm test",
+        "pnpm run render:package -- --package <package-json> --out output",
+        "pnpm run qa:report -- --package <package-json> --out output",
+        "pnpm run agent:qa-check"
+      ],
+      "notes": "Use as the first small real phase after the scaffold lands."
+    }
+  ]
+}
