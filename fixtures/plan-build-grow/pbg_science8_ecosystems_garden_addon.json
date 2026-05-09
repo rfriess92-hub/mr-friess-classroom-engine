@@ -1,0 +1,286 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_science8_ecosystems_garden_addon",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 6,
+  "grade_band": "6-8",
+  "subject": "Science",
+  "grade": 8,
+  "topic": "Plan, Build, Grow — Science 8 Ecosystems Garden Add-On",
+  "theme": "science",
+  "assignment_family": "project_based_learning",
+  "grade_subject_fit": "Science 8 ecosystem add-on using the school planter as a concrete anchor for observation, classification, evidence, variables, human impacts, biodiversity, and short conclusions.",
+  "unit_context": "Students interact with the class planter and seed pucks daily. They observe plant growth, soil moisture, insects, sunlight, watering, seedling success, and human care choices in a Kamloops school garden context.",
+  "assignment_purpose": "Expand the existing Science 8 human impacts on ecosystems fixture into a garden-based multi-day package with short, scaffolded science tasks.",
+  "final_evidence_target": "Students make a short evidence-based recommendation for improving the planter ecosystem using observations, one data point, and one human-impact judgment.",
+  "student_task_flow": [
+    "Observe the planter or use a provided garden case card.",
+    "Record a small amount of evidence.",
+    "Classify or explain one ecosystem relationship.",
+    "Use the evidence to make a short conclusion or recommendation."
+  ],
+  "success_criteria": [
+    "I can make a careful garden observation.",
+    "I can use evidence instead of only opinion.",
+    "I can explain one way a human action affects the planter ecosystem."
+  ],
+  "supports_scaffolds": [
+    { "label": "Concrete anchor", "support": "Every task starts from the planter, seed pucks, data table, or a garden case card.", "embedded": true },
+    { "label": "Reduced writing", "support": "Student responses are labels, short notes, or 2–4 sentence explanations.", "embedded": true },
+    { "label": "Aligned differentiation", "support": "Level A records and labels; Level B explains with evidence; Level C compares or predicts.", "embedded": true }
+  ],
+  "differentiation_model": {
+    "support_pathway": "Use word banks, checkboxes, labelled diagrams, and one-sentence frames.",
+    "core_pathway": "Complete the observation, evidence, and short explanation task.",
+    "extension_pathway": "Compare two garden choices or predict a likely ecosystem effect."
+  },
+  "checkpoint_release_logic": "Teacher checkpoints identify whether students are observing, classifying, and using evidence before the final recommendation.",
+  "teacher_implementation_notes": [
+    "Use the real planter whenever possible. If the class cannot access it, use the provided sample observations.",
+    "Keep the focus on visible ecosystem evidence: plants, soil, water, light, insects, and human care choices.",
+    "Science 8 students can justify claims, but the evidence must be present and the writing structure visible.",
+    "Do not turn this into a full lab report. Keep conclusions short."
+  ],
+  "likely_misconceptions": [
+    "Students may describe a plant without connecting it to ecosystem conditions.",
+    "Students may call every human impact harmful without considering mixed effects.",
+    "Students may confuse observation with inference.",
+    "Students may treat seed germination as guaranteed rather than an outcome with uncertainty."
+  ],
+  "pacing_shape": "Six modules. Each module can run as one weekly science block with 10–30 minutes of daily garden observation.",
+  "assessment_focus": "Observation, classification, evidence use, simple variables, ecosystem relationships, biodiversity, human impacts, and short evidence-based conclusions.",
+  "lesson_overview": {
+    "title": "Plan, Build, Grow — Science 8 Ecosystems Garden Add-On",
+    "overview": "Students use the planter as a small ecosystem model. They observe living and non-living parts, track changes, classify helpful and harmful human actions, identify variables, and use evidence to recommend one improvement to the garden.",
+    "essential_question": "How do living things, non-living factors, and human choices affect our planter ecosystem?",
+    "big_idea": "A garden is a small ecosystem where organisms, conditions, and human actions interact.",
+    "sequence": [
+      { "day": "Module 1", "focus": "Ecosystem parts: living, once-living, and non-living components.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Module 2", "focus": "Plant needs, limiting factors, and visible evidence.", "artifacts": ["Slides", "Task Sheet", "Graphic Organizer", "Checkpoint"] },
+      { "day": "Module 3", "focus": "Observation vs inference and simple variables.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Module 4", "focus": "Food webs, decomposers, insects, and biodiversity in the garden.", "artifacts": ["Slides", "Task Sheet", "Graphic Organizer"] },
+      { "day": "Module 5", "focus": "Human impacts: watering, weeding, pesticides, shade, soil, and habitat choices.", "artifacts": ["Slides", "Task Sheet", "Checkpoint"] },
+      { "day": "Module 6", "focus": "Final evidence-based garden recommendation.", "artifacts": ["Slides", "Task Sheet", "Final Response", "Exit Ticket"] }
+    ],
+    "differentiation_note": "Students can work from direct observation, sample observation cards, or partner-supported recording while still answering the same science question.",
+    "integrity_checks": [
+      "Student work stays grounded in observable garden evidence.",
+      "Teacher checkpoint notes remain teacher-only.",
+      "No full formal lab report is required.",
+      "Final recommendation must include evidence."
+    ]
+  },
+  "teacher_guide": {
+    "title": "Teacher Guide — Science 8 Garden Ecosystems Add-On",
+    "big_idea": "The planter can function as a small ecosystem model for Science 8 when students observe concrete changes and connect them to living things, conditions, and human actions.",
+    "learning_goals": [
+      "Identify living and non-living parts of a small ecosystem.",
+      "Use observations as evidence for a short explanation.",
+      "Distinguish observation from inference.",
+      "Describe one helpful, harmful, or mixed human impact on the planter ecosystem.",
+      "Make a short evidence-based recommendation for improving garden conditions."
+    ],
+    "materials": [
+      "Class planter and seed pucks",
+      "Observation clipboard or notebook",
+      "Ruler, watering container, and soil moisture notes",
+      "Garden case cards for indoor backup",
+      "Plant/insect/decomposer word bank",
+      "Final recommendation sheet"
+    ],
+    "timing": [
+      { "time": "Daily 10–30 min", "activity": "Observe, water, count, measure, or record one garden condition." },
+      { "time": "Weekly 8–10 min", "activity": "Introduce the science idea with slides and one modelled example." },
+      { "time": "Weekly 25–35 min", "activity": "Complete the task sheet or organizer using planter evidence." },
+      { "time": "Weekly 5 min", "activity": "Exit check, partner share, or teacher checkpoint." }
+    ],
+    "teacher_notes": [
+      "Keep vocabulary concrete: organism, habitat, resource, evidence, variable, decomposer, biodiversity.",
+      "When students say something is good or bad, ask: what changed in the ecosystem?",
+      "Use sentence frames, but require at least one evidence word or number.",
+      "Do not overbuild the lab format. The goal is Science 8 reasoning, not formal report writing."
+    ],
+    "integrity_checks": [
+      "Prompt students to name evidence before making a claim.",
+      "Keep written responses short enough to finish in class.",
+      "Use mixed-impact examples so students do not default to one-sided answers."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "pbg_science8_ecosystems_garden_addon_bundle",
+    "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "task_sheet", "graphic_organizer", "checkpoint_sheet", "exit_ticket", "final_response_sheet"]
+  },
+  "outputs": [
+    { "output_id": "pbg_sci8_garden_overview", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview" },
+    { "output_id": "pbg_sci8_garden_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide" }
+  ],
+  "days": [
+    {
+      "day_id": "module1",
+      "day_label": "Module 1: What Is in Our Garden Ecosystem?",
+      "slides": [
+        { "type": "LAUNCH", "title": "Module 1: Our Planter Ecosystem", "layout": "hero", "content": { "subtitle": "Identify living and non-living parts of the planter." } },
+        { "type": "LEARN", "title": "Ecosystem parts", "layout": "three_rows", "content": { "rows": ["Living parts include plants, insects, and microbes.", "Non-living parts include water, soil minerals, air, sunlight, and space.", "Once-living parts, like dead leaves, can become food for decomposers."] } },
+        { "type": "TASK", "title": "Garden observation", "layout": "rows", "content": { "rows": ["Look closely at the planter.", "Record three things you see.", "Sort each item as living, once-living, or non-living.", "Use one sentence to explain one choice."] } }
+      ],
+      "task_sheet": {
+        "title": "Module 1 Task — Sort the Planter Ecosystem",
+        "instructions": ["Observe the planter or use the case card.", "Record short notes, not full paragraphs.", "Use the word bank if needed."],
+        "tasks": [
+          { "label": "Part 1: Observe", "prompt": "Write or draw three things you notice in or near the planter.", "lines": 4 },
+          { "label": "Part 2: Sort", "prompt": "Sort your three items: living, once-living, or non-living. Explain one choice in one sentence.", "lines": 4 },
+          { "label": "Part 3: Ecosystem connection", "prompt": "Choose one item. How could it affect a plant in the planter?", "lines": 3 }
+        ],
+        "embedded_supports": ["Word bank: plant, soil, water, sunlight, insect, dead leaf, air", "Sentence frame: I sorted ___ as ___ because ___."],
+        "success_criteria": ["I made a careful observation.", "I sorted ecosystem parts.", "I explained one choice with evidence."]
+      },
+      "exit_ticket": { "title": "Module 1 Exit Check", "prompt": "Name one living and one non-living part of our planter ecosystem. Explain why both matter.", "n_lines": 3, "success_criteria": ["I named both parts.", "I explained one connection."] },
+      "outputs": [
+        { "output_id": "s8_m1_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module1.slides" },
+        { "output_id": "s8_m1_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module1.task_sheet" },
+        { "output_id": "s8_m1_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.module1.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "module2",
+      "day_label": "Module 2: Plant Needs and Limiting Factors",
+      "slides": [
+        { "type": "LAUNCH", "title": "Module 2: What Do Our Plants Need?", "layout": "hero", "content": { "subtitle": "Use evidence to decide which condition may be helping or limiting plant growth." } },
+        { "type": "LEARN", "title": "Limiting factors", "layout": "three_rows", "content": { "rows": ["A plant needs light, water, air, space, and nutrients.", "A limiting factor is something there is not enough of.", "Evidence helps us decide which factor matters most today."] } },
+        { "type": "TASK", "title": "Check the conditions", "layout": "rows", "content": { "rows": ["Observe soil moisture, light, plant colour, and crowding.", "Record one piece of evidence.", "Choose one possible limiting factor.", "Suggest one small action."] } }
+      ],
+      "task_sheet": {
+        "title": "Module 2 Task — Plant Needs Evidence Check",
+        "instructions": ["Use your senses safely: look and touch soil only if your teacher says it is okay.", "Record evidence before making a claim.", "Choose one factor to explain."],
+        "tasks": [
+          { "label": "Part 1: Evidence table", "prompt": "Record one observation for each: soil moisture, sunlight, plant colour, space/crowding.", "lines": 5 },
+          { "label": "Part 2: Limiting factor", "prompt": "Which factor might be limiting growth today? Choose one and explain using your observation.", "lines": 4 },
+          { "label": "Part 3: Action", "prompt": "Suggest one small action: water, move, thin, shade, add support, or keep observing. Explain why.", "lines": 3 }
+        ],
+        "embedded_supports": ["Sentence frame: The evidence I noticed was ___. This suggests ___ might be limiting growth.", "Level A: choose from light, water, space, nutrients."],
+        "success_criteria": ["I recorded observations before making a claim.", "I identified one possible limiting factor.", "I suggested a reasonable action."]
+      },
+      "graphic_organizer": { "organizer_type": "evidence_table", "title": "Plant Needs Evidence Organizer", "columns": ["Condition", "Observation", "Possible effect"], "rows": ["Water", "Light", "Space", "Soil/nutrients"], "prompt": "Use this table to connect conditions to plant growth.", "success_criteria": ["I used observations.", "I connected evidence to plant needs."] },
+      "checkpoint_sheet": { "title": "Teacher Checkpoint — Plant Needs", "checkpoint_focus": "Check whether students can separate observation from claim when identifying a limiting factor.", "look_fors": ["Names a visible condition", "Uses evidence before claim", "Suggests a reasonable action"], "release_rule": "Move on when students can support one plant-needs claim with evidence." },
+      "outputs": [
+        { "output_id": "s8_m2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module2.slides" },
+        { "output_id": "s8_m2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module2.task_sheet" },
+        { "output_id": "s8_m2_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.module2.graphic_organizer" },
+        { "output_id": "s8_m2_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.module2.checkpoint_sheet" }
+      ]
+    },
+    {
+      "day_id": "module3",
+      "day_label": "Module 3: Observation, Inference, and Variables",
+      "slides": [
+        { "type": "LAUNCH", "title": "Module 3: What Do We Know?", "layout": "hero", "content": { "subtitle": "Separate what we observe from what we infer." } },
+        { "type": "LEARN", "title": "Observation and inference", "layout": "three_rows", "content": { "rows": ["An observation is what you directly notice or measure.", "An inference is a conclusion based on observations.", "A variable is something that can change in an investigation."] } },
+        { "type": "TASK", "title": "Garden investigation", "layout": "rows", "content": { "rows": ["Record one observation.", "Write one inference it could support.", "Name one variable that might affect the result.", "Keep the conclusion short."] } }
+      ],
+      "task_sheet": {
+        "title": "Module 3 Task — Observation, Inference, Variable",
+        "instructions": ["Write exactly what you see first.", "Then write what you think it may mean.", "Name one variable that could change."],
+        "tasks": [
+          { "label": "Part 1: Observation", "prompt": "Write one direct observation from the planter. Example: Two seedlings are shorter than the others.", "lines": 3 },
+          { "label": "Part 2: Inference", "prompt": "What might your observation mean? Use the frame: This might mean ___ because ___.", "lines": 3 },
+          { "label": "Part 3: Variable", "prompt": "Choose one variable that could affect plant growth: water, light, soil, space, temperature, or seed type. Explain in 1–2 sentences.", "lines": 4 }
+        ],
+        "embedded_supports": ["Observation = what you notice", "Inference = what you think it means", "Variable = something that can change"],
+        "success_criteria": ["I wrote an observation first.", "I wrote an inference based on evidence.", "I named one garden variable."]
+      },
+      "exit_ticket": { "title": "Module 3 Exit Check", "prompt": "Write one observation and one inference about the planter. Label each one clearly.", "n_lines": 3, "success_criteria": ["I labelled observation and inference.", "My inference is connected to evidence."] },
+      "outputs": [
+        { "output_id": "s8_m3_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module3.slides" },
+        { "output_id": "s8_m3_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module3.task_sheet" },
+        { "output_id": "s8_m3_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.module3.exit_ticket" }
+      ]
+    },
+    {
+      "day_id": "module4",
+      "day_label": "Module 4: Food Webs, Decomposers, and Biodiversity",
+      "slides": [
+        { "type": "LAUNCH", "title": "Module 4: Who Uses the Garden?", "layout": "hero", "content": { "subtitle": "Look for producers, consumers, decomposers, and signs of biodiversity." } },
+        { "type": "LEARN", "title": "Garden roles", "layout": "three_rows", "content": { "rows": ["Producers make their own food using sunlight.", "Consumers get energy by eating other organisms or plant material.", "Decomposers break down once-living material and return nutrients to soil."] } },
+        { "type": "TASK", "title": "Mini food web", "layout": "rows", "content": { "rows": ["Choose a producer in the planter.", "Add one possible consumer.", "Add one decomposer or once-living material.", "Explain why biodiversity can help an ecosystem." ] } }
+      ],
+      "task_sheet": {
+        "title": "Module 4 Task — Garden Food Web and Biodiversity",
+        "instructions": ["Use the word bank if you do not see every organism today.", "Draw arrows to show energy movement.", "Write one short explanation."],
+        "tasks": [
+          { "label": "Part 1: Roles", "prompt": "List one producer, one possible consumer, and one decomposer or decomposer food source in the garden.", "lines": 4 },
+          { "label": "Part 2: Food web", "prompt": "Draw a simple food chain or food web using at least three parts. Label each part.", "lines": 5 },
+          { "label": "Part 3: Biodiversity", "prompt": "Why might a planter with more plant types or insect visitors be more stable? Explain in 2–3 sentences.", "lines": 4 }
+        ],
+        "embedded_supports": ["Producer: plant", "Consumer: insect, bird, person", "Decomposer: fungus, bacteria, worm", "Sentence frame: More biodiversity can help because ___."],
+        "success_criteria": ["I identified ecosystem roles.", "I made a simple food web connection.", "I explained biodiversity using the garden." ]
+      },
+      "graphic_organizer": { "organizer_type": "concept_map", "title": "Garden Ecosystem Roles Map", "columns": ["Producer", "Consumer", "Decomposer", "Evidence"], "rows": ["Example 1", "Example 2", "Class observation"], "prompt": "Use this organizer to connect organisms and evidence.", "success_criteria": ["I used role vocabulary.", "I included evidence or a reasonable example."] },
+      "outputs": [
+        { "output_id": "s8_m4_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module4.slides" },
+        { "output_id": "s8_m4_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module4.task_sheet" },
+        { "output_id": "s8_m4_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.module4.graphic_organizer" }
+      ]
+    },
+    {
+      "day_id": "module5",
+      "day_label": "Module 5: Human Impacts on the Garden Ecosystem",
+      "slides": [
+        { "type": "LAUNCH", "title": "Module 5: Our Choices Change the Garden", "layout": "hero", "content": { "subtitle": "Judge human actions as mostly helpful, mostly harmful, or mixed using ecosystem evidence." } },
+        { "type": "LEARN", "title": "Helpful, harmful, or mixed", "layout": "three_rows", "content": { "rows": ["Watering can help plants, but overwatering can harm roots.", "Weeding can reduce competition, but removing habitat can affect insects.", "Pesticides may protect plants, but can affect other organisms." ] } },
+        { "type": "TASK", "title": "Impact sort", "layout": "rows", "content": { "rows": ["Choose one human action in the garden.", "Decide whether it is mostly helpful, mostly harmful, or mixed.", "Use one piece of evidence.", "Suggest a better care choice if needed." ] } }
+      ],
+      "task_sheet": {
+        "title": "Module 5 Task — Human Impact Sort",
+        "instructions": ["Do not decide from opinion only.", "Name what changes in the ecosystem.", "Use mostly helpful, mostly harmful, or mixed."],
+        "tasks": [
+          { "label": "Part 1: Sort actions", "prompt": "Sort these actions: watering daily, overwatering, adding mulch, using pesticide, planting native flowers, pulling all insects off plants.", "lines": 6 },
+          { "label": "Part 2: Evidence", "prompt": "Choose two actions. For each one, explain what ecosystem evidence would support your judgment.", "lines": 5 },
+          { "label": "Part 3: Better choice", "prompt": "Choose one mixed or harmful action. Suggest a better care choice for the planter.", "lines": 3 }
+        ],
+        "embedded_supports": ["Judgment words: mostly helpful, mostly harmful, mixed", "Evidence frame: This affects ___ because ___."],
+        "success_criteria": ["I judged actions using evidence.", "I explained what changes in the ecosystem.", "I suggested a reasonable improvement." ]
+      },
+      "checkpoint_sheet": { "title": "Teacher Checkpoint — Human Impacts", "checkpoint_focus": "Check whether students use ecosystem evidence rather than personal preference.", "look_fors": ["Names a human action", "Identifies an ecosystem change", "Allows mixed impacts when evidence supports it"], "release_rule": "Ready for final recommendation when students can connect one human action to one ecosystem effect." },
+      "outputs": [
+        { "output_id": "s8_m5_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module5.slides" },
+        { "output_id": "s8_m5_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module5.task_sheet" },
+        { "output_id": "s8_m5_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.module5.checkpoint_sheet" }
+      ]
+    },
+    {
+      "day_id": "module6",
+      "day_label": "Module 6: Final Garden Ecosystem Recommendation",
+      "slides": [
+        { "type": "LAUNCH", "title": "Module 6: Recommend the Next Garden Step", "layout": "hero", "content": { "subtitle": "Use observations and evidence to recommend one action for the planter ecosystem." } },
+        { "type": "LEARN", "title": "Strong recommendations", "layout": "three_rows", "content": { "rows": ["Name one action.", "Use evidence from the planter or class data.", "Explain how the action could affect the ecosystem." ] } },
+        { "type": "TASK", "title": "Final science evidence", "layout": "rows", "content": { "rows": ["Choose one recommendation.", "Use one observation.", "Use one data point or class result.", "Explain if the impact is helpful, harmful, or mixed." ] } }
+      ],
+      "task_sheet": {
+        "title": "Module 6 Task — Prepare Your Recommendation",
+        "instructions": ["Choose one recommendation only.", "Use evidence from the garden or class data.", "Keep your explanation short and clear."],
+        "tasks": [
+          { "label": "Part 1: Choose", "prompt": "I recommend we should: water differently, add mulch, thin seedlings, move the planter, add native flowers, keep observing, or another teacher-approved action.", "lines": 3 },
+          { "label": "Part 2: Evidence", "prompt": "Write one observation and one data point or class result that supports your recommendation.", "lines": 4 },
+          { "label": "Part 3: Impact", "prompt": "Will your recommendation be mostly helpful, mostly harmful, or mixed? Explain using ecosystem evidence.", "lines": 4 }
+        ],
+        "embedded_supports": ["Frame: I recommend ___. My evidence is ___. This could help because ___.", "Use exact garden evidence when possible."],
+        "success_criteria": ["I made one clear recommendation.", "I used observation or data evidence.", "I explained the ecosystem effect." ]
+      },
+      "final_response_sheet": {
+        "title": "Final Science 8 Garden Recommendation",
+        "prompt": "Write a short recommendation for improving or maintaining the planter ecosystem. Use one observation, one data point or class result, and one explanation of the likely ecosystem impact.",
+        "planning_reminders": ["Start with your recommendation.", "Use evidence from the garden.", "Explain the effect on plants, soil, water, insects, or habitat."],
+        "paragraph_support": { "frame_strip": ["I recommend ___ because ___.", "One observation that supports this is ___.", "One data point or class result is ___.", "This action would affect the ecosystem by ___."], "reminder_box": "A science recommendation uses evidence, not only preference." },
+        "response_lines": 8,
+        "success_criteria": ["I made one clear recommendation.", "I used at least two pieces of evidence.", "I explained the ecosystem impact." ]
+      },
+      "exit_ticket": { "title": "Module 6 Exit Check", "prompt": "What is one thing you understand better now about how humans affect small ecosystems?", "n_lines": 3, "success_criteria": ["I named one idea clearly.", "I connected it to the garden." ] },
+      "outputs": [
+        { "output_id": "s8_m6_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module6.slides" },
+        { "output_id": "s8_m6_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module6.task_sheet" },
+        { "output_id": "s8_m6_final_response", "output_type": "final_response_sheet", "audience": "student", "source_section": "days.module6.final_response_sheet", "final_evidence": true },
+        { "output_id": "s8_m6_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.module6.exit_ticket" }
+      ]
+    }
+  ]
+}
