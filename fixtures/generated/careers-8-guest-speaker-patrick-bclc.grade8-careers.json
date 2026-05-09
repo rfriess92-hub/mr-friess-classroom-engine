@@ -1,0 +1,206 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers_8_guest_speaker_patrick_bclc",
+  "primary_architecture": "single_period_full",
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Guest Speaker: Coding, Values, and Career Pathways",
+  "theme": "careers",
+  "standards": ["CLE.8.1", "CLE.8.2", "CLE.8.3"],
+  "assignment_family": "short_inquiry_sequence",
+  "grade_subject_fit": "Fits Grade 8 Career Education by helping students connect a real worker's education, values, daily tasks, and career pathway to their own questions and reflections.",
+  "unit_context": "A single-period guest speaker lesson for Patrick from BCLC, a senior coder, focused on education, workplace values, coding work, and possible pathways into technology careers.",
+  "assignment_purpose": "Students prepare respectful questions, listen for evidence about education, values, and job responsibilities, then reflect on what they learned about technology careers and their own possible next steps.",
+  "final_evidence_target": "A short reflection that connects one thing Patrick shared to the student's own interests, strengths, values, or future learning choices.",
+  "student_task_flow": [
+    "Preview the guest speaker purpose and respectful listening expectations.",
+    "Prepare focused questions about education, values, and coding work.",
+    "Record short notes during the presentation using the question sheet.",
+    "Complete a reflection that connects the speaker's pathway to personal interests, strengths, values, or next steps."
+  ],
+  "success_criteria": [
+    "I prepared at least two respectful questions before or during the talk.",
+    "I recorded evidence about Patrick's education, values, and job responsibilities.",
+    "I connected one idea from the speaker to my own interests, strengths, values, or future choices."
+  ],
+  "supports_scaffolds": [
+    "Students can choose from question stems instead of writing all questions from scratch.",
+    "The student packet separates before, during, and after sections.",
+    "The reflection uses sentence starters and a short structured response pattern.",
+    "Reduced-output option allows bullet notes instead of full paragraphs while preserving the same learning target."
+  ],
+  "differentiation_model": {
+    "support_pathway": "Use the provided question stems, circle or highlight useful ideas during the talk, and complete the reflection with sentence starters or bullet points.",
+    "core_pathway": "Prepare original questions, record evidence during the talk, and complete the reflection using specific details from the speaker.",
+    "extension_pathway": "Compare Patrick's pathway to another technology or community career and explain what skills, values, or choices overlap."
+  },
+  "checkpoint_release_logic": [
+    "Students prepare at least one question before the speaker begins.",
+    "Students record at least three during-speaker notes before starting the final reflection.",
+    "Students complete the reflection checklist before submission."
+  ],
+  "teacher_implementation_notes": [
+    "Keep the focus on pathway, values, and learning choices rather than on students needing to choose a technology career now.",
+    "Before Patrick begins, remind students that respectful questions can be about education, job tasks, values, problem solving, or workplace habits.",
+    "During the talk, pause briefly if needed so students can record notes in point form.",
+    "After the talk, give students quiet time to complete the reflection before class discussion."
+  ],
+  "likely_misconceptions": [
+    "Students may think coding careers require one exact pathway instead of multiple education and experience routes.",
+    "Students may focus only on salary or job title instead of values, problem solving, teamwork, and learning habits.",
+    "Students may ask broad questions that are hard to answer instead of focused questions."
+  ],
+  "pacing_shape": "single_period_guest_speaker_inquiry",
+  "assessment_focus": [
+    "Prepared and respectful question quality",
+    "Evidence captured from the guest speaker",
+    "Reflection connection to interests, strengths, values, or future learning choices"
+  ],
+  "teacher_guide": {
+    "title": "Teacher Guide - Careers 8 Guest Speaker: Patrick from BCLC",
+    "overview": "Students listen to Patrick, a senior coder from BCLC, and connect his education, values, and daily work to their own career learning.",
+    "essential_question": "What can one person's career pathway teach us about education, values, and work in technology?",
+    "opening_frame": "Today is not about deciding your future job. It is about listening for clues: what the work involves, what values matter, and what learning choices can open doors.",
+    "learning_goals": [
+      "I can prepare respectful questions for a guest speaker.",
+      "I can identify education, values, and job responsibilities in a real career story.",
+      "I can reflect on how a speaker's pathway connects to my own interests, strengths, or next steps."
+    ],
+    "materials": ["student packet", "guest speaker question sheet", "reflection sheet", "rubric"],
+    "timing": [
+      { "time": "0:00-0:05", "activity": "Welcome students, introduce Patrick from BCLC, and frame respectful listening expectations." },
+      { "time": "0:05-0:12", "activity": "Students complete the before-speaker section and prepare at least one question." },
+      { "time": "0:12-0:40", "activity": "Guest speaker talk and student note-taking. Prompt students to listen for education, values, and job responsibilities." },
+      { "time": "0:40-0:50", "activity": "Student questions. Encourage focused follow-up questions from the question bank." },
+      { "time": "0:50-0:60", "activity": "Quiet reflection, completion checklist, and collection." }
+    ],
+    "teacher_notes": [
+      "If students struggle to create questions, direct them to choose one question stem and personalize it.",
+      "If the talk runs long, protect the final 6-8 minutes for individual reflection.",
+      "Use the rubric as a light evidence check, not a high-pressure mark.",
+      "Keep teacher-only assessment guidance out of student-facing materials."
+    ],
+    "project_prompt": "Students will use Patrick's career story to explain how education, values, and daily work responsibilities can connect in a technology career.",
+    "matching_bank": [
+      "education pathway -> courses, training, certifications, practice, mentors",
+      "workplace value -> responsibility, teamwork, problem solving, curiosity, communication",
+      "coding task -> designing, testing, debugging, improving systems, helping users",
+      "personal connection -> interest, strength, value, question, possible next step"
+    ],
+    "model": {
+      "title": "Teacher model for a specific reflection connection",
+      "sample": "Patrick talked about problem solving and learning from errors. That connects to me because I like tasks where I can test an idea, fix it, and try again."
+    },
+    "assessment_focus": "Look for specific evidence from the speaker, respectful question preparation, and a realistic personal connection."
+  },
+  "task_sheet": {
+    "title": "Student Packet - Guest Speaker: Coding, Values, and Career Pathways",
+    "instructions": [
+      "Before Patrick speaks, prepare at least one respectful question.",
+      "During the talk, listen for education, values, and job responsibilities.",
+      "After the talk, complete the reflection using specific evidence from what Patrick shared."
+    ],
+    "tasks": [
+      { "label": "Before", "prompt": "Circle one area you want to listen for: education, values, coding work, teamwork, problem solving, or advice for students.", "lines": 2 },
+      { "label": "Question prep", "prompt": "Write one question you could ask Patrick. Use the question bank if you need a starting point.", "lines": 3 },
+      { "label": "During", "prompt": "Record one thing Patrick shares about education or learning after high school.", "lines": 3 },
+      { "label": "During", "prompt": "Record one workplace value, habit, or skill that seems important in his job.", "lines": 3 },
+      { "label": "During", "prompt": "Record one coding or technology task that Patrick describes.", "lines": 3 },
+      { "label": "After", "prompt": "Star one note you might use in your final reflection.", "lines": 1 }
+    ],
+    "embedded_supports": [
+      "Question stem: What helped you learn how to...?",
+      "Question stem: What values matter most in your work?",
+      "Question stem: What is one problem you solve in your job?",
+      "Question stem: What advice would you give Grade 8 students?"
+    ],
+    "success_criteria": [
+      "I prepared a respectful question.",
+      "I recorded evidence in at least three sections.",
+      "I starred one note to use in my reflection.",
+      "I completed the reflection checklist before handing it in."
+    ]
+  },
+  "worksheet": {
+    "title": "Guest Speaker Question Sheet - Patrick from BCLC",
+    "anchor": [
+      "A strong question is specific enough for the speaker to answer clearly.",
+      "A respectful question focuses on education, values, job tasks, problem solving, advice, or career pathway."
+    ],
+    "tip": "Choose one question stem, then add a detail that fits Patrick's work as a senior coder.",
+    "questions": [
+      { "q_num": 1, "q_text": "Education: What is one question you have about how Patrick learned the skills for his job?", "n_lines": 3 },
+      { "q_num": 2, "q_text": "Values: What is one question you have about the values or habits that matter in Patrick's workplace?", "n_lines": 3 },
+      { "q_num": 3, "q_text": "Job tasks: What is one question you have about what a senior coder actually does during a workday?", "n_lines": 3 },
+      { "q_num": 4, "q_text": "Advice: What is one question you have about choices Grade 8 students can make now to build useful skills?", "n_lines": 3 }
+    ],
+    "self_check": [
+      "At least one of my questions is specific.",
+      "My questions are respectful.",
+      "My questions connect to education, values, work, or advice."
+    ]
+  },
+  "final_response_sheet": {
+    "title": "Guest Speaker Reflection - What I Learned",
+    "prompt": "Use one idea Patrick shared to explain what you learned about technology careers, workplace values, or future learning choices.",
+    "planning_reminders": [
+      "Use one specific detail from the talk.",
+      "Connect the detail to your own interests, strengths, values, questions, or next step.",
+      "Point form is acceptable if your ideas are clear."
+    ],
+    "render_hints": {
+      "purpose_line": "This reflection is the final evidence for the guest speaker lesson.",
+      "prompt_label": "Reflection task",
+      "response_pattern": "claim_evidence_action",
+      "response_label": "Complete the reflection chain",
+      "response_note": "One clear idea in each box is enough.",
+      "structured_labels": ["What Patrick shared", "What it helped me understand", "My connection or next step"],
+      "quick_check_items": [
+        "I used a specific detail from the speaker.",
+        "I connected the detail to myself or my learning.",
+        "I wrote clearly enough for someone else to understand my thinking."
+      ]
+    },
+    "response_lines": 3,
+    "success_criteria": [
+      "I named one specific idea from Patrick.",
+      "I explained why that idea matters.",
+      "I connected the idea to my own interests, strengths, values, or next step."
+    ]
+  },
+  "rubric_sheet": {
+    "title": "Guest Speaker Learning Evidence Rubric",
+    "purpose_line": "Use this rubric to check question preparation, listening evidence, and reflection quality.",
+    "scale": {
+      "min": 1,
+      "max": 4,
+      "labels": { "1": "Beginning", "2": "Developing", "3": "Proficient", "4": "Strong" }
+    },
+    "criteria": [
+      { "name": "Question preparation", "descriptor": "The student prepared respectful questions connected to education, values, work, or advice." },
+      { "name": "Listening evidence", "descriptor": "The student recorded specific notes from the guest speaker instead of only general reactions." },
+      { "name": "Reflection connection", "descriptor": "The student connected one speaker idea to personal interests, strengths, values, questions, or next steps." }
+    ],
+    "comment_fields": ["One clear piece of evidence", "One area to strengthen", "Teacher note or next step"],
+    "repeat_for_subjects": 1,
+    "subject_label": "Student",
+    "include_signature_line": false,
+    "success_criteria": [
+      "My question was respectful and connected to the speaker.",
+      "My notes include specific evidence.",
+      "My reflection connects the speaker's ideas to my own learning."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "careers_8_guest_speaker_patrick_bclc_bundle",
+    "declared_outputs": ["teacher_guide", "task_sheet", "worksheet", "final_response_sheet", "rubric_sheet"]
+  },
+  "outputs": [
+    { "output_id": "teacher_guide_main", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "careers_8_guest_speaker_patrick_bclc_bundle" },
+    { "output_id": "student_packet_main", "output_type": "task_sheet", "audience": "student", "source_section": "task_sheet", "bundle": "careers_8_guest_speaker_patrick_bclc_bundle" },
+    { "output_id": "question_sheet_main", "output_type": "worksheet", "audience": "student", "source_section": "worksheet", "bundle": "careers_8_guest_speaker_patrick_bclc_bundle" },
+    { "output_id": "reflection_sheet_main", "output_type": "final_response_sheet", "audience": "student", "source_section": "final_response_sheet", "bundle": "careers_8_guest_speaker_patrick_bclc_bundle", "final_evidence": true },
+    { "output_id": "rubric_sheet_main", "output_type": "rubric_sheet", "audience": "student", "source_section": "rubric_sheet", "bundle": "careers_8_guest_speaker_patrick_bclc_bundle" }
+  ]
+}
