@@ -1,0 +1,133 @@
+name: content-phase-render-proof
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/content-phase-render-proof.yml'
+      - 'fixtures/**/*.json'
+      - 'packages/**/*.json'
+      - 'content/**/*.json'
+      - 'scripts/agent/filter-render-packages.mjs'
+      - 'scripts/render-package.mjs'
+      - 'scripts/schema-check.mjs'
+      - 'scripts/route-plan.mjs'
+      - 'scripts/qa-report.mjs'
+      - 'engine/**'
+      - 'schemas/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+
+jobs:
+  detect-render-packages:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.detect.outputs.packages }}
+      count: ${{ steps.detect.outputs.count }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Detect changed renderable packages
+        id: detect
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
+          else
+            BASE="HEAD~1"
+            HEAD="HEAD"
+          fi
+
+          git diff --name-only "$BASE...$HEAD" > changed-files.txt
+          node scripts/agent/filter-render-packages.mjs < changed-files.txt > changed-render-packages.txt
+
+          COUNT=$(grep -cve '^$' changed-render-packages.txt || true)
+          JSON=$(node -e "const fs=require('fs'); const rows=fs.readFileSync('changed-render-packages.txt','utf8').split(/\n/).filter(Boolean); process.stdout.write(JSON.stringify(rows));")
+
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "packages=$JSON" >> "$GITHUB_OUTPUT"
+          echo "Changed renderable package count: $COUNT"
+          cat changed-render-packages.txt
+
+      - name: Upload changed package list
+        uses: actions/upload-artifact@v4
+        with:
+          name: changed-render-packages
+          path: |
+            changed-files.txt
+            changed-render-packages.txt
+
+  render-changed-packages:
+    needs: detect-render-packages
+    if: needs.detect-render-packages.outputs.count != '0'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJSON(needs.detect-render-packages.outputs.packages) }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install Node dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install chromium
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
+
+      - name: Schema check package
+        run: pnpm run schema:check -- --package "${{ matrix.package }}"
+
+      - name: Route plan package
+        run: pnpm run route:plan -- --package "${{ matrix.package }}" --print-routes
+
+      - name: Render package
+        run: pnpm run render:package -- --package "${{ matrix.package }}" --out output
+
+      - name: Generate QA report
+        run: pnpm run qa:report -- --package "${{ matrix.package }}" --out output
+
+      - name: List rendered artifacts
+        run: find output -type f | sort
+
+      - name: Upload rendered package artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-phase-render-${{ strategy.job-index }}
+          path: output
+          if-no-files-found: error
+
+  no-render-packages:
+    needs: detect-render-packages
+    if: needs.detect-render-packages.outputs.count == '0'
+    runs-on: ubuntu-latest
+    steps:
+      - name: No changed renderable packages
+        run: echo "No changed renderable package JSON files detected."
