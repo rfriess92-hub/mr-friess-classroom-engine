@@ -1,6 +1,7 @@
 name: pbg-system-simulation-v2
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - '.github/workflows/pbg-system-simulation-v2.yml'
@@ -41,26 +42,82 @@ jobs:
       - name: Install Python dependencies
         run: python -m pip install --upgrade pip pytest reportlab python-pptx pypdf pillow lxml
 
-      - name: Math 8 v2 schema diagnostic
-        run: pnpm run schema:check -- --package fixtures/plan-build-grow/pbg_math8_complete_coverage_addon_v2.json
+      - name: Run full PBG system simulation
+        shell: bash
+        run: |
+          set +e
+          STATUS=0
+          mkdir -p output simulation-reports
+          echo "# PBG system simulation v2" > simulation-reports/summary.md
+          echo "" >> simulation-reports/summary.md
 
-      - name: Math 8 v2 route plan diagnostic
-        run: pnpm run route:plan -- --package fixtures/plan-build-grow/pbg_math8_complete_coverage_addon_v2.json --print-routes
+          run_check() {
+            local name="$1"
+            shift
+            local slug
+            slug=$(echo "$name" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//')
+            local log_file="simulation-reports/${slug}.log"
 
-      - name: Math 8 v2 render diagnostic
-        run: pnpm run render:package -- --package fixtures/plan-build-grow/pbg_math8_complete_coverage_addon_v2.json --out output
+            echo ""
+            echo "===== ${name} ====="
+            echo "COMMAND: $*"
+            echo ""
 
-      - name: List Math 8 output files before QA
-        if: always()
-        run: find output -maxdepth 3 -type f | sort || true
+            "$@" > "${log_file}" 2>&1
+            local code=$?
+            cat "${log_file}"
 
-      - name: Math 8 v2 bundle QA diagnostic
-        run: pnpm run qa:bundle -- --package fixtures/plan-build-grow/pbg_math8_complete_coverage_addon_v2.json --out output
+            if [ "${code}" -eq 0 ]; then
+              echo "- PASS: ${name}" >> simulation-reports/summary.md
+            else
+              echo "- FAIL: ${name} (exit ${code})" >> simulation-reports/summary.md
+              STATUS=1
+            fi
+
+            return 0
+          }
+
+          PACKAGES=(
+            "fixtures/plan-build-grow/pbg_math8_complete_coverage_addon_v2.json"
+            "fixtures/plan-build-grow/pbg_science8_ecosystems_garden_addon.json"
+            "fixtures/plan-build-grow/pbg_ela8_community_garden_evidence_addon_v2.json"
+            "fixtures/tests/a1-assessment-quiz.proof.json"
+          )
+
+          for package_path in "${PACKAGES[@]}"; do
+            package_name=$(basename "${package_path}" .json)
+            echo "" >> simulation-reports/summary.md
+            echo "## ${package_name}" >> simulation-reports/summary.md
+
+            run_check "${package_name} schema" pnpm run schema:check -- --package "${package_path}"
+            run_check "${package_name} route plan" pnpm run route:plan -- --package "${package_path}" --print-routes
+            run_check "${package_name} render package" pnpm run render:package -- --package "${package_path}" --out output
+            run_check "${package_name} bundle QA" pnpm run qa:bundle -- --package "${package_path}" --out output
+            run_check "${package_name} answer-leak QA" pnpm run qa:assessment-answer-leak -- --package "${package_path}" --out output
+            run_check "${package_name} QA report" pnpm run qa:report -- --package "${package_path}" --out output
+          done
+
+          echo "" >> simulation-reports/summary.md
+          echo "## Repo-level checks" >> simulation-reports/summary.md
+          run_check "stable node tests" pnpm test
+          run_check "python tests" python -m pytest tests/python
+          run_check "output contract audit" node scripts/audit-output-contracts.mjs
+          run_check "coverage report" pnpm run qa:coverage-report
+
+          echo "" >> simulation-reports/summary.md
+          echo "## Rendered files" >> simulation-reports/summary.md
+          find output -maxdepth 4 -type f | sort | tee simulation-reports/rendered-files.txt
+          sed 's/^/- /' simulation-reports/rendered-files.txt >> simulation-reports/summary.md
+
+          cat simulation-reports/summary.md
+          exit "${STATUS}"
 
       - name: Upload simulation output
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pbg-system-simulation-v2-output
-          path: output
+          path: |
+            output
+            simulation-reports
           if-no-files-found: ignore
