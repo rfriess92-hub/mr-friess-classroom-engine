@@ -61,15 +61,18 @@ jobs:
             echo ""
             echo "===== ${name} ====="
             echo "COMMAND: $*"
-            echo ""
 
             "$@" > "${log_file}" 2>&1
             local code=$?
-            cat "${log_file}"
 
             if [ "${code}" -eq 0 ]; then
+              echo "PASS: ${name}"
               echo "- PASS: ${name}" >> simulation-reports/summary.md
             else
+              echo "FAIL: ${name} (exit ${code})"
+              echo "----- tail ${log_file} -----"
+              tail -n 120 "${log_file}" || true
+              echo "----- end tail ${log_file} -----"
               echo "- FAIL: ${name} (exit ${code})" >> simulation-reports/summary.md
               STATUS=1
             fi
@@ -105,11 +108,24 @@ jobs:
           run_check "coverage report" pnpm run qa:coverage-report
 
           echo "" >> simulation-reports/summary.md
+          echo "## Failures" >> simulation-reports/summary.md
+          grep '^- FAIL:' simulation-reports/summary.md > simulation-reports/failures.md || true
+          if [ -s simulation-reports/failures.md ]; then
+            cat simulation-reports/failures.md >> simulation-reports/summary.md
+          else
+            echo "- none" >> simulation-reports/summary.md
+          fi
+
+          echo "" >> simulation-reports/summary.md
           echo "## Rendered files" >> simulation-reports/summary.md
-          find output -maxdepth 4 -type f | sort | tee simulation-reports/rendered-files.txt
+          find output -maxdepth 4 -type f | sort > simulation-reports/rendered-files.txt
           sed 's/^/- /' simulation-reports/rendered-files.txt >> simulation-reports/summary.md
 
-          cat simulation-reports/summary.md
+          echo ""
+          echo "===== COMPACT SIMULATION SUMMARY ====="
+          sed -n '1,/^## Rendered files$/p' simulation-reports/summary.md
+          echo "===== END COMPACT SIMULATION SUMMARY ====="
+
           exit "${STATUS}"
 
       - name: Upload simulation output
