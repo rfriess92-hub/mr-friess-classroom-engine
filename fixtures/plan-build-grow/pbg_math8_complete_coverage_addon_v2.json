@@ -1,0 +1,140 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_math8_complete_coverage_addon_v2",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 8,
+  "grade_band": "6-8",
+  "subject": "Mathematics",
+  "grade": 8,
+  "topic": "Plan, Build, Grow — Math 8 Complete Coverage Add-On",
+  "theme": "mathematics",
+  "assignment_family": "short_project",
+  "grade_subject_fit": "Grade 8 Math add-on for the Kamloops planter project using garden measurement, plant data, water amounts, and material cost decisions.",
+  "unit_context": "Students have planter boxes, herbs, and seed pucks to observe. Each module uses the garden as a concrete context for Math 8 practice.",
+  "assignment_purpose": "Patch Math 8 coverage gaps through one garden-based add-on package rather than disconnected worksheets.",
+  "final_evidence_target": "Students make a short garden recommendation using measurement, data, cost, and design evidence.",
+  "student_task_flow": ["Collect or read garden measurements.", "Use one visible math tool or formula.", "Record a short calculation, table, graph, or comparison.", "Explain one garden decision using numbers and units."],
+  "success_criteria": ["I can choose a math tool that fits the garden problem.", "I can show calculation steps with units.", "I can use garden data to support a recommendation."],
+  "supports_scaffolds": [
+    { "label": "Reduced question load", "support": "Each task sheet uses two or three larger garden problems instead of many small drills.", "embedded": true },
+    { "label": "Formula support", "support": "Formula reminders and sentence frames are embedded in student-facing pages.", "embedded": true },
+    { "label": "Differentiated options", "support": "Level A records and calculates with support; Level B completes the core task; Level C compares or justifies.", "embedded": true }
+  ],
+  "differentiation_model": {
+    "support_pathway": "Use pre-filled tables, formula boxes, calculators, and one-step garden numbers.",
+    "core_pathway": "Complete the main garden calculation and explain one decision using units.",
+    "extension_pathway": "Compare two options, justify a method, or create a second model using the same data."
+  },
+  "checkpoint_release_logic": ["Check whether students can identify the correct unit before moving from measurement to area or volume.", "Check whether students can match evidence to a garden decision before final recommendation writing."],
+  "teacher_implementation_notes": ["Use the real planter whenever possible.", "Calculators are appropriate because the priority is setting up the math correctly.", "Each module can run as one weekly math block with short daily garden interactions.", "Assign one pathway per student or group rather than all extension work to everyone."],
+  "likely_misconceptions": ["Students may confuse length, area, and volume units.", "Students may treat percent change as subtraction only.", "Students may graph plant height without equal intervals.", "Students may use Pythagorean theorem on non-right triangles."],
+  "pacing_shape": "Eight weekly modules with slides, task sheets, checkpoints, exit tickets, organizers, and a final response.",
+  "assessment_focus": ["measurement accuracy and unit use", "area, surface area, volume, and conversion reasoning", "ratios, rates, proportional reasoning, and percents", "algebra, equations, linear relations, and graphing", "Pythagorean theorem, data analysis, probability, and financial literacy"],
+  "lesson_overview": {
+    "title": "Plan, Build, Grow — Math 8 Complete Coverage Add-On",
+    "overview": "Students practise key Math 8 skills through planter dimensions, water, soil, plant growth, seed outcomes, graphing, cost, and design decisions.",
+    "essential_question": "How can Math 8 tools help us make better garden decisions in Kamloops?",
+    "big_idea": "Numbers, patterns, and data help us compare choices, check designs, and explain decisions in a real project.",
+    "sequence": [
+      { "day": "Module 1", "focus": "Measurement, units, perfect squares/cubes, and roots.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Module 2", "focus": "Area, surface area, and planter coverage.", "artifacts": ["Slides", "Task Sheet", "Graphic Organizer", "Checkpoint"] },
+      { "day": "Module 3", "focus": "Volume, soil, watering, and unit conversion.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Module 4", "focus": "Ratios, rates, and proportional reasoning.", "artifacts": ["Slides", "Task Sheet", "Graphic Organizer", "Checkpoint"] },
+      { "day": "Module 5", "focus": "Percents, germination, growth change, and budget.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Module 6", "focus": "Algebra, equations, input-output tables, graphing, and linear relations.", "artifacts": ["Slides", "Task Sheet", "Graphic Organizer", "Checkpoint"] },
+      { "day": "Module 7", "focus": "Pythagorean theorem and design checks.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Module 8", "focus": "Data analysis, probability, cost comparison, and final recommendation.", "artifacts": ["Slides", "Task Sheet", "Final Response", "Checkpoint"] }
+    ],
+    "differentiation_note": "Students work from the same garden context with supported, core, and extension pathways.",
+    "integrity_checks": ["Student tasks use garden or planter data.", "Teacher checkpoints remain teacher-facing.", "Final response requires numerical evidence."]
+  },
+  "teacher_guide": {
+    "title": "Teacher Guide — Math 8 Garden Complete Coverage Add-On",
+    "big_idea": "The planter project can carry broad Math 8 practice when each skill is tied to a visible garden decision.",
+    "learning_goals": ["Use perfect squares, perfect cubes, roots, and units in measurement contexts.", "Calculate area, surface area, volume, and unit conversions for planter decisions.", "Use ratios, rates, percents, and proportional reasoning with water, growth, seeds, and costs.", "Represent plant growth using expressions, equations, tables, graphs, and linear relations.", "Use Pythagorean theorem, data analysis, probability, and financial literacy in a final recommendation."],
+    "materials": ["Planter boxes or planter dimension cards", "Tape measures, rulers, graph paper, and calculators", "Daily plant growth log", "Seed germination count sheet", "Watering container with mL/L markings", "Material cost cards"],
+    "timing": [
+      { "time": "Daily 10–30 min", "activity": "Observe plants, measure growth, check moisture, count seedlings, or record watering." },
+      { "time": "Weekly 10 min", "activity": "Launch with slides and one worked example." },
+      { "time": "Weekly 25–40 min", "activity": "Complete the task sheet or organizer with support." },
+      { "time": "Weekly 5 min", "activity": "Exit check or checkpoint." }
+    ],
+    "teacher_notes": ["Keep the math visible and concrete.", "Use the actual planter when possible.", "Reduce number complexity while preserving the same concept.", "The final response should be short and evidence-based."],
+    "integrity_checks": ["Student pages do not include teacher checkpoint notes.", "All calculations show units.", "Each module connects to a practical garden decision."]
+  },
+  "bundle": { "bundle_id": "pbg_math8_complete_coverage_addon_v2_bundle", "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "task_sheet", "graphic_organizer", "checkpoint_sheet", "exit_ticket", "final_response_sheet"] },
+  "outputs": [
+    { "output_id": "pbg_m8_cc_v2_overview", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview" },
+    { "output_id": "pbg_m8_cc_v2_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide" }
+  ],
+  "days": [
+    {
+      "day_id": "module1",
+      "day_label": "Module 1: Measurement, Units, Squares, Cubes, and Roots",
+      "slides": [{ "type": "LAUNCH", "title": "Measure the Garden", "layout": "hero", "content": { "subtitle": "Use planter dimensions to review units, square numbers, cube numbers, and roots." } }, { "type": "LEARN", "title": "Math tools today", "layout": "three_rows", "content": { "rows": ["Area uses square units like cm².", "Volume uses cubic units like cm³.", "Roots work backward from area or volume."] } }],
+      "task_sheet": { "title": "Module 1 Task — Garden Measurements and Roots", "instructions": ["Use the planter or dimension card.", "Show units."], "tasks": [{ "label": "Measure", "prompt": "Record one planter dimension set. Length = ___ cm. Width = ___ cm. Height = ___ cm.", "lines": 3 }, { "label": "Squares and cubes", "prompt": "Circle perfect squares: 25, 30, 36, 42. Circle perfect cubes: 8, 12, 27, 32.", "lines": 3 }, { "label": "Work backward", "prompt": "A square tile has area 64 cm². Side length = √64 = ___ cm. A soil cube has volume 125 cm³. Edge length = ∛125 = ___ cm.", "lines": 3 }], "embedded_supports": ["Area is square units.", "Volume is cubic units."], "success_criteria": ["I recorded measurements with units.", "I identified perfect squares and cubes."] },
+      "exit_ticket": { "title": "Module 1 Exit Check", "prompt": "Write one square unit and one cubic unit from the planter project.", "n_lines": 2, "success_criteria": ["I named one area unit.", "I named one volume unit."] },
+      "outputs": [{ "output_id": "m1_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module1.slides" }, { "output_id": "m1_v2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module1.task_sheet" }, { "output_id": "m1_v2_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.module1.exit_ticket" }]
+    },
+    {
+      "day_id": "module2",
+      "day_label": "Module 2: Area and Surface Area for Planter Coverage",
+      "slides": [{ "type": "LAUNCH", "title": "Cover the Planter", "layout": "hero", "content": { "subtitle": "Calculate area and surface area for material decisions." } }],
+      "task_sheet": { "title": "Module 2 Task — Area and Surface Coverage", "instructions": ["Use A = L × W.", "Label cm²."], "tasks": [{ "label": "Bottom area", "prompt": "Planter base: L = 100 cm, W = 40 cm. Bottom area = ___ × ___ = _____ cm².", "lines": 2 }, { "label": "Side coverage", "prompt": "One long side is 100 cm by 30 cm. One short side is 40 cm by 30 cm. Find both areas.", "lines": 4 }, { "label": "Coverage decision", "prompt": "Which surfaces need liner? Explain using one area calculation.", "lines": 4 }], "embedded_supports": ["Area formula: A = L × W"], "success_criteria": ["I calculated rectangular area.", "I explained a coverage decision."] },
+      "graphic_organizer": { "organizer_type": "three_column", "title": "Planter Surface Area Organizer", "columns": ["Surface", "Dimensions", "Area"], "rows": 6, "prompt": "Organize which planter surfaces need material.", "success_criteria": ["I recorded area with cm²."] },
+      "checkpoint_sheet": { "title": "Teacher Checkpoint — Area and Surface Area", "checkpoint_focus": "Check one-face area versus total surface coverage.", "look_fors": ["Uses cm²", "Adds only required faces"], "release_rule": "Move on when students calculate one face area." },
+      "outputs": [{ "output_id": "m2_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module2.slides" }, { "output_id": "m2_v2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module2.task_sheet" }, { "output_id": "m2_v2_surface_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.module2.graphic_organizer" }, { "output_id": "m2_v2_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.module2.checkpoint_sheet" }]
+    },
+    {
+      "day_id": "module3",
+      "day_label": "Module 3: Volume, Soil, Watering, and Unit Conversion",
+      "slides": [{ "type": "LAUNCH", "title": "Fill and Water the Planter", "layout": "hero", "content": { "subtitle": "Use volume and unit conversion to estimate soil and water." } }],
+      "task_sheet": { "title": "Module 3 Task — Soil and Water Volume", "instructions": ["Use V = L × W × H.", "Convert cm³ to litres by dividing by 1000."], "tasks": [{ "label": "Soil volume", "prompt": "Planter: 100 cm × 40 cm × 30 cm. V = ___ × ___ × ___ = ______ cm³. Litres = ______ ÷ 1000 = ______ L.", "lines": 4 }, { "label": "Soil bags", "prompt": "One soil bag holds 25 L. Bags needed = litres ÷ 25 = ____. Round up to ____ bags.", "lines": 3 }, { "label": "Watering", "prompt": "Four plants each receive 250 mL. Total water = ___ mL = ___ L.", "lines": 3 }], "embedded_supports": ["1 L = 1000 mL", "1000 cm³ ≈ 1 L"], "success_criteria": ["I calculated volume.", "I converted units."] },
+      "exit_ticket": { "title": "Module 3 Exit Check", "prompt": "Convert 1500 mL to litres and name where that unit appears in the garden.", "n_lines": 3, "success_criteria": ["I converted mL to L."] },
+      "outputs": [{ "output_id": "m3_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module3.slides" }, { "output_id": "m3_v2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module3.task_sheet" }, { "output_id": "m3_v2_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.module3.exit_ticket" }]
+    },
+    {
+      "day_id": "module4",
+      "day_label": "Module 4: Ratios, Rates, and Proportional Reasoning",
+      "slides": [{ "type": "LAUNCH", "title": "Scale the Garden Plan", "layout": "hero", "content": { "subtitle": "Use ratios and rates to compare water, spacing, and planting plans." } }],
+      "task_sheet": { "title": "Module 4 Task — Ratios, Rates, and Plant Spacing", "instructions": ["Write ratios in order.", "Use units for rates."], "tasks": [{ "label": "Water rate", "prompt": "Three plants get 750 mL total. Water per plant = 750 ÷ 3 = ___ mL/plant. Six plants need ___ mL.", "lines": 3 }, { "label": "Spacing ratio", "prompt": "A plan uses 2 basil plants for every 3 lettuce plants. If we plant 4 basil, how many lettuce plants match the ratio?", "lines": 4 }, { "label": "Explain", "prompt": "Explain one watering or spacing decision using a rate or ratio.", "lines": 4 }], "embedded_supports": ["Rate frame: ___ mL per plant"], "success_criteria": ["I wrote a ratio.", "I found a unit rate."] },
+      "graphic_organizer": { "organizer_type": "three_column", "title": "Water and Plant Ratio Organizer", "columns": ["Plants", "Water", "Water per plant"], "rows": 4, "prompt": "Use the organizer to keep the rate consistent.", "success_criteria": ["I used mL per plant."] },
+      "checkpoint_sheet": { "title": "Teacher Checkpoint — Ratios and Rates", "checkpoint_focus": "Check total water versus water per plant.", "look_fors": ["Writes a ratio", "Uses per in the unit rate"], "release_rule": "Move on when students can find one unit rate." },
+      "outputs": [{ "output_id": "m4_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module4.slides" }, { "output_id": "m4_v2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module4.task_sheet" }, { "output_id": "m4_v2_ratio_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.module4.graphic_organizer" }, { "output_id": "m4_v2_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.module4.checkpoint_sheet" }]
+    },
+    {
+      "day_id": "module5",
+      "day_label": "Module 5: Percents, Germination, Growth Change, and Budget",
+      "slides": [{ "type": "LAUNCH", "title": "Percent Decisions", "layout": "hero", "content": { "subtitle": "Use percent for seed germination, growth change, discount, tax, and budget." } }],
+      "task_sheet": { "title": "Module 5 Task — Percent in the Garden", "instructions": ["Use percent = part ÷ whole × 100."], "tasks": [{ "label": "Germination percent", "prompt": "18 out of 24 seeds sprouted. Percent sprouted = 18 ÷ 24 × 100 = ____%.", "lines": 3 }, { "label": "Growth percent", "prompt": "A basil plant grew from 8 cm to 10 cm. Change = ___ cm. Percent change = change ÷ original × 100 = ____%.", "lines": 4 }, { "label": "Budget", "prompt": "A soil bag costs $8.00. It is 25% off, then 12% tax is added. Estimate the final cost for 4 bags.", "lines": 5 }], "embedded_supports": ["Percent formula: part ÷ whole × 100"], "success_criteria": ["I calculated percent from garden data.", "I estimated budget impact."] },
+      "exit_ticket": { "title": "Module 5 Exit Check", "prompt": "If 15 out of 20 seeds sprout, what percent sprouted?", "n_lines": 3, "success_criteria": ["I wrote a percent."] },
+      "outputs": [{ "output_id": "m5_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module5.slides" }, { "output_id": "m5_v2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module5.task_sheet" }, { "output_id": "m5_v2_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.module5.exit_ticket" }]
+    },
+    {
+      "day_id": "module6",
+      "day_label": "Module 6: Algebra, Equations, Linear Relations, and Graphing",
+      "slides": [{ "type": "LAUNCH", "title": "Model Plant Growth", "layout": "hero", "content": { "subtitle": "Use expressions, equations, tables, and graphs to model plant growth." } }],
+      "task_sheet": { "title": "Module 6 Task — Growth Rules and Graphs", "instructions": ["Complete the table before graphing.", "Label both axes."], "tasks": [{ "label": "Expression", "prompt": "A plant starts at 6 cm and grows 2 cm per day. Expression: 6 + 2d. Find the height for d = 0, 1, 2, 3.", "lines": 5 }, { "label": "Two-step equation", "prompt": "Solve: 6 + 2d = 14. What does d mean in the garden?", "lines": 4 }, { "label": "Graph", "prompt": "Graph your table. x-axis = days. y-axis = height in cm. Write one sentence describing the trend.", "lines": 5 }], "embedded_supports": ["Input = day number", "Output = plant height"], "success_criteria": ["I substituted values into an expression.", "I solved a two-step equation with support."] },
+      "graphic_organizer": { "organizer_type": "three_column", "title": "Plant Growth Input-Output Organizer", "columns": ["Day", "Expression", "Height"], "rows": 6, "prompt": "Complete each output before graphing.", "success_criteria": ["I completed the table first."] },
+      "checkpoint_sheet": { "title": "Teacher Checkpoint — Algebra and Graphing", "checkpoint_focus": "Check input as days and output as height.", "look_fors": ["Substitutes day values", "Labels axes with days and cm"], "release_rule": "Move to design checks when students can complete a small table." },
+      "outputs": [{ "output_id": "m6_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module6.slides" }, { "output_id": "m6_v2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module6.task_sheet" }, { "output_id": "m6_v2_growth_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.module6.graphic_organizer" }, { "output_id": "m6_v2_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.module6.checkpoint_sheet" }]
+    },
+    {
+      "day_id": "module7",
+      "day_label": "Module 7: Pythagorean Theorem and Design Checks",
+      "slides": [{ "type": "LAUNCH", "title": "Check the Diagonal", "layout": "hero", "content": { "subtitle": "Use the Pythagorean theorem for diagonal and square-layout checks." } }],
+      "task_sheet": { "title": "Module 7 Task — Pythagorean Design Check", "instructions": ["Use the theorem only for right triangles.", "Show each step."], "tasks": [{ "label": "Diagonal brace", "prompt": "A frame corner has legs 30 cm and 40 cm. 30² + 40² = c². c = √2500 = ___ cm.", "lines": 3 }, { "label": "Layout check", "prompt": "A bed has sides 60 cm and 80 cm. Estimate the diagonal using the same steps.", "lines": 5 }, { "label": "Explain", "prompt": "Why might a builder measure diagonals to check whether a rectangular planter is square?", "lines": 3 }], "embedded_supports": ["Formula: a² + b² = c²"], "success_criteria": ["I used a² + b² = c².", "I explained a design check."] },
+      "exit_ticket": { "title": "Module 7 Exit Check", "prompt": "A right triangle has legs 6 cm and 8 cm. Find the diagonal length.", "n_lines": 3, "success_criteria": ["I found the square root at the end."] },
+      "outputs": [{ "output_id": "m7_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module7.slides" }, { "output_id": "m7_v2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module7.task_sheet" }, { "output_id": "m7_v2_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.module7.exit_ticket" }]
+    },
+    {
+      "day_id": "module8",
+      "day_label": "Module 8: Data Analysis, Probability, and Final Recommendation",
+      "slides": [{ "type": "LAUNCH", "title": "Use the Data", "layout": "hero", "content": { "subtitle": "Use plant data, probability, and cost to make a final garden recommendation." } }],
+      "task_sheet": { "title": "Module 8 Task — Data and Probability Summary", "instructions": ["Use real class data if available.", "Choose one final recommendation."], "tasks": [{ "label": "Data summary", "prompt": "Plant heights: 6 cm, 8 cm, 8 cm, 10 cm, 13 cm. Find mean, median, mode, and range.", "lines": 5 }, { "label": "Probability", "prompt": "In one tray, 18 of 24 seeds sprouted. Write the probability as a fraction and percent if you can.", "lines": 3 }, { "label": "Cost comparison", "prompt": "Option A costs $36 for 12 plants. Option B costs $45 for 18 plants. Find cost per plant and choose the better value.", "lines": 5 }], "embedded_supports": ["Mean = add and divide", "Median = middle", "Range = highest - lowest"], "success_criteria": ["I summarized plant data.", "I compared cost per plant."] },
+      "final_response_sheet": { "title": "Final Garden Math Recommendation", "prompt": "Make a recommendation for the next garden decision. Use at least three numbers: one measurement or calculation, one data/probability result, and one cost or budget comparison.", "planning_reminders": ["Use numbers from your task sheets.", "Name the math tool you used."], "paragraph_support": { "frame_strip": ["I recommend ___ because ___.", "The measurement/calculation that supports this is ___.", "The data or probability shows ___.", "The cost comparison shows ___."], "reminder_box": "A strong recommendation uses evidence from the garden, not just opinion." }, "response_lines": 10, "success_criteria": ["I made one clear recommendation.", "I used at least three numbers.", "I explained how the numbers support my decision."] },
+      "checkpoint_sheet": { "title": "Teacher Checkpoint — Final Math Recommendation", "checkpoint_focus": "Check whether final recommendations include measurement, data/probability, and cost evidence.", "look_fors": ["Uses at least three numbers", "Connects data to recommendation"], "release_rule": "Ready to share when the recommendation includes measurement, data/probability, and cost evidence." },
+      "outputs": [{ "output_id": "m8_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module8.slides" }, { "output_id": "m8_v2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module8.task_sheet" }, { "output_id": "m8_v2_final_response", "output_type": "final_response_sheet", "audience": "student", "source_section": "days.module8.final_response_sheet", "final_evidence": true }, { "output_id": "m8_v2_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.module8.checkpoint_sheet" }]
+    }
+  ]
+}
