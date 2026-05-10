@@ -4,6 +4,7 @@
   "stable_families": [
     "short_inquiry_sequence",
     "short_project",
+    "project_based_learning",
     "performance_task",
     "structured_academic_discussion",
     "evidence_based_writing_task"
@@ -12,6 +13,7 @@
     "short_inquiry_sequence",
     "evidence_based_writing_task",
     "short_project",
+    "project_based_learning",
     "performance_task",
     "structured_academic_discussion"
   ],
@@ -80,6 +82,38 @@
         "reject product-only project structures"
       ],
       "failure_mode": "project becomes decoration"
+    },
+    "project_based_learning": {
+      "use_when": [
+        "students need sustained project work anchored in an authentic classroom context",
+        "students need to plan, build, observe, revise, and explain decisions over multiple sessions",
+        "students need a project structure that combines inquiry, product/process work, and evidence-based reflection"
+      ],
+      "primary_signals": [
+        "project based learning",
+        "project_based_learning",
+        "pbl",
+        "plan",
+        "build",
+        "grow",
+        "sustained project",
+        "authentic project",
+        "community project"
+      ],
+      "supporting_signals": [
+        "multi_day",
+        "evidence",
+        "reflection",
+        "revision",
+        "recommendation",
+        "classroom context"
+      ],
+      "hard_constraints": [
+        "project work must include evidence or reflection, not just making a product",
+        "student-facing tasks must remain scaffolded enough to complete in class",
+        "teacher-only checkpoints must remain separate from student-facing pages"
+      ],
+      "failure_mode": "project based learning becomes a loose collection of activities"
     },
     "performance_task": {
       "use_when": [
@@ -172,6 +206,10 @@
     [
       "short_inquiry_sequence",
       "short_project",
+      "evidence_based_writing_task"
+    ],
+    [
+      "project_based_learning",
       "evidence_based_writing_task"
     ],
     [
