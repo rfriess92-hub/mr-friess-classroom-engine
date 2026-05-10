@@ -1,0 +1,114 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "pbg_ela8_community_garden_evidence_addon_v2",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 5,
+  "grade_band": "6-8",
+  "subject": "English Language Arts",
+  "grade": 8,
+  "topic": "Plan, Build, Grow — ELA 8 Community Garden Evidence Add-On",
+  "theme": "english_language_arts",
+  "assignment_family": "short_project",
+  "grade_subject_fit": "Grade 8 ELA evidence and argument add-on using the school garden as a concrete community issue. Students practise claim, evidence, reasoning, discussion, vocabulary, and short final response writing with high scaffolding.",
+  "unit_context": "Students have helped build, plant, observe, water, or discuss the class garden/planter project in Kamloops. This ELA add-on asks students to explain why the garden matters, what problem it helps address, and what the class or school should do next.",
+  "assignment_purpose": "Expand the Plan, Build, Grow project into an ELA 8 evidence and community argument package without turning it into a long essay unit.",
+  "final_evidence_target": "Students write a short evidence-based response recommending one next step for the class garden and explaining how it supports community, care, learning, or growth.",
+  "student_task_flow": ["Read or listen to a short garden evidence set.", "Discuss what the garden does for the class or school community.", "Choose one claim and match it with evidence.", "Explain why the evidence supports the claim.", "Write a short final response using a visible frame."],
+  "success_criteria": ["I can make a clear claim about the garden.", "I can choose evidence that supports my claim.", "I can explain why the evidence matters.", "I can write a short final response using claim, evidence, and reasoning."],
+  "supports_scaffolds": [
+    { "label": "Short text set", "support": "Students work from short evidence cards instead of a long article.", "embedded": true },
+    { "label": "Sentence frames", "support": "Claim, evidence, and reasoning frames are embedded in student artifacts.", "embedded": true },
+    { "label": "Reduced writing load", "support": "Most tasks are sorting, matching, short notes, and one final paragraph or structured response.", "embedded": true }
+  ],
+  "differentiation_model": {
+    "support_pathway": "Use teacher-selected claim/evidence pairs, word banks, and one-sentence reasoning frames.",
+    "core_pathway": "Choose a claim, select evidence from the evidence set, and explain why it supports the claim.",
+    "extension_pathway": "Acknowledge another perspective or compare two possible next steps for the garden."
+  },
+  "checkpoint_release_logic": ["Check whether students can connect one claim to one piece of evidence before discussion.", "Check whether students can explain why their evidence matters before final writing."],
+  "teacher_implementation_notes": ["Use the actual class garden experience whenever possible before using the evidence cards.", "Keep discussion concrete: what changed, who benefited, what problem remains, what should happen next.", "For support-needs students, reduce the number of evidence cards but keep the same claim/evidence/reasoning target.", "Do not require a five-paragraph essay. The final product is a short evidence-based response."],
+  "likely_misconceptions": ["Students may write only opinion without evidence.", "Students may copy evidence without explaining it.", "Students may describe the garden but not make a claim.", "Students may choose evidence that is interesting but not connected to their claim."],
+  "pacing_shape": "Five modules. Each module can be used as one ELA block, with daily garden observation or reflection continuing for 10–20 minutes when useful.",
+  "assessment_focus": ["claim clarity", "evidence selection", "reasoning", "discussion preparation", "vocabulary use", "short final response writing"],
+  "lesson_overview": {
+    "title": "Plan, Build, Grow — ELA 8 Community Garden Evidence Add-On",
+    "overview": "Students use the class garden as a real community issue. They read short evidence cards, discuss the value and challenges of the garden, sort claims and evidence, practise reasoning, and write a short recommendation for the garden's next step.",
+    "essential_question": "How can evidence help us explain why a community project matters?",
+    "big_idea": "A clear argument connects a claim, evidence, and reasoning to a real audience or community need.",
+    "sequence": [
+      { "day": "Module 1", "focus": "Community issue launch and garden evidence set.", "artifacts": ["Slides", "Task Sheet", "Exit Ticket"] },
+      { "day": "Module 2", "focus": "Claim, evidence, and reasoning with garden examples.", "artifacts": ["Slides", "Task Sheet", "Graphic Organizer", "Checkpoint"] },
+      { "day": "Module 3", "focus": "Discussion prep: community, care, growth, and challenges.", "artifacts": ["Slides", "Discussion Prep Sheet", "Exit Ticket"] },
+      { "day": "Module 4", "focus": "Planning a short recommendation with evidence.", "artifacts": ["Slides", "Task Sheet", "Graphic Organizer", "Checkpoint"] },
+      { "day": "Module 5", "focus": "Final short evidence-based garden recommendation.", "artifacts": ["Slides", "Final Response Sheet", "Exit Ticket"] }
+    ],
+    "differentiation_note": "Students can use selected evidence cards, partner talk, oral rehearsal, or sentence frames while still working toward the same evidence/reasoning target.",
+    "integrity_checks": ["Teacher checkpoint notes remain teacher-facing.", "Student work stays concrete and connected to the garden.", "Final evidence is recorded in the final response sheet.", "The package does not require a long essay."]
+  },
+  "teacher_guide": {
+    "title": "Teacher Guide — ELA 8 Community Garden Evidence Add-On",
+    "big_idea": "Argument writing is more accessible when students write about a real project they can see, touch, and discuss.",
+    "learning_goals": ["Guide students to make a clear claim about a community project.", "Support students in selecting evidence that matches a claim.", "Help students explain why evidence matters instead of only copying details.", "Use discussion to prepare students for short evidence-based writing."],
+    "materials": ["Class garden or planter project", "Garden evidence cards", "Claim/evidence/reasoning organizer", "Discussion prep sheet", "Final response sheet"],
+    "timing": [
+      { "time": "Module 1 / 10 min", "activity": "Launch the garden as a community issue and read the short evidence set." },
+      { "time": "Module 2 / 30–40 min", "activity": "Model claim + evidence + reasoning and complete the organizer." },
+      { "time": "Module 3 / 25–35 min", "activity": "Use discussion prep before short group or partner talk." },
+      { "time": "Module 4 / 30–40 min", "activity": "Plan the final recommendation and check evidence fit." },
+      { "time": "Module 5 / 30–45 min", "activity": "Write the final short response." }
+    ],
+    "teacher_notes": ["Model one complete claim/evidence/reasoning chain before students work independently.", "Use oral rehearsal for students who struggle to start writing.", "The strongest checkpoint question is: How does that evidence prove your claim?", "Keep the final task short enough that students finish with a complete response."],
+    "look_fors": ["Clear claim about the garden or community need", "Evidence selected from the garden experience or evidence cards", "Reasoning that explains why the evidence matters", "Recommendation that is realistic for the class or school"],
+    "support_moves": ["Offer two possible claims and ask the student to choose one.", "Read evidence cards aloud and ask: Which card helps prove your claim?", "Use the frame: This evidence matters because ___."],
+    "extension_moves": ["Ask students to acknowledge a challenge, such as time, water, cost, or maintenance.", "Ask students to compare two possible next steps and recommend one."]
+  },
+  "bundle": { "bundle_id": "pbg_ela8_community_garden_evidence_addon_v2_bundle", "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "task_sheet", "graphic_organizer", "discussion_prep_sheet", "checkpoint_sheet", "exit_ticket", "final_response_sheet"] },
+  "outputs": [
+    { "output_id": "ela8_garden_v2_overview", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview" },
+    { "output_id": "ela8_garden_v2_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide" }
+  ],
+  "days": [
+    {
+      "day_id": "module1",
+      "day_label": "Module 1: The Garden as a Community Issue",
+      "slides": [{ "type": "TITLE", "title": "The Garden as a Community Issue", "layout": "hero", "content": { "subtitle": "Use short evidence cards to think about why the garden matters." } }, { "type": "ENGAGE", "title": "What problem does the garden help solve?", "layout": "prompt", "content": { "scenario": "Our class has built and planted a garden. Some people see learning and community-building; others worry about time, water, and maintenance.", "prompts": ["What good has the garden already done?", "What challenge still needs attention?", "Who is affected by the garden?"] } }],
+      "task_sheet": { "title": "Module 1 Task — Garden Evidence Cards", "instructions": ["Read or listen to the evidence cards.", "Choose evidence that connects to a real garden claim.", "Use short notes."], "tasks": [{ "label": "Notice", "prompt": "Write two things the garden has helped students do, learn, or notice.", "lines": 4 }, { "label": "Challenge", "prompt": "Write one challenge the garden still has. Think about water, time, space, heat, cost, or care.", "lines": 3 }, { "label": "First claim", "prompt": "Finish one claim: The garden matters because ___. OR The garden needs ___ because ___.", "lines": 3 }], "embedded_supports": ["Claim frame: The garden matters because ___.", "Evidence frame: One thing I noticed was ___."], "success_criteria": ["I chose evidence from the garden context.", "I wrote one possible claim.", "I named one benefit or challenge."] },
+      "exit_ticket": { "title": "Module 1 Exit Check", "prompt": "Write one claim about the garden and one piece of evidence that could support it.", "n_lines": 3, "success_criteria": ["I wrote a claim.", "I included evidence."] },
+      "outputs": [{ "output_id": "ela8_m1_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module1.slides" }, { "output_id": "ela8_m1_v2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module1.task_sheet" }, { "output_id": "ela8_m1_v2_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.module1.exit_ticket" }]
+    },
+    {
+      "day_id": "module2",
+      "day_label": "Module 2: Claim, Evidence, and Reasoning",
+      "slides": [{ "type": "TITLE", "title": "Claim + Evidence + Reasoning", "layout": "hero", "content": { "subtitle": "Turn garden observations into a clear argument." } }, { "type": "LEARN", "title": "The argument chain", "layout": "three_rows", "content": { "rows": ["Claim: what you think.", "Evidence: what proves or supports it.", "Reasoning: why the evidence matters."] } }],
+      "task_sheet": { "title": "Module 2 Task — Build an Argument Chain", "instructions": ["Choose one claim only.", "Match it with evidence.", "Explain the connection."], "tasks": [{ "label": "Claim", "prompt": "My claim is: ___.", "lines": 2 }, { "label": "Evidence", "prompt": "The evidence that supports my claim is: ___.", "lines": 3 }, { "label": "Reasoning", "prompt": "This evidence matters because ___.", "lines": 4 }, { "label": "Check", "prompt": "Does your evidence prove your claim, or is it just related? Explain briefly.", "lines": 3 }], "embedded_supports": ["Claim = what I think", "Evidence = what proves it", "Reasoning = why it matters"], "success_criteria": ["I wrote one clear claim.", "I chose matching evidence.", "I explained why the evidence matters."] },
+      "graphic_organizer": { "organizer_type": "three_column", "title": "Garden Claim-Evidence-Reasoning Organizer", "columns": ["Claim", "Evidence", "Reasoning"], "rows": 4, "prompt": "Use this organizer to test which claim has the strongest evidence.", "success_criteria": ["I matched evidence to the claim.", "I wrote reasoning, not just repeated the evidence."] },
+      "checkpoint_sheet": { "title": "Teacher Checkpoint — Claim and Evidence Fit", "checkpoint_focus": "Check whether students have evidence that actually supports the claim.", "look_fors": ["Claim is clear", "Evidence comes from garden context", "Reasoning explains why evidence matters", "Student can say the connection aloud"], "release_rule": "Move to discussion prep when the student can point to one claim, one evidence detail, and one reasoning sentence." },
+      "outputs": [{ "output_id": "ela8_m2_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module2.slides" }, { "output_id": "ela8_m2_v2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module2.task_sheet" }, { "output_id": "ela8_m2_v2_cer_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.module2.graphic_organizer" }, { "output_id": "ela8_m2_v2_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.module2.checkpoint_sheet" }]
+    },
+    {
+      "day_id": "module3",
+      "day_label": "Module 3: Discussion Prep — Community, Care, and Growth",
+      "slides": [{ "type": "TITLE", "title": "Prepare to Discuss", "layout": "hero", "content": { "subtitle": "Use evidence before speaking about the garden's value and challenges." } }],
+      "discussion_prep_sheet": { "title": "Garden Discussion Prep Sheet", "discussion_prompt": "What next step would make the class garden more useful for learning, community, care, or growth?", "position_label": "My position", "evidence_count": 2, "include_question": true, "include_counterargument": true, "success_criteria": ["I stated a clear position.", "I prepared evidence before speaking.", "I brought one real question into the discussion."] },
+      "exit_ticket": { "title": "Module 3 Exit Check", "prompt": "Which discussion idea helped you think differently about the garden? Explain in 1–2 sentences.", "n_lines": 3, "success_criteria": ["I named one idea.", "I explained why it mattered."] },
+      "outputs": [{ "output_id": "ela8_m3_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module3.slides" }, { "output_id": "ela8_m3_v2_discussion_prep", "output_type": "discussion_prep_sheet", "audience": "student", "source_section": "days.module3.discussion_prep_sheet" }, { "output_id": "ela8_m3_v2_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.module3.exit_ticket" }]
+    },
+    {
+      "day_id": "module4",
+      "day_label": "Module 4: Plan the Garden Recommendation",
+      "slides": [{ "type": "TITLE", "title": "Plan the Recommendation", "layout": "hero", "content": { "subtitle": "Choose a realistic next step and support it with evidence." } }, { "type": "LEARN", "title": "Recommendation writing", "layout": "three_rows", "content": { "rows": ["Name the action you recommend.", "Use evidence from the garden.", "Explain how the action helps the class or community."] } }],
+      "task_sheet": { "title": "Module 4 Task — Plan Your Garden Recommendation", "instructions": ["Choose one realistic next step.", "Use evidence from earlier modules.", "Plan before writing your final response."], "tasks": [{ "label": "Recommendation", "prompt": "I recommend that our class or school should ___.", "lines": 2 }, { "label": "Evidence", "prompt": "One piece of evidence that supports this is ___.", "lines": 3 }, { "label": "Reasoning", "prompt": "This would help because ___.", "lines": 4 }, { "label": "Challenge", "prompt": "One challenge might be ___. We could handle it by ___.", "lines": 4 }], "embedded_supports": ["Recommendation frame: We should ___.", "Challenge frame: One problem might be ___, so we could ___."], "success_criteria": ["I chose one realistic next step.", "I used evidence.", "I explained how the recommendation helps.", "I considered one challenge."] },
+      "graphic_organizer": { "organizer_type": "four_column", "title": "Garden Recommendation Planner", "columns": ["Recommendation", "Evidence", "Why it helps", "Challenge"], "rows": 3, "prompt": "Use this planner before writing your final response.", "success_criteria": ["I planned a realistic recommendation.", "I connected evidence to the recommendation."] },
+      "checkpoint_sheet": { "title": "Teacher Checkpoint — Recommendation Readiness", "checkpoint_focus": "Check that students have a realistic recommendation with evidence and reasoning before final writing.", "look_fors": ["Recommendation is specific", "Evidence connects to garden/community", "Reasoning explains why it helps", "Challenge is realistic but not overwhelming"], "release_rule": "Release final response when the student can say the recommendation, evidence, and reasoning aloud." },
+      "outputs": [{ "output_id": "ela8_m4_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module4.slides" }, { "output_id": "ela8_m4_v2_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "days.module4.task_sheet" }, { "output_id": "ela8_m4_v2_recommendation_organizer", "output_type": "graphic_organizer", "audience": "student", "source_section": "days.module4.graphic_organizer" }, { "output_id": "ela8_m4_v2_checkpoint", "output_type": "checkpoint_sheet", "audience": "teacher", "source_section": "days.module4.checkpoint_sheet" }]
+    },
+    {
+      "day_id": "module5",
+      "day_label": "Module 5: Final Evidence-Based Garden Response",
+      "slides": [{ "type": "TITLE", "title": "Final Garden Response", "layout": "hero", "content": { "subtitle": "Write a short recommendation using claim, evidence, and reasoning." } }, { "type": "LEARN", "title": "Final response structure", "layout": "three_rows", "content": { "rows": ["Start with your recommendation.", "Use one or two evidence details.", "Explain why the evidence supports the recommendation."] } }],
+      "final_response_sheet": { "title": "Final Response — Garden Recommendation", "prompt": "Write a short evidence-based response recommending one next step for the class garden. Explain how this step supports community, care, learning, or growth.", "planning_reminders": ["Use your Module 4 planner.", "Name one clear recommendation.", "Use evidence from the garden or evidence cards.", "Explain why your evidence matters."], "paragraph_support": { "frame_strip": ["I recommend ___.", "One piece of evidence is ___.", "This evidence matters because ___.", "This would help our class or community by ___."], "reminder_box": "Recommendation → evidence → reasoning → community connection" }, "response_lines": 10, "success_criteria": ["I made one clear recommendation.", "I used evidence from the garden project.", "I explained why the evidence matters.", "I connected my recommendation to community, care, learning, or growth."] },
+      "exit_ticket": { "title": "Module 5 Exit Check", "prompt": "What is one way evidence made your garden recommendation stronger?", "n_lines": 3, "success_criteria": ["I named evidence.", "I explained how it helped my writing."] },
+      "outputs": [{ "output_id": "ela8_m5_v2_slides", "output_type": "slides", "audience": "shared_view", "source_section": "days.module5.slides" }, { "output_id": "ela8_m5_v2_final_response", "output_type": "final_response_sheet", "audience": "student", "source_section": "days.module5.final_response_sheet", "final_evidence": true }, { "output_id": "ela8_m5_v2_exit", "output_type": "exit_ticket", "audience": "student", "source_section": "days.module5.exit_ticket" }]
+    }
+  ]
+}
