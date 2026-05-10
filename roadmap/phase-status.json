@@ -1,15 +1,43 @@
 {
   "schema_version": 1,
-  "updated_by": "agent-scaffold",
+  "updated_by": "phase-003-content-expansion-audit",
   "phases": {
     "phase-001-agent-scaffold": {
-      "status": "in_progress",
+      "status": "merged",
       "branch": "agent/phase-and-qa-scaffold-v2",
+      "implementation_report": null,
+      "qa_report": null,
+      "last_check": "merged in PR #223"
+    },
+    "phase-002-careers-guest-speaker-package": {
+      "status": "merged",
+      "branch": "phase/002-careers-guest-speaker-package",
+      "implementation_report": "roadmap/reports/phase-002-implementation-report.md",
+      "qa_report": null,
+      "last_check": "merged in PR #224"
+    },
+    "phase-003-content-expansion-audit": {
+      "status": "in_progress",
+      "branch": "phase/003-content-expansion-audit",
+      "implementation_report": "roadmap/reports/phase-003-content-expansion-audit.md",
+      "qa_report": null,
+      "last_check": null
+    },
+    "phase-004-math8-growth-measurement-package": {
+      "status": "planned",
+      "branch": null,
       "implementation_report": null,
       "qa_report": null,
       "last_check": null
     },
-    "phase-002-careers-guest-speaker-package": {
+    "phase-005-math8-watering-volume-rate-package": {
+      "status": "planned",
+      "branch": null,
+      "implementation_report": null,
+      "qa_report": null,
+      "last_check": null
+    },
+    "phase-006-literacy-growth-writing-launch-package": {
       "status": "planned",
       "branch": null,
       "implementation_report": null,
