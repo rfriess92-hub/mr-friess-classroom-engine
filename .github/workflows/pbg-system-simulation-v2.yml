@@ -73,9 +73,11 @@ jobs:
               echo "- PASS: ${name}" >> simulation-reports/summary.md
             else
               echo "FAIL: ${name} (exit ${code})"
+              echo "----- parsed ${log_file} -----"
+              node scripts/summarize-qa-log.mjs "${log_file}" || true
               echo "----- tail ${log_file} -----"
-              tail -n 120 "${log_file}" || true
-              echo "----- end tail ${log_file} -----"
+              tail -n 80 "${log_file}" || true
+              echo "----- end ${log_file} -----"
               echo "- FAIL: ${name} (exit ${code})" >> simulation-reports/summary.md
               STATUS=1
             fi
