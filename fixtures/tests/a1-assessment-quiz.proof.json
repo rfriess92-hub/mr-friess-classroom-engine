@@ -138,7 +138,8 @@
       "output_type": "assessment",
       "audience": "student",
       "source_section": "assessment",
-      "bundle": "a1_assessment_quiz_proof_bundle"
+      "bundle": "a1_assessment_quiz_proof_bundle",
+      "final_evidence": true
     },
     {
       "output_id": "reaction_evidence_quiz_marking_guide",
