@@ -238,15 +238,22 @@ export function expectedPdfIdentityPhrase(artifactName) {
   return null
 }
 
+function expectedPdfIdentityPhrases(artifactName) {
+  const stem = artifactStem(artifactName)
+  if (stem.includes('task_sheet')) return ['task sheet', 'task']
+  const phrase = expectedPdfIdentityPhrase(artifactName)
+  return phrase ? [phrase] : []
+}
+
 function checkPdfSemantics(artifactName, audienceBucket, normalizedText, textExtractionOk) {
   const blockers = []
   const findings = []
   if (!textExtractionOk) return { blockers, findings }
 
-  const identityPhrase = expectedPdfIdentityPhrase(artifactName)
-  if (identityPhrase && !normalizedText.includes(identityPhrase)) {
+  const identityPhrases = expectedPdfIdentityPhrases(artifactName)
+  if (identityPhrases.length > 0 && !identityPhrases.some((phrase) => normalizedText.includes(phrase))) {
     blockers.push('pdf_identity_text_missing')
-    findings.push({ type: 'artifact_formatting_issue', note: `Extracted PDF text does not include the expected identity phrase for this artifact: ${identityPhrase}.` })
+    findings.push({ type: 'artifact_formatting_issue', note: `Extracted PDF text does not include an expected identity phrase for this artifact: ${identityPhrases.join(' or ')}.` })
   }
 
   if (audienceBucket === 'teacher_only' && normalizedText.includes('name:')) {
