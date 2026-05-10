@@ -532,15 +532,14 @@ const MATH8_TRADE_VOCAB = [
   'unit cost',
 ]
 
-// Math 8: abstract algebra drift (belongs in senior math)
+// Math 8: abstract/senior algebra drift. Curricular Grade 8 terms such as
+// statistical range and Pythagorean theorem are intentionally allowed.
 const MATH8_ADVANCED_VOCAB = [
   'domain',
-  'range',
   'function notation',
   'f(x)',
   'g(x)',
   'optimization',
-  'theorem',
   'conjecture',
   'formal proof',
 ]
