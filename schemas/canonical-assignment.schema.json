@@ -21,6 +21,7 @@
       "enum": [
         "short_inquiry_sequence",
         "short_project",
+        "project_based_learning",
         "performance_task",
         "structured_academic_discussion",
         "evidence_based_writing_task"
