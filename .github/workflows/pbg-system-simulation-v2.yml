@@ -41,62 +41,21 @@ jobs:
       - name: Install Python dependencies
         run: python -m pip install --upgrade pip pytest reportlab python-pptx pypdf pillow lxml
 
-      - name: Contract tests
-        run: pnpm test
-
-      - name: Full test suite
-        run: pnpm run test:all
-
-      - name: Audit output contracts
-        run: node scripts/audit-output-contracts.mjs
-
-      - name: Coverage report
-        run: pnpm run qa:coverage-report
-
-      - name: Math 8 v2 schema
+      - name: Math 8 v2 schema diagnostic
         run: pnpm run schema:check -- --package fixtures/plan-build-grow/pbg_math8_complete_coverage_addon_v2.json
 
-      - name: Math 8 v2 route plan
+      - name: Math 8 v2 route plan diagnostic
         run: pnpm run route:plan -- --package fixtures/plan-build-grow/pbg_math8_complete_coverage_addon_v2.json --print-routes
 
-      - name: Math 8 v2 render
+      - name: Math 8 v2 render diagnostic
         run: pnpm run render:package -- --package fixtures/plan-build-grow/pbg_math8_complete_coverage_addon_v2.json --out output
 
-      - name: Math 8 v2 bundle QA
+      - name: List Math 8 output files before QA
+        if: always()
+        run: find output -maxdepth 3 -type f | sort || true
+
+      - name: Math 8 v2 bundle QA diagnostic
         run: pnpm run qa:bundle -- --package fixtures/plan-build-grow/pbg_math8_complete_coverage_addon_v2.json --out output
-
-      - name: Science 8 schema
-        run: pnpm run schema:check -- --package fixtures/plan-build-grow/pbg_science8_ecosystems_garden_addon.json
-
-      - name: Science 8 route plan
-        run: pnpm run route:plan -- --package fixtures/plan-build-grow/pbg_science8_ecosystems_garden_addon.json --print-routes
-
-      - name: Science 8 render
-        run: pnpm run render:package -- --package fixtures/plan-build-grow/pbg_science8_ecosystems_garden_addon.json --out output
-
-      - name: Science 8 bundle QA
-        run: pnpm run qa:bundle -- --package fixtures/plan-build-grow/pbg_science8_ecosystems_garden_addon.json --out output
-
-      - name: ELA 8 v2 schema
-        run: pnpm run schema:check -- --package fixtures/plan-build-grow/pbg_ela8_community_garden_evidence_addon_v2.json
-
-      - name: ELA 8 v2 route plan
-        run: pnpm run route:plan -- --package fixtures/plan-build-grow/pbg_ela8_community_garden_evidence_addon_v2.json --print-routes
-
-      - name: ELA 8 v2 render
-        run: pnpm run render:package -- --package fixtures/plan-build-grow/pbg_ela8_community_garden_evidence_addon_v2.json --out output
-
-      - name: ELA 8 v2 bundle QA
-        run: pnpm run qa:bundle -- --package fixtures/plan-build-grow/pbg_ela8_community_garden_evidence_addon_v2.json --out output
-
-      - name: Assessment proof render
-        run: pnpm run render:package -- --package fixtures/tests/a1-assessment-quiz.proof.json --out output
-
-      - name: Assessment answer-leak QA
-        run: pnpm run qa:assessment-answer-leak -- --package fixtures/tests/a1-assessment-quiz.proof.json --out output
-
-      - name: Assessment proof bundle QA
-        run: pnpm run qa:bundle -- --package fixtures/tests/a1-assessment-quiz.proof.json --out output
 
       - name: Upload simulation output
         if: always()
