@@ -6,40 +6,78 @@
       "title": "Install phase implementation and QA agent workflow",
       "mode": "repo-build-rendering-qa",
       "type": "qa-phase",
-      "status": "in_progress",
+      "status": "merged",
       "goal": "Add repo-level agent prompts, contracts, roadmap files, and lightweight guard scripts for phase implementation and QA cleanup.",
       "allowed_areas": ["agents/", "contracts/", "roadmap/", "scripts/agent/", "package.json"],
       "protected_areas": ["renderer/", "schemas/", "tests/", "fixtures/", "packages/"],
-      "required_outputs": [
-        "agents/phase-implementation.agent.md",
-        "agents/qa-cleanup.agent.md",
-        "contracts/engine-expansion-contract.md",
-        "contracts/page-role-contract.md",
-        "contracts/package-render-contract.md",
-        "contracts/classroom-content-contract.md",
-        "scripts/agent/run-phase-check.mjs",
-        "scripts/agent/run-qa-check.mjs"
-      ],
+      "required_outputs": ["agents/phase-implementation.agent.md", "agents/qa-cleanup.agent.md", "contracts/engine-expansion-contract.md", "contracts/page-role-contract.md", "contracts/package-render-contract.md", "contracts/classroom-content-contract.md", "scripts/agent/run-phase-check.mjs", "scripts/agent/run-qa-check.mjs"],
       "required_checks": ["pnpm run agent:phase-check", "pnpm run agent:qa-check"],
-      "notes": "This phase installs workflow scaffolding only. It must not change renderer behavior or classroom content."
+      "notes": "Merged in PR #223."
     },
     {
       "id": "phase-002-careers-guest-speaker-package",
       "title": "Create Careers 8 guest speaker package proof",
       "mode": "pedagogy-content-generation",
       "type": "content-phase",
-      "status": "planned",
+      "status": "merged",
       "goal": "Create a renderable Careers 8 guest speaker package with teacher guide, student question sheet, reflection, and rubric outputs.",
-      "allowed_areas": ["packages/", "fixtures/", "docs/content-expansion/"],
+      "allowed_areas": ["packages/", "fixtures/", "docs/content-expansion/", "roadmap/reports/"],
       "protected_areas": ["renderer/", "schemas/", "scripts/", "contracts/"],
-      "required_outputs": ["teacher_guide", "student_packet", "question_sheet", "reflection_sheet", "rubric_sheet"],
-      "required_checks": [
-        "pnpm test",
-        "pnpm run render:package -- --package <package-json> --out output",
-        "pnpm run qa:report -- --package <package-json> --out output",
-        "pnpm run agent:qa-check"
-      ],
-      "notes": "Use as the first small real phase after the scaffold lands."
+      "required_outputs": ["teacher_guide", "task_sheet", "worksheet", "final_response_sheet", "rubric_sheet"],
+      "required_checks": ["pnpm test", "pnpm run render:package -- --package <package-json> --out output", "pnpm run qa:report -- --package <package-json> --out output", "pnpm run agent:qa-check"],
+      "notes": "Merged in PR #224. Question sheet maps to worksheet; reflection sheet maps to final_response_sheet."
+    },
+    {
+      "id": "phase-003-content-expansion-audit",
+      "title": "Audit content expansion gaps and rank next phases",
+      "mode": "repo-build-rendering-qa",
+      "type": "planning-phase",
+      "status": "in_progress",
+      "goal": "Create a ranked content-expansion audit and backlog for Math 8, Literacy, Careers 8, K-designation supports, organizers, rubrics, and sub/makeup materials.",
+      "allowed_areas": ["docs/content-expansion-audit.md", "roadmap/content-expansion-backlog.json", "roadmap/reports/"],
+      "protected_areas": ["renderer/", "schemas/", "engine/", "scripts/", "fixtures/", "packages/"],
+      "required_outputs": ["docs/content-expansion-audit.md", "roadmap/content-expansion-backlog.json", "roadmap/reports/phase-003-content-expansion-audit.md"],
+      "required_checks": ["pnpm run agent:phase-check", "pnpm run agent:qa-check"],
+      "notes": "Planning/audit only. No generated classroom package files."
+    },
+    {
+      "id": "phase-004-math8-growth-measurement-package",
+      "title": "Create Math 8 growth measurement package",
+      "mode": "pedagogy-content-generation",
+      "type": "content-phase",
+      "status": "planned",
+      "goal": "Create the first renderable Grade 8 Math package for measuring plant growth, recording observations, and representing data clearly.",
+      "allowed_areas": ["fixtures/generated/", "roadmap/reports/", "docs/content-expansion/"],
+      "protected_areas": ["renderer/", "schemas/", "engine/", "scripts/", "contracts/"],
+      "required_outputs": ["teacher_guide", "task_sheet", "worksheet", "graphic_organizer", "final_response_sheet", "rubric_sheet"],
+      "required_checks": ["pnpm test", "pnpm run schema:check -- --package <package-json>", "pnpm run route:plan -- --package <package-json> --print-routes", "pnpm run render:package -- --package <package-json> --out output", "pnpm run qa:report -- --package <package-json> --out output"],
+      "notes": "Highest-value next content phase for the Kamloops garden/growth project."
+    },
+    {
+      "id": "phase-005-math8-watering-volume-rate-package",
+      "title": "Create Math 8 watering volume and rate package",
+      "mode": "pedagogy-content-generation",
+      "type": "content-phase",
+      "status": "planned",
+      "goal": "Create a renderable package for watering volume, rate, proportional reasoning, and practical planter-care decisions.",
+      "allowed_areas": ["fixtures/generated/", "roadmap/reports/", "docs/content-expansion/"],
+      "protected_areas": ["renderer/", "schemas/", "engine/", "scripts/", "contracts/"],
+      "required_outputs": ["teacher_guide", "worksheet", "task_sheet", "final_response_sheet", "rubric_sheet"],
+      "required_checks": ["pnpm test", "pnpm run render:package -- --package <package-json> --out output", "pnpm run qa:report -- --package <package-json> --out output"],
+      "notes": "Second Math 8 garden/growth package after measurement."
+    },
+    {
+      "id": "phase-006-literacy-growth-writing-launch-package",
+      "title": "Create Literacy growth writing launch package",
+      "mode": "pedagogy-content-generation",
+      "type": "content-phase",
+      "status": "planned",
+      "goal": "Create a launch package for fiction or nonfiction writing about community, building, and growth.",
+      "allowed_areas": ["fixtures/generated/", "roadmap/reports/", "docs/content-expansion/"],
+      "protected_areas": ["renderer/", "schemas/", "engine/", "scripts/", "contracts/"],
+      "required_outputs": ["teacher_guide", "task_sheet", "graphic_organizer", "final_response_sheet", "rubric_sheet"],
+      "required_checks": ["pnpm test", "pnpm run render:package -- --package <package-json> --out output", "pnpm run qa:report -- --package <package-json> --out output"],
+      "notes": "Parallel writing stream for the growth project."
     }
   ]
 }

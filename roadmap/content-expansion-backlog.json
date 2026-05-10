@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "updated_by": "phase-003-content-expansion-audit",
+  "purpose": "Ranked backlog for classroom content expansion phases. Each item should become a narrow phase-card driven PR before implementation.",
+  "items": [
+    {
+      "id": "content-001-math8-growth-measurement",
+      "recommended_phase": "phase-004-math8-growth-measurement-package",
+      "priority": "critical",
+      "course": "Math 8",
+      "theme": "Kamloops garden growth project",
+      "goal": "Create the first renderable Grade 8 Math package for measuring plant growth, recording observations, and representing data clearly.",
+      "needed_outputs": ["teacher_guide", "task_sheet", "worksheet", "graphic_organizer", "final_response_sheet", "rubric_sheet"],
+      "allowed_areas": ["fixtures/generated/", "roadmap/reports/", "docs/content-expansion/"],
+      "protected_areas": ["renderer/", "schemas/", "engine/", "scripts/"],
+      "qa_focus": ["Grade 8 BC math fit", "measurement evidence", "student-friendly graphing support", "teacher/student separation", "render proof"]
+    },
+    {
+      "id": "content-002-math8-watering-volume-rate",
+      "recommended_phase": "phase-005-math8-watering-volume-rate-package",
+      "priority": "critical",
+      "course": "Math 8",
+      "theme": "Kamloops garden growth project",
+      "goal": "Create a renderable package for watering volume, rate, proportional reasoning, and practical decision-making around planter care.",
+      "needed_outputs": ["teacher_guide", "worksheet", "task_sheet", "final_response_sheet", "rubric_sheet"],
+      "allowed_areas": ["fixtures/generated/", "roadmap/reports/", "docs/content-expansion/"],
+      "protected_areas": ["renderer/", "schemas/", "engine/", "scripts/"],
+      "qa_focus": ["volume/rate clarity", "real planter context", "reduced-output access path", "render proof"]
+    },
+    {
+      "id": "content-003-literacy-growth-writing-launch",
+      "recommended_phase": "phase-006-literacy-growth-writing-launch-package",
+      "priority": "critical",
+      "course": "Literacy / English",
+      "theme": "community, building, and growth",
+      "goal": "Create a launch package for fiction or nonfiction writing about the garden/building process with aligned support/core/extension options.",
+      "needed_outputs": ["teacher_guide", "task_sheet", "graphic_organizer", "final_response_sheet", "rubric_sheet"],
+      "allowed_areas": ["fixtures/generated/", "roadmap/reports/", "docs/content-expansion/"],
+      "protected_areas": ["renderer/", "schemas/", "engine/", "scripts/"],
+      "qa_focus": ["aligned differentiation", "fiction/nonfiction choice", "clear writing scaffold", "student-facing clarity"]
+    },
+    {
+      "id": "content-004-k-designation-access-toolkit",
+      "recommended_phase": "phase-007-k-designation-access-toolkit",
+      "priority": "critical",
+      "course": "Cross-course",
+      "theme": "K-designation supports",
+      "goal": "Create reusable aligned access supports for reduced-output, oral, visual, chunked, and partner-supported task completion.",
+      "needed_outputs": ["task_sheet", "worksheet", "graphic_organizer", "teacher_guide"],
+      "allowed_areas": ["fixtures/generated/", "docs/content-expansion/", "roadmap/reports/"],
+      "protected_areas": ["renderer/", "schemas/", "engine/", "scripts/"],
+      "qa_focus": ["same learning target", "reduced load without lowered goal", "teacher/student separation"]
+    },
+    {
+      "id": "content-005-graphic-organizer-library-proof",
+      "recommended_phase": "phase-008-graphic-organizer-library-proof",
+      "priority": "high",
+      "course": "Cross-course",
+      "theme": "reusable graphic organizers",
+      "goal": "Create a proof package for common classroom organizers: observe/wonder/infer, CER, compare/contrast, sequence, cause/effect, decision matrix, and interview notes.",
+      "needed_outputs": ["graphic_organizer", "worksheet", "teacher_guide"],
+      "allowed_areas": ["fixtures/generated/", "docs/content-expansion/", "roadmap/reports/"],
+      "protected_areas": ["renderer/", "schemas/", "engine/", "scripts/"],
+      "qa_focus": ["not generic filler", "clear use case", "printable layout", "render proof"]
+    },
+    {
+      "id": "content-006-careers8-reusable-speaker-template",
+      "recommended_phase": "phase-009-careers8-reusable-speaker-template",
+      "priority": "high",
+      "course": "Careers 8",
+      "theme": "guest speaker repeatability",
+      "goal": "Turn the Patrick/BCLC guest speaker package into a reusable speaker template pattern for future classroom visitors.",
+      "needed_outputs": ["teacher_guide", "task_sheet", "worksheet", "final_response_sheet", "rubric_sheet"],
+      "allowed_areas": ["fixtures/generated/", "docs/content-expansion/", "roadmap/reports/"],
+      "protected_areas": ["renderer/", "schemas/", "engine/", "scripts/"],
+      "qa_focus": ["reusable structure", "Grade 8 tone", "no overfitting to one speaker"]
+    },
+    {
+      "id": "content-007-assessment-rubric-library-proof",
+      "recommended_phase": "phase-010-assessment-rubric-library-proof",
+      "priority": "high",
+      "course": "Cross-course",
+      "theme": "assessment and rubrics",
+      "goal": "Create a proof package for single-point rubrics, checklist rubrics, self-assessment, peer feedback, and teacher conference notes.",
+      "needed_outputs": ["rubric_sheet", "worksheet", "teacher_guide"],
+      "allowed_areas": ["fixtures/generated/", "docs/content-expansion/", "roadmap/reports/"],
+      "protected_areas": ["renderer/", "schemas/", "engine/", "scripts/"],
+      "qa_focus": ["no answer leakage", "student-facing clarity", "teacher-only guidance separation"]
+    },
+    {
+      "id": "content-008-sub-plan-makeup-packet-library",
+      "recommended_phase": "phase-011-sub-plan-makeup-packet-library",
+      "priority": "medium",
+      "course": "Cross-course",
+      "theme": "attendance and substitute coverage",
+      "goal": "Create reusable sub-plan and makeup-packet patterns tied to active units rather than generic filler.",
+      "needed_outputs": ["teacher_guide", "task_sheet", "worksheet", "final_response_sheet"],
+      "allowed_areas": ["fixtures/generated/", "docs/content-expansion/", "roadmap/reports/"],
+      "protected_areas": ["renderer/", "schemas/", "engine/", "scripts/"],
+      "qa_focus": ["standalone usability", "unit connection", "clear student instructions", "teacher setup notes"]
+    }
+  ]
+}
