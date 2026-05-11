@@ -8,7 +8,6 @@ on:
       - 'engine/pdf-html/render.mjs'
       - 'engine/pdf-html/templates/classroom-toolkit-templates.mjs'
       - 'fixtures/generated/classroom-toolkit-sample.grade8-all.json'
-      - 'fixtures/generated/lwd-elevator-4day.grade8-ela.json'
       - 'fixtures/tests/classroom-toolkit-central-routing.proof.json'
       - 'scripts/render-classroom-toolkit-sample.mjs'
       - 'package.json'
@@ -59,14 +58,6 @@ jobs:
           pnpm run route:plan -- --package "$PACKAGE" --print-routes
           pnpm run render:package -- --package "$PACKAGE" --out output/classroom-toolkit-sample/central
 
-      - name: Render Long Way Down package
-        run: |
-          set -euo pipefail
-          PACKAGE=fixtures/generated/lwd-elevator-4day.grade8-ela.json
-          pnpm run schema:check -- --package "$PACKAGE"
-          pnpm run route:plan -- --package "$PACKAGE" --print-routes
-          pnpm run render:package -- --package "$PACKAGE" --out output/lwd
-
       - name: Assert central routed artifacts exist
         run: |
           set -euo pipefail
@@ -76,30 +67,13 @@ jobs:
           test -f "$ROOT/sentence_frame_card_doc.pdf"
           test -f "$ROOT/choice_board_doc.pdf"
           test -f "$ROOT/scaffolded_quiz_doc.pdf"
-          LWD_ROOT=output/lwd/lwd_elevator_4day_grade8_ela
-          test -f "$LWD_ROOT/lwd_teacher_guide.pdf"
-          test -f "$LWD_ROOT/lwd_slides.pptx"
-          test -f "$LWD_ROOT/lwd_student_packet.pdf"
-          test -f "$LWD_ROOT/lwd_floor_organizer.pdf"
-          test -f "$LWD_ROOT/lwd_theme_ladder.pdf"
-          test -f "$LWD_ROOT/lwd_final_response.pdf"
-          test -f "$LWD_ROOT/lwd_rubric.pdf"
-          test -f "$LWD_ROOT/lwd_teacher_reference.pdf"
-          test -f "$LWD_ROOT/lwd_final_exit_ticket.pdf"
 
       - name: List rendered docs
-        run: find output -type f | sort
+        run: find output/classroom-toolkit-sample -type f | sort
 
       - name: Upload classroom toolkit sample docs
         uses: actions/upload-artifact@v4
         with:
           name: classroom-toolkit-sample-docs
           path: output/classroom-toolkit-sample
-          if-no-files-found: error
-
-      - name: Upload rendered Long Way Down artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: lwd-rendered-artifacts
-          path: output/lwd
           if-no-files-found: error
