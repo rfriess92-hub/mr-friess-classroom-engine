@@ -11,16 +11,63 @@ function uniquePush(target, value) {
   if (value && !target.includes(value)) target.push(value)
 }
 
-function blockSignalText(block) {
-  return `${block?.source_key ?? ''} ${block?.label ?? ''}`
+function normalizeSignalText(...parts) {
+  const values = []
+  for (const part of parts) {
+    if (part === null || part === undefined) continue
+    if (Array.isArray(part)) {
+      values.push(...part)
+      continue
+    }
+    if (typeof part === 'object') {
+      values.push(...Object.values(part).filter((value) => typeof value !== 'object'))
+      continue
+    }
+    values.push(part)
+  }
+
+  return values
+    .map((value) => String(value ?? ''))
+    .join(' ')
     .replace(/[._-]+/g, ' ')
+    .replace(/\s+/g, ' ')
     .trim()
     .toLowerCase()
 }
 
-function detectStudentPacketSignals(blocks) {
+function routeSignalText(route) {
+  return normalizeSignalText(
+    route?.output_id,
+    route?.output_type,
+    route?.audience,
+    route?.source_section,
+    route?.bundle,
+    route?.group,
+    route?.type,
+    route?.artifact_class,
+    route?.title,
+    route?.label,
+  )
+}
+
+function blockSignalText(block) {
+  return normalizeSignalText(
+    block?.source_key,
+    block?.label,
+    block?.source_section,
+    block?.group,
+    block?.type,
+  )
+}
+
+function buildSignalTexts(route, blocks) {
+  return [routeSignalText(route), ...(Array.isArray(blocks) ? blocks : []).map(blockSignalText)]
+    .filter(Boolean)
+}
+
+function detectStudentPacketSignals(blocks, route = {}) {
   const blockList = Array.isArray(blocks) ? blocks : []
-  const signals = blockList.map(blockSignalText)
+  const signals = buildSignalTexts(route, blockList)
   const matches = []
   if (signals.some((text) => includesAny(text, ['before watching', 'while watching', 'after watching', 'follow along', 'movie', 'film']))) {
     matches.push('follow_along')
@@ -36,7 +83,7 @@ function detectStudentPacketSignals(blocks) {
   }
   if (
     blockList.some((block) => block.block_type === 'checklist')
-    || signals.some((text) => includesAny(text, ['checklist', 'final check', 'completion', 'success criteria', 'checkpoint']))
+    || signals.some((text) => includesAny(text, ['checklist', 'final check', 'completion check', 'completion', 'success criteria', 'checkpoint']))
   ) {
     matches.push('completion_check')
   }
@@ -46,9 +93,9 @@ function detectStudentPacketSignals(blocks) {
   return matches
 }
 
-function detectTeacherGuideSignals(blocks) {
+function detectTeacherGuideSignals(blocks, route = {}) {
   const blockList = Array.isArray(blocks) ? blocks : []
-  const signals = blockList.map(blockSignalText)
+  const signals = buildSignalTexts(route, blockList)
   const matches = []
   if (signals.some((text) => includesAny(text, ['overview', 'big idea', 'essential question', 'unit overview', 'opening frame', 'frame line']))) {
     matches.push('overview')
@@ -61,7 +108,7 @@ function detectTeacherGuideSignals(blocks) {
   }
   if (
     blockList.some((block) => block.block_type === 'quick_tool')
-    || signals.some((text) => includesAny(text, ['project prompt', 'matching bank', 'materials', 'supplies', 'tool']))
+    || signals.some((text) => includesAny(text, ['project tools', 'project tool', 'project prompt', 'matching bank', 'materials', 'supplies', 'tool']))
   ) {
     matches.push('project_tools')
   }
@@ -91,8 +138,8 @@ export function deriveMultipageArtifactClass(route, blocks, baseArtifactClass) {
   const assessments = countBy(blocks, (block) => block.block_type === 'assessment_note')
   const intros = countBy(blocks, (block) => block.block_type === 'intro')
   const estimatedLines = (Array.isArray(blocks) ? blocks : []).reduce((sum, block) => sum + Number(block.estimated_lines ?? 0), 0)
-  const studentSignals = detectStudentPacketSignals(blocks)
-  const teacherSignals = detectTeacherGuideSignals(blocks)
+  const studentSignals = detectStudentPacketSignals(blocks, route)
+  const teacherSignals = detectTeacherGuideSignals(blocks, route)
   const hasStudentPhaseProgression = studentSignals.includes('follow_along') || studentSignals.includes('continuation_notes')
   const hasStudentPhaseTwoRetrieval = studentSignals.includes('reference_bank') || studentSignals.includes('research_planner')
   const hasStudentClose = studentSignals.includes('completion_check')
@@ -159,7 +206,7 @@ export function deriveMultipageArtifactClass(route, blocks, baseArtifactClass) {
 export function derivePageRoles(route, artifactClass, blocks) {
   if (artifactClass === 'student_packet_multi_page') {
     const roles = []
-    for (const signal of detectStudentPacketSignals(blocks)) {
+    for (const signal of detectStudentPacketSignals(blocks, route)) {
       uniquePush(roles, signal)
     }
     if (roles.length === 0) uniquePush(roles, 'student_packet_flow')
@@ -168,7 +215,7 @@ export function derivePageRoles(route, artifactClass, blocks) {
 
   if (artifactClass === 'teacher_guide_multi_page') {
     const roles = []
-    for (const signal of detectTeacherGuideSignals(blocks)) {
+    for (const signal of detectTeacherGuideSignals(blocks, route)) {
       uniquePush(roles, signal)
     }
     if (roles.length === 0) uniquePush(roles, 'teacher_workflow')
