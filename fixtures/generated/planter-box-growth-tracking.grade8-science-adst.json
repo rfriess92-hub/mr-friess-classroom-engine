@@ -1,0 +1,797 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "planter_box_growth_tracking",
+  "primary_architecture": "multi_day_sequence",
+  "session_count": 8,
+  "grade_band": "6-8",
+  "subject": "Science / ADST",
+  "grade": 8,
+  "topic": "Planter box sprout and plant growth tracking",
+  "theme": "science",
+  "assignment_family": "project_based_learning",
+  "secondary_architecture_support": {
+    "architecture": "lab_investigation",
+    "note": "Students collect repeated observations and measurements over several weeks, but the classroom structure stays project-based: plant, care, track, compare, and explain growth evidence."
+  },
+  "materials_control_note": "Use classroom-safe planting materials only. Teacher manages any sharp tools, soil additives, and watering routines that could spill or damage surfaces.",
+  "standards": [
+    "BC Science 8 - questioning, predicting, planning, and conducting investigations",
+    "BC Science 8 - processing and analyzing data and information",
+    "BC ADST 8 - ideating, prototyping, testing, and making",
+    "BC Core Competencies - communication, thinking, personal and social responsibility"
+  ],
+  "days": [
+    {
+      "day_id": "day1",
+      "day_label": "Planting Day: Starter Plants and Baseline Data",
+      "carryover_note": "Use baseline height, leaf count, and health notes for later weekly comparison."
+    },
+    {
+      "day_id": "day2",
+      "day_label": "Daily Check Routine: Sprouts + Plant Health",
+      "carryover_note": "Use a short routine so tracking can continue without taking the whole class."
+    },
+    {
+      "day_id": "day3",
+      "day_label": "Weekly Individual Tracker: Five Small Entries",
+      "carryover_note": "Students complete one weekly sheet at a time rather than one massive multi-week table."
+    },
+    {
+      "day_id": "day4",
+      "day_label": "Monthly Class Tracker: Shared Trends",
+      "carryover_note": "Class data is summarized by seed or plant type so students can see patterns without copying every measurement."
+    }
+  ],
+  "lesson_overview": {
+    "title": "Planter Box Growth Tracking - Package Overview",
+    "overview": "This package moves the planter box unit from initial sprouting checks into several weeks of manageable growth tracking. Students continue tracking sprouting by seed type while also measuring starter plant height, leaf count, and visible health.",
+    "big_idea": "Useful plant data is collected the same way over time. Small daily checks can become stronger weekly and monthly evidence.",
+    "essential_question": "How can we track plant growth clearly enough to compare changes over time?",
+    "learning_goals": [
+      "Students can transplant or care for starter plants safely.",
+      "Students can measure plant height from the soil line in centimetres.",
+      "Students can count leaves using a consistent method.",
+      "Students can separate sprout tracking from starter plant growth tracking.",
+      "Students can use weekly and monthly data to describe a growth pattern."
+    ],
+    "teacher_notes": [
+      "Use the weekly individual tracker as the main student data tool.",
+      "Use the monthly class tracker for shared averages, trends, or class discussion.",
+      "Keep daily sprout checks short: count, note change, move on.",
+      "Do not ask students to copy every class measurement into their own sheet."
+    ],
+    "assessment_focus": "Consistent measuring, usable data, short observations, care routines, and evidence-based explanation."
+  },
+  "teacher_guide": {
+    "title": "Teacher Guide - Planting Starter Plants and Tracking Growth",
+    "overview": "Students are transitioning from four days of sprout tracking into a longer project routine: plant starter plants, continue sprout checks, and gather growth evidence over several weeks.",
+    "essential_question": "How do we collect plant data that is consistent enough to compare over time?",
+    "opening_frame": "We are no longer only asking, 'Did it sprout?' We are now asking, 'How is it changing, and what evidence proves that?'",
+    "learning_goals": [
+      "Plant or care for starter plants without damaging roots or stems.",
+      "Record a baseline measurement for height, leaves, health, and location.",
+      "Continue sprout tracking by seed type.",
+      "Use a weekly individual tracker and a monthly class tracker rather than one overwhelming table.",
+      "Explain one growth pattern using evidence."
+    ],
+    "materials": [
+      "starter plants",
+      "planter box",
+      "seed trays or sprout containers",
+      "rulers marked in centimetres",
+      "plant labels or popsicle sticks",
+      "permanent markers",
+      "watering can or spray bottle",
+      "weekly individual trackers",
+      "monthly class tracker",
+      "planter box map organizer",
+      "clipboards or notebooks"
+    ],
+    "timing": [
+      {
+        "time": "0-8 min",
+        "activity": "Review the difference between sprouting data and growth data."
+      },
+      {
+        "time": "8-18 min",
+        "activity": "Model one measurement: soil line to tallest living part, then count leaves."
+      },
+      {
+        "time": "18-40 min",
+        "activity": "Plant starter plants, label locations, and water lightly."
+      },
+      {
+        "time": "40-52 min",
+        "activity": "Complete quick sprout check by seed type."
+      },
+      {
+        "time": "52-68 min",
+        "activity": "Complete baseline plant growth entry and planter box map."
+      },
+      {
+        "time": "68-76 min",
+        "activity": "Review completion check and clean up."
+      },
+      {
+        "time": "76-79 min",
+        "activity": "Exit ticket."
+      }
+    ],
+    "workflow": [
+      {
+        "phase": "Daily routine",
+        "teacher_move": "Open the tracker station and assign one student pair to sprout count and one pair to plant check.",
+        "student_move": "Record only today's small data point."
+      },
+      {
+        "phase": "Weekly routine",
+        "teacher_move": "Distribute one weekly individual tracker. Students add up to five small entries.",
+        "student_move": "Use the same plant or seed type for the week."
+      },
+      {
+        "phase": "Monthly class routine",
+        "teacher_move": "Collect class averages or class trends on the shared tracker.",
+        "student_move": "Contribute one useful data point or observation, not the whole class dataset."
+      }
+    ],
+    "project_prompt": "Plant, care for, measure, and explain the growth of planter box plants over several weeks using consistent evidence.",
+    "matching_bank": [
+      "If a plant leans, check light direction, soil support, and watering before assuming it is unhealthy.",
+      "If height changes quickly but leaves do not, record both measurements instead of choosing one.",
+      "If sprouts appear late, keep them in sprout tracking until they are established plants.",
+      "If leaves look yellow, record colour and soil moisture before making a conclusion."
+    ],
+    "look_fors": [
+      "Student measures from the soil line, not from the bottom of the tray.",
+      "Student records centimetres, not vague words like tall or small.",
+      "Student separates sprout count from starter plant growth.",
+      "Student writes a short visible observation rather than a guess.",
+      "Student completes the completion check before submitting the tracker."
+    ],
+    "integrity_checks": [
+      "Same measuring starting point each time.",
+      "Same assigned plant or seed type across the week.",
+      "No invented measurements if absent; mark absent or no data.",
+      "Class tracker uses summarized data, not every student's full table."
+    ],
+    "teacher_notes": [
+      "For students with dyslexia, prioritize checkboxes, short phrases, and repeated formats.",
+      "Accept dictated observations or partner-recorded data when measurement thinking is visible.",
+      "Weekly individual tracker prevents table overload while preserving daily tracking.",
+      "Monthly class tracker supports pattern discussion without overwhelming copying.",
+      "Project tools: ruler protocol, seed-type labels, health-code key, class trend board, and watering routine."
+    ],
+    "questions": [
+      "What changed since the last check?",
+      "What evidence can we measure?",
+      "Are we comparing sprouts to sprouts and starter plants to starter plants?",
+      "What pattern might we see after one week?",
+      "What should go on the class tracker instead of every small detail?"
+    ],
+    "model": {
+      "title": "Teacher model entry",
+      "sample": "Plant type: lettuce. Date: May 11. Height: 8 cm. Leaves: 6. Health: green/upright. Observation: leaves are spread out and the stem is straight."
+    },
+    "assessment_focus": "Measure consistently, record usable data, care for plants safely, and explain a growth pattern using evidence."
+  },
+  "planting_day_task_sheet": {
+    "title": "Planting Day Task Sheet - Baseline Growth Data",
+    "purpose_line": "Set up the planter box and record the first growth data point.",
+    "instructions": [
+      "Plant carefully. Roots and stems break easily.",
+      "Label the plant or seed type before moving on.",
+      "Measure height from the soil line to the tallest living part.",
+      "Count visible leaves the same way each time.",
+      "Use short observations. You do not need long sentences."
+    ],
+    "tasks": [
+      {
+        "label": "Plant label",
+        "prompt": "Record the plant or seed type and location in the planter box.",
+        "lines": 1,
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "record_fields": [
+            "Plant or seed type",
+            "Planter location",
+            "Label added"
+          ]
+        }
+      },
+      {
+        "label": "Baseline measurement",
+        "prompt": "Record today's starting measurement.",
+        "lines": 1,
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "record_fields": [
+            "Date",
+            "Height in cm",
+            "Leaf count",
+            "Health code"
+          ]
+        }
+      },
+      {
+        "label": "First observation",
+        "prompt": "Write one thing you can see. Do not guess the cause yet.",
+        "lines": 2
+      },
+      {
+        "label": "Completion check",
+        "prompt": "Check that your baseline entry is complete before you hand it in.",
+        "lines": 1,
+        "render_hints": {
+          "response_pattern": "choice_select",
+          "choice_options": [
+            "date recorded",
+            "height measured from soil line",
+            "leaf count recorded",
+            "short observation written"
+          ]
+        }
+      }
+    ],
+    "embedded_supports": [
+      "Observation frame: I notice ___.",
+      "Measurement frame: The plant is ___ cm tall and has ___ leaves.",
+      "Health code: G = green, Y = yellowing, L = leaning, W = wilted, B = brown spots."
+    ],
+    "success_criteria": [
+      "I labelled the plant or seed type.",
+      "I measured from the soil line.",
+      "I recorded height in centimetres.",
+      "I counted leaves.",
+      "Completion check: my date, height or sprout count, leaf count, and observation are recorded."
+    ]
+  },
+  "daily_sprout_quick_check": {
+    "title": "Daily Sprout Quick Check",
+    "purpose_line": "Use this for a short daily check. Do not turn it into a full lab report.",
+    "instructions": [
+      "Check each seed type quickly.",
+      "Count only visible sprouts.",
+      "Record new change since the last check.",
+      "Use one short observation."
+    ],
+    "tasks": [
+      {
+        "label": "Sprout count",
+        "prompt": "Record today's sprout data by seed type.",
+        "lines": 1,
+        "render_hints": {
+          "response_pattern": "table_record",
+          "table_columns": [
+            "Seed type",
+            "Total sprouted",
+            "New sprouts",
+            "Observation"
+          ],
+          "table_rows": 4,
+          "table_cell_lines": 1
+        }
+      },
+      {
+        "label": "Quick pattern",
+        "prompt": "Which seed type changed the most today?",
+        "lines": 2
+      },
+      {
+        "label": "Completion check",
+        "prompt": "Check before you leave the station.",
+        "lines": 1,
+        "render_hints": {
+          "response_pattern": "choice_select",
+          "choice_options": [
+            "seed type named",
+            "total counted",
+            "new change recorded",
+            "one observation recorded"
+          ]
+        }
+      }
+    ],
+    "embedded_supports": [
+      "Word bank: no change, new sprout, taller, green, yellow, leaning, dry soil, wet soil.",
+      "Sentence frame: Today I noticed ___."
+    ],
+    "success_criteria": [
+      "I counted visible sprouts.",
+      "I recorded new changes only once.",
+      "I used a short observation."
+    ]
+  },
+  "weekly_individual_tracker": {
+    "title": "Weekly Individual Growth Tracker",
+    "purpose_line": "Track one plant or seed type for one week. Use a new sheet next week.",
+    "instructions": [
+      "Use one row per school day.",
+      "If you are absent, write absent or no data.",
+      "Keep observations short.",
+      "Use the same measuring method all week."
+    ],
+    "tasks": [
+      {
+        "label": "Plant or seed focus",
+        "prompt": "Choose the plant or seed type you are tracking this week.",
+        "lines": 1,
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "record_fields": [
+            "Week of",
+            "Plant or seed type",
+            "Planter location"
+          ]
+        }
+      },
+      {
+        "label": "Five-day tracker",
+        "prompt": "Record one small data point each day.",
+        "lines": 1,
+        "render_hints": {
+          "response_pattern": "table_record",
+          "table_columns": [
+            "Day",
+            "Sprout count",
+            "Height cm",
+            "Leaf count",
+            "Health code"
+          ],
+          "table_rows": [
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri"
+          ],
+          "table_cell_lines": 1
+        }
+      },
+      {
+        "label": "Weekly observation",
+        "prompt": "What changed this week? Use one measurement or observation as evidence.",
+        "lines": 3
+      },
+      {
+        "label": "Completion check",
+        "prompt": "Check that the tracker is ready for the class data discussion.",
+        "lines": 1,
+        "render_hints": {
+          "response_pattern": "choice_select",
+          "choice_options": [
+            "same plant or seed type all week",
+            "data entered for each class day",
+            "health code used",
+            "one weekly pattern written"
+          ]
+        }
+      }
+    ],
+    "embedded_supports": [
+      "Health code: G = green, Y = yellowing, L = leaning, W = wilted, B = brown spots.",
+      "Sentence frame: This week, ___ changed from ___ to ___.",
+      "Sentence frame: My evidence is ___."
+    ],
+    "success_criteria": [
+      "I used one weekly sheet, not a massive table.",
+      "I recorded small daily entries.",
+      "I used the same measuring method.",
+      "I wrote one evidence-based weekly pattern."
+    ]
+  },
+  "reduced_load_tracker": {
+    "title": "Reduced-Load Growth Tracker",
+    "purpose_line": "Use this version when the full weekly tracker is too much writing.",
+    "instructions": [
+      "Circle or fill in short answers.",
+      "Use the same plant or seed type all week.",
+      "Ask a partner or teacher to scribe if needed."
+    ],
+    "tasks": [
+      {
+        "label": "Focus",
+        "prompt": "Record your focus for the week.",
+        "lines": 1,
+        "render_hints": {
+          "response_pattern": "record_fields",
+          "record_fields": [
+            "Week of",
+            "Plant or seed type"
+          ]
+        }
+      },
+      {
+        "label": "Quick daily marks",
+        "prompt": "Mark one change each day.",
+        "lines": 1,
+        "render_hints": {
+          "response_pattern": "table_record",
+          "table_columns": [
+            "Day",
+            "Height cm",
+            "Leaves",
+            "Circle one: grew / no change / unsure"
+          ],
+          "table_rows": [
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri"
+          ],
+          "table_cell_lines": 1
+        }
+      },
+      {
+        "label": "One sentence",
+        "prompt": "Finish: This week my plant or sprouts ___.",
+        "lines": 2
+      }
+    ],
+    "embedded_supports": [
+      "You may use numbers, checkmarks, or one-word notes.",
+      "Sentence frame: This week my plant ___ because ___."
+    ],
+    "success_criteria": [
+      "I recorded the plant or seed type.",
+      "I added short daily marks.",
+      "I completed one sentence."
+    ]
+  },
+  "monthly_class_tracker": {
+    "title": "Monthly Class Growth Tracker",
+    "organizer_type": "three_column",
+    "columns": [
+      "Seed or plant type",
+      "Week 1 class data",
+      "Week 2 or 3 class data",
+      "Monthly pattern"
+    ],
+    "rows": 6,
+    "prompt": "Use class data to summarize growth trends. Do not copy every student's full tracker.",
+    "success_criteria": [
+      "Class data is summarized by seed or plant type.",
+      "The tracker shows a pattern over time.",
+      "Students can point to evidence for a monthly claim."
+    ]
+  },
+  "planter_box_map": {
+    "title": "Planter Box Map Organizer",
+    "organizer_type": "four_square",
+    "columns": [
+      "Planter section",
+      "Plant or seed type",
+      "Label code",
+      "Notes"
+    ],
+    "rows": 8,
+    "prompt": "Map where each plant or seed type is located so weekly measurements stay consistent.",
+    "success_criteria": [
+      "Each plant or seed type has a location.",
+      "Labels match the planter box.",
+      "The map helps students find the same plant next time."
+    ]
+  },
+  "growth_assessment_checklist": {
+    "title": "Teacher Checkpoint - Growth Tracking Evidence",
+    "checkpoint_focus": "Use this while circulating during daily or weekly tracking. The goal is consistent usable data, not perfect handwriting.",
+    "look_fors": [
+      "Measures plant height from soil line.",
+      "Uses centimetres.",
+      "Counts visible leaves consistently.",
+      "Separates sprout count from starter plant growth.",
+      "Writes or selects one visible observation.",
+      "Uses the weekly tracker without adding unnecessary extra rows.",
+      "Contributes an appropriate summary to the monthly class tracker."
+    ],
+    "conference_prompts": [
+      "Show me where your measurement starts.",
+      "What changed since the last entry?",
+      "Which number or observation is your best evidence?",
+      "Are you tracking a sprout or a starter plant right now?",
+      "What should go on the class tracker?"
+    ],
+    "release_rule": "Release students from the station when their completion check is done and the data is readable enough to compare next class."
+  },
+  "student_rubric": {
+    "title": "Planter Box Growth Tracking Rubric",
+    "purpose_line": "This rubric assesses useful evidence, careful measurement, and growth explanations.",
+    "scale": {
+      "min": 1,
+      "max": 4,
+      "labels": {
+        "1": "Emerging",
+        "2": "Developing",
+        "3": "Proficient",
+        "4": "Extending"
+      }
+    },
+    "criteria": [
+      {
+        "name": "Measurement routine",
+        "descriptor": "Height, leaves, and sprout data are collected consistently.",
+        "level_descriptors": {
+          "1": "Measurements are missing or hard to compare.",
+          "2": "Some measurements are recorded but the method changes or needs reminders.",
+          "3": "Measurements are recorded with a consistent method and useful units.",
+          "4": "The student explains why the method matters and helps improve class data quality."
+        }
+      },
+      {
+        "name": "Observation quality",
+        "descriptor": "Observations describe visible plant evidence.",
+        "level_descriptors": {
+          "1": "Observation is missing or mostly a guess.",
+          "2": "Observation is visible but vague.",
+          "3": "Observation clearly describes colour, position, leaves, soil, or growth.",
+          "4": "Observation connects to a pattern while still separating evidence from guesses."
+        }
+      },
+      {
+        "name": "Data explanation",
+        "descriptor": "Student uses data to explain a growth pattern.",
+        "level_descriptors": {
+          "1": "Explanation does not use data.",
+          "2": "Explanation uses one piece of data with support.",
+          "3": "Explanation uses weekly or class data to describe a clear pattern.",
+          "4": "Explanation compares individual and class data or identifies a limitation in the data."
+        }
+      }
+    ],
+    "comment_fields": [
+      "Evidence seen",
+      "Next step",
+      "Teacher feedback"
+    ],
+    "repeat_for_subjects": 1,
+    "subject_label": "Student",
+    "include_signature_line": false,
+    "success_criteria": [
+      "Ratings are based on recorded evidence.",
+      "Extending requires explanation or transfer, not extra decoration."
+    ]
+  },
+  "final_response_sheet": {
+    "title": "Final Response - What Pattern Did Our Plants Show?",
+    "prompt": "Use your weekly tracker and the monthly class tracker to explain one growth pattern. Include at least two pieces of evidence such as height, leaf count, sprout count, or health observations.",
+    "planning_reminders": [
+      "Name the plant or seed type.",
+      "Use numbers when you have them.",
+      "Separate evidence from guesses.",
+      "Compare your weekly data to class data if possible."
+    ],
+    "paragraph_support": {
+      "frame_strip": [
+        "The plant or seed type I tracked was ___.",
+        "One pattern I noticed was ___.",
+        "My evidence is ___ and ___.",
+        "This might mean ___, but I would need more data to be sure."
+      ],
+      "reminder_box": "A strong answer uses the tracker, not memory."
+    },
+    "success_criteria": [
+      "I named a plant or seed type.",
+      "I described one growth pattern.",
+      "I used at least two pieces of evidence.",
+      "I explained what the data might show."
+    ],
+    "response_lines": 10
+  },
+  "exit_ticket": {
+    "title": "Planting Day Exit Ticket",
+    "prompt": "What is one thing we measure to track plant growth? Why do we need to measure the same way each time?",
+    "n_lines": 4,
+    "success_criteria": [
+      "I named one measurement.",
+      "I explained why consistency matters."
+    ]
+  },
+  "slides": [
+    {
+      "type": "TITLE",
+      "title": "Planter Box Growth Tracking",
+      "layout": "hero",
+      "content": {
+        "subtitle": "Plant. Measure. Track. Explain the evidence."
+      },
+      "image_intent": {
+        "role": "reference_photo",
+        "purpose": "orient_lesson",
+        "preferred_asset_tags": [
+          "planter",
+          "seedlings",
+          "ruler"
+        ]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "Two Kinds of Data",
+      "layout": "two_column_compare",
+      "content": {
+        "left": "Sprout tracking: Did the seed start growing?",
+        "right": "Growth tracking: How is the plant changing over time?",
+        "prompts": [
+          "Keep these separate.",
+          "Compare the same kind of data."
+        ]
+      }
+    },
+    {
+      "type": "MODEL",
+      "title": "How to Measure Height",
+      "layout": "numbered_steps",
+      "content": {
+        "rows": [
+          "Start at the soil line.",
+          "Measure to the tallest living part.",
+          "Use centimetres.",
+          "Do not pull the plant straight."
+        ],
+        "caption": "Same method each time = better data."
+      }
+    },
+    {
+      "type": "MODEL",
+      "title": "What Else Do We Track?",
+      "layout": "three_rows",
+      "content": {
+        "rows": [
+          "Leaf count",
+          "Colour or health code",
+          "One short visible observation"
+        ]
+      }
+    },
+    {
+      "type": "WORK",
+      "title": "Today",
+      "layout": "checklist",
+      "content": {
+        "prompts": [
+          "Plant and label starter plants.",
+          "Record baseline height and leaves.",
+          "Continue sprout count by seed type.",
+          "Complete the planting day exit ticket."
+        ]
+      }
+    },
+    {
+      "type": "ROUTINE",
+      "title": "Tracking Without Huge Tables",
+      "layout": "two_column",
+      "content": {
+        "columns": [
+          {
+            "heading": "Weekly individual tracker",
+            "body": "One sheet per student or pair. Five small daily rows."
+          },
+          {
+            "heading": "Monthly class tracker",
+            "body": "One shared summary for class patterns by seed or plant type."
+          }
+        ]
+      }
+    },
+    {
+      "type": "REFLECT",
+      "title": "Evidence Question",
+      "layout": "reflect",
+      "content": {
+        "prompts": [
+          "What changed?",
+          "What evidence proves it?",
+          "What would we need to keep tracking?"
+        ]
+      }
+    }
+  ],
+  "bundle": {
+    "bundle_id": "planter_box_growth_tracking_bundle",
+    "declared_outputs": [
+      "teacher_guide",
+      "lesson_overview",
+      "task_sheet",
+      "graphic_organizer",
+      "checkpoint_sheet",
+      "rubric_sheet",
+      "final_response_sheet",
+      "exit_ticket",
+      "slides"
+    ]
+  },
+  "outputs": [
+    {
+      "output_id": "planter_teacher_guide",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "planter_box_growth_tracking_bundle"
+    },
+    {
+      "output_id": "planter_lesson_overview",
+      "output_type": "lesson_overview",
+      "audience": "teacher",
+      "source_section": "lesson_overview",
+      "bundle": "planter_box_growth_tracking_bundle"
+    },
+    {
+      "output_id": "planting_day_task_sheet",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "planting_day_task_sheet",
+      "bundle": "planter_box_growth_tracking_bundle"
+    },
+    {
+      "output_id": "daily_sprout_quick_check",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "daily_sprout_quick_check",
+      "bundle": "planter_box_growth_tracking_bundle"
+    },
+    {
+      "output_id": "weekly_individual_growth_tracker",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "weekly_individual_tracker",
+      "bundle": "planter_box_growth_tracking_bundle"
+    },
+    {
+      "output_id": "reduced_load_growth_tracker",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "reduced_load_tracker",
+      "bundle": "planter_box_growth_tracking_bundle"
+    },
+    {
+      "output_id": "monthly_class_growth_tracker",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "monthly_class_tracker",
+      "bundle": "planter_box_growth_tracking_bundle"
+    },
+    {
+      "output_id": "planter_box_map_organizer",
+      "output_type": "graphic_organizer",
+      "audience": "student",
+      "source_section": "planter_box_map",
+      "bundle": "planter_box_growth_tracking_bundle"
+    },
+    {
+      "output_id": "growth_assessment_checklist",
+      "output_type": "checkpoint_sheet",
+      "audience": "teacher",
+      "source_section": "growth_assessment_checklist",
+      "bundle": "planter_box_growth_tracking_bundle"
+    },
+    {
+      "output_id": "student_growth_rubric",
+      "output_type": "rubric_sheet",
+      "audience": "student",
+      "source_section": "student_rubric",
+      "bundle": "planter_box_growth_tracking_bundle"
+    },
+    {
+      "output_id": "growth_pattern_final_response",
+      "output_type": "final_response_sheet",
+      "audience": "student",
+      "source_section": "final_response_sheet",
+      "bundle": "planter_box_growth_tracking_bundle",
+      "final_evidence": true
+    },
+    {
+      "output_id": "planting_exit_ticket",
+      "output_type": "exit_ticket",
+      "audience": "student",
+      "source_section": "exit_ticket",
+      "bundle": "planter_box_growth_tracking_bundle"
+    },
+    {
+      "output_id": "planter_growth_slides",
+      "output_type": "slides",
+      "audience": "shared_view",
+      "source_section": "slides",
+      "bundle": "planter_box_growth_tracking_bundle"
+    }
+  ]
+}
