@@ -5,6 +5,7 @@ import { resolve } from 'node:path'
 
 import { buildArtifactTrace } from '../../engine/render/artifact-classifier.mjs'
 import { runMultipageArtifactQa } from '../../engine/render/multipage-artifact-qa.mjs'
+import { derivePageRoles } from '../../engine/render/multipage-page-roles.mjs'
 import { resolveTemplateRoute } from '../../engine/render/template-router.mjs'
 import { buildTypedLayoutBlocks } from '../../engine/render/typed-blocks.mjs'
 import { validatePackage } from '../../engine/schema/preflight.mjs'
@@ -68,6 +69,36 @@ test('artifact trace upgrades teacher guide proof route to teacher_guide_multi_p
   assert.ok(trace.page_roles.includes('project_tools'))
   assert.ok(trace.page_roles.includes('teacher_model'))
   assert.ok(trace.page_roles.includes('assessment_reference'))
+})
+
+test('derivePageRoles uses route metadata to preserve student completion_check role', () => {
+  const roles = derivePageRoles(
+    {
+      output_id: 'student_packet_completion_check',
+      output_type: 'task_sheet',
+      audience: 'student',
+      source_section: 'success_criteria',
+    },
+    'student_packet_multi_page',
+    [],
+  )
+
+  assert.deepEqual(roles, ['completion_check'])
+})
+
+test('derivePageRoles uses route metadata to preserve teacher project_tools role', () => {
+  const roles = derivePageRoles(
+    {
+      output_id: 'teacher_guide_project_tools',
+      output_type: 'teacher_guide',
+      audience: 'teacher',
+      source_section: 'project_prompt',
+    },
+    'teacher_guide_multi_page',
+    [],
+  )
+
+  assert.deepEqual(roles, ['project_tools'])
 })
 
 test('artifact trace keeps sparse PBG task sheet in task_sheet when only reference-bank and checklist signals are present', () => {
