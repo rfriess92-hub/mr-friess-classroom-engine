@@ -1,0 +1,231 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "grade8_curriculum_target_card_toolkit",
+  "primary_architecture": "workshop_session",
+  "session_count": 1,
+  "grade_band": "6-8",
+  "subject": "Grade 8 Cross-Curricular",
+  "grade": 8,
+  "topic": "Grade 8 Curriculum Target Card Toolkit",
+  "theme": "crosscurricular_planning",
+  "standards": ["BC-G8-MATH", "BC-G8-SCIENCE", "BC-G8-ELA", "BC-G8-CAREERS", "BC-G8-ADST"],
+  "assignment_family": "short_project",
+  "grade_subject_fit": "Reusable Grade 8 planning toolkit for Math 8, Science 8, ELA 8, Career Education 8, and ADST 8.",
+  "unit_context": "Teacher-facing toolkit for building future packages from curriculum target, context family, student product, support version, and assessment evidence.",
+  "assignment_purpose": "Teachers use compact curriculum target cards to keep future packages aligned before artifact production begins.",
+  "final_evidence_target": "A future package passoff that names the target, context, product, support version, evidence, and separated teacher/student artifacts.",
+  "student_task_flow": ["Name the learning goal.", "Choose or receive a matching context.", "Produce the required evidence.", "Complete the done-when checklist and completion_check."],
+  "success_criteria": ["Target is clear.", "Learning goal is student-friendly.", "Evidence is observable.", "Context supports the target.", "Teacher and student materials are separated."],
+  "supports_scaffolds": ["Use target cards to reduce planning drift.", "Use K-support moves that preserve the learning goal.", "Use the student support frame for reduced-load versions."],
+  "differentiation_model": {
+    "support_pathway": "Use a preselected target, one context family, and the student support frame.",
+    "core_pathway": "Choose target, context, product, support version, and assessment evidence.",
+    "extension_pathway": "Compare two context families and justify which better protects the target."
+  },
+  "checkpoint_release_logic": ["Target selected before context.", "Product and evidence aligned.", "K-support keeps same learning goal.", "Teacher/student sections separated."],
+  "teacher_implementation_notes": ["This toolkit is for planning future packages.", "Garden / planter / food systems is one option, not the default.", "For First Peoples content, use teacher-selected/local-approved sources only."],
+  "likely_misconceptions": ["Context can become decoration if the target is not named first.", "Student choice can hide the learning goal.", "Support can accidentally lower the target instead of reducing barriers."],
+  "pacing_shape": "teacher_planning_workshop",
+  "assessment_focus": ["Context supports the curriculum target.", "Student product shows evidence.", "K-support preserves the learning goal.", "Artifact roles are declared clearly."],
+  "teacher_guide": {
+    "title": "Teacher Guide - Grade 8 Curriculum Target Card Toolkit",
+    "overview": "Use this toolkit to build Grade 8 packages from curriculum target + context + student product + support version + assessment evidence.",
+    "essential_question": "How do we keep future packages aligned to the target instead of being driven by a favourite context?",
+    "opening_frame": "Start with the curriculum target. Choose the context only after the target and evidence are clear.",
+    "project_prompt": "Build a Grade 8 package by choosing a curriculum target first, then selecting a context family, student product, support version, and assessment evidence.",
+    "materials": ["quick_tools: Target first, context second.", "quick_tools: Do not default everything to garden or planter context.", "quick_tools: Keep answer keys and teacher look-fors out of student-facing materials.", "quick_tools: Support versions preserve the learning goal and reduce access barriers.", "quick_tools: Every student packet needs a done-when checklist or completion_check signal."],
+    "matching_bank": ["curriculum target", "context family", "student product", "support version", "assessment evidence", "student-facing artifact", "teacher-facing artifact", "completion check", "K-support"],
+    "model": {"title": "Teacher model", "sample": "Target: unit rates. Context: consumer/money. Product: best-buy recommendation. Support: partial table. Evidence: unit-rate comparison and explanation."},
+    "assessment_focus": "assessment_look_fors: selected context supports the target; product shows evidence; K-support preserves the same learning goal; teacher/student materials are separated; artifact roles are declared clearly.",
+    "teacher_notes": ["teacher_notes: Use context families flexibly.", "teacher_notes: Garden / planter / food systems is one option, not the default.", "teacher_notes: Use local-approved sources for First Peoples content."]
+  },
+  "toolkit_overview": {
+    "title": "Toolkit Overview - Grade 8 Curriculum Target Cards",
+    "purpose_line": "Teacher-facing overview for using target cards before fixture creation.",
+    "instructions": ["Use the planning chain before writing artifacts.", "Choose target first, context second."],
+    "tasks": [
+      {"label": "Planning chain", "prompt": "curriculum target + context + student product + support version + assessment evidence", "lines": 2},
+      {"label": "Context guardrail", "prompt": "Garden / planter / food systems is one optional context family only.", "lines": 2},
+      {"label": "Separation guardrail", "prompt": "Teacher-facing material may include notes and look-fors. Student-facing material must not include answer keys, expected answers, teacher notes, assessment look-fors, common misconceptions, or sample solutions.", "lines": 2}
+    ],
+    "embedded_supports": ["Use target cards to avoid package drift.", "Use the artifact checklist before rendering."],
+    "success_criteria": ["Target is clear.", "Context supports the target.", "Evidence is observable."]
+  },
+  "context_menu": {
+    "title": "Context Menu - Grade 8 Package Context Families",
+    "organizer_type": "three_column",
+    "columns": ["Context family", "Best for", "Guardrail"],
+    "rows": 8,
+    "prompt": "Use one of these context families after the curriculum target is clear: Garden / Planter / Food Systems; Design / Build / Trades; Community / Kamloops / Local Work; Outdoor Place / Land / Environment; Health / Body / Choices; Digital / Coding / Data; Consumer / Money / Market; Stories / Identity / Growth.",
+    "success_criteria": ["Context matches the learning goal.", "Context does not replace the target.", "Garden / planter / food systems is optional, not default."]
+  },
+  "blank_curriculum_target_card_template": {
+    "title": "Blank Curriculum Target Card Template",
+    "purpose_line": "Teacher-facing planning template.",
+    "instructions": ["Complete one target card before building artifacts."],
+    "tasks": [
+      {"label": "Target", "prompt": "[Name the curriculum target]", "lines": 2},
+      {"label": "Students need to", "prompt": "[Plain-language learning goals]", "lines": 3},
+      {"label": "Best evidence", "prompt": "[What students can produce to show learning]", "lines": 3},
+      {"label": "Common difficulties", "prompt": "[Predictable Grade 8 barriers]", "lines": 3},
+      {"label": "K-support moves", "prompt": "[Reduced-load and accessibility supports]", "lines": 3},
+      {"label": "Possible contexts", "prompt": "[Flexible context options, not just garden]", "lines": 3},
+      {"label": "Likely artifacts", "prompt": "[Materials that could be created later]", "lines": 3}
+    ],
+    "embedded_supports": ["Target first, context second.", "Evidence must be observable."],
+    "success_criteria": ["Target is clear.", "Evidence is observable.", "K-support preserves learning goal."]
+  },
+  "math8_target_card_set": {
+    "title": "Math 8 Target Card Set - Compact Index",
+    "purpose_line": "Teacher-facing compact Math 8 target index. Full card bank is split into reference docs.",
+    "instructions": ["Choose one target, then select context and evidence."],
+    "tasks": [
+      {"label": "Number and operations", "prompt": "Fractions; ratios, rates, percents; financial literacy and best-buy decisions.", "lines": 2},
+      {"label": "Patterns and algebra", "prompt": "Linear relations and growth patterns; expressions, substitution, and two-step equations.", "lines": 2},
+      {"label": "Geometry and measurement", "prompt": "Surface area, volume, 3D measurement; Pythagorean theorem; scale drawings, views, and nets.", "lines": 2},
+      {"label": "Data and probability", "prompt": "Data, central tendency, interpretation; probability and fair games.", "lines": 2},
+      {"label": "Recovery", "prompt": "Math skills recovery and numeracy routines.", "lines": 2}
+    ],
+    "embedded_supports": ["Full Math 8 cards live in docs/curriculum-target-cards/math8.md."],
+    "success_criteria": ["Target is clear.", "Evidence is observable.", "Support version preserves learning goal."]
+  },
+  "science8_target_card_set": {
+    "title": "Science 8 Target Card Set - Compact Index",
+    "purpose_line": "Teacher-facing compact Science 8 target index.",
+    "instructions": ["Choose one target, then select context and evidence."],
+    "tasks": [
+      {"label": "Inquiry and life science", "prompt": "Scientific inquiry and CER; characteristics of life; plant and animal cells; photosynthesis and cellular respiration.", "lines": 2},
+      {"label": "Ecosystems and health", "prompt": "Microorganisms and decomposers; immune system and disease basics.", "lines": 2},
+      {"label": "Physical science", "prompt": "Matter and particle model; atomic theory, elements, and compounds; light, waves, and electromagnetic spectrum.", "lines": 2},
+      {"label": "Earth science", "prompt": "Plate tectonics, earth processes, and local geology.", "lines": 2},
+      {"label": "Recovery", "prompt": "Science skills recovery and vocabulary support.", "lines": 2}
+    ],
+    "embedded_supports": ["Full Science 8 cards live in docs/curriculum-target-cards/science8.md."],
+    "success_criteria": ["Target is clear.", "Evidence is observable.", "Support version preserves learning goal."]
+  },
+  "ela8_target_card_set": {
+    "title": "ELA 8 Target Card Set - Compact Index",
+    "purpose_line": "Teacher-facing compact ELA 8 target index.",
+    "instructions": ["Choose the literacy target before context."],
+    "tasks": [
+      {"label": "Reading and response", "prompt": "Reading strategies for short non-fiction; summary skills; literary response; protocol-aware First Peoples text response.", "lines": 2},
+      {"label": "Writing", "prompt": "Paragraph writing foundations; opinion and argument with evidence; personal narrative and growth writing.", "lines": 2},
+      {"label": "Research and media", "prompt": "Research basics and source use; visual and media literacy.", "lines": 2},
+      {"label": "Communication", "prompt": "Oral communication and discussion skills.", "lines": 2},
+      {"label": "Recovery", "prompt": "ELA skills recovery pack.", "lines": 2}
+    ],
+    "embedded_supports": ["Full ELA 8 cards live in docs/curriculum-target-cards/ela8.md."],
+    "success_criteria": ["Target is clear.", "Evidence is observable.", "Support version preserves learning goal."]
+  },
+  "careers8_target_card_set": {
+    "title": "Career Education 8 Target Card Set - Compact Index",
+    "purpose_line": "Teacher-facing compact Career Education 8 target index.",
+    "instructions": ["Avoid forced personal disclosure. Use choice banks and private reflection options."],
+    "tasks": [
+      {"label": "Self and goals", "prompt": "Values, skills, interests, strengths; goal setting and reflection; Careers skills recovery.", "lines": 2},
+      {"label": "Pathways", "prompt": "Guest speaker prep; local career pathways; education and training pathways.", "lines": 2},
+      {"label": "Workplace readiness", "prompt": "Workplace skills and employability; workplace safety basics; project management and collaboration.", "lines": 2},
+      {"label": "Digital and community", "prompt": "Digital identity and first impressions; volunteering and community contribution.", "lines": 2}
+    ],
+    "embedded_supports": ["Full Careers 8 cards live in docs/curriculum-target-cards/careers8.md."],
+    "success_criteria": ["Target is clear.", "Evidence is observable.", "Support version preserves learning goal."]
+  },
+  "adst8_target_card_set": {
+    "title": "ADST 8 Target Card Set - Compact Index",
+    "purpose_line": "Teacher-facing compact ADST 8 target index.",
+    "instructions": ["Choose the design or technology target first."],
+    "tasks": [
+      {"label": "Design and making", "prompt": "Design thinking; technical drawing; woodwork/materials/making; entrepreneurship and marketing.", "lines": 2},
+      {"label": "Safety and systems", "prompt": "Tool, workspace, and digital safety; robotics/sensors/automated systems.", "lines": 2},
+      {"label": "Digital and media", "prompt": "Digital literacy and source checking; computational thinking and coding logic; media arts and visual communication.", "lines": 2},
+      {"label": "Food and recovery", "prompt": "Food studies and local food systems; ADST skills recovery pack.", "lines": 2}
+    ],
+    "embedded_supports": ["Full ADST 8 cards live in docs/curriculum-target-cards/adst8.md."],
+    "success_criteria": ["Target is clear.", "Evidence is observable.", "Support version preserves learning goal."]
+  },
+  "package_builder_template": {
+    "title": "Artifact Production Passoff - Package Builder Template",
+    "purpose_line": "Teacher-facing passoff template for turning one target card into an engine-ready package.",
+    "instructions": ["Copy this structure into artifact production once the target card is selected."],
+    "tasks": [
+      {"label": "Package setup", "prompt": "Package title; Grade 8; subject area; context family; curriculum target.", "lines": 3},
+      {"label": "Student learning", "prompt": "Student-friendly learning goal; student product; assessment evidence.", "lines": 3},
+      {"label": "Required artifacts", "prompt": "student packet; teacher guide; K-support / reduced-load version; rubric or checklist; exit ticket set; organizers needed; teacher answer key or exemplar if needed, teacher-facing only.", "lines": 4},
+      {"label": "Separation", "prompt": "Student-facing pages listed separately from teacher guide notes, answer key, look-fors, misconceptions, adaptations, and extensions.", "lines": 3}
+    ],
+    "embedded_supports": ["Plain Grade 8 language.", "Low clutter.", "Enough workspace.", "No answer leakage into student materials."],
+    "success_criteria": ["Target is clear.", "Evidence is observable.", "Student and teacher outputs are separated."]
+  },
+  "artifact_checklist": {
+    "title": "Artifact Checklist - Grade 8 Package Readiness",
+    "purpose_line": "Teacher-facing checklist for artifact readiness.",
+    "instructions": ["Use before generating fixtures and after rendering."],
+    "tasks": [
+      {"label": "Curriculum target card", "prompt": "target is clear; learning goal is student-friendly; evidence is observable; context choices are flexible; K-support preserves learning goal", "lines": 3},
+      {"label": "Student packet", "prompt": "student packet has task overview; no answer key content in student packet; done-when checklist included; completion_check signal included", "lines": 3},
+      {"label": "Teacher guide", "prompt": "teacher guide includes project_prompt, matching_bank, quick_tools, assessment_look_fors, teacher_notes", "lines": 3},
+      {"label": "Assessment support", "prompt": "rubric/checklist is aligned; exit tickets are usable; teacher answer key is teacher audience only", "lines": 3}
+    ],
+    "embedded_supports": ["Do not put expected answers or teacher notes in student-facing materials."],
+    "success_criteria": ["target is clear", "learning goal is student-friendly", "evidence is observable", "done-when checklist included", "completion_check signal included"]
+  },
+  "teacher_context_guidance": {
+    "title": "Teacher Context Guidance",
+    "purpose_line": "Teacher-facing guidance for choosing context families.",
+    "instructions": ["Start with curriculum target.", "Choose context only after target is clear."],
+    "tasks": [
+      {"label": "Context decision rules", "prompt": "Use one main context family unless intentionally cross-curricular. Do not force garden / planter / food systems into unrelated targets.", "lines": 3},
+      {"label": "Local relevance", "prompt": "Use Kamloops/local context when it increases relevance without requiring extra research.", "lines": 2},
+      {"label": "First Peoples content", "prompt": "Use protocol-aware language and teacher-selected/local-approved sources only. Do not invent generic First Peoples stories or knowledge.", "lines": 2}
+    ],
+    "embedded_supports": ["Target first, context second."],
+    "success_criteria": ["Context fits the target.", "Context does not add unnecessary reading load."]
+  },
+  "student_support_frame_template": {
+    "title": "Student Support Frame Template",
+    "purpose_line": "Reusable reduced-load support frame. This page is student-facing.",
+    "instructions": ["Use this frame to name the learning goal, evidence, context, words, and starting point.", "Complete the done-when checklist before handing in work."],
+    "tasks": [
+      {"label": "Before I start", "prompt": "Today I am learning to...", "lines": 3},
+      {"label": "reference bank", "prompt": "Words I need and support tools I can use.", "lines": 3},
+      {"label": "research planner", "prompt": "I can show this by creating this product or evidence.", "lines": 3},
+      {"label": "My context", "prompt": "The context I am using is...", "lines": 2},
+      {"label": "I can start with", "prompt": "Write your first step.", "lines": 3},
+      {"label": "completion_check", "prompt": "I named the learning goal. I completed the required product or evidence. I used the support tools I needed. I completed the checklist or asked for help.", "lines": 2}
+    ],
+    "embedded_supports": ["Sentence frame: I am learning to ___.", "Sentence frame: I can show this by ___."],
+    "success_criteria": ["done-when: I understand the learning goal.", "done-when: I produced the required evidence.", "done-when: I checked my work.", "done-when: I marked where I need help.", "completion_check included."]
+  },
+  "student_context_choice_frame": {
+    "title": "Student Context Choice Frame",
+    "purpose_line": "Reusable student context-choice frame. This page is student-facing.",
+    "instructions": ["Choose one context that helps you understand the task.", "Your context should still match the same learning goal."],
+    "tasks": [
+      {"label": "Before choosing", "prompt": "Your teacher may assign the context if choice would make the task too confusing.", "lines": 2},
+      {"label": "reference bank", "prompt": "Context choices: Garden / Planter / Food Systems; Design / Build / Trades; Community / Kamloops / Local Work; Outdoor Place / Land / Environment; Health / Body / Choices; Digital / Coding / Data; Consumer / Money / Market; Stories / Identity / Growth", "lines": 3},
+      {"label": "research planner", "prompt": "I chose this context because it helps me understand the same learning goal.", "lines": 3},
+      {"label": "My choice", "prompt": "I chose this context:", "lines": 2},
+      {"label": "This context fits because", "prompt": "Explain why it matches the learning goal.", "lines": 3},
+      {"label": "completion_check", "prompt": "I chose a context that matches the learning goal. I can explain why it fits. I know what product or evidence I need to create.", "lines": 2}
+    ],
+    "embedded_supports": ["The context should help you understand the same learning goal, not change the task."],
+    "success_criteria": ["done-when: I chose a context that matches the learning goal.", "done-when: I can explain why it fits.", "done-when: I know what product or evidence I need to create.", "completion_check included."]
+  },
+  "bundle": {"bundle_id": "grade8_curriculum_target_card_toolkit_bundle", "declared_outputs": ["teacher_guide", "task_sheet", "graphic_organizer"]},
+  "outputs": [
+    {"output_id": "teacher_guide_main", "output_type": "teacher_guide", "source_section": "teacher_guide", "audience": "teacher", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "toolkit_overview", "output_type": "task_sheet", "source_section": "toolkit_overview", "audience": "teacher", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "context_menu", "output_type": "graphic_organizer", "source_section": "context_menu", "audience": "teacher", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "blank_curriculum_target_card_template", "output_type": "task_sheet", "source_section": "blank_curriculum_target_card_template", "audience": "teacher", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "math8_target_card_set", "output_type": "task_sheet", "source_section": "math8_target_card_set", "audience": "teacher", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "science8_target_card_set", "output_type": "task_sheet", "source_section": "science8_target_card_set", "audience": "teacher", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "ela8_target_card_set", "output_type": "task_sheet", "source_section": "ela8_target_card_set", "audience": "teacher", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "careers8_target_card_set", "output_type": "task_sheet", "source_section": "careers8_target_card_set", "audience": "teacher", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "adst8_target_card_set", "output_type": "task_sheet", "source_section": "adst8_target_card_set", "audience": "teacher", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "package_builder_template", "output_type": "task_sheet", "source_section": "package_builder_template", "audience": "teacher", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "artifact_checklist", "output_type": "task_sheet", "source_section": "artifact_checklist", "audience": "teacher", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "teacher_context_guidance", "output_type": "task_sheet", "source_section": "teacher_context_guidance", "audience": "teacher", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "student_support_frame_template", "output_type": "task_sheet", "source_section": "student_support_frame_template", "audience": "student", "bundle": "grade8_curriculum_target_card_toolkit_bundle"},
+    {"output_id": "student_context_choice_frame", "output_type": "task_sheet", "source_section": "student_context_choice_frame", "audience": "student", "bundle": "grade8_curriculum_target_card_toolkit_bundle"}
+  ]
+}
