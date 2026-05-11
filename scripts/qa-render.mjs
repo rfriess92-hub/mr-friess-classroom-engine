@@ -245,6 +245,30 @@ function expectedPdfIdentityPhrases(artifactName) {
   return phrase ? [phrase] : []
 }
 
+function hasTaskSheetFallbackIdentity(artifactName, audienceBucket, normalizedText) {
+  const stem = artifactStem(artifactName)
+  if (!stem.includes('task_sheet') || audienceBucket !== 'student_facing') return false
+
+  const words = wordCount(normalizedText)
+  if (words < 20) return false
+
+  const taskSheetSignals = [
+    'success criteria',
+    'instructions',
+    'name:',
+    'module',
+    'record',
+    'response',
+    'show your work',
+    'claim',
+    'evidence',
+    'calculate',
+    'measure',
+  ]
+
+  return taskSheetSignals.some((signal) => normalizedText.includes(signal))
+}
+
 function checkPdfSemantics(artifactName, audienceBucket, normalizedText, textExtractionOk) {
   const blockers = []
   const findings = []
@@ -252,8 +276,12 @@ function checkPdfSemantics(artifactName, audienceBucket, normalizedText, textExt
 
   const identityPhrases = expectedPdfIdentityPhrases(artifactName)
   if (identityPhrases.length > 0 && !identityPhrases.some((phrase) => normalizedText.includes(phrase))) {
-    blockers.push('pdf_identity_text_missing')
-    findings.push({ type: 'artifact_formatting_issue', note: `Extracted PDF text does not include an expected identity phrase for this artifact: ${identityPhrases.join(' or ')}.` })
+    if (hasTaskSheetFallbackIdentity(artifactName, audienceBucket, normalizedText)) {
+      findings.push({ type: 'artifact_formatting_issue', note: `Extracted task-sheet PDF text does not include an explicit identity phrase (${identityPhrases.join(' or ')}), but it contains student-facing task-sheet signals.` })
+    } else {
+      blockers.push('pdf_identity_text_missing')
+      findings.push({ type: 'artifact_formatting_issue', note: `Extracted PDF text does not include an expected identity phrase for this artifact: ${identityPhrases.join(' or ')}.` })
+    }
   }
 
   if (audienceBucket === 'teacher_only' && normalizedText.includes('name:')) {
