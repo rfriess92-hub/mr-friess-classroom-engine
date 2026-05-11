@@ -1,0 +1,108 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers8_paper_airplane_expanded_v2",
+  "primary_architecture": "workshop_session",
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Paper airplane prototype progression and improvement checklist",
+  "theme": "careers",
+  "teacher_guide": {
+    "title": "Careers 8 Teacher Guide - Paper Airplane Prototype Challenge",
+    "overview": "Two-day prototype challenge focused on evidence-based improvement, teamwork, safety, and career skill reflection.",
+    "essential_question": "How do people improve a product or process by using evidence, feedback, and perseverance?",
+    "opening_frame": "Students work like a product design team: prototype, test, improve, and explain the evidence.",
+    "timing": [
+      { "time": "Monday", "activity": "Build and test prototypes. Complete exit ticket." },
+      { "time": "Tuesday first half", "activity": "Use Monday evidence for one final improvement." },
+      { "time": "Tuesday second half", "activity": "Official flights and final reflection." }
+    ],
+    "teacher_notes": [
+      "Assess evidence, improvement, safe process, and explanation, not only distance.",
+      "Ask: What changed from the last version?",
+      "Extending means transfer beyond this airplane task, not extra neatness."
+    ],
+    "project_prompt": "Design, test, improve, and officially fly a paper airplane prototype.",
+    "matching_bank": [
+      "Twists or dives: check symmetry, nose tightness, wing tips, and balance.",
+      "Short flight: try sharper folds, narrower wings, one small weight, or consistent force.",
+      "Off course: check wing angles, bent folds, wing tip adjustment, or launch angle."
+    ],
+    "model": { "title": "Teacher model", "sample": "Prototype 1 flew straighter because we made the wings more even. Our next test will keep that change and adjust nose weight." },
+    "assessment_focus": "Prototype progression, evidence-based improvement, safe team process, and career skill transfer."
+  },
+  "rubric_sheet": {
+    "title": "Paper Airplane Prototype Challenge Rubric",
+    "purpose_line": "Each box explains how to reach the level. Extending means transfer beyond this assigned task.",
+    "scale": { "min": 1, "max": 4, "labels": { "1": "Emerging", "2": "Developing", "3": "Proficient", "4": "Extending" } },
+    "criteria": [
+      { "name": "Prototype process", "descriptor": "Build, test, improve cycle.", "level_descriptors": { "1": "Build one version or make random changes. To improve: label each version and record one change.", "2": "Build more than one version, but changes are unclear. To improve: change one main feature before each test.", "3": "Build multiple versions and change one feature at a time using the tracker.", "4": "Transfer the cycle by explaining how it could improve another product, routine, or workplace problem." } },
+      { "name": "Evidence use", "descriptor": "Evidence guides decisions.", "level_descriptors": { "1": "Record little evidence. To improve: write one distance, score, or observation after each test.", "2": "Record some results but do not always use them. To improve: connect the next change to a previous result.", "3": "Use evidence to choose and justify the final Tuesday improvement.", "4": "Identify a pattern, limitation, or fair-test issue and explain how better data would improve the process." } },
+      { "name": "Career reflection", "descriptor": "Connect work to career skills.", "level_descriptors": { "1": "Name a skill with little explanation. To improve: give one example from the work.", "2": "Explain a skill simply. To improve: connect it to a team decision or challenge.", "3": "Explain how teamwork, communication, accuracy, safety, patience, or project management affected the result.", "4": "Explain how this skill matters in a real job, workplace team, or future project with different constraints." } }
+    ],
+    "comment_fields": ["Evidence for rating", "Next step", "Transfer beyond this task"],
+    "repeat_for_subjects": 1,
+    "subject_label": "Team",
+    "include_signature_line": false,
+    "success_criteria": ["Ratings match evidence.", "Extending shows transfer to a new context."]
+  },
+  "tuesday_official_run_sheet": {
+    "title": "Tuesday Official Run Sheet",
+    "instructions": ["Use this after final work time.", "Record both official launches.", "Identify the best evidence."],
+    "tasks": [
+      { "label": "Final change", "prompt": "What final change did you make today, and why?", "lines": 2 },
+      { "label": "Official launches", "prompt": "Record Launch 1, Launch 2, and your best result.", "lines": 3 },
+      { "label": "Evidence statement", "prompt": "What did the official run prove about your design?", "lines": 3 }
+    ],
+    "success_criteria": ["Both launches recorded.", "Best result identified.", "Result connected to final change."]
+  },
+  "final_reflection_sheet": {
+    "title": "Final Reflection - Prototype Thinking and Career Skills",
+    "prompt": "Explain how your team improved the prototype and what career skill helped most. Use evidence. For Extending, connect this process to a different product, job, or project.",
+    "n_lines": 10,
+    "success_criteria": ["I explained one improvement.", "I used evidence.", "I connected to a career skill.", "I considered transfer for Extending."]
+  },
+  "reduced_load_student_version": {
+    "title": "Reduced-Load Version",
+    "instructions": ["Use fewer choices.", "Choose one option each round.", "Use sentence frames."],
+    "tasks": [
+      { "label": "Round 1", "prompt": "Choose: wings more even OR nose tighter.", "lines": 1 },
+      { "label": "Round 2", "prompt": "Choose: add one paper clip OR remove one paper clip.", "lines": 1 },
+      { "label": "Round 3", "prompt": "Choose: change launch angle OR adjust wing tips.", "lines": 1 },
+      { "label": "Final", "prompt": "Our best plane was ___ because ___. One career skill I used was ___ because ___.", "lines": 4 }
+    ],
+    "embedded_supports": ["Better means farther, straighter, or more consistent."],
+    "success_criteria": ["I made one choice per round.", "I recorded better or worse.", "I used one sentence frame."]
+  },
+  "teacher_observation_checklist": {
+    "title": "Teacher Observation Checklist",
+    "purpose_line": "Use while circulating. Mark evidence and quick feedback.",
+    "scale": { "min": 1, "max": 4, "labels": { "1": "Not yet", "2": "With support", "3": "Independent", "4": "Transfer" } },
+    "criteria": [
+      { "name": "One-change testing", "descriptor": "Students test one change at a time.", "level_descriptors": { "1": "Changing randomly.", "2": "Can name a change after prompting.", "3": "Names the change before testing and records the result.", "4": "Explains why isolating one variable matters in other contexts." } },
+      { "name": "Evidence use", "descriptor": "Evidence guides next step.", "level_descriptors": { "1": "No useful evidence.", "2": "Evidence recorded but not driving decisions.", "3": "Decision follows prior test evidence.", "4": "Identifies a pattern, limitation, or better data method." } },
+      { "name": "Safety and team process", "descriptor": "Safe, shared process.", "level_descriptors": { "1": "Unsafe or off-task behaviour interrupts testing.", "2": "Follows routines with reminders.", "3": "Uses roles and launch routines independently.", "4": "Improves team process or supports another group without taking over." } }
+    ],
+    "comment_fields": ["Group", "Evidence", "Feedback"],
+    "repeat_for_subjects": 1,
+    "subject_label": "Scan",
+    "include_signature_line": false
+  },
+  "slides": [
+    { "type": "TITLE", "title": "Paper Airplane Prototype Challenge", "layout": "hero", "content": { "subtitle": "Build. Test. Improve. Explain the evidence." } },
+    { "type": "LEARN", "title": "Goal", "layout": "three_rows", "content": { "rows": ["Work like a product design team.", "Prove improvement using evidence."] } },
+    { "type": "LEARN", "title": "Safety", "layout": "three_rows", "content": { "rows": ["Launch from the line.", "No throwing at people.", "Retrieve after the round."] } },
+    { "type": "LEARN", "title": "Prototype rule", "layout": "three_rows", "content": { "rows": ["One change.", "One test.", "One conclusion."] } },
+    { "type": "LEARN", "title": "Extending", "layout": "three_rows", "content": { "rows": ["Do the expected task first.", "Then explain how the process transfers to another product, job, or team problem."] } }
+  ],
+  "bundle": { "bundle_id": "careers8_paper_airplane_expanded_v2_bundle", "declared_outputs": ["rubric_sheet", "task_sheet", "exit_ticket", "slides", "teacher_guide"] },
+  "outputs": [
+    { "output_id": "rubric_sheet_main", "output_type": "rubric_sheet", "audience": "student", "source_section": "rubric_sheet", "bundle": "careers8_paper_airplane_expanded_v2_bundle" },
+    { "output_id": "tuesday_official_run_sheet_main", "output_type": "task_sheet", "audience": "student", "source_section": "tuesday_official_run_sheet", "bundle": "careers8_paper_airplane_expanded_v2_bundle" },
+    { "output_id": "final_reflection_main", "output_type": "exit_ticket", "audience": "student", "source_section": "final_reflection_sheet", "bundle": "careers8_paper_airplane_expanded_v2_bundle", "final_evidence": true },
+    { "output_id": "reduced_load_student_version_main", "output_type": "task_sheet", "audience": "student", "source_section": "reduced_load_student_version", "bundle": "careers8_paper_airplane_expanded_v2_bundle" },
+    { "output_id": "teacher_observation_checklist_main", "output_type": "rubric_sheet", "audience": "teacher", "source_section": "teacher_observation_checklist", "bundle": "careers8_paper_airplane_expanded_v2_bundle" },
+    { "output_id": "slides_main", "output_type": "slides", "audience": "shared_view", "source_section": "slides", "bundle": "careers8_paper_airplane_expanded_v2_bundle" },
+    { "output_id": "teacher_guide_main", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "careers8_paper_airplane_expanded_v2_bundle" }
+  ]
+}
