@@ -32,6 +32,11 @@
     "overview": "Build future Grade 8 packages from curriculum target + context + student product + support version + assessment evidence.",
     "essential_question": "How do we keep packages aligned to the target instead of driven by a favourite context?",
     "opening_frame": "Start with the curriculum target. Choose the context only after target and evidence are clear.",
+    "timing": [
+      {"step": "1", "time": "5 minutes", "action": "Choose the curriculum target before discussing context."},
+      {"step": "2", "time": "10 minutes", "action": "Select the context family, student product, support version, and assessment evidence."},
+      {"step": "3", "time": "10 minutes", "action": "Check teacher/student separation and confirm completion_check language for student pages."}
+    ],
     "project_prompt": "Build a Grade 8 package by choosing a curriculum target first, then selecting a context family, student product, support version, and assessment evidence.",
     "materials": ["quick_tools: Target first, context second.", "quick_tools: Do not default everything to garden or planter context.", "quick_tools: Keep answer keys and teacher look-fors out of student-facing materials.", "quick_tools: Every student packet needs done-when checklist or completion_check signal."],
     "matching_bank": ["curriculum target", "context family", "student product", "support version", "assessment evidence", "student-facing artifact", "teacher-facing artifact", "completion check", "K-support"],
