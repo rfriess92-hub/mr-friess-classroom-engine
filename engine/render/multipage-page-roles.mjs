@@ -36,7 +36,7 @@ function detectStudentPacketSignals(blocks) {
   }
   if (
     blockList.some((block) => block.block_type === 'checklist')
-    || signals.some((text) => includesAny(text, ['checklist', 'final check', 'completion', 'success criteria']))
+    || signals.some((text) => includesAny(text, ['checklist', 'final check', 'completion', 'success criteria', 'checkpoint']))
   ) {
     matches.push('completion_check')
   }
@@ -61,7 +61,7 @@ function detectTeacherGuideSignals(blocks) {
   }
   if (
     blockList.some((block) => block.block_type === 'quick_tool')
-    || signals.some((text) => includesAny(text, ['project prompt', 'matching bank', 'materials', 'tool']))
+    || signals.some((text) => includesAny(text, ['project prompt', 'matching bank', 'materials', 'supplies', 'tool']))
   ) {
     matches.push('project_tools')
   }
