@@ -1,0 +1,60 @@
+name: pbg-render-proof-baseline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    paths:
+      - '.github/workflows/pbg-render-proof-baseline.yml'
+      - 'fixtures/plan-build-grow/**'
+      - 'fixtures/generated/careers-8-career-clusters.grade8-careers.json'
+      - 'fixtures/tests/a1-assessment-quiz.proof.json'
+      - 'fixtures/tests/task-sheet-response-patterns.workshop-session.json'
+      - 'engine/**'
+      - 'scripts/**'
+      - 'schemas/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+
+jobs:
+  pbg-render-proof-baseline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install Node dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install chromium
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip pytest reportlab python-pptx pypdf pillow lxml
+
+      - name: Run PBG render proof baseline
+        run: node scripts/pbg-render-proof-baseline.mjs
+
+      - name: Upload PBG render proof output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pbg-render-proof-baseline-output
+          path: output/pbg-render-proof-baseline
+          if-no-files-found: ignore
