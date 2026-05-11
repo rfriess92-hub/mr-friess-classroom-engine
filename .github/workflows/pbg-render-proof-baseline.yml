@@ -51,6 +51,14 @@ jobs:
       - name: Run PBG render proof baseline
         run: node scripts/pbg-render-proof-baseline.mjs
 
+      - name: Print PBG render proof diagnostics
+        if: failure()
+        run: |
+          echo "===== PBG baseline diagnostic summary ====="
+          test -f output/pbg-render-proof-baseline/baseline-failure.md && sed -n '1,240p' output/pbg-render-proof-baseline/baseline-failure.md || true
+          test -f output/pbg-render-proof-baseline/baseline-summary.md && sed -n '1,240p' output/pbg-render-proof-baseline/baseline-summary.md || true
+          find output/pbg-render-proof-baseline -maxdepth 3 -type f 2>/dev/null || true
+
       - name: Upload PBG render proof output
         if: always()
         uses: actions/upload-artifact@v4
