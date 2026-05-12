@@ -186,7 +186,7 @@ def render_teacher_guide_multipage(base, styles_bundle, packet, section, out_pat
     phase_labels = [GUIDE_TEMPLATE_LABELS[item] for item in sequence if item in GUIDE_TEMPLATE_LABELS]
 
     base.title_bar(story, styles, base.packet_heading(packet))
-    story.append(Paragraph('Teacher Workflow Guide', styles['SheetTitleX']))
+    story.append(Paragraph('Teacher Guide — Workflow Guide', styles['SheetTitleX']))
     story.append(Spacer(1, 3))
 
     overview_card = _simple_card(
@@ -219,7 +219,7 @@ def render_teacher_guide_multipage(base, styles_bundle, packet, section, out_pat
 
     story.append(PageBreak())
     base.title_bar(story, styles, base.packet_heading(packet))
-    story.append(Paragraph('Teacher Workflow Guide — Tools, model, and assessment', styles['SheetTitleX']))
+    story.append(Paragraph('Teacher Guide — Tools, model, and assessment', styles['SheetTitleX']))
     story.append(Spacer(1, 3))
 
     tool_lines = []
