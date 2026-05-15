@@ -13,7 +13,7 @@ Working rule: keep contract/rendering work separate from pedagogy/content cleanu
 
 ## Current Checkpoint — 2026-05-15
 
-This checkpoint refreshes repo truth after compact classroom template adaptation, the now-live assessment/quiz HTML render path, and the emergence of the parallel classroom-activity subsystem.
+This checkpoint refreshes repo truth after compact classroom template adaptation, the now-live assessment/quiz HTML render path, the merged answer-leak QA guard, and the emergence of the parallel classroom-activity subsystem.
 
 Recent stabilization work has landed:
 
@@ -36,6 +36,7 @@ Recent stabilization work has landed:
 - [x] A1.1 assessment/quiz render contract
 - [x] A1.2 student-facing schema-level assessment/quiz render slice
 - [x] A1.3 explicit teacher-only marking guides through `answer_key` routes
+- [x] A1.4 answer-leak QA for assessment/quiz student artifacts
 - [x] Compact classroom template adaptation
 - [x] Grade 8 curriculum target card toolkit
 - [x] Multipage artifact QA for student packets and teacher guides
@@ -44,8 +45,8 @@ Recent stabilization work has landed:
 Current open repo-maintenance focus:
 
 - Keep the machine-readable output inventory aligned with real renderer support.
-- Add answer-leak QA for student assessment/quiz artifacts and sidecars.
 - Keep the classroom-activity subsystem clearly separated from the stable-core package contract.
+- Use the Classroom Activity Engine contract/roadmap as the source of truth before widening strands or mixing activity work into stable-core output work.
 - Continue the remaining Python-fallback consolidation work without collapsing compatibility paths too early.
 
 Current important distinction:
@@ -59,12 +60,12 @@ Current important distinction:
 Next recommended cleanup checks:
 
 1. Keep `engine/contracts/output-type-inventory.json` and `scripts/audit-output-contracts.mjs` aligned whenever output support changes.
-2. Add answer-leak QA for student assessment/quiz PDFs and sidecars.
+2. Keep A1 answer-leak coverage aligned as assessment/quiz templates and sidecars evolve.
 3. Continue assessment/quiz student PDF formatting review.
 4. Normalize Long Way Down v5 source-of-truth: either keep the builder workflow explicitly documented or commit the generated v5 fixture as a stable fixture.
 5. Align Nightly Repo Agent Node version with stable/render workflows unless Node 22 is intentional.
 
-Next recommended implementation target: **answer-leak QA for assessment/quiz**, not a new marking-guide implementation. Teacher marking guides already use explicit teacher-only `answer_key` routes.
+Next recommended implementation target: **Classroom Activity Engine P0 stability patch**, not a new stable-core output type. Teacher marking guides already use explicit teacher-only `answer_key` routes, and the activity subsystem now has a separate contract/roadmap document.
 
 ---
 
@@ -101,7 +102,7 @@ Current note:
 
 - Broader classroom document template expansion should be split into focused phases. Do not mix it with assessment QA or repo-truth cleanup unless explicitly chosen.
 
-## A0c — Classroom Activity Subsystem Foundations `PARTIAL`
+## A0c — Classroom Activity Subsystem Foundations `COMPLETE (FOUNDATIONS ONLY)`
 
 This subsystem is live on `main`, but it is parallel to the stable-core lesson-package pipeline rather than a replacement for it.
 
@@ -112,12 +113,14 @@ Already landed:
 - [x] Activity schemas: `classroom-activity`, `activity-bank`, `activity-family`, and `activity-bridge-pack`
 - [x] Activity scripts for generation, routing, schema-checking, and family selection
 - [x] Activity fixtures and a dedicated node test surface
+- [x] Dedicated human-readable contract/roadmap document: `docs/CLASSROOM_ACTIVITY_ENGINE_CONTRACT.md`
+- [x] Boundary clarified between activity artifacts and stable-core lesson-package outputs
+- [x] Classroom-stability QA explicitly kept separate from stable-core render QA unless an artifact is promoted into the stable-core contract
 
-Remaining:
+Next activity-lane work after foundations:
 
-- [ ] Add a dedicated human-readable contract/roadmap document for the activity subsystem
-- [ ] Clarify where activity artifacts stay parallel to stable-core package outputs vs where they should eventually intersect
-- [ ] Keep classroom-stability QA separate from stable-core render QA unless an artifact becomes a stable-core output type
+- [ ] P0 stability patch: `activity_mode`, prompt validation, proof moves, scoring alignment, and no-answer support
+- [ ] Careers/life-skills expansion only after the literacy-first stability patch is codified
 
 ## A1 — Assessment Foundation `PARTIAL — STUDENT + TEACHER GUIDE SLICE LANDED`
 
@@ -135,9 +138,9 @@ Already complete:
 - [x] Student templates omit `answer_key` and `marking_notes`
 - [x] Explicit teacher-only marking guides render through `answer_key` routes
 
-Remaining for A1:
+A1 follow-up work:
 
-- [ ] Add QA guard against answer leakage into student PDFs/sidecars where feasible
+- [x] Add QA guard against answer leakage into student PDFs/sidecars where feasible
 - [ ] Improve traditional test formatting based on artifact review
 - [ ] Add question-bank pulling only after render/marking-guide behavior is stable
 - [ ] Update machine-readable `engine/contracts/output-type-inventory.json` after audit-script refresh if needed
@@ -158,17 +161,15 @@ pnpm run render:package -- --package fixtures/tests/a1-assessment-quiz.proof.jso
 pnpm run qa:bundle -- --package fixtures/tests/a1-assessment-quiz.proof.json --out output
 ```
 
-## A1.4 — Answer-Leak QA `NEXT`
+## A1.4 — Answer-Leak QA `COMPLETE`
 
-Start after repo-truth cleanup lands.
+Delivered:
 
-Implementation slice:
-
-- [ ] Text-scan rendered student assessment/quiz PDFs where feasible
-- [ ] Scan student-facing sidecars for leaked `answer_key`, `marking_notes`, or correct-answer fields
-- [ ] Keep teacher-only `answer_key` routes legal
-- [ ] Add focused proof fixture/workflow
-- [ ] Report clear blockers instead of vague content warnings
+- [x] Text-scan rendered student assessment/quiz PDFs and visible sidecar text where feasible
+- [x] Scan student-facing sidecars for leaked `answer_key`, `marking_notes`, or correct-answer text under ordinary keys
+- [x] Keep teacher-only `answer_key` routes legal
+- [x] Focused proof workflow coverage for the answer-leak guard
+- [x] Report answer leakage as explicit blocker detail instead of vague content warnings
 
 ## A2 — Rubric + Feedback Loop `QUEUED`
 
@@ -416,6 +417,8 @@ Only after repeated clean D0/D1 runs.
 
 # Done Log
 
+- A0c classroom activity subsystem contract and boundary document
+- A1.4 answer-leak QA for assessment/quiz student artifacts
 - A1.3 explicit teacher-only marking guides through `answer_key`
 - A1.2 first student-facing schema-level assessment/quiz render slice
 - A1.1 assessment/quiz render contract
