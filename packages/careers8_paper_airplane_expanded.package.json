@@ -1,0 +1,26 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers8_paper_airplane_expanded_placeholder",
+  "primary_architecture": "workshop_session",
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Paper airplane placeholder package",
+  "theme": "careers",
+  "teacher_guide": {
+    "title": "Placeholder Teacher Guide",
+    "overview": "Temporary schema-safe placeholder to prevent stale invalid package from failing PR render checks.",
+    "essential_question": "How can stale render packages be neutralized safely?",
+    "opening_frame": "This placeholder should not be used for classroom output.",
+    "timing": [ { "time": "N/A", "activity": "Use v3 package instead." } ],
+    "teacher_notes": [ "Use careers8_paper_airplane_expanded_v3.package.json for classroom artifacts." ],
+    "project_prompt": "Use the v3 package.",
+    "matching_bank": [ "Use v3." ],
+    "model": { "title": "Placeholder", "sample": "Use v3." },
+    "assessment_focus": "Use v3."
+  },
+  "bundle": { "bundle_id": "careers8_paper_airplane_expanded_placeholder_bundle", "declared_outputs": ["teacher_guide"] },
+  "outputs": [
+    { "output_id": "placeholder_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "careers8_paper_airplane_expanded_placeholder_bundle" }
+  ]
+}

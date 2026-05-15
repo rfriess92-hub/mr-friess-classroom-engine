@@ -1,0 +1,126 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "careers8_paper_airplane_prototype_challenge",
+  "primary_architecture": "workshop_session",
+  "grade_band": "6-8",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Paper airplane prototype progression and improvement checklist",
+  "theme": "careers",
+  "teacher_guide": {
+    "title": "Careers 8 Teacher Guide - Paper Airplane Prototype Challenge",
+    "overview": "Two-day prototype challenge. Students design, test, improve, and reflect on a paper airplane prototype. The focus is evidence-based improvement, teamwork, perseverance, communication, safety, and career skill reflection.",
+    "essential_question": "How do people improve a product or process by using evidence, feedback, and perseverance?",
+    "opening_frame": "Today you are working like a small product design team. Good products usually improve through prototypes, testing, feedback, and revision.",
+    "timing": [
+      { "time": "Monday 0:00-0:08", "activity": "Launch challenge, safety, and the rule: one change, one test, one conclusion." },
+      { "time": "Monday 0:08-0:18", "activity": "Prototype 0 baseline build and first test." },
+      { "time": "Monday 0:18-0:35", "activity": "Prototype 1 stability change and evidence recording." },
+      { "time": "Monday 0:35-0:50", "activity": "Prototype 2 distance or accuracy change and evidence recording." },
+      { "time": "Monday final 5-10", "activity": "Exit ticket: best prototype, evidence, and Tuesday improvement plan." },
+      { "time": "Tuesday first half", "activity": "Final build, tune, and quick test using Monday evidence." },
+      { "time": "Tuesday middle/end", "activity": "Official flights: two launches per group." },
+      { "time": "Tuesday final 5-10", "activity": "Final reflection and career skill connection." }
+    ],
+    "teacher_notes": [
+      "Do not assess only the farthest flight. Assess evidence, improvement, safe process, and explanation.",
+      "Stop random rebuilding by asking: What changed from the last version?",
+      "Use the Monday exit ticket as the bridge into Tuesday work time.",
+      "Keep launch line, retrieval routine, and no-throwing-at-people rule explicit."
+    ],
+    "project_prompt": "Design, test, improve, and officially fly a paper airplane prototype. Teams must show prototype progression, evidence-based changes, and a final reflection connecting the work to a career skill.",
+    "matching_bank": [
+      "Twists, dives, or flips: check wing symmetry, nose tightness, wing tips, and balance.",
+      "Straight but short flight: try sharper folds, narrower wings, one small weight, or consistent force.",
+      "Far but off course: check wing angles, bent folds, one wing tip, and launch angle.",
+      "Team disagreement: return to data and choose one testable change."
+    ],
+    "model": {
+      "title": "Teacher model",
+      "sample": "Prototype 1 flew straighter than the baseline because we made the wings more even. The straight-flight score improved from 1 to 2. On Tuesday, we will keep the wing symmetry and test one nose-weight change to improve distance."
+    },
+    "assessment_focus": "Assessment focus: prototype progression, evidence-based improvement, safe team process, and a final reflection that connects a career skill to the work."
+  },
+  "task_sheet": {
+    "title": "Careers 8 Student Task - Paper Airplane Prototype Challenge",
+    "instructions": [
+      "Monday is build, test, and improve day.",
+      "Tuesday begins with final work time, then official flights.",
+      "Change one main thing at a time so your team can tell what helped.",
+      "Use the tracker, improvement cards, exit ticket, rubric, and reflection."
+    ],
+    "tasks": [
+      { "label": "Part A", "prompt": "Set team roles: designer, test pilot, data recorder, and quality checker. Roles can rotate.", "lines": 1, "render_hints": { "response_pattern": "record_fields", "record_fields": [ { "label": "Designer" }, { "label": "Test pilot" }, { "label": "Data recorder" }, { "label": "Quality checker" } ] } },
+      { "label": "Part B", "prompt": "Build Prototype 0 as your baseline. Do not overthink this version. It gives your team a starting point.", "lines": 1, "render_hints": { "response_pattern": "record_fields", "record_fields": [ { "label": "Baseline design notes" }, { "label": "First flight result" } ] } },
+      { "label": "Part C", "prompt": "Build Prototype 1 by changing one feature for stability. Record only the main change.", "lines": 1, "render_hints": { "response_pattern": "record_fields", "record_fields": [ { "label": "One stability change" }, { "label": "Evidence from test" } ] } },
+      { "label": "Part D", "prompt": "Build Prototype 2 by changing one feature for distance or accuracy. Use evidence, not guessing.", "lines": 1, "render_hints": { "response_pattern": "record_fields", "record_fields": [ { "label": "One distance or accuracy change" }, { "label": "Evidence from test" } ] } },
+      { "label": "Part E", "prompt": "Tuesday final prototype: use Monday evidence to choose one final improvement before the official launches.", "lines": 1, "render_hints": { "response_pattern": "record_fields", "record_fields": [ { "label": "Final change" }, { "label": "Why this change makes sense" } ] } },
+      { "label": "Part F", "prompt": "Official result: record two launches and circle your best result.", "lines": 1, "render_hints": { "response_pattern": "record_fields", "record_fields": [ { "label": "Launch 1 distance and notes" }, { "label": "Launch 2 distance and notes" } ] } },
+      { "label": "Part G", "prompt": "Completion check: select each item your team can prove before handing in your work.", "lines": 1, "render_hints": { "response_pattern": "choice_select", "choice_options": [ "We tested more than one prototype.", "We changed one main thing at a time.", "We recorded evidence.", "We used evidence for Tuesday's final change.", "We connected the work to a career skill." ] } }
+    ],
+    "embedded_supports": [
+      "Sentence frame: Our best prototype was Prototype ___ because ___.",
+      "Sentence frame: One change that helped was ___ because ___.",
+      "Sentence frame: One career skill I used was ___ because ___."
+    ],
+    "success_criteria": [
+      "I built and tested more than one prototype.",
+      "I changed only one main thing at a time.",
+      "I recorded evidence from tests.",
+      "I used evidence to choose a final improvement.",
+      "I connected my work to a career skill."
+    ]
+  },
+  "graphic_organizer": {
+    "title": "Prototype Progression Tracker",
+    "organizer_type": "four_column",
+    "columns": ["Version", "Main change", "Test result", "Keep, change, or test again"],
+    "rows": 4,
+    "prompt": "Use this tracker to show how your design changed from Monday to Tuesday. Record evidence after each test.",
+    "success_criteria": ["I recorded a change and result for each prototype."]
+  },
+  "station_cards": {
+    "title": "Prototype Improvement Reference Cards",
+    "instructions": ["Use these cards when your team is stuck.", "Choose only one main change before testing again.", "Record the result before moving to the next prototype."],
+    "cards": [
+      { "station_number": 1, "title": "Stability Fix", "prompt": "Use this if the plane twists, dives, flips, or crashes quickly.", "task": "Check wing symmetry, nose tightness, wing tips, and balance. Choose one change only.", "response_mode": "short_answer", "answer_key": "Evidence should name the change and whether flight control improved.", "teacher_note": "Good card for early failure and regulation." },
+      { "station_number": 2, "title": "Distance Fix", "prompt": "Use this if the plane flies straight but does not travel far.", "task": "Try sharper folds, narrower wings, one small paper clip, or a consistent launch force. Choose one change only.", "response_mode": "short_answer", "answer_key": "Evidence should compare distance before and after the change.", "teacher_note": "Keep students from adding too much weight." },
+      { "station_number": 3, "title": "Accuracy Fix", "prompt": "Use this if the plane travels far but goes off course.", "task": "Check even wing angles, bent folds, one wing tip adjustment, or launch angle. Choose one change only.", "response_mode": "short_answer", "answer_key": "Evidence should describe straighter flight or target improvement.", "teacher_note": "Good chance to reinforce fair testing." },
+      { "station_number": 4, "title": "Team Process Fix", "prompt": "Use this if the group cannot agree on what to do next.", "task": "Return to your data and choose the most testable next change.", "response_mode": "short_answer", "answer_key": "Evidence should connect the decision to a prior test result.", "teacher_note": "Use this to redirect argument into evidence." }
+    ],
+    "print_layout": { "cards_per_page": 4, "show_station_number": true, "cut_guides": true }
+  },
+  "rubric_sheet": {
+    "title": "Paper Airplane Prototype Challenge Rubric",
+    "purpose_line": "Assess the design process, not only the farthest flight.",
+    "scale": { "min": 1, "max": 3, "labels": { "1": "Emerging", "2": "Developing", "3": "Proficient" } },
+    "criteria": [
+      { "name": "Prototype process", "descriptor": "The team built multiple versions and changed one feature at a time." },
+      { "name": "Evidence and improvement", "descriptor": "The team recorded test results and used evidence to make design decisions." },
+      { "name": "Career skill reflection", "descriptor": "The final reflection connects the work to a real career skill such as teamwork, communication, accuracy, safety, patience, or project management." }
+    ],
+    "comment_fields": ["Strongest evidence of improvement", "One next step", "Career skill noticed"],
+    "repeat_for_subjects": 1,
+    "subject_label": "Team",
+    "include_signature_line": false,
+    "success_criteria": ["The rating matches evidence from the tracker.", "The final reflection explains the process, not just the result."]
+  },
+  "exit_ticket": {
+    "title": "Monday Exit Ticket - Prototype Plan",
+    "prompt": "Our best prototype today was Prototype ___. The evidence that proves this is ___. One problem we still need to fix is ___. On Tuesday, we will change ___ because ___.",
+    "n_lines": 5,
+    "success_criteria": ["I named the best prototype, used evidence, and planned one Tuesday improvement."]
+  },
+  "bundle": {
+    "bundle_id": "careers8_paper_airplane_prototype_challenge_bundle",
+    "declared_outputs": ["task_sheet", "graphic_organizer", "station_cards", "rubric_sheet", "exit_ticket", "teacher_guide"]
+  },
+  "outputs": [
+    { "output_id": "student_task_main", "output_type": "task_sheet", "audience": "student", "source_section": "task_sheet", "bundle": "careers8_paper_airplane_prototype_challenge_bundle" },
+    { "output_id": "prototype_tracker_main", "output_type": "graphic_organizer", "audience": "student", "source_section": "graphic_organizer", "bundle": "careers8_paper_airplane_prototype_challenge_bundle" },
+    { "output_id": "improvement_cards_main", "output_type": "station_cards", "audience": "student", "source_section": "station_cards", "bundle": "careers8_paper_airplane_prototype_challenge_bundle" },
+    { "output_id": "rubric_sheet_main", "output_type": "rubric_sheet", "audience": "student", "source_section": "rubric_sheet", "bundle": "careers8_paper_airplane_prototype_challenge_bundle" },
+    { "output_id": "monday_exit_ticket_main", "output_type": "exit_ticket", "audience": "student", "source_section": "exit_ticket", "bundle": "careers8_paper_airplane_prototype_challenge_bundle", "final_evidence": true },
+    { "output_id": "teacher_guide_main", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "careers8_paper_airplane_prototype_challenge_bundle" }
+  ]
+}

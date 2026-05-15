@@ -25,14 +25,40 @@ function buildLegend(scale) {
 </div>`
 }
 
+function levelDescriptorForCriterion(criterion, score, label) {
+  const byScore = criterion.level_descriptors ?? criterion.levels ?? criterion.scale_descriptors
+  if (byScore && typeof byScore === 'object' && !Array.isArray(byScore)) {
+    const exact = byScore[String(score)] ?? byScore[String(label)] ?? byScore[String(label).toLowerCase()]
+    if (exact) return String(exact).trim()
+  }
+
+  if (Array.isArray(byScore)) {
+    const found = byScore.find((entry) => {
+      if (!entry || typeof entry !== 'object') return false
+      return String(entry.score ?? '') === String(score) || String(entry.label ?? '').toLowerCase() === String(label).toLowerCase()
+    })
+    if (found?.descriptor) return String(found.descriptor).trim()
+  }
+
+  return ''
+}
+
+function buildRatingCell(criterion, score, label) {
+  const descriptor = levelDescriptorForCriterion(criterion, score, label)
+  if (!descriptor) return '<td class="rating-cell empty-rating-cell"></td>'
+
+  return `<td class="rating-cell"><div class="rating-cell-label">${escapeHtml(label)}</div><div>${escapeHtml(descriptor)}</div></td>`
+}
+
 function buildMatrix(section, subjectTitle) {
   const entries = orderedScaleEntries(section.scale)
   const columns = entries.length > 0 ? entries : [['', 'Rating']]
+  const useFilledDescriptors = (Array.isArray(section.criteria) ? section.criteria : []).some((criterion) => criterion.level_descriptors || criterion.levels || criterion.scale_descriptors)
 
   return `
 <div class="rubric-block">
   <div class="rubric-block-title">${escapeHtml(subjectTitle)}</div>
-  <table class="rubric-table">
+  <table class="rubric-table ${useFilledDescriptors ? 'rubric-table-filled' : ''}">
     <thead>
       <tr>
         <th class="criterion-col">Criteria</th>
@@ -45,7 +71,7 @@ function buildMatrix(section, subjectTitle) {
         <tr>
           <td class="criterion-name">${escapeHtml(criterion.name)}</td>
           <td class="criterion-descriptor">${escapeHtml(criterion.descriptor)}</td>
-          ${columns.map(() => '<td class="rating-cell"></td>').join('')}
+          ${columns.map(([score, label]) => buildRatingCell(criterion, score, label)).join('')}
         </tr>
       `).join('\n')}
     </tbody>
@@ -186,9 +212,9 @@ ${designCSS}
   font-weight: 700;
 }
 
-.criterion-col { width: 20%; }
-.descriptor-col { width: 36%; }
-.scale-col { width: 11%; text-align: center; }
+.criterion-col { width: 18%; }
+.descriptor-col { width: 22%; }
+.scale-col { width: 15%; text-align: center; }
 .scale-col small { display: block; margin-top: 2pt; font-size: 7pt; color: #6B7280; line-height: 1.25; }
 
 .criterion-name {
@@ -198,13 +224,29 @@ ${designCSS}
 }
 
 .criterion-descriptor {
-  font-size: 8.75pt;
-  line-height: 1.4;
+  font-size: 8.5pt;
+  line-height: 1.35;
   color: #374151;
 }
 
 .rating-cell {
+  min-height: 44pt;
+  font-size: 7.4pt;
+  line-height: 1.28;
+  color: #374151;
+}
+
+.empty-rating-cell {
   min-height: 28pt;
+}
+
+.rating-cell-label {
+  font-size: 6.6pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6B7280;
+  margin-bottom: 3pt;
 }
 
 .comment-group {
