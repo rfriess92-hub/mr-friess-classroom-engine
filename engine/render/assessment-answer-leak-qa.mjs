@@ -68,13 +68,35 @@ function pushPrimitiveStrings(value, out) {
   }
 }
 
+function pushMany(values, out) {
+  for (const value of Array.isArray(values) ? values : []) pushPrimitiveStrings(value, out)
+}
+
+function collectVisibleRenderHintStrings(question, out) {
+  const renderHints = isObject(question?.render_hints) ? question.render_hints : null
+  if (!renderHints) return
+
+  const matchingColumns = isObject(renderHints.matching_columns) ? renderHints.matching_columns : null
+  if (matchingColumns) {
+    pushPrimitiveStrings(matchingColumns.left_label, out)
+    pushPrimitiveStrings(matchingColumns.right_label, out)
+    pushMany(matchingColumns.left_items, out)
+    pushMany(matchingColumns.right_items, out)
+  }
+
+  pushPrimitiveStrings(renderHints.diagram_title, out)
+  pushMany(renderHints.diagram_parts, out)
+}
+
 function collectStudentVisibleStrings(section, question) {
   const values = []
   pushPrimitiveStrings(section?.title, values)
   pushPrimitiveStrings(section?.instructions, values)
+  pushMany(section?.success_criteria, values)
   pushPrimitiveStrings(question?.q_text, values)
   pushPrimitiveStrings(question?.question_type, values)
-  for (const choice of Array.isArray(question?.choices) ? question.choices : []) pushPrimitiveStrings(choice, values)
+  pushMany(question?.choices, values)
+  collectVisibleRenderHintStrings(question, values)
   return normalizeSemanticText(values.join(' '))
 }
 
@@ -143,6 +165,53 @@ export function scanJsonForForbiddenAnswerFields(value, sourceName = 'sidecar.js
   return hits
 }
 
+export function scanJsonForSensitiveAnswerValues(value, sensitiveEntries, sourceName = 'sidecar.json') {
+  const hits = []
+  const seen = new Set()
+
+  function record(path, entry) {
+    const key = `${sourceName}|${path}|${entry.field}|${entry.question_id}`
+    if (seen.has(key)) return
+    seen.add(key)
+    hits.push({
+      source_name: sourceName,
+      path,
+      field: entry.field,
+      question_id: entry.question_id,
+      question_number: entry.question_number,
+      excerpt: entry.text.length > 96 ? `${entry.text.slice(0, 96)}...` : entry.text,
+      kind: 'value_match',
+    })
+  }
+
+  function visit(node, path = '$') {
+    if (Array.isArray(node)) {
+      node.forEach((item, index) => visit(item, `${path}[${index}]`))
+      return
+    }
+
+    if (isObject(node)) {
+      for (const [key, child] of Object.entries(node)) {
+        visit(child, `${path}.${key}`)
+      }
+      return
+    }
+
+    if (typeof node !== 'string' && typeof node !== 'number') return
+
+    const normalizedNode = normalizeSemanticText(node)
+    if (!normalizedNode) return
+    for (const entry of sensitiveEntries) {
+      if (entry.normalized_text && normalizedNode.includes(entry.normalized_text)) {
+        record(path, entry)
+      }
+    }
+  }
+
+  visit(value)
+  return hits
+}
+
 function artifactSidecarNames(outDir, artifactId) {
   if (!existsSync(outDir)) return []
   return readdirSync(outDir)
@@ -150,17 +219,20 @@ function artifactSidecarNames(outDir, artifactId) {
     .sort()
 }
 
-function scanSidecars(outDir, artifactId) {
-  const hits = []
+function scanSidecars(outDir, artifactId, sensitiveEntries) {
+  const fieldHits = []
+  const valueHits = []
+  const warnings = []
   for (const name of artifactSidecarNames(outDir, artifactId)) {
     try {
       const parsed = JSON.parse(readFileSync(resolve(outDir, name), 'utf-8'))
-      hits.push(...scanJsonForForbiddenAnswerFields(parsed, name))
+      fieldHits.push(...scanJsonForForbiddenAnswerFields(parsed, name))
+      valueHits.push(...scanJsonForSensitiveAnswerValues(parsed, sensitiveEntries, name))
     } catch (error) {
-      hits.push({ source_name: name, path: '$', token: error?.message ?? 'sidecar_parse_error', kind: 'parse_error' })
+      warnings.push(`${name} sidecar could not be scanned for answer leaks: ${error?.message ?? 'parse_error'}`)
     }
   }
-  return hits
+  return { fieldHits, valueHits, warnings }
 }
 
 function pickPython() {
@@ -236,23 +308,35 @@ export function runAssessmentAnswerLeakQa({ pkg, routes, outDir }) {
     const sensitiveEntries = buildSensitiveAnswerEntries(section)
     const pdfName = `${artifactId}.pdf`
     const pdfPath = resolve(outDir, pdfName)
-    const sidecarHits = scanSidecars(outDir, artifactId)
+    const sidecarScan = scanSidecars(outDir, artifactId, sensitiveEntries)
     const artifactResult = {
       route_id: route.route_id,
       output_id: route.output_id,
       output_type: route.output_type,
       artifact_name: pdfName,
-      sidecar_hit_count: sidecarHits.length,
+      sidecar_field_hit_count: sidecarScan.fieldHits.length,
+      sidecar_value_hit_count: sidecarScan.valueHits.length,
+      sidecar_hit_count: sidecarScan.fieldHits.length + sidecarScan.valueHits.length,
       pdf_hit_count: 0,
       pdf_scan_status: existsSync(pdfPath) ? 'attempted' : 'missing',
       sensitive_entry_count: sensitiveEntries.length,
     }
 
-    if (sidecarHits.length > 0) {
+    warnings.push(...sidecarScan.warnings.map((warning) => `${artifactId}: ${warning}`))
+
+    if (sidecarScan.fieldHits.length > 0) {
       blockers.push('student_assessment_sidecar_answer_field_leak')
       findings.push({
         type: 'content_issue',
-        note: `${artifactId} student sidecar contains teacher-only answer/marking field markers: ${sidecarHits.slice(0, 5).map((hit) => `${hit.source_name}:${hit.path}`).join(', ')}`,
+        note: `${artifactId} student sidecar contains teacher-only answer/marking field markers: ${sidecarScan.fieldHits.slice(0, 5).map((hit) => `${hit.source_name}:${hit.path}`).join(', ')}`,
+      })
+    }
+
+    if (sidecarScan.valueHits.length > 0) {
+      blockers.push('student_assessment_sidecar_answer_value_leak')
+      findings.push({
+        type: 'content_issue',
+        note: `${artifactId} student sidecar appears to expose teacher-only answer text: ${sidecarScan.valueHits.slice(0, 3).map((hit) => `${hit.source_name}:${hit.path} (${hit.field} Q${hit.question_number})`).join(', ')}`,
       })
     }
 

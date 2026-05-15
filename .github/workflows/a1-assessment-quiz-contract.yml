@@ -6,14 +6,17 @@ on:
     paths:
       - '.github/workflows/a1-assessment-quiz-contract.yml'
       - 'docs/assessment-quiz-render-contract.md'
+      - 'engine/render/assessment-answer-leak-qa.mjs'
       - 'engine/pdf-html/render.mjs'
       - 'engine/pdf-html/templates/assessment-quiz.mjs'
       - 'engine/pdf-html/templates/answer-key.mjs'
       - 'fixtures/tests/a1-assessment-quiz.proof.json'
       - 'scripts/render-package.mjs'
+      - 'scripts/qa-bundle.mjs'
       - 'schemas/**'
       - 'package.json'
       - 'pnpm-lock.yaml'
+      - 'tests/node/assessment-answer-leak-qa.test.mjs'
 
 jobs:
   assessment-quiz-render:
@@ -61,6 +64,12 @@ jobs:
           test -f "$ROOT/reaction_evidence_assessment.pdf"
           test -f "$ROOT/reaction_evidence_quiz_marking_guide.pdf"
           test -f "$ROOT/reaction_evidence_assessment_marking_guide.pdf"
+
+      - name: Run stable-core bundle QA, including answer-leak checks
+        run: |
+          set -euo pipefail
+          PACKAGE=fixtures/tests/a1-assessment-quiz.proof.json
+          pnpm run qa:bundle -- --package "$PACKAGE" --out output/a1-assessment-quiz-render
 
       - name: List rendered docs
         run: find output/a1-assessment-quiz-render -type f | sort

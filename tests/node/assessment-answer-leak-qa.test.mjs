@@ -8,6 +8,7 @@ import {
   buildSensitiveAnswerEntries,
   runAssessmentAnswerLeakQa,
   scanJsonForForbiddenAnswerFields,
+  scanJsonForSensitiveAnswerValues,
   scanTextForSensitiveAnswerValues,
 } from '../../engine/render/assessment-answer-leak-qa.mjs'
 
@@ -47,6 +48,22 @@ test('student sidecar scan catches answer and marking field names recursively', 
 
   assert.equal(hits.length, 2)
   assert.deepEqual(hits.map((hit) => hit.path), ['$.nested.answer_key', '$.nested.rows[0].marking_notes'])
+})
+
+test('student sidecar scan catches teacher-only answer text under ordinary content keys', () => {
+  const entries = buildSensitiveAnswerEntries(assessmentSection)
+  const hits = scanJsonForSensitiveAnswerValues({
+    blocks: [
+      {
+        type: 'callout',
+        text: 'Gas forms because bubbling can be evidence of a new substance forming.',
+      },
+    ],
+  }, entries, 'student_quiz.blocks.json')
+
+  assert.equal(hits.length, 1)
+  assert.equal(hits[0].path, '$.blocks[0].text')
+  assert.equal(hits[0].field, 'answer_key')
 })
 
 test('PDF text scan helper catches sensitive answer values in extracted text', () => {
@@ -90,4 +107,35 @@ test('bundle answer-leak QA applies only to student assessment and quiz routes',
   assert.deepEqual(qa.blockers, ['student_assessment_sidecar_answer_field_leak'])
   assert.equal(qa.checked_artifacts.length, 1)
   assert.equal(qa.checked_artifacts[0].output_id, 'student_quiz')
+})
+
+test('bundle answer-leak QA blocks student sidecars that leak answer text without forbidden key names', () => {
+  const outDir = mkdtempSync(join(tmpdir(), 'answer-leak-qa-values-'))
+  writeFileSync(join(outDir, 'student_quiz.blocks.json'), JSON.stringify({
+    blocks: [
+      {
+        type: 'callout',
+        text: 'Gas forms because bubbling can be evidence of a new substance forming.',
+      },
+    ],
+  }), 'utf-8')
+
+  const pkg = { quiz: assessmentSection }
+  const routes = [
+    {
+      route_id: 'student_quiz__quiz',
+      output_id: 'student_quiz',
+      output_type: 'quiz',
+      audience_bucket: 'student_facing',
+      source_section: 'quiz',
+    },
+  ]
+
+  const qa = runAssessmentAnswerLeakQa({ pkg, routes, outDir })
+
+  assert.equal(qa.applies, true)
+  assert.equal(qa.judgment, 'block')
+  assert.deepEqual(qa.blockers, ['student_assessment_sidecar_answer_value_leak'])
+  assert.equal(qa.checked_artifacts[0].sidecar_field_hit_count, 0)
+  assert.equal(qa.checked_artifacts[0].sidecar_value_hit_count, 1)
 })
