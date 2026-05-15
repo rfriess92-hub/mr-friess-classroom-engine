@@ -1,7 +1,7 @@
 # Contract Drift Inventory
 
-**Audited:** 2026-05-07  
-**Scope:** Repo-truth reset after assessment/quiz marking-guide work, multipage QA, and LWD render-proof failures.
+**Audited:** 2026-05-15  
+**Scope:** Repo-truth refresh after compact-template adaptation, the live assessment/quiz HTML path, and the emergence of the parallel classroom-activity subsystem.
 
 This document is the human-readable contract map. Keep it aligned with:
 
@@ -19,12 +19,12 @@ This document is the human-readable contract map. Keep it aligned with:
 
 The following output types are expected to route and render through the normal package pipeline:
 
-- `teacher_guide` — Python fallback path; proof-backed, not HTML-consolidated yet
-- `lesson_overview` — Python fallback path; proof-backed, not HTML-consolidated yet
-- `slides` — PPTX path
+- `teacher_guide` - Python fallback path; proof-backed, not HTML-consolidated yet
+- `lesson_overview` - Python fallback path; proof-backed, not HTML-consolidated yet
+- `slides` - PPTX path
 - `worksheet`
 - `task_sheet`
-- `checkpoint_sheet` — Python fallback path; proof-backed, not HTML-consolidated yet
+- `checkpoint_sheet` - Python fallback path; proof-backed, not HTML-consolidated yet
 - `exit_ticket`
 - `final_response_sheet`
 - `graphic_organizer`
@@ -55,7 +55,7 @@ The renderer should fail loudly if these are declared as package outputs before 
 
 ## Assessment / Quiz Truth
 
-Assessment and quiz are no longer only contract stubs.
+Assessment and quiz are no longer contract stubs.
 
 Current behavior:
 
@@ -101,7 +101,24 @@ Current policy after the repo-truth cleanup:
 - `qa:bundle` still blocks missing declared artifacts, duplicate artifact names, invalid final-evidence roles, blocked artifact QA, and invalid variant groups.
 - Artifact-level `revise` findings do not necessarily mean the renderer failed. They mean the bundle needs patch/review before classroom shipping.
 
-This fixes the LWD render-proof failure pattern where the package rendered successfully but failed only because `shared_view` had been treated as a universal hard requirement.
+This fixed the LWD render-proof failure pattern where the package rendered successfully but failed only because `shared_view` had been treated as a universal hard requirement.
+
+---
+
+## Parallel Activity Subsystem Truth
+
+The repo now contains a parallel classroom-activity subsystem under:
+
+- `activity-library/`
+- `engine/activity-family/`
+- `schemas/classroom-activity.schema.json`
+- related activity-bank / activity-family / activity-bridge schemas and scripts
+
+Important boundary:
+
+- This subsystem is real and should be treated as live repo surface area.
+- It is not the same thing as the stable-core lesson-package output contract.
+- Do not mix activity-family routing assumptions into `engine/contracts/output-type-inventory.json` unless those artifacts become stable-core output types.
 
 ---
 
@@ -127,16 +144,16 @@ Important distinction:
 
 ## Current Repo Noise / Cleanup State
 
+- The machine-readable inventory had drifted behind the live renderer and now needs to stay coupled to `scripts/audit-output-contracts.mjs`.
 - Duplicate LWD trigger PRs should stay closed once superseded.
-- The freshest LWD render-proof failure should be used as the current QA-policy validation case.
-- Docs-only retirement-map work should not merge ahead of this repo-truth reset unless it is rebased and updated against this document.
+- Docs-only repo-truth work should not merge ahead of this refresh unless it is rebased and revalidated.
 
 ---
 
 ## Recommended Next Actions
 
-1. Merge the repo-truth and QA-policy cleanup before any new renderer/template expansion.
-2. Re-run the LWD render-proof case and confirm the missing-`shared_view` blocker is gone.
-3. Add answer-leak QA for student assessment/quiz PDFs and sidecars.
-4. Keep Python fallback consolidation for `teacher_guide`, `lesson_overview`, and `checkpoint_sheet` as later A5 work.
-5. Continue schema-level `rubric` / `formative_check` only after answer-separation QA is stable.
+1. Keep `engine/contracts/output-type-inventory.json` and `scripts/audit-output-contracts.mjs` aligned whenever render support changes.
+2. Add answer-leak QA for student assessment/quiz PDFs and sidecars.
+3. Keep Python fallback consolidation for `teacher_guide`, `lesson_overview`, and `checkpoint_sheet` as later A5 work.
+4. Publish the docs-first grade-band contracts under `docs/grade-band-contracts/` when that docs-only slice is ready.
+5. Decide whether the classroom-activity subsystem needs its own contract inventory document rather than being tracked informally.

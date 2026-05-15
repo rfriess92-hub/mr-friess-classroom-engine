@@ -25,6 +25,12 @@ function extractSetFromSource(sourceText, setName) {
   return new Set(match ? (match[1].match(/'([^']+)'/g) ?? []).map((s) => s.replace(/'/g, '')) : [])
 }
 
+function inventoryClaimsPythonSupport(entry) {
+  return entry.legacy_python_render_support !== false &&
+    entry.legacy_python_render_support !== 'unknown' &&
+    entry.legacy_python_render_support != null
+}
+
 const vocabulary = load('schemas/canonical-vocabulary.json')
 const lessonSchema = load('schemas/lesson-package.schema.json')
 const inventory = load('engine/contracts/output-type-inventory.json')
@@ -94,11 +100,41 @@ if (preflightOnlyVariantRoles.length > 0) {
 }
 
 for (const entry of inventory.output_types) {
+  const expectedRouterKey = rendererKeyFor(entry.output_type)
   const hasHtml = supportsHtmlRender(entry.output_type)
   const hasPython = docOutputTypes.has(entry.output_type)
   const hasPptx = entry.renderer_family === 'pptx'
   const isRenderBacked = hasHtml || hasPython || hasPptx
   const isExplicitlyBlocked = knownUnimplementedTypes.has(entry.output_type)
+  const inventoryClaimsHtml = entry.html_template_registered === true
+  const inventoryClaimsPython = inventoryClaimsPythonSupport(entry)
+
+  if (entry.router_key !== expectedRouterKey) {
+    pushFinding(
+      'error',
+      'inventory_router_key_mismatch',
+      entry.output_type,
+      `Inventory router_key '${entry.router_key}' does not match output-router.mjs ('${expectedRouterKey}').`,
+    )
+  }
+
+  if (inventoryClaimsHtml !== hasHtml) {
+    pushFinding(
+      'error',
+      'inventory_html_support_mismatch',
+      entry.output_type,
+      `Inventory html_template_registered=${entry.html_template_registered} does not match render.mjs TEMPLATE_MAP support (${hasHtml}).`,
+    )
+  }
+
+  if (inventoryClaimsPython !== hasPython) {
+    pushFinding(
+      'error',
+      'inventory_python_support_mismatch',
+      entry.output_type,
+      `Inventory legacy_python_render_support=${JSON.stringify(entry.legacy_python_render_support)} does not match scripts/render-package.mjs DOC_OUTPUT_TYPES support (${hasPython}).`,
+    )
+  }
 
   if (entry.current_status === 'production' && !isRenderBacked) {
     pushFinding(
@@ -109,12 +145,30 @@ for (const entry of inventory.output_types) {
     )
   }
 
+  if (entry.current_status === 'schema_only' && isRenderBacked) {
+    pushFinding(
+      'error',
+      'schema_only_status_stale',
+      entry.output_type,
+      'Inventory marks this type as schema_only even though a render path is live.',
+    )
+  }
+
   if (entry.current_status === 'schema_only' && !isRenderBacked && !isExplicitlyBlocked) {
     pushFinding(
       'error',
       'schema_only_type_can_silently_skip_render',
       entry.output_type,
       'Schema-only type is neither render-backed nor listed in KNOWN_UNIMPLEMENTED_TYPES, so render-package may skip it instead of failing loudly.',
+    )
+  }
+
+  if (entry.current_status === 'production' && isExplicitlyBlocked) {
+    pushFinding(
+      'error',
+      'production_type_still_blocked',
+      entry.output_type,
+      'Inventory marks this type as production but render-package still lists it in KNOWN_UNIMPLEMENTED_TYPES.',
     )
   }
 }

@@ -1,12 +1,13 @@
 {
-  "generated_at": "2026-05-04",
+  "generated_at": "2026-05-15",
   "repo_goal": "detect output-type contract drift",
   "audit_notes": [
     "HTML template support checked against engine/pdf-html/render.mjs TEMPLATE_MAP.",
     "Legacy Python support checked against scripts/render-package.mjs DOC_OUTPUT_TYPES and engine/pdf/render_stable_core_output.py.",
     "Schema-only output types are now listed in KNOWN_UNIMPLEMENTED_TYPES so declared but unimplemented routes fail loudly instead of silently skipping.",
     "Variant role schema/preflight compatibility is aligned; preflight accepts scaffolded, core, shared_core, supported, support, and extension.",
-    "graphic_organizer is HTML-backed through the classroom worksheet template system; planter_volume_decision is a layout_template_id-specific renderer path, not a standalone output_type."
+    "graphic_organizer is HTML-backed through the classroom worksheet template system; planter_volume_decision is a layout_template_id-specific renderer path, not a standalone output_type.",
+    "assessment and quiz are HTML-backed through templates/assessment-quiz.mjs and should no longer be inventoried as schema_only."
   ],
   "output_types": [
     {
@@ -429,15 +430,15 @@
       ],
       "router_key": "render_assessment",
       "renderer_family": "pdf",
-      "html_template_registered": false,
+      "html_template_registered": true,
       "legacy_python_render_support": false,
       "artifact_classifier_support": "generic_fallback",
       "template_router_support": "generic_fallback",
       "typed_block_support": "generic_fallback",
-      "qa_coverage": "no",
-      "fixture_proof": "no",
-      "current_status": "schema_only",
-      "recommended_next_action": "blocked loudly at render time — implement in A1 assessment foundation"
+      "qa_coverage": "partial",
+      "fixture_proof": "yes",
+      "current_status": "production",
+      "recommended_next_action": "preserve current HTML render path and extend answer-leak QA"
     },
     {
       "output_type": "quiz",
@@ -456,15 +457,15 @@
       ],
       "router_key": "render_quiz",
       "renderer_family": "pdf",
-      "html_template_registered": false,
+      "html_template_registered": true,
       "legacy_python_render_support": false,
       "artifact_classifier_support": "generic_fallback",
       "template_router_support": "generic_fallback",
       "typed_block_support": "generic_fallback",
-      "qa_coverage": "no",
-      "fixture_proof": "no",
-      "current_status": "schema_only",
-      "recommended_next_action": "blocked loudly at render time — implement in A1 assessment foundation"
+      "qa_coverage": "partial",
+      "fixture_proof": "yes",
+      "current_status": "production",
+      "recommended_next_action": "preserve current HTML render path and extend answer-leak QA"
     },
     {
       "output_type": "rubric",
@@ -633,10 +634,8 @@
     {
       "issue_id": "schema_only_types_blocked_until_implemented",
       "severity": "medium",
-      "description": "Eight output types are present in schema, vocabulary, router, and audience/architecture maps but still have no render implementation. render-package.mjs lists them in KNOWN_UNIMPLEMENTED_TYPES, so packages declaring them fail loudly instead of silently skipping.",
+      "description": "Six output types are present in schema, vocabulary, router, and audience/architecture maps but still have no render implementation. render-package.mjs lists them in KNOWN_UNIMPLEMENTED_TYPES, so packages declaring them fail loudly instead of silently skipping.",
       "affected_types": [
-        "assessment",
-        "quiz",
         "rubric",
         "formative_check",
         "warm_up",
@@ -644,7 +643,7 @@
         "observation_grid",
         "lesson_reflection"
       ],
-      "recommended_action": "Implement assessment and quiz first in A1, then remove each output type from KNOWN_UNIMPLEMENTED_TYPES only when its renderer, proof fixture, and smoke test are in place."
+      "recommended_action": "Implement rubric/formative_check in A2 and the remaining daily artifact types in A3, then remove each output type from KNOWN_UNIMPLEMENTED_TYPES only when its renderer, proof fixture, and smoke test are in place."
     },
     {
       "issue_id": "python_renderer_gap_for_doc_types",
