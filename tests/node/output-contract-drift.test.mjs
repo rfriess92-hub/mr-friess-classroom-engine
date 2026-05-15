@@ -16,6 +16,12 @@ function extractSetFromSource(sourceText, setName) {
   return new Set(match ? (match[1].match(/'([^']+)'/g) ?? []).map((s) => s.replace(/'/g, '')) : [])
 }
 
+function inventoryClaimsPythonSupport(entry) {
+  return entry.legacy_python_render_support !== false &&
+    entry.legacy_python_render_support !== 'unknown' &&
+    entry.legacy_python_render_support != null
+}
+
 const inventory = load('engine/contracts/output-type-inventory.json')
 const vocabulary = load('schemas/canonical-vocabulary.json')
 const lessonSchema = load('schemas/lesson-package.schema.json')
@@ -37,6 +43,13 @@ const docOutputTypes = extractSetFromSource(renderPackageText, 'DOC_OUTPUT_TYPES
 const knownUnimplementedTypes = extractSetFromSource(renderPackageText, 'KNOWN_UNIMPLEMENTED_TYPES')
 
 const { supportsHtmlRender } = await import('../../engine/pdf-html/render.mjs')
+
+const routerText = readFileSync(resolve(root, 'engine/planner/output-router.mjs'), 'utf8')
+function rendererKeyFor(outputType) {
+  const re = new RegExp(`case\\s+'${outputType}'[^:]*:\\s*return\\s+'(render_[^']+)'`)
+  const match = routerText.match(re)
+  return match ? match[1] : 'render_unknown_output'
+}
 
 describe('output contract drift', () => {
   it('every output type in vocabulary and schema is in the inventory', () => {
@@ -78,7 +91,27 @@ describe('output contract drift', () => {
     }
   })
 
-  it('schema_only output types are either render-backed or explicitly blocked', () => {
+  it('inventory render metadata matches the current code paths', () => {
+    for (const entry of inventory.output_types) {
+      assert.equal(
+        entry.router_key,
+        rendererKeyFor(entry.output_type),
+        `${entry.output_type}: inventory router_key is stale`,
+      )
+      assert.equal(
+        entry.html_template_registered,
+        supportsHtmlRender(entry.output_type),
+        `${entry.output_type}: inventory html_template_registered is stale`,
+      )
+      assert.equal(
+        inventoryClaimsPythonSupport(entry),
+        docOutputTypes.has(entry.output_type),
+        `${entry.output_type}: inventory legacy_python_render_support is stale`,
+      )
+    }
+  })
+
+  it('schema_only output types are explicitly blocked and not render-backed', () => {
     const schemaOnlyTypes = inventory.output_types.filter((entry) => entry.current_status === 'schema_only')
     assert.ok(schemaOnlyTypes.length > 0, 'Expected at least some schema_only types to be classified')
 
@@ -88,8 +121,12 @@ describe('output contract drift', () => {
       const hasPptx = entry.renderer_family === 'pptx'
       const isBlocked = knownUnimplementedTypes.has(entry.output_type)
       assert.ok(
-        hasHtml || hasPython || hasPptx || isBlocked,
-        `${entry.output_type}: schema_only type is neither render-backed nor explicitly blocked`,
+        !hasHtml && !hasPython && !hasPptx,
+        `${entry.output_type}: schema_only type is render-backed and inventory status is stale`,
+      )
+      assert.ok(
+        isBlocked,
+        `${entry.output_type}: schema_only type is not explicitly blocked in KNOWN_UNIMPLEMENTED_TYPES`,
       )
     }
   })

@@ -11,9 +11,9 @@ Working rule: keep contract/rendering work separate from pedagogy/content cleanu
 
 ---
 
-## Current Checkpoint — 2026-05-07
+## Current Checkpoint — 2026-05-15
 
-This checkpoint resets repo truth after the assessment/quiz marking-guide work and the LWD render-proof QA failure.
+This checkpoint refreshes repo truth after compact classroom template adaptation, the now-live assessment/quiz HTML render path, and the emergence of the parallel classroom-activity subsystem.
 
 Recent stabilization work has landed:
 
@@ -31,30 +31,34 @@ Recent stabilization work has landed:
 - [x] Mr Friess visual shell formatting update
 - [x] Literacy vocabulary tool templates
 - [x] Assessment visual layouts
-- [x] Long Way Down focused render workflow
 - [x] Classroom toolkit layouts centrally routed
 - [x] Six-class toolkit transfer sample proof
 - [x] A1.1 assessment/quiz render contract
 - [x] A1.2 student-facing schema-level assessment/quiz render slice
 - [x] A1.3 explicit teacher-only marking guides through `answer_key` routes
+- [x] Compact classroom template adaptation
+- [x] Grade 8 curriculum target card toolkit
 - [x] Multipage artifact QA for student packets and teacher guides
+- [x] Repo-truth refresh for output inventory and drift docs
 
 Current open repo-maintenance focus:
 
-- Repo-truth and QA-policy cleanup.
-- LWD render-proof failure caused by `qa:bundle` requiring `shared_view` universally instead of only when declared/required.
-- Duplicate LWD trigger PRs should remain closed once superseded.
+- Keep the machine-readable output inventory aligned with real renderer support.
+- Add answer-leak QA for student assessment/quiz artifacts and sidecars.
+- Keep the classroom-activity subsystem clearly separated from the stable-core package contract.
+- Continue the remaining Python-fallback consolidation work without collapsing compatibility paths too early.
 
 Current important distinction:
 
 - **Output types** are schema/router-level artifact types, such as `quiz`, `vocabulary_card`, and `assessment`.
 - **Layout template IDs** are specialized HTML surfaces under existing output types, such as `frayer_model`, `vocabulary_cards`, `bc_rubric`, `student_self_assessment`, `kwhl_chart`, `fishbone_diagram`, `sentence_frame_card`, `choice_board`, and `scaffolded_quiz`.
+- **The classroom-activity subsystem** under `activity-library/` and `engine/activity-family/` is real, but it is not the same thing as the stable-core lesson-package output contract.
 - **Focused renderers/workflows** may prove a template module directly before it is wired into the central `render:package` path.
 - **Render proof** and **shipping QA** are not the same thing. Rendering can succeed while `qa:bundle` returns `revise` or `block` for shipping-quality reasons.
 
 Next recommended cleanup checks:
 
-1. Re-run the freshest LWD render-proof case and confirm the missing-`shared_view` blocker is gone.
+1. Keep `engine/contracts/output-type-inventory.json` and `scripts/audit-output-contracts.mjs` aligned whenever output support changes.
 2. Add answer-leak QA for student assessment/quiz PDFs and sidecars.
 3. Continue assessment/quiz student PDF formatting review.
 4. Normalize Long Way Down v5 source-of-truth: either keep the builder workflow explicitly documented or commit the generated v5 fixture as a stable fixture.
@@ -96,6 +100,24 @@ Production / central-rendered layout systems:
 Current note:
 
 - Broader classroom document template expansion should be split into focused phases. Do not mix it with assessment QA or repo-truth cleanup unless explicitly chosen.
+
+## A0c — Classroom Activity Subsystem Foundations `PARTIAL`
+
+This subsystem is live on `main`, but it is parallel to the stable-core lesson-package pipeline rather than a replacement for it.
+
+Already landed:
+
+- [x] `activity-library/` with families, banks, bridges, competition shells, and deployment templates
+- [x] `engine/activity-family/` routing, preflight, selection, registry, and render-plan modules
+- [x] Activity schemas: `classroom-activity`, `activity-bank`, `activity-family`, and `activity-bridge-pack`
+- [x] Activity scripts for generation, routing, schema-checking, and family selection
+- [x] Activity fixtures and a dedicated node test surface
+
+Remaining:
+
+- [ ] Add a dedicated human-readable contract/roadmap document for the activity subsystem
+- [ ] Clarify where activity artifacts stay parallel to stable-core package outputs vs where they should eventually intersect
+- [ ] Keep classroom-stability QA separate from stable-core render QA unless an artifact becomes a stable-core output type
 
 ## A1 — Assessment Foundation `PARTIAL — STUDENT + TEACHER GUIDE SLICE LANDED`
 
@@ -415,7 +437,7 @@ Only after repeated clean D0/D1 runs.
 - Phase 3 render proof fixtures for lesson_overview + checkpoint_sheet
 - C0 profile layer schema + seed profiles
 - Pedagogy-faithful rendered artifacts: rubric_sheet, station_cards, answer_key
-- B0 grade-band contracts docs in engine contracts folder
+- B0 engine-side grade-band contracts
 - Student-facing voice pass v2
 - A1 assessment schema foundation
 
