@@ -1,0 +1,38 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "bias_mini_unit_day2_worksheet",
+  "primary_architecture": "single_period_full",
+  "session_count": 1,
+  "grade_band": "8-12",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Bias Mini-Unit — Day 2: Anchoring, Halo Effect, and Framing",
+  "theme": "careers",
+  "worksheet": {
+    "title": "Bias Mini-Unit — Day 2: Anchoring, Halo Effect, and Framing",
+    "anchor": [
+      "Learning goal: I can identify anchoring bias, the halo effect, and framing effect, and I can explain how wording and first impressions change judgment.",
+      "Use this worksheet during the mini-lesson, then move into work time on your career presentation."
+    ],
+    "questions": [
+      { "q_num": 1, "q_text": "Quick start: Why do first impressions matter so much, even when they are incomplete?", "n_lines": 3 },
+      { "q_num": 2, "q_text": "Key notes: Anchoring bias means relying too much on the first number, idea, or detail you hear. Write your own example or note.", "n_lines": 2 },
+      { "q_num": 3, "q_text": "Key notes: Halo effect means assuming many positive things because of one strong positive trait. Write your own example or note.", "n_lines": 2 },
+      { "q_num": 4, "q_text": "Key notes: Framing effect means reacting differently depending on how the same information is presented. Write your own example or note.", "n_lines": 2 },
+      { "q_num": 5, "q_text": "Practice: The first salary number a student sees becomes the number they compare everything else to. Bias: ____________________\nA job seems good in every way because it is respected. Bias: ____________________\nA presenter chooses wording that makes a career sound better even though the facts are the same. Bias: ____________________", "n_lines": 2 },
+      { "q_num": 6, "q_text": "Apply it to your career presentation: What is one anchor that could affect how you judge a career?", "n_lines": 2 },
+      { "q_num": 7, "q_text": "Apply it to your career presentation: What is one career that sounds impressive but also has real challenges? List both.", "n_lines": 2 },
+      { "q_num": 8, "q_text": "Apply it to your career presentation: Rewrite one sentence from your presentation so it is persuasive but still fair.", "n_lines": 2 },
+      { "q_num": 9, "q_text": "Exit reflection: Where could framing show up in a career presentation? Give one honest example.", "n_lines": 2 }
+    ],
+    "self_check": [
+      "I can name anchoring bias, halo effect, and framing effect.",
+      "I checked whether first impressions or wording could distort my career presentation.",
+      "I am ready to continue revising or building my presentation."
+    ]
+  },
+  "bundle": { "bundle_id": "bias_mini_unit_day2_worksheet_bundle", "declared_outputs": ["worksheet"] },
+  "outputs": [
+    { "output_id": "bias_day2_student_worksheet", "output_type": "worksheet", "audience": "student", "source_section": "worksheet", "bundle": "bias_mini_unit_day2_worksheet_bundle" }
+  ]
+}
