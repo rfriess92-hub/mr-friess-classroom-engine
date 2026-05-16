@@ -1,0 +1,38 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "bias_mini_unit_day1_worksheet",
+  "primary_architecture": "single_period_full",
+  "session_count": 1,
+  "grade_band": "8-12",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Bias Mini-Unit — Day 1: Bias Basics and Common Traps",
+  "theme": "careers",
+  "worksheet": {
+    "title": "Bias Mini-Unit — Day 1: Bias Basics and Common Traps",
+    "anchor": [
+      "Learning goal: I can explain what cognitive bias is and identify confirmation bias, availability bias, and overconfidence bias.",
+      "Use this worksheet during the mini-lesson, then move into work time on your career presentation."
+    ],
+    "questions": [
+      { "q_num": 1, "q_text": "Quick start: If you already like a career, what kind of information might you notice first? Why?", "n_lines": 3 },
+      { "q_num": 2, "q_text": "Key notes: Confirmation bias means looking for or trusting information that matches what you already believe. Write your own example or note.", "n_lines": 2 },
+      { "q_num": 3, "q_text": "Key notes: Availability bias means judging something by the example that comes to mind fastest, even if it is unusual. Write your own example or note.", "n_lines": 2 },
+      { "q_num": 4, "q_text": "Key notes: Overconfidence bias means feeling more certain than the evidence actually supports. Write your own example or note.", "n_lines": 2 },
+      { "q_num": 5, "q_text": "Practice: A student only writes down the positives of a career they already like. Bias: ____________________\nOne dramatic story about a workplace makes a job seem typical all the time. Bias: ____________________\nA presenter says their career is clearly the best without checking enough sources. Bias: ____________________", "n_lines": 2 },
+      { "q_num": 6, "q_text": "Apply it to your career presentation: What is one way confirmation bias could show up in your research?", "n_lines": 2 },
+      { "q_num": 7, "q_text": "Apply it to your career presentation: What is one fact you should check so you do not rely on one dramatic example?", "n_lines": 2 },
+      { "q_num": 8, "q_text": "Apply it to your career presentation: Write one sentence you could use instead of 'This is obviously the best job.'", "n_lines": 2 },
+      { "q_num": 9, "q_text": "Exit reflection: Which of today's biases are you most likely to make in your own presentation? What will you do to reduce it?", "n_lines": 2 }
+    ],
+    "self_check": [
+      "I can name confirmation bias, availability bias, and overconfidence bias.",
+      "I connected at least one bias to my own career presentation work.",
+      "I am ready to continue revising or building my presentation."
+    ]
+  },
+  "bundle": { "bundle_id": "bias_mini_unit_day1_worksheet_bundle", "declared_outputs": ["worksheet"] },
+  "outputs": [
+    { "output_id": "bias_day1_student_worksheet", "output_type": "worksheet", "audience": "student", "source_section": "worksheet", "bundle": "bias_mini_unit_day1_worksheet_bundle" }
+  ]
+}
