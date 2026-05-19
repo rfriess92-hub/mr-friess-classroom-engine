@@ -1,0 +1,48 @@
+name: Render Careers 8 Week 1
+
+on:
+  push:
+    branches:
+      - render/careers8-week1-20260518
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Enable pnpm
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm run fonts:install
+
+      - name: Run repo render pipeline
+        run: |
+          pnpm run render:package -- --package fixtures/generated/careers-8-mosaic-week-1-know-yourself.grade8-careers.json --out output
+
+      - name: Run repo bundle QA
+        run: |
+          pnpm run qa:bundle -- --package fixtures/generated/careers-8-mosaic-week-1-know-yourself.grade8-careers.json --out output
+
+      - name: List rendered outputs
+        if: always()
+        run: find output -maxdepth 3 -type f | sort
+
+      - name: Upload rendered documents
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: careers8-week1-repo-rendered-documents
+          path: output/**
+          if-no-files-found: error
