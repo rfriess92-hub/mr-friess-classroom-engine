@@ -1,0 +1,38 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "bias_mini_unit_day4_worksheet",
+  "primary_architecture": "single_period_full",
+  "session_count": 1,
+  "grade_band": "8-12",
+  "subject": "Careers",
+  "grade": 8,
+  "topic": "Bias Mini-Unit — Day 4: Decision Biases and Smarter Choices",
+  "theme": "careers",
+  "worksheet": {
+    "title": "Bias Mini-Unit — Day 4: Decision Biases and Smarter Choices",
+    "anchor": [
+      "Learning goal: I can identify sunk cost fallacy, bandwagon effect, and hindsight bias, and I can use them to improve my own decisions.",
+      "Use this worksheet during the mini-lesson, then move into work time on your career presentation."
+    ],
+    "questions": [
+      { "q_num": 1, "q_text": "Quick start: Why do people sometimes stick with a weak plan even when they know it is not working?", "n_lines": 3 },
+      { "q_num": 2, "q_text": "Key notes: Sunk cost fallacy means keeping a weak choice because you already spent time, effort, or money on it. Write your own example or note.", "n_lines": 2 },
+      { "q_num": 3, "q_text": "Key notes: Bandwagon effect means believing or choosing something because many other people do. Write your own example or note.", "n_lines": 2 },
+      { "q_num": 4, "q_text": "Key notes: Hindsight bias means after something happens, acting like the result was obvious all along. Write your own example or note.", "n_lines": 2 },
+      { "q_num": 5, "q_text": "Practice: A student refuses to change a weak topic because they already spent time on it. Bias: ____________________\nA career is chosen mainly because it is trendy or popular online. Bias: ____________________\nAfter a strong result, someone says they knew it would work all along. Bias: ____________________", "n_lines": 2 },
+      { "q_num": 6, "q_text": "Apply it to your career presentation: What is one part of your presentation you should revise instead of defending?", "n_lines": 2 },
+      { "q_num": 7, "q_text": "Apply it to your career presentation: How could popularity affect career choices in unfair ways?", "n_lines": 2 },
+      { "q_num": 8, "q_text": "Apply it to your career presentation: What is one thing you improved over time rather than 'always knowing' it would work?", "n_lines": 2 },
+      { "q_num": 9, "q_text": "Exit reflection: Choose one bias from the whole mini-unit that will help you most this week. Explain why.", "n_lines": 2 }
+    ],
+    "self_check": [
+      "I can name sunk cost fallacy, bandwagon effect, and hindsight bias.",
+      "I connected at least one decision bias to my own presentation work.",
+      "I am ready to continue revising or building my presentation."
+    ]
+  },
+  "bundle": { "bundle_id": "bias_mini_unit_day4_worksheet_bundle", "declared_outputs": ["worksheet"] },
+  "outputs": [
+    { "output_id": "bias_day4_student_worksheet", "output_type": "worksheet", "audience": "student", "source_section": "worksheet", "bundle": "bias_mini_unit_day4_worksheet_bundle" }
+  ]
+}
