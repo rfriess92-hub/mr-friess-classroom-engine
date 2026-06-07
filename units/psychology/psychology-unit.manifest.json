@@ -1,0 +1,16 @@
+{
+  "unit_id": "psychology_11_12_complete_unit",
+  "title": "Psychology 11/12 Complete Classroom Unit",
+  "course": "Psychology",
+  "grade_band": "11-12",
+  "status": "source_packages_required",
+  "source_note": "No dedicated Psychology 11/12 source package JSON files were found in the repo inventory when this scaffold was created. Add the Psychology source packages under units/psychology/packages/ and list them here before the unit can pass QA.",
+  "required_artifacts_per_package": [
+    "teacher_guide.pdf",
+    "student_packet.pdf",
+    "lesson_slides.pptx",
+    "completion_or_assessment_artifact.pdf",
+    "rendered-package.qa.json"
+  ],
+  "packages": []
+}
