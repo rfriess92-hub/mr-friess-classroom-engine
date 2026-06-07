@@ -20,6 +20,58 @@ function readJsonIfExists(path) {
   return JSON.parse(readFileSync(path, 'utf-8'))
 }
 
+function safeDir(value) {
+  return String(value ?? 'package').replace(/[^a-zA-Z0-9_-]+/g, '_')
+}
+
+function loadManifestIfExists(path, manifestErrors, label) {
+  if (!existsSync(path)) {
+    manifestErrors.push({ label, path, detail: `Missing manifest: ${path}` })
+    return null
+  }
+  return loadJson(path)
+}
+
+function collectPackages(manifest, manifestErrors, cycleReports, context = {}) {
+  const packages = []
+  const ownPackages = Array.isArray(manifest.packages) ? manifest.packages : []
+
+  if (context.cycle_id) {
+    cycleReports.push({
+      cycle_id: context.cycle_id,
+      title: manifest.title ?? null,
+      manifest: context.manifest_path ?? null,
+      package_count: ownPackages.length,
+      status: ownPackages.length > 0 ? 'declared' : 'source_packages_required',
+    })
+  }
+
+  for (const entry of ownPackages) {
+    packages.push({
+      ...entry,
+      cycle_id: entry.cycle_id ?? context.cycle_id ?? null,
+      cycle_output_dir: entry.cycle_output_dir ?? context.cycle_output_dir ?? null,
+    })
+  }
+
+  for (const cycle of Array.isArray(manifest.cycles) ? manifest.cycles : []) {
+    if (!cycle.manifest) {
+      manifestErrors.push({ label: cycle.cycle_id ?? 'cycle', path: null, detail: `Cycle entry is missing manifest: ${JSON.stringify(cycle)}` })
+      continue
+    }
+    const cycleManifestPath = repoPath(cycle.manifest)
+    const cycleManifest = loadManifestIfExists(cycleManifestPath, manifestErrors, cycle.cycle_id ?? cycle.manifest)
+    if (!cycleManifest) continue
+    packages.push(...collectPackages(cycleManifest, manifestErrors, cycleReports, {
+      cycle_id: cycle.cycle_id ?? cycleManifest.cycle_id ?? null,
+      cycle_output_dir: cycle.output_dir ?? safeDir(cycle.cycle_id ?? cycleManifest.cycle_id ?? 'cycle'),
+      manifest_path: cycle.manifest,
+    }))
+  }
+
+  return packages
+}
+
 const manifestArg = argValue('--manifest')
 const outArg = argValue('--out') ?? 'output/unit'
 
@@ -35,13 +87,26 @@ if (!existsSync(manifestPath)) {
 }
 
 const manifest = loadJson(manifestPath)
-const packages = Array.isArray(manifest.packages) ? manifest.packages : []
 const baseOut = repoPath(outArg)
 mkdirSync(baseOut, { recursive: true })
 
+const manifestErrors = []
+const cycleReports = []
+const packages = collectPackages(manifest, manifestErrors, cycleReports)
 const checks = []
+
+checks.push({
+  check_id: 'unit.cycle_manifests_exist',
+  status: manifestErrors.length === 0 ? 'pass' : 'block',
+  detail: manifestErrors.length === 0
+    ? `${cycleReports.length} cycle manifest(s) loaded.`
+    : `${manifestErrors.length} cycle manifest problem(s): ${manifestErrors.map((entry) => entry.detail).join('; ')}`,
+})
+
 if (packages.length === 0) {
-  checks.push({ check_id: 'unit.packages_declared', status: 'block', detail: 'Unit manifest has no packages. Add Psychology source package JSON files before rendering.' })
+  checks.push({ check_id: 'unit.packages_declared', status: 'block', detail: 'Unit has no packages declared across the top-level manifest or cycle manifests. Add Psychology source package JSON files before rendering.' })
+} else {
+  checks.push({ check_id: 'unit.packages_declared', status: 'pass', detail: `${packages.length} package(s) declared across unit/cycle manifests.` })
 }
 
 const packageResults = []
@@ -49,10 +114,13 @@ for (const entry of packages) {
   const source = entry.source
   const packageId = entry.package_id ?? source
   const sourcePath = source ? repoPath(source) : null
-  const packageOut = resolve(baseOut, entry.output_dir ?? packageId.replace(/[^a-zA-Z0-9_-]+/g, '_'))
+  const packageDir = entry.output_dir ?? safeDir(packageId)
+  const packageOut = entry.cycle_output_dir
+    ? resolve(baseOut, entry.cycle_output_dir, packageDir)
+    : resolve(baseOut, packageDir)
 
   if (!source || !existsSync(sourcePath)) {
-    packageResults.push({ package_id: packageId, source, status: 'block', detail: `Missing package source: ${source ?? '(none)'}` })
+    packageResults.push({ package_id: packageId, cycle_id: entry.cycle_id ?? null, source, status: 'block', detail: `Missing package source: ${source ?? '(none)'}` })
     continue
   }
 
@@ -60,7 +128,9 @@ for (const entry of packages) {
   const qa = readJsonIfExists(resolve(packageOut, 'rendered-package.qa.json'))
   packageResults.push({
     package_id: packageId,
+    cycle_id: entry.cycle_id ?? null,
     source,
+    output_dir: packageOut,
     status: result.status === 0 ? 'pass' : 'block',
     qa_judgment: qa?.judgment ?? null,
     detail: result.status === 0 ? 'Package artifact QA passed.' : `${result.stderr}${result.stdout}`.trim(),
@@ -80,9 +150,11 @@ const report = {
   qa_scope: 'unit_package_contract',
   unit_id: manifest.unit_id ?? null,
   title: manifest.title ?? null,
+  cycle_count: cycleReports.length,
   package_count: packages.length,
   judgment: checks.every((check) => check.status === 'pass') ? 'pass' : 'block',
   checks,
+  cycles: cycleReports,
   packages: packageResults,
 }
 
