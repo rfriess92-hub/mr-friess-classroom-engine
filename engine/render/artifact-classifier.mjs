@@ -2,9 +2,9 @@ import { resolveSourceSection } from '../schema/source-section.mjs'
 import { buildTypedLayoutBlocks } from './typed-blocks.mjs'
 import { deriveMultipageArtifactClass, derivePageRoles } from './multipage-page-roles.mjs'
 import { deriveWeekSequenceContract } from './week-sequence-contract.mjs'
+import { extractSlidesFromBundleSection, isSlideLikeOutputType } from '../slides/slide-bundle.mjs'
 
 const TASK_SHEET_OUTPUTS = new Set(['task_sheet'])
-const SLIDE_OUTPUTS = new Set(['slides'])
 const TEACHER_PACK_OUTPUTS = new Set(['teacher_guide', 'lesson_overview'])
 
 function hasObject(value) {
@@ -17,6 +17,10 @@ function taskSheetSignals(section) {
 
 function slideSignals(section) {
   return Array.isArray(section) && section.length > 0
+}
+
+function dailySlideBundleSignals(section, pkg) {
+  return extractSlidesFromBundleSection(section, pkg).length > 0
 }
 
 function teacherPackSignals(section) {
@@ -92,13 +96,25 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
     }
   }
 
-  if (TASK_SHEET_OUTPUTS.has(outputType) && taskSheetSignals(section)) {
-    const multipage = deriveMultipageArtifactClass(route, blocks, 'task_sheet')
+  if (outputType === 'daily_slide_deck_bundle' && dailySlideBundleSignals(section, pkg)) {
     return {
-      artifact_class: multipage.artifact_class,
-      classification_confidence: multipage.classification_confidence ?? 0.99,
+      artifact_class: 'daily_slide_deck_bundle',
+      classification_confidence: 0.97,
       fallback_reason: null,
-      classifier_basis: ['output_type:task_sheet', 'section.tasks present', ...multipage.classifier_basis_extension],
+      classifier_basis: ['output_type:daily_slide_deck_bundle', 'bundle resolves to slide nodes'],
+      package_contract_family: 'complete_unit_package',
+      package_system_role: 'daily_slide_deck_bundle',
+      page_roles: null,
+      resolved_render_intent: route.render_intent ?? 'daily_slide_deck_bundle',
+    }
+  }
+
+  if (outputType === 'slides' && slideSignals(section)) {
+    return {
+      artifact_class: 'mini_lesson_slides',
+      classification_confidence: 0.99,
+      fallback_reason: null,
+      classifier_basis: ['output_type:slides', 'slides array present'],
       package_contract_family: null,
       package_system_role: null,
       page_roles: null,
@@ -106,12 +122,13 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
     }
   }
 
-  if (SLIDE_OUTPUTS.has(outputType) && slideSignals(section)) {
+  if (TASK_SHEET_OUTPUTS.has(outputType) && taskSheetSignals(section)) {
+    const multipage = deriveMultipageArtifactClass(route, blocks, 'task_sheet')
     return {
-      artifact_class: 'mini_lesson_slides',
-      classification_confidence: 0.99,
+      artifact_class: multipage.artifact_class,
+      classification_confidence: multipage.classification_confidence ?? 0.99,
       fallback_reason: null,
-      classifier_basis: ['output_type:slides', 'slides array present'],
+      classifier_basis: ['output_type:task_sheet', 'section.tasks present', ...multipage.classifier_basis_extension],
       package_contract_family: null,
       package_system_role: null,
       page_roles: null,
@@ -134,120 +151,39 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
   }
 
   if (outputType === 'worksheet' && worksheetSignals(section)) {
-    return {
-      artifact_class: 'student_worksheet',
-      classification_confidence: 0.92,
-      fallback_reason: null,
-      classifier_basis: ['output_type:worksheet', 'section.questions present'],
-      package_contract_family: null,
-      package_system_role: null,
-      page_roles: null,
-      resolved_render_intent: route.render_intent ?? null,
-    }
+    return { artifact_class: 'student_worksheet', classification_confidence: 0.92, fallback_reason: null, classifier_basis: ['output_type:worksheet', 'section.questions present'], package_contract_family: null, package_system_role: null, page_roles: null, resolved_render_intent: route.render_intent ?? null }
   }
 
   if (outputType === 'exit_ticket' && exitTicketSignals(section)) {
-    return {
-      artifact_class: 'student_exit_ticket',
-      classification_confidence: 0.92,
-      fallback_reason: null,
-      classifier_basis: ['output_type:exit_ticket', 'section prompt/n_lines present'],
-      package_contract_family: null,
-      package_system_role: null,
-      page_roles: null,
-      resolved_render_intent: route.render_intent ?? null,
-    }
+    return { artifact_class: 'student_exit_ticket', classification_confidence: 0.92, fallback_reason: null, classifier_basis: ['output_type:exit_ticket', 'section prompt/n_lines present'], package_contract_family: null, package_system_role: null, page_roles: null, resolved_render_intent: route.render_intent ?? null }
   }
 
   if (outputType === 'graphic_organizer' && graphicOrganizerSignals(section)) {
-    return {
-      artifact_class: 'student_graphic_organizer',
-      classification_confidence: 0.92,
-      fallback_reason: null,
-      classifier_basis: ['output_type:graphic_organizer', 'section organizer_type/columns present'],
-      package_contract_family: null,
-      package_system_role: null,
-      page_roles: null,
-      resolved_render_intent: route.render_intent ?? null,
-    }
+    return { artifact_class: 'student_graphic_organizer', classification_confidence: 0.92, fallback_reason: null, classifier_basis: ['output_type:graphic_organizer', 'section organizer_type/columns present'], package_contract_family: null, package_system_role: null, page_roles: null, resolved_render_intent: route.render_intent ?? null }
   }
 
   if (outputType === 'discussion_prep_sheet' && discussionPrepSignals(section)) {
-    return {
-      artifact_class: 'student_discussion_prep',
-      classification_confidence: 0.92,
-      fallback_reason: null,
-      classifier_basis: ['output_type:discussion_prep_sheet', 'section discussion_prompt/position_label present'],
-      package_contract_family: null,
-      package_system_role: null,
-      page_roles: null,
-      resolved_render_intent: route.render_intent ?? null,
-    }
+    return { artifact_class: 'student_discussion_prep', classification_confidence: 0.92, fallback_reason: null, classifier_basis: ['output_type:discussion_prep_sheet', 'section discussion_prompt/position_label present'], package_contract_family: null, package_system_role: null, page_roles: null, resolved_render_intent: route.render_intent ?? null }
   }
 
   if (outputType === 'rubric_sheet' && rubricSheetSignals(section)) {
-    return {
-      artifact_class: route.audience === 'teacher' ? 'teacher_rubric_sheet' : 'student_rubric_sheet',
-      classification_confidence: 0.94,
-      fallback_reason: null,
-      classifier_basis: ['output_type:rubric_sheet', 'section.criteria present'],
-      package_contract_family: null,
-      package_system_role: null,
-      page_roles: null,
-      resolved_render_intent: route.render_intent ?? null,
-    }
+    return { artifact_class: route.audience === 'teacher' ? 'teacher_rubric_sheet' : 'student_rubric_sheet', classification_confidence: 0.94, fallback_reason: null, classifier_basis: ['output_type:rubric_sheet', 'section.criteria present'], package_contract_family: null, package_system_role: null, page_roles: null, resolved_render_intent: route.render_intent ?? null }
   }
 
   if (outputType === 'station_cards' && stationCardsSignals(section)) {
-    return {
-      artifact_class: 'student_station_cards',
-      classification_confidence: 0.95,
-      fallback_reason: null,
-      classifier_basis: ['output_type:station_cards', 'section.cards present'],
-      package_contract_family: null,
-      package_system_role: null,
-      page_roles: null,
-      resolved_render_intent: route.render_intent ?? null,
-    }
+    return { artifact_class: 'student_station_cards', classification_confidence: 0.95, fallback_reason: null, classifier_basis: ['output_type:station_cards', 'section.cards present'], package_contract_family: null, package_system_role: null, page_roles: null, resolved_render_intent: route.render_intent ?? null }
   }
 
   if (outputType === 'answer_key' && answerKeySignals(section)) {
-    return {
-      artifact_class: 'teacher_answer_key',
-      classification_confidence: 0.95,
-      fallback_reason: null,
-      classifier_basis: ['output_type:answer_key', 'section.entries present'],
-      package_contract_family: null,
-      package_system_role: null,
-      page_roles: null,
-      resolved_render_intent: route.render_intent ?? null,
-    }
+    return { artifact_class: 'teacher_answer_key', classification_confidence: 0.95, fallback_reason: null, classifier_basis: ['output_type:answer_key', 'section.entries present'], package_contract_family: null, package_system_role: null, page_roles: null, resolved_render_intent: route.render_intent ?? null }
   }
 
   if (outputType === 'final_response_sheet' && finalResponseSignals(section)) {
-    return {
-      artifact_class: 'student_final_response',
-      classification_confidence: 0.92,
-      fallback_reason: null,
-      classifier_basis: ['output_type:final_response_sheet', 'section.prompt present'],
-      package_contract_family: null,
-      package_system_role: null,
-      page_roles: null,
-      resolved_render_intent: route.render_intent ?? null,
-    }
+    return { artifact_class: 'student_final_response', classification_confidence: 0.92, fallback_reason: null, classifier_basis: ['output_type:final_response_sheet', 'section.prompt present'], package_contract_family: null, package_system_role: null, page_roles: null, resolved_render_intent: route.render_intent ?? null }
   }
 
   if (outputType === 'checkpoint_sheet' && checkpointSignals(section)) {
-    return {
-      artifact_class: 'teacher_checkpoint',
-      classification_confidence: 0.92,
-      fallback_reason: null,
-      classifier_basis: ['output_type:checkpoint_sheet', 'section look_fors/checkpoint_focus present'],
-      package_contract_family: null,
-      package_system_role: null,
-      page_roles: null,
-      resolved_render_intent: route.render_intent ?? null,
-    }
+    return { artifact_class: 'teacher_checkpoint', classification_confidence: 0.92, fallback_reason: null, classifier_basis: ['output_type:checkpoint_sheet', 'section look_fors/checkpoint_focus present'], package_contract_family: null, package_system_role: null, page_roles: null, resolved_render_intent: route.render_intent ?? null }
   }
 
   return {
@@ -263,7 +199,7 @@ export function classifyArtifactRoute(pkg, route, typedBlocks = null) {
 }
 
 export function resolveRenderMode(classification) {
-  if (['mini_lesson_slides', 'week_sequence_day_slides'].includes(classification.artifact_class)) {
+  if (['mini_lesson_slides', 'week_sequence_day_slides', 'daily_slide_deck_bundle'].includes(classification.artifact_class)) {
     return {
       mode: 'slide_mode',
       mode_reason: `${classification.artifact_class} routes through the slide composition pipeline.`,
