@@ -3,8 +3,14 @@
   "title": "Psychology 11/12 Complete Classroom Unit",
   "course": "Psychology",
   "grade_band": "11-12",
-  "status": "cycle_source_packages_required",
-  "source_note": "Cycle scaffolds are present, but no dedicated Psychology 11/12 source package JSON files were found in the repo inventory when this manifest was created. Add package JSON files under units/psychology/cycles/<cycle>/packages/ and list them in each cycle manifest before the unit can pass QA.",
+  "status": "prebuilt_assets_indexed_source_packages_required",
+  "source_archive": {
+    "uploaded_name": "Psychology_11_12_ALL_CYCLES_COMPLETE_WITH_SLIDES_v1.zip",
+    "sha256": "0498b2b7161ccdf190ab1cb52c08522093e35591dc06f6aa7a9f7e5174595264",
+    "size_bytes": 4814156,
+    "file_count": 77,
+    "manifest": "units/psychology/_raw/source-archive-manifest.json"
+  },
   "required_artifacts_per_package": [
     "teacher_guide.pdf",
     "student_packet.pdf",
@@ -38,5 +44,6 @@
       "output_dir": "cycle-d"
     }
   ],
-  "packages": []
+  "packages": [],
+  "source_note": "The uploaded all-cycles package has been indexed. Add binary assets or engine package JSON files before unit render QA can pass."
 }
