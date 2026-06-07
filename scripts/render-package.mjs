@@ -12,6 +12,8 @@ import { buildTypedLayoutBlocks, countBlocksByType, validateTypedLayoutBlocks } 
 import { buildRouteVisualPlan } from '../engine/visual/plan-visuals.mjs'
 import { resolveSourceSection } from '../engine/schema/source-section.mjs'
 import { renderStudentDoc, renderStudentDocDays, shouldRenderTaskSheetDays, supportsHtmlRender } from '../engine/pdf-html/index.mjs'
+import { extractSlidesForRoute, isSlideLikeOutputType } from '../engine/slides/slide-bundle.mjs'
+import { runDailySlideDeckBundleQa } from '../engine/slides/slide-bundle-qa.mjs'
 import { FIXTURE_MAP, argValue, loadJson, repoPath, resolvePackageArg } from './lib.mjs'
 
 function pickPython() {
@@ -23,7 +25,7 @@ function pickPython() {
 }
 
 function buildSlidePacket(pkg, route, visualPlan) {
-  const slides = resolveSourceSection(pkg, route.source_section)
+  const slides = extractSlidesForRoute(pkg, route)
   if (!Array.isArray(slides) || slides.length === 0) {
     console.error(`Route ${route.route_id} does not resolve to a non-empty slides array.`)
     process.exit(1)
@@ -153,8 +155,8 @@ const DOC_OUTPUT_TYPES = new Set(['teacher_guide', 'lesson_overview', 'worksheet
 // Output types that exist in schema/vocabulary but have no render implementation yet.
 // Declaring these in a package fails loudly rather than silently skipping.
 const KNOWN_UNIMPLEMENTED_TYPES = new Set([
-  'rubric', 'formative_check',   // A2 — queued
-  'warm_up', 'vocabulary_card', 'observation_grid', 'lesson_reflection', // A3 — queued
+  'rubric', 'formative_check',
+  'warm_up', 'vocabulary_card', 'observation_grid', 'lesson_reflection',
 ])
 
 const packageArg = argValue('--package')
@@ -244,10 +246,23 @@ for (const route of routes) {
   routeBundles.push({ route, trace, typedBlocks })
 
   if (trace.mode === 'slide_mode') {
-    if (!(route.renderer_family === 'pptx' && route.output_type === 'slides')) {
+    if (!(route.renderer_family === 'pptx' && isSlideLikeOutputType(route.output_type))) {
       console.error(`Slide-mode route ${route.route_id} does not map to the legal PPTX slide renderer path.`)
       process.exit(1)
     }
+
+    const dailySlideDeckQa = runDailySlideDeckBundleQa({ pkg, route, slides: extractSlidesForRoute(pkg, route) })
+    if (dailySlideDeckQa) {
+      writeQaSidecar(outDir, route, dailySlideDeckQa)
+      if (dailySlideDeckQa.judgment === 'block') {
+        console.error(`Daily slide deck bundle QA failed for route ${route.route_id}.`)
+        for (const check of dailySlideDeckQa.checks.filter((entry) => entry.status !== 'pass')) {
+          console.error(` - ${check.check_id}: ${check.detail}`)
+        }
+        process.exit(1)
+      }
+    }
+
     renderSlides(pkg, route, visualBundle.visual_plan, outDir)
     continue
   }
