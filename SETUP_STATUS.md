@@ -9,6 +9,7 @@
 - `engine/render/` - typed block validation, artifact classification, multipage page-role classification, template routing
 - `engine/planner/` - output router and route planning
 - `engine/visual/` - visual plan builder and token system
+- `engine/generation/brief-output-contract.mjs` - generated-package required-output preservation guard
 - `engine/assignment-family/` - live assignment-family selection and validation authority
 - `engine/family/` - compatibility-only residue during cleanup, not the live render-plan authority
 
@@ -18,15 +19,13 @@
 - `pnpm run route:plan` - plan routes for a package
 - `pnpm run render:package` - render a full package (PPTX + PDF)
 - `pnpm run qa:render` / `qa:bundle` / `qa:report` / `qa:visual` / `qa:pedagogy-variants` - QA helpers
-- `pnpm run generate:package` - generate a new package
+- `pnpm run generate:package` - generate a new package, enforce brief required-output preservation, then run schema and route checks
+- `pnpm run generate:package -- --brief <path> --full-check` - generate, render, and run bundle QA before treating the package as classroom-ready
 - `pnpm test` - Node tests in `tests/node`
 - `pnpm run test:all` - Node tests plus `pytest tests/python`
 - Legacy direct-builder scripts remain deprecated compatibility/debugging shims under `scripts/`
-- fixture shortcuts in `scripts/lib.mjs` cover core, generated, PBG, and proof/test packages used in current operator flows
 
 ## Declared live stable-core surface
-
-### Output types
 
 Implemented render path:
 
@@ -46,8 +45,8 @@ Implemented render path:
 - `rubric_sheet`
 - `station_cards`
 - `answer_key` — includes generic entries-based answer keys and explicit teacher-only marking guides for assessment/quiz question sections
-- `assessment` — student-facing HTML render slice implemented in #205; explicit teacher marking-guide route implemented in #208 through `answer_key`
-- `quiz` — student-facing HTML render slice implemented in #205; explicit teacher marking-guide route implemented in #208 through `answer_key`
+- `assessment` — student-facing HTML render path; explicit teacher marking-guide route through `answer_key`
+- `quiz` — student-facing HTML render path; explicit teacher marking-guide route through `answer_key`
 
 Still schema-only / blocked at render until deliberately implemented:
 
@@ -58,16 +57,7 @@ Still schema-only / blocked at render until deliberately implemented:
 - `observation_grid`
 - `lesson_reflection`
 
-### Primary architectures
-
-- `single_period_full`
-- `multi_day_sequence`
-- `three_day_sequence`
-- `workshop_session`
-- `lab_investigation`
-- `seminar`
-- `project_sprint`
-- `station_rotation`
+Primary architectures: `single_period_full`, `multi_day_sequence`, `three_day_sequence`, `workshop_session`, `lab_investigation`, `seminar`, `project_sprint`, and `station_rotation`.
 
 ## Proven surface in CI today
 
@@ -77,21 +67,17 @@ Still schema-only / blocked at render until deliberately implemented:
 - `toolkit-multi-class-samples` proves toolkit transfer across six subject samples
 - `lwd-graphic-novel-render` proves the Long Way Down v5 focused render path
 - `a1-assessment-quiz-render` proves schema-level `assessment` and `quiz` render as student-facing PDFs and explicit teacher-only marking guides through the normal package renderer
+- Node contract tests prove output inventory drift and generated brief-required-output preservation
 
 ## Transitional / not yet fully consolidated
 
 - `assessment` and `quiz` render as student PDFs, but their traditional test formatting should continue to improve through artifact review
 - `assessment` and `quiz` do not auto-generate teacher companion PDFs; teacher marking guides require explicit `answer_key` routes
-- answer-leak text-scan QA is still a future hardening task
+- answer-leak text-scan QA is present and should expand as assessment/quiz templates and sidecars evolve
 - `teacher_guide`, `lesson_overview`, and `checkpoint_sheet` remain proof-backed through the Python fallback path until A5 render hardening
 - some declared architectures remain more broadly declared than they are deeply regression-tested
 - legacy direct-lesson builder surfaces still exist but are not the acceptance path
 
 ## Repo-truth rule
 
-Distinguish clearly between:
-
-- **live** - declared surface that the planner and render path accept
-- **proven in CI** - surfaces exercised by current workflows and tests
-- **transitional** - compatibility, fallback, or first-slice implementations kept to avoid breaking the live path
-- **deprecated/debug-only** - direct-builder residue and non-acceptance tooling
+Distinguish clearly between live, proven in CI, transitional, and deprecated/debug-only surfaces.
