@@ -1,0 +1,94 @@
+{
+  "contract_id": "psychology_11_12_cycle_a_a1_student_supports_contract",
+  "title": "A1 Student Supports and Differentiation Contract",
+  "status": "required_before_render_acceptance",
+  "source_authority": [
+    "Psychology 11/12 Classroom Engine Master Spec",
+    "Cycle A Student Packet Bundle v3 SOURCE_INTEGRATED",
+    "Cycle A Teacher Binder v3 SOURCE_INTEGRATED"
+  ],
+  "principle": "Differentiation is not a separate easier assignment. Supported, Proficient, and Extending versions must aim at the same learning target and preserve the same core reasoning move.",
+  "required_student_support_outputs": [
+    {
+      "output_id": "differentiated_major_tasks",
+      "description": "Every major worksheet or assessment must include Supported, Proficient, and Extending pathways.",
+      "required_features": [
+        "same learning goal across all tiers",
+        "same core content and vocabulary",
+        "same decision plus reason expectation",
+        "scaffolds reduced or expanded by tier",
+        "teacher notes explaining how to assign or offer tiers"
+      ]
+    },
+    {
+      "output_id": "graphic_organizers",
+      "description": "Major tasks must include visual/structured organizers, not only open-response lines.",
+      "required_types": [
+        "claim_evidence_reasoning_table",
+        "variable_operational_definition_chart",
+        "method_match_matrix",
+        "correlation_causation_trap_chart",
+        "ethics_checklist",
+        "source_annotation_frame",
+        "research_design_planner",
+        "model_response_sort_grid",
+        "final_claim_detective_planner"
+      ]
+    },
+    {
+      "output_id": "notes_package",
+      "description": "A1 must include a student notes package aligned to the daily slides and teacher sequence.",
+      "required_sections": [
+        "day_01_is_this_psychology_notes",
+        "day_02_variables_and_operational_definitions_notes",
+        "day_03_research_methods_notes",
+        "day_04_correlation_and_causation_notes",
+        "day_05_research_ethics_notes",
+        "day_06_source_reading_notes",
+        "day_07_claim_detective_notes",
+        "day_08_research_design_notes",
+        "day_09_assessment_prep_notes",
+        "day_10_final_assessment_notes"
+      ],
+      "required_features": [
+        "key vocabulary",
+        "teacher-model example",
+        "space for student example",
+        "misconception alert",
+        "one quick check question"
+      ]
+    },
+    {
+      "output_id": "vocabulary_supports",
+      "description": "A1 must include vocabulary supports suitable for Grade 11/12 Psychology students without watering down the concepts.",
+      "required_features": [
+        "student-friendly definition",
+        "psychology-specific example",
+        "non-example or misconception",
+        "use-it-in-a-sentence frame",
+        "cumulative vocabulary review"
+      ]
+    },
+    {
+      "output_id": "teacher_differentiation_notes",
+      "description": "Teacher binder must explain how to use supports without creating separate learning goals.",
+      "required_features": [
+        "who may need the Supported version",
+        "how to move students from Supported to Proficient",
+        "what Extending should add beyond extra length",
+        "ELL/literacy supports",
+        "executive-function supports",
+        "assessment accommodations that preserve the same standard"
+      ]
+    }
+  ],
+  "qa_expectations": [
+    "Fail if a major worksheet has only one undifferentiated open-response task.",
+    "Fail if Supported, Proficient, and Extending tasks target different learning goals.",
+    "Fail if graphic organizers are missing from major work.",
+    "Fail if a notes package is missing for the 10-day A1 sequence.",
+    "Fail if differentiation is only listed in teacher notes but absent from student-facing materials.",
+    "Fail if support materials reduce the psychology reasoning target to vocabulary copying only."
+  ],
+  "current_gap": "The current Day 1 proof includes some tier language and frames, but it does not yet render a complete A1 differentiated student packet, graphic organizer set, or notes package. These must be treated as missing required outputs."
+}
