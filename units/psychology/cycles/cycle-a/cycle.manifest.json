@@ -1,0 +1,9 @@
+{
+  "cycle_id": "cycle_a",
+  "sequence_label": "Cycle A",
+  "title": "Psychology 11/12 Cycle A",
+  "status": "source_packages_required",
+  "source_note": "Add Cycle A engine package JSON files under units/psychology/cycles/cycle-a/packages/ and list them in packages[].",
+  "raw_intake_dir": "units/psychology/_raw/cycle-a",
+  "packages": []
+}
