@@ -3,8 +3,8 @@
   "title": "Psychology 11/12 Complete Classroom Unit",
   "course": "Psychology",
   "grade_band": "11-12",
-  "status": "cycle_a_a1_daily_render_target",
-  "render_proof_revision": 7,
+  "status": "blocked_complete_a1_contract_required",
+  "render_proof_revision": 8,
   "source_archive": {
     "uploaded_name": "Psychology_11_12_ALL_CYCLES_COMPLETE_WITH_SLIDES_v1.zip",
     "sha256": "0498b2b7161ccdf190ab1cb52c08522093e35591dc06f6aa7a9f7e5174595264",
@@ -12,7 +12,8 @@
     "file_count": 77,
     "manifest": "units/psychology/_raw/source-archive-summary.json"
   },
-  "source_contract": "units/psychology/cycles/cycle-a/a1-source-map.json",
+  "source_contract": "units/psychology/cycles/cycle-a/a1-package-contract.json",
+  "source_map": "units/psychology/cycles/cycle-a/a1-source-map.json",
   "required_artifacts_per_package": [
     "teacher_guide.pdf",
     "student_packet.pdf",
@@ -34,8 +35,8 @@
       "source": "units/psychology/cycles/cycle-a/packages/a1-days/psych-11-12-cycle-a-a1-d01.json",
       "cycle_output_dir": "cycle-a/a1-psychology-as-science",
       "output_dir": "day-01-is-this-psychology",
-      "conversion_status": "source_grounded_daily_package"
+      "conversion_status": "source_grounded_daily_package_proof_only"
     }
   ],
-  "source_note": "A1 is being rebuilt as ten daily packages using the A1 source map. Each day must produce its own teacher guide, student sheet, slide deck, and exit ticket. A2-A8 are temporarily removed from the render target until A1 daily architecture is proven."
+  "source_note": "A1 Day 1 remains a renderer proof only. A1 is blocked as a complete unit until the complete package contract is satisfied: teacher binder, full student packet, daily slide decks, assessment pack, safety/source pack, editable formats where supported, and package-level QA. A2-A8 are temporarily removed from the render target until A1 architecture and contract are correct."
 }
