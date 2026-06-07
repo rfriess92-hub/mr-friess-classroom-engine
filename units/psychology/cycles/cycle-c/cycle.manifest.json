@@ -1,0 +1,9 @@
+{
+  "cycle_id": "cycle_c",
+  "sequence_label": "Cycle C",
+  "title": "Psychology 11/12 Cycle C",
+  "status": "source_packages_required",
+  "source_note": "Add Cycle C package JSON files under units/psychology/cycles/cycle-c/packages/ and list them in packages[].",
+  "raw_intake_dir": "units/psychology/_raw/cycle-c",
+  "packages": []
+}
