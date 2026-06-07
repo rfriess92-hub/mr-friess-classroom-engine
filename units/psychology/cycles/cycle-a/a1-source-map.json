@@ -1,0 +1,116 @@
+{
+  "unit_id": "cycle_a_a1_psychology_as_science",
+  "title": "A1 - Psychology as a Science",
+  "purpose": "Control map for rebuilding A1 as a true 10-day unit, not one compressed lesson package.",
+  "source_authority": [
+    "Psychology 11/12 Classroom Engine Master Spec",
+    "Cycle A Teacher Binder v3 SOURCE_INTEGRATED: A1 ten-day teacher sequence",
+    "Cycle A Student Packet Bundle v3 SOURCE_INTEGRATED: A1 vocabulary organizer, handouts 1-10, final assessment, exit tickets",
+    "OpenStax Psychology 2e Chapters 1-2 as the default content spine"
+  ],
+  "master_spec_controls": [
+    "Generate classroom-usable materials, not textbook summaries.",
+    "Use one clear core idea per lesson.",
+    "Build around student thinking: classify, compare, apply, evaluate, explain, or revise.",
+    "Require decision plus reason in every major activity.",
+    "Use fictional or composite examples for sensitive topics.",
+    "Never require personal disclosure.",
+    "Never ask students to diagnose themselves, classmates, family members, public figures, or fictional characters.",
+    "Separate teacher-facing and student-facing material.",
+    "Generate three aligned tiers by default for major worksheets: Supported, Proficient, Extending.",
+    "Default lesson flow: Engage/Hook, Learn/Concept, Do/Experience, Make Sense/Guided Consolidation, Apply + Check."
+  ],
+  "unit_question": "How do psychologists study behaviour responsibly?",
+  "final_assessment": "Flawed Claim Detective",
+  "safety_level": "Low to moderate: keep examples fictional/general; no diagnosis, no personal mental health data, no live class research without approval.",
+  "teacher_marking_notes": [
+    "Prioritize careful reasoning over length.",
+    "Do not reward unsupported certainty, diagnosis, ranking, or one-cause explanations.",
+    "Credit students who accurately name uncertainty, limits, and context.",
+    "For supported versions, mark concept accuracy and evidence before polish.",
+    "For extending versions, expect comparison, critique, and transfer."
+  ],
+  "days": [
+    {
+      "day": 1,
+      "teacher_focus": "Is this psychology?",
+      "teacher_task": "Students distinguish psychology from opinion, advice, therapy, personality quizzes, stereotypes, and research-based claims.",
+      "student_handout": "Handout 1 - Psychology Claim Sort",
+      "student_task": "Sort claims into opinion, advice, stereotype, therapy/diagnosis, or researchable psychology. Rewrite one weak claim as a careful research question.",
+      "exit_ticket": "What makes a psychology claim testable?"
+    },
+    {
+      "day": 2,
+      "teacher_focus": "Questions, variables, and operational definitions",
+      "teacher_task": "Students turn vague ideas into researchable questions and measurable variables.",
+      "student_handout": "Handout 2 - Make It Measurable",
+      "student_task": "Choose a vague idea such as stress, confidence, focus, friendship, memory, or motivation. Name possible variables. Write an operational definition for how each could be measured.",
+      "exit_ticket": "Write one operational definition."
+    },
+    {
+      "day": 3,
+      "teacher_focus": "Research methods: what each method can show",
+      "teacher_task": "Students compare survey, case study, naturalistic observation, and experiment.",
+      "student_handout": "Handout 3 - Research Method Match",
+      "student_task": "Match research questions to survey, case study, naturalistic observation, or experiment. Explain why the method fits. Name one limitation for each choice.",
+      "exit_ticket": "Which method fits your question and why?"
+    },
+    {
+      "day": 4,
+      "teacher_focus": "Correlation is not causation",
+      "teacher_task": "Students explain why a relationship between variables does not prove cause.",
+      "student_handout": "Handout 4 - The Causation Trap",
+      "student_task": "For each correlation, write at least two alternative explanations. Identify possible direction problems and third variables. Use the frame: This shows a relationship, but it does not prove...",
+      "exit_ticket": "Why does correlation not prove causation?"
+    },
+    {
+      "day": 5,
+      "teacher_focus": "Ethics in psychological research",
+      "teacher_task": "Students identify ethical concerns and propose safer research choices.",
+      "student_handout": "Handout 5 - Ethics Check",
+      "student_task": "Identify consent, privacy, harm, deception, debriefing, and right-to-withdraw concerns. Revise fictional study ideas to make them safer. Explain why interesting research can still be unethical.",
+      "exit_ticket": "Name one ethical protection."
+    },
+    {
+      "day": 6,
+      "teacher_focus": "Reading like a psychology student",
+      "teacher_task": "Students read a short source-based excerpt and extract method, evidence, limits, and ethical concerns.",
+      "student_handout": "Handout 6 - Reading: How Psychologists Study Behaviour",
+      "student_task": "Underline the research method. Circle a limitation. Star an ethical concern. Answer: what does the evidence show and not show?",
+      "exit_ticket": "What did the reading prove/not prove?"
+    },
+    {
+      "day": 7,
+      "teacher_focus": "Claim Detective practice",
+      "teacher_task": "Students evaluate weak psychology-style claims using a repeated reasoning frame.",
+      "student_handout": "Handout 7 - Claim Detective Practice",
+      "student_task": "Choose a weak psychology-style claim. Identify the claim, evidence needed, best method, alternative explanation, ethics, and careful rewrite.",
+      "exit_ticket": "Rewrite one overconfident claim carefully."
+    },
+    {
+      "day": 8,
+      "teacher_focus": "Design a better study",
+      "teacher_task": "Students design a simple ethical hypothetical study to test a question.",
+      "student_handout": "Handout 8 - Research Design Challenge",
+      "student_task": "Write a research question, hypothesis, variables, method, sample, limit, and ethical protections. Peer-check for clarity, measurability, and ethical caution.",
+      "exit_ticket": "Name one design limit."
+    },
+    {
+      "day": 9,
+      "teacher_focus": "Assessment prep and model responses",
+      "teacher_task": "Students review the final task, rubric, and sample responses.",
+      "student_handout": "Handout 9 - Assessment Prep: Model Response Sort",
+      "student_task": "Compare emerging, proficient, and extending sample responses. Highlight concept use, evidence, limits, and ethics. Plan your own final response.",
+      "exit_ticket": "What makes a response proficient?"
+    },
+    {
+      "day": 10,
+      "teacher_focus": "Final assessment: Flawed Claim Detective",
+      "teacher_task": "Students independently evaluate a psychology-style claim.",
+      "student_handout": "Handout 10 - Final Assessment Planning Sheet and A1 Final Assessment - Flawed Claim Detective",
+      "student_task": "Select or receive a flawed claim. Plan evidence needed, method, alternative explanation, ethical issue, and careful conclusion.",
+      "exit_ticket": "What is your careful conclusion?"
+    }
+  ],
+  "build_rule": "Create ten renderable daily packages for A1. Each day must produce its own teacher guide PDF, student sheet PDF with Supported/Proficient/Extending tasks, slide deck PPTX, and exit ticket PDF. Do not replace this with one compressed unit packet."
+}
