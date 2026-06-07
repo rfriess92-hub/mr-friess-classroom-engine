@@ -2,12 +2,15 @@
 /**
  * generate:package — Mr. Friess Classroom Engine
  * ================================================
- * Converts a teacher-facing lesson brief (Markdown) into a validated
- * stable-core package JSON, then runs schema:check automatically.
+ * Converts a teacher-facing lesson brief (Markdown) into a stable-core
+ * package JSON, verifies the brief-required outputs survived generation,
+ * then runs schema and route checks. Use --full-check to render and run
+ * bundle QA before treating the package as classroom-ready.
  *
  * Usage:
  *   pnpm run generate:package -- --brief briefs/my-lesson.md [--out dir] [--dry-run]
  *   pnpm run generate:package -- --brief briefs/my-lesson.md --course careers_8 --section careers8_mosaic
+ *   pnpm run generate:package -- --brief briefs/my-lesson.md --full-check
  *
  * Profile args:
  *   --course    course_id from profiles/courses/ (e.g. careers_8, workplace_readiness)
@@ -21,6 +24,8 @@ import { basename, extname, join, resolve } from 'node:path'
 import process from 'node:process'
 import { spawnSync } from 'node:child_process'
 import { buildGradeBandGenerationPrompt } from '../engine/generation/grade-band-contracts.mjs'
+import { validatePackageRequiredOutputs } from '../engine/generation/brief-output-contract.mjs'
+import { CANONICAL_OUTPUT_TYPES } from '../engine/schema/canonical.mjs'
 import {
   loadTeacherProfile,
   loadCourseProfile,
@@ -31,9 +36,56 @@ import {
   loadGradeBandContract,
 } from '../engine/generation/profile-loader.mjs'
 
+const SCHEMA_ONLY_BLOCKED_OUTPUT_TYPES = new Set([
+  'rubric',
+  'formative_check',
+  'warm_up',
+  'vocabulary_card',
+  'observation_grid',
+  'lesson_reflection',
+])
+const RENDER_BACKED_OUTPUT_TYPES = CANONICAL_OUTPUT_TYPES.filter((type) => !SCHEMA_ONLY_BLOCKED_OUTPUT_TYPES.has(type))
+
 function argValue(flag) {
   const i = process.argv.indexOf(flag)
   return i >= 0 ? process.argv[i + 1] ?? null : null
+}
+
+function runRequiredStep(label, args) {
+  console.log(`\nRunning ${label}...`)
+  const result = spawnSync(process.execPath, args, { stdio: 'inherit', cwd: process.cwd() })
+  if (result.status !== 0) {
+    console.error(`\n${label} FAILED.`)
+    process.exit(result.status ?? 1)
+  }
+}
+
+function enforceBriefOutputContract(pkg, briefText) {
+  const contract = validatePackageRequiredOutputs(pkg, briefText)
+
+  if (!contract.applies) {
+    console.warn('\nBrief output contract: required_outputs was not found in the brief, so requested-output preservation could not be enforced.')
+    return
+  }
+
+  console.log(`\nBrief required outputs: ${contract.expectedOutputTypes.join(', ') || '(none parsed)'}`)
+
+  if (contract.valid) {
+    console.log('Brief output contract passed.')
+    return
+  }
+
+  console.error('\nBrief output contract FAILED. Package written but not classroom-ready.')
+  if (contract.unknownTokens.length > 0) {
+    console.error(`Unknown required_outputs entries in brief: ${contract.unknownTokens.join(', ')}`)
+  }
+  if (contract.missingOutputTypes.length > 0) {
+    console.error(`Missing package outputs requested by brief: ${contract.missingOutputTypes.join(', ')}`)
+  }
+  if (contract.missingDeclaredBundleOutputTypes.length > 0) {
+    console.error(`Missing bundle.declared_outputs requested by brief: ${contract.missingDeclaredBundleOutputTypes.join(', ')}`)
+  }
+  process.exit(1)
 }
 
 const briefArg   = argValue('--brief')
@@ -41,15 +93,17 @@ const outArg     = argValue('--out') ?? 'briefs/generated'
 const courseArg  = argValue('--course')
 const sectionArg = argValue('--section')
 const dryRun     = process.argv.includes('--dry-run')
+const fullCheck  = process.argv.includes('--full-check')
 
 if (!briefArg) {
-  console.error('Usage: pnpm run generate:package -- --brief <path> [--out <dir>] [--course <id>] [--section <id>] [--dry-run]')
+  console.error('Usage: pnpm run generate:package -- --brief <path> [--out <dir>] [--course <id>] [--section <id>] [--dry-run] [--full-check]')
   console.error('')
-  console.error('  --brief    Path to a completed teacher lesson brief (.md or .txt)')
-  console.error('  --out      Output directory for the generated package JSON (default: briefs/generated/)')
-  console.error('  --course   course_id from profiles/courses/ — loads course profile')
-  console.error('  --section  section_id from profiles/classes/ — loads class profile and overrides')
-  console.error('  --dry-run  Print the prompt that would be sent, without calling the API')
+  console.error('  --brief       Path to a completed teacher lesson brief (.md or .txt)')
+  console.error('  --out         Output directory for the generated package JSON (default: briefs/generated/)')
+  console.error('  --course      course_id from profiles/courses/ — loads course profile')
+  console.error('  --section     section_id from profiles/classes/ — loads class profile and overrides')
+  console.error('  --dry-run     Print the prompt that would be sent, without calling the API')
+  console.error('  --full-check  After generation, run render:package and qa:bundle in addition to schema and route checks')
   process.exit(1)
 }
 
@@ -129,7 +183,7 @@ Your job is to convert that brief into exactly one machine-facing stable-core pa
 
 Hard requirements:
 1. Return JSON only. No markdown fences. No explanation. No preamble.
-2. Preserve the lesson architecture declared in the brief (single_period_full or multi_day_sequence).
+2. Preserve the lesson architecture declared in the brief.
 3. Preserve teacher/student separation. Teacher notes never appear in student artifacts.
 4. Preserve the declared final evidence location.
 5. Preserve checkpoint/release logic when present.
@@ -147,20 +201,18 @@ Hard requirements:
 17. Student-facing models should sound plausible and human, not hyper-polished or unnaturally self-aware.
 18. When a grade-band contract applies, treat it as binding, not advisory.
 19. When a class context is provided, treat all class-level instructions as binding overrides.
+20. The brief's required_outputs field is binding. Every requested output must appear in both bundle.declared_outputs and outputs[].
 
 Required top-level fields:
 - schema_version: "2.1.0"
 - package_id: snake_case identifier derived from subject, grade, and topic
-- primary_architecture: "single_period_full" or "multi_day_sequence"
+- primary_architecture: one of single_period_full, multi_day_sequence, three_day_sequence, workshop_session, lab_investigation, seminar, project_sprint, station_rotation
 - grade_band: e.g. "6-8" or "9-12"
 - subject: from brief or class context
 - grade: integer
 - topic: short canonical topic label
 - theme: one of "science", "careers", "english_language_arts", "mathematics", "humanities", "social_science", "health_science"
 - teacher_guide: object with learning_goals, big_idea, timing, teacher_notes
-- slides: array of slide objects (each with type, title, layout, content)
-- worksheet OR task_sheet: object with prompts/sections for student work
-- exit_ticket OR final_response_sheet: object for final evidence
 - bundle: { bundle_id, declared_outputs: [...] }
 - outputs: array of output routing objects
 - assignment_family
@@ -178,6 +230,13 @@ Required top-level fields:
 - pacing_shape
 - assessment_focus
 
+Output type rules:
+- Render-backed output_type values currently allowed for generated packages: ${RENDER_BACKED_OUTPUT_TYPES.join(', ')}.
+- Do not emit schema-only blocked output types: ${Array.from(SCHEMA_ONLY_BLOCKED_OUTPUT_TYPES).join(', ')}.
+- If the teacher asks for a generic rubric, use rubric_sheet unless the task explicitly targets future schema-only rubric work.
+- If the teacher asks for a PowerPoint, deck, PPT, or PPTX, use slides.
+- If the teacher asks for a marking guide or answer guide, use answer_key and keep it teacher-facing.
+
 Task-sheet add-on rule:
 - If extra space or early-finisher support is genuinely needed in a task_sheet, encode it in task_sheet.optional_extensions.
 - task_sheet.optional_extensions uses objects shaped like { day_label, label, body }.
@@ -185,7 +244,7 @@ Task-sheet add-on rule:
 
 Each output object must include:
 - output_id: snake_case identifier
-- output_type: one of teacher_guide, slides, worksheet, task_sheet, checkpoint_sheet, exit_ticket, final_response_sheet, lesson_overview, pacing_guide, sub_plan, makeup_packet, rubric_sheet, station_cards, answer_key, discussion_prep_sheet, graphic_organizer
+- output_type: one of the render-backed output_type values above
 - audience: "teacher", "student", or "shared_view"
 - source_section: the top-level key in the package where this content lives
 - bundle: { bundle_id: same as package bundle_id }
@@ -193,7 +252,7 @@ Each output object must include:
 For slides, each slide object must include:
 - type: "TITLE" for hero slide, "CONTENT" for others
 - title: slide title string
-- layout: one of hero, prompt, two_column, two_column_compare, three_rows, stat_discussion, retrieval, reflect, numbered_steps, rows, summary_rows, checklist, bullet_focus, planner_model, single_card, prompt_card
+- layout: one of hero, prompt, two_column, two_column_compare, three_rows, stat_discussion, retrieval, reflect, numbered_steps, rows, summary_rows, checklist, bullet_focus, planner_model, prompt_card
 - content: object with layout-specific fields
 
 Slide content field guide:
@@ -208,7 +267,7 @@ Slide content field guide:
 - checklist: { items: [...] }
 - bullet_focus: { headline, items: [...] }
 - planner_model: { model, supports: [...] }
-- single_card / prompt_card: { goal OR title, prompts: [...], instruction }
+- prompt_card: { goal OR title, prompts: [...], instruction }
 - numbered_steps: { steps: [...] }
 
 ${contentStylePolicy ? `Apply this content style policy:\n\n<content_style_policy>\n${contentStylePolicy}\n</content_style_policy>\n` : ''}
@@ -289,22 +348,21 @@ async function generatePackage() {
   console.log(`Assignment family: ${pkg.assignment_family ?? '(missing assignment_family)'}`)
   console.log(`Outputs declared: ${pkg.outputs?.length ?? '?'}`)
 
-  console.log('\nRunning schema:check...')
-  const check = spawnSync(
-    process.execPath,
-    ['scripts/schema-check.mjs', '--package', outPath],
-    { stdio: 'inherit', cwd: process.cwd() }
-  )
+  enforceBriefOutputContract(pkg, briefText)
+  runRequiredStep('schema:check', ['scripts/schema-check.mjs', '--package', outPath])
+  runRequiredStep('route:plan', ['scripts/route-plan.mjs', '--package', outPath, '--print-routes'])
 
-  if (check.status !== 0) {
-    console.error('\nSchema check FAILED. Package written but not valid.')
-    process.exit(1)
+  if (fullCheck) {
+    runRequiredStep('render:package', ['scripts/render-package.mjs', '--package', outPath, '--out', 'output'])
+    runRequiredStep('qa:bundle', ['scripts/qa-bundle.mjs', '--package', outPath, '--out', 'output'])
+    console.log('\nFull package generation acceptance passed: schema, route, render, and bundle QA completed.')
+  } else {
+    console.log('\nGeneration checks passed: brief output contract, schema, and route plan.')
+    console.log('Full render/bundle QA was not run. To prove classroom-ready artifacts, run:')
+    console.log(`  pnpm run render:package -- --package ${outPath} --out output`)
+    console.log(`  pnpm run qa:bundle      -- --package ${outPath} --out output`)
+    console.log('Or regenerate with --full-check.')
   }
-
-  console.log('\nNext steps:')
-  console.log(`  pnpm run route:plan     -- --package ${outPath} --print-routes`)
-  console.log(`  pnpm run render:package -- --package ${outPath} --out output`)
-  console.log(`  pnpm run qa:bundle      -- --package ${outPath} --out output`)
 }
 
 generatePackage().catch(err => {
