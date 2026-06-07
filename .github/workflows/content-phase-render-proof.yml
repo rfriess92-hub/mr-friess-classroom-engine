@@ -8,6 +8,7 @@ on:
       - 'fixtures/**/*.json'
       - 'packages/**/*.json'
       - 'content/**/*.json'
+      - 'units/**/*.json'
       - 'scripts/agent/filter-render-packages.mjs'
       - 'scripts/render-package.mjs'
       - 'scripts/schema-check.mjs'
