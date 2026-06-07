@@ -3,12 +3,10 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
+const PACKAGE_ROOTS = ['fixtures/', 'packages/', 'content/', 'units/']
+
 function isCandidatePath(path) {
-  return path.endsWith('.json') && (
-    path.startsWith('fixtures/') ||
-    path.startsWith('packages/') ||
-    path.startsWith('content/')
-  )
+  return path.endsWith('.json') && PACKAGE_ROOTS.some((root) => path.startsWith(root))
 }
 
 function isRenderablePackage(path) {
