@@ -1,0 +1,42 @@
+{
+  "backlog_id": "psychology_11_12_a1_engine_capability_backlog",
+  "title": "Engine capability backlog required before A1 can be accepted",
+  "status": "required",
+  "items": [
+    {
+      "id": "render_complete_teacher_binder",
+      "problem": "Current renderer creates a short teacher_guide PDF, not the full A1 Teacher Binder.",
+      "required_capability": "Render a complete teacher binder with unit overview, 10-day sequence, daily teacher moves, differentiation, assessment look-fors, model response calibration, source tracker, marking notes, and safety language."
+    },
+    {
+      "id": "render_complete_student_packet",
+      "problem": "Current renderer creates a short task_sheet PDF, not the full A1 Student Packet.",
+      "required_capability": "Render a complete student packet with vocabulary organizer, Handouts 1-10, final assessment, and exit tickets."
+    },
+    {
+      "id": "render_assessment_pack",
+      "problem": "Final assessment, rubric, model response bank, calibration notes, and completion check are not a separate output.",
+      "required_capability": "Render a separate A1 Assessment Pack."
+    },
+    {
+      "id": "render_safety_source_pack",
+      "problem": "Safety redirects, source tracker, and excerpt bank are not preserved as a package output.",
+      "required_capability": "Render a separate A1 Safety and Source Pack for teacher use."
+    },
+    {
+      "id": "render_daily_slide_bundle",
+      "problem": "Current proof renders one day deck only.",
+      "required_capability": "Render daily slide decks for Days 1-10 or a clearly sectioned A1 slide bundle preserving all ten days."
+    },
+    {
+      "id": "editable_source_exports",
+      "problem": "Current workflow produces PDFs/PPTX but not editable teacher/student/assessment/source documents.",
+      "required_capability": "Export editable DOCX or a supported editable source-equivalent for binder, packet, assessment pack, and safety/source pack."
+    },
+    {
+      "id": "package_completeness_qa",
+      "problem": "Current QA accepts existence and minimum size rather than complete package structure.",
+      "required_capability": "Fail renders that do not include every required A1 document and section from the package contract."
+    }
+  ]
+}
