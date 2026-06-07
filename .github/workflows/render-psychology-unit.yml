@@ -10,6 +10,7 @@ on:
       - 'scripts/render-unit.mjs'
       - 'scripts/qa-unit.mjs'
       - 'scripts/qa-package.mjs'
+      - 'scripts/qa-psychology-source-archive.mjs'
       - 'scripts/render-package.mjs'
       - 'engine/render/**'
       - 'engine/pdf-html/**'
@@ -22,6 +23,7 @@ on:
       - 'scripts/render-unit.mjs'
       - 'scripts/qa-unit.mjs'
       - 'scripts/qa-package.mjs'
+      - 'scripts/qa-psychology-source-archive.mjs'
       - 'scripts/render-package.mjs'
       - 'engine/render/**'
       - 'engine/pdf-html/**'
@@ -52,6 +54,10 @@ jobs:
 
       - name: Run node tests
         run: pnpm test
+
+      - name: QA Psychology source archive
+        if: ${{ hashFiles('units/psychology/_raw/Psychology_11_12_ALL_CYCLES_COMPLETE_WITH_SLIDES_v1.zip') != '' }}
+        run: pnpm run qa:psychology-source -- --out output/psychology
 
       - name: Render Psychology unit
         run: pnpm run render:unit -- --manifest units/psychology/psychology-unit.manifest.json --out output/psychology
