@@ -3,14 +3,40 @@
   "title": "Psychology 11/12 Complete Classroom Unit",
   "course": "Psychology",
   "grade_band": "11-12",
-  "status": "source_packages_required",
-  "source_note": "No dedicated Psychology 11/12 source package JSON files were found in the repo inventory when this scaffold was created. Add the Psychology source packages under units/psychology/packages/ and list them here before the unit can pass QA.",
+  "status": "cycle_source_packages_required",
+  "source_note": "Cycle scaffolds are present, but no dedicated Psychology 11/12 source package JSON files were found in the repo inventory when this manifest was created. Add package JSON files under units/psychology/cycles/<cycle>/packages/ and list them in each cycle manifest before the unit can pass QA.",
   "required_artifacts_per_package": [
     "teacher_guide.pdf",
     "student_packet.pdf",
     "lesson_slides.pptx",
     "completion_or_assessment_artifact.pdf",
     "rendered-package.qa.json"
+  ],
+  "cycles": [
+    {
+      "cycle_id": "cycle_a",
+      "sequence_label": "Cycle A",
+      "manifest": "units/psychology/cycles/cycle-a/cycle.manifest.json",
+      "output_dir": "cycle-a"
+    },
+    {
+      "cycle_id": "cycle_b",
+      "sequence_label": "Cycle B",
+      "manifest": "units/psychology/cycles/cycle-b/cycle.manifest.json",
+      "output_dir": "cycle-b"
+    },
+    {
+      "cycle_id": "cycle_c",
+      "sequence_label": "Cycle C",
+      "manifest": "units/psychology/cycles/cycle-c/cycle.manifest.json",
+      "output_dir": "cycle-c"
+    },
+    {
+      "cycle_id": "cycle_d",
+      "sequence_label": "Cycle D",
+      "manifest": "units/psychology/cycles/cycle-d/cycle.manifest.json",
+      "output_dir": "cycle-d"
+    }
   ],
   "packages": []
 }
