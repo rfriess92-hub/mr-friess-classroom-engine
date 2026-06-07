@@ -1,19 +1,12 @@
 # mr-friess-classroom-engine
 
-Repository for the Mr. Friess Classroom Engine stable-core render pipeline and its upstream assignment-family contract.
-
-## Architecture decision
-
-The repo now follows this contract split:
-
-- **stable-core package** = the live render contract
-- **assignment-family layer** = the authoritative upstream pedagogy/authoring contract
-- **`engine/assignment-family/*`** = the live family-selection authority for the stable-core render-plan path
-- **`engine/family/*`** = compatibility-only residue during cleanup
+Repository for the Mr. Friess Classroom Engine stable-core render pipeline and upstream assignment-family contract.
 
 ## Current operating model
 
-For stable-core package work, the authoritative acceptance path remains:
+The stable-core package is the live machine-facing render contract. The assignment-family layer is the authoritative upstream pedagogy/authoring contract. `engine/assignment-family/*` is the live family-selection authority; `engine/family/*` is compatibility-only residue during cleanup.
+
+For stable-core package work, the acceptance path is:
 
 1. `pnpm run doctor` when repo structure, scripts, or renderer entrypoints change
 2. `pnpm run schema:check -- --package <path>`
@@ -21,50 +14,36 @@ For stable-core package work, the authoritative acceptance path remains:
 4. `pnpm run render:package -- --package <path> --out output`
 5. `pnpm run qa:bundle -- --package <path> --out output`
 
-This is the source-of-truth acceptance path for stable-core packages.
+`qa:render` is a drill-down tool for one artifact. It is not the package-level shipping gate.
 
-Assignment-family tooling is also live, but it serves a different role:
+Generated packages have an additional guard: the brief's `required_outputs` field must survive into both `bundle.declared_outputs` and routable package outputs. `generate:package` enforces that contract before accepting the generated package as structurally usable. Use `--full-check` when a generated package needs render and bundle QA proof immediately.
 
-- `pnpm run select:assignment-family` selects a family from authoring signals
-- `pnpm run qa:assignment-family` validates an assignment-build against family/common-schema rules
-- `engine/schema/render-plan.mjs` already imports `engine/assignment-family/package-selector.mjs` for live family selection
+## Current output-type truth
 
-That means the stable-core path already depends on `engine/assignment-family/*`, while `qa:assignment-family` remains an upstream authoring/validation surface rather than the stable-core acceptance gate.
+The source of truth is `engine/contracts/output-type-inventory.json`, with the human-readable summary in `docs/CONTRACT_DRIFT_INVENTORY.md`.
 
-Lightweight branches and PRs are still useful as diff capsules. The old PR-class or freeze ceremony is not the live control surface.
+Render-backed stable-core output types are: `teacher_guide`, `lesson_overview`, `slides`, `worksheet`, `task_sheet`, `checkpoint_sheet`, `exit_ticket`, `final_response_sheet`, `graphic_organizer`, `discussion_prep_sheet`, `rubric_sheet`, `station_cards`, `answer_key`, `pacing_guide`, `sub_plan`, `makeup_packet`, `assessment`, and `quiz`.
+
+Schema-only output types are intentionally blocked at render time until deliberately implemented: `rubric`, `formative_check`, `warm_up`, `vocabulary_card`, `observation_grid`, and `lesson_reflection`.
+
+Do not describe a schema-only output type as classroom-ready. A same-looking layout template may be usable under another output type while the standalone output type remains blocked.
 
 ## Repo surfaces
 
-Stable-core package surfaces:
+Stable-core package surfaces include `schemas/`, `engine/schema/`, `engine/planner/`, `engine/render/`, `engine/pdf-html/`, `engine/pdf/`, `engine/pptx/`, `scripts/`, `fixtures/`, `engine/contracts/output-type-inventory.json`, `docs/CONTRACT_DRIFT_INVENTORY.md`, `docs/stable-core-workflow-policy.md`, and `DECISIONS.md`.
 
-- `schemas/` - canonical vocabulary and package schema
-- `engine/schema/` - package validation and render-plan normalization
-- `engine/planner/` - route planning
-- `engine/pptx/` - PPTX renderer entrypoint and layout logic
-- `engine/pdf/` - stable-core PDF renderer
-- `scripts/` - schema, route, render, QA, and package-generation commands
-- `fixtures/` - stable-core package fixtures and generated proof packages
-- `docs/stable-core-workflow-policy.md` - current workflow guide and acceptance notes
-- `DECISIONS.md` - active decisions log for repo structure and operating rules
+Assignment-family and upstream authoring surfaces include `engine/assignment-family/`, `engine/assignment-family/config/`, and `schemas/canonical-assignment.schema.json`.
 
-Assignment-family and upstream authoring surfaces:
-
-- `engine/assignment-family/` - live package-facing selector plus upstream family selection, config loading, and assignment-build validation
-- `engine/assignment-family/config/` - family definitions, routing logic, and common required-field config
-- `schemas/canonical-assignment.schema.json` - structural schema surface for canonical assignment metadata
-
-Transitional and compatibility surfaces:
-
-- `engine/family/` - compatibility wrappers and residue during cleanup
-- `scripts/build-all.mjs`, `scripts/build-pptx.mjs`, `scripts/build-pdf.mjs` - legacy direct-builder residue kept for compatibility or debugging, not package acceptance proof
-- `docs/legacy-direct-builders.md` - current note on the legacy direct-builder surface
+Transitional and compatibility surfaces include `engine/family/`, the Python fallback document paths for `teacher_guide`, `lesson_overview`, and `checkpoint_sheet`, the transitional PPTX internals behind `engine/pptx/renderer.py`, and the deprecated direct-builder scripts under `scripts/`.
 
 ## Local commands
 
-Check that stable-core repo scaffolding is present:
+Install dependencies:
 
 ```bash
-pnpm run doctor
+pnpm install
+pnpm exec playwright install chromium
+python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
 ```
 
 Generate a package from a teacher brief:
@@ -73,77 +52,31 @@ Generate a package from a teacher brief:
 pnpm run generate:package -- --brief briefs/templates/teacher-lesson-brief-v1.md
 ```
 
-Validate a package:
+Generate and run the full render/QA acceptance chain:
+
+```bash
+pnpm run generate:package -- --brief briefs/templates/teacher-lesson-brief-v1.md --full-check
+```
+
+Run the package acceptance path manually:
 
 ```bash
 pnpm run schema:check -- --package fixtures/generated/ela-8-community-issue-argument.grade8-ela.json
-```
-
-Print routes for a package:
-
-```bash
 pnpm run route:plan -- --package fixtures/generated/ela-8-community-issue-argument.grade8-ela.json --print-routes
-```
-
-Render a package bundle:
-
-```bash
 pnpm run render:package -- --package fixtures/generated/ela-8-community-issue-argument.grade8-ela.json --out output
-```
-
-Run bundle QA:
-
-```bash
 pnpm run qa:bundle -- --package fixtures/generated/ela-8-community-issue-argument.grade8-ela.json --out output
 ```
 
-Select an assignment family from upstream signals:
-
-```bash
-pnpm run select:assignment-family -- --input path/to/signals.json
-```
-
-Validate an assignment build against assignment-family rules:
-
-```bash
-pnpm run qa:assignment-family -- --input path/to/assignment-build.json
-```
-
-Drill down on a single artifact:
+Drill down on a single artifact only when needed:
 
 ```bash
 pnpm run qa:render -- --artifact output/ela_8_community_issue_argument/day2_slides.pptx
 ```
 
-Legacy direct-builder note:
-
-- `package.json` does not currently define `pnpm run build:all`, `pnpm run build:pptx`, or `pnpm run build:pdf`.
-- The direct-builder files still exist under `scripts/` and are callable with `node scripts/...`, but they remain deprecated compatibility/debugging surfaces rather than acceptance commands.
-- See `docs/legacy-direct-builders.md` for the current compatibility note.
-
 ## Test surfaces
 
-- `pnpm test` runs Node tests only.
-- `.github/workflows/ci.yml` runs the Node test command and `pytest tests/python`.
-- `.github/workflows/stable-core.yml` runs `pnpm test` plus stable-core schema, route, and render smoke coverage for the current fixture set.
-- `stable-core.yml` installs Python renderer dependencies for render steps, but it does not invoke `pytest`.
-- The current stable-core workflow covers `benchmark1`, `challenge7`, the evaluated assignment-family fixture, and the task-sheet response-pattern proof fixture.
-
-## Current repo truths
-
-- `engine/schema/render-plan.mjs` reads family selection from `engine/assignment-family/package-selector.mjs`.
-- `engine/family/*` is compatibility-only residue, not the live family-selection authority.
-- `engine/pptx/renderer.py` is the public PPTX entrypoint, but implementation still delegates into archived modules during transition.
-- `engine/pdf/render_stable_core_output.py` is the live PDF renderer wrapper.
-- Stable-core package rendering writes package-scoped output directories by default.
-- `qa:render` is a drill-down tool. `qa:bundle` is the acceptance gate.
-- `pnpm test` is node-only. Python tests run separately in `.github/workflows/ci.yml`.
-- Legacy direct-builder script files remain in the repo as direct `node scripts/...` surfaces, but no `build:*` package scripts are exposed in `package.json`.
+`pnpm test` runs Node tests only. `pnpm run test:all` runs Node tests plus `pytest tests/python`. `.github/workflows/ci.yml` runs the Node test command plus Python tests. `.github/workflows/stable-core.yml` runs selected stable-core schema, route, render, and bundle proof coverage. `.github/workflows/a1-assessment-quiz-contract.yml` proves schema-level `assessment` and `quiz` student PDFs plus explicit teacher-only `answer_key` marking guides.
 
 ## Current cleanup priorities
 
-- reduce `engine/family/*` to explicit compatibility shims or residue and remove dead duplication only when safe
-- keep README, workflow docs, and setup notes aligned with the live `engine/assignment-family/*` path
-- decide the legacy direct-builder future: either wire `build:*` scripts deliberately or deprecate and remove the wrapper surface
-- expand stable-core fixture coverage to newer proof fixtures in a separate slice
-- return to deeper renderer consolidation only after repo-truth drift is reduced
+Keep `README.md`, `SETUP_STATUS.md`, `docs/CONTRACT_DRIFT_INVENTORY.md`, and `engine/contracts/output-type-inventory.json` aligned whenever output support changes. Keep generated-package acceptance tied to the full chain: brief required outputs -> package outputs -> route plan -> rendered artifacts -> bundle QA. Expand classroom-substance QA beyond structural artifact existence.
