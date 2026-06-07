@@ -1,91 +1,63 @@
 # Current Repo Status
 
-Snapshot date: 2026-04-19
+Snapshot date: 2026-06-07
 
-## What is already real in this repo
+## Current repo truth
 
-The repo is no longer starter scaffolding.
+The repo has a live stable-core package renderer, a parallel classroom-activity subsystem, and a growing proof surface. The main risk is contract drift between docs, generator prompts, schema, renderer support, and QA expectations.
+
+The output-type source of truth is `engine/contracts/output-type-inventory.json`. The human-readable drift map is `docs/CONTRACT_DRIFT_INVENTORY.md`.
+
+Render-backed stable-core output types are: `teacher_guide`, `lesson_overview`, `slides`, `worksheet`, `task_sheet`, `checkpoint_sheet`, `exit_ticket`, `final_response_sheet`, `graphic_organizer`, `discussion_prep_sheet`, `rubric_sheet`, `station_cards`, `answer_key`, `pacing_guide`, `sub_plan`, `makeup_packet`, `assessment`, and `quiz`.
+
+Schema-only output types are intentionally blocked until implemented: `rubric`, `formative_check`, `warm_up`, `vocabulary_card`, `observation_grid`, and `lesson_reflection`.
+
+Primary architectures remain: `single_period_full`, `multi_day_sequence`, `three_day_sequence`, `workshop_session`, `lab_investigation`, `seminar`, `project_sprint`, and `station_rotation`.
+
+## Wired surfaces
 
 Present and wired now:
 
 - stable-core schema files under `schemas/`
 - package preflight and render-plan normalization under `engine/schema/`
+- live assignment-family selection under `engine/assignment-family/`
 - route planning under `engine/planner/`
 - package rendering through `scripts/render-package.mjs`
+- package generation through `scripts/generate-package.mjs`
+- required-output preservation through `engine/generation/brief-output-contract.mjs`
 - bundle and artifact QA through `scripts/qa-bundle.mjs` and `scripts/qa-render.mjs`
-- visual planning and visual QA sidecars written during package rendering
+- page-role classification and QA under `engine/render/`
+- visual planning and sidecars during package rendering
 - public renderer entrypoints at `engine/pptx/renderer.py` and `engine/pdf/render_stable_core_output.py`
-- stable-core fixtures under `fixtures/core/`, `fixtures/generated/`, `fixtures/plan-build-grow/`, and `fixtures/tests/`
+- HTML/PDF rendering under `engine/pdf-html/`
 - contract tests under `tests/node/`
 - Python tests under `tests/python/`
-- GitHub Actions workflows for CI and stable-core proof coverage
 
-## Live vs proven vs transitional
+## Proven in CI today
 
-### Live stable-core surface
+CI proves Node tests, Python tests, selected stable-core route/render/bundle fixtures, A1 assessment/quiz render proof, output-contract drift tests, and generated-package required-output preservation tests.
 
-Declared output types:
-- `teacher_guide`
-- `lesson_overview`
-- `slides`
-- `worksheet`
-- `task_sheet`
-- `checkpoint_sheet`
-- `exit_ticket`
-- `final_response_sheet`
-- `graphic_organizer`
-- `discussion_prep_sheet`
+This is meaningful coverage, but it is not the same as full regression proof for every declared architecture and output type combination.
 
-Declared primary architectures:
-- `single_period_full`
-- `multi_day_sequence`
-- `three_day_sequence`
-- `workshop_session`
-- `lab_investigation`
-- `seminar`
-- `project_sprint`
-- `station_rotation`
+## Transitional
 
-### Proven in CI today
+- PPTX rendering is still transitional behind the public entrypoint.
+- `teacher_guide`, `lesson_overview`, and `checkpoint_sheet` remain proof-backed through the Python fallback path until A5 consolidation.
+- legacy direct-lesson builder surfaces still exist but are not the acceptance path.
+- some declared architectures remain more broadly declared than they are deeply regression-tested.
+- generated-package classroom quality still depends on the full acceptance chain, not schema validity alone.
 
-- Node tests via `npm test`
-- Python tests via `pytest tests/python`
-- benchmark single-period bundle render + bundle QA
-- multi-day route-planning proof (`challenge7`)
-- evaluated assignment-family schema/route proof (`careers-8-career-clusters`)
-- task-sheet response-pattern render proof (`fixtures/tests/task-sheet-response-patterns.workshop-session.json`)
-- seminar discussion-prep render + bundle QA proof (`fixtures/tests/seminar-discussion-prep.proof.json`)
-- station-rotation graphic-organizer render + bundle QA proof (`fixtures/tests/station-rotation-graphic-organizer.proof.json`)
-- PBG generated package schema/route/render smoke for ELA 10, Math 8, and Workplace Math 10
+## Operational rule
 
-### Transitional
+For stable-core package work, the live acceptance path remains: `doctor` when structure changes, then `schema:check`, `route:plan`, `render:package`, and `qa:bundle`.
 
-- PPTX rendering is still archive-backed behind the public entrypoint
-- PDF rendering still depends on archive-backed base behavior
-- legacy direct-lesson builder surfaces still exist but are not the acceptance path
-- some declared architectures remain more broadly declared than they are deeply regression-tested
+`qa:render` is a single-artifact drill-down tool.
 
-## What this means operationally
-
-For stable-core package work, the live acceptance path remains:
-
-1. `doctor`
-2. `schema:check`
-3. `route:plan`
-4. `render:package`
-5. `qa:bundle`
-
-Anything outside that path is either support tooling, compatibility/debugging surface, or transitional renderer internals.
-
-Repo truth now needs to be read in four buckets:
-- **live** - surface the planner and renderer accept today
-- **proven in CI** - surface exercised by tests and workflow smokes today
-- **transitional** - compatibility or archive-backed residue still required by the live path
-- **deprecated/debug-only** - older direct-builder surfaces outside stable-core acceptance
+Generated packages must preserve the brief's `required_outputs` into both `bundle.declared_outputs` and routable package outputs. Missing requested outputs are generation failures.
 
 ## Next hardening steps
 
-- keep contract alignment between declared output types and artifact QA
+- keep `engine/contracts/output-type-inventory.json`, `docs/CONTRACT_DRIFT_INVENTORY.md`, `SETUP_STATUS.md`, and `README.md` aligned whenever output support changes
+- keep generated-package acceptance tied to the full chain: brief required outputs -> package outputs -> route plan -> rendered artifacts -> bundle QA
+- expand classroom-substance QA beyond structural artifact existence
 - keep proof coverage moving closer to the declared live surface
-- reduce compatibility residue under `engine/family/*` only where no live caller depends on it
-- avoid renderer-consolidation work until proof and contract alignment are tighter
