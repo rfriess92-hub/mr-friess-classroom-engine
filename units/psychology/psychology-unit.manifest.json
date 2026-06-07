@@ -3,13 +3,13 @@
   "title": "Psychology 11/12 Complete Classroom Unit",
   "course": "Psychology",
   "grade_band": "11-12",
-  "status": "prebuilt_assets_indexed_source_packages_required",
+  "status": "engine_native_sample_added_full_conversion_required",
   "source_archive": {
     "uploaded_name": "Psychology_11_12_ALL_CYCLES_COMPLETE_WITH_SLIDES_v1.zip",
     "sha256": "0498b2b7161ccdf190ab1cb52c08522093e35591dc06f6aa7a9f7e5174595264",
     "size_bytes": 4814156,
     "file_count": 77,
-    "manifest": "units/psychology/_raw/source-archive-manifest.json"
+    "manifest": "units/psychology/_raw/source-archive-summary.json"
   },
   "required_artifacts_per_package": [
     "teacher_guide.pdf",
@@ -44,6 +44,16 @@
       "output_dir": "cycle-d"
     }
   ],
-  "packages": [],
-  "source_note": "The uploaded all-cycles package has been indexed. Add binary assets or engine package JSON files before unit render QA can pass."
+  "packages": [
+    {
+      "package_id": "psych_11_12_cycle_a_l1_what_is_psychology",
+      "title": "Cycle A Lesson 1 — What Is Psychology?",
+      "cycle_id": "cycle_a",
+      "source": "units/psychology/cycles/cycle-a/packages/psych-11-12-cycle-a-l1-what-is-psychology.json",
+      "cycle_output_dir": "cycle-a",
+      "output_dir": "lesson-01-what-is-psychology",
+      "conversion_status": "engine_native_sample"
+    }
+  ],
+  "source_note": "The uploaded all-cycles package has been indexed. Cycle A Lesson 1 has an engine-native sample package. Full course conversion still requires adding the remaining Psychology package JSON files."
 }
