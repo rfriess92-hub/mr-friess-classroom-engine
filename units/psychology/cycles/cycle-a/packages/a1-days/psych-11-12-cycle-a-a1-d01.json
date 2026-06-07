@@ -1,0 +1,190 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "psych_11_12_cycle_a_a1_d01",
+  "classroom_package_contract": "strict",
+  "primary_architecture": "single_period_full",
+  "session_count": 1,
+  "grade_band": "9-12",
+  "subject": "Psychology",
+  "grade": 11,
+  "topic": "A1 Day 1: Is This Psychology?",
+  "theme": "science",
+  "assignment_family": "short_inquiry_sequence",
+  "grade_subject_fit": "Psychology 11/12 A1 daily package built from the A1 source map, Cycle A Teacher Binder ten-day sequence, Cycle A Student Packet Handout 1, and the Psychology 11/12 Classroom Engine Master Spec.",
+  "unit_context": "Cycle A A1 - Psychology as a Science. Day 1 of 10. Source teacher focus: Is this psychology? Source student handout: Handout 1 - Psychology Claim Sort.",
+  "assignment_purpose": "Students distinguish psychology from opinion, advice, therapy, personality quizzes, stereotypes, and research-based claims.",
+  "final_evidence_target": "Students sort claims into opinion, advice, stereotype, therapy/diagnosis, or researchable psychology, then rewrite one weak claim as a careful research question.",
+  "student_task_flow": [
+    {"step": "Engage", "label": "Initial decision", "evidence": "Students decide whether sample claims count as psychology and give a reason."},
+    {"step": "Learn", "label": "Vocabulary in context", "evidence": "Students define psychology, claim, evidence, testable, and researchable question."},
+    {"step": "Do", "label": "Psychology Claim Sort", "evidence": "Students classify claims and justify each decision."},
+    {"step": "Apply", "label": "Rewrite a weak claim", "evidence": "Students turn one weak claim into a careful research question."},
+    {"step": "Check", "label": "Exit ticket", "evidence": "Students answer: What makes a psychology claim testable?"}
+  ],
+  "success_criteria": [
+    "I can distinguish psychology from advice, opinion, stereotype, therapy/diagnosis, and entertainment claims.",
+    "I can make a decision and give a reason.",
+    "I can name what evidence would be needed.",
+    "I can rewrite a weak claim as a careful research question.",
+    "I can include a limit and avoid overclaiming."
+  ],
+  "supports_scaffolds": [
+    "Supported, Proficient, and Extending task versions",
+    "word bank",
+    "modelled first item",
+    "decision plus reason frame",
+    "claim/evidence/method/limit frame"
+  ],
+  "differentiation_model": "Supported uses a claim card set, word bank, modelled first item, and sentence frames. Proficient sorts and justifies claims independently. Extending compares borderline claims and explains what evidence or method would change the classification.",
+  "checkpoint_release_logic": "Students must complete at least one accurate classification with a reason before rewriting a weak claim. Exit evidence checks whether students understand testability.",
+  "teacher_implementation_notes": [
+    "Master spec controls: classroom-usable materials, one clear core idea, student thinking, decision plus reason, fictional/composite examples, no personal disclosure, no diagnosis, teacher/student separation, and three aligned tiers.",
+    "Source controls: Cycle A Teacher Binder A1 Day 1 and Cycle A Student Packet Handout 1 - Psychology Claim Sort.",
+    "Use fictional, public, composite, or general examples only.",
+    "Do not let students diagnose themselves, classmates, family members, public figures, or fictional characters.",
+    "Prioritize careful reasoning over length.",
+    "Do not reward unsupported certainty, ranking, diagnosis, or one-cause explanation."
+  ],
+  "likely_misconceptions": [
+    "Psychology is just common sense.",
+    "A confident claim is the same as evidence.",
+    "Advice or personality quiz language counts as psychology because it sounds psychological.",
+    "A personal story is enough to prove a general claim."
+  ],
+  "pacing_shape": "One 70-minute daily lesson: Engage/Hook, Learn/Concept, Do/Experience, Make Sense/Guided Consolidation, Apply + Check.",
+  "assessment_focus": [
+    "claim classification",
+    "decision plus reason",
+    "evidence needed",
+    "researchable question revision",
+    "limit or caution"
+  ],
+  "bundle": {"bundle_id": "psych_11_12_cycle_a_a1_d01_bundle", "declared_outputs": ["teacher_guide", "slides", "task_sheet", "exit_ticket"]},
+  "teacher_guide": {
+    "title": "A1 Day 1 Teacher Guide - Is This Psychology?",
+    "overview": "Students distinguish psychology from opinion, advice, therapy, personality quizzes, stereotypes, and research-based claims. This is the first day of the A1 Psychology as a Science unit and establishes the course habit of decision plus reason.",
+    "essential_question": "What makes a psychology claim testable?",
+    "big_idea": "A psychology claim becomes stronger when it can be tested with evidence and studied with an appropriate method.",
+    "opening_frame": "Tell students that psychology is not advice, mind-reading, diagnosis practice, or entertainment typing. Today they decide which claims are researchable and explain why.",
+    "frame_line": "Decision plus reason: This is / is not researchable psychology because...",
+    "assessment_focus": "Students should classify claims, justify decisions, name evidence needed, and rewrite one weak claim as a careful research question.",
+    "learning_goals": [
+      "Define psychology as the scientific study of behaviour and mental processes.",
+      "Separate psychology from opinion, advice, stereotypes, therapy/diagnosis, and personality quizzes.",
+      "Explain what makes a claim testable.",
+      "Rewrite one weak claim as a researchable question."
+    ],
+    "materials": [
+      "A1 Day 1 slide deck",
+      "Student sheet: Psychology Claim Sort",
+      "Supported / Proficient / Extending task versions",
+      "Exit ticket"
+    ],
+    "integrity_checks": [
+      "Use fictional or general claims.",
+      "Do not diagnose people.",
+      "Do not ask for personal mental health information.",
+      "Do not reward confident but unsupported claims.",
+      "Keep teacher-facing safety reminders separate from student-facing task directions."
+    ],
+    "teacher_notes": [
+      "Start with low-stakes claims such as study habits, focus, memory, friendship, or media use.",
+      "When students call advice psychology, ask what evidence would be needed.",
+      "When students call a stereotype psychology, ask whether the claim is fair, testable, and evidence-based.",
+      "When students use diagnosis language, redirect: this class uses concepts academically; we are not diagnosing people.",
+      "For supported work, mark accurate classification and evidence before polished wording.",
+      "For extending work, expect a clear explanation of what evidence or method would change the decision."
+    ],
+    "questions": [
+      "What kind of claim is this?",
+      "What decision are you making?",
+      "What reason supports that decision?",
+      "What evidence would be needed?",
+      "Could this be studied ethically?",
+      "What should we avoid concluding?"
+    ],
+    "look_fors": [
+      "Student distinguishes opinion, advice, stereotype, therapy/diagnosis, and researchable claim.",
+      "Student gives a reason, not only a label.",
+      "Student names evidence needed.",
+      "Student rewrites a weak claim as a researchable question.",
+      "Student avoids diagnosis, ranking, and overclaiming."
+    ],
+    "timing": [
+      {"time": "0-8 min", "activity": "Engage: show three example claims and ask students to decide which one could be studied."},
+      {"time": "8-20 min", "activity": "Learn: define psychology, claim, evidence, testable, and researchable question."},
+      {"time": "20-42 min", "activity": "Do: students complete Psychology Claim Sort in Supported, Proficient, or Extending version."},
+      {"time": "42-58 min", "activity": "Make Sense: compare one supported, one proficient, and one extending response. Identify decision, reason, evidence, and limit."},
+      {"time": "58-70 min", "activity": "Apply + Check: students rewrite one weak claim and complete the exit ticket."}
+    ],
+    "matching_bank": [
+      "psychology: scientific study of behaviour and mental processes",
+      "claim: a statement that could be supported or challenged",
+      "evidence: information gathered through observation, measurement, or research",
+      "testable: possible to investigate with evidence",
+      "researchable question: a question that can be studied using a method"
+    ],
+    "model": {
+      "title": "Model claim sort response",
+      "steps": [
+        "Claim: Students who sleep more do better on memory tests.",
+        "Decision: This could be researchable psychology.",
+        "Reason: It connects behaviour or mental process to evidence that could be measured.",
+        "Evidence needed: hours of sleep, memory test scores, sample, and other factors.",
+        "Limit: This claim would not prove cause unless the method was designed to test cause."
+      ]
+    }
+  },
+  "slides": [
+    {"type": "TITLE", "title": "A1 Day 1: Is This Psychology?", "layout": "hero", "content": {"subtitle": "Claim sort: opinion, advice, stereotype, therapy/diagnosis, or researchable psychology.", "bullets": ["decision + reason", "evidence", "testable", "limits"]}},
+    {"type": "ENGAGE", "title": "Start with a decision", "layout": "prompt", "content": {"scenario": "Some claims sound psychological but are not researchable psychology yet.", "prompts": ["Which claim could be studied?", "What makes it testable?", "What evidence would be needed?"]}},
+    {"type": "LEARN", "title": "Psychology as a science", "layout": "bullet_focus", "content": {"bullets": ["Psychology studies behaviour and mental processes.", "A researchable claim can be tested with evidence.", "Advice, opinion, and stereotypes are not enough.", "Course vocabulary is not for diagnosing people."]}},
+    {"type": "APPLY", "title": "Claim categories", "layout": "summary_rows", "content": {"rows": ["Opinion: personal view without evidence.", "Advice: suggestion about what someone should do.", "Stereotype: broad assumption about a group.", "Therapy/diagnosis claim: not a classroom diagnosis task.", "Researchable psychology: can be studied with evidence and method."]}},
+    {"type": "APPLY", "title": "Handout 1 - Psychology Claim Sort", "layout": "prompt", "content": {"scenario": "Sort each claim, justify your decision, and rewrite one weak claim as a careful research question.", "prompts": ["What is your decision?", "What reason supports it?", "What evidence would improve the claim?"]}},
+    {"type": "APPLY", "title": "Three aligned pathways", "layout": "summary_rows", "content": {"rows": ["Supported: same target with word bank, model, and frames.", "Proficient: classify and justify independently.", "Extending: compare borderline claims and explain what evidence would change your mind."]}},
+    {"type": "REFLECT", "title": "Rewrite carefully", "layout": "reflect", "content": {"prompts": ["Which weak claim did you choose?", "How did you make it testable?", "What limit remains?"]}},
+    {"type": "SUMMARY", "title": "Exit evidence", "layout": "summary_rows", "content": {"rows": ["What makes a psychology claim testable?", "Use vocabulary.", "Give decision plus reason.", "Name evidence and a limit."]}}
+  ],
+  "task_sheet": {
+    "title": "A1 Day 1 Student Sheet - Psychology Claim Sort",
+    "purpose_line": "Sort claims into opinion, advice, stereotype, therapy/diagnosis, or researchable psychology. Rewrite one weak claim as a careful research question.",
+    "instructions": [
+      "Use fictional, public, composite, or general examples.",
+      "Make a decision and give a reason.",
+      "Use evidence before explanation.",
+      "Do not diagnose, rank, or label people."
+    ],
+    "tasks": [
+      {"label": "Vocabulary in context", "prompt": "Define psychology, claim, evidence, testable, and researchable question. Write one example or non-example for each.", "lines": 8, "activity_type": "write_response", "render_hints": {"response_pattern": "open_response", "heading": "Vocabulary in context"}},
+      {"label": "Supported worksheet", "prompt": "Sort three claim cards. Use the frame: My decision is ___. My reason is ___. The evidence needed is ___. A limit or caution is ___.", "lines": 10, "activity_type": "write_response", "render_hints": {"response_pattern": "open_response", "heading": "Supported"}},
+      {"label": "Proficient worksheet", "prompt": "Sort five claims into opinion, advice, stereotype, therapy/diagnosis, or researchable psychology. For each, give a decision and reason. Choose one weak claim and rewrite it as a researchable question.", "lines": 12, "activity_type": "write_response", "render_hints": {"response_pattern": "open_response", "heading": "Proficient"}},
+      {"label": "Extending worksheet", "prompt": "Analyze two borderline claims. Explain why each is difficult to classify, what evidence or method would improve the claim, and what would change your mind.", "lines": 12, "activity_type": "write_response", "render_hints": {"response_pattern": "open_response", "heading": "Extending"}},
+      {"label": "Self-check", "prompt": "Revise one sentence so it is more careful. Check: accurate vocabulary, decision plus reason, evidence needed, limit named, boundary respected.", "lines": 6, "activity_type": "write_response", "render_hints": {"response_pattern": "open_response", "heading": "Self-check"}}
+    ],
+    "embedded_supports": [
+      "My decision is... because...",
+      "The evidence needed is...",
+      "A careful research question would be...",
+      "A limit or caution is..."
+    ],
+    "success_criteria": [
+      "I classified claims accurately.",
+      "I made a decision and gave a reason.",
+      "I named evidence needed.",
+      "I rewrote one claim as a researchable question.",
+      "I avoided diagnosis, ranking, and overclaiming."
+    ]
+  },
+  "exit_ticket": {
+    "title": "A1 Day 1 Exit Ticket",
+    "prompt": "What makes a psychology claim testable? Answer in 2-4 sentences using the words evidence and method.",
+    "n_lines": 6,
+    "success_criteria": ["uses psychology vocabulary", "explains testability", "mentions evidence", "mentions method or limit"]
+  },
+  "outputs": [
+    {"output_id": "day_01_teacher_guide", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "psych_11_12_cycle_a_a1_d01_bundle"},
+    {"output_id": "day_01_lesson_slides", "output_type": "slides", "audience": "shared_view", "source_section": "slides", "bundle": "psych_11_12_cycle_a_a1_d01_bundle"},
+    {"output_id": "day_01_student_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "task_sheet", "bundle": "psych_11_12_cycle_a_a1_d01_bundle"},
+    {"output_id": "day_01_exit_ticket", "output_type": "exit_ticket", "audience": "student", "source_section": "exit_ticket", "bundle": "psych_11_12_cycle_a_a1_d01_bundle"}
+  ]
+}
