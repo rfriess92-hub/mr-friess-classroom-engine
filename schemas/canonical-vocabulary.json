@@ -40,7 +40,14 @@
     "warm_up",
     "vocabulary_card",
     "observation_grid",
-    "lesson_reflection"
+    "lesson_reflection",
+    "teacher_binder",
+    "student_packet",
+    "assessment_pack",
+    "safety_source_pack",
+    "notes_package",
+    "graphic_organizer_set",
+    "daily_slide_deck_bundle"
   ],
   "audiences": [
     "teacher",
