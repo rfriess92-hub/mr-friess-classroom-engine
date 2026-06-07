@@ -1,0 +1,155 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "psych_11_12_cycle_a_l1_what_is_psychology",
+  "classroom_package_contract": "strict",
+  "primary_architecture": "single_period_full",
+  "session_count": 1,
+  "grade_band": "11-12",
+  "subject": "Psychology",
+  "grade": 11,
+  "topic": "What Is Psychology?",
+  "theme": "science",
+  "assignment_family": "short_inquiry_sequence",
+  "grade_subject_fit": "Fits an introductory Psychology 11/12 lesson by establishing psychology as the scientific study of mind and behaviour, with emphasis on evidence, method, limits, and responsible explanation.",
+  "unit_context": "Cycle A, Lesson 1. This lesson launches the foundations cycle by separating psychology from guessing, labelling, or pop-culture mind-reading claims.",
+  "assignment_purpose": "Students learn to explain behaviour responsibly by moving from claim to evidence to method to limits.",
+  "final_evidence_target": "A short exit response that defines psychology, separates mind from behaviour, and improves a weak explanation by adding evidence and limits.",
+  "student_task_flow": [
+    {"step": "Define psychology", "label": "Part 1", "evidence": "Students name mind and behaviour as the core focus."},
+    {"step": "Separate evidence types", "label": "Part 2", "evidence": "Students distinguish internal experiences from observable actions."},
+    {"step": "Improve an explanation", "label": "Part 3", "evidence": "Students replace a snap judgment with a cautious evidence-based explanation."}
+  ],
+  "success_criteria": [
+    "I can define psychology as the scientific study of mind and behaviour.",
+    "I can separate a mind example from a behaviour example.",
+    "I can explain why evidence is stronger than confident guessing.",
+    "I can include limits when I explain behaviour."
+  ],
+  "teacher_implementation_notes": [
+    "Keep the classroom norm clear: psychology vocabulary is for responsible explanation, not labelling people.",
+    "Use the repeated chain claim, evidence, method, limits as the course-wide thinking move.",
+    "When students jump to one-cause explanations, ask what else could explain the same behaviour."
+  ],
+  "likely_misconceptions": [
+    "Students may think psychology means reading people or guessing motives.",
+    "Students may treat one observed behaviour as enough evidence for a whole-person label.",
+    "Students may confuse a testable hypothesis with a broad theory.",
+    "Students may think confidence makes an explanation stronger than evidence."
+  ],
+  "assessment_focus": [
+    "Accurate definition of psychology",
+    "Clear distinction between mind and behaviour",
+    "Use of evidence and limits in explanation",
+    "Avoidance of overclaiming from one example"
+  ],
+  "bundle": {
+    "bundle_id": "psych_11_12_cycle_a_l1_bundle",
+    "declared_outputs": ["lesson_overview", "teacher_guide", "slides", "task_sheet", "exit_ticket"]
+  },
+  "lesson_overview": {
+    "overview": "This opening lesson establishes psychology as a science of mind and behaviour. Students practise slowing down quick judgments and using evidence, method, and limits to build more responsible explanations.",
+    "essential_question": "How can psychology help us explain behaviour without reducing people to labels?",
+    "sequence": [
+      {"phase": "Launch", "focus": "Clear the myth that psychology is mind-reading or instant interpretation.", "artifact": "Slides"},
+      {"phase": "Build", "focus": "Define mind, behaviour, evidence, hypothesis, theory, explanation, and limits.", "artifact": "Slides and task sheet"},
+      {"phase": "Apply", "focus": "Use an example to separate evidence from explanation and include alternatives.", "artifact": "Task sheet"},
+      {"phase": "Check", "focus": "Students define psychology and improve a weak explanation.", "artifact": "Exit ticket"}
+    ],
+    "integrity_checks": [
+      "Do not let students diagnose or label classmates.",
+      "Keep examples hypothetical and classroom-safe.",
+      "Require evidence and limits in every explanation."
+    ]
+  },
+  "teacher_guide": {
+    "big_idea": "Psychology is useful when it makes explanations more careful, evidence-based, and humane. The first lesson should break the habit of snap judgment and introduce a repeatable explanation frame.",
+    "learning_goals": [
+      "Students can define psychology as the scientific study of mind and behaviour.",
+      "Students can distinguish internal mental processes from observable behaviour.",
+      "Students can describe why evidence, method, and limits matter.",
+      "Students can improve a weak explanation without overclaiming."
+    ],
+    "materials": [
+      "Cycle A Lesson 1 slide deck",
+      "Student task sheet",
+      "Exit ticket",
+      "Whiteboard or projector"
+    ],
+    "timing": [
+      {"time": "0:00-0:07", "activity": "Open with common myths about psychology and separate entertainment claims from scientific explanation."},
+      {"time": "0:07-0:18", "activity": "Teach the definition: scientific study of mind and behaviour. Model mind versus behaviour with a simple presentation example."},
+      {"time": "0:18-0:30", "activity": "Introduce claim, evidence, method, and limits. Students complete Parts A and B of the task sheet."},
+      {"time": "0:30-0:43", "activity": "Use the presentation-avoidance example to compare weak and stronger explanations. Students complete Parts C and D."},
+      {"time": "0:43-0:50", "activity": "Students complete the exit ticket and name what should stick for the next lesson."}
+    ],
+    "teacher_notes": [
+      "When students say psychology is reading people, redirect to observable evidence and testable claims.",
+      "Keep the word limits visible: what does the evidence not show yet?",
+      "Use respectful phrasing: possible explanations, not labels.",
+      "Avoid using real students as examples. Keep scenarios fictional or generic."
+    ],
+    "look_fors": [
+      "Student can define mind and behaviour separately.",
+      "Student can name evidence before explanation.",
+      "Student can improve a weak explanation by adding alternatives and limits.",
+      "Student avoids labelling a person from one behaviour."
+    ]
+  },
+  "slides": [
+    {"type": "TITLE", "title": "What Is Psychology?", "layout": "hero", "content": {"subtitle": "The science of mind and behaviour — not mind-reading, guessing, or labelling people.", "bullets": ["claim", "evidence", "method", "limits"]}},
+    {"type": "ENGAGE", "title": "Start by clearing the myth", "layout": "prompt", "content": {"scenario": "Psychology is not reading people. It does not let us label someone from one classroom example.", "prompts": ["What do people sometimes think psychology means?", "Why could that be risky?", "What would count as better evidence?"]}},
+    {"type": "LEARN", "title": "What psychology actually studies", "layout": "two_column", "content": {"bullets": ["Mind: thoughts, memories, motives, emotions, perceptions, and attention.", "Behaviour: actions, choices, words, reactions, and habits.", "Science: evidence, methods, and limits used to test explanations."]}},
+    {"type": "LEARN", "title": "Mind vs behaviour", "layout": "two_column_compare", "content": {"bullets": ["Mind example: a student thinks everyone will notice if they make a mistake.", "Behaviour example: the student avoids eye contact or asks to present later.", "We can observe behaviour more directly, but still need caution before explaining why it happened."]}},
+    {"type": "APPLY", "title": "Evidence beats guessing", "layout": "planner_model", "content": {"task": "Build stronger explanations in this order.", "prompts": ["Claim: What are you saying is happening?", "Evidence: What information supports it?", "Method: How was the information gathered?", "Limits: What else could explain it?"]}},
+    {"type": "LEARN", "title": "Small vocabulary, strong thinking", "layout": "cards", "content": {"bullets": ["Hypothesis: a testable prediction.", "Evidence: information gathered through observation, measurement, or research.", "Theory: a broad explanation supported by many findings over time.", "Limits: what the evidence cannot show yet."]}},
+    {"type": "APPLY", "title": "Many causes, not one simple label", "layout": "prompt", "content": {"scenario": "A behaviour can have several influences at once: emotion, attention, memory, sleep, motivation, family, friends, school, culture, past learning, habits, and recent events.", "prompts": ["Why is one simple label usually too weak?", "What context might matter?", "What would you need to know before explaining?" ]}},
+    {"type": "APPLY", "title": "Weak explanation vs stronger explanation", "layout": "two_column_compare", "content": {"bullets": ["Weak: They avoid presentations because they are lazy.", "Stronger: They may be avoiding because of worry, low preparation, past embarrassment, or another factor. We need more evidence.", "The stronger version keeps evidence separate from explanation and makes limits clear."]}},
+    {"type": "REFLECT", "title": "Quick check", "layout": "reflect", "content": {"prompts": ["Psychology is the scientific study of ____ and ____.", "Name one mind example and one behaviour example.", "Turn a weak label into a stronger explanation with evidence and limits."]}},
+    {"type": "SUMMARY", "title": "What should stick", "layout": "summary", "content": {"bullets": ["Psychology studies mind and behaviour scientifically.", "Evidence is stronger than confident guessing.", "A hypothesis is testable; a theory is broader and supported over time.", "One behaviour does not equal a person’s whole identity.", "Good explanations include context, possible causes, and limits."]}}
+  ],
+  "task_sheet": {
+    "title": "What Is Psychology? — Student Task Sheet",
+    "purpose_line": "Practise explaining behaviour with evidence, method, and limits instead of snap judgment.",
+    "instructions": [
+      "Use short, specific answers.",
+      "Keep evidence separate from explanation.",
+      "Do not label a person from one behaviour."
+    ],
+    "tasks": [
+      {"label": "Part A — Define the field", "prompt": "Write a clear definition of psychology using the words mind, behaviour, and science.", "lines": 4, "activity_type": "write_response", "render_hints": {"response_pattern": "open_response", "heading": "Define psychology", "help": "Start with: Psychology is the scientific study of..."}},
+      {"label": "Part B — Separate mind and behaviour", "prompt": "For the presentation example, list one possible mind example and one observable behaviour example.", "lines": 4, "activity_type": "write_response", "render_hints": {"response_pattern": "record_fields", "heading": "Mind vs behaviour", "record_fields": ["Mind example", "Behaviour example"]}},
+      {"label": "Part C — Evidence before explanation", "prompt": "What evidence would you need before making a stronger explanation about why someone avoided a presentation?", "lines": 5, "activity_type": "write_response", "render_hints": {"response_pattern": "open_response", "heading": "Evidence before explanation"}},
+      {"label": "Part D — Improve a weak explanation", "prompt": "Rewrite this weak explanation: 'They avoid presentations because they are lazy.' Keep at least two possible explanations open and include a limit.", "lines": 6, "activity_type": "write_response", "render_hints": {"response_pattern": "open_response", "heading": "Improve the explanation"}}
+    ],
+    "embedded_supports": [
+      "Frame: One possible explanation is ___.",
+      "Frame: The evidence we have is ___.",
+      "Frame: The evidence does not show ___ yet.",
+      "Reminder: a stronger explanation can keep more than one possibility open."
+    ],
+    "success_criteria": [
+      "I defined psychology accurately.",
+      "I separated mind from behaviour.",
+      "I used evidence before explanation.",
+      "I included limits and avoided overclaiming."
+    ]
+  },
+  "exit_ticket": {
+    "title": "Exit Ticket — What Is Psychology?",
+    "prompt": "In 3-5 sentences, explain what psychology studies and why evidence and limits matter when explaining behaviour.",
+    "n_lines": 6,
+    "success_criteria": [
+      "Names mind and behaviour",
+      "Mentions evidence",
+      "Mentions limits or alternative explanations",
+      "Avoids one-cause labelling"
+    ]
+  },
+  "outputs": [
+    {"output_id": "lesson_overview_main", "output_type": "lesson_overview", "audience": "teacher", "source_section": "lesson_overview", "bundle": "psych_11_12_cycle_a_l1_bundle"},
+    {"output_id": "teacher_guide_main", "output_type": "teacher_guide", "audience": "teacher", "source_section": "teacher_guide", "bundle": "psych_11_12_cycle_a_l1_bundle"},
+    {"output_id": "lesson_slides", "output_type": "slides", "audience": "shared_view", "source_section": "slides", "bundle": "psych_11_12_cycle_a_l1_bundle"},
+    {"output_id": "student_task_sheet", "output_type": "task_sheet", "audience": "student", "source_section": "task_sheet", "bundle": "psych_11_12_cycle_a_l1_bundle"},
+    {"output_id": "exit_ticket", "output_type": "exit_ticket", "audience": "student", "source_section": "exit_ticket", "bundle": "psych_11_12_cycle_a_l1_bundle"}
+  ]
+}
