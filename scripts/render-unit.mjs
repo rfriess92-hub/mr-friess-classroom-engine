@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { existsSync, mkdirSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
+import { resolve } from 'node:path'
 import { spawnSync } from 'node:child_process'
 import process from 'node:process'
 import { argValue, loadJson, repoPath } from './lib.mjs'
@@ -21,6 +21,41 @@ function requirePath(path, label) {
   }
 }
 
+function safeDir(value) {
+  return String(value ?? 'package').replace(/[^a-zA-Z0-9_-]+/g, '_')
+}
+
+function loadManifest(path) {
+  requirePath(path, 'unit or cycle manifest')
+  return loadJson(path)
+}
+
+function collectPackages(manifest, context = {}) {
+  const packages = []
+
+  for (const entry of Array.isArray(manifest.packages) ? manifest.packages : []) {
+    packages.push({
+      ...entry,
+      cycle_id: entry.cycle_id ?? context.cycle_id ?? null,
+      cycle_output_dir: entry.cycle_output_dir ?? context.cycle_output_dir ?? null,
+    })
+  }
+
+  for (const cycle of Array.isArray(manifest.cycles) ? manifest.cycles : []) {
+    if (!cycle.manifest) {
+      console.error(`Cycle entry is missing manifest: ${JSON.stringify(cycle)}`)
+      process.exit(1)
+    }
+    const cycleManifest = loadManifest(repoPath(cycle.manifest))
+    packages.push(...collectPackages(cycleManifest, {
+      cycle_id: cycle.cycle_id ?? cycleManifest.cycle_id ?? null,
+      cycle_output_dir: cycle.output_dir ?? safeDir(cycle.cycle_id ?? cycleManifest.cycle_id ?? 'cycle'),
+    }))
+  }
+
+  return packages
+}
+
 const manifestArg = argValue('--manifest')
 const outArg = argValue('--out') ?? 'output/unit'
 
@@ -30,12 +65,11 @@ if (!manifestArg) {
 }
 
 const manifestPath = repoPath(manifestArg)
-requirePath(manifestPath, 'unit manifest')
-const manifest = loadJson(manifestPath)
-const packages = Array.isArray(manifest.packages) ? manifest.packages : []
+const manifest = loadManifest(manifestPath)
+const packages = collectPackages(manifest)
 
 if (packages.length === 0) {
-  console.error(`Unit manifest has no packages: ${manifestArg}`)
+  console.error(`Unit manifest has no renderable packages: ${manifestArg}`)
   process.exit(1)
 }
 
@@ -50,8 +84,11 @@ for (const entry of packages) {
   }
   const packagePath = repoPath(source)
   requirePath(packagePath, `package source for ${entry.package_id ?? source}`)
-  const packageOut = resolve(baseOut, entry.output_dir ?? entry.package_id ?? source.replace(/[^a-zA-Z0-9_-]+/g, '_'))
-  mkdirSync(dirname(packageOut), { recursive: true })
+  const packageDir = entry.output_dir ?? safeDir(entry.package_id ?? source)
+  const packageOut = entry.cycle_output_dir
+    ? resolve(baseOut, entry.cycle_output_dir, packageDir)
+    : resolve(baseOut, packageDir)
+  mkdirSync(packageOut, { recursive: true })
   run(process.execPath, ['scripts/render-package.mjs', '--package', source, '--out', packageOut, '--flat-out'])
 }
 
