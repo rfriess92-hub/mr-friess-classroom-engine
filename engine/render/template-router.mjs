@@ -56,6 +56,16 @@ function weekSequenceSlideTemplate(pageRoles) {
   }
 }
 
+function dailySlideDeckBundleTemplate() {
+  return {
+    template_family: 'DAILY_SLIDE_DECK_BUNDLE',
+    template_sequence: ['DSB_SECTIONED_UNIT_DECK'],
+    selected_template: 'DSB_SECTIONED_UNIT_DECK',
+    rejected_templates: [],
+    template_reason: 'daily_slide_deck_bundle routes through the sectioned unit deck slide family.',
+  }
+}
+
 function classroomWorksheetTemplate(trace) {
   const templateMap = {
     student_worksheet: 'CWS_STUDENT_WORKSHEET',
@@ -117,6 +127,10 @@ export function resolveTemplateRoute(trace) {
 
   if (trace?.artifact_class === 'week_sequence_day_slides') {
     return weekSequenceSlideTemplate(pageRoles)
+  }
+
+  if (trace?.artifact_class === 'daily_slide_deck_bundle') {
+    return dailySlideDeckBundleTemplate()
   }
 
   if (trace?.artifact_class === 'week_sequence_overview') {
