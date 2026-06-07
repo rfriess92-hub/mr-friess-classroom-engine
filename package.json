@@ -15,6 +15,7 @@
     "render:unit": "node scripts/render-unit.mjs",
     "qa:package": "node scripts/qa-package.mjs",
     "qa:unit": "node scripts/qa-unit.mjs",
+    "qa:psychology-source": "node scripts/qa-psychology-source-archive.mjs",
     "qa:render": "node scripts/qa-render.mjs",
     "qa:bundle": "node scripts/qa-bundle.mjs",
     "qa:assessment-answer-leak": "node scripts/qa-assessment-answer-leak.mjs",
