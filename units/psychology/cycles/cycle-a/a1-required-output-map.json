@@ -1,0 +1,47 @@
+{
+  "map_id": "psychology_11_12_cycle_a_a1_required_output_map",
+  "title": "A1 Required Output Map",
+  "status": "implementation_target",
+  "unit": "Cycle A A1 - Psychology as a Science",
+  "outputs_to_build": [
+    {
+      "output_id": "a1_teacher_binder",
+      "filename_targets": ["A1_Teacher_Binder.docx", "A1_Teacher_Binder.pdf"],
+      "source_sections": ["unit_overview", "10_day_sequence", "daily_teacher_moves", "differentiation", "assessment_look_fors", "model_response_calibration", "source_tracker", "marking_notes", "safety_boundary_language"]
+    },
+    {
+      "output_id": "a1_student_packet",
+      "filename_targets": ["A1_Student_Packet.docx", "A1_Student_Packet.pdf"],
+      "source_sections": ["vocabulary_organizer", "handouts_01_10", "final_assessment", "exit_tickets_01_10"]
+    },
+    {
+      "output_id": "a1_daily_slide_decks",
+      "filename_targets": ["A1_Day_01.pptx", "A1_Day_02.pptx", "A1_Day_03.pptx", "A1_Day_04.pptx", "A1_Day_05.pptx", "A1_Day_06.pptx", "A1_Day_07.pptx", "A1_Day_08.pptx", "A1_Day_09.pptx", "A1_Day_10.pptx"],
+      "source_sections": ["daily_slide_decks_days_01_10"]
+    },
+    {
+      "output_id": "a1_assessment_pack",
+      "filename_targets": ["A1_Assessment_Pack.docx", "A1_Assessment_Pack.pdf"],
+      "source_sections": ["flawed_claim_detective", "rubric", "model_response_bank", "calibration_notes", "completion_check"]
+    },
+    {
+      "output_id": "a1_safety_source_pack",
+      "filename_targets": ["A1_Safety_Source_Pack.docx", "A1_Safety_Source_Pack.pdf"],
+      "source_sections": ["safety_redirect_script_bank", "no_diagnosis_notes", "no_forced_disclosure_notes", "fictional_example_rules", "openstax_source_tracker", "excerpt_bank"]
+    }
+  ],
+  "current_renderer_outputs_that_are_insufficient": [
+    "day_01_teacher_guide.pdf",
+    "day_01_student_sheet.pdf",
+    "day_01_lesson_slides.pptx",
+    "day_01_exit_ticket.pdf"
+  ],
+  "implementation_order": [
+    "Add package section model for complete teacher binder and complete student packet.",
+    "Add renderer route for document packs beyond teacher_guide/task_sheet/exit_ticket.",
+    "Add editable-source export or explicitly supported source-equivalent export.",
+    "Add package-level completeness QA that checks required output map sections.",
+    "Render A1 complete unit package.",
+    "Only then split or supplement with daily outputs."
+  ]
+}
