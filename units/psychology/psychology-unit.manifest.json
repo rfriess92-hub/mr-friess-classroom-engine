@@ -1,1 +1,41 @@
-{"unit_id":"psychology_11_12_complete_unit","title":"Psychology 11/12 Complete Classroom Unit","course":"Psychology","grade_band":"11-12","status":"cycle_a_source_derived_render_target","render_proof_revision":6,"source_archive":{"uploaded_name":"Psychology_11_12_ALL_CYCLES_COMPLETE_WITH_SLIDES_v1.zip","sha256":"0498b2b7161ccdf190ab1cb52c08522093e35591dc06f6aa7a9f7e5174595264","size_bytes":4814156,"file_count":77,"manifest":"units/psychology/_raw/source-archive-summary.json"},"required_artifacts_per_package":["teacher_guide.pdf","student_packet.pdf","lesson_slides.pptx","completion_or_assessment_artifact.pdf","rendered-package.qa.json"],"cycles":[{"cycle_id":"cycle_a","sequence_label":"Cycle A","manifest":"units/psychology/cycles/cycle-a/cycle.manifest.json","output_dir":"cycle-a"},{"cycle_id":"cycle_b","sequence_label":"Cycle B","manifest":"units/psychology/cycles/cycle-b/cycle.manifest.json","output_dir":"cycle-b"},{"cycle_id":"cycle_c","sequence_label":"Cycle C","manifest":"units/psychology/cycles/cycle-c/cycle.manifest.json","output_dir":"cycle-c"},{"cycle_id":"cycle_d","sequence_label":"Cycle D","manifest":"units/psychology/cycles/cycle-d/cycle.manifest.json","output_dir":"cycle-d"}],"packages":[{"package_id":"psych_11_12_cycle_a_l1_what_is_psychology_v3","title":"Cycle A A1 — Psychology as a Science","cycle_id":"cycle_a","source":"units/psychology/cycles/cycle-a/packages/psych-11-12-cycle-a-l1-what-is-psychology-v3.json","cycle_output_dir":"cycle-a","output_dir":"a1-psychology-as-science","conversion_status":"source_derived"},{"package_id":"psych_11_12_cycle_a_l2_brain_body_behaviour_v2","title":"Cycle A A2 — Brain, Body, and Behaviour","cycle_id":"cycle_a","source":"units/psychology/cycles/cycle-a/packages/psych-11-12-cycle-a-l2-brain-body-behaviour-v2.json","cycle_output_dir":"cycle-a","output_dir":"a2-brain-body-behaviour","conversion_status":"source_derived"},{"package_id":"psych_11_12_cycle_a_l3_development_across_lifespan","title":"Cycle A A3 — Development Across the Lifespan","cycle_id":"cycle_a","source":"units/psychology/cycles/cycle-a/packages/psych-11-12-cycle-a-l3-development-across-lifespan.json","cycle_output_dir":"cycle-a","output_dir":"a3-development-across-lifespan","conversion_status":"source_derived"},{"package_id":"psych_11_12_cycle_a_l4_learning_and_behaviour","title":"Cycle A A4 — Learning and Behaviour","cycle_id":"cycle_a","source":"units/psychology/cycles/cycle-a/packages/psych-11-12-cycle-a-l4-learning-and-behaviour.json","cycle_output_dir":"cycle-a","output_dir":"a4-learning-and-behaviour","conversion_status":"source_derived"},{"package_id":"psych_11_12_cycle_a_l5_thinking_memory_intelligence","title":"Cycle A A5 — Thinking, Memory, and Intelligence","cycle_id":"cycle_a","source":"units/psychology/cycles/cycle-a/packages/psych-11-12-cycle-a-l5-thinking-memory-intelligence.json","cycle_output_dir":"cycle-a","output_dir":"a5-thinking-memory-intelligence","conversion_status":"source_derived"},{"package_id":"psych_11_12_cycle_a_l6_emotion_motivation_stress","title":"Cycle A A6 — Emotion, Motivation, and Stress","cycle_id":"cycle_a","source":"units/psychology/cycles/cycle-a/packages/psych-11-12-cycle-a-l6-emotion-motivation-stress.json","cycle_output_dir":"cycle-a","output_dir":"a6-emotion-motivation-stress","conversion_status":"source_derived"},{"package_id":"psych_11_12_cycle_a_l7_personality_individual_differences","title":"Cycle A A7 — Personality and Individual Differences","cycle_id":"cycle_a","source":"units/psychology/cycles/cycle-a/packages/psych-11-12-cycle-a-l7-personality-individual-differences.json","cycle_output_dir":"cycle-a","output_dir":"a7-personality-individual-differences","conversion_status":"source_derived"},{"package_id":"psych_11_12_cycle_a_l8_social_psychology_literacy","title":"Cycle A A8 — Social Psychology and Psychological Literacy","cycle_id":"cycle_a","source":"units/psychology/cycles/cycle-a/packages/psych-11-12-cycle-a-l8-social-psychology-literacy.json","cycle_output_dir":"cycle-a","output_dir":"a8-social-psychology-literacy","conversion_status":"source_derived"}],"source_note":"Cycle A A1-A8 are now represented as source-derived engine packages using the uploaded master spec constraints: teacher/student separation, tiered major tasks, decision plus reason, fictional examples, and safety boundaries. Cycles B-D still need conversion."}
+{
+  "unit_id": "psychology_11_12_complete_unit",
+  "title": "Psychology 11/12 Complete Classroom Unit",
+  "course": "Psychology",
+  "grade_band": "11-12",
+  "status": "cycle_a_a1_daily_render_target",
+  "render_proof_revision": 7,
+  "source_archive": {
+    "uploaded_name": "Psychology_11_12_ALL_CYCLES_COMPLETE_WITH_SLIDES_v1.zip",
+    "sha256": "0498b2b7161ccdf190ab1cb52c08522093e35591dc06f6aa7a9f7e5174595264",
+    "size_bytes": 4814156,
+    "file_count": 77,
+    "manifest": "units/psychology/_raw/source-archive-summary.json"
+  },
+  "source_contract": "units/psychology/cycles/cycle-a/a1-source-map.json",
+  "required_artifacts_per_package": [
+    "teacher_guide.pdf",
+    "student_packet.pdf",
+    "lesson_slides.pptx",
+    "completion_or_assessment_artifact.pdf",
+    "rendered-package.qa.json"
+  ],
+  "cycles": [
+    {"cycle_id": "cycle_a", "sequence_label": "Cycle A", "manifest": "units/psychology/cycles/cycle-a/cycle.manifest.json", "output_dir": "cycle-a"},
+    {"cycle_id": "cycle_b", "sequence_label": "Cycle B", "manifest": "units/psychology/cycles/cycle-b/cycle.manifest.json", "output_dir": "cycle-b"},
+    {"cycle_id": "cycle_c", "sequence_label": "Cycle C", "manifest": "units/psychology/cycles/cycle-c/cycle.manifest.json", "output_dir": "cycle-c"},
+    {"cycle_id": "cycle_d", "sequence_label": "Cycle D", "manifest": "units/psychology/cycles/cycle-d/cycle.manifest.json", "output_dir": "cycle-d"}
+  ],
+  "packages": [
+    {
+      "package_id": "psych_11_12_cycle_a_a1_d01",
+      "title": "Cycle A A1 Day 1 — Is This Psychology?",
+      "cycle_id": "cycle_a",
+      "source": "units/psychology/cycles/cycle-a/packages/a1-days/psych-11-12-cycle-a-a1-d01.json",
+      "cycle_output_dir": "cycle-a/a1-psychology-as-science",
+      "output_dir": "day-01-is-this-psychology",
+      "conversion_status": "source_grounded_daily_package"
+    }
+  ],
+  "source_note": "A1 is being rebuilt as ten daily packages using the A1 source map. Each day must produce its own teacher guide, student sheet, slide deck, and exit ticket. A2-A8 are temporarily removed from the render target until A1 daily architecture is proven."
+}
