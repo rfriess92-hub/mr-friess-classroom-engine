@@ -1,0 +1,1 @@
+{"schema_version":"2.1.0","package_id":"min_student_escaped2","primary_architecture":"multi_day_sequence","outputs":[{"output_id":"sp","output_type":"st\u0075dent\u005fpacket","audience":"student","source_section":"sp_src"}],"sp_src":{"title":"Learner Pack","sections":["handout"]}}
