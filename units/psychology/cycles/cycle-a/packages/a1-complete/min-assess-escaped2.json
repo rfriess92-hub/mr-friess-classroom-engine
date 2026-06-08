@@ -1,0 +1,1 @@
+{"schema_version":"2.1.0","package_id":"min_assess_escaped2","primary_architecture":"multi_day_sequence","outputs":[{"output_id":"ap","output_type":"ass\u0065ssment\u005fpack","audience":"student","source_section":"ap_src"}],"ap_src":{"title":"Assess","sections":["rubric"]}}
