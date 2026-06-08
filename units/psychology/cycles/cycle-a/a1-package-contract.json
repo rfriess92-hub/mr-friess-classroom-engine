@@ -1,0 +1,135 @@
+{
+  "contract_id": "psychology_11_12_cycle_a_a1_complete_unit_contract",
+  "title": "Cycle A A1 Complete Unit Package Contract",
+  "status": "required_before_render_acceptance",
+  "source_authority": [
+    "Psychology 11/12 Classroom Engine Master Spec",
+    "Cycle A Teacher Binder v3 SOURCE_INTEGRATED",
+    "Cycle A Student Packet Bundle v3 SOURCE_INTEGRATED",
+    "A1 student-ready slide deck",
+    "OpenStax Psychology 2e Chapters 1-2 content spine"
+  ],
+  "unit": {
+    "cycle": "Cycle A",
+    "unit_code": "A1",
+    "unit_title": "Psychology as a Science",
+    "duration_days": 10,
+    "essential_question": "How do psychologists study behaviour responsibly?",
+    "final_assessment": "Flawed Claim Detective"
+  },
+  "non_negotiables": [
+    "A1 is a complete 10-day unit package, not a single lesson summary.",
+    "Each day must have a daily teacher plan, a student handout/sheet, a slide deck or slide section, and an exit ticket.",
+    "The student packet must include the vocabulary organizer, Handouts 1-10, final assessment, and exit tickets for Days 1-10.",
+    "The teacher binder must include the 10-day sequence, differentiation, assessment look-fors, model response calibration, source/excerpt tracker, marking notes, and safety/boundary language.",
+    "The package must include editable source formats and print/PDF formats where the engine supports them; unsupported formats must be explicitly listed as renderer gaps, not silently omitted.",
+    "Major student activities must include Supported, Proficient, and Extending tiers that remain aligned to the same learning goal.",
+    "Major student activities must require decision plus reason.",
+    "Sensitive work must use fictional, public, composite, or general examples only.",
+    "The package must not ask students to diagnose themselves, classmates, family members, public figures, or fictional characters.",
+    "Teacher-facing and student-facing material must stay separate."
+  ],
+  "required_documents": [
+    {
+      "document_id": "teacher_binder",
+      "title": "A1 Teacher Binder",
+      "audience": "teacher",
+      "required_formats": ["pdf", "editable_source"],
+      "required_sections": [
+        "unit_overview",
+        "source_alignment",
+        "10_day_teacher_sequence",
+        "daily_timing_and_moves",
+        "teacher_prompts_and_look_fors",
+        "differentiation_and_tiering_notes",
+        "assessment_rubric_look_fors",
+        "model_response_calibration",
+        "source_excerpt_tracker",
+        "teacher_marking_notes",
+        "safety_level_and_boundary_language"
+      ]
+    },
+    {
+      "document_id": "student_packet",
+      "title": "A1 Student Packet",
+      "audience": "student",
+      "required_formats": ["pdf", "editable_source"],
+      "required_sections": [
+        "vocabulary_organizer",
+        "handout_01_psychology_claim_sort",
+        "handout_02_make_it_measurable",
+        "handout_03_research_method_match",
+        "handout_04_the_causation_trap",
+        "handout_05_ethics_check",
+        "handout_06_reading_how_psychologists_study_behaviour",
+        "handout_07_claim_detective_practice",
+        "handout_08_research_design_challenge",
+        "handout_09_assessment_prep_model_response_sort",
+        "handout_10_final_assessment_planning_sheet",
+        "a1_final_assessment_flawed_claim_detective",
+        "exit_tickets_days_01_10"
+      ]
+    },
+    {
+      "document_id": "daily_slide_decks",
+      "title": "A1 Daily Slide Decks",
+      "audience": "shared_view",
+      "required_formats": ["pptx", "pdf_preview_optional"],
+      "required_sections": [
+        "day_01_is_this_psychology",
+        "day_02_questions_variables_operational_definitions",
+        "day_03_research_methods",
+        "day_04_correlation_is_not_causation",
+        "day_05_ethics_in_research",
+        "day_06_reading_like_a_psychology_student",
+        "day_07_claim_detective_practice",
+        "day_08_research_design_challenge",
+        "day_09_assessment_prep_model_responses",
+        "day_10_final_assessment"
+      ]
+    },
+    {
+      "document_id": "assessment_pack",
+      "title": "A1 Assessment Pack",
+      "audience": "teacher_and_student",
+      "required_formats": ["pdf", "editable_source"],
+      "required_sections": [
+        "flawed_claim_detective_student_task",
+        "supported_proficient_extending_options",
+        "rubric",
+        "model_response_bank",
+        "teacher_calibration_notes",
+        "completion_check"
+      ]
+    },
+    {
+      "document_id": "safety_and_source_pack",
+      "title": "A1 Safety and Source Pack",
+      "audience": "teacher",
+      "required_formats": ["pdf", "editable_source"],
+      "required_sections": [
+        "safety_redirect_script_bank",
+        "no_diagnosis_boundary_notes",
+        "no_forced_personal_disclosure_notes",
+        "fictional_or_composite_example_rules",
+        "openstax_chapter_1_2_source_tracker",
+        "excerpt_bank"
+      ]
+    }
+  ],
+  "current_engine_gap": {
+    "currently_renders": ["teacher_guide_pdf", "task_sheet_pdf", "slides_pptx", "exit_ticket_pdf", "rendered_package_qa_json"],
+    "missing_or_under_supported": [
+      "complete_teacher_binder_document",
+      "complete_student_packet_document",
+      "separate_assessment_pack",
+      "rubric_and_model_response_bank",
+      "safety_redirect_script_bank",
+      "sourced_excerpt_bank",
+      "editable_docx_or_equivalent_source_exports",
+      "daily_slide_deck_bundle_for_all_10_days",
+      "package_level_completeness_QA"
+    ]
+  },
+  "acceptance_rule": "Do not call A1 complete until every required document and required section is present or explicitly marked as an engine capability gap with a failing/blocked QA status."
+}

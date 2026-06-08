@@ -1,0 +1,87 @@
+name: Render Psychology Unit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - unit/psychology-complete-package
+    paths:
+      - 'units/psychology/**'
+      - 'scripts/render-unit.mjs'
+      - 'scripts/qa-unit.mjs'
+      - 'scripts/qa-package.mjs'
+      - 'scripts/qa-psychology-source-archive.mjs'
+      - 'scripts/render-package.mjs'
+      - 'engine/render/**'
+      - 'engine/pdf-html/**'
+      - 'engine/pptx/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+  pull_request:
+    paths:
+      - 'units/psychology/**'
+      - 'scripts/render-unit.mjs'
+      - 'scripts/qa-unit.mjs'
+      - 'scripts/qa-package.mjs'
+      - 'scripts/qa-psychology-source-archive.mjs'
+      - 'scripts/render-package.mjs'
+      - 'engine/render/**'
+      - 'engine/pdf-html/**'
+      - 'engine/pptx/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+
+jobs:
+  render-psychology-unit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Enable pnpm
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip reportlab python-pptx pypdf pillow lxml
+
+      - name: Install Playwright Chromium
+        run: pnpm run fonts:install
+
+      - name: Run node tests
+        run: pnpm test
+
+      - name: QA Psychology source archive
+        if: ${{ hashFiles('units/psychology/_raw/Psychology_11_12_ALL_CYCLES_COMPLETE_WITH_SLIDES_v1.zip') != '' }}
+        run: pnpm run qa:psychology-source -- --out output/psychology
+
+      - name: Render Psychology unit
+        run: pnpm run render:unit -- --manifest units/psychology/psychology-unit.manifest.json --out output/psychology
+
+      - name: QA Psychology unit
+        if: always()
+        run: pnpm run qa:unit -- --manifest units/psychology/psychology-unit.manifest.json --out output/psychology
+
+      - name: List rendered outputs
+        if: always()
+        run: find output/psychology -maxdepth 5 -type f | sort || true
+
+      - name: Upload Psychology unit package
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: psychology-unit-classroom-package
+          path: output/psychology/**
+          if-no-files-found: warn
