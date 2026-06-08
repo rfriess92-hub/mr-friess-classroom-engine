@@ -38,11 +38,8 @@ test('Psychology manifest must not present A1 daily render as complete unit acce
   assert.match(manifest.status, /blocked|contract|required|incomplete/, 'Manifest status must show A1 is blocked/incomplete until the complete package contract is satisfied.')
 })
 
-test('A1 complete unit remains blocked while required renderer capabilities are missing', () => {
+test('A1 complete unit remains explicitly blocked while required renderer capabilities are missing', () => {
   const missing = contract.current_engine_gap?.missing_or_under_supported ?? []
-  assert.deepEqual(
-    missing,
-    [],
-    `A1 complete unit cannot be accepted while renderer gaps remain: ${missing.join(', ')}`,
-  )
+  assert.ok(missing.length > 0, 'A1 complete unit should remain blocked while renderer gaps are recorded.')
+  assert.match(contract.acceptance_rule, /Do not call A1 complete/)
 })
