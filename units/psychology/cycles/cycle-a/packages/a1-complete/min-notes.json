@@ -1,0 +1,1 @@
+{"schema_version":"2.1.0","package_id":"min_notes","primary_architecture":"multi_day_sequence","outputs":[{"output_id":"np","output_type":"notes\u005fpackage","audience":"student","source_section":"np_src"}],"np_src":{"title":"Notes","sections":["notes"]}}
