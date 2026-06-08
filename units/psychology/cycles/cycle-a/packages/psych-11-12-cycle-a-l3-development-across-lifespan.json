@@ -1,0 +1,77 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "psych_11_12_cycle_a_l3_development_across_lifespan",
+  "classroom_package_contract": "strict",
+  "primary_architecture": "single_period_full",
+  "session_count": 5,
+  "grade_band": "9-12",
+  "subject": "Psychology",
+  "grade": 11,
+  "topic": "Development Across the Lifespan",
+  "theme": "science",
+  "assignment_family": "short_inquiry_sequence",
+  "grade_subject_fit": "Source-derived Cycle A development package aligned to the master spec: teacher/student separation, evidence tasks, safe fictional cases, decision plus reason, and tiered major work.",
+  "unit_context": "Cycle A A3 focuses on how people change across the lifespan while avoiding simplistic age-stage labels.",
+  "assignment_purpose": "Students compare developmental influences and use evidence to explain change over time.",
+  "final_evidence_target": "A developmental case analysis with claim, evidence, alternative explanation, support recommendation, and limit.",
+  "student_task_flow": [
+    {"step":"Build vocabulary","label":"Core concepts","evidence":"Students define development, lifespan, nature, nurture, continuity, change, sensitive period, attachment, adolescence, adulthood."},
+    {"step":"Apply to cases","label":"Fictional case set","evidence":"Students interpret development using biological, cognitive, emotional, and social influences."},
+    {"step":"Choose and justify","label":"Decision plus reason","evidence":"Students choose the strongest explanation and justify it with evidence and limits."}
+  ],
+  "success_criteria": ["I can explain development as change over time.", "I can compare nature and nurture without reducing a person to one cause.", "I can use evidence from a fictional case.", "I can make a decision and give a reason.", "I can include a limit or alternative explanation."],
+  "supports_scaffolds": ["Supported, Proficient, Extending task options", "case evidence table", "decision plus reason frame", "claim evidence limit organizer"],
+  "differentiation_model": "Supported students use a labelled case organizer. Proficient students choose between two explanations. Extending students compare two developmental theories and identify what evidence would strengthen each.",
+  "checkpoint_release_logic": "Students complete vocabulary and a case evidence table before writing the final developmental explanation.",
+  "teacher_implementation_notes": ["Use fictional composite cases only.", "Avoid asking students to disclose family history, trauma, diagnoses, or personal development stories.", "Keep attention on evidence, context, and change over time.", "Require decision plus reason in major tasks."],
+  "likely_misconceptions": ["One stage explains the whole person.", "Development stops after childhood.", "Nature and nurture are separate rather than interacting.", "A single behaviour proves a developmental label."],
+  "pacing_shape": "Five-part source-derived package: vocabulary, lifespan influences, case evidence, theory comparison, final case analysis.",
+  "assessment_focus": ["development vocabulary", "case evidence", "multi-causal explanation", "decision plus reason", "limits"],
+  "bundle": {"bundle_id":"psych_11_12_cycle_a_l3_bundle","declared_outputs":["teacher_guide","slides","task_sheet","exit_ticket"]},
+  "teacher_guide": {
+    "title":"Cycle A A3 Teacher Guide — Development Across the Lifespan",
+    "overview":"Students examine development as change across the lifespan. The teacher role is to keep explanations evidence-based, multi-causal, and safe. Students should not be asked to analyze their own childhood or family history.",
+    "essential_question":"How do people change across the lifespan, and how can we explain that change carefully?",
+    "big_idea":"Development reflects interaction among biology, experience, relationships, culture, and context over time.",
+    "opening_frame":"A useful developmental explanation names what changed, what evidence shows the change, what influences may matter, and what the evidence cannot prove yet.",
+    "frame_line":"Development explanation frame: change, evidence, influence, limit.",
+    "assessment_focus":"Final case analysis should include a clear developmental claim, evidence from a fictional case, at least one alternative explanation, and one limit.",
+    "learning_goals":["Define development and lifespan development.","Compare biological, cognitive, emotional, and social influences.","Use fictional case evidence to explain change.","Avoid one-cause or stage-only explanations.","Make a decision and justify it with evidence."],
+    "materials":["A3 slide sequence","student packet","fictional case cards","development vocabulary organizer","final case analysis task"],
+    "integrity_checks":["Use fictional cases.","No forced personal disclosure.","No diagnosis or family analysis.","Require context and limits."],
+    "teacher_notes":["Start with neutral examples such as learning to drive, changing friendships, or developing study habits.","When students overgeneralize by age, ask what evidence supports the claim.","When students choose nature or nurture only, ask how they interact.","For extension, students compare two theories using the same case evidence."],
+    "questions":["What changed over time?","What evidence shows the change?","What influences could matter?","What is the strongest explanation and why?","What else could explain the pattern?","What should we avoid concluding?"],
+    "look_fors":["Student names a change over time.","Student uses case evidence.","Student includes more than one influence.","Student gives decision plus reason.","Student includes a limit."],
+    "timing":[{"time":"Day 1","activity":"Introduce development and lifespan vocabulary."},{"time":"Day 2","activity":"Compare biological, cognitive, emotional, and social influences."},{"time":"Day 3","activity":"Analyze fictional cases using evidence tables."},{"time":"Day 4","activity":"Compare explanations and prepare final task."},{"time":"Day 5","activity":"Complete final developmental case analysis."}],
+    "matching_bank":["development","lifespan","nature","nurture","continuity","change","attachment","adolescence","adulthood","context"],
+    "model":{"title":"Developmental case model","steps":["Claim: the character is showing a change in independence over time.","Evidence: the case shows new choices, changed routines, and different peer relationships.","Influences: family expectations, school demands, sleep, and peer context may all matter.","Limit: the case does not prove one cause or a permanent trait."]}
+  },
+  "slides": [
+    {"type":"TITLE","title":"Development Across the Lifespan","layout":"hero","content":{"subtitle":"Explaining change over time with evidence and care.","bullets":["change","evidence","influence","limit"]}},
+    {"type":"LEARN","title":"Development is change over time","layout":"bullet_focus","content":{"bullets":["Development includes physical, cognitive, emotional, and social change.","Development continues across the lifespan.","Context matters." ]}},
+    {"type":"APPLY","title":"Nature and nurture interact","layout":"two_column_compare","content":{"left":"Biology and maturation shape development.","right":"Experience, culture, relationships, and opportunity also shape development.","prompts":["Why is either/or thinking too simple?","What evidence would help?"]}},
+    {"type":"APPLY","title":"Fictional case analysis","layout":"prompt","content":{"scenario":"A student becomes more independent during a school transition.","prompts":["What changed?","What evidence shows the change?","What influences could matter?"]}},
+    {"type":"SUMMARY","title":"What should stick","layout":"summary_rows","content":{"rows":["Development is multi-causal.","Use case evidence.","Avoid age-stage labels as complete explanations.","Include limits."]}}
+  ],
+  "task_sheet": {
+    "title":"A3 Student Packet — Development Across the Lifespan",
+    "purpose_line":"Use fictional case evidence to explain development as change over time.",
+    "instructions":["Use only fictional cases.","Make a decision and give a reason.","Include a limit."],
+    "tasks":[
+      {"label":"Vocabulary organizer","prompt":"Define development, lifespan, nature, nurture, continuity, change, context, adolescence, adulthood, attachment.","lines":10,"activity_type":"write_response","render_hints":{"response_pattern":"open_response","heading":"Vocabulary organizer"}},
+      {"label":"Supported pathway","prompt":"Use the case table to identify what changed, what evidence shows it, and which influences might matter.","lines":8,"activity_type":"write_response","render_hints":{"response_pattern":"open_response","heading":"Supported task"}},
+      {"label":"Proficient pathway","prompt":"Choose the strongest explanation for the fictional case. Give evidence and a limit.","lines":8,"activity_type":"write_response","render_hints":{"response_pattern":"open_response","heading":"Proficient task"}},
+      {"label":"Extending pathway","prompt":"Compare two developmental explanations and decide which is better supported by the case evidence.","lines":8,"activity_type":"write_response","render_hints":{"response_pattern":"open_response","heading":"Extending task"}},
+      {"label":"Final assessment","prompt":"Write a developmental case analysis using claim, evidence, influence, alternative explanation, and limit.","lines":10,"activity_type":"write_response","render_hints":{"response_pattern":"open_response","heading":"Final case analysis"}}
+    ],
+    "embedded_supports":["The strongest explanation is... because...","The evidence shows...","Another possible influence is...","A limit is..."],
+    "success_criteria":["I named a change over time.","I used case evidence.","I gave a decision plus reason.","I included a limit."]
+  },
+  "exit_ticket":{"title":"A3 Exit Ticket","prompt":"What is one developmental explanation you can support from evidence, and what is one limit?","n_lines":6,"success_criteria":["names change","uses evidence","includes limit"]},
+  "outputs":[
+    {"output_id":"teacher_guide_main","output_type":"teacher_guide","audience":"teacher","source_section":"teacher_guide","bundle":"psych_11_12_cycle_a_l3_bundle"},
+    {"output_id":"lesson_slides","output_type":"slides","audience":"shared_view","source_section":"slides","bundle":"psych_11_12_cycle_a_l3_bundle"},
+    {"output_id":"student_task_sheet","output_type":"task_sheet","audience":"student","source_section":"task_sheet","bundle":"psych_11_12_cycle_a_l3_bundle"},
+    {"output_id":"exit_ticket","output_type":"exit_ticket","audience":"student","source_section":"exit_ticket","bundle":"psych_11_12_cycle_a_l3_bundle"}
+  ]
+}

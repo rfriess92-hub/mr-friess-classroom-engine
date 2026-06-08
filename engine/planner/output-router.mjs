@@ -3,62 +3,45 @@ import { normalizePackageToRenderPlan } from '../schema/render-plan.mjs'
 
 function rendererKeyFor(outputType) {
   switch (outputType) {
-    case 'teacher_guide':
-      return 'render_teacher_guide'
-    case 'lesson_overview':
-      return 'render_lesson_overview'
-    case 'slides':
-      return 'render_slides'
-    case 'worksheet':
-      return 'render_worksheet'
-    case 'task_sheet':
-      return 'render_task_sheet'
-    case 'checkpoint_sheet':
-      return 'render_checkpoint_sheet'
-    case 'exit_ticket':
-      return 'render_exit_ticket'
-    case 'final_response_sheet':
-      return 'render_final_response_sheet'
-    case 'graphic_organizer':
-      return 'render_graphic_organizer'
-    case 'discussion_prep_sheet':
-      return 'render_discussion_prep_sheet'
-    case 'rubric_sheet':
-      return 'render_rubric_sheet'
-    case 'station_cards':
-      return 'render_station_cards'
-    case 'answer_key':
-      return 'render_answer_key'
-    case 'pacing_guide':
-      return 'render_pacing_guide'
-    case 'sub_plan':
-      return 'render_sub_plan'
-    case 'makeup_packet':
-      return 'render_makeup_packet'
-    case 'assessment':
-      return 'render_assessment'
-    case 'quiz':
-      return 'render_quiz'
-    case 'rubric':
-      return 'render_rubric'
-    case 'formative_check':
-      return 'render_formative_check'
-    case 'warm_up':
-      return 'render_warm_up'
-    case 'vocabulary_card':
-      return 'render_vocabulary_card'
-    case 'observation_grid':
-      return 'render_observation_grid'
-    case 'lesson_reflection':
-      return 'render_lesson_reflection'
-    default:
-      return 'render_unknown_output'
+    case 'teacher_guide': return 'render_teacher_guide'
+    case 'lesson_overview': return 'render_lesson_overview'
+    case 'slides': return 'render_slides'
+    case 'daily_slide_deck_bundle': return 'render_daily_slide_deck_bundle'
+    case 'worksheet': return 'render_worksheet'
+    case 'task_sheet': return 'render_task_sheet'
+    case 'checkpoint_sheet': return 'render_checkpoint_sheet'
+    case 'exit_ticket': return 'render_exit_ticket'
+    case 'final_response_sheet': return 'render_final_response_sheet'
+    case 'graphic_organizer': return 'render_graphic_organizer'
+    case 'discussion_prep_sheet': return 'render_discussion_prep_sheet'
+    case 'rubric_sheet': return 'render_rubric_sheet'
+    case 'station_cards': return 'render_station_cards'
+    case 'answer_key': return 'render_answer_key'
+    case 'pacing_guide': return 'render_pacing_guide'
+    case 'sub_plan': return 'render_sub_plan'
+    case 'makeup_packet': return 'render_makeup_packet'
+    case 'assessment': return 'render_assessment'
+    case 'quiz': return 'render_quiz'
+    case 'rubric': return 'render_rubric'
+    case 'formative_check': return 'render_formative_check'
+    case 'warm_up': return 'render_warm_up'
+    case 'vocabulary_card': return 'render_vocabulary_card'
+    case 'observation_grid': return 'render_observation_grid'
+    case 'lesson_reflection': return 'render_lesson_reflection'
+    case 'teacher_binder': return 'render_teacher_binder'
+    case 'student_packet': return 'render_student_packet'
+    case 'assessment_pack': return 'render_assessment_pack'
+    case 'safety_source_pack': return 'render_safety_source_pack'
+    case 'notes_package': return 'render_notes_package'
+    case 'graphic_organizer_set': return 'render_graphic_organizer_set'
+    default: return 'render_unknown_output'
   }
 }
 
 function rendererFamilyFor(outputType) {
   switch (outputType) {
     case 'slides':
+    case 'daily_slide_deck_bundle':
       return 'pptx'
     case 'teacher_guide':
     case 'lesson_overview':
@@ -83,6 +66,12 @@ function rendererFamilyFor(outputType) {
     case 'vocabulary_card':
     case 'observation_grid':
     case 'lesson_reflection':
+    case 'teacher_binder':
+    case 'student_packet':
+    case 'assessment_pack':
+    case 'safety_source_pack':
+    case 'notes_package':
+    case 'graphic_organizer_set':
       return 'pdf'
     default:
       return 'unknown'
@@ -91,14 +80,10 @@ function rendererFamilyFor(outputType) {
 
 function audienceBucketFor(audience) {
   switch (audience) {
-    case 'teacher':
-      return 'teacher_only'
-    case 'student':
-      return 'student_facing'
-    case 'shared_view':
-      return 'shared_view'
-    default:
-      return 'unknown'
+    case 'teacher': return 'teacher_only'
+    case 'student': return 'student_facing'
+    case 'shared_view': return 'shared_view'
+    default: return 'unknown'
   }
 }
 
