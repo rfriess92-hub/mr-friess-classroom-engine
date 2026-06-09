@@ -1,0 +1,70 @@
+schema_version: 1
+school_year: "2026-2027"
+semester_id: semester-2
+source_load_file: school-year/2026-2027/official-course-load.yaml
+status: planning_map
+
+courses:
+  - course_instance_id: psychology-11-12-sem2
+    course_family_id: psychology-11-12
+    title: Psychology 11/12
+    planning_role: second_run_of_repeatable_course
+    planning_focus:
+      - reuse Semester 1 spine
+      - apply pacing fixes from Semester 1
+      - keep assessment evidence separate from Semester 1 instance
+    first_packages_to_build:
+      - refined_foundations_teacher_guide
+      - refined_foundations_student_packet
+      - applied_psychology_project_brief
+      - psychology_assessment_rubric
+    qa_focus:
+      - instance_specific_overrides
+      - student_packet_completion_check
+      - teacher_guide_project_tools_when_project_based
+
+  - course_instance_id: literacy-cohort-2-sem2
+    course_family_id: literacy
+    title: Literacy
+    planning_role: two_semester_sequence_finish
+    planning_focus:
+      - inherit Semester 1 evidence
+      - target unfinished literacy goals
+      - fade supports where possible
+      - prepare final evidence of growth
+    first_packages_to_build:
+      - semester_2_reentry_packet
+      - carry_forward_goal_conference_sheet
+      - targeted_revision_packet
+      - final_growth_evidence_packet
+    qa_focus:
+      - cohort_memory_inheritance
+      - aligned_intervention_tasks
+      - concrete_completion_check
+      - teacher_follow_up_groups
+
+  - course_instance_id: careers-10-sem2
+    course_family_id: careers-10
+    title: Careers 10
+    planning_role: contained_grade_10_semester_course
+    planning_focus:
+      - build practical project flow
+      - create portfolio-ready artifacts
+      - emphasize employability and graduation planning
+      - maintain clear completion evidence
+    first_packages_to_build:
+      - careers_10_identity_strengths_packet
+      - employability_scenarios_teacher_guide
+      - career_research_project_brief
+      - graduation_planning_tool
+      - portfolio_completion_checklist
+    qa_focus:
+      - project_tools_in_teacher_guides
+      - product_criteria_in_student_packets
+      - completion_check
+
+semester_level_engine_tasks:
+  - wire Literacy Cohort 2 Semester 2 to Semester 1 carry-forward fields
+  - reuse Psychology spine without merging Semester 1 and Semester 2 evidence
+  - build Careers 10 as a Grade 10 course, not a renamed Careers 8 package
+  - add course-instance metadata to generated packages before scaling content
