@@ -1,0 +1,141 @@
+schema_version: 1
+course_family_id: literacy
+title: Literacy
+course_type: cohort_continuity_course
+status: planning_source
+source_load_file: school-year/2026-2027/official-course-load.yaml
+
+instances:
+  - literacy-cohort-1-sem1
+  - literacy-cohort-2-sem1
+  - literacy-cohort-2-sem2
+
+course_purpose: >
+  A flexible literacy course focused on reading stamina, comprehension, writing fluency,
+  sentence and paragraph control, evidence use, revision habits, and student confidence.
+  The course must preserve cohort history instead of treating each block as a fresh start.
+
+cohorts:
+  - cohort_id: literacy_cohort_1
+    instances:
+      - literacy-cohort-1-sem1
+    status: returning_from_current_semester
+    continuation_model: prior_context_without_semester_2_continuation
+    engine_note: >
+      Use known routines and prior learning context. Do not rebuild the course as if the
+      students are new to the teacher or classroom structures.
+
+  - cohort_id: literacy_cohort_2
+    instances:
+      - literacy-cohort-2-sem1
+      - literacy-cohort-2-sem2
+    status: two_semester_sequence
+    continuation_model: semester_1_to_semester_2_carry_forward
+    engine_note: >
+      Semester 2 planning must inherit Semester 1 goals, evidence, supports, and unfinished
+      skill work. This is the highest-priority continuity case in the official load.
+
+teacher_voice:
+  stance: structured_supportive_skill_coach
+  priorities:
+    - reduce_task_ambiguity
+    - make invisible literacy skills visible
+    - give students repeatable routines
+    - preserve dignity for struggling readers and writers
+    - align supports without lowering the task target
+  avoid:
+    - babyish materials
+    - vague reflection without skill evidence
+    - too many unrelated strategies in one lesson
+    - treating support prompts as completion evidence
+
+continuity_model:
+  carry_forward_fields:
+    - current_reading_strengths
+    - current_reading_needs
+    - current_writing_strengths
+    - current_writing_needs
+    - sentence_control_focus
+    - paragraph_control_focus
+    - evidence_use_focus
+    - revision_habit_focus
+    - confidence_or_avoidance_patterns
+    - successful_scaffolds
+    - incomplete_or_reassessment_items
+  semester_transition_questions:
+    - What can this student now do more independently than at the start of Semester 1?
+    - Which literacy routine should remain unchanged for stability?
+    - Which scaffold can be faded next?
+    - Which task type still causes avoidance or shutdown?
+    - What evidence should be collected early in Semester 2?
+
+planning_model:
+  likely_learning_threads:
+    - reading_stamina_and_text_access
+    - main_idea_and_inference
+    - vocabulary_in_context
+    - sentence_expansion_and_control
+    - paragraph_structure_and_evidence
+    - summary_response_and_revision
+    - speaking_listening_and_conference_language
+  recurring_routines:
+    - daily_or_weekly_quick_write
+    - read_mark_discuss
+    - modelled_sentence_work
+    - guided_paragraph_build
+    - revision_checklist
+    - teacher_student_conference
+    - completion_check
+
+assessment_model:
+  evidence_types:
+    - reading_annotations
+    - short_comprehension_responses
+    - sentence_revisions
+    - paragraph_drafts
+    - finished_paragraph_or_short_composition
+    - conference_notes
+    - student_self_check
+  rhythm: >
+    Use frequent visible evidence and teacher conference checkpoints. Longer products should
+    grow from repeated smaller routines.
+  completion_evidence: >
+    Every student packet must close with a concrete completion check that asks what is done,
+    what evidence proves it, and what the student should do next.
+
+rendering_contract:
+  preferred_package_types:
+    - teacher_guide
+    - student_packet
+    - quick_write
+    - reading_response_packet
+    - paragraph_builder
+    - revision_checklist
+    - conference_sheet
+    - intervention_tracker
+  student_packet_required_roles:
+    - learning_goal
+    - model_or_example
+    - guided_workspace
+    - independent_attempt
+    - completion_check
+  teacher_guide_required_roles:
+    - lesson_frame
+    - teacher_moves
+    - differentiation
+    - assessment_notes
+    - follow_up_groups
+  teacher_guide_conditional_roles:
+    - project_tools
+
+bc_alignment_note: >
+  Keep BC literacy and classroom assessment alignment explicit in generated maps and packages,
+  but verify exact official curriculum language before hard-coding references.
+
+next_planning_artifacts:
+  - cohort-1/semester-1-plan.yaml
+  - cohort-1/learner-profile-notes.yaml
+  - cohort-2/semester-1-plan.yaml
+  - cohort-2/semester-2-continuation-plan.yaml
+  - cohort-2/learner-profile-notes.yaml
+  - package-types.yaml
