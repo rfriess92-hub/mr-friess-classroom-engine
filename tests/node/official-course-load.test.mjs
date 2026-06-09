@@ -1,3 +1,4 @@
+// Official 2026-2027 course-load guardrails.
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
