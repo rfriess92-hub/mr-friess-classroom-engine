@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "proof_id": "official-2026-2027-course-load",
+  "status": "planning_proof",
+  "source_load_file": "school-year/2026-2027/official-course-load.yaml",
+  "expected_school_year": "2026-2027",
+  "expected_course_instance_count": 6,
+  "expected_course_family_count": 3,
+  "expected_semesters": [
+    "semester-1",
+    "semester-2"
+  ],
+  "expected_course_families": [
+    "psychology-11-12",
+    "literacy",
+    "careers-10"
+  ],
+  "expected_course_instances": [
+    {
+      "course_instance_id": "psychology-11-12-sem1",
+      "course_family_id": "psychology-11-12",
+      "semester_id": "semester-1",
+      "instance_type": "semester_course",
+      "repeats_in": "semester-2"
+    },
+    {
+      "course_instance_id": "literacy-cohort-1-sem1",
+      "course_family_id": "literacy",
+      "semester_id": "semester-1",
+      "instance_type": "returning_cohort",
+      "continuity_status": "taught_previous_semester"
+    },
+    {
+      "course_instance_id": "literacy-cohort-2-sem1",
+      "course_family_id": "literacy",
+      "semester_id": "semester-1",
+      "instance_type": "continuing_cohort_start",
+      "continues_to": "literacy-cohort-2-sem2"
+    },
+    {
+      "course_instance_id": "psychology-11-12-sem2",
+      "course_family_id": "psychology-11-12",
+      "semester_id": "semester-2",
+      "instance_type": "semester_course",
+      "repeats_from": "semester-1"
+    },
+    {
+      "course_instance_id": "literacy-cohort-2-sem2",
+      "course_family_id": "literacy",
+      "semester_id": "semester-2",
+      "instance_type": "continuing_cohort_finish",
+      "continues_from": "literacy-cohort-2-sem1"
+    },
+    {
+      "course_instance_id": "careers-10-sem2",
+      "course_family_id": "careers-10",
+      "semester_id": "semester-2",
+      "instance_type": "semester_course"
+    }
+  ],
+  "required_engine_assertions": [
+    "psychology-11-12 has two separate course instances that share a reusable spine but do not merge evidence",
+    "literacy_cohort_2 continues from Semester 1 into Semester 2",
+    "literacy_cohort_1 is treated as returning context rather than a fresh start",
+    "careers-10-sem2 is Grade 10 and must not inherit Careers 8 package assumptions",
+    "student_packet package types require a completion_check role",
+    "project-based teacher_guide package types require project_tools when applicable"
+  ],
+  "next_test_target": "Add a node test that parses official-course-load.yaml and validates these assertions."
+}
