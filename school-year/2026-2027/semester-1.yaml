@@ -1,0 +1,68 @@
+schema_version: 1
+school_year: "2026-2027"
+semester_id: semester-1
+source_load_file: school-year/2026-2027/official-course-load.yaml
+status: planning_map
+
+courses:
+  - course_instance_id: psychology-11-12-sem1
+    course_family_id: psychology-11-12
+    title: Psychology 11/12
+    planning_role: first_run_of_repeatable_course
+    planning_focus:
+      - build reusable semester spine
+      - establish discussion and case-analysis routines
+      - collect pacing notes for Semester 2 reuse
+    first_packages_to_build:
+      - foundations_teacher_guide
+      - foundations_student_packet
+      - psychology_case_analysis_packet
+      - psychology_project_brief
+    qa_focus:
+      - student_packet_completion_check
+      - teacher_guide_discussion_management
+      - teacher_guide_project_tools_when_project_based
+
+  - course_instance_id: literacy-cohort-1-sem1
+    course_family_id: literacy
+    title: Literacy
+    planning_role: returning_cohort_finish_or_extend
+    planning_focus:
+      - preserve current-semester classroom routines
+      - target known reading and writing needs
+      - use familiar structures with sharper evidence checks
+    first_packages_to_build:
+      - returning_cohort_diagnostic_packet
+      - quick_write_routine_packet
+      - paragraph_revision_packet
+      - literacy_conference_sheet
+    qa_focus:
+      - dignified_student_language
+      - aligned_scaffolds
+      - concrete_completion_check
+
+  - course_instance_id: literacy-cohort-2-sem1
+    course_family_id: literacy
+    title: Literacy
+    planning_role: two_semester_sequence_start
+    planning_focus:
+      - build routines that can survive into Semester 2
+      - collect baseline reading and writing evidence
+      - record successful scaffolds and avoidance patterns
+      - prepare carry-forward profile data
+    first_packages_to_build:
+      - cohort_2_baseline_reading_packet
+      - cohort_2_baseline_writing_packet
+      - sentence_control_packet
+      - paragraph_builder_packet
+      - semester_1_carry_forward_tracker
+    qa_focus:
+      - cohort_memory_fields
+      - completion_check
+      - teacher_follow_up_groups
+
+semester_level_engine_tasks:
+  - create machine-readable cohort profile placeholders
+  - generate Psychology semester spine only after course profile is stable
+  - ensure Literacy Cohort 2 packages write evidence forward into Semester 2 planning
+  - avoid producing full units before package contracts are course-aware
