@@ -1,0 +1,94 @@
+schema_version: 1
+course_family_id: careers-10
+title: Careers 10
+course_type: contained_semester_course
+grade_band: "10"
+status: planning_source
+source_load_file: school-year/2026-2027/official-course-load.yaml
+
+instances:
+  - careers-10-sem2
+
+course_purpose: >
+  A contained Grade 10 course focused on career-life planning, employability skills,
+  goal setting, graduation awareness, workplace readiness, financial and personal planning,
+  and reflective evidence of growth.
+
+teacher_voice:
+  stance: practical_project_coach
+  priorities:
+    - concrete tasks
+    - classroom-ready project flow
+    - employability language students can actually use
+    - completion evidence
+    - reflection tied to decisions and artifacts
+  avoid:
+    - generic inspirational career advice
+    - vague worksheets with no product
+    - overcomplicated planning documents
+    - reflection without observable task evidence
+
+planning_model:
+  reusable_spine: true
+  likely_unit_pattern:
+    - identity_strengths_and_goal_setting
+    - employability_skills_and_workplace_scenarios
+    - career_research_and_pathways
+    - graduation_and_course_planning
+    - financial_literacy_and_life_planning
+    - capstone_style_career_life_portfolio
+  recurring_routines:
+    - entry_scenario
+    - practical_tool_or_template
+    - individual_planning_time
+    - peer_or_teacher_check
+    - artifact_completion_check
+
+assessment_model:
+  evidence_types:
+    - completed_planning_tool
+    - career_research_product
+    - scenario_response
+    - employability_skill_reflection
+    - portfolio_artifact
+    - presentation_or_conference
+  rhythm: >
+    Use project checkpoints and visible artifacts. The course should feel like a sequence of
+    useful tools, not a pile of disconnected worksheets.
+  completion_evidence: >
+    Each package should identify the product, the criteria, and the evidence a student must
+    have finished by the end of the block or project sequence.
+
+rendering_contract:
+  preferred_package_types:
+    - teacher_guide
+    - student_packet
+    - project_brief
+    - planning_tool
+    - scenario_card_set
+    - reflection_sheet
+    - rubric
+    - portfolio_checklist
+  student_packet_required_roles:
+    - learning_goal
+    - task_brief
+    - guided_workspace
+    - product_or_artifact
+    - completion_check
+  teacher_guide_required_roles:
+    - lesson_frame
+    - teacher_moves
+    - differentiation
+    - assessment_notes
+  teacher_guide_conditional_roles:
+    - project_tools
+
+bc_alignment_note: >
+  Keep BC Career-Life Education / Careers alignment visible in generated maps and packages,
+  but verify final curriculum wording before hard-coding exact official references.
+
+next_planning_artifacts:
+  - scope-sequence.yaml
+  - semester-map.sem2.yaml
+  - package-types.yaml
+  - portfolio-model.yaml
