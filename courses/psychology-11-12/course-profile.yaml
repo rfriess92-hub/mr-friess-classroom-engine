@@ -1,0 +1,101 @@
+schema_version: 1
+course_family_id: psychology-11-12
+title: Psychology 11/12
+course_type: repeatable_semester_course
+grade_band: "11/12"
+status: planning_source
+source_load_file: school-year/2026-2027/official-course-load.yaml
+
+instances:
+  - psychology-11-12-sem1
+  - psychology-11-12-sem2
+
+course_purpose: >
+  A semester course that introduces students to psychological concepts, research
+  thinking, identity, behaviour, mental processes, and real-world applications while
+  maintaining clear boundaries between classroom learning and counselling.
+
+teacher_voice:
+  stance: calm_structured_discussion_leader
+  priorities:
+    - classroom_realism
+    - clear_concepts_before_debate
+    - respectful_handling_of_personal_topics
+    - explicit_skill_practice
+    - evidence_over_hot_takes
+  avoid:
+    - therapy_language_as_instruction
+    - overpersonalized_student_disclosure
+    - abstract_content_without_classroom_tasks
+
+planning_model:
+  reusable_spine: true
+  instance_overrides: true
+  likely_unit_pattern:
+    - foundations_of_psychology
+    - brain_behaviour_and_research_methods
+    - development_identity_and_learning
+    - social_psychology_and_group_behaviour
+    - mental_health_stress_and_coping_as_learning_topics
+    - applied_psychology_project_or_inquiry
+  recurring_routines:
+    - entry_question_or_case_prompt
+    - concept_notes_with_examples
+    - scenario_analysis
+    - short_response_or_exit_ticket
+    - respectful_discussion_protocol
+
+assessment_model:
+  evidence_types:
+    - concept_explanation
+    - scenario_application
+    - research_or_media_analysis
+    - discussion_preparation
+    - project_product
+    - reflection_with_boundaries
+  rhythm: >
+    Use frequent low-stakes checks, short written applications, and one or two larger
+    projects rather than relying only on tests.
+  completion_evidence: >
+    Each student-facing packet should include a visible completion check tied to the
+    learning target and task evidence.
+
+bc_alignment_note: >
+  Keep BC alignment explicit in generated course maps and packages, but verify final
+  curriculum wording separately before hard-coding exact official curriculum references.
+
+rendering_contract:
+  preferred_package_types:
+    - teacher_guide
+    - student_packet
+    - case_analysis_packet
+    - discussion_protocol
+    - project_brief
+    - assessment_rubric
+  student_packet_required_roles:
+    - learning_goal
+    - concept_input
+    - guided_workspace
+    - application_task
+    - completion_check
+  teacher_guide_required_roles:
+    - lesson_frame
+    - teacher_moves
+    - discussion_management
+    - differentiation
+    - assessment_notes
+  teacher_guide_conditional_roles:
+    - project_tools
+
+safety_and_boundaries:
+  required_in_sensitive_topics:
+    - content_warning_when_needed
+    - opt_out_or_alternate_prompt_when_personal_disclosure_risk_is_high
+    - distinguish_learning_about_psychology_from_diagnosing_self_or_others
+    - redirect crisis or personal mental-health concerns to appropriate school supports
+
+next_planning_artifacts:
+  - scope-sequence.yaml
+  - semester-map.sem1.yaml
+  - semester-map.sem2.yaml
+  - package-types.yaml
