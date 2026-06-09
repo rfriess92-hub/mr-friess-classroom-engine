@@ -1,0 +1,133 @@
+schema_version: 1
+school_year: "2026-2027"
+status: official
+last_updated: "2026-06-09"
+timezone: America/Vancouver
+owner: Mr. Friess
+purpose: >
+  Source of truth for the 2026-2027 classroom engine course load. Use this file
+  before generating course maps, package fixtures, student packets, teacher
+  guides, or render-contract proofs.
+
+semesters:
+  - id: semester-1
+    label: Semester 1
+    courses:
+      - course_instance_id: psychology-11-12-sem1
+        course_family_id: psychology-11-12
+        title: Psychology 11/12
+        instance_type: semester_course
+        cohort_id: mixed_11_12
+        repeats_in: semester-2
+        planning_priority: high
+        engine_note: >
+          Build once as a reusable semester course spine, then allow semester-specific
+          pacing and student-group adjustments.
+
+      - course_instance_id: literacy-cohort-1-sem1
+        course_family_id: literacy
+        title: Literacy
+        instance_type: returning_cohort
+        cohort_id: literacy_cohort_1
+        continuity_status: taught_previous_semester
+        continues_to_next_semester: false
+        planning_priority: high
+        engine_note: >
+          Treat as a returning group with existing context. Do not reset routines,
+          expectations, or writing-growth assumptions unless the teacher profile says so.
+
+      - course_instance_id: literacy-cohort-2-sem1
+        course_family_id: literacy
+        title: Literacy
+        instance_type: continuing_cohort_start
+        cohort_id: literacy_cohort_2
+        continuity_status: starts_two_semester_sequence
+        continues_to_next_semester: true
+        continues_to: literacy-cohort-2-sem2
+        planning_priority: critical
+        engine_note: >
+          Semester 1 must capture evidence, writing goals, reading needs, and student
+          supports that carry forward into Semester 2.
+
+  - id: semester-2
+    label: Semester 2
+    courses:
+      - course_instance_id: psychology-11-12-sem2
+        course_family_id: psychology-11-12
+        title: Psychology 11/12
+        instance_type: semester_course
+        cohort_id: mixed_11_12
+        repeats_from: semester-1
+        planning_priority: high
+        engine_note: >
+          Reuse the course spine from Semester 1, but keep instance-specific evidence,
+          pacing changes, and assessment notes separate.
+
+      - course_instance_id: literacy-cohort-2-sem2
+        course_family_id: literacy
+        title: Literacy
+        instance_type: continuing_cohort_finish
+        cohort_id: literacy_cohort_2
+        continuity_status: continues_from_semester_1
+        continues_from: literacy-cohort-2-sem1
+        planning_priority: critical
+        engine_note: >
+          Must inherit Semester 1 learning evidence and convert it into targeted
+          completion, reassessment, and transition work.
+
+      - course_instance_id: careers-10-sem2
+        course_family_id: careers-10
+        title: Careers 10
+        instance_type: semester_course
+        cohort_id: grade_10
+        planning_priority: medium
+        engine_note: >
+          Build as a contained Grade 10 course with project briefs, employability work,
+          graduation planning, reflection, and completion checks.
+
+course_families:
+  - id: psychology-11-12
+    path: courses/psychology-11-12/course-profile.yaml
+    course_role: repeatable_semester_course
+    core_engine_need: reusable_course_spine_with_instance_overrides
+
+  - id: literacy
+    path: courses/literacy/course-profile.yaml
+    course_role: cohort_continuity_course
+    core_engine_need: cohort_memory_and_intervention_tracking
+
+  - id: careers-10
+    path: courses/careers-10/course-profile.yaml
+    course_role: contained_semester_course
+    core_engine_need: project_package_flow_with_clear_completion_evidence
+
+rendering_contract_targets:
+  student_packet:
+    required_roles:
+      - learning_goal
+      - core_task
+      - guided_workspace
+      - completion_check
+    note: >
+      Student-facing Literacy and Careers materials must end with a concrete completion
+      check, not only a reflection or support prompt.
+
+  teacher_guide:
+    required_roles:
+      - lesson_frame
+      - teacher_moves
+      - differentiation
+      - assessment_notes
+    conditional_roles:
+      - project_tools
+    note: >
+      Project-based Psychology and Careers guides must include practical tools such as
+      prompts, matching banks, criteria banks, or quick-use classroom supports.
+
+planning_order:
+  - lock_official_course_load
+  - build_course_profiles
+  - build_semester_maps
+  - build_literacy_cohort_continuity_model
+  - add_course_load_fixture_tests
+  - generate_first_real_packages
