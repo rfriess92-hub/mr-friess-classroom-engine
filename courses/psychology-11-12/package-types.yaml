@@ -1,0 +1,89 @@
+schema_version: 1
+course_family_id: psychology-11-12
+status: planning_source
+source_profile: courses/psychology-11-12/course-profile.yaml
+source_spine: courses/psychology-11-12/scope-sequence.yaml
+
+package_types:
+  teacher_guide:
+    required_roles:
+      - lesson_frame
+      - teacher_moves
+      - concept_sequence
+      - discussion_management
+      - differentiation
+      - assessment_notes
+    conditional_roles:
+      - project_tools
+
+  student_packet:
+    required_roles:
+      - learning_goal
+      - concept_input
+      - guided_workspace
+      - application_task
+      - completion_check
+    optional_roles:
+      - vocabulary_bank
+      - model_response
+      - exit_ticket
+
+  case_analysis_packet:
+    required_roles:
+      - case_context
+      - concept_bank
+      - evidence_finder
+      - analysis_questions
+      - written_application
+      - completion_check
+
+  discussion_protocol:
+    required_roles:
+      - discussion_goal
+      - norms
+      - preparation_questions
+      - evidence_or_example_bank
+      - speaking_moves
+      - listening_moves
+      - completion_check
+
+  project_brief:
+    required_roles:
+      - project_question
+      - product_options
+      - source_or_claim_check
+      - work_plan
+      - criteria
+      - completion_check
+    teacher_guide_required_roles:
+      - project_tools
+      - conference_questions
+      - assessment_notes
+
+  assessment_rubric:
+    required_roles:
+      - criteria
+      - evidence_levels
+      - student_friendly_descriptors
+      - teacher_notes
+
+  conference_sheet:
+    required_roles:
+      - current_task_status
+      - question_or_claim_check
+      - evidence_check
+      - next_step
+      - completion_check
+
+first_package_build_order:
+  semester_1:
+    - foundations_teacher_guide
+    - foundations_student_packet
+    - research_methods_student_packet
+    - social_influence_case_packet
+    - applied_psychology_project_brief
+  semester_2:
+    - refined_foundations_teacher_guide
+    - refined_research_methods_student_packet
+    - refined_social_influence_case_packet
+    - refined_applied_psychology_project_brief
