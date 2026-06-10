@@ -16,6 +16,7 @@ render_handoff: HANDOFF.md
 active_render_links:
   package_manifest: courses/psychology-11-12/packages/foundations/manifest.yaml
   render_proof: fixtures/psychology/foundations-package.proof.json
+  assessment_render_proof: fixtures/psychology/foundations-assessment.proof.json
   teacher_package_source: courses/psychology-11-12/packages/foundations/foundations_teacher_guide.yaml
   student_package_source: courses/psychology-11-12/packages/foundations/foundations_student_packet.yaml
   case_card_source: courses/psychology-11-12/packages/foundations/psychology_perspectives_case_cards.yaml
@@ -45,6 +46,7 @@ artifact_inventory:
     status: draft
     current_source: source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md
     normalized_source_path: source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md
+    render_proof: fixtures/psychology/foundations-assessment.proof.json
     paired_teacher_source: source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md
     audience: assessment_student
     visibility:
@@ -56,6 +58,7 @@ artifact_inventory:
     status: draft
     current_source: source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md
     normalized_source_path: source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md
+    render_proof: fixtures/psychology/foundations-assessment.proof.json
     paired_student_source: source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md
     audience: assessment_teacher
     visibility:
@@ -96,6 +99,7 @@ artifact_inventory:
   qa_bundle:
     status: draft
     current_source: fixtures/psychology/foundations-package.proof.json
+    assessment_source: fixtures/psychology/foundations-assessment.proof.json
     normalized_source_path: source/psychology_11_12/qa/cycle_a_foundations_qa.md
     audience: qa
     visibility:
@@ -138,8 +142,8 @@ required_roles:
     - artifact_inventory
 
 known_gaps:
-  - assessment_pack_not_yet_render_proven
-  - marking_guide_not_yet_render_proven
+  - assessment_pack_render_proof_added_not_artifact_rendered
+  - marking_guide_render_proof_added_not_artifact_rendered
   - source_sheet_stub_only
   - capstone_packet_stub_only
   - slide_source_missing
@@ -147,8 +151,8 @@ known_gaps:
   - normalized_student_packet_md_not_created
 
 next_actions:
-  - add_assessment_pack_render_proof
-  - add_marking_guide_render_proof
+  - render_assessment_pack_and_marking_guide
+  - run_qa_bundle_on_assessment_proof
   - create_source_sheet_stub_or_full_source
   - create_capstone_packet_stub_or_full_source
   - convert_or_reference_teacher_binder_in_normalized_source_folder
