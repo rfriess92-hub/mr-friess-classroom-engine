@@ -9,13 +9,70 @@
   "theme": "psychology",
   "course_family_id": "psychology-11-12",
   "unit_id": "psych_u1_foundations",
+  "lesson_id": "psych11_12_unit01_lesson01",
+  "version": "v1",
+  "source_spine": "OpenStax Psychology 2e",
   "source_manifest": "courses/psychology-11-12/packages/foundations/manifest.yaml",
   "source_packages": {
     "teacher_guide": "courses/psychology-11-12/packages/foundations/foundations_teacher_guide.yaml",
     "student_packet": "courses/psychology-11-12/packages/foundations/foundations_student_packet.yaml",
     "case_cards": "courses/psychology-11-12/packages/foundations/psychology_perspectives_case_cards.yaml"
   },
+  "instructional_contract": {
+    "estimated_time": "70-80 minutes",
+    "learning_target": "Students distinguish observation, inference, claim, and evidence while applying introductory psychology perspectives to bounded scenarios.",
+    "know": [
+      "Psychology studies behaviour and mental processes.",
+      "Observation, inference, claim, and evidence are different thinking moves.",
+      "Psychology perspectives are lenses for careful explanation."
+    ],
+    "do": [
+      "Separate observation from inference.",
+      "Use evidence from a scenario to support an explanation.",
+      "Connect one scenario to one introductory psychology perspective."
+    ],
+    "understand": "Careful psychological thinking moves from what can be observed toward explanations supported by evidence.",
+    "core_competencies": [
+      "critical_thinking",
+      "communication",
+      "personal_awareness_and_responsibility"
+    ],
+    "tiering": {
+      "supported": "Use vocabulary bank, sentence frames, and one assigned scenario.",
+      "proficient": "Choose a scenario, identify evidence, and explain one matching perspective.",
+      "extending": "Compare two possible perspectives and name the limit of the evidence."
+    }
+  },
+  "visibility_contract": {
+    "student_outputs_may_include": [
+      "instructions",
+      "learning_target",
+      "student_tasks",
+      "sentence_frames",
+      "success_criteria",
+      "completion_check"
+    ],
+    "student_outputs_must_not_include": [
+      "teacher_notes",
+      "answer_key",
+      "marking_notes",
+      "teacher_model",
+      "repo_debug_metadata"
+    ],
+    "teacher_outputs_may_include": [
+      "lesson_flow",
+      "timing",
+      "teacher_notes",
+      "model_response",
+      "assessment_focus",
+      "differentiation_notes"
+    ],
+    "answer_leakage_guard": true
+  },
   "teacher_guide": {
+    "audience": "teacher",
+    "visibility": { "student": false, "teacher": true },
+    "answer_key": true,
     "title": "Foundations of Psychology Teacher Guide",
     "overview": "This lesson introduces psychology as the study of behaviour and mental processes. Students practise separating observation, inference, claim, and evidence before applying introductory perspectives to classroom-safe scenarios.",
     "essential_question": "How do psychologists move from observation to careful explanation?",
@@ -39,6 +96,9 @@
     "assessment_focus": "Formative check: students distinguish observation from inference, use evidence, connect to one perspective, and complete the final checklist."
   },
   "task_sheet": {
+    "audience": "student",
+    "visibility": { "student": true, "teacher": false },
+    "answer_key": false,
     "title": "Foundations of Psychology Student Packet",
     "instructions": [
       "Start by answering the entry question in your own words.",
@@ -96,6 +156,21 @@
       "one limit statement"
     ]
   },
+  "qa_contract": {
+    "qa_categories": [
+      "content_issue",
+      "render_logic_issue",
+      "artifact_formatting_issue"
+    ],
+    "required_checks": [
+      "no_required_personal_disclosure",
+      "no_answer_key_leakage",
+      "teacher_student_outputs_separated",
+      "completion_check_present",
+      "tiering_supported_proficient_extending_present",
+      "openstax_spine_named"
+    ]
+  },
   "bundle": {
     "bundle_id": "psychology_foundations_package_bundle",
     "declared_outputs": ["task_sheet", "teacher_guide"]
@@ -104,16 +179,24 @@
     {
       "output_id": "psychology_foundations_student_packet",
       "output_type": "task_sheet",
+      "artifact_family": "student_packet",
       "audience": "student",
+      "visibility": { "student": true, "teacher": false },
+      "answer_key": false,
       "source_section": "task_sheet",
-      "bundle": "psychology_foundations_package_bundle"
+      "bundle": "psychology_foundations_package_bundle",
+      "expected_filename": "psych11_12_unit01_lesson01_student_packet_v1.pdf"
     },
     {
       "output_id": "psychology_foundations_teacher_guide",
       "output_type": "teacher_guide",
+      "artifact_family": "teacher_guide",
       "audience": "teacher",
+      "visibility": { "student": false, "teacher": true },
+      "answer_key": true,
       "source_section": "teacher_guide",
-      "bundle": "psychology_foundations_package_bundle"
+      "bundle": "psychology_foundations_package_bundle",
+      "expected_filename": "psych11_12_unit01_lesson01_teacher_guide_v1.pdf"
     }
   ]
 }
