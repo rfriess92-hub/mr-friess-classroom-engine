@@ -1,0 +1,112 @@
+schema_version: 1
+course_family_id: psychology-11-12
+course_instance_id: psychology-11-12-sem1
+semester_id: semester-1
+status: planning_source
+source_spine: courses/psychology-11-12/scope-sequence.yaml
+source_load_file: school-year/2026-2027/official-course-load.yaml
+
+instance_role: first_run_of_repeatable_course
+planning_warning: >
+  Semester 1 should generate pacing notes and revision notes for Semester 2, but student
+  evidence and assessment records must remain tied to psychology-11-12-sem1 only.
+
+semester_priorities:
+  - build the reusable Psychology 11/12 classroom routines
+  - test realistic pacing for the six-unit spine
+  - identify which case-analysis and discussion tasks work best
+  - collect notes for Semester 2 improvements
+  - keep student packets anchored by completion_check
+
+unit_sequence:
+  - unit_id: psych_u1_foundations
+    target_weeks: 1-2
+    first_run_focus:
+      - establish vocabulary routines
+      - establish discussion expectations
+      - test first case-analysis packet
+    first_packages_to_build:
+      - foundations_teacher_guide
+      - foundations_student_packet
+
+  - unit_id: psych_u2_research_brain_behaviour
+    target_weeks: 3-5
+    first_run_focus:
+      - make research methods concrete
+      - use media claims to practise evidence checking
+      - keep brain content introductory and applied
+    first_packages_to_build:
+      - research_methods_student_packet
+      - media_claim_analysis_packet
+
+  - unit_id: psych_u3_development_learning_identity
+    target_weeks: 6-8
+    first_run_focus:
+      - connect learning theory to school-relevant examples
+      - use bounded reflection prompts
+      - test development and identity discussion protocol
+    first_packages_to_build:
+      - learning_theory_case_packet
+      - memory_study_habits_student_packet
+
+  - unit_id: psych_u4_social_psychology
+    target_weeks: 9-11
+    first_run_focus:
+      - practise evidence-based discussion
+      - use scenario analysis before open debate
+      - collect one midcourse application task
+    first_packages_to_build:
+      - social_psychology_teacher_guide
+      - social_influence_case_packet
+
+  - unit_id: psych_u5_stress_wellbeing_and_coping
+    target_weeks: 12-14
+    first_run_focus:
+      - maintain careful classroom boundaries
+      - use support scenarios rather than personal disclosure prompts
+      - focus on vocabulary and responsible application
+    first_packages_to_build:
+      - stress_and_coping_student_packet
+      - wellbeing_boundaries_teacher_guide
+
+  - unit_id: psych_u6_applied_psychology_project
+    target_weeks: 15-18
+    first_run_focus:
+      - keep the project question bounded
+      - require source and claim checks
+      - use conference checkpoints before final product
+    first_packages_to_build:
+      - applied_psychology_project_brief
+      - project_conference_sheet
+      - project_rubric
+
+assessment_plan:
+  formative:
+    - weekly_quick_concept_check
+    - scenario_application_exit_ticket
+    - discussion_preparation_check
+  summative:
+    - midcourse_case_or_media_application
+    - final_applied_psychology_project
+  evidence_to_save_for_semester_2_planning:
+    - pacing_notes_by_unit
+    - confusing_concepts_to_reteach_differently
+    - best_case_prompts
+    - project_scope_adjustments
+    - assessment_load_notes
+
+qa_requirements:
+  student_packet_required_roles:
+    - learning_goal
+    - concept_input
+    - guided_workspace
+    - application_task
+    - completion_check
+  teacher_guide_required_roles:
+    - lesson_frame
+    - teacher_moves
+    - discussion_management
+    - differentiation
+    - assessment_notes
+  project_teacher_guide_conditional_roles:
+    - project_tools
