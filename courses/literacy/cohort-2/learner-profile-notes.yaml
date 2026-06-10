@@ -16,17 +16,30 @@ cohort_context:
     Literacy materials as a fresh start unless this profile is intentionally reset.
 
 carry_forward_fields:
-  current_reading_strengths: []
-  current_reading_needs: []
-  current_writing_strengths: []
-  current_writing_needs: []
-  sentence_control_focus: []
-  paragraph_control_focus: []
-  evidence_use_focus: []
-  revision_habit_focus: []
-  confidence_or_avoidance_patterns: []
-  successful_scaffolds: []
-  incomplete_or_reassessment_items: []
+  field_names:
+    - current_reading_strengths
+    - current_reading_needs
+    - current_writing_strengths
+    - current_writing_needs
+    - sentence_control_focus
+    - paragraph_control_focus
+    - evidence_use_focus
+    - revision_habit_focus
+    - confidence_or_avoidance_patterns
+    - successful_scaffolds
+    - incomplete_or_reassessment_items
+  values:
+    current_reading_strengths: []
+    current_reading_needs: []
+    current_writing_strengths: []
+    current_writing_needs: []
+    sentence_control_focus: []
+    paragraph_control_focus: []
+    evidence_use_focus: []
+    revision_habit_focus: []
+    confidence_or_avoidance_patterns: []
+    successful_scaffolds: []
+    incomplete_or_reassessment_items: []
 
 semester_transition_questions:
   - What can this cohort now do more independently than at the start of Semester 1?
