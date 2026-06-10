@@ -8,5 +8,5 @@ test('Psychology source inventory tracks Cycle A files', () => {
     stdio: ['ignore', 'pipe', 'pipe'],
   })
 
-  assert.match(output, /psychology-source-inventory ok: A-F tracked, Cycle A linked, assessment sources present/)
+  assert.match(output, /psychology-source-inventory ok: A-F tracked, Cycle A linked, assessment proof present/)
 })
