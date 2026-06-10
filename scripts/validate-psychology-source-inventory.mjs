@@ -77,12 +77,14 @@ mustInclude(cycleA, 'cycle_title: Foundations')
 mustInclude(cycleA, 'source_spine: OpenStax Psychology 2e')
 mustInclude(cycleA, 'artifact_inventory:')
 mustInclude(cycleA, 'assessment_render_proof: fixtures/psychology/foundations-assessment.proof.json')
+mustInclude(cycleA, 'slide_render_proof: fixtures/psychology/foundations-slides.proof.json')
 mustInclude(cycleA, 'slide_source: source/psychology_11_12/slides/source/cycle_a_foundations_slides.md')
 
 const activePaths = [
   extractIndentedPath(cycleA, 'package_manifest'),
   extractIndentedPath(cycleA, 'render_proof'),
   extractIndentedPath(cycleA, 'assessment_render_proof'),
+  extractIndentedPath(cycleA, 'slide_render_proof'),
   extractIndentedPath(cycleA, 'teacher_package_source'),
   extractIndentedPath(cycleA, 'student_package_source'),
   extractIndentedPath(cycleA, 'case_card_source'),
@@ -115,6 +117,7 @@ assert.equal(cycleAStatuses.includes('missing'), false, 'Cycle A manifest should
 mustNotInclude(cycleA, 'source_sheet_stub_only', 'old source sheet stub gap')
 mustNotInclude(cycleA, 'capstone_packet_stub_only', 'old capstone stub gap')
 mustNotInclude(cycleA, 'slide_source_missing', 'old slide source missing gap')
+mustNotInclude(cycleA, 'slide_source_not_yet_render_proven', 'old slide proof gap')
 
 const assessmentPack = text('source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md')
 const markingGuide = text('source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md')
@@ -175,12 +178,20 @@ assert.equal(assessmentProof.source_spine, 'OpenStax Psychology 2e')
 assert.ok(assessmentProof.outputs.some((output) => output.output_id === 'psychology_foundations_student_assessment' && output.audience === 'student' && output.answer_key === false))
 assert.ok(assessmentProof.outputs.some((output) => output.output_id === 'psychology_foundations_teacher_marking_guide' && output.audience === 'teacher' && output.answer_key === true))
 
+const slideProof = JSON.parse(text('fixtures/psychology/foundations-slides.proof.json'))
+assert.equal(slideProof.package_id, 'psychology_foundations_slides_proof')
+assert.equal(slideProof.course_family_id, 'psychology-11-12')
+assert.equal(slideProof.unit_id, 'psych_u1_foundations')
+assert.equal(slideProof.source_spine, 'OpenStax Psychology 2e')
+assert.equal(slideProof.slides.length, 15)
+assert.ok(slideProof.outputs.some((output) => output.output_id === 'psychology_foundations_l1_slides' && output.output_type === 'slides' && output.audience === 'student'))
+
 for (const gap of [
   'assessment_pack_render_proof_added_not_artifact_rendered',
   'marking_guide_render_proof_added_not_artifact_rendered',
   'source_sheet_not_yet_render_proven',
   'capstone_packet_not_yet_render_proven',
-  'slide_source_not_yet_render_proven',
+  'slide_source_render_proof_added_not_artifact_rendered',
 ]) {
   mustInclude(cycleA, gap, `known gap ${gap}`)
 }
@@ -193,8 +204,9 @@ for (const oldGap of [
   'source_sheet_stub_only',
   'capstone_packet_stub_only',
   'slide_source_missing',
+  'slide_source_not_yet_render_proven',
 ]) {
   mustNotInclude(cycleA, oldGap, `old gap ${oldGap}`)
 }
 
-console.log('psychology-source-inventory ok: A-F tracked, Cycle A linked, slide source present')
+console.log('psychology-source-inventory ok: A-F tracked, Cycle A linked, slide proof present')
