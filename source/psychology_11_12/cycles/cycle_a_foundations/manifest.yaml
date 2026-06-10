@@ -67,8 +67,8 @@ artifact_inventory:
     answer_key: true
 
   source_sheet:
-    status: stub
-    current_source: null
+    status: draft
+    current_source: source/psychology_11_12/cycles/cycle_a_foundations/source_sheet.md
     normalized_source_path: source/psychology_11_12/cycles/cycle_a_foundations/source_sheet.md
     audience: student
     visibility:
@@ -77,8 +77,8 @@ artifact_inventory:
     answer_key: false
 
   capstone_packet:
-    status: stub
-    current_source: null
+    status: draft
+    current_source: source/psychology_11_12/cycles/cycle_a_foundations/capstone_packet.md
     normalized_source_path: source/psychology_11_12/cycles/cycle_a_foundations/capstone_packet.md
     audience: student
     visibility:
@@ -134,6 +134,18 @@ required_roles:
     - look_fors
     - feedback_language
     - accommodation_notes
+  source_sheet:
+    - source_spine
+    - key_source_ideas
+    - vocabulary_support
+    - source_based_practice
+    - completion_check
+  capstone_packet:
+    - capstone_task
+    - learning_target
+    - evidence_needed
+    - research_reasoning
+    - final_explanation
   qa_bundle:
     - manifest
     - route_plan
@@ -144,8 +156,8 @@ required_roles:
 known_gaps:
   - assessment_pack_render_proof_added_not_artifact_rendered
   - marking_guide_render_proof_added_not_artifact_rendered
-  - source_sheet_stub_only
-  - capstone_packet_stub_only
+  - source_sheet_not_yet_render_proven
+  - capstone_packet_not_yet_render_proven
   - slide_source_missing
   - normalized_teacher_binder_md_not_created
   - normalized_student_packet_md_not_created
@@ -153,7 +165,7 @@ known_gaps:
 next_actions:
   - render_assessment_pack_and_marking_guide
   - run_qa_bundle_on_assessment_proof
-  - create_source_sheet_stub_or_full_source
-  - create_capstone_packet_stub_or_full_source
+  - add_source_sheet_render_proof
+  - add_capstone_packet_render_proof
   - convert_or_reference_teacher_binder_in_normalized_source_folder
   - convert_or_reference_student_packet_in_normalized_source_folder
