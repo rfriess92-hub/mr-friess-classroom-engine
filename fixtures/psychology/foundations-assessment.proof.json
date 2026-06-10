@@ -133,6 +133,14 @@
     "visibility": { "student": false, "teacher": true },
     "answer_key": true,
     "title": "Cycle A Foundations Marking Guide",
+    "entries": [
+      { "item": "1", "look_for": "Psychology as the scientific study of behaviour and mental processes." },
+      { "item": "2", "look_for": "Evidence supports claims, tests ideas, and helps avoid guessing." },
+      { "item": "3", "look_for": "Observation is directly visible; inference is a possible explanation that is not proven." },
+      { "item": "8", "look_for": "A survey relationship does not prove causation because other variables could be involved." },
+      { "item": "10", "look_for": "Ethical concerns may include fairness, consent, privacy, or avoiding disadvantage." },
+      { "item": "13", "look_for": "Students name what cannot be known from the scenario alone." }
+    ],
     "scoring_summary": [
       { "section": "Part A", "points": 6, "focus": "definition, evidence, observation and inference" },
       { "section": "Part B", "points": 6, "focus": "claim analysis and evidence needed" },
@@ -146,6 +154,11 @@
       "Observation should be separated from inference.",
       "Correlation should not be treated as proof of causation.",
       "Ethical concerns may include fairness, consent, privacy, or avoiding disadvantage."
+    ],
+    "scoring_guidance": [
+      "Use the rubric to reward cautious reasoning and evidence language.",
+      "Do not require terminology beyond the Cycle A target.",
+      "Credit accurate limit statements even when phrasing is simple."
     ],
     "rubric_levels": [
       "Emerging",
@@ -179,6 +192,7 @@
       "answer_key": false,
       "source_section": "assessment",
       "bundle": "psychology_foundations_assessment_bundle",
+      "final_evidence": true,
       "expected_filename": "psych11_12_cycle_a_foundations_assessment_student_v1.pdf"
     },
     {
