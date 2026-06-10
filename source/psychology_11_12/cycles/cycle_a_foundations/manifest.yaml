@@ -20,6 +20,9 @@ active_render_links:
   teacher_package_source: courses/psychology-11-12/packages/foundations/foundations_teacher_guide.yaml
   student_package_source: courses/psychology-11-12/packages/foundations/foundations_student_packet.yaml
   case_card_source: courses/psychology-11-12/packages/foundations/psychology_perspectives_case_cards.yaml
+  slide_source: source/psychology_11_12/slides/source/cycle_a_foundations_slides.md
+  uploaded_slide_source: "Psychology_11_12_ALL_CYCLES_COMPLETE_WITH_SLIDES_v1(2).zip::07_STUDENT_READY_SLIDES/Cycle_A/Cycle_A_L1_What_Is_Psychology_STUDENT_READY.pptx"
+  legacy_slide_source: units/psychology/cycles/cycle-a/packages/psych-11-12-cycle-a-l1-what-is-psychology-v3.json
 
 artifact_inventory:
   teacher_binder:
@@ -87,9 +90,11 @@ artifact_inventory:
     answer_key: false
 
   slide_source:
-    status: missing
-    current_source: null
+    status: draft
+    current_source: source/psychology_11_12/slides/source/cycle_a_foundations_slides.md
     normalized_source_path: source/psychology_11_12/slides/source/cycle_a_foundations_slides.md
+    uploaded_source: "Psychology_11_12_ALL_CYCLES_COMPLETE_WITH_SLIDES_v1(2).zip::07_STUDENT_READY_SLIDES/Cycle_A/Cycle_A_L1_What_Is_Psychology_STUDENT_READY.pptx"
+    legacy_repo_source: units/psychology/cycles/cycle-a/packages/psych-11-12-cycle-a-l1-what-is-psychology-v3.json
     audience: student
     visibility:
       student: true
@@ -146,6 +151,14 @@ required_roles:
     - evidence_needed
     - research_reasoning
     - final_explanation
+  slide_source:
+    - mission
+    - misconception
+    - concept
+    - compare
+    - apply
+    - check
+    - takeaway
   qa_bundle:
     - manifest
     - route_plan
@@ -158,7 +171,7 @@ known_gaps:
   - marking_guide_render_proof_added_not_artifact_rendered
   - source_sheet_not_yet_render_proven
   - capstone_packet_not_yet_render_proven
-  - slide_source_missing
+  - slide_source_not_yet_render_proven
   - normalized_teacher_binder_md_not_created
   - normalized_student_packet_md_not_created
 
@@ -167,5 +180,6 @@ next_actions:
   - run_qa_bundle_on_assessment_proof
   - add_source_sheet_render_proof
   - add_capstone_packet_render_proof
+  - add_slide_source_render_proof
   - convert_or_reference_teacher_binder_in_normalized_source_folder
   - convert_or_reference_student_packet_in_normalized_source_folder
