@@ -13,6 +13,7 @@
     "route:plan:activity": "node scripts/route-plan-activity.mjs",
     "render:package": "node scripts/render-package.mjs",
     "render:unit": "node scripts/render-unit.mjs",
+    "content:inventory": "node scripts/validate-psychology-source-inventory.mjs",
     "qa:package": "node scripts/qa-package.mjs",
     "qa:unit": "node scripts/qa-unit.mjs",
     "qa:psychology-source": "node scripts/qa-psychology-source-archive.mjs",
