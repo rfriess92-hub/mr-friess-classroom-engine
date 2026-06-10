@@ -1,6 +1,7 @@
 // Official 2026-2027 course-load guardrails.
 // CI probe branch touches tests/** so repo-tests pull_request filters run.
 // Diagnostic workflow probe rerun.
+// Repo-tests workflow now installs Playwright Chromium.
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
