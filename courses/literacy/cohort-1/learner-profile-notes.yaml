@@ -1,0 +1,31 @@
+schema_version: 1
+course_family_id: literacy
+cohort_id: literacy_cohort_1
+course_instance_ids:
+  - literacy-cohort-1-sem1
+status: placeholder
+privacy_note: >
+  Do not store personally identifying student information in this repo. Use anonymized
+  patterns, classroom-level needs, and teacher-facing planning notes only.
+
+cohort_context:
+  continuity_status: returning_from_current_semester
+  teacher_assumption: >
+    This group has prior classroom context and should not be treated as a brand-new
+    Literacy class when generating routines, diagnostics, or support materials.
+
+classroom_patterns_to_fill:
+  reading_strengths: []
+  reading_needs: []
+  writing_strengths: []
+  writing_needs: []
+  confidence_or_avoidance_patterns: []
+  routines_that_already_work: []
+  scaffolds_to_keep: []
+  scaffolds_to_fade: []
+
+planning_use:
+  - preserve familiar routines where they are working
+  - avoid babyish materials
+  - make completion evidence visible
+  - use known strengths to accelerate Semester 1 planning
