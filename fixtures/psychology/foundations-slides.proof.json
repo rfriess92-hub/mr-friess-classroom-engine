@@ -1,0 +1,227 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "psychology_foundations_slides_proof",
+  "primary_architecture": "lesson_package",
+  "grade_band": "11-12",
+  "subject": "Psychology",
+  "grade": "11/12",
+  "topic": "Cycle A Foundations — What Is Psychology?",
+  "theme": "psychology",
+  "course_family_id": "psychology-11-12",
+  "unit_id": "psych_u1_foundations",
+  "cycle_id": "A",
+  "cycle_title": "Foundations",
+  "lesson_id": "psych11_12_cycle_a_l1_what_is_psychology",
+  "version": "v1",
+  "source_spine": "OpenStax Psychology 2e",
+  "source_manifest": "source/psychology_11_12/cycles/cycle_a_foundations/manifest.yaml",
+  "source_packages": {
+    "slide_source": "source/psychology_11_12/slides/source/cycle_a_foundations_slides.md",
+    "uploaded_pptx": "Psychology_11_12_ALL_CYCLES_COMPLETE_WITH_SLIDES_v1(2).zip::07_STUDENT_READY_SLIDES/Cycle_A/Cycle_A_L1_What_Is_Psychology_STUDENT_READY.pptx",
+    "legacy_repo_source": "units/psychology/cycles/cycle-a/packages/psych-11-12-cycle-a-l1-what-is-psychology-v3.json"
+  },
+  "instructional_contract": {
+    "estimated_time": "45-60 minutes",
+    "learning_target": "Students distinguish psychology from guessing, advice, diagnosis, and unsupported claims by using evidence and cautious reasoning.",
+    "know": [
+      "psychology",
+      "mind",
+      "behaviour",
+      "evidence",
+      "hypothesis",
+      "theory",
+      "limits",
+      "multiple causes"
+    ],
+    "do": [
+      "distinguish mind from behaviour",
+      "explain why evidence is stronger than guessing",
+      "use claim-evidence-method-limits reasoning",
+      "avoid diagnostic or whole-person labels"
+    ],
+    "understand": "Psychology is an evidence-based way to explain behaviour and mental processes carefully, not a shortcut for labelling people."
+  },
+  "visibility_contract": {
+    "student_outputs_must_not_include": [
+      "answer_key",
+      "teacher_notes",
+      "marking_notes",
+      "diagnostic instructions"
+    ],
+    "teacher_outputs_may_include": []
+  },
+  "slides": [
+    {
+      "type": "TITLE",
+      "title": "What Is Psychology?",
+      "layout": "hero",
+      "content": {
+        "subtitle": "The science of mind and behaviour — not mind-reading, guessing, or labelling people.",
+        "bullets": ["claim → evidence → method → limits", "mind", "behaviour", "evidence", "limits"]
+      }
+    },
+    {
+      "type": "ENGAGE",
+      "title": "Start by clearing the myth",
+      "layout": "prompt",
+      "content": {
+        "scenario": "Psychology is not reading people, diagnosing classmates, personality-quiz entertainment, or I-just-know explanations.",
+        "prompts": ["What do people sometimes think psychology means?", "Why are those shortcuts risky?", "What would make a claim stronger?"]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "What psychology actually studies",
+      "layout": "two_column",
+      "content": {
+        "subtitle": "Psychology studies mind and behaviour scientifically.",
+        "columns": [
+          { "title": "Mind", "items": ["thoughts", "memories", "motives", "emotions", "perceptions", "attention"] },
+          { "title": "Behaviour", "items": ["actions", "facial expressions", "choices", "words", "reactions", "habits"] }
+        ],
+        "caption": "OpenStax Psychology 2e: Ch. 1.1"
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "Mind vs behaviour",
+      "layout": "two_column_compare",
+      "content": {
+        "left": "Mind: a student feels their heart race and thinks everyone will notice if they make a mistake.",
+        "right": "Behaviour: the student avoids eye contact, asks to go last, or skips presentation day.",
+        "prompts": ["Which side can be observed directly?", "What evidence would help explain the behaviour?"]
+      }
+    },
+    {
+      "type": "APPLY",
+      "title": "Evidence beats guessing",
+      "layout": "planner_model",
+      "content": {
+        "model": "A stronger explanation moves in this order: claim, evidence, method, limits.",
+        "supports": ["Claim: what are you saying?", "Evidence: what supports it?", "Method: how was evidence gathered?", "Limits: what else could explain it?"]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "The vocabulary is small, but powerful",
+      "layout": "bullet_focus",
+      "content": {
+        "bullets": [
+          "Hypothesis: a testable prediction.",
+          "Evidence: information gathered through observation, measurement, or research.",
+          "Theory: a broad explanation supported over time.",
+          "Explanation: a reasoned answer that connects evidence to a concept.",
+          "Limits: what the evidence cannot show yet.",
+          "Multiple causes: behaviour usually has more than one influence."
+        ]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "How psychologists build knowledge",
+      "layout": "summary_rows",
+      "content": {
+        "rows": ["Observe a pattern.", "Ask a researchable question.", "Predict with a testable hypothesis.", "Test using an appropriate method.", "Revise the explanation as evidence improves."],
+        "caption": "Science is a loop, not a one-time answer."
+      }
+    },
+    {
+      "type": "APPLY",
+      "title": "Many causes, not one simple label",
+      "layout": "prompt",
+      "content": {
+        "scenario": "A behaviour can have several influences at once: emotion, attention, memory, sleep, motivation, family, friends, school, culture, past learning, habits, and recent events.",
+        "prompts": ["Why is one simple label usually too weak?", "Which influences might be inside the person?", "Which influences might come from context?"]
+      }
+    },
+    {
+      "type": "APPLY",
+      "title": "Example: avoiding presentations",
+      "layout": "bullet_focus",
+      "content": {
+        "bullets": [
+          "Case evidence: a student skips two presentation days and looks tense when the topic comes up.",
+          "Possible explanation: anxiety, but we cannot diagnose from this.",
+          "Possible explanation: low preparation or incomplete work.",
+          "Possible explanation: past embarrassment or outside stress.",
+          "A careful answer keeps possibilities open until evidence is stronger."
+        ]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "Use the tools carefully",
+      "layout": "bullet_focus",
+      "content": {
+        "bullets": ["No diagnosis from course vocabulary.", "No identity labels from one behaviour.", "Ask what evidence exists and what context matters.", "Keep more than one possible cause on the table."]
+      }
+    },
+    {
+      "type": "APPLY",
+      "title": "Weak explanation vs stronger explanation",
+      "layout": "two_column_compare",
+      "content": {
+        "left": "Weak: They avoid presentations because they are lazy.",
+        "right": "Stronger: They may be avoiding because of anxiety, low preparation, past embarrassment, or another factor. We need more evidence.",
+        "prompts": ["Which version uses evidence more carefully?", "Which version avoids overclaiming?"]
+      }
+    },
+    {
+      "type": "LEARN",
+      "title": "Where this comes from",
+      "layout": "bullet_focus",
+      "content": {
+        "bullets": ["OpenStax Ch. 1.1: psychology is the scientific study of mind and behaviour.", "OpenStax Ch. 2.1–2.2: empirical methods, hypotheses, and testing claims.", "Reading move: definition → example → evidence → limit."]
+      }
+    },
+    {
+      "type": "REFLECT",
+      "title": "Why this course matters",
+      "layout": "reflect",
+      "content": {
+        "prompts": ["How can psychology reduce snap judgment?", "How can better questions improve explanations?", "How can psychology help us explain behaviour without reducing people to labels?"]
+      }
+    },
+    {
+      "type": "REFLECT",
+      "title": "Quick check",
+      "layout": "reflect",
+      "content": {
+        "prompts": ["Psychology is the scientific study of ______ and ______.", "Name one mind example and one behaviour example.", "Turn 'They are lazy' into a stronger explanation."],
+        "caption": "A strong answer names the concept, uses evidence, and avoids overclaiming."
+      }
+    },
+    {
+      "type": "SUMMARY",
+      "title": "What should stick",
+      "layout": "summary_rows",
+      "content": {
+        "rows": [
+          "Psychology studies mind and behaviour scientifically.",
+          "Evidence is stronger than confident guessing.",
+          "A hypothesis is testable; a theory is broad and supported over time.",
+          "One behaviour does not equal a diagnosis or identity.",
+          "Good explanations include context, multiple causes, and limits."
+        ],
+        "caption": "Next: how the brain, body, and behaviour connect."
+      }
+    }
+  ],
+  "bundle": {
+    "bundle_id": "psychology_foundations_slides_bundle",
+    "declared_outputs": ["slides"]
+  },
+  "outputs": [
+    {
+      "output_id": "psychology_foundations_l1_slides",
+      "output_type": "slides",
+      "artifact_family": "slide_deck",
+      "audience": "student",
+      "visibility": { "student": true, "teacher": false },
+      "answer_key": false,
+      "source_section": "slides",
+      "bundle": "psychology_foundations_slides_bundle",
+      "expected_filename": "psychology_foundations_l1_slides.pptx"
+    }
+  ]
+}
