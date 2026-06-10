@@ -7,10 +7,12 @@ status: draft_package_source
 files:
   teacher_guide: courses/psychology-11-12/packages/foundations/foundations_teacher_guide.yaml
   student_packet: courses/psychology-11-12/packages/foundations/foundations_student_packet.yaml
+  case_cards: courses/psychology-11-12/packages/foundations/psychology_perspectives_case_cards.yaml
 
 package_ids:
   - foundations_teacher_guide
   - foundations_student_packet
+  - psychology_perspectives_case_cards
 
 required_student_packet_roles:
   - learning_goal
@@ -26,3 +28,11 @@ required_teacher_guide_roles:
   - discussion_management
   - differentiation
   - assessment_notes
+
+required_case_card_roles:
+  - case_context
+  - concept_bank
+  - evidence_finder
+  - analysis_questions
+  - written_application
+  - completion_check
