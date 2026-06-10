@@ -1,0 +1,179 @@
+schema_version: 1
+course_family_id: psychology-11-12
+course_instance_compatibility:
+  - psychology-11-12-sem1
+  - psychology-11-12-sem2
+package_id: psychology_perspectives_case_cards
+package_type: case_analysis_packet
+unit_id: psych_u1_foundations
+title: Psychology Perspectives Case Cards
+status: draft_package_source
+source_spine: courses/psychology-11-12/scope-sequence.yaml
+source_package_contract: courses/psychology-11-12/package-types.yaml
+supports_packages:
+  - foundations_teacher_guide
+  - foundations_student_packet
+
+purpose: >
+  Provide reusable, school-appropriate scenarios for practising observation, inference,
+  evidence, and introductory psychology perspectives.
+
+student_directions: >
+  Read the card. First identify what can be directly observed. Then make one careful inference.
+  Finally, choose one psychology perspective that could help explain the scenario and support
+  your choice with evidence from the card.
+
+perspective_bank:
+  cognitive: thinking, attention, memory, and problem solving
+  biological: brain, body, and physical processes
+  social: groups, relationships, expectations, and situations
+  developmental: change and growth over time
+  behavioural: actions, learning, habits, and rewards
+
+analysis_frame:
+  - observation: What can you directly notice?
+  - inference: What is one possible explanation?
+  - evidence: What detail supports your explanation?
+  - perspective: Which lens fits best?
+  - limit: What can you not know from this scenario alone?
+
+case_cards:
+  - card_id: foundations_card_01
+    title: The Erased Sentence
+    scenario: >
+      A student writes one sentence, erases it, looks at the example on the board, and then
+      starts again.
+    likely_perspectives:
+      - cognitive
+      - behavioural
+    teacher_note: Good for separating observed behaviour from assumed feelings.
+    student_prompt: What can you observe, and what would be only an inference?
+
+  - card_id: foundations_card_02
+    title: The Changed Answer
+    scenario: >
+      A group starts with three different answers. After one student explains their reasoning,
+      everyone agrees to revise the group answer.
+    likely_perspectives:
+      - social
+      - cognitive
+    teacher_note: Good for discussing group influence and new evidence without assuming pressure.
+    student_prompt: Did the group change because of social influence, stronger evidence, or both?
+
+  - card_id: foundations_card_03
+    title: The Practice Routine
+    scenario: >
+      A student practises vocabulary for five minutes each day. By Friday, they answer more
+      quickly and make fewer mistakes.
+    likely_perspectives:
+      - behavioural
+      - cognitive
+    teacher_note: Good for learning, habit, feedback, and memory connections.
+    student_prompt: Which details show practice, learning, or memory?
+
+  - card_id: foundations_card_04
+    title: The New Seat
+    scenario: >
+      A student participates more after moving closer to two classmates who are already working
+      quietly.
+    likely_perspectives:
+      - social
+      - behavioural
+    teacher_note: Good for environment, peer context, and behaviour change.
+    student_prompt: What changed in the situation, and what changed in the behaviour?
+
+  - card_id: foundations_card_05
+    title: The Remembered Route
+    scenario: >
+      A student who felt unsure on the first day of school now walks directly to each class
+      without checking the map.
+    likely_perspectives:
+      - cognitive
+      - developmental
+    teacher_note: Good for memory, learning over time, and growth.
+    student_prompt: What evidence shows change over time?
+
+  - card_id: foundations_card_06
+    title: The Quiet Group
+    scenario: >
+      A table group stays quiet during discussion until the teacher gives them sentence starters.
+      After that, each person shares at least one idea.
+    likely_perspectives:
+      - cognitive
+      - social
+      - behavioural
+    teacher_note: Good for access supports, group norms, and task structure.
+    student_prompt: What might the sentence starters have changed?
+
+  - card_id: foundations_card_07
+    title: The Warm-Up Question
+    scenario: >
+      Students answer more quickly when the first question connects to something they already
+      practised earlier in the week.
+    likely_perspectives:
+      - cognitive
+      - behavioural
+    teacher_note: Good for prior knowledge, retrieval, and routine.
+    student_prompt: What evidence suggests prior practice mattered?
+
+  - card_id: foundations_card_08
+    title: The Audience Shift
+    scenario: >
+      A student gives a short explanation to a partner easily, but speaks more slowly when the
+      same explanation is shared with the whole class.
+    likely_perspectives:
+      - social
+      - cognitive
+    teacher_note: Good for audience, situation, attention, and performance context.
+    student_prompt: How does the audience seem connected to the behaviour?
+
+  - card_id: foundations_card_09
+    title: The Checklist
+    scenario: >
+      A student who usually misses one part of an assignment completes every step when using a
+      visible checklist.
+    likely_perspectives:
+      - cognitive
+      - behavioural
+    teacher_note: Good for external supports, attention, and task completion.
+    student_prompt: What did the checklist make easier to do?
+
+  - card_id: foundations_card_10
+    title: The Practice Partner
+    scenario: >
+      Two students quiz each other before a vocabulary check. Both students correct mistakes
+      before handing in the final task.
+    likely_perspectives:
+      - social
+      - cognitive
+      - behavioural
+    teacher_note: Good for peer practice, feedback, and learning evidence.
+    student_prompt: Which perspective best explains the improvement? Defend your choice.
+
+teacher_use:
+  quick_sort:
+    - Give each group one card.
+    - Ask students to underline observations and circle inferences.
+    - Have groups choose one perspective and explain their evidence.
+  extension:
+    - Ask students to choose a second possible perspective.
+    - Ask students to name one thing the scenario does not prove.
+
+completion_check:
+  student_product:
+    - one_observation
+    - one_inference
+    - one_piece_of_evidence
+    - one_perspective_choice
+    - one_limit_statement
+
+qa_requirements:
+  required_roles_present:
+    - case_context
+    - concept_bank
+    - evidence_finder
+    - analysis_questions
+    - written_application
+    - completion_check
+  teacher_student_separation:
+    - teacher_notes_support_instruction_only
