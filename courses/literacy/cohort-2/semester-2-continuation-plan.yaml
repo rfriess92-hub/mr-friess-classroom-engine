@@ -1,0 +1,52 @@
+schema_version: 1
+course_family_id: literacy
+cohort_id: literacy_cohort_2
+course_instance_id: literacy-cohort-2-sem2
+semester_id: semester-2
+status: placeholder
+source_profile: courses/literacy/cohort-2/learner-profile-notes.yaml
+continues_from: courses/literacy/cohort-2/semester-1-plan.yaml
+
+planning_role: two_semester_sequence_finish
+
+reentry_priorities:
+  - inherit Semester 1 evidence before generating new diagnostics
+  - preserve stable routines for classroom continuity
+  - target unfinished literacy goals directly
+  - fade supports where evidence shows readiness
+  - collect final growth evidence
+
+first_package_targets:
+  - semester_2_reentry_packet
+  - carry_forward_goal_conference_sheet
+  - targeted_revision_packet
+  - final_growth_evidence_packet
+
+required_inputs_from_semester_1:
+  - current_reading_strengths
+  - current_reading_needs
+  - current_writing_strengths
+  - current_writing_needs
+  - successful_scaffolds
+  - incomplete_or_reassessment_items
+
+semester_2_outputs:
+  - final_reading_growth_evidence
+  - final_writing_growth_evidence
+  - supports_to_continue_beyond_course
+  - reassessment_or_completion_status
+  - student-facing growth reflection
+
+qa_requirements:
+  student_packet_required_roles:
+    - learning_goal
+    - model_or_example
+    - guided_workspace
+    - independent_attempt
+    - completion_check
+  teacher_guide_required_roles:
+    - lesson_frame
+    - teacher_moves
+    - differentiation
+    - assessment_notes
+    - follow_up_groups
