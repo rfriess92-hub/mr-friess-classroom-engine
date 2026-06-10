@@ -1,0 +1,28 @@
+schema_version: 1
+course_family_id: psychology-11-12
+unit_id: psych_u1_foundations
+package_group_id: foundations
+status: draft_package_source
+
+files:
+  teacher_guide: courses/psychology-11-12/packages/foundations/foundations_teacher_guide.yaml
+  student_packet: courses/psychology-11-12/packages/foundations/foundations_student_packet.yaml
+
+package_ids:
+  - foundations_teacher_guide
+  - foundations_student_packet
+
+required_student_packet_roles:
+  - learning_goal
+  - concept_input
+  - guided_workspace
+  - application_task
+  - completion_check
+
+required_teacher_guide_roles:
+  - lesson_frame
+  - teacher_moves
+  - concept_sequence
+  - discussion_management
+  - differentiation
+  - assessment_notes
