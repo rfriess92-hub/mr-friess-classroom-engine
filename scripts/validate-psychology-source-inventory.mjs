@@ -87,6 +87,8 @@ const activePaths = [
   extractIndentedPath(cycleA, 'case_card_source'),
   'source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md',
   'source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md',
+  'source/psychology_11_12/cycles/cycle_a_foundations/source_sheet.md',
+  'source/psychology_11_12/cycles/cycle_a_foundations/capstone_packet.md',
 ].filter(Boolean)
 
 for (const path of activePaths) mustExist(path)
@@ -108,10 +110,13 @@ const cycleAStatuses = validateStatuses(cycleA, 'Cycle A manifest')
 assert.ok(cycleAStatuses.includes('built'), 'Cycle A should identify built assets')
 assert.ok(cycleAStatuses.includes('draft'), 'Cycle A should identify draft assets')
 assert.ok(cycleAStatuses.includes('missing'), 'Cycle A should identify remaining missing assets')
-assert.ok(cycleAStatuses.includes('stub'), 'Cycle A should identify stub assets')
+mustNotInclude(cycleA, 'source_sheet_stub_only', 'old source sheet stub gap')
+mustNotInclude(cycleA, 'capstone_packet_stub_only', 'old capstone stub gap')
 
 const assessmentPack = text('source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md')
 const markingGuide = text('source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md')
+const sourceSheet = text('source/psychology_11_12/cycles/cycle_a_foundations/source_sheet.md')
+const capstonePacket = text('source/psychology_11_12/cycles/cycle_a_foundations/capstone_packet.md')
 
 mustInclude(assessmentPack, 'artifact_type: assessment_pack')
 mustInclude(assessmentPack, 'audience: assessment_student')
@@ -125,6 +130,20 @@ mustInclude(markingGuide, 'answer_key: true')
 mustInclude(markingGuide, 'paired_student_source: source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md')
 mustInclude(markingGuide, '## Answer Key and Look-Fors')
 mustInclude(markingGuide, '## Rubric')
+
+mustInclude(sourceSheet, 'artifact_type: source_sheet')
+mustInclude(sourceSheet, 'audience: student')
+mustInclude(sourceSheet, 'answer_key: false')
+mustInclude(sourceSheet, '## Key Source Ideas')
+mustInclude(sourceSheet, '## Vocabulary Support')
+mustInclude(sourceSheet, '## Completion Check')
+
+mustInclude(capstonePacket, 'artifact_type: capstone_packet')
+mustInclude(capstonePacket, 'audience: student')
+mustInclude(capstonePacket, 'answer_key: false')
+mustInclude(capstonePacket, '## Capstone Task')
+mustInclude(capstonePacket, '## Final Explanation')
+mustInclude(capstonePacket, '## Student Checklist')
 
 const proof = JSON.parse(text('fixtures/psychology/foundations-package.proof.json'))
 assert.equal(proof.package_id, 'psychology_foundations_package_proof')
@@ -143,8 +162,8 @@ assert.ok(assessmentProof.outputs.some((output) => output.output_id === 'psychol
 for (const gap of [
   'assessment_pack_render_proof_added_not_artifact_rendered',
   'marking_guide_render_proof_added_not_artifact_rendered',
-  'source_sheet_stub_only',
-  'capstone_packet_stub_only',
+  'source_sheet_not_yet_render_proven',
+  'capstone_packet_not_yet_render_proven',
   'slide_source_missing',
 ]) {
   mustInclude(cycleA, gap, `known gap ${gap}`)
@@ -155,8 +174,10 @@ for (const oldGap of [
   'marking_guide_missing_as_explicit_source',
   'assessment_pack_not_yet_render_proven',
   'marking_guide_not_yet_render_proven',
+  'source_sheet_stub_only',
+  'capstone_packet_stub_only',
 ]) {
   mustNotInclude(cycleA, oldGap, `old gap ${oldGap}`)
 }
 
-console.log('psychology-source-inventory ok: A-F tracked, Cycle A linked, assessment proof present')
+console.log('psychology-source-inventory ok: A-F tracked, Cycle A linked, source and capstone present')
