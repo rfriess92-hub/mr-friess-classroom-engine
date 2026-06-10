@@ -1,0 +1,136 @@
+schema_version: 1
+course: Psychology 11/12
+cycle_id: A
+cycle_title: Foundations
+cycle_aliases:
+  - Psychology as a Science
+status: draft_manifest
+source_spine: OpenStax Psychology 2e
+openstax_alignment:
+  - Chapter 1: Introduction to Psychology
+  - Chapter 2: Psychological Research
+content_contract: CONTENT.md
+content_breakdown: CONTENT_BREAKDOWN.md
+render_handoff: HANDOFF.md
+
+active_render_links:
+  package_manifest: courses/psychology-11-12/packages/foundations/manifest.yaml
+  render_proof: fixtures/psychology/foundations-package.proof.json
+  teacher_package_source: courses/psychology-11-12/packages/foundations/foundations_teacher_guide.yaml
+  student_package_source: courses/psychology-11-12/packages/foundations/foundations_student_packet.yaml
+  case_card_source: courses/psychology-11-12/packages/foundations/psychology_perspectives_case_cards.yaml
+
+artifact_inventory:
+  teacher_binder:
+    status: built
+    current_source: courses/psychology-11-12/packages/foundations/foundations_teacher_guide.yaml
+    normalized_source_path: source/psychology_11_12/cycles/cycle_a_foundations/teacher_binder.md
+    audience: teacher
+    visibility:
+      student: false
+      teacher: true
+    answer_key: true
+
+  student_packet:
+    status: built
+    current_source: courses/psychology-11-12/packages/foundations/foundations_student_packet.yaml
+    normalized_source_path: source/psychology_11_12/cycles/cycle_a_foundations/student_packet.md
+    audience: student
+    visibility:
+      student: true
+      teacher: false
+    answer_key: false
+
+  assessment_pack:
+    status: missing
+    current_source: null
+    normalized_source_path: source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md
+    audience: assessment_student_and_teacher
+    visibility:
+      student: true
+      teacher: true
+    answer_key: split_required
+
+  source_sheet:
+    status: stub
+    current_source: null
+    normalized_source_path: source/psychology_11_12/cycles/cycle_a_foundations/source_sheet.md
+    audience: student
+    visibility:
+      student: true
+      teacher: false
+    answer_key: false
+
+  capstone_packet:
+    status: stub
+    current_source: null
+    normalized_source_path: source/psychology_11_12/cycles/cycle_a_foundations/capstone_packet.md
+    audience: student
+    visibility:
+      student: true
+      teacher: false
+    answer_key: false
+
+  slide_source:
+    status: missing
+    current_source: null
+    normalized_source_path: source/psychology_11_12/slides/source/cycle_a_foundations_slides.md
+    audience: student
+    visibility:
+      student: true
+      teacher: false
+    answer_key: false
+
+  qa_bundle:
+    status: draft
+    current_source: fixtures/psychology/foundations-package.proof.json
+    normalized_source_path: source/psychology_11_12/qa/cycle_a_foundations_qa.md
+    audience: qa
+    visibility:
+      student: false
+      teacher: true
+    answer_key: false
+
+required_roles:
+  student_packet:
+    - learning_target
+    - key_vocabulary
+    - activity
+    - practice
+    - reflection_or_exit_ticket
+    - completion_check
+  teacher_binder:
+    - lesson_sequence
+    - teacher_moves
+    - differentiation
+    - assessment_notes
+    - safety_notes
+  assessment_pack:
+    - student_version
+    - teacher_version
+    - rubric
+    - answer_key
+    - marking_guide
+  qa_bundle:
+    - manifest
+    - route_plan
+    - render_warnings
+    - visibility_check
+    - artifact_inventory
+
+known_gaps:
+  - assessment_pack_missing_as_normalized_source
+  - marking_guide_missing_as_explicit_source
+  - source_sheet_stub_only
+  - capstone_packet_stub_only
+  - slide_source_missing
+  - normalized_teacher_binder_md_not_created
+  - normalized_student_packet_md_not_created
+
+next_actions:
+  - create_assessment_pack_student_and_teacher_versions
+  - create_marking_guide_or_link_existing_source
+  - create_source_sheet_stub_or_full_source
+  - create_capstone_packet_stub_or_full_source
+  - convert_or_reference_teacher_binder_in_normalized_source_folder
+  - convert_or_reference_student_packet_in_normalized_source_folder
