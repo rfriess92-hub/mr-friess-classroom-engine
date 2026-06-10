@@ -1,3 +1,4 @@
+// Branch-only CI trigger after Cohort 2 profile validator fix.
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
