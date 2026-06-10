@@ -1,0 +1,142 @@
+schema_version: 1
+course_family_id: psychology-11-12
+title: Psychology 11/12
+status: planning_source
+source_profile: courses/psychology-11-12/course-profile.yaml
+source_load_file: school-year/2026-2027/official-course-load.yaml
+
+course_model:
+  duration: semester
+  reusable_spine: true
+  instance_overrides: true
+  expected_instances:
+    - psychology-11-12-sem1
+    - psychology-11-12-sem2
+  planning_warning: >
+    Reuse this spine across semesters, but keep student evidence, pacing notes, and assessment
+    records separate for each course instance.
+
+bc_alignment_note: >
+  Treat this as a local planning spine for Psychology 11/12. Verify exact official or
+  board-authorized curriculum wording before hard-coding prescribed learning standards.
+
+recurring_routines:
+  - entry_question_or_case_prompt
+  - concept_notes_with_examples
+  - scenario_analysis
+  - respectful_discussion_protocol
+  - short_response_or_exit_ticket
+  - completion_check
+
+assessment_rhythm:
+  weekly:
+    - quick_concept_check
+    - scenario_application_or_exit_ticket
+  every_unit:
+    - concept_explanation
+    - case_or_media_application
+    - completion_check
+  semester:
+    - midcourse_application_task
+    - final_applied_psychology_project_or_inquiry
+
+units:
+  - unit_id: psych_u1_foundations
+    title: Foundations of Psychology
+    suggested_weeks: 2
+    driving_question: How do psychologists study behaviour and mental processes?
+    core_topics:
+      - what_psychology_studies
+      - major_perspectives
+      - observation_versus_interpretation
+      - correlation_versus_causation
+      - research_ethics
+    preferred_packages:
+      - foundations_teacher_guide
+      - foundations_student_packet
+      - psychology_perspectives_case_cards
+
+  - unit_id: psych_u2_research_brain_behaviour
+    title: Research, Brain, and Behaviour
+    suggested_weeks: 3
+    driving_question: How do research methods shape psychological explanations?
+    core_topics:
+      - research_questions_and_variables
+      - simple_experimental_design
+      - consent_and_ethics
+      - introductory_brain_behaviour_links
+      - sensation_and_perception
+    preferred_packages:
+      - research_methods_student_packet
+      - media_claim_analysis_packet
+      - brain_behaviour_teacher_guide
+
+  - unit_id: psych_u3_development_learning_identity
+    title: Development, Learning, and Identity
+    suggested_weeks: 3
+    driving_question: How do people change, learn, and form identity over time?
+    core_topics:
+      - developmental_models
+      - learning_and_conditioning
+      - memory_and_study_habits
+      - identity_and_context
+      - nature_nurture_and_environment
+    preferred_packages:
+      - learning_theory_case_packet
+      - memory_study_habits_student_packet
+      - development_identity_discussion_protocol
+
+  - unit_id: psych_u4_social_psychology
+    title: Social Psychology and Group Behaviour
+    suggested_weeks: 3
+    driving_question: How do groups, situations, and expectations affect behaviour?
+    core_topics:
+      - conformity_and_obedience
+      - group_norms_and_roles
+      - bias_and_attribution
+      - persuasion_and_social_influence
+      - helping_behaviour
+    preferred_packages:
+      - social_psychology_teacher_guide
+      - social_influence_case_packet
+      - respectful_discussion_protocol
+
+  - unit_id: psych_u5_stress_wellbeing_and_coping
+    title: Stress, Wellbeing, and Coping as Learning Topics
+    suggested_weeks: 3
+    driving_question: How can psychology explain stress and coping in responsible ways?
+    core_topics:
+      - stress_response_as_concept
+      - coping_strategies_and_limits
+      - stigma_and_help_seeking
+      - careful_wellbeing_vocabulary
+      - support_awareness
+    preferred_packages:
+      - stress_and_coping_student_packet
+      - wellbeing_boundaries_teacher_guide
+      - support_scenario_cards
+
+  - unit_id: psych_u6_applied_psychology_project
+    title: Applied Psychology Project or Inquiry
+    suggested_weeks: 4
+    driving_question: How can psychological concepts be applied responsibly to a real-world question?
+    core_topics:
+      - bounded_inquiry_question
+      - applying_multiple_concepts
+      - evaluating_sources_and_claims
+      - responsible_presentation
+      - final_reflection
+    preferred_packages:
+      - applied_psychology_project_brief
+      - project_conference_sheet
+      - project_rubric
+      - final_reflection_sheet
+
+pacing_notes:
+  compress_if_needed:
+    - shorten_direct_instruction_before_cutting_application
+    - shorten_project_product_scope_before_removing_project
+  do_not_cut:
+    - research_ethics
+    - completion_check
+    - final_application_evidence
