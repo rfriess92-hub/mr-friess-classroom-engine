@@ -1,0 +1,129 @@
+schema_version: 1
+course_family_id: psychology-11-12
+course_instance_compatibility:
+  - psychology-11-12-sem1
+  - psychology-11-12-sem2
+package_id: foundations_teacher_guide
+package_type: teacher_guide
+unit_id: psych_u1_foundations
+title: Foundations of Psychology Teacher Guide
+status: draft_package_source
+source_spine: courses/psychology-11-12/scope-sequence.yaml
+source_package_contract: courses/psychology-11-12/package-types.yaml
+paired_student_packet: courses/psychology-11-12/packages/foundations/foundations_student_packet.yaml
+
+lesson_frame:
+  length: 70_to_80_minutes
+  lesson_goal: >
+    Students distinguish observation, inference, claim, and evidence while using introductory
+    psychology perspectives to analyze bounded classroom scenarios.
+  success_criteria:
+    - I can describe what psychology studies.
+    - I can separate what I notice from what I infer.
+    - I can connect a scenario to a psychology perspective using evidence.
+  materials:
+    - foundations_student_packet
+    - board_or_projector
+    - timer
+    - optional_scenario_cards
+
+concept_sequence:
+  - step: 1
+    label: psychology_as_a_field
+    teacher_note: Psychology studies behaviour and mental processes using questions, evidence, and models.
+  - step: 2
+    label: observation_inference_claim_evidence
+    teacher_note: Students often jump from observation to explanation; slow this down explicitly.
+  - step: 3
+    label: introductory_perspectives
+    teacher_note: Treat perspectives as lenses, not final answers.
+  - step: 4
+    label: scenario_application
+    teacher_note: Students practise applying one lens and justifying it with scenario evidence.
+
+teacher_moves:
+  opening:
+    - Display the entry question: What is the difference between noticing behaviour and explaining behaviour?
+    - Give two minutes of quiet writing before discussion.
+    - Invite two or three low-risk responses and record class language on the board.
+  direct_instruction:
+    - Define observation, inference, claim, evidence, and perspective.
+    - Model one scenario aloud using notice, infer, evidence language.
+    - Emphasize that more than one perspective may fit if evidence is used carefully.
+  guided_practice:
+    - Have students complete Scenario A with a partner.
+    - Circulate for evidence language, not perfect terminology.
+    - Pause and share one strong example of evidence-based reasoning.
+  independent_practice:
+    - Students complete Scenario B independently.
+    - Students write one short explanation using the frame in the packet.
+  close:
+    - Students complete the completion check.
+    - Collect or spot-check packets for evidence of learning.
+
+discussion_management:
+  norms:
+    - Use the scenario, not classmates, as the example.
+    - Use evidence before opinion.
+    - Disagree with reasoning, not people.
+    - Keep examples school-appropriate.
+  teacher_prompts:
+    - What part of the scenario is an observation?
+    - What part is an inference?
+    - What evidence supports that explanation?
+    - Could another perspective explain the same scenario?
+
+differentiation:
+  access_supports:
+    - Provide vocabulary bank before the scenario task.
+    - Let students highlight evidence before writing full sentences.
+    - Allow partner talk before independent response.
+  extensions:
+    - Ask students to compare two perspectives on the same scenario.
+    - Ask students to identify the limit of their explanation.
+  common_misconceptions:
+    - Students may treat an inference as a fact.
+    - Students may choose a perspective without evidence.
+    - Students may think one perspective is always the correct answer.
+
+assessment_notes:
+  look_for:
+    - correct separation of observation and inference
+    - use of scenario evidence
+    - reasonable connection to one introductory perspective
+    - complete final check
+  quick_feedback_codes:
+    OI: observation_and_inference_are_clear
+    EV: add_or_strengthen_evidence
+    CP: connect_to_perspective_more_clearly
+    CC: completion_check_done
+  evidence_type: formative_concept_and_application_check
+
+teacher_only_answer_notes:
+  scenario_a_sample:
+    observation: The student is looking around and has not started writing.
+    inference: The student may be unsure how to begin.
+    evidence: The scenario shows behaviour, but not the student's private thinking.
+    possible_perspective: A cognitive perspective could focus on attention, memory, or task understanding.
+  scenario_b_sample:
+    observation: A group changes its answer after hearing another group explain.
+    inference: The group may be influenced by social information or new evidence.
+    evidence: The change happens after hearing the other explanation.
+    possible_perspective: A social perspective could focus on group influence.
+
+qa_requirements:
+  required_roles_present:
+    - lesson_frame
+    - teacher_moves
+    - concept_sequence
+    - discussion_management
+    - differentiation
+    - assessment_notes
+  teacher_student_separation:
+    - teacher_only_answer_notes_must_not_render_in_student_packet
+  paired_packet_must_include:
+    - learning_goal
+    - concept_input
+    - guided_workspace
+    - application_task
+    - completion_check
