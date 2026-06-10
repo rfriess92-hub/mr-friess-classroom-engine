@@ -1,0 +1,119 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "psychology_foundations_package_proof",
+  "primary_architecture": "lesson_package",
+  "grade_band": "11-12",
+  "subject": "Psychology",
+  "grade": "11/12",
+  "topic": "Foundations of Psychology: observation, inference, evidence, and perspectives",
+  "theme": "psychology",
+  "course_family_id": "psychology-11-12",
+  "unit_id": "psych_u1_foundations",
+  "source_manifest": "courses/psychology-11-12/packages/foundations/manifest.yaml",
+  "source_packages": {
+    "teacher_guide": "courses/psychology-11-12/packages/foundations/foundations_teacher_guide.yaml",
+    "student_packet": "courses/psychology-11-12/packages/foundations/foundations_student_packet.yaml",
+    "case_cards": "courses/psychology-11-12/packages/foundations/psychology_perspectives_case_cards.yaml"
+  },
+  "teacher_guide": {
+    "title": "Foundations of Psychology Teacher Guide",
+    "overview": "This lesson introduces psychology as the study of behaviour and mental processes. Students practise separating observation, inference, claim, and evidence before applying introductory perspectives to classroom-safe scenarios.",
+    "essential_question": "How do psychologists move from observation to careful explanation?",
+    "opening_frame": "Today we are learning how to slow down our thinking: notice first, infer carefully, and support explanations with evidence.",
+    "timing": [
+      { "time": "0:00-0:10", "activity": "Entry question and vocabulary launch: observation, inference, evidence, perspective." },
+      { "time": "0:10-0:25", "activity": "Model the first scenario using notice, infer, evidence language." },
+      { "time": "0:25-0:45", "activity": "Guided partner practice with a case card and perspective bank." },
+      { "time": "0:45-1:05", "activity": "Independent scenario application and short written explanation." },
+      { "time": "1:05-1:15", "activity": "Completion check and exit ticket." }
+    ],
+    "teacher_notes": [
+      "Use the scenario as the example, not classmates.",
+      "Praise careful evidence language before perfect terminology.",
+      "Treat psychology perspectives as lenses, not final answers."
+    ],
+    "model": {
+      "title": "Teacher model: observation to explanation",
+      "sample": "Observation: the student erased a sentence and looked at the example. Inference: the student might be unsure how to start. Evidence: the behaviour shows revision and checking, but it does not prove private thinking. Perspective: a cognitive lens could focus on attention, memory, or task understanding."
+    },
+    "assessment_focus": "Formative check: students distinguish observation from inference, use evidence, connect to one perspective, and complete the final checklist."
+  },
+  "task_sheet": {
+    "title": "Foundations of Psychology Student Packet",
+    "instructions": [
+      "Start by answering the entry question in your own words.",
+      "Use the concept bank to separate observation, inference, evidence, and perspective.",
+      "Apply one psychology perspective to a scenario using evidence.",
+      "Finish with the completion check and exit ticket."
+    ],
+    "tasks": [
+      {
+        "label": "Part A — Entry Question",
+        "prompt": "What is the difference between noticing behaviour and explaining behaviour?",
+        "lines": 4
+      },
+      {
+        "label": "Part B — Guided Scenario",
+        "prompt": "A student opens a notebook, looks at the board, writes one sentence, erases it, and then waits with a pencil in hand. Identify one observation, one inference, and one piece of evidence.",
+        "lines": 8
+      },
+      {
+        "label": "Part C — Perspective Bank",
+        "prompt": "Choose one lens: cognitive, biological, social, developmental, or behavioural. Explain what that lens focuses on.",
+        "lines": 5
+      },
+      {
+        "label": "Part D — Case Card Application",
+        "prompt": "Use one case card. Write one observation, one possible inference, one piece of evidence, one perspective choice, and one limit statement.",
+        "lines": 10
+      },
+      {
+        "label": "Part E — Completion Check",
+        "prompt": "Check that you completed the entry response, guided scenario, case-card application, perspective choice, evidence sentence, and exit ticket.",
+        "lines": 3
+      }
+    ],
+    "embedded_supports": [
+      "Sentence frame: One observation is ____. One possible inference is ____. The evidence is ____.",
+      "Perspective bank: cognitive, biological, social, developmental, behavioural.",
+      "Limit frame: From this scenario alone, I cannot know ____."
+    ],
+    "success_criteria": [
+      "I separated observation from inference.",
+      "I used evidence from the scenario.",
+      "I connected one scenario to one psychology perspective.",
+      "I completed the final checklist before handing in the packet."
+    ]
+  },
+  "case_cards": {
+    "title": "Psychology Perspectives Case Cards",
+    "card_count": 10,
+    "completion_product": [
+      "one observation",
+      "one inference",
+      "one piece of evidence",
+      "one perspective choice",
+      "one limit statement"
+    ]
+  },
+  "bundle": {
+    "bundle_id": "psychology_foundations_package_bundle",
+    "declared_outputs": ["task_sheet", "teacher_guide"]
+  },
+  "outputs": [
+    {
+      "output_id": "psychology_foundations_student_packet",
+      "output_type": "task_sheet",
+      "audience": "student",
+      "source_section": "task_sheet",
+      "bundle": "psychology_foundations_package_bundle"
+    },
+    {
+      "output_id": "psychology_foundations_teacher_guide",
+      "output_type": "teacher_guide",
+      "audience": "teacher",
+      "source_section": "teacher_guide",
+      "bundle": "psychology_foundations_package_bundle"
+    }
+  ]
+}
