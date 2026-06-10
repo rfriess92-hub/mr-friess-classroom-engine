@@ -1,0 +1,42 @@
+schema_version: 1
+course_family_id: literacy
+cohort_id: literacy_cohort_2
+course_instance_ids:
+  - literacy-cohort-2-sem1
+  - literacy-cohort-2-sem2
+status: placeholder
+privacy_note: >
+  Do not store personally identifying student information in this repo. Use anonymized
+  patterns, classroom-level needs, and teacher-facing planning notes only.
+
+cohort_context:
+  continuity_status: two_semester_sequence
+  teacher_assumption: >
+    This group must carry Semester 1 evidence into Semester 2. Do not generate Semester 2
+    Literacy materials as a fresh start unless this profile is intentionally reset.
+
+carry_forward_fields:
+  current_reading_strengths: []
+  current_reading_needs: []
+  current_writing_strengths: []
+  current_writing_needs: []
+  sentence_control_focus: []
+  paragraph_control_focus: []
+  evidence_use_focus: []
+  revision_habit_focus: []
+  confidence_or_avoidance_patterns: []
+  successful_scaffolds: []
+  incomplete_or_reassessment_items: []
+
+semester_transition_questions:
+  - What can this cohort now do more independently than at the start of Semester 1?
+  - Which routine should stay stable into Semester 2?
+  - Which scaffold can be faded next?
+  - Which task type still causes avoidance or shutdown?
+  - What evidence must be collected early in Semester 2?
+
+planning_use:
+  - generate Semester 1 baseline packages
+  - preserve successful supports for Semester 2
+  - target unfinished skill work directly
+  - keep task targets aligned while differentiating access
