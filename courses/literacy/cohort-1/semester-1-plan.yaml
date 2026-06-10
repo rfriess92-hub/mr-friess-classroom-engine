@@ -1,0 +1,49 @@
+schema_version: 1
+course_family_id: literacy
+cohort_id: literacy_cohort_1
+course_instance_id: literacy-cohort-1-sem1
+semester_id: semester-1
+status: placeholder
+source_profile: courses/literacy/cohort-1/learner-profile-notes.yaml
+
+planning_role: returning_cohort_semester_plan
+
+opening_priorities:
+  - re-establish familiar routines quickly
+  - collect fresh evidence without pretending the class is new
+  - identify which scaffolds still help and which can be faded
+  - make completion checks concrete in every packet
+
+first_package_targets:
+  - returning_cohort_diagnostic_packet
+  - quick_write_routine_packet
+  - paragraph_revision_packet
+  - literacy_conference_sheet
+
+evidence_to_collect:
+  reading:
+    - current stamina and text-access evidence
+    - annotation or main-idea evidence
+    - inference or vocabulary-in-context evidence
+  writing:
+    - sentence-control sample
+    - paragraph-control sample
+    - revision sample
+  conference:
+    - student-reported confidence
+    - observed avoidance pattern if any
+    - next scaffold or support move
+
+qa_requirements:
+  student_packet_required_roles:
+    - learning_goal
+    - model_or_example
+    - guided_workspace
+    - independent_attempt
+    - completion_check
+  teacher_guide_required_roles:
+    - lesson_frame
+    - teacher_moves
+    - differentiation
+    - assessment_notes
+    - follow_up_groups
