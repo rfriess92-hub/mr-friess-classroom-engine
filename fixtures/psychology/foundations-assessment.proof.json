@@ -1,0 +1,196 @@
+{
+  "schema_version": "2.1.0",
+  "package_id": "psychology_foundations_assessment_proof",
+  "primary_architecture": "lesson_package",
+  "grade_band": "11-12",
+  "subject": "Psychology",
+  "grade": "11/12",
+  "topic": "Cycle A Foundations assessment and marking guide",
+  "theme": "psychology",
+  "course_family_id": "psychology-11-12",
+  "unit_id": "psych_u1_foundations",
+  "cycle_id": "A",
+  "cycle_title": "Foundations",
+  "lesson_id": "psych11_12_cycle_a_assessment",
+  "version": "v1",
+  "source_spine": "OpenStax Psychology 2e",
+  "source_manifest": "source/psychology_11_12/cycles/cycle_a_foundations/manifest.yaml",
+  "source_packages": {
+    "student_assessment": "source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md",
+    "teacher_marking_guide": "source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md"
+  },
+  "instructional_contract": {
+    "estimated_time": "45-60 minutes",
+    "learning_target": "Students demonstrate foundational psychology reasoning by defining concepts, using evidence, and avoiding overclaims.",
+    "know": [
+      "psychology",
+      "behaviour",
+      "mental processes",
+      "evidence",
+      "observation",
+      "inference",
+      "correlation",
+      "causation",
+      "research ethics"
+    ],
+    "do": [
+      "define psychology accurately",
+      "separate observation from inference",
+      "name evidence needed for a claim",
+      "explain why correlation does not prove causation",
+      "identify an ethical issue in a simple research design"
+    ],
+    "understand": "Psychological claims require careful evidence, cautious interpretation, and ethical research practices.",
+    "core_competencies": [
+      "critical_thinking",
+      "communication"
+    ],
+    "tiering": {
+      "supported": "Use sentence frames and vocabulary support.",
+      "proficient": "Complete the standard assessment prompts with course vocabulary.",
+      "extending": "Add an improved research question or stronger alternative explanation."
+    }
+  },
+  "visibility_contract": {
+    "answer_leakage_guard": true,
+    "student_outputs_must_not_include": [
+      "answer_key",
+      "teacher_notes",
+      "marking_notes",
+      "rubric_interpretation",
+      "look_fors"
+    ],
+    "teacher_outputs_may_include": [
+      "answer_key",
+      "look_fors",
+      "rubric",
+      "feedback_language",
+      "accommodation_notes"
+    ]
+  },
+  "assessment": {
+    "audience": "student",
+    "visibility": { "student": true, "teacher": false },
+    "answer_key": false,
+    "title": "Cycle A Foundations Assessment",
+    "instructions": [
+      "Answer each question clearly.",
+      "Use course vocabulary where it helps.",
+      "Use evidence from the prompt.",
+      "Do not diagnose anyone or make claims that the evidence does not support."
+    ],
+    "sections": [
+      {
+        "label": "Part A — Key Vocabulary",
+        "prompts": [
+          "In one sentence, define psychology.",
+          "Explain why evidence matters when psychologists study behaviour or mental processes.",
+          "Write one observation and one possible inference from a neutral classroom statement."
+        ]
+      },
+      {
+        "label": "Part B — Claim and Evidence",
+        "prompts": [
+          "Explain what a claim about studying with music is saying.",
+          "Name evidence needed before accepting the claim.",
+          "Explain one reason the claim might be too simple."
+        ]
+      },
+      {
+        "label": "Part C — Correlation and Causation",
+        "prompts": [
+          "Identify two related variables in a sleep-and-focus survey.",
+          "Explain why a survey relationship does not prove a cause.",
+          "Name one possible third factor."
+        ]
+      },
+      {
+        "label": "Part D — Research Ethics",
+        "prompts": [
+          "Name one ethical or fairness concern in a simple classroom research design.",
+          "Suggest one way to make the design more fair or responsible."
+        ]
+      },
+      {
+        "label": "Part E — Scenario Application",
+        "prompts": [
+          "Write a careful explanation using evidence, correlation, and possible cause.",
+          "Write one limit statement naming what cannot be known from the scenario alone."
+        ]
+      }
+    ],
+    "student_checklist": [
+      "I defined psychology.",
+      "I used evidence language.",
+      "I separated observation from inference.",
+      "I explained correlation and causation carefully.",
+      "I named one ethical concern.",
+      "I wrote one limit statement."
+    ]
+  },
+  "marking_guide": {
+    "audience": "teacher",
+    "visibility": { "student": false, "teacher": true },
+    "answer_key": true,
+    "title": "Cycle A Foundations Marking Guide",
+    "scoring_summary": [
+      { "section": "Part A", "points": 6, "focus": "definition, evidence, observation and inference" },
+      { "section": "Part B", "points": 6, "focus": "claim analysis and evidence needed" },
+      { "section": "Part C", "points": 6, "focus": "relationship, causation caution, third factor" },
+      { "section": "Part D", "points": 4, "focus": "ethical concern and improvement" },
+      { "section": "Part E", "points": 6, "focus": "careful explanation and limit statement" }
+    ],
+    "answer_key_notes": [
+      "Look for psychology as the scientific study of behaviour and mental processes.",
+      "Look for evidence language rather than opinion-only responses.",
+      "Observation should be separated from inference.",
+      "Correlation should not be treated as proof of causation.",
+      "Ethical concerns may include fairness, consent, privacy, or avoiding disadvantage."
+    ],
+    "rubric_levels": [
+      "Emerging",
+      "Developing",
+      "Proficient",
+      "Extending"
+    ],
+    "feedback_language": [
+      "You identified the relationship, but you need to explain why it does not prove causation.",
+      "Strong evidence language. You separated what is observed from what is inferred.",
+      "Be more cautious: the scenario does not prove what someone is thinking.",
+      "Good ethical concern. Add how the researcher could make the design fairer."
+    ],
+    "accommodation_notes": [
+      "Allow point-form responses where appropriate.",
+      "Provide vocabulary support if needed.",
+      "Use oral conference for explanation items when appropriate."
+    ]
+  },
+  "bundle": {
+    "bundle_id": "psychology_foundations_assessment_bundle",
+    "declared_outputs": ["assessment", "answer_key"]
+  },
+  "outputs": [
+    {
+      "output_id": "psychology_foundations_student_assessment",
+      "output_type": "assessment",
+      "artifact_family": "assessment_pack",
+      "audience": "student",
+      "visibility": { "student": true, "teacher": false },
+      "answer_key": false,
+      "source_section": "assessment",
+      "bundle": "psychology_foundations_assessment_bundle",
+      "expected_filename": "psych11_12_cycle_a_foundations_assessment_student_v1.pdf"
+    },
+    {
+      "output_id": "psychology_foundations_teacher_marking_guide",
+      "output_type": "answer_key",
+      "artifact_family": "marking_guide",
+      "audience": "teacher",
+      "visibility": { "student": false, "teacher": true },
+      "answer_key": true,
+      "source_section": "marking_guide",
+      "bundle": "psychology_foundations_assessment_bundle",
+      "expected_filename": "psych11_12_cycle_a_foundations_marking_guide_teacher_v1.pdf"
+    }
+  ]
+}
