@@ -1,0 +1,61 @@
+schema_version: 1
+course_family_id: literacy
+cohort_id: literacy_cohort_2
+course_instance_id: literacy-cohort-2-sem1
+semester_id: semester-1
+status: placeholder
+source_profile: courses/literacy/cohort-2/learner-profile-notes.yaml
+continues_to: courses/literacy/cohort-2/semester-2-continuation-plan.yaml
+
+planning_role: two_semester_sequence_start
+
+opening_priorities:
+  - establish routines that can survive into Semester 2
+  - collect baseline reading and writing evidence
+  - identify successful scaffolds early
+  - record avoidance patterns without lowering expectations
+  - make completion checks concrete in every packet
+
+first_package_targets:
+  - cohort_2_baseline_reading_packet
+  - cohort_2_baseline_writing_packet
+  - sentence_control_packet
+  - paragraph_builder_packet
+  - semester_1_carry_forward_tracker
+
+evidence_to_collect_for_semester_2:
+  reading:
+    - text-access baseline
+    - main-idea or inference sample
+    - vocabulary-in-context sample
+  writing:
+    - sentence-control baseline
+    - paragraph-control baseline
+    - evidence-use sample
+    - revision sample
+  learning_behaviours:
+    - independence with routines
+    - support prompts that actually work
+    - task types that create avoidance
+
+carry_forward_outputs:
+  - current_reading_strengths
+  - current_reading_needs
+  - current_writing_strengths
+  - current_writing_needs
+  - successful_scaffolds
+  - incomplete_or_reassessment_items
+
+qa_requirements:
+  student_packet_required_roles:
+    - learning_goal
+    - model_or_example
+    - guided_workspace
+    - independent_attempt
+    - completion_check
+  teacher_guide_required_roles:
+    - lesson_frame
+    - teacher_moves
+    - differentiation
+    - assessment_notes
+    - follow_up_groups
