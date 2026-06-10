@@ -1,0 +1,147 @@
+schema_version: 1
+course_family_id: psychology-11-12
+course_instance_compatibility:
+  - psychology-11-12-sem1
+  - psychology-11-12-sem2
+package_id: foundations_student_packet
+package_type: student_packet
+unit_id: psych_u1_foundations
+title: Foundations of Psychology Student Packet
+status: draft_package_source
+source_spine: courses/psychology-11-12/scope-sequence.yaml
+source_package_contract: courses/psychology-11-12/package-types.yaml
+paired_teacher_guide: courses/psychology-11-12/packages/foundations/foundations_teacher_guide.yaml
+
+student_header:
+  course: Psychology 11/12
+  unit: Foundations of Psychology
+  lesson_title: What does psychology study?
+  name_line: true
+  date_line: true
+
+learning_goal:
+  text: >
+    I can explain what psychology studies and use evidence from a scenario to connect behaviour
+    to an introductory psychology perspective.
+
+success_criteria:
+  - I can separate observation from inference.
+  - I can use evidence from a scenario.
+  - I can connect a scenario to one psychology perspective.
+  - I can complete the final check with a clear example.
+
+concept_input:
+  key_terms:
+    - term: psychology
+      student_friendly_definition: The study of behaviour and mental processes.
+    - term: observation
+      student_friendly_definition: What you can directly notice or record.
+    - term: inference
+      student_friendly_definition: An explanation or interpretation based on what you notice.
+    - term: evidence
+      student_friendly_definition: Details that support a claim or explanation.
+    - term: perspective
+      student_friendly_definition: A way of looking at or explaining behaviour.
+  core_idea: >
+    In psychology, we try to slow down our thinking. First we observe. Then we make careful
+    inferences. Then we support our ideas with evidence.
+
+entry_task:
+  prompt: What is the difference between noticing behaviour and explaining behaviour?
+  student_space:
+    lines: 4
+
+guided_workspace:
+  model_scenario:
+    text: >
+      A student opens a notebook, looks at the board, writes one sentence, erases it, and then
+      waits with a pencil in hand.
+    prompts:
+      - label: observation
+        question: What can you directly notice in the scenario?
+        lines: 3
+      - label: inference
+        question: What is one possible explanation? Use careful language such as might or could.
+        lines: 3
+      - label: evidence
+        question: What detail from the scenario supports your explanation?
+        lines: 3
+  sentence_frame: >
+    One observation is ____. One possible inference is ____. The evidence for this is ____.
+
+application_task:
+  scenario_a:
+    text: >
+      A group begins with three different answers. After one student explains their thinking,
+      the group chooses one answer and writes it down together.
+    tasks:
+      - Identify one observation.
+      - Identify one possible inference.
+      - Give one piece of evidence.
+      - Choose one perspective that could help explain the scenario.
+    writing_space:
+      lines: 8
+  scenario_b:
+    text: >
+      A student studies with flashcards for ten minutes, takes a break, then returns and remembers
+      more terms than before.
+    tasks:
+      - Identify one observation.
+      - Identify one possible inference.
+      - Give one piece of evidence.
+      - Choose one perspective that could help explain the scenario.
+    writing_space:
+      lines: 8
+
+perspective_bank:
+  - perspective: cognitive
+    focus: thinking, attention, memory, and problem solving
+  - perspective: biological
+    focus: brain, body, and physical processes
+  - perspective: social
+    focus: groups, relationships, expectations, and situations
+  - perspective: developmental
+    focus: change and growth over time
+  - perspective: behavioural
+    focus: actions, learning, habits, and rewards
+
+short_response:
+  prompt: >
+    Choose one scenario. Explain it using one psychology perspective. Use at least one specific
+    piece of evidence from the scenario.
+  response_frame: >
+    I chose Scenario ____. A ____ perspective could explain this because ____. The evidence is ____.
+  lines: 8
+
+completion_check:
+  checklist:
+    - I wrote an entry response.
+    - I completed the guided scenario notes.
+    - I completed Scenario A or Scenario B.
+    - I used one perspective from the bank.
+    - I wrote a short response with evidence.
+  exit_ticket:
+    prompt: What is one difference between observation and inference?
+    lines: 3
+  student_self_rating:
+    prompt: How confident are you with today's goal?
+    options:
+      - not_yet
+      - getting_there
+      - confident
+
+teacher_collection_note:
+  visible_to_student: false
+  note: This packet should be checked for completion_check and evidence language.
+
+qa_requirements:
+  required_roles_present:
+    - learning_goal
+    - concept_input
+    - guided_workspace
+    - application_task
+    - completion_check
+  teacher_only_content:
+    - none
+  paired_teacher_guide:
+    - foundations_teacher_guide
