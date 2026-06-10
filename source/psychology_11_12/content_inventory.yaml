@@ -1,0 +1,90 @@
+schema_version: 1
+course: Psychology 11/12
+source_spine: OpenStax Psychology 2e
+status: draft_inventory
+purpose: >
+  Source-side inventory for Psychology 11/12 content. This file tracks which cycle
+  materials are built, stubbed, mapped, or missing before render routing.
+
+contracts:
+  content_contract: CONTENT.md
+  content_breakdown: CONTENT_BREAKDOWN.md
+  render_handoff: HANDOFF.md
+
+course_files:
+  course_map:
+    expected_path: source/psychology_11_12/course/course_map.md
+    status: missing
+  course_overview:
+    expected_path: source/psychology_11_12/course/course_overview.md
+    status: missing
+  vocabulary_bank:
+    expected_path: source/psychology_11_12/course/vocabulary_bank.md
+    status: missing
+  assessment_spine:
+    expected_path: source/psychology_11_12/course/assessment_spine.md
+    status: missing
+  source_register:
+    expected_path: source/psychology_11_12/course/source_register.md
+    status: missing
+
+cycles:
+  - cycle_id: A
+    normalized_title: Foundations
+    aliases:
+      - Psychology as a Science
+    status: active_partial_repo_source
+    manifest: source/psychology_11_12/cycles/cycle_a_foundations/manifest.yaml
+    render_proof: fixtures/psychology/foundations-package.proof.json
+
+  - cycle_id: B
+    normalized_title: Learning / Cognition / Development / Applied
+    aliases:
+      - Applied
+    status: active_external_package_not_yet_normalized
+    manifest: source/psychology_11_12/cycles/cycle_b_learning_cognition_development/manifest.yaml
+
+  - cycle_id: C
+    normalized_title: Personality / Identity / Social / Relationships
+    aliases:
+      - Consciousness / Meaning
+    status: active_external_package_not_yet_normalized
+    manifest: source/psychology_11_12/cycles/cycle_c_personality_identity_social/manifest.yaml
+
+  - cycle_id: D
+    normalized_title: Mental Health / Stress / Disorders / Treatment / Support
+    aliases:
+      - Change / Support Systems
+    status: active_external_package_not_yet_normalized
+    manifest: source/psychology_11_12/cycles/cycle_d_mental_health_support/manifest.yaml
+
+  - cycle_id: E
+    normalized_title: Forensic and Legal Psychology
+    aliases: []
+    status: mapped_future_cycle
+    manifest: source/psychology_11_12/cycles/cycle_e_forensic_legal/manifest.yaml
+
+  - cycle_id: F
+    normalized_title: Media / Technology / Persuasion / Consumer Psychology
+    aliases: []
+    status: mapped_future_cycle
+    manifest: source/psychology_11_12/cycles/cycle_f_media_technology_persuasion/manifest.yaml
+
+allowed_content_statuses:
+  - missing
+  - stub
+  - draft
+  - review
+  - ready
+  - built
+  - mapped
+  - archived
+
+next_inventory_tasks:
+  - confirm_active_cycle_a_d_files
+  - normalize_cycle_names_with_aliases
+  - create_or_verify_assessment_packs_a_d
+  - create_or_verify_marking_guides_a_d
+  - confirm_source_sheets_a_d
+  - confirm_capstone_packets_a_d
+  - keep_cycle_e_f_mapped_until_active_files_exist
