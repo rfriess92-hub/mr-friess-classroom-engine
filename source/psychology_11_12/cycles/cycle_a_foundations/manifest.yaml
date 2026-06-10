@@ -42,14 +42,26 @@ artifact_inventory:
     answer_key: false
 
   assessment_pack:
-    status: missing
-    current_source: null
+    status: draft
+    current_source: source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md
     normalized_source_path: source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md
-    audience: assessment_student_and_teacher
+    paired_teacher_source: source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md
+    audience: assessment_student
     visibility:
       student: true
+      teacher: false
+    answer_key: false
+
+  marking_guide:
+    status: draft
+    current_source: source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md
+    normalized_source_path: source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md
+    paired_student_source: source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md
+    audience: assessment_teacher
+    visibility:
+      student: false
       teacher: true
-    answer_key: split_required
+    answer_key: true
 
   source_sheet:
     status: stub
@@ -107,10 +119,17 @@ required_roles:
     - safety_notes
   assessment_pack:
     - student_version
+    - learning_targets_assessed
+    - student_instructions
+    - student_checklist
+    - no_answer_key
+  marking_guide:
     - teacher_version
-    - rubric
     - answer_key
-    - marking_guide
+    - rubric
+    - look_fors
+    - feedback_language
+    - accommodation_notes
   qa_bundle:
     - manifest
     - route_plan
@@ -119,8 +138,8 @@ required_roles:
     - artifact_inventory
 
 known_gaps:
-  - assessment_pack_missing_as_normalized_source
-  - marking_guide_missing_as_explicit_source
+  - assessment_pack_not_yet_render_proven
+  - marking_guide_not_yet_render_proven
   - source_sheet_stub_only
   - capstone_packet_stub_only
   - slide_source_missing
@@ -128,8 +147,8 @@ known_gaps:
   - normalized_student_packet_md_not_created
 
 next_actions:
-  - create_assessment_pack_student_and_teacher_versions
-  - create_marking_guide_or_link_existing_source
+  - add_assessment_pack_render_proof
+  - add_marking_guide_render_proof
   - create_source_sheet_stub_or_full_source
   - create_capstone_packet_stub_or_full_source
   - convert_or_reference_teacher_binder_in_normalized_source_folder
