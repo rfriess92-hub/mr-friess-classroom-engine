@@ -23,6 +23,10 @@ function mustInclude(body, needle, label = needle) {
   assert.ok(body.includes(needle), `Missing ${label}`)
 }
 
+function mustNotInclude(body, needle, label = needle) {
+  assert.equal(body.includes(needle), false, `Unexpected ${label}`)
+}
+
 function extractStatusBlocks(body) {
   return [...body.matchAll(/status:\s*([^\n]+)/g)]
     .map((match) => match[1].trim().replace(/^['"]|['"]$/g, ''))
@@ -79,6 +83,8 @@ const activePaths = [
   extractIndentedPath(cycleA, 'teacher_package_source'),
   extractIndentedPath(cycleA, 'student_package_source'),
   extractIndentedPath(cycleA, 'case_card_source'),
+  'source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md',
+  'source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md',
 ].filter(Boolean)
 
 for (const path of activePaths) mustExist(path)
@@ -87,6 +93,7 @@ for (const artifact of [
   'teacher_binder',
   'student_packet',
   'assessment_pack',
+  'marking_guide',
   'source_sheet',
   'capstone_packet',
   'slide_source',
@@ -97,8 +104,25 @@ for (const artifact of [
 
 const cycleAStatuses = validateStatuses(cycleA, 'Cycle A manifest')
 assert.ok(cycleAStatuses.includes('built'), 'Cycle A should identify built assets')
-assert.ok(cycleAStatuses.includes('missing'), 'Cycle A should identify missing assets')
+assert.ok(cycleAStatuses.includes('draft'), 'Cycle A should identify draft assets')
+assert.ok(cycleAStatuses.includes('missing'), 'Cycle A should identify remaining missing assets')
 assert.ok(cycleAStatuses.includes('stub'), 'Cycle A should identify stub assets')
+
+const assessmentPack = text('source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md')
+const markingGuide = text('source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md')
+
+mustInclude(assessmentPack, 'artifact_type: assessment_pack')
+mustInclude(assessmentPack, 'audience: assessment_student')
+mustInclude(assessmentPack, 'answer_key: false')
+mustInclude(assessmentPack, 'paired_teacher_source: source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md')
+mustNotInclude(assessmentPack, '## Answer Key', 'student assessment answer key section')
+
+mustInclude(markingGuide, 'artifact_type: marking_guide')
+mustInclude(markingGuide, 'audience: assessment_teacher')
+mustInclude(markingGuide, 'answer_key: true')
+mustInclude(markingGuide, 'paired_student_source: source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md')
+mustInclude(markingGuide, '## Answer Key and Look-Fors')
+mustInclude(markingGuide, '## Rubric')
 
 const proof = JSON.parse(text('fixtures/psychology/foundations-package.proof.json'))
 assert.equal(proof.package_id, 'psychology_foundations_package_proof')
@@ -107,8 +131,8 @@ assert.equal(proof.unit_id, 'psych_u1_foundations')
 assert.equal(proof.source_spine, 'OpenStax Psychology 2e')
 
 for (const gap of [
-  'assessment_pack_missing_as_normalized_source',
-  'marking_guide_missing_as_explicit_source',
+  'assessment_pack_not_yet_render_proven',
+  'marking_guide_not_yet_render_proven',
   'source_sheet_stub_only',
   'capstone_packet_stub_only',
   'slide_source_missing',
@@ -116,4 +140,11 @@ for (const gap of [
   mustInclude(cycleA, gap, `known gap ${gap}`)
 }
 
-console.log('psychology-source-inventory ok: A-F tracked, Cycle A linked, gaps explicit')
+for (const oldGap of [
+  'assessment_pack_missing_as_normalized_source',
+  'marking_guide_missing_as_explicit_source',
+]) {
+  mustNotInclude(cycleA, oldGap, `old gap ${oldGap}`)
+}
+
+console.log('psychology-source-inventory ok: A-F tracked, Cycle A linked, assessment sources present')
