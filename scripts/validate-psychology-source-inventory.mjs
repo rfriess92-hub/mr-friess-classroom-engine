@@ -76,10 +76,12 @@ mustInclude(cycleA, 'cycle_id: A')
 mustInclude(cycleA, 'cycle_title: Foundations')
 mustInclude(cycleA, 'source_spine: OpenStax Psychology 2e')
 mustInclude(cycleA, 'artifact_inventory:')
+mustInclude(cycleA, 'assessment_render_proof: fixtures/psychology/foundations-assessment.proof.json')
 
 const activePaths = [
   extractIndentedPath(cycleA, 'package_manifest'),
   extractIndentedPath(cycleA, 'render_proof'),
+  extractIndentedPath(cycleA, 'assessment_render_proof'),
   extractIndentedPath(cycleA, 'teacher_package_source'),
   extractIndentedPath(cycleA, 'student_package_source'),
   extractIndentedPath(cycleA, 'case_card_source'),
@@ -130,9 +132,17 @@ assert.equal(proof.course_family_id, 'psychology-11-12')
 assert.equal(proof.unit_id, 'psych_u1_foundations')
 assert.equal(proof.source_spine, 'OpenStax Psychology 2e')
 
+const assessmentProof = JSON.parse(text('fixtures/psychology/foundations-assessment.proof.json'))
+assert.equal(assessmentProof.package_id, 'psychology_foundations_assessment_proof')
+assert.equal(assessmentProof.course_family_id, 'psychology-11-12')
+assert.equal(assessmentProof.unit_id, 'psych_u1_foundations')
+assert.equal(assessmentProof.source_spine, 'OpenStax Psychology 2e')
+assert.ok(assessmentProof.outputs.some((output) => output.output_id === 'psychology_foundations_student_assessment' && output.audience === 'student' && output.answer_key === false))
+assert.ok(assessmentProof.outputs.some((output) => output.output_id === 'psychology_foundations_teacher_marking_guide' && output.audience === 'teacher' && output.answer_key === true))
+
 for (const gap of [
-  'assessment_pack_not_yet_render_proven',
-  'marking_guide_not_yet_render_proven',
+  'assessment_pack_render_proof_added_not_artifact_rendered',
+  'marking_guide_render_proof_added_not_artifact_rendered',
   'source_sheet_stub_only',
   'capstone_packet_stub_only',
   'slide_source_missing',
@@ -143,8 +153,10 @@ for (const gap of [
 for (const oldGap of [
   'assessment_pack_missing_as_normalized_source',
   'marking_guide_missing_as_explicit_source',
+  'assessment_pack_not_yet_render_proven',
+  'marking_guide_not_yet_render_proven',
 ]) {
   mustNotInclude(cycleA, oldGap, `old gap ${oldGap}`)
 }
 
-console.log('psychology-source-inventory ok: A-F tracked, Cycle A linked, assessment sources present')
+console.log('psychology-source-inventory ok: A-F tracked, Cycle A linked, assessment proof present')
