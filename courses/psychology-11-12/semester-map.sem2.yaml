@@ -1,0 +1,111 @@
+schema_version: 1
+course_family_id: psychology-11-12
+course_instance_id: psychology-11-12-sem2
+semester_id: semester-2
+status: planning_source
+source_spine: courses/psychology-11-12/scope-sequence.yaml
+source_load_file: school-year/2026-2027/official-course-load.yaml
+refines_from: psychology-11-12-sem1
+
+instance_role: second_run_of_repeatable_course
+planning_warning: >
+  Semester 2 may reuse and refine Semester 1 materials, but it must not merge student evidence,
+  marks, or completion records from the Semester 1 instance.
+
+semester_priorities:
+  - reuse the six-unit Psychology 11/12 spine
+  - apply pacing adjustments learned in Semester 1
+  - refine unclear concepts and overloaded tasks
+  - preserve successful discussion and case-analysis routines
+  - keep project scope realistic for a semester course
+
+unit_sequence:
+  - unit_id: psych_u1_foundations
+    target_weeks: 1-2
+    second_run_adjustments:
+      - reuse strongest entry cases from Semester 1
+      - tighten vocabulary routines
+      - reduce front-loaded lecture time
+    first_packages_to_build:
+      - refined_foundations_teacher_guide
+      - refined_foundations_student_packet
+
+  - unit_id: psych_u2_research_brain_behaviour
+    target_weeks: 3-5
+    second_run_adjustments:
+      - preserve research methods as the evidence backbone
+      - simplify brain content where Semester 1 pacing was heavy
+      - use clearer media-claim examples
+    first_packages_to_build:
+      - refined_research_methods_student_packet
+      - refined_media_claim_analysis_packet
+
+  - unit_id: psych_u3_development_learning_identity
+    target_weeks: 6-8
+    second_run_adjustments:
+      - keep reflection prompts bounded
+      - use stronger school-relevant learning examples
+      - clarify theory comparison criteria
+    first_packages_to_build:
+      - refined_learning_theory_case_packet
+      - refined_memory_study_habits_packet
+
+  - unit_id: psych_u4_social_psychology
+    target_weeks: 9-11
+    second_run_adjustments:
+      - refine discussion protocol from Semester 1
+      - strengthen evidence-before-opinion routines
+      - use midcourse application evidence earlier if needed
+    first_packages_to_build:
+      - refined_social_psychology_teacher_guide
+      - refined_social_influence_case_packet
+
+  - unit_id: psych_u5_stress_wellbeing_and_coping
+    target_weeks: 12-14
+    second_run_adjustments:
+      - keep topic boundaries explicit
+      - use scenario-based application
+      - keep prompts academic and optional when needed
+    first_packages_to_build:
+      - refined_stress_and_coping_packet
+      - refined_wellbeing_boundaries_teacher_guide
+
+  - unit_id: psych_u6_applied_psychology_project
+    target_weeks: 15-18
+    second_run_adjustments:
+      - use Semester 1 pacing notes to narrow project choices
+      - build in earlier conference checkpoints
+      - reduce product sprawl
+    first_packages_to_build:
+      - refined_applied_psychology_project_brief
+      - refined_project_conference_sheet
+      - refined_project_rubric
+
+assessment_plan:
+  formative:
+    - weekly_quick_concept_check
+    - scenario_application_exit_ticket
+    - discussion_preparation_check
+  summative:
+    - midcourse_case_or_media_application
+    - final_applied_psychology_project
+  evidence_separation_rules:
+    - do_not_merge_with_semester_1_marks
+    - do_not_merge_with_semester_1_completion_records
+    - use_semester_1_only_for_pacing_and_material_refinement
+
+qa_requirements:
+  student_packet_required_roles:
+    - learning_goal
+    - concept_input
+    - guided_workspace
+    - application_task
+    - completion_check
+  teacher_guide_required_roles:
+    - lesson_frame
+    - teacher_moves
+    - discussion_management
+    - differentiation
+    - assessment_notes
+  project_teacher_guide_conditional_roles:
+    - project_tools
