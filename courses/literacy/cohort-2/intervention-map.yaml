@@ -1,0 +1,54 @@
+schema_version: 1
+course_family_id: literacy
+cohort_id: literacy_cohort_2
+course_instance_ids:
+  - literacy-cohort-2-sem1
+  - literacy-cohort-2-sem2
+status: placeholder
+source_profile: courses/literacy/cohort-2/learner-profile-notes.yaml
+
+purpose: >
+  Track classroom-level support patterns for a two-semester Literacy cohort. Keep this file
+  anonymized and focused on planning moves, not private records.
+
+support_threads:
+  reading_access:
+    indicators_to_watch: []
+    supports_to_try: []
+    evidence_of_progress: []
+  sentence_control:
+    indicators_to_watch: []
+    supports_to_try: []
+    evidence_of_progress: []
+  paragraph_control:
+    indicators_to_watch: []
+    supports_to_try: []
+    evidence_of_progress: []
+  evidence_use:
+    indicators_to_watch: []
+    supports_to_try: []
+    evidence_of_progress: []
+  revision_habits:
+    indicators_to_watch: []
+    supports_to_try: []
+    evidence_of_progress: []
+  task_completion:
+    indicators_to_watch: []
+    supports_to_try: []
+    evidence_of_progress: []
+
+follow_up_group_model:
+  grouping_rule: >
+    Group by current literacy need and useful scaffold, not by fixed ability labels.
+  possible_groups:
+    - reading_access_support
+    - sentence_control_practice
+    - paragraph_builder_group
+    - evidence_integration_group
+    - revision_and_completion_group
+    - independence_extension_group
+
+qa_requirements:
+  - supports must align to the same literacy task target
+  - supports may change access, pacing, or structure, but not the core learning goal
+  - completion_check must remain visible in student-facing packets
