@@ -1,7 +1,7 @@
 {
   "schema_version": "2.1.0",
   "package_id": "psychology_foundations_package_proof",
-  "primary_architecture": "lesson_package",
+  "primary_architecture": "single_period_full",
   "grade_band": "11-12",
   "subject": "Psychology",
   "grade": "11/12",
