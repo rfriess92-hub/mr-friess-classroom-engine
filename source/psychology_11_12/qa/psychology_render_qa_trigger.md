@@ -2,4 +2,4 @@
 
 This file exists only to trigger the Psychology Render QA workflow after workflow or test changes.
 
-Last trigger purpose: verify Cycle A Foundations inventory, route plans, smoke tests, assessment smoke test, package answer-leak QA, safety-flag regression, PDF text scanning dependency, slide render artifact upload, and final route validator cleanup.
+Last trigger purpose: render and verify Cycle A L1 What Is Psychology v5 locked-language slide deck through Psychology Render QA.
