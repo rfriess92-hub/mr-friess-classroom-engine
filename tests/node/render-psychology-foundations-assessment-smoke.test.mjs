@@ -47,14 +47,14 @@ test('render-package renders Psychology foundations assessment proof and bundle 
 
     assert.equal(studentTrace.output_type, 'assessment')
     assert.equal(studentTrace.audience, 'student')
-    assert.equal(studentTrace.artifact_family, 'assessment_pack')
+    assert.equal(studentTrace.artifact_family, 'assessment')
     assert.equal(studentTrace.final_evidence_role, 'primary')
     assert.equal(studentTrace.mode, 'doc_mode')
     assert.equal(studentBlocks.blocks.some((block) => block.teacher_only === true), false)
 
     assert.equal(teacherTrace.output_type, 'answer_key')
     assert.equal(teacherTrace.audience, 'teacher')
-    assert.equal(teacherTrace.artifact_family, 'marking_guide')
+    assert.equal(teacherTrace.artifact_family, 'answer_key')
     assert.equal(teacherTrace.artifact_class, 'teacher_answer_key')
     assert.equal(teacherTrace.mode, 'doc_mode')
     assert.ok(teacherBlocks.block_counts_by_type.answer_key_table >= 1)
