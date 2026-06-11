@@ -56,8 +56,8 @@ test('render-package renders Psychology foundations slide proof to PPTX', { time
     const visuals = JSON.parse(readFileSync(resolve(packageOutDir, 'psychology_foundations_l1_slides.visual.json'), 'utf-8'))
 
     assert.equal(trace.output_type, 'slides')
-    assert.equal(trace.audience, 'student')
-    assert.equal(trace.artifact_family, 'slide_deck')
+    assert.equal(trace.audience, 'shared_view')
+    assert.equal(trace.artifact_family, 'slides')
     assert.equal(trace.artifact_class, 'mini_lesson_slides')
     assert.equal(trace.mode, 'slide_mode')
     assert.equal(grammar.selected_template, trace.selected_template)
