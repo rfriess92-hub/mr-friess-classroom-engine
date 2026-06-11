@@ -18,10 +18,11 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Enable pnpm with Corepack
+      - name: Install pnpm
         run: |
-          corepack enable
-          corepack prepare pnpm@10.33.4 --activate
+          node --version
+          npm --version
+          npm install -g pnpm@10.33.4
           pnpm --version
 
       - name: Set up Python
@@ -30,7 +31,9 @@ jobs:
           python-version: '3.12'
 
       - name: Install Python render dependencies
-        run: python -m pip install --upgrade pip python-pptx
+        run: |
+          python --version
+          python -m pip install --upgrade pip python-pptx
 
       - name: Install Node dependencies
         run: pnpm install --frozen-lockfile
