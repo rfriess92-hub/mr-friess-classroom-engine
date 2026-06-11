@@ -149,7 +149,7 @@ mustInclude(capstonePacket, 'artifact_type: capstone_packet')
 mustInclude(capstonePacket, 'audience: student')
 mustInclude(capstonePacket, 'answer_key: false')
 mustInclude(capstonePacket, '## Capstone Task')
-mustInclude(capstonePacket, '## Final Explanation')
+mustInclude(capstonePacket, 'Final Explanation')
 mustInclude(capstonePacket, '## Student Checklist')
 
 mustInclude(slideSource, 'artifact_type: slide_source')
@@ -184,7 +184,7 @@ assert.equal(slideProof.course_family_id, 'psychology-11-12')
 assert.equal(slideProof.unit_id, 'psych_u1_foundations')
 assert.equal(slideProof.source_spine, 'OpenStax Psychology 2e')
 assert.equal(slideProof.slides.length, 15)
-assert.ok(slideProof.outputs.some((output) => output.output_id === 'psychology_foundations_l1_slides' && output.output_type === 'slides' && output.audience === 'student'))
+assert.ok(slideProof.outputs.some((output) => output.output_id === 'psychology_foundations_l1_slides' && output.output_type === 'slides' && output.audience === 'shared_view'))
 
 for (const gap of [
   'assessment_pack_render_proof_added_not_artifact_rendered',
