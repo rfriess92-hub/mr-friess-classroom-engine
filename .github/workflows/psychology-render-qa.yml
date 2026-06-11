@@ -7,7 +7,7 @@ on:
 jobs:
   psychology-render-qa:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
 
     steps:
       - name: Check out repository
@@ -18,54 +18,56 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Install pnpm
-        run: |
-          node --version
-          npm --version
-          npm install -g pnpm@10.33.4
-          pnpm --version
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Install Python render dependencies
+      - name: Run phased Psychology QA
+        continue-on-error: true
+        shell: bash
         run: |
-          python --version
-          python -m pip install --upgrade pip python-pptx
+          mkdir -p output/logs output/review/psychology-foundations-slides
+          : > output/logs/phase-status.txt
 
-      - name: Install Node dependencies
-        run: pnpm install --frozen-lockfile
+          run_phase() {
+            phase="$1"
+            command="$2"
+            log="output/logs/${phase}.log"
+            echo "::group::${phase}"
+            echo "\$ ${command}" | tee "${log}"
+            bash -lc "${command}" >> "${log}" 2>&1
+            status=$?
+            cat "${log}"
+            echo "${phase} ${status}" >> output/logs/phase-status.txt
+            echo "::endgroup::"
+            return 0
+          }
 
-      - name: Install Playwright Chromium
-        run: pnpm run fonts:install
+          run_phase environment "pwd && node --version && npm --version && python --version && git --version && ls -la && test -f package.json && test -f pnpm-lock.yaml && test -f fixtures/psychology/foundations-slides.proof.json"
+          run_phase install_pnpm "npm install -g pnpm@10.33.4 && pnpm --version"
+          run_phase install_python "python -m pip install --upgrade pip python-pptx"
+          run_phase install_node "pnpm install --frozen-lockfile"
+          run_phase install_playwright "pnpm run fonts:install"
+          run_phase content_inventory "pnpm run content:inventory"
+          run_phase targeted_tests "node --test tests/node/psychology-source-inventory.test.mjs tests/node/psychology-foundations-package.test.mjs tests/node/psychology-foundations-render-proof.test.mjs tests/node/psychology-foundations-route-plan.test.mjs tests/node/psychology-foundations-assessment-route-plan.test.mjs tests/node/psychology-foundations-slides-route-plan.test.mjs tests/node/render-psychology-foundations-package-smoke.test.mjs tests/node/render-psychology-foundations-assessment-smoke.test.mjs tests/node/render-psychology-foundations-slides-smoke.test.mjs"
+          run_phase render_slides "node scripts/render-psychology-foundations-slides-review.mjs"
 
-      - name: Run Psychology source inventory
-        run: pnpm run content:inventory
+          {
+            echo '## Psychology Render QA phase status'
+            echo ''
+            echo '| Phase | Exit code |'
+            echo '|---|---:|'
+            awk '{ printf "| %s | %s |\n", $1, $2 }' output/logs/phase-status.txt
+          } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Run Psychology targeted tests
-        run: |
-          node --test \
-            tests/node/psychology-source-inventory.test.mjs \
-            tests/node/psychology-foundations-package.test.mjs \
-            tests/node/psychology-foundations-render-proof.test.mjs \
-            tests/node/psychology-foundations-route-plan.test.mjs \
-            tests/node/psychology-foundations-assessment-route-plan.test.mjs \
-            tests/node/psychology-foundations-slides-route-plan.test.mjs \
-            tests/node/render-psychology-foundations-package-smoke.test.mjs \
-            tests/node/render-psychology-foundations-assessment-smoke.test.mjs \
-            tests/node/render-psychology-foundations-slides-smoke.test.mjs
-
-      - name: Render Psychology Cycle A slide review artifacts
-        run: node scripts/render-psychology-foundations-slides-review.mjs
-
-      - name: Upload Psychology render artifacts
+      - name: Upload Psychology QA logs and artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: psychology-render-qa-artifacts
           path: |
+            output/logs/**
             output/review/psychology-foundations-slides/**
             output/**/psychology_foundations_*.pdf
             output/**/psychology_foundations_*.pptx
@@ -75,3 +77,14 @@ jobs:
             output/**/psychology_foundations_*.visual.json
           if-no-files-found: warn
           retention-days: 14
+
+      - name: Fail if any required phase failed
+        if: always()
+        shell: bash
+        run: |
+          if [ ! -f output/logs/phase-status.txt ]; then
+            echo 'Missing output/logs/phase-status.txt'
+            exit 1
+          fi
+          cat output/logs/phase-status.txt
+          awk '$2 != 0 { failed=1 } END { exit failed ? 1 : 0 }' output/logs/phase-status.txt
