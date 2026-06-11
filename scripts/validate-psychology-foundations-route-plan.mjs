@@ -9,7 +9,7 @@ const { validation, render_plan: renderPlan, routes } = planPackageRoutes(proof)
 
 assert.equal(validation.valid, true, JSON.stringify(validation.errors, null, 2))
 assert.equal(renderPlan.package_id, 'psychology_foundations_package_proof')
-assert.equal(renderPlan.primary_architecture, 'lesson_package')
+assert.equal(renderPlan.primary_architecture, 'single_period_full')
 assert.equal(routes.length, 2, 'Expected separate student and teacher routes')
 
 const studentRoute = routes.find((route) => route.output_id === 'psychology_foundations_student_packet')
