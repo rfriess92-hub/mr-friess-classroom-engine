@@ -38,4 +38,4 @@ assert.equal(trace.fallback_reason, null)
 assert.equal(Array.isArray(proof.slides), true)
 assert.equal(proof.slides.length, 15)
 
-console.log('psychology-foundations-slides-route ok: Cycle A L1 slide route is renderable as shared-view PPTX')
+console.log('psychology-foundations-slides-route ok: Cycle A L1 slide route is renderable as student PPTX')
