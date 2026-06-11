@@ -3,22 +3,6 @@ name: Psychology Render QA
 on:
   workflow_dispatch:
   push:
-    paths:
-      - 'CONTENT.md'
-      - 'CONTENT_BREAKDOWN.md'
-      - 'HANDOFF.md'
-      - 'courses/psychology-11-12/**'
-      - 'fixtures/psychology/**'
-      - 'source/psychology_11_12/**'
-      - 'scripts/validate-psychology-*.mjs'
-      - 'scripts/render-psychology-*.mjs'
-      - 'scripts/render-package.mjs'
-      - 'engine/**'
-      - 'tests/node/psychology-*.test.mjs'
-      - 'tests/node/render-psychology-*.test.mjs'
-      - 'package.json'
-      - 'pnpm-lock.yaml'
-      - '.github/workflows/psychology-render-qa.yml'
 
 jobs:
   psychology-render-qa:
@@ -33,12 +17,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'pnpm'
 
-      - name: Enable pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.33.4
+      - name: Enable pnpm with Corepack
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.33.4 --activate
+          pnpm --version
 
       - name: Set up Python
         uses: actions/setup-python@v5
