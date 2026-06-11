@@ -23,7 +23,7 @@ assert.equal(studentRoute.audience, 'student')
 assert.equal(studentRoute.audience_bucket, 'student_facing')
 assert.equal(studentRoute.renderer_key, 'render_task_sheet')
 assert.equal(studentRoute.renderer_family, 'pdf')
-assert.equal(studentRoute.artifact_family, 'student_packet')
+assert.equal(studentRoute.artifact_family, 'task_sheet')
 assert.equal(studentRoute.source_section, 'task_sheet')
 
 assert.equal(teacherRoute.output_type, 'teacher_guide')
