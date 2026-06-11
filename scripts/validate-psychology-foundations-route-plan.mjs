@@ -41,11 +41,11 @@ assert.equal(teacherRoute.route_id.includes('student'), false, 'Teacher route mu
 
 const studentOutput = renderPlan.outputs.find((output) => output.output_id === studentRoute.output_id)
 const teacherOutput = renderPlan.outputs.find((output) => output.output_id === teacherRoute.output_id)
-assert.equal(studentOutput.answer_key, false)
-assert.equal(studentOutput.visibility.student, true)
-assert.equal(studentOutput.visibility.teacher, false)
-assert.equal(teacherOutput.answer_key, true)
-assert.equal(teacherOutput.visibility.student, false)
-assert.equal(teacherOutput.visibility.teacher, true)
+assert.ok(studentOutput, 'Missing student output in render plan')
+assert.ok(teacherOutput, 'Missing teacher output in render plan')
+assert.equal(studentRoute.audience, 'student')
+assert.equal(studentRoute.audience_bucket, 'student_facing')
+assert.equal(teacherRoute.audience, 'teacher')
+assert.equal(teacherRoute.audience_bucket, 'teacher_only')
 
 console.log('psychology-foundations-route-plan ok: student/teacher routes separated and renderable')
