@@ -17,13 +17,52 @@ test('package answer-leak QA passes clean Psychology foundations proof', () => {
   assert.ok(result.checked_outputs.some((entry) => entry.output_id === 'psychology_foundations_student_packet'))
 })
 
+test('package answer-leak QA allows false-valued student safety flags', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'package-answer-leak-qa-safe-flags-'))
+  try {
+    const fixturePath = join(dir, 'safe-flags-proof.json')
+    writeFileSync(fixturePath, JSON.stringify({
+      package_id: 'safe_flags_fixture',
+      primary_architecture: 'single_period_full',
+      task_sheet: {
+        audience: 'student',
+        answer_key: false,
+        teacher_only: false,
+        instructions: ['Complete the reflection and checklist.'],
+      },
+      outputs: [
+        {
+          output_id: 'safe_student_packet',
+          output_type: 'task_sheet',
+          artifact_family: 'task_sheet',
+          audience: 'student',
+          visibility: { student: true, teacher: false },
+          answer_key: false,
+          source_section: 'task_sheet',
+        },
+      ],
+    }, null, 2))
+
+    const output = execFileSync('node', ['scripts/qa-package-answer-leak.mjs', '--package', fixturePath], {
+      encoding: 'utf-8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+    })
+
+    const parsed = JSON.parse(output).package_answer_leak_qa
+    assert.equal(parsed.judgment, 'pass')
+    assert.equal(parsed.blockers.length, 0)
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
+})
+
 test('package answer-leak QA blocks teacher-only content in student output', () => {
   const dir = mkdtempSync(join(tmpdir(), 'package-answer-leak-qa-'))
   try {
     const fixturePath = join(dir, 'bad-proof.json')
     writeFileSync(fixturePath, JSON.stringify({
       package_id: 'bad_answer_leak_fixture',
-      primary_architecture: 'lesson_package',
+      primary_architecture: 'single_period_full',
       teacher_guide: {
         audience: 'teacher',
         answer_key: true,
@@ -42,7 +81,7 @@ test('package answer-leak QA blocks teacher-only content in student output', () 
         {
           output_id: 'bad_student_packet',
           output_type: 'task_sheet',
-          artifact_family: 'student_packet',
+          artifact_family: 'task_sheet',
           audience: 'student',
           visibility: { student: true, teacher: false },
           answer_key: false,
