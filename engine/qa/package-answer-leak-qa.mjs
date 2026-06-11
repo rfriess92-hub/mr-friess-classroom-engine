@@ -21,6 +21,13 @@ const FORBIDDEN_STUDENT_KEYS = new Set([
   'expected_answers',
 ])
 
+const FALSE_VALUE_SAFETY_KEYS = new Set([
+  'answer_key',
+  'answerkey',
+  'teacher_only',
+  'teacheronly',
+])
+
 const FORBIDDEN_STUDENT_TEXT = [
   'answer key',
   'teacher notes',
@@ -62,7 +69,8 @@ function collectForbiddenStudentFields(value, sourceName, path = '$', hits = [])
   if (isObject(value)) {
     for (const [key, child] of Object.entries(value)) {
       const normalized = normalizeKey(key)
-      if (FORBIDDEN_STUDENT_KEYS.has(normalized)) {
+      const isFalseSafetyFlag = child === false && FALSE_VALUE_SAFETY_KEYS.has(normalized)
+      if (FORBIDDEN_STUDENT_KEYS.has(normalized) && !isFalseSafetyFlag) {
         hits.push({ source_name: sourceName, path: `${path}.${key}`, token: key })
       }
       collectForbiddenStudentFields(child, sourceName, `${path}.${key}`, hits)
