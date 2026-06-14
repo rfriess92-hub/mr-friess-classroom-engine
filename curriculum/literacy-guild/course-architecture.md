@@ -26,8 +26,9 @@ Many details are already built:
 - teacher tracker
 - Game Master reference card
 - Week 1 launch plan
+- Week 2 Three-Path Training plan
 
-What still needs structure is how these pieces repeat across the year or semester.
+What still needs structure is the first reusable mini quest packet and the larger campaign maps for both course versions.
 
 ## Course promise
 
@@ -259,12 +260,12 @@ Do not write Week 2 as a full Voice Trial until the Three-Path Training step is 
 
 Recommended order:
 
-1. Week 2 Three-Path Training plan
-2. First mini quest packet
-3. Student overview handout
-4. Teacher launch checklist
-5. Full-year campaign map expansion
-6. Semester campaign map expansion
+1. First mini quest packet
+2. Student overview handout
+3. Teacher launch checklist
+4. Full-year campaign map expansion
+5. Semester campaign map expansion
+6. First Voice Trial arc packet
 
 ## Success criteria
 
