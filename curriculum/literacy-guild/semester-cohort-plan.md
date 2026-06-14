@@ -14,44 +14,58 @@ Last year used one style. This semester will feel different. We will use a clear
 
 ## Campaign map
 
-### Week 1: Reset and Baseline
+### Week 1: Reset and Enter the Guild
 
 - explain the change
 - introduce three paths
 - teach the daily routine
 - collect private progress information
+- begin Guild Passport setup
 
-### Weeks 2-3: Voice Focus
+### Weeks 2-3: Three-Path Training
+
+- practise Voice, Insight, and Wordcraft routines
+- introduce character sheet and first ability cards
+- use simple party roles
+- submit short solo evidence
+- keep mechanics light
+
+### Weeks 4-5: Voice Focus
 
 - repeated reading
 - phrasing
 - accuracy
 - personal growth reflection
+- safe rereading routines
 
-### Weeks 4-5: Wordcraft Focus
+### Weeks 6-7: Wordcraft Focus
 
 - context clues
 - word parts
 - academic word use
+- word maps and sentence-level use
 
-### Weeks 6-7: Insight Focus
+### Weeks 8-9: Insight Focus
 
 - gist
 - evidence
 - inference
 - comprehension repair
+- revised responses
 
-### Weeks 8-10: Integrated Quests
+### Weeks 10-13: Integrated Quests
 
 - weekly quests using all three paths
 - shorter boss tasks
 - private conferences
+- party challenges where useful
 
-### Weeks 11-14: Growth Campaign
+### Weeks 14-16: Growth Campaign
 
 - targeted practice by need
 - stronger independent evidence
-- party challenges where useful
+- rank-up checks
+- portfolio preparation
 
 ### Final Weeks: Evidence and Reflection
 
