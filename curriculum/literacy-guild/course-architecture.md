@@ -27,6 +27,7 @@ Many details are already built:
 - party role cards
 - student quest map
 - teacher tracker
+- quest completion tracker
 - Game Master reference card
 - Week 1 launch plan
 - Week 2 Three-Path Training plan
@@ -296,9 +297,8 @@ Recommended order:
 1. First mini quest packet
 2. Student overview handout
 3. Teacher launch checklist
-4. Quest completion tracker
-5. First Voice Trial arc packet
-6. Full-year and semester campaign map expansion as needed
+4. First Voice Trial arc packet
+5. Full-year and semester campaign map expansion as needed
 
 ## Success criteria
 
