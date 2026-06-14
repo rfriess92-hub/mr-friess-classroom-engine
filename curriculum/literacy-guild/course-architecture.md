@@ -19,16 +19,19 @@ Many details are already built:
 - Game Master role
 - quest template
 - boss task template
+- campaign map
+- quest bank
 - Guild Passport
 - character sheet
 - ability cards
 - party role cards
+- student quest map
 - teacher tracker
 - Game Master reference card
 - Week 1 launch plan
 - Week 2 Three-Path Training plan
 
-What still needs structure is the first reusable mini quest packet and the larger campaign maps for both course versions.
+What still needs build-out is the first usable quest packet and the teacher/student launch handouts.
 
 ## Course promise
 
@@ -45,6 +48,23 @@ The course runs on the Guild Engine loop:
 **Train -> Attempt -> Feedback -> Revise -> Log Evidence -> Level Up**
 
 Every week should include this loop in some form.
+
+## Controlled-choice campaign model
+
+The campaign uses controlled choice.
+
+Students choose the route. The teacher controls the map.
+
+This means:
+
+- students may choose some quest order
+- students may choose approved text or evidence options
+- students may complete optional side quests
+- students may receive recovery quests when more training is needed
+- every student eventually completes required core quests
+- boss quests unlock after required evidence is complete
+
+Choice gives autonomy. It does not allow students to avoid an entire path.
 
 ## Daily structure
 
@@ -103,6 +123,7 @@ A good arc includes:
 - repeated exposure to one main path
 - recurring strategy language
 - multiple evidence opportunities
+- controlled quest choice
 - at least one boss task
 - at least one conference or progress reflection
 
@@ -152,12 +173,24 @@ Introduce mechanics slowly.
 | Stage | Mechanics introduced |
 |---|---|
 | Week 1 | Guild, three paths, Game Master, Passport, simple XP |
-| Week 2 | Character sheet, first abilities, simple party roles |
+| Week 2 | Character sheet, first abilities, simple party roles, student quest map preview |
 | Week 3 | Rank-up requests, evidence log, first mini boss task |
 | Weeks 4-5 | Party goals, ability cards, first confirmed rank-ups |
 | Later | Class milestones, richer titles, portfolio layer |
 
 Do not introduce everything at once.
+
+## Quest choice release schedule
+
+Introduce choice carefully.
+
+| Stage | Student choice allowed |
+|---|---|
+| Week 1 | first goal, first path interest, character choices |
+| Week 2 | approved evidence format and simple party role choice |
+| Week 3 | small quest-order choice inside teacher-approved set |
+| First path arc | choice among unlocked core quests where appropriate |
+| Later arcs | side quests, recovery routes, portfolio evidence choices |
 
 ## Assessment and progress cadence
 
@@ -248,13 +281,13 @@ Everything else can be introduced after routines are stable.
 
 ## What not to build yet
 
-Do not build a full year of quests before the architecture is tested.
+Do not build a full year of quest packets before the architecture is tested.
 
 Do not build a digital platform before the paper version works.
 
 Do not build too many badges, items, titles, or ability variants.
 
-Do not write Week 2 as a full Voice Trial until the Three-Path Training step is planned.
+Do not allow quest choice to become skill avoidance.
 
 ## Next build targets
 
@@ -263,9 +296,9 @@ Recommended order:
 1. First mini quest packet
 2. Student overview handout
 3. Teacher launch checklist
-4. Full-year campaign map expansion
-5. Semester campaign map expansion
-6. First Voice Trial arc packet
+4. Quest completion tracker
+5. First Voice Trial arc packet
+6. Full-year and semester campaign map expansion as needed
 
 ## Success criteria
 
@@ -273,6 +306,7 @@ The architecture is working if:
 
 - students can explain the three paths
 - students know what evidence they need
+- students understand required quests versus choice quests
 - the teacher can run the tracker without losing teaching time
 - character mechanics support strategy use
 - parties help students prepare for solo evidence
