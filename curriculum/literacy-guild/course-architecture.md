@@ -14,7 +14,7 @@ Many details are already built:
 - XP and rank progression
 - Voice, Insight, and Wordcraft paths
 - DIBELS progress model
-- BC curriculum alignment
+- BC literacy intervention alignment
 - individual character system
 - guild and party system
 - Game Master role
