@@ -4,24 +4,16 @@
 
 This tracker helps the Game Master manage controlled-choice quest movement.
 
-Students can choose different routes, but the teacher still needs to see:
+Track only what changes instruction:
 
-- required core quest completion
+- required quest completion
 - missing path evidence
-- boss quest readiness
-- side quest activity
-- recovery quest needs
+- boss readiness
+- recovery route needs
 - conference priorities
-
-## Core rule
-
-Track only what changes instruction.
-
-Do not track every small action. The tracker should help with decisions, not become the class.
+- next teacher move
 
 ## Status codes
-
-Use simple codes.
 
 | Code | Meaning |
 |---|---|
@@ -51,8 +43,6 @@ Use simple codes.
 
 ## Required quest tracker
 
-Use this for core and boss quests only.
-
 | Student | Required quests complete | Missing required quests | Boss ready? | Conference needed? |
 |---|---:|---|---|---|
 |  |  |  | yes / no | yes / no |
@@ -60,8 +50,6 @@ Use this for core and boss quests only.
 |  |  |  | yes / no | yes / no |
 
 ## Path coverage tracker
-
-This prevents choice from becoming skill avoidance.
 
 | Student | Voice evidence | Insight evidence | Wordcraft evidence | Missing path |
 |---|---|---|---|---|
@@ -87,42 +75,40 @@ This prevents choice from becoming skill avoidance.
 
 ### Voice Trial
 
-| Student | Echo Reading | Second Read | Phrase Builder | Error Recovery | Voice Boss |
+| Student | Echo Reading Quest | Second Read Quest | Phrase Builder Quest | Error Recovery Quest | Voice Boss Quest |
 |---|---|---|---|---|---|
 |  |  |  |  |  |  |
 |  |  |  |  |  |  |
 
 ### Word Vault
 
-| Student | Context Clue | Prefix / Suffix | Root / Base Word | Word Use Choice | Wordcraft Boss |
+| Student | Context Clue Quest | Prefix / Suffix Quest | Root / Base Word Quest | Word Use Quest | Wordcraft Boss Quest |
 |---|---|---|---|---|---|
 |  |  |  |  |  |  |
 |  |  |  |  |  |  |
 
 ### Insight Gate
 
-| Student | Gist | Evidence | Inference | Repair Route | Insight Boss |
+| Student | Gist Quest | Evidence Quest | Inference Quest | Repair Route Quest | Insight Boss Quest |
 |---|---|---|---|---|---|
 |  |  |  |  |  |  |
 |  |  |  |  |  |  |
 
-### Three-Path Campaign
+### Integrated Campaign
 
-| Student | Voice-main quest | Insight-main quest | Wordcraft-main quest | Integrated evidence | Three-Path Boss |
+| Student | Archive Quest | Evidence Trail Quest | Word and Meaning Quest | Reread to Understand Quest | Three-Path Boss Quest |
 |---|---|---|---|---|---|
 |  |  |  |  |  |  |
 |  |  |  |  |  |  |
 
 ### Final Guild Portfolio
 
-| Student | Evidence Sort | Growth Reflection | Path Review | Final Conference | Final Portfolio |
+| Student | Evidence Sort | Growth Reflection | Path Review | Final Conference | Final Portfolio Quest |
 |---|---|---|---|---|---|
 |  |  |  |  |  |  |
 |  |  |  |  |  |  |
 
 ## Side quest tracker
-
-Side quests are useful, but they should not distract from required coverage.
 
 | Student | Side quest | Path | Evidence | Useful next step? |
 |---|---|---|---|---|
@@ -131,10 +117,6 @@ Side quests are useful, but they should not distract from required coverage.
 
 ## Recovery route tracker
 
-Use recovery routes when a student needs more training before moving on.
-
-Frame these as reroutes, not punishment.
-
 | Student | Skill needing support | Recovery quest | Support plan | Check date |
 |---|---|---|---|---|
 |  |  |  | teacher table / partner rehearsal / reread / sentence frame / audio |  |
@@ -142,22 +124,12 @@ Frame these as reroutes, not punishment.
 
 ## Boss readiness checklist
 
-A student is ready for a boss quest when:
-
-- required core quests are complete
-- required path evidence is present
-- the student can name at least one strategy used
-- the evidence is clear enough to check
-- the boss task will stretch, not ambush, the student
-
 | Student | Core quests complete | Evidence clear | Strategy named | Ready? | Note |
 |---|---|---|---|---|---|
 |  | yes / no | yes / no | yes / no | yes / no |  |
 |  | yes / no | yes / no | yes / no | yes / no |  |
 
 ## Weekly Game Master review
-
-At the end of each week, answer:
 
 1. Who completed required evidence?
 2. Who is avoiding a path?
@@ -168,10 +140,8 @@ At the end of each week, answer:
 
 ## Workload guardrail
 
-If this tracker becomes too much, keep only three columns:
+If this tracker becomes too much, keep only:
 
 - current quest
 - missing required evidence
 - next teacher move
-
-That is the minimum useful version.
