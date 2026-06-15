@@ -1,272 +1,231 @@
-# BC Curriculum Alignment
+# BC Literacy Intervention Alignment
 
 ## Purpose
 
-This file explains how the Literacy Guild aligns with British Columbia English Language Arts and Core Competencies.
+This file explains how the Literacy Guild supports a literacy and reading intervention block.
 
-It is a practical alignment document for planning, communication, and later QA.
+This is not an English Language Arts 8 course outline. It is not a graded ELA unit plan. It is a reading-growth structure for students who need targeted literacy support.
 
-## Important framing
+The main reporting use is descriptive report-card comments, learning updates, conferences, and next-step planning.
 
-The Literacy Guild is an intervention and classroom structure. It does not replace BC curriculum.
+## Correct framing
 
-The game layer organizes practice, evidence, feedback, reflection, and growth. The literacy targets remain reading, viewing, listening, speaking, writing, representing, thinking, and reflection.
+The Literacy Guild is for:
 
-## Source basis
+- improving reading fluency
+- improving comprehension
+- improving vocabulary
+- increasing reading confidence
+- helping students name strategies
+- collecting evidence of reading growth
+- communicating progress through comments
+- planning next instructional steps
 
-This alignment is based on the BC Curriculum English Language Arts 8 page and the BC Core Competencies page, checked June 2026.
+It is not for:
 
-The Grade 8 ELA curriculum names oral, written, visual, and digital texts as central forms of communication. It includes Big Ideas about language and text, stories and other texts, perspective, socially and culturally constructed texts, and questioning what we hear, read, and view.
+- assigning ELA grades
+- ranking students publicly
+- replacing classroom ELA instruction
+- turning reading levels into character levels
+- making DIBELS or any screening score public
+- using the game layer as the assessment standard
 
-The Core Competencies include Communication, Thinking, and Personal and Social.
+## BC connection
 
-## Course alignment summary
+This program connects most cleanly to BC's broader literacy foundations, Core Competencies, classroom assessment, and student reporting practices.
 
-| Literacy Guild element | BC alignment |
-|---|---|
-| Voice | oral language, fluency, expression, phrasing, listening, speaking with expression |
-| Insight | comprehension, interpretation, evidence, inference, questioning, connection, critical response |
-| Wordcraft | vocabulary, context clues, word structure, diction, language usage, precision |
-| Quests | meaningful tasks using oral, written, visual, and digital texts |
-| Boss tasks | demonstrations of comprehension, strategy use, response, and reflection |
-| Guild Passport | metacognition, goal-setting, self-assessment, evidence of learning |
-| Party roles | collaboration, communication, shared understanding, respectful interaction |
-| Character Log | reflection, personal awareness, next-step planning |
-| Quest map | student agency, planning, self-management, responsibility |
-| Teacher tracker | assessment for learning and responsive instruction |
+It should be described as an intervention/adaptation structure that supports literacy growth, not as a full grade-level curriculum course.
 
-## Alignment to ELA 8 Curricular Competencies
+BC's Core Competencies include Communication, Thinking, and Personal and Social. BC describes these as intellectual, personal, social, and emotional proficiencies central to K-12 learning, and notes that students develop them through meaningful tasks, reflection, and self-assessment.
 
-### Comprehend and connect
+BC's student reporting policy emphasizes communicating learning as ongoing and supporting students toward proficiency. For this intervention block, that means report-card comments should describe reading strengths, current strategy use, growth, supports, and next steps rather than assign a separate course grade unless the school specifically requires one.
 
-The Literacy Guild supports students to:
+## Reporting stance
 
-- access information and ideas from texts
-- apply strategies to comprehend written, oral, and visual texts
-- ask questions and extend thinking
-- synthesize ideas from texts
-- recognize text features, forms, and purposes
-- think critically, creatively, and reflectively
-- make connections between self, text, and world
-- respond to text in personal, creative, and critical ways
-- support thinking with evidence
+Use descriptive comments.
 
-Guild structures that support this:
+Do not report a Guild level, XP total, rank, party status, or DIBELS score as the report-card measure.
 
-- Insight path
-- Gist Map
-- Evidence Anchor
-- Inference Leap
-- Repair Route
-- solo evidence tasks
-- boss tasks
-- portfolio reflection
+Report on observable reading growth:
 
-## Alignment to ELA 8 Content
+- fluency behaviours
+- comprehension strategy use
+- vocabulary strategy use
+- stamina and confidence
+- evidence completion
+- response to feedback
+- independence with strategies
+- next instructional goal
 
-### Story and text
+## Core intervention domains
 
-The course can use narrative, exposition, report, articles, poems, visual texts, notices, speeches, and teacher-created texts.
+| Guild path | Intervention domain | Report-card language |
+|---|---|---|
+| Voice | Fluency | rereading, phrasing, accuracy, expression, confidence |
+| Insight | Comprehension | gist, evidence, inference, repair strategies, explaining thinking |
+| Wordcraft | Vocabulary | context clues, word parts, academic words, precise word use |
 
-The system is text-flexible. The quest structure can hold different forms, functions, and genres.
+## Assessment for intervention
 
-### Strategies and processes
+Assessment should answer:
 
-The Literacy Guild directly teaches and practises:
+- What can the student do now as a reader?
+- Which strategy is becoming more independent?
+- What support still helps?
+- What evidence shows growth?
+- What is the next reading goal?
 
-- contextual clues
-- word structure
-- questioning
-- predicting
-- previewing text
-- summarizing
-- making inferences
-- oral language strategies
-- metacognitive strategies
-- revising and reflecting
+Useful evidence includes:
 
-### Language features, structures, and conventions
+- reread reflections
+- teacher conference notes
+- marked phrase chunks
+- gist statements
+- revised responses
+- context clue explanations
+- word maps
+- oral explanations
+- portfolio selections
+- private progress-monitoring notes
 
-The course supports:
+## DIBELS use
 
-- tone
-- volume
-- inflection
-- pace
-- punctuation
-- sentence fluency
-- diction
-- word choice
-- language usage in context
-- clarity and precision
+DIBELS may support teacher planning and progress monitoring.
 
-Voice Trial especially supports oral language features and fluency.
+Use it privately to help identify needs and monitor growth. It should not be the public game score, the character level, the rank-up rule, or the report-card comment by itself.
 
-Word Vault especially supports context, word structure, and precision.
-
-Insight Gate especially supports comprehension, evidence, inference, and response.
+A report-card comment may mention observed reading growth connected to fluency or comprehension, but it should not list raw scores unless school practice explicitly requires that level of detail.
 
 ## Alignment to Core Competencies
 
 ### Communication
 
-Students develop communication through:
+Students practise Communication when they:
 
-- party discussion
-- partner rehearsal
-- oral explanation
-- evidence sharing
-- respectful feedback
-- written and spoken reflections
-- boss task conferences
-
-Key Guild structures:
-
-- party roles
-- Quest Captain
-- Insight Keeper
-- Wordsmith
-- Evidence Hunter
-- Support Checker
-- teacher conferences
+- discuss texts in parties
+- explain strategies to a partner or teacher
+- rehearse reading with support
+- use respectful feedback
+- share evidence in conferences
+- describe their next goal
 
 ### Thinking
 
-Students develop thinking through:
+Students practise Thinking when they:
 
-- asking questions
-- making inferences
-- using evidence
-- comparing first and revised attempts
-- choosing strategies
-- reflecting on what changed
-- solving comprehension problems
-
-Key Guild structures:
-
-- Insight path
-- Repair Route
-- Evidence Anchor
-- quest choices
-- boss tasks
-- portfolio review
+- choose a strategy
+- ask questions about a text
+- identify gist
+- make inferences
+- use context clues
+- compare first and revised attempts
+- explain why a strategy helped
 
 ### Personal and Social
 
-Students develop personal and social responsibility through:
+Students practise Personal and Social growth when they:
 
-- private goal-setting
-- self-reflection
-- respectful group roles
-- understanding support needs
-- choosing routes responsibly
-- recognizing that progress is individual
-- building confidence without public comparison
+- set reading goals
+- reflect honestly
+- use support appropriately
+- recover after difficulty
+- track progress privately
+- participate responsibly in party roles
+- understand that growth is personal, not public comparison
 
-Key Guild structures:
+## Alignment to literacy intervention goals
 
-- Guild Passport
-- character sheet
-- Character Log
-- student quest map
-- reroute language
-- private progress conferences
-
-## Assessment alignment
-
-The Literacy Guild uses assessment for learning.
-
-Evidence is used to answer:
-
-- What strategy did the student use?
-- What evidence shows growth?
-- What support is needed next?
-- Is the student ready for a boss task?
-- Which path needs more training?
-
-Assessment tools include:
-
-- solo evidence
-- teacher observations
-- conference notes
-- recordings where appropriate
-- reflections
-- DIBELS or other progress checks used privately
-- portfolio evidence
-
-## DIBELS and BC alignment
-
-DIBELS is not the curriculum.
-
-In this course, DIBELS is a private progress-monitoring tool that helps the teacher select instruction and support. It should not become a public rank, grade, character level, or replacement for classroom evidence.
-
-DIBELS information may support decisions around:
-
-- Voice goals
-- teacher-table groupings
-- rereading routines
-- progress conferences
-- next-step planning
-
-Classroom evidence remains necessary for Insight and Wordcraft.
-
-## Differentiation and support alignment
-
-The Literacy Guild is designed for students who need reading support.
-
-Supports may include:
-
-- teacher table
-- short text chunks
-- read-aloud or audio support
-- partner rehearsal
-- sentence frames
-- oral rehearsal before writing
-- controlled quest choice
-- recovery routes
-- private conferences
-- repeated practice
-
-Support does not remove the learning target. It changes the route to the target.
-
-## BC-aligned design guardrails
-
-Keep these guardrails:
-
-- Use a range of oral, written, visual, and digital texts where possible.
-- Connect tasks to comprehension, communication, reflection, and evidence.
-- Keep progress information private.
-- Do not equate character level with reading level.
-- Do not allow quest choice to become skill avoidance.
-- Preserve student dignity.
-- Use game language to clarify learning, not replace learning.
-- Use evidence to adjust instruction.
-
-## Alignment by Literacy Guild arc
-
-| Arc | BC-aligned focus |
+| Intervention goal | Guild structure |
 |---|---|
-| Enter the Guild | identity, routines, communication, reflection, evidence |
-| Three-Path Training | basic strategy use across fluency, comprehension, vocabulary |
-| Voice Trial | oral language, fluency, expression, punctuation, self-correction |
-| Word Vault | vocabulary, contextual clues, word structure, diction, precision |
-| Insight Gate | comprehension, evidence, inference, questioning, repair strategies |
-| Three-Path Campaign | integrated reading, thinking, communication, evidence use |
-| Final Guild Portfolio | self-assessment, reflection, communication of growth |
+| Build safer oral reading routines | Voice Trial, Echo Cast, Partner Rehearsal |
+| Increase rereading and repair habits | Second Read Quest, Error Recovery, Repair Route |
+| Improve comprehension monitoring | Insight path, Gist Map, Confusion Signal |
+| Strengthen evidence-based response | Evidence Anchor, boss tasks, solo evidence |
+| Build vocabulary strategy use | Wordcraft path, Context Torch, Root Strike |
+| Increase metacognition | Guild Passport, Character Log, conferences |
+| Communicate progress clearly | portfolio evidence, report-card comment bank |
+
+## Report-card comment structure
+
+Use this structure:
+
+1. Current strength
+2. Strategy or evidence observed
+3. Growth or support need
+4. Next step
+
+Example frame:
+
+`[Student] is developing stronger reading skills by ____. They are beginning to use ____ to support ____. Continued practice with ____ will help them ____.`
+
+## Comment bank: Voice / Fluency
+
+- is building confidence with supported rereading and is beginning to notice when a second read improves phrasing or accuracy.
+- uses echo reading and teacher modelling to practise smoother reading.
+- is learning to use punctuation and phrase chunks to support fluency.
+- benefits from short, repeated readings and private rehearsal before sharing reading aloud.
+- is developing greater awareness of when reading breaks down and when to reread.
+
+## Comment bank: Insight / Comprehension
+
+- is learning to identify the gist of a short text and explain the main idea in their own words.
+- is developing the ability to support answers with details from the text.
+- is beginning to use repair strategies when meaning breaks down.
+- benefits from rereading, sentence frames, and teacher questioning to clarify understanding.
+- is growing in confidence when explaining their thinking about a text.
+
+## Comment bank: Wordcraft / Vocabulary
+
+- is practising how to use nearby words and sentences to infer word meaning.
+- is beginning to notice useful vocabulary and explain how words affect meaning.
+- is developing strategies for breaking down unfamiliar words into meaningful parts.
+- benefits from word banks, examples, and oral rehearsal before using new vocabulary in writing.
+- is becoming more precise when explaining word meanings in context.
+
+## Comment bank: Learning habits and confidence
+
+- is beginning to use feedback to revise or strengthen reading evidence.
+- is developing more independence when choosing a reading strategy.
+- benefits from structured routines, short tasks, and clear next steps.
+- is learning to reflect on which strategy helped and what to try next.
+- is showing increased willingness to attempt challenging reading tasks with support.
+
+## Comment bank: Next steps
+
+- Next steps include continued practice with supported rereading, phrasing, and self-correction.
+- Next steps include building stronger gist statements and using text evidence more consistently.
+- Next steps include using context clues and word parts to approach unfamiliar vocabulary.
+- Next steps include increasing independence with strategy choice and evidence completion.
+- Next steps include continuing to build reading stamina and confidence through repeated practice.
+
+## What not to report
+
+Avoid reporting:
+
+- XP totals
+- character level
+- party standing
+- class rank
+- raw DIBELS scores
+- public comparison language
+- game titles as academic achievement
+
+These may support motivation or planning, but they are not the reporting standard.
 
 ## Teacher planning use
 
 Use this file when:
 
-- explaining the course to administrators or families
-- checking whether quests are instructionally grounded
-- building assessment language
 - writing report-card comments
-- doing continuity QA
-- deciding whether a game mechanic is helping or distracting
+- preparing parent/guardian communication
+- explaining the intervention block
+- checking whether quest evidence is useful
+- planning teacher-table groups
+- setting next reading goals
+- reviewing whether the game layer is supporting instruction
 
 ## Main rule
 
-The game structure is acceptable only when it strengthens literacy instruction.
+Report the reading growth, not the game progress.
 
-If a mechanic does not support comprehension, communication, vocabulary, fluency, reflection, evidence, or student agency, remove or reduce it.
+The game is the structure. The intervention target is improved reading skill, confidence, strategy use, and evidence of growth.
