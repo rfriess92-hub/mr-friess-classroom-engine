@@ -22,6 +22,7 @@ Many details are already built:
 - campaign map
 - quest bank
 - first mini quest packet
+- Voice Trial arc packet
 - Guild Passport
 - student overview
 - character sheet
@@ -35,7 +36,7 @@ Many details are already built:
 - Week 1 launch plan
 - Week 2 Three-Path Training plan
 
-What still needs build-out is the first path-specific arc packet.
+What still needs build-out is BC alignment and the remaining path-specific arc packets.
 
 ## Course promise
 
@@ -297,9 +298,11 @@ Do not allow quest choice to become skill avoidance.
 
 Recommended order:
 
-1. First Voice Trial arc packet
-2. Full-year and semester campaign map expansion as needed
-3. Printable packet versions of launch materials
+1. BC curriculum alignment file
+2. Word Vault arc packet
+3. Insight Gate arc packet
+4. Integrated campaign arc packet
+5. Printable packet versions of launch materials
 
 ## Success criteria
 
