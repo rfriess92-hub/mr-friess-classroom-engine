@@ -14,6 +14,7 @@ Many details are already built:
 - XP and rank progression
 - Voice, Insight, and Wordcraft paths
 - DIBELS progress model
+- BC curriculum alignment
 - individual character system
 - guild and party system
 - Game Master role
@@ -36,7 +37,7 @@ Many details are already built:
 - Week 1 launch plan
 - Week 2 Three-Path Training plan
 
-What still needs build-out is BC alignment and the remaining path-specific arc packets.
+What still needs build-out is the remaining path-specific arc packets and printable packet versions.
 
 ## Course promise
 
@@ -298,11 +299,10 @@ Do not allow quest choice to become skill avoidance.
 
 Recommended order:
 
-1. BC curriculum alignment file
-2. Word Vault arc packet
-3. Insight Gate arc packet
-4. Integrated campaign arc packet
-5. Printable packet versions of launch materials
+1. Word Vault arc packet
+2. Insight Gate arc packet
+3. Integrated campaign arc packet
+4. Printable packet versions of launch materials
 
 ## Success criteria
 
