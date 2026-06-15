@@ -24,6 +24,7 @@ Many details are already built:
 - quest bank
 - first mini quest packet
 - Voice Trial arc packet
+- Word Vault arc packet
 - Guild Passport
 - student overview
 - character sheet
@@ -299,10 +300,9 @@ Do not allow quest choice to become skill avoidance.
 
 Recommended order:
 
-1. Word Vault arc packet
-2. Insight Gate arc packet
-3. Integrated campaign arc packet
-4. Printable packet versions of launch materials
+1. Insight Gate arc packet
+2. Integrated campaign arc packet
+3. Printable packet versions of launch materials
 
 ## Success criteria
 
