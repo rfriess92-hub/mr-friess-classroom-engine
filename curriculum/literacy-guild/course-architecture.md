@@ -2,9 +2,9 @@
 
 ## Purpose
 
-This file defines how the Literacy Guild runs as a course.
+This file defines how the Literacy Guild runs as a literacy intervention course.
 
-It connects the game engine, literacy paths, character system, guild/party system, DIBELS progress model, quests, student materials, and teacher materials into one operating structure.
+It connects the game engine, literacy paths, character system, guild/party system, DIBELS progress model, quests, student materials, teacher materials, and report-card comment evidence into one operating structure.
 
 ## Current build status
 
@@ -25,6 +25,9 @@ Many details are already built:
 - first mini quest packet
 - Voice Trial arc packet
 - Word Vault arc packet
+- Insight Gate arc packet
+- Integrated Campaign arc packet
+- Final Guild Portfolio packet
 - Guild Passport
 - student overview
 - character sheet
@@ -38,7 +41,7 @@ Many details are already built:
 - Week 1 launch plan
 - Week 2 Three-Path Training plan
 
-What still needs build-out is the remaining path-specific arc packets and printable packet versions.
+What still needs build-out is printable packet versions and final continuity QA.
 
 ## Course promise
 
@@ -47,6 +50,14 @@ The Literacy Guild is a reading growth system.
 Students train reading skills, collect evidence, earn progress, and reflect on next steps.
 
 Students are not ranked against each other. Private progress data stays private.
+
+## Reporting stance
+
+This is a literacy intervention structure.
+
+The reporting purpose is descriptive comments about reading growth, strategy use, support needs, and next steps.
+
+The teacher reports the reading growth, not the game progress.
 
 ## Core operating loop
 
@@ -133,6 +144,7 @@ A good arc includes:
 - controlled quest choice
 - at least one boss task
 - at least one conference or progress reflection
+- useful evidence for report-card comments
 
 ## Recommended full-year arc map
 
@@ -142,7 +154,7 @@ A good arc includes:
 | October-November | Voice Trial | Fluency, rereading, phrasing, confidence |
 | December-January | Word Vault | Vocabulary, context, morphology, academic word use |
 | February-March | Insight Gate | Gist, evidence, inference, repair strategies |
-| April-May | Three-Path Campaign | Integrated quests using all paths |
+| April-May | Integrated Campaign | Integrated quests using all paths |
 | June | Final Guild Portfolio | Reflection, evidence review, next-step planning |
 
 ## Recommended semester arc map
@@ -154,7 +166,7 @@ A good arc includes:
 | Weeks 4-5 | Voice Focus | Fluency growth through safe rereading and reflection |
 | Weeks 6-7 | Wordcraft Focus | Vocabulary routines, word parts, context, word use |
 | Weeks 8-9 | Insight Focus | Gist, evidence, inference, comprehension repair |
-| Weeks 10-13 | Integrated Quests | Weekly quests using all three paths |
+| Weeks 10-13 | Integrated Campaign | Weekly quests using all three paths |
 | Weeks 14-16 | Growth Campaign | Targeted practice and stronger independent evidence |
 | Final Weeks | Portfolio and Reflection | Growth snapshot, conference, transition plan |
 
@@ -210,7 +222,7 @@ Use progress checks to guide instruction, not to drive public game status.
 | Every 2-3 weeks | Fluency check or recording | Monitor Voice growth |
 | Monthly | Maze or comprehension check | Monitor Insight growth |
 | Every 6-8 weeks | Conference | Review evidence and choose next goals |
-| End of arc | Boss task or portfolio check | Confirm growth and rank evidence |
+| End of arc | Boss task or portfolio check | Confirm growth and prepare comment evidence |
 
 ## Rank-up cadence
 
@@ -222,6 +234,8 @@ Recommended cadence:
 - teacher reviews rank-up requests weekly or biweekly
 - rank-ups are confirmed privately or semi-privately
 - class celebrations focus on effort and evidence, not who is highest
+
+Rank-ups support motivation. They are not the report-card measure.
 
 ## Boss task cadence
 
@@ -235,9 +249,7 @@ Use three levels:
 | Arc boss | End of an arc | Larger evidence task |
 | Final portfolio | End of course or year | Growth reflection and evidence review |
 
-## Full-year vs semester differences
-
-### Full-year Grade 8
+## Full-year cohort
 
 Use:
 
@@ -254,7 +266,7 @@ Delay:
 - too many ability cards
 - high-pressure boss tasks
 
-### Semester cohort
+## Semester cohort
 
 Use:
 
@@ -288,21 +300,22 @@ Everything else can be introduced after routines are stable.
 
 ## What not to build yet
 
-Do not build a full year of quest packets before the architecture is tested.
-
 Do not build a digital platform before the paper version works.
 
 Do not build too many badges, items, titles, or ability variants.
 
 Do not allow quest choice to become skill avoidance.
 
+Do not report game progress as academic achievement.
+
 ## Next build targets
 
 Recommended order:
 
-1. Insight Gate arc packet
-2. Integrated campaign arc packet
-3. Printable packet versions of launch materials
+1. Printable launch packet
+2. Printable arc packets
+3. Final continuity and redundancy QA
+4. Report-card comment bank expansion if needed
 
 ## Success criteria
 
@@ -315,6 +328,7 @@ The architecture is working if:
 - character mechanics support strategy use
 - parties help students prepare for solo evidence
 - progress checks stay private
+- report-card comments can describe reading growth clearly
 - the system works on a low-tech day
 
 ## Simplification rule
