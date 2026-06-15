@@ -23,6 +23,7 @@ Many details are already built:
 - quest bank
 - first mini quest packet
 - Guild Passport
+- student overview
 - character sheet
 - ability cards
 - party role cards
@@ -30,10 +31,11 @@ Many details are already built:
 - teacher tracker
 - quest completion tracker
 - Game Master reference card
+- teacher launch checklist
 - Week 1 launch plan
 - Week 2 Three-Path Training plan
 
-What still needs build-out is the teacher/student launch handouts and the first path-specific arc packet.
+What still needs build-out is the first path-specific arc packet.
 
 ## Course promise
 
@@ -295,10 +297,9 @@ Do not allow quest choice to become skill avoidance.
 
 Recommended order:
 
-1. Student overview handout
-2. Teacher launch checklist
-3. First Voice Trial arc packet
-4. Full-year and semester campaign map expansion as needed
+1. First Voice Trial arc packet
+2. Full-year and semester campaign map expansion as needed
+3. Printable packet versions of launch materials
 
 ## Success criteria
 
