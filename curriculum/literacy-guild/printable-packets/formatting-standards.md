@@ -14,7 +14,7 @@ The goal is to make materials readable, printable, and usable for students who n
 - Alignment: left aligned only
 - Paragraphs: short, with clear space between ideas
 - Page layout: enough white space for tracking and handwriting
-- Response areas: large bordered boxes, not tiny lines
+- Response areas: wide answer lines, not boxed response areas
 - Headings: clear, predictable, and not decorative
 
 ## Approved teacher formatting
@@ -37,6 +37,7 @@ The goal is to make materials readable, printable, and usable for students who n
 - all-caps headings except short copy labels
 - relying on colour alone for meaning
 - public comparison language
+- boxed answer areas unless there is a specific reason
 
 ## Tone model
 
@@ -64,6 +65,14 @@ Use sentence starters when students need support:
 - The part I fixed was...
 - The thing that helped was...
 - Next, I need to practise...
+
+Use prompt plus starter. Do not repeat the same wording twice.
+
+Example:
+
+`Why did you pick this path?`
+
+`I picked this because...`
 
 ## Teacher/student separation
 
