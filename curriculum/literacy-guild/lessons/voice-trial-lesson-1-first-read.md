@@ -2,21 +2,21 @@
 
 ## Purpose
 
-This is the first fully playable Literacy Guild lesson.
+This is the first full test lesson for the Literacy Guild.
 
-It tests whether the Literacy Guild feels like real reading intervention with a light story frame, rather than a set of generic worksheet pages.
+The goal is simple: does this feel like a real reading class with a light story frame?
 
 Focus skill:
 
-**Fluency through accurate first reading, teacher modeling, phrase control, rereading, and repair.**
+**Fluency: hear it, read it, fix one part, read it again.**
 
 Story frame:
 
-The class receives its first Archive record. The record is short, but the signal is uneven. Students need to read it clearly enough for the meaning to come through.
+The Archive sent us a short record. The message is there, but it does not come through clearly unless it is read with control.
 
-Science-of-reading guardrail:
+Science-of-reading rule:
 
-This lesson does not ask students to guess words from context. If a word is hard, students look at the word, read the parts they know, ask for a model if needed, and reread the sentence.
+Students do not guess words from the sentence. If a word is hard, stop at the word, look at it, read the parts, hear a model if needed, and reread the sentence.
 
 ## Lesson snapshot
 
@@ -24,23 +24,23 @@ This lesson does not ask students to guess words from context. If a word is hard
 - Lesson: 1
 - Time: 79 minutes
 - Group: Reading intervention, Grade 8
-- Devices: not required
-- Primary skill: fluency
-- Secondary skills: accurate decoding, phrase reading, punctuation, error repair, oral rehearsal
-- Public competition: none
-- Evidence: private student reflection and teacher observation
+- Devices: not needed
+- Main skill: fluency
+- Supporting skills: accuracy, phrasing, punctuation, rereading, repair
+- Public competition: no
+- Evidence: private student log and teacher notes
 
-## Teacher-facing objective
+## Teacher goal
 
-Students will practise reading a short original passage accurately and clearly by hearing a model, echo reading, marking one phrase or punctuation cue, rereading a selected section, and naming one thing that improved.
+Students hear the passage first, echo a few lines, mark one phrase break, reread one part, and name what got clearer.
 
-## Student-facing objective
+## Student goal
 
-Today you will read an Archive record more than once.
+Today you will read one short Archive record more than once.
 
-Your goal is not to read fast.
+Do not race.
 
-Your goal is to make the words clear enough for the meaning to come through.
+Read it so someone can follow what is happening.
 
 ## Original Archive record
 
@@ -54,7 +54,7 @@ It came through the old speaker in short bursts.
 
 Click. Click. Long pause.
 
-Then a voice said one sentence:
+Then the speaker played one sentence:
 
 Read the record again.
 
@@ -66,7 +66,7 @@ The signal changed.
 
 Click. Click. Long pause.
 
-Then the voice returned.
+Then the message came through again.
 
 Now the record can be understood.
 
@@ -74,71 +74,69 @@ Word count: 102
 
 ## Text notes for teacher
 
-This passage is intentionally short.
+The passage is short on purpose.
 
-It contains:
+It gives students:
 
-- repeated phrases for rereading
+- repeated lines to reread
 - punctuation that affects voice
 - short sentences for control
-- one longer sentence for phrasing practice
-- a story hook tied directly to rereading
+- one longer sentence for phrase practice
+- a story reason to reread
 
-Do not turn this into a full comprehension quiz. The comprehension target is basic: students should know what happened and how rereading made the record clearer.
+Keep the comprehension check quick. This is a fluency lesson. Students just need to know what happened and how rereading helped.
 
 ## Word-level notes
 
 Be ready to support these words if they slow students down:
 
-- signal: two syllables; sig-nal
-- speaker: base word speak + -er
-- bursts: final blend and ending /sts/
-- logbook: compound word, log + book
-- understood: un- + der + stood; teacher may model pronunciation
-
-Prompt students to inspect the printed word first.
+- signal: sig-nal
+- speaker: speak + er
+- bursts: watch the ending
+- logbook: log + book
+- understood: model if needed, then reread in the sentence
 
 Use:
 
 - “Look at the word.”
 - “What part do you know?”
-- “Listen while I read it. Now you read it.”
-- “Now reread the sentence.”
+- “Listen to me read it. Now you read it.”
+- “Good. Now put it back in the sentence.”
 
-Avoid:
+Do not use:
 
 - “What word would make sense?”
 - “Guess from the sentence.”
 
-## Power-ups used in this lesson
+## Power-ups used today
 
-Students do not need to earn these. They are supports.
+Students do not earn these. They are supports.
 
 ### Echo Charge
 
-Use: Hear one sentence from the teacher or a partner, then read it back.
+Hear one sentence, then read it back.
 
-Teacher wording:
+Teacher line:
 
-“Use Echo Charge here. Listen to my sentence. Now you read the same sentence back.”
+“Use Echo Charge. Listen first. Now you read it.”
 
 ### Reset Shield
 
-Use: Stop, breathe, and reread the last sentence or phrase.
+Stop, breathe, and reread the last sentence or phrase.
 
-Teacher wording:
+Teacher line:
 
-“Use Reset Shield. Go back to the last sentence. Read it again, slower and clearer.”
+“Use Reset Shield. Go back one sentence. Try it again.”
 
 ### Phrase Lens
 
-Use: Mark one place where the sentence should be read in parts.
+Mark one place where your voice needs a small break.
 
-Teacher wording:
+Teacher line:
 
-“Use Phrase Lens. We are marking one place where your voice needs a break.”
+“Use Phrase Lens. Find one place where your voice should break the sentence into parts.”
 
-## Stuck-list moves for this lesson
+## Stuck-list moves for today
 
 Student-facing:
 
@@ -151,142 +149,155 @@ Student-facing:
 
 Teacher note:
 
-If a student stalls on a word, support the word directly. Do not prompt guessing from context.
+If a student gets stuck on a word, support the word directly. Do not ask them to guess.
 
 ## 79-minute lesson plan
 
-### 0–7 minutes — Daily Encounter
+### 0–7 minutes — Start the class
 
-Teacher says:
+Say:
 
-“Today is our first Voice Trial. Voice does not mean acting. Voice means making the words clear enough that the meaning comes through.”
+“Today we start Voice Trial. This is not drama class, and it is not a speed contest. We are working on control. Can someone follow what you read?”
 
-Display or read:
+Put this on the board:
 
-“Your goal is not speed. Your goal is control.”
+`The goal is control, not speed.`
 
-Quick prompt:
+Ask:
 
 “What makes someone easy to understand when they read aloud?”
 
-Acceptable student responses:
+Good answers:
 
 - “They do not rush.”
 - “They pause.”
 - “They say the words clearly.”
 - “They fix mistakes.”
-- “Their voice matches the sentence.”
+- “They stop at periods.”
+
+If someone says “loud,” say:
+
+“Volume can help, but today I care more about control.”
 
 ### 7–14 minutes — Story hook and first teacher read
 
-Teacher says:
+Say:
 
-“The Archive has sent the first record. It is short, but it has to be read clearly. I am going to read it once. Follow with your eyes and notice where my voice changes.”
+“The Archive sent us a short record. I am going to read it once. Follow with your eyes. Listen for where my voice stops, slows down, or changes.”
 
-Teacher reads the full passage aloud once.
+Read the passage aloud once.
 
-After reading, ask:
+Ask:
 
 “What did you notice my voice do?”
 
-Likely responses:
+Likely answers:
 
 - “You paused.”
 - “You slowed down at the clicks.”
 - “You stopped at periods.”
-- “You made the last line sound important.”
+- “You made the last line stand out.”
 
-Teacher names the skill:
+Say:
 
-“That is phrase control. Readers use punctuation and meaning to decide how the sentence should sound.”
+“That is what we are practising. Not a performance. Just clear reading.”
 
 ### 14–24 minutes — Echo read
 
-Teacher reads one sentence. Students read the same sentence back.
+Say:
 
-Recommended echo chunks:
+“I read one sentence. You read it back. Same sentence. Same stops.”
+
+Echo these chunks:
 
 1. The first signal arrived just after lunch.
 2. It was not loud. It was not clear.
 3. It came through the old speaker in short bursts.
 4. Click. Click. Long pause.
-5. Then a voice said one sentence:
+5. Then the speaker played one sentence:
 6. Read the record again.
 
-Teacher watch-for:
+Watch for:
 
-- students dropping endings
-- students rushing punctuation
-- students reading “Click. Click. Long pause.” as one flat line
-- students skipping short sentences because they seem easy
+- dropped endings
+- rushing through periods
+- flat reading of “Click. Click. Long pause.”
+- students skipping short lines because they look easy
 
-Correction language:
+Use simple correction:
 
-“Go back to the sentence. Make the stop.”
+“Go back. Make the stop.”
 
-“Try that one again. Keep the ending on the word.”
+“Try that again. Keep the ending.”
 
-“Listen first. Now you read it.”
+“Listen first. Now you.”
 
-### 24–34 minutes — Phrase Lens mini-lesson
+### 24–34 minutes — Phrase Lens
 
-Write or display this sentence:
+Put this sentence on the board:
 
-`Sam copied the words into the logbook. The first line was easy. The second line was harder because the words seemed to run together.`
+`The second line was harder because the words seemed to run together.`
 
-Teacher says:
+Say:
 
-“This is the part that can get messy. We are going to mark one place where the voice should reset.”
+“This line can get messy. We are going to break it into two parts.”
 
-Model one possible phrase break:
+Model:
 
 `The second line was harder / because the words seemed to run together.`
 
-Teacher says:
+Say:
 
-“The slash does not mean stop forever. It means give your brain and your voice a small break.”
+“The slash is not a big stop. It is a quick reset.”
 
 Students mark one phrase break on their copy.
 
-### 34–49 minutes — Partner or teacher-table reread
-
-Students read the passage in pairs or in a teacher-led group.
+### 34–49 minutes — Reread with a partner or teacher table
 
 Option A: Partner read
 
 - Partner A reads from the start to “Read the record again.”
 - Partner B reads from “Sam copied the words” to the end.
-- Partners each choose one line to reread.
+- Each partner chooses one line to reread.
 
 Option B: Teacher table
 
-Pull 4–5 students for supported rereading.
+Pull 4–5 students.
 
-Use Echo Charge and Reset Shield deliberately.
+Say:
 
-Teacher table script:
+“Read this sentence. If it gets messy, we do not keep pushing. We fix one part and try again.”
 
-“Read this sentence. If it gets messy, we do not push through. We repair it.”
+Use:
 
-“Use Reset Shield. Go back one sentence.”
+“Reset Shield. Go back one sentence.”
 
-“Use Echo Charge. Listen to me. Now read it back.”
+“Echo Charge. Listen first. Now read it back.”
 
-### 49–60 minutes — Choose a repair line
+Watch for:
 
-Students choose one line that got better after rereading.
+- students who can read the words but do not group them
+- students who rush because they feel exposed
+- students who are accurate but flat
+- students who avoid rereading
 
-Student writes:
+### 49–60 minutes — Pick one repair line
+
+Say:
+
+“Choose one line that got better when you reread it. It does not have to be the whole passage. One line is enough.”
+
+Students write:
 
 - Line I worked on:
 - What was hard at first:
 - What I changed:
 
-Strong enough examples:
+Strong enough:
 
-- “I worked on ‘Click. Click. Long pause.’ I slowed down and stopped after each period.”
-- “I worked on the long sentence about the second line. I broke it into two parts.”
-- “I missed the word signal, then I listened and reread the sentence.”
+- “I worked on ‘Click. Click. Long pause.’ I stopped after each period.”
+- “I worked on the second line was harder sentence. I broke it into two parts.”
+- “I missed signal. I listened, said it, and reread the sentence.”
 
 Not enough yet:
 
@@ -294,23 +305,23 @@ Not enough yet:
 - “It was easy.”
 - “I read faster.”
 
-Teacher response to “I read faster”:
+If a student writes “I read faster,” say:
 
-“Today we are not proving speed. What got clearer?”
+“Maybe. But speed is not our proof today. What got clearer?”
 
-### 60–70 minutes — Meaning check
+### 60–70 minutes — Quick meaning check
 
-Students answer with one sentence:
+Students answer:
 
 “What happened in the record?”
 
-Acceptable responses:
+Good enough answers:
 
-- “A signal came through a speaker and told Sam to read the record again.”
-- “Sam reread the line more slowly, and then the record made sense.”
-- “The record became clearer after Sam reread it.”
+- “A signal came through the speaker and told Sam to read the record again.”
+- “Sam reread the line more slowly, and then the message was clearer.”
+- “The record made more sense after Sam reread it.”
 
-If a student gives a vague answer:
+If the answer is vague, say:
 
 “Go back to the record. What happened first? What happened next?”
 
@@ -318,26 +329,26 @@ If a student gives a vague answer:
 
 Students complete the Voice Trial Evidence Log.
 
-Required evidence:
+They need:
 
-1. One line I reread:
-2. One thing I changed:
-3. One support I used or could use next time:
-4. What got clearer:
+1. One line they reread.
+2. One thing they changed.
+3. One support they used or could use next time.
+4. What got clearer.
 
-Teacher circulates and marks quick notes.
+Move around the room and take quick notes.
 
 ### 76–79 minutes — Exit line
 
-Students complete:
+Students finish:
 
 “Next time I read aloud, I will try to __________.”
 
-Strong exit lines:
+Good exit lines:
 
 - “pause at punctuation”
 - “reread the messy sentence”
-- “listen first, then echo read”
+- “listen first, then read it back”
 - “slow down at short sentences”
 - “keep the word endings”
 
@@ -347,9 +358,9 @@ Name: ____________________________   Date: ____________________________
 
 # Voice Trial Lesson 1 — The First Read
 
-Your goal is not speed.
+Do not race.
 
-Your goal is to make the words clear enough for the meaning to come through.
+Read so someone can follow what is happening.
 
 ## Archive Record 1: The First Signal
 
@@ -361,7 +372,7 @@ It came through the old speaker in short bursts.
 
 Click. Click. Long pause.
 
-Then a voice said one sentence:
+Then the speaker played one sentence:
 
 Read the record again.
 
@@ -373,7 +384,7 @@ The signal changed.
 
 Click. Click. Long pause.
 
-Then the voice returned.
+Then the message came through again.
 
 Now the record can be understood.
 
@@ -381,13 +392,13 @@ Now the record can be understood.
 
 Mark one place where your voice should take a small break.
 
-My phrase break goes here:
+My phrase break:
 
 ______________________________________________________________________________
 
 ## Power-up tracker
 
-Power-up I used or could use next time: ______________________________________
+Power-up I used or might use next time: ______________________________________
 
 Uses:  ○   ○   ○
 
@@ -427,14 +438,14 @@ ______________________________________________________________________________
 
 ## Teacher evidence guide
 
-This lesson does not have one correct written answer. Evidence is acceptable when it shows that the student noticed and adjusted something about reading aloud.
+Count it if the student can point to a line and say what they changed.
 
-### Strong enough evidence
+### Strong enough
 
-- Student identifies a specific line or sentence.
-- Student names a specific change: paused, slowed down, reread, fixed a word, kept an ending, broke a sentence into parts.
-- Student connects the change to clarity or meaning.
-- Student can answer the basic meaning check.
+- Student names a specific line or sentence.
+- Student names a real change: paused, slowed down, reread, fixed a word, kept an ending, or broke a sentence into parts.
+- Student can say what got clearer.
+- Student can answer the quick meaning check.
 
 ### Not enough yet
 
@@ -444,12 +455,12 @@ This lesson does not have one correct written answer. Evidence is acceptable whe
 - “I used a power-up.”
 - blank line / copied title only
 
-### Teacher follow-up prompts
+### Follow-up prompts
 
-- “Show me the line you mean.”
-- “What exactly changed when you reread?”
+- “Show me the line.”
+- “What changed when you reread it?”
 - “Did you fix a word, a pause, or a phrase?”
-- “What would I hear if you read it again?”
+- “Read it once more so I can hear the change.”
 - “Speed is not the target today. What got clearer?”
 
 ## Small-group recovery moves
@@ -458,9 +469,9 @@ This lesson does not have one correct written answer. Evidence is acceptable whe
 
 Use echo reading.
 
-Teacher reads one sentence. Student reads it back.
+You read one sentence. The student reads it back.
 
-Keep the group small and private.
+Keep it small and private.
 
 ### If students read too fast
 
@@ -472,7 +483,7 @@ Say:
 
 “Make the stop. Let the sentence land.”
 
-### If students decode inaccurately
+### If students read a word wrong
 
 Stop at the word.
 
@@ -480,13 +491,13 @@ Say:
 
 “Look at the word. Read it again.”
 
-If needed, model the word and have the student repeat it in the sentence.
+If needed, model the word. Then have the student put it back in the sentence.
 
 Do not ask the student to guess from context.
 
 ### If students are accurate but flat
 
-Choose one short section:
+Use this short section:
 
 `Click. Click. Long pause.`
 
@@ -494,19 +505,21 @@ Ask:
 
 “What should the listener hear here?”
 
-Model and echo read.
+Model it. Then echo read.
 
-### If students cannot explain what got clearer
+### If students cannot explain what changed
 
 Give two choices:
 
 “Was it clearer because you paused, or because you fixed a word?”
 
-Then have them complete the sentence:
+Then have them say:
 
 “It got clearer because I __________.”
 
 ## Teacher observation notes
+
+Use quick notes, not paragraphs.
 
 Suggested shorthand:
 
@@ -531,16 +544,16 @@ Example notes:
 
 - Teacher reads first.
 - Student echo reads one sentence at a time.
-- Student works with a shorter section only.
-- Student copies teacher phrase break.
-- Student completes oral evidence before writing.
+- Student works with a shorter section.
+- Student copies the teacher phrase break.
+- Student says the evidence out loud before writing.
 
 ### More independence
 
-- Student chooses own phrase break.
+- Student chooses their own phrase break.
 - Student explains why the break helps.
 - Student reads the whole passage twice.
-- Student coaches a partner using one prompt.
+- Student helps a partner choose one line to repair.
 
 ## What not to do
 
@@ -552,19 +565,17 @@ Example notes:
 
 ## Lesson success criteria
 
-This lesson is successful if most students can do at least three of the following:
+This lesson works if most students can do at least three of these:
 
 - follow the teacher model
 - reread one line
 - use one support or stuck-list move
-- improve one phrase, pause, word, or sentence
-- explain what got clearer
+- improve one word, pause, phrase, or sentence
+- say what got clearer
 - state the basic meaning of the record
 
 ## Next lesson connection
 
-Voice Trial Lesson 2 should build from this by introducing a second Archive record with more deliberate phrase practice.
-
-Possible next focus:
+Next Voice Trial lesson:
 
 **Phrase Builder Quest — Read in chunks, not word by word.**
