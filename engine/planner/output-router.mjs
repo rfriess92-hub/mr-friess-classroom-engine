@@ -1,9 +1,9 @@
 import { normalizeOutputType, TIER_LEVELS } from '../schema/canonical.mjs'
 import { normalizePackageToRenderPlan } from '../schema/render-plan.mjs'
 
-const LITERACY_QUEST_WRAPPER_CONTRACT_ID = 'literacy_quest_wrapper_v1'
+const WRAPPER_CONTRACT = 'literacy_quest_wrapper_v1'
 
-const LITERACY_QUEST_WRAPPERS = {
+const WRAPPERS = {
   student_packet: ['student_packet', 'Quest Journal', 'student'],
   teacher_guide: ['teacher_guide', 'Guild Leader Guide', 'teacher'],
   lesson_overview: ['teacher_guide', 'Guild Leader Guide', 'teacher'],
@@ -25,101 +25,76 @@ const LITERACY_QUEST_WRAPPERS = {
   answer_key: ['answer_key', 'Guild Leader Key', 'teacher'],
 }
 
+const RENDERER_KEYS = {
+  teacher_guide: 'render_teacher_guide',
+  lesson_overview: 'render_lesson_overview',
+  slides: 'render_slides',
+  daily_slide_deck_bundle: 'render_daily_slide_deck_bundle',
+  worksheet: 'render_worksheet',
+  task_sheet: 'render_task_sheet',
+  checkpoint_sheet: 'render_checkpoint_sheet',
+  exit_ticket: 'render_exit_ticket',
+  final_response_sheet: 'render_final_response_sheet',
+  graphic_organizer: 'render_graphic_organizer',
+  discussion_prep_sheet: 'render_discussion_prep_sheet',
+  rubric_sheet: 'render_rubric_sheet',
+  station_cards: 'render_station_cards',
+  answer_key: 'render_answer_key',
+  pacing_guide: 'render_pacing_guide',
+  sub_plan: 'render_sub_plan',
+  makeup_packet: 'render_makeup_packet',
+  assessment: 'render_assessment',
+  quiz: 'render_quiz',
+  rubric: 'render_rubric',
+  formative_check: 'render_formative_check',
+  warm_up: 'render_warm_up',
+  vocabulary_card: 'render_vocabulary_card',
+  observation_grid: 'render_observation_grid',
+  lesson_reflection: 'render_lesson_reflection',
+  teacher_binder: 'render_teacher_binder',
+  student_packet: 'render_student_packet',
+  assessment_pack: 'render_assessment_pack',
+  safety_source_pack: 'render_safety_source_pack',
+  notes_package: 'render_notes_package',
+  graphic_organizer_set: 'render_graphic_organizer_set',
+}
+
+const PDF_OUTPUT_TYPES = new Set([
+  'teacher_guide', 'lesson_overview', 'worksheet', 'task_sheet', 'checkpoint_sheet',
+  'exit_ticket', 'final_response_sheet', 'graphic_organizer', 'discussion_prep_sheet',
+  'rubric_sheet', 'station_cards', 'answer_key', 'pacing_guide', 'sub_plan',
+  'makeup_packet', 'assessment', 'quiz', 'rubric', 'formative_check', 'warm_up',
+  'vocabulary_card', 'observation_grid', 'lesson_reflection', 'teacher_binder',
+  'student_packet', 'assessment_pack', 'safety_source_pack', 'notes_package',
+  'graphic_organizer_set',
+])
+
 function rendererKeyFor(outputType) {
-  switch (outputType) {
-    case 'teacher_guide': return 'render_teacher_guide'
-    case 'lesson_overview': return 'render_lesson_overview'
-    case 'slides': return 'render_slides'
-    case 'daily_slide_deck_bundle': return 'render_daily_slide_deck_bundle'
-    case 'worksheet': return 'render_worksheet'
-    case 'task_sheet': return 'render_task_sheet'
-    case 'checkpoint_sheet': return 'render_checkpoint_sheet'
-    case 'exit_ticket': return 'render_exit_ticket'
-    case 'final_response_sheet': return 'render_final_response_sheet'
-    case 'graphic_organizer': return 'render_graphic_organizer'
-    case 'discussion_prep_sheet': return 'render_discussion_prep_sheet'
-    case 'rubric_sheet': return 'render_rubric_sheet'
-    case 'station_cards': return 'render_station_cards'
-    case 'answer_key': return 'render_answer_key'
-    case 'pacing_guide': return 'render_pacing_guide'
-    case 'sub_plan': return 'render_sub_plan'
-    case 'makeup_packet': return 'render_makeup_packet'
-    case 'assessment': return 'render_assessment'
-    case 'quiz': return 'render_quiz'
-    case 'rubric': return 'render_rubric'
-    case 'formative_check': return 'render_formative_check'
-    case 'warm_up': return 'render_warm_up'
-    case 'vocabulary_card': return 'render_vocabulary_card'
-    case 'observation_grid': return 'render_observation_grid'
-    case 'lesson_reflection': return 'render_lesson_reflection'
-    case 'teacher_binder': return 'render_teacher_binder'
-    case 'student_packet': return 'render_student_packet'
-    case 'assessment_pack': return 'render_assessment_pack'
-    case 'safety_source_pack': return 'render_safety_source_pack'
-    case 'notes_package': return 'render_notes_package'
-    case 'graphic_organizer_set': return 'render_graphic_organizer_set'
-    default: return 'render_unknown_output'
-  }
+  return RENDERER_KEYS[outputType] ?? 'render_unknown_output'
 }
 
 function rendererFamilyFor(outputType) {
-  switch (outputType) {
-    case 'slides':
-    case 'daily_slide_deck_bundle':
-      return 'pptx'
-    case 'teacher_guide':
-    case 'lesson_overview':
-    case 'worksheet':
-    case 'task_sheet':
-    case 'checkpoint_sheet':
-    case 'exit_ticket':
-    case 'final_response_sheet':
-    case 'graphic_organizer':
-    case 'discussion_prep_sheet':
-    case 'rubric_sheet':
-    case 'station_cards':
-    case 'answer_key':
-    case 'pacing_guide':
-    case 'sub_plan':
-    case 'makeup_packet':
-    case 'assessment':
-    case 'quiz':
-    case 'rubric':
-    case 'formative_check':
-    case 'warm_up':
-    case 'vocabulary_card':
-    case 'observation_grid':
-    case 'lesson_reflection':
-    case 'teacher_binder':
-    case 'student_packet':
-    case 'assessment_pack':
-    case 'safety_source_pack':
-    case 'notes_package':
-    case 'graphic_organizer_set':
-      return 'pdf'
-    default:
-      return 'unknown'
-  }
+  if (outputType === 'slides' || outputType === 'daily_slide_deck_bundle') return 'pptx'
+  if (PDF_OUTPUT_TYPES.has(outputType)) return 'pdf'
+  return 'unknown'
 }
 
 function audienceBucketFor(audience) {
-  switch (audience) {
-    case 'teacher': return 'teacher_only'
-    case 'student': return 'student_facing'
-    case 'shared_view': return 'shared_view'
-    default: return 'unknown'
-  }
+  if (audience === 'teacher') return 'teacher_only'
+  if (audience === 'student') return 'student_facing'
+  if (audience === 'shared_view') return 'shared_view'
+  return 'unknown'
 }
 
 function literacyQuestApplies(route) {
-  const courseFamily = String(route.course_family_id ?? '').toLowerCase()
-  const packageType = String(route.package_type ?? '').toLowerCase()
-  const bundleId = String(route.bundle_id ?? '').toLowerCase()
-  const outputId = String(route.output_id ?? '').toLowerCase()
-  return courseFamily.includes('literacy')
-    || packageType.includes('literacy')
-    || bundleId.includes('literacy')
-    || outputId.includes('literacy')
+  const values = [route.course_family_id, route.package_type, route.bundle_id, route.output_id]
+  return values.some((value) => String(value ?? '').toLowerCase().includes('literacy'))
+}
+
+function wrapperKeyFor(route) {
+  if (route.package_type === 'student_packet') return 'student_packet'
+  if (route.package_type === 'teacher_guide') return 'teacher_guide'
+  return route.output_type
 }
 
 function titleForWrapper(route) {
@@ -128,28 +103,31 @@ function titleForWrapper(route) {
 
 function literacyQuestWrapperFor(route) {
   if (!literacyQuestApplies(route)) return null
-  const entry = LITERACY_QUEST_WRAPPERS[route.output_type]
+  const entry = WRAPPERS[wrapperKeyFor(route)]
+  const title = titleForWrapper(route)
+
   if (!entry) {
     return {
-      wrapper_contract: LITERACY_QUEST_WRAPPER_CONTRACT_ID,
+      wrapper_contract: WRAPPER_CONTRACT,
       structural_role: route.output_type,
       wrapper_label: null,
-      display_title: titleForWrapper(route),
+      display_title: title,
       theme_scope: 'none',
+      content_theme_rule: null,
+      audience_tone: null,
       wrapper_status: 'unmapped_output_type',
     }
   }
 
   const [structuralRole, wrapperLabel, audienceTone] = entry
-  const title = titleForWrapper(route)
   return {
-    wrapper_contract: LITERACY_QUEST_WRAPPER_CONTRACT_ID,
+    wrapper_contract: WRAPPER_CONTRACT,
     structural_role: structuralRole,
     wrapper_label: wrapperLabel,
     display_title: title.startsWith(`${wrapperLabel}:`) ? title : `${wrapperLabel}: ${title}`,
-    audience_tone: audienceTone,
     theme_scope: 'wrapper_navigation_only',
     content_theme_rule: 'academic_content_may_vary_naturally',
+    audience_tone: audienceTone,
     wrapper_status: 'mapped',
   }
 }
