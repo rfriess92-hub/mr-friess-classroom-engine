@@ -1,6 +1,30 @@
 import { normalizeOutputType, TIER_LEVELS } from '../schema/canonical.mjs'
 import { normalizePackageToRenderPlan } from '../schema/render-plan.mjs'
 
+const LITERACY_QUEST_WRAPPER_CONTRACT_ID = 'literacy_quest_wrapper_v1'
+
+const LITERACY_QUEST_WRAPPERS = {
+  student_packet: ['student_packet', 'Quest Journal', 'student'],
+  teacher_guide: ['teacher_guide', 'Guild Leader Guide', 'teacher'],
+  lesson_overview: ['teacher_guide', 'Guild Leader Guide', 'teacher'],
+  worksheet: ['worksheet', 'Mission Page', 'student'],
+  task_sheet: ['worksheet', 'Mission Page', 'student'],
+  graphic_organizer: ['graphic_organizer', 'Strategy Map', 'student'],
+  graphic_organizer_set: ['graphic_organizer', 'Strategy Map', 'student'],
+  checkpoint_sheet: ['checklist', 'Quest Completion Check', 'student'],
+  final_response_sheet: ['assessment', 'Mastery Check', 'student'],
+  rubric_sheet: ['rubric', 'Guild Criteria', 'student'],
+  rubric: ['rubric', 'Mastery Scale', 'teacher'],
+  vocabulary_card: ['vocabulary', 'Key Terms', 'student'],
+  lesson_reflection: ['reflection', 'Campfire Reflection', 'student'],
+  assessment: ['assessment', 'Mastery Check', 'student'],
+  quiz: ['assessment', 'Mastery Check', 'student'],
+  formative_check: ['assessment', 'Mastery Check', 'student'],
+  discussion_prep_sheet: ['prompt', 'Quest Prompt', 'student'],
+  station_cards: ['project_tools', 'Quest Toolkit', 'student'],
+  answer_key: ['answer_key', 'Guild Leader Key', 'teacher'],
+}
+
 function rendererKeyFor(outputType) {
   switch (outputType) {
     case 'teacher_guide': return 'render_teacher_guide'
@@ -87,15 +111,62 @@ function audienceBucketFor(audience) {
   }
 }
 
-function buildRoute(output, normalizedOutputType, overrides = {}) {
+function literacyQuestApplies(route) {
+  const courseFamily = String(route.course_family_id ?? '').toLowerCase()
+  const packageType = String(route.package_type ?? '').toLowerCase()
+  const bundleId = String(route.bundle_id ?? '').toLowerCase()
+  const outputId = String(route.output_id ?? '').toLowerCase()
+  return courseFamily.includes('literacy')
+    || packageType.includes('literacy')
+    || bundleId.includes('literacy')
+    || outputId.includes('literacy')
+}
+
+function titleForWrapper(route) {
+  return route.title || route.package_title || route.output_id || route.output_type || 'Resource'
+}
+
+function literacyQuestWrapperFor(route) {
+  if (!literacyQuestApplies(route)) return null
+  const entry = LITERACY_QUEST_WRAPPERS[route.output_type]
+  if (!entry) {
+    return {
+      wrapper_contract: LITERACY_QUEST_WRAPPER_CONTRACT_ID,
+      structural_role: route.output_type,
+      wrapper_label: null,
+      display_title: titleForWrapper(route),
+      theme_scope: 'none',
+      wrapper_status: 'unmapped_output_type',
+    }
+  }
+
+  const [structuralRole, wrapperLabel, audienceTone] = entry
+  const title = titleForWrapper(route)
   return {
+    wrapper_contract: LITERACY_QUEST_WRAPPER_CONTRACT_ID,
+    structural_role: structuralRole,
+    wrapper_label: wrapperLabel,
+    display_title: title.startsWith(`${wrapperLabel}:`) ? title : `${wrapperLabel}: ${title}`,
+    audience_tone: audienceTone,
+    theme_scope: 'wrapper_navigation_only',
+    content_theme_rule: 'academic_content_may_vary_naturally',
+    wrapper_status: 'mapped',
+  }
+}
+
+function buildRoute(output, normalizedOutputType, overrides = {}) {
+  const baseRoute = {
     route_id: `${output.output_id}__${normalizedOutputType}`,
     output_id: output.output_id,
     output_type: normalizedOutputType,
+    title: output.title,
     audience: output.audience,
     audience_bucket: audienceBucketFor(output.audience),
     renderer_key: rendererKeyFor(normalizedOutputType),
     renderer_family: rendererFamilyFor(normalizedOutputType),
+    course_family_id: output.course_family_id,
+    package_type: output.package_type,
+    package_title: output.package_title,
     artifact_family: output.artifact_family,
     render_intent: output.render_intent,
     evidence_role: output.evidence_role,
@@ -118,6 +189,21 @@ function buildRoute(output, normalizedOutputType, overrides = {}) {
     alignment_target: output.alignment_target,
     final_evidence_target: output.final_evidence_target,
     ...overrides,
+  }
+
+  const wrapper = literacyQuestWrapperFor(baseRoute)
+  if (!wrapper) return baseRoute
+
+  return {
+    ...baseRoute,
+    resource_role: wrapper.structural_role,
+    wrapper_label: wrapper.wrapper_label,
+    display_title: wrapper.display_title,
+    wrapper_contract: wrapper.wrapper_contract,
+    wrapper_theme_scope: wrapper.theme_scope,
+    wrapper_content_theme_rule: wrapper.content_theme_rule,
+    wrapper_audience_tone: wrapper.audience_tone,
+    wrapper_status: wrapper.wrapper_status,
   }
 }
 
