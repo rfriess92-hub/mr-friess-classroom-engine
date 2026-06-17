@@ -209,14 +209,14 @@ test('literacy routes carry wrapper metadata without replacing structural routin
   assert.equal(teacherGuide?.wrapper_label, 'Guild Leader Guide')
   assert.equal(teacherGuide?.display_title, 'Guild Leader Guide: Voice Trial Lesson 1')
 
-  assert.equal(strategyMap?.resource_role, 'student_packet')
-  assert.equal(strategyMap?.wrapper_label, 'Quest Journal')
-  assert.equal(strategyMap?.display_title, 'Quest Journal: Phrase Practice')
+  assert.equal(strategyMap?.resource_role, 'graphic_organizer')
+  assert.equal(strategyMap?.wrapper_label, 'Strategy Map')
+  assert.equal(strategyMap?.display_title, 'Strategy Map: Phrase Practice')
 
-  assert.equal(masteryScale?.resource_role, 'student_packet')
-  assert.equal(masteryScale?.wrapper_label, 'Quest Journal')
-  assert.equal(masteryScale?.display_title, 'Quest Journal: Fluency Criteria')
+  assert.equal(masteryScale?.resource_role, 'rubric')
+  assert.equal(masteryScale?.wrapper_label, 'Guild Criteria')
+  assert.equal(masteryScale?.display_title, 'Guild Criteria: Fluency Criteria')
 
-  assert.equal(keyTerms?.resource_role, 'student_packet')
-  assert.equal(keyTerms?.wrapper_label, 'Quest Journal')
+  assert.equal(keyTerms?.resource_role, 'vocabulary')
+  assert.equal(keyTerms?.wrapper_label, 'Key Terms')
 })
