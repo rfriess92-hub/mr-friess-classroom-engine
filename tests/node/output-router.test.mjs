@@ -80,6 +80,77 @@ const packageFixture = {
   ],
 }
 
+const literacyQuestFixture = {
+  schema_version: '2.1.0',
+  course_family_id: 'literacy-guild',
+  package_id: 'literacy_guild_voice_trial_fixture',
+  package_type: 'student_packet',
+  title: 'Voice Trial Lesson 1',
+  primary_architecture: 'single_period_full',
+  bundle: {
+    bundle_id: 'literacy_guild_voice_trial_fixture',
+    declared_outputs: ['task_sheet', 'teacher_guide', 'graphic_organizer', 'rubric_sheet', 'vocabulary_card'],
+  },
+  task_sheet: {
+    title: 'Voice Trial Mission Page',
+    purpose_line: 'Read one line again and name what got clearer.',
+    tasks: [
+      {
+        label: 'Reread one line',
+        prompt: 'Choose one line and read it again.',
+        lines: 3,
+      },
+    ],
+  },
+  graphic_organizer: {
+    title: 'Phrase map',
+    organizer_type: 't_chart',
+    columns: ['Line', 'What I changed'],
+    rows: 2,
+  },
+  rubric_sheet: {
+    title: 'Fluency criteria',
+    criteria: ['Accuracy', 'Phrasing', 'Reread repair'],
+  },
+  outputs: [
+    {
+      output_id: 'voice_trial_student_packet',
+      output_type: 'task_sheet',
+      audience: 'student',
+      source_section: 'task_sheet',
+      title: 'Voice Trial Lesson 1',
+    },
+    {
+      output_id: 'voice_trial_teacher_guide',
+      output_type: 'teacher_guide',
+      audience: 'teacher',
+      source_section: 'task_sheet',
+      title: 'Voice Trial Lesson 1',
+    },
+    {
+      output_id: 'voice_trial_strategy_map',
+      output_type: 'graphic_organizer',
+      audience: 'student',
+      source_section: 'graphic_organizer',
+      title: 'Phrase Practice',
+    },
+    {
+      output_id: 'voice_trial_mastery_scale',
+      output_type: 'rubric_sheet',
+      audience: 'student',
+      source_section: 'rubric_sheet',
+      title: 'Fluency Criteria',
+    },
+    {
+      output_id: 'voice_trial_key_terms',
+      output_type: 'vocabulary_card',
+      audience: 'student',
+      source_section: 'task_sheet',
+      title: 'Key Terms',
+    },
+  ],
+}
+
 test('planPackageRoutes maps output types to renderer families and audience buckets', () => {
   const { validation, routes } = planPackageRoutes(packageFixture)
 
@@ -109,4 +180,39 @@ test('planPackageRoutes maps output types to renderer families and audience buck
   assert.equal(discussionRoute?.renderer_family, 'pdf')
   assert.equal(discussionRoute?.renderer_key, 'render_discussion_prep_sheet')
   assert.equal(discussionRoute?.audience_bucket, 'student_facing')
+})
+
+test('literacy routes carry wrapper metadata without replacing structural routing', () => {
+  const { validation, routes } = planPackageRoutes(literacyQuestFixture)
+
+  assert.equal(validation.valid, true)
+  assert.equal(routes.length, 5)
+
+  const studentPacket = routes.find((route) => route.output_id === 'voice_trial_student_packet')
+  const teacherGuide = routes.find((route) => route.output_id === 'voice_trial_teacher_guide')
+  const strategyMap = routes.find((route) => route.output_id === 'voice_trial_strategy_map')
+  const masteryScale = routes.find((route) => route.output_id === 'voice_trial_mastery_scale')
+  const keyTerms = routes.find((route) => route.output_id === 'voice_trial_key_terms')
+
+  assert.equal(studentPacket?.renderer_key, 'render_task_sheet')
+  assert.equal(studentPacket?.resource_role, 'student_packet')
+  assert.equal(studentPacket?.wrapper_label, 'Quest Journal')
+  assert.equal(studentPacket?.display_title, 'Quest Journal: Voice Trial Lesson 1')
+  assert.equal(studentPacket?.wrapper_theme_scope, 'wrapper_navigation_only')
+
+  assert.equal(teacherGuide?.renderer_key, 'render_teacher_guide')
+  assert.equal(teacherGuide?.resource_role, 'teacher_guide')
+  assert.equal(teacherGuide?.wrapper_label, 'Guild Leader Guide')
+  assert.equal(teacherGuide?.display_title, 'Guild Leader Guide: Voice Trial Lesson 1')
+
+  assert.equal(strategyMap?.resource_role, 'graphic_organizer')
+  assert.equal(strategyMap?.wrapper_label, 'Strategy Map')
+  assert.equal(strategyMap?.display_title, 'Strategy Map: Phrase Practice')
+
+  assert.equal(masteryScale?.resource_role, 'rubric')
+  assert.equal(masteryScale?.wrapper_label, 'Guild Criteria')
+  assert.equal(masteryScale?.display_title, 'Guild Criteria: Fluency Criteria')
+
+  assert.equal(keyTerms?.resource_role, 'vocabulary')
+  assert.equal(keyTerms?.wrapper_label, 'Key Terms')
 })
