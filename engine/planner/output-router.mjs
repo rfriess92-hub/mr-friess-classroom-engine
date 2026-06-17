@@ -69,6 +69,8 @@ const PDF_OUTPUT_TYPES = new Set([
   'graphic_organizer_set',
 ])
 
+const PRIMARY_STUDENT_PACKET_LAYOUTS = new Set(['student_packet', 'task_sheet', 'worksheet'])
+
 function rendererKeyFor(outputType) {
   return RENDERER_KEYS[outputType] ?? 'render_unknown_output'
 }
@@ -93,7 +95,7 @@ function literacyQuestApplies(route) {
 
 function wrapperKeyFor(route) {
   if (route.output_type === 'teacher_guide' || route.output_type === 'lesson_overview') return route.output_type
-  if (route.package_type === 'student_packet' && route.audience === 'student') return 'student_packet'
+  if (route.package_type === 'student_packet' && route.audience === 'student' && PRIMARY_STUDENT_PACKET_LAYOUTS.has(route.output_type)) return 'student_packet'
   if (route.package_type === 'teacher_guide' && route.audience === 'teacher') return 'teacher_guide'
   return route.output_type
 }
