@@ -4,13 +4,42 @@
 
 Use this file to keep the printable packets aligned.
 
-The current packet set includes the Launch Packet, Voice Trial, Word Vault, and Insight Gate. These documents should feel like one system, not four separate systems.
+The current packet set includes Launch, Voice Trial, Word Vault, and Insight Gate. These documents should feel like one system, not separate systems.
 
 ## Core rule
 
 Reading comes first.
 
 The game layer is there to make practice visible, safe, and easier to talk about.
+
+## Student packets and teacher guides are separate
+
+Student packets should be clean student-facing printouts.
+
+Do not put teacher instructions on student packet pages.
+
+Student packets may include:
+
+- student intro pages
+- power-up cards
+- stuck lists
+- quest pages
+- boss pages
+- level-up choice pages
+
+Teacher guides should hold the teacher-use material.
+
+Teacher guides may include:
+
+- lesson outlines
+- answer keys or possible responses
+- conversation starters
+- conference prompts
+- small-group teaching notes
+- what to watch for
+- recovery or reroute options
+- assessment/evidence notes
+- print directions
 
 ## Strategies and power-ups are different
 
@@ -101,7 +130,7 @@ Print only:
 - the power-up cards students need
 - the boss page when ready
 
-Keep teacher setup pages and trackers separate.
+Keep teacher guides, setup pages, trackers, and answer keys separate from student packets.
 
 ## Accessibility standard
 
