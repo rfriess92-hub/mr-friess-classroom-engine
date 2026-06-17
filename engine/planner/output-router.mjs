@@ -92,8 +92,9 @@ function literacyQuestApplies(route) {
 }
 
 function wrapperKeyFor(route) {
-  if (route.package_type === 'student_packet') return 'student_packet'
-  if (route.package_type === 'teacher_guide') return 'teacher_guide'
+  if (route.output_type === 'teacher_guide' || route.output_type === 'lesson_overview') return route.output_type
+  if (route.package_type === 'student_packet' && route.audience === 'student') return 'student_packet'
+  if (route.package_type === 'teacher_guide' && route.audience === 'teacher') return 'teacher_guide'
   return route.output_type
 }
 
