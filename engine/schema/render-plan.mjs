@@ -52,7 +52,11 @@ function normalizeOutputEntry(pkg, entry, index) {
   return {
     output_id: output.output_id ?? `${outputType ?? 'output'}_${index + 1}`,
     output_type: outputType,
+    title: output.title ?? output.display_title ?? output.label ?? pkg.title ?? null,
     audience,
+    course_family_id: pkg.course_family_id ?? null,
+    package_type: pkg.package_type ?? null,
+    package_title: pkg.title ?? null,
     bundle_id: pkg.package_id,
     primary_architecture: pkg.primary_architecture,
     secondary_architecture_support: pkg.secondary_architecture_support ?? null,
@@ -89,6 +93,9 @@ export function normalizePackageToRenderPlan(pkg) {
   const renderPlan = {
     schema_version: pkg?.schema_version ?? null,
     package_id: pkg?.package_id ?? null,
+    course_family_id: pkg?.course_family_id ?? null,
+    package_type: pkg?.package_type ?? null,
+    title: pkg?.title ?? null,
     primary_architecture: pkg?.primary_architecture ?? null,
     secondary_architecture_support: pkg?.secondary_architecture_support ?? null,
     materials_control_note: pkg?.materials_control_note ?? null,
