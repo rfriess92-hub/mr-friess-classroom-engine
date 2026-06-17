@@ -4,7 +4,9 @@
 
 This is the first full test lesson for the Literacy Guild.
 
-The goal is simple: does this feel like a real reading class with a light story frame?
+The question is simple:
+
+**Could I teach this tomorrow?**
 
 Focus skill:
 
@@ -12,7 +14,7 @@ Focus skill:
 
 Story frame:
 
-The Archive sent us a short record. The message is there, but it does not come through clearly unless it is read with control.
+The Archive sent a short record. The message is there, but it only makes sense when someone reads it with control.
 
 Science-of-reading rule:
 
@@ -32,7 +34,7 @@ Students do not guess words from the sentence. If a word is hard, stop at the wo
 
 ## Teacher goal
 
-Students hear the passage first, echo a few lines, mark one phrase break, reread one part, and name what got clearer.
+Students hear the passage first, echo key lines, practise one sentence, reread one part, and name what got clearer.
 
 ## Student goal
 
@@ -40,61 +42,88 @@ Today you will read one short Archive record more than once.
 
 Do not race.
 
-Read it so someone can follow what is happening.
+Read so someone can follow what is happening.
 
 ## Original Archive record
 
 ### Archive Record 1: The First Signal
 
-The first signal arrived just after lunch.
+At 12:41, the Archive screen flashed blue.
 
-It was not loud. It was not clear.
+Sam was sorting record cards with Jae.
 
-It came through the old speaker in short bursts.
-
-Click. Click. Long pause.
-
-Then the speaker played one sentence:
-
-Read the record again.
-
-Sam copied the words into the logbook. The first line was easy. The second line was harder because the words seemed to run together.
-
-Sam took a breath and read the line again, slower this time.
-
-The signal changed.
+The speaker clicked twice, then went quiet.
 
 Click. Click. Long pause.
 
-Then the message came through again.
+A voice came through the static.
+
+Read the second line again.
+
+Jae looked at the new record. The first line was clear. The second line stretched across the page, and Sam read it too quickly.
+
+The words blurred together.
+
+Jae tapped the period with a pencil.
+
+“Stop there,” she said. “Then try the next part.”
+
+Sam took a breath and read the line again. This time, the sentence sounded like a message.
+
+The speaker clicked twice.
 
 Now the record can be understood.
 
-Word count: 102
+Word count: 129
 
-## Text notes for teacher
+## Why this passage works
 
-The passage is short on purpose.
+The passage is short, but it gives students enough to work with.
 
-It gives students:
+It includes:
 
-- repeated lines to reread
-- punctuation that affects voice
-- short sentences for control
-- one longer sentence for phrase practice
-- a story reason to reread
+- repeated lines for rereading
+- punctuation that changes the voice
+- a clear reason to slow down
+- one longer sentence for phrase work
+- a before / after reread moment
+- a story hook that points back to reading, not guessing
 
 Keep the comprehension check quick. This is a fluency lesson. Students just need to know what happened and how rereading helped.
 
-## Word-level notes
+## Planned word-level support
 
-Be ready to support these words if they slow students down:
+Do not pre-teach every word. Watch for these during reading.
 
-- signal: sig-nal
-- speaker: speak + er
-- bursts: watch the ending
-- logbook: log + book
-- understood: model if needed, then reread in the sentence
+### signal
+
+Teacher move:
+
+“Look at the word. It has two parts when we say it: sig-nal. Say it with me. Now read the sentence again.”
+
+### sorting
+
+Teacher move:
+
+“What base word do you see? Sort. Now read sorting. Put it back in the sentence.”
+
+### static
+
+Teacher move:
+
+“I’ll model that one: static. Your turn. Now read the sentence again.”
+
+### stretched
+
+Teacher move:
+
+“Look at the ending. The base word is stretch. The ending is -ed. Read it: stretched.”
+
+### understood
+
+Teacher move:
+
+“I’ll model this one. Understood. Now you say it. Now read the whole sentence.”
 
 Use:
 
@@ -120,6 +149,10 @@ Teacher line:
 
 “Use Echo Charge. Listen first. Now you read it.”
 
+Best place to use it:
+
+`The second line stretched across the page, and Sam read it too quickly.`
+
 ### Reset Shield
 
 Stop, breathe, and reread the last sentence or phrase.
@@ -128,6 +161,10 @@ Teacher line:
 
 “Use Reset Shield. Go back one sentence. Try it again.”
 
+Best place to use it:
+
+When a student rushes through punctuation or reads the longer sentence in one breath.
+
 ### Phrase Lens
 
 Mark one place where your voice needs a small break.
@@ -135,6 +172,10 @@ Mark one place where your voice needs a small break.
 Teacher line:
 
 “Use Phrase Lens. Find one place where your voice should break the sentence into parts.”
+
+Best place to use it:
+
+`The second line stretched across the page, and Sam read it too quickly.`
 
 ## Stuck-list moves for today
 
@@ -196,6 +237,7 @@ Likely answers:
 - “You paused.”
 - “You slowed down at the clicks.”
 - “You stopped at periods.”
+- “You made the quoted line sound different.”
 - “You made the last line stand out.”
 
 Say:
@@ -210,12 +252,12 @@ Say:
 
 Echo these chunks:
 
-1. The first signal arrived just after lunch.
-2. It was not loud. It was not clear.
-3. It came through the old speaker in short bursts.
+1. At 12:41, the Archive screen flashed blue.
+2. Sam was sorting record cards with Jae.
+3. The speaker clicked twice, then went quiet.
 4. Click. Click. Long pause.
-5. Then the speaker played one sentence:
-6. Read the record again.
+5. A voice came through the static.
+6. Read the second line again.
 
 Watch for:
 
@@ -223,6 +265,7 @@ Watch for:
 - rushing through periods
 - flat reading of “Click. Click. Long pause.”
 - students skipping short lines because they look easy
+- students guessing at static or stretched instead of looking closely
 
 Use simple correction:
 
@@ -230,13 +273,15 @@ Use simple correction:
 
 “Try that again. Keep the ending.”
 
+“Look at the word first.”
+
 “Listen first. Now you.”
 
 ### 24–34 minutes — Phrase Lens
 
 Put this sentence on the board:
 
-`The second line was harder because the words seemed to run together.`
+`The second line stretched across the page, and Sam read it too quickly.`
 
 Say:
 
@@ -244,42 +289,86 @@ Say:
 
 Model:
 
-`The second line was harder / because the words seemed to run together.`
+`The second line stretched across the page, / and Sam read it too quickly.`
 
 Say:
 
 “The slash is not a big stop. It is a quick reset.”
 
+Read it badly once, too fast:
+
+`The second line stretched across the page and Sam read it too quickly.`
+
+Then read it with the break.
+
+Ask:
+
+“Which one was easier to follow?”
+
 Students mark one phrase break on their copy.
 
 ### 34–49 minutes — Reread with a partner or teacher table
 
-Option A: Partner read
+Use partner reading only if the class can handle it. If not, go straight to teacher table and quiet solo rehearsal.
 
-- Partner A reads from the start to “Read the record again.”
-- Partner B reads from “Sam copied the words” to the end.
-- Each partner chooses one line to reread.
+#### Option A: Partner routine
 
-Option B: Teacher table
+Partner A reads from the start to “Read the second line again.”
+
+Partner B follows with a pencil and listens for one thing:
+
+- Did they stop at punctuation?
+- Did they keep the word endings?
+- Did one line need a reread?
+
+Then switch.
+
+Partner B reads from “Jae looked at the new record” to the end.
+
+Partner A follows and listens for one thing.
+
+Partner feedback must be one sentence:
+
+- “Go back to this line.”
+- “Stop at this period.”
+- “Try this word again.”
+- “That line was clearer the second time.”
+
+No marks. No scores. No ranking.
+
+#### Option B: Teacher table for the weakest readers
 
 Pull 4–5 students.
 
-Say:
+Use this shorter section:
 
-“Read this sentence. If it gets messy, we do not keep pushing. We fix one part and try again.”
+`The speaker clicked twice, then went quiet.`
 
-Use:
+`Click. Click. Long pause.`
 
-“Reset Shield. Go back one sentence.”
+`A voice came through the static.`
 
-“Echo Charge. Listen first. Now read it back.”
+`Read the second line again.`
 
-Watch for:
+Routine:
 
-- students who can read the words but do not group them
-- students who rush because they feel exposed
-- students who are accurate but flat
-- students who avoid rereading
+1. Teacher reads one line.
+2. Group echo reads.
+3. One student reads the same line.
+4. Teacher fixes one thing only.
+5. Student rereads the line.
+
+Teacher table lines:
+
+“Listen first.”
+
+“Now you.”
+
+“Stop there. Go back.”
+
+“Good. That was clearer.”
+
+“Look at the word. Do not guess.”
 
 ### 49–60 minutes — Pick one repair line
 
@@ -296,14 +385,16 @@ Students write:
 Strong enough:
 
 - “I worked on ‘Click. Click. Long pause.’ I stopped after each period.”
-- “I worked on the second line was harder sentence. I broke it into two parts.”
-- “I missed signal. I listened, said it, and reread the sentence.”
+- “I worked on the second line stretched sentence. I broke it into two parts.”
+- “I missed static. I listened, said it, and reread the sentence.”
+- “I read too fast at the quote. I went back and stopped at the period.”
 
 Not enough yet:
 
 - “I got better.”
 - “It was easy.”
 - “I read faster.”
+- “I used Echo Charge.”
 
 If a student writes “I read faster,” say:
 
@@ -320,6 +411,7 @@ Good enough answers:
 - “A signal came through the speaker and told Sam to read the record again.”
 - “Sam reread the line more slowly, and then the message was clearer.”
 - “The record made more sense after Sam reread it.”
+- “Jae helped Sam stop at the period and try the next part.”
 
 If the answer is vague, say:
 
@@ -351,6 +443,7 @@ Good exit lines:
 - “listen first, then read it back”
 - “slow down at short sentences”
 - “keep the word endings”
+- “look at the word instead of guessing”
 
 ## Student Page 1 — Archive Record 1
 
@@ -364,27 +457,29 @@ Read so someone can follow what is happening.
 
 ## Archive Record 1: The First Signal
 
-The first signal arrived just after lunch.
+At 12:41, the Archive screen flashed blue.
 
-It was not loud. It was not clear.
+Sam was sorting record cards with Jae.
 
-It came through the old speaker in short bursts.
-
-Click. Click. Long pause.
-
-Then the speaker played one sentence:
-
-Read the record again.
-
-Sam copied the words into the logbook. The first line was easy. The second line was harder because the words seemed to run together.
-
-Sam took a breath and read the line again, slower this time.
-
-The signal changed.
+The speaker clicked twice, then went quiet.
 
 Click. Click. Long pause.
 
-Then the message came through again.
+A voice came through the static.
+
+Read the second line again.
+
+Jae looked at the new record. The first line was clear. The second line stretched across the page, and Sam read it too quickly.
+
+The words blurred together.
+
+Jae tapped the period with a pencil.
+
+“Stop there,” she said. “Then try the next part.”
+
+Sam took a breath and read the line again. This time, the sentence sounded like a message.
+
+The speaker clicked twice.
 
 Now the record can be understood.
 
