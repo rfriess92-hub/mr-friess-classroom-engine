@@ -15,6 +15,9 @@ course_files:
   lens_based_cycle_reference:
     expected_path: source/psychology_11_12/course/lens_based_cycle_reference.md
     status: draft
+  lens_matrix:
+    expected_path: source/psychology_11_12/course/lens_matrix.md
+    status: draft
   course_map:
     expected_path: source/psychology_11_12/course/course_map.md
     status: missing
@@ -84,7 +87,7 @@ allowed_content_statuses:
   - archived
 
 next_inventory_tasks:
-  - build_a_f_psychology_lens_matrix
+  - create_psychology_course_map_from_lens_matrix
   - confirm_active_cycle_a_d_files
   - normalize_cycle_names_with_aliases
   - create_or_verify_assessment_packs_a_d
