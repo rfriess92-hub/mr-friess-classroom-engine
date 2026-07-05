@@ -2,18 +2,21 @@
 title: Psychology 11/12 Lens-Based Cycle Architecture
 course: Psychology 11/12
 source_type: course_reference
-status: draft_source_of_truth
+status: draft_source
 created_date: 2026-07-05
 academic_spine: OpenStax Psychology 2e
+companion_matrix: source/psychology_11_12/course/lens_matrix.md
 ---
 
 # Psychology 11/12 Lens-Based Cycle Architecture
 
 ## 1. Purpose
 
-This document consolidates the current planning decision for Psychology 11/12 before building the full A-F Psychology Lens Matrix. It is intended to prevent drift, preserve the conceptual architecture, and act as a source-of-truth for future course maps, semester plans, student packets, teacher binders, assessments, and slide decks.
+This document consolidates the current planning decision for Psychology 11/12 and serves as the conceptual companion to the A-F Psychology Lens Matrix. It is intended to prevent drift, preserve the conceptual architecture, and act as a source-of-truth for future course maps, semester plans, student packets, teacher binders, assessments, and slide decks.
 
 The working decision is that Psychology 11/12 should not be a rigid textbook march and should not become a random topic grab bag. It should be a lens-based spiral curriculum: each semester revisits the major domains of psychology from a different organizing point of view.
+
+The detailed planning matrix lives in `source/psychology_11_12/course/lens_matrix.md`. This reference file should stay focused on the architecture, rules, safety boundaries, and source-alignment logic.
 
 ## 2. Comprehension Scan
 
@@ -159,23 +162,25 @@ Each cycle should eventually be able to produce the same artifact family. This k
 | Marking guide | Teacher | Rubrics, look-fors, feedback language, accommodation notes. |
 | QA bundle | Teacher/repo | Render checks, answer-leakage checks, visibility checks, known issues, artifact inventory. |
 
-## 13. Next Step: A-F Psychology Lens Matrix
+## 13. Next Step: Course Map From the Lens Matrix
 
-The next planning artifact should be the matrix, not full semester plans yet. The matrix will preserve the whole architecture before unit-level writing begins.
+The A-F Psychology Lens Matrix now exists as the next planning control panel. The next source artifact should be `course_map.md`, which translates the architecture and matrix into a stable program map.
 
-Recommended matrix structure:
+Recommended `course_map.md` structure:
 
-| Rows | Columns | Cell Contents |
-|---|---|---|
-| Major psychology domains | Cycles A-F | Possible modules, case studies, activities, vocabulary, assessment links, and safety notes. |
-| Permanent through-lines | Each cycle | Culture/context, development, brain-body, evidence, and ethics questions. |
-| Capstone possibilities | Each cycle | One or two synthesis tasks that integrate domains through the lens. |
+| Section | Purpose |
+|---|---|
+| Program model | Explain the six-lens spiral curriculum. |
+| Cycle overview table | Summarize each cycle's lens, essential question, core domains, and capstone. |
+| Three-year rotation | Show how A-F can operate as a multi-year non-repeating sequence. |
+| Semester template | Provide the repeated unit rhythm used across cycles. |
+| Assessment spine | Connect vocabulary, scenario application, source analysis, projects, and capstone work. |
+| Safety model | Preserve the no-diagnosis, no-therapy, no-forced-disclosure boundary. |
+| Artifact pathway | Identify which files should be produced next for each cycle. |
 
-Matrix design rule:
+Course-map design rule:
 
-For any topic, ask: Which version of this topic belongs in this lens?
-
-Example: memory in Cycle B is a learning system; memory in Cycle C is relational and emotional; memory in Cycle E is eyewitness reliability; memory in Cycle F is misinformation and source confusion.
+Use the matrix to decide what belongs in each cycle. Do not turn the matrix into six overloaded semester plans. Each semester should select priority modules from the matrix while preserving the dominant lens, required through-lines, and capstone direction.
 
 ## 14. Source Alignment Notes
 
