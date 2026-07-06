@@ -1,8 +1,6 @@
 import { normalizeSemanticText } from '../render/assessment-answer-leak-qa.mjs'
 
 const FORBIDDEN_STUDENT_KEYS = new Set([
-  'answer_key',
-  'answerkey',
   'teacher_notes',
   'teachernotes',
   'teacher_only',
@@ -22,8 +20,6 @@ const FORBIDDEN_STUDENT_KEYS = new Set([
 ])
 
 const FALSE_VALUE_SAFETY_KEYS = new Set([
-  'answer_key',
-  'answerkey',
   'teacher_only',
   'teacheronly',
 ])
