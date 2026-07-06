@@ -6,6 +6,7 @@ import { resolve } from 'node:path'
 const REQUIRED_FILES = [
   'agents/phase-implementation.agent.md',
   'agents/qa-cleanup.agent.md',
+  'agents/daily-implementation-intake.agent.md',
   'contracts/engine-expansion-contract.md',
   'contracts/page-role-contract.md',
   'contracts/package-render-contract.md',
@@ -15,6 +16,7 @@ const REQUIRED_FILES = [
 ]
 
 const REQUIRED_QA_TERMS = ['teacher/student separation', 'page-role', 'render', 'fixture', 'contract']
+const REQUIRED_DAILY_INTAKE_TERMS = ['daily implementation brief', 'implement_today', 'blocked', 'no_safe_task', 'draft pr', 'stop conditions']
 
 function fail(message) {
   console.error(`FAIL: ${message}`)
@@ -40,6 +42,13 @@ if (existsSync(resolve('agents/qa-cleanup.agent.md'))) {
     if (!qaAgent.includes(term)) fail(`QA agent contract missing required concept: ${term}`)
   }
   if (!qaAgent.includes('status: pass / blocked')) fail('QA agent must include required PASS / BLOCKED report structure')
+}
+
+if (existsSync(resolve('agents/daily-implementation-intake.agent.md'))) {
+  const dailyAgent = text('agents/daily-implementation-intake.agent.md').toLowerCase()
+  for (const term of REQUIRED_DAILY_INTAKE_TERMS) {
+    if (!dailyAgent.includes(term)) fail(`Daily implementation intake agent missing required concept: ${term}`)
+  }
 }
 
 if (existsSync(resolve('contracts/page-role-contract.md'))) {
