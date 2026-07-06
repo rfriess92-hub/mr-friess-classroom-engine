@@ -27,7 +27,7 @@ permissions:
 
 jobs:
   nightly-agent:
-    name: Select task and report repo status
+    name: Select task and prepare daily brief
     runs-on: ubuntu-latest
     env:
       AGENT_OUTPUT_DIR: agent-output
@@ -66,13 +66,13 @@ jobs:
         continue-on-error: true
         run: pnpm test
 
-      - name: Write agent report
+      - name: Write nightly report and daily implementation brief
         env:
           AGENT_AUDIT_STATUS: ${{ steps.contract_audit.outcome }}
           AGENT_TEST_STATUS: ${{ steps.node_tests.outcome }}
         run: node scripts/agent/write-run-report.mjs
 
-      - name: Upload agent report
+      - name: Upload agent report and daily brief
         uses: actions/upload-artifact@v4
         with:
           name: nightly-agent-report
