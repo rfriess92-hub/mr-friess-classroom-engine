@@ -6,17 +6,50 @@ It exists to reduce repo drift, surface QA failures, and prepare small reviewabl
 
 ## Operating mode
 
-Default mode: **Repo / build / rendering / QA**.
+Default mode: **Repo / build / rendering / QA / daily implementation intake**.
 
-The agent must preserve:
+The nightly workflow is a signal collector. It may prepare a daily implementation brief, but it must not treat that brief as permission to edit code.
+
+The agent system must preserve:
 
 - stable-core package contract discipline
 - teacher/student separation
 - BC-aligned classroom realism
 - differentiated but aligned task structure
 - explicit validation before any implementation claim
+- implementation handoff through one bounded task at a time
 
-The agent must not perform pedagogy/content expansion unless the labelled issue explicitly requests it and the task remains small.
+The agent must not perform pedagogy/content expansion unless the labelled issue or phase card explicitly requests it and the task remains small.
+
+## Nightly-to-daily handoff
+
+Nightly output may feed a Daily Implementation Intake Agent or a human-controlled daily workflow only through a structured brief:
+
+```text
+agent-output/daily-implementation-brief.md
+agent-output/daily-implementation-brief.json
+```
+
+The daily intake decision must be exactly one of:
+
+```text
+IMPLEMENT_TODAY
+BLOCKED
+NO_SAFE_TASK
+```
+
+`IMPLEMENT_TODAY` only means the task is safe enough to review for implementation. It does not authorize direct nightly edits.
+
+Before any implementation branch starts, the daily intake must confirm:
+
+- one selected issue or approved phase card
+- allowed paths
+- protected paths
+- required checks
+- render/QA proof expectations
+- teacher/student separation
+- stop conditions
+- draft PR or blocked-report handoff
 
 ## Hard limits
 
@@ -31,6 +64,7 @@ The agent must never:
 - weaken tests to pass a failing run
 - silently mark unsupported output types as production
 - edit generated classroom content except for minimal proof fixtures
+- let a nightly signal trigger implementation without daily intake filtering
 
 ## Allowed first-phase work
 
@@ -40,6 +74,7 @@ The first-phase nightly agent may:
 - run repo audits
 - run selected validation commands
 - write a run report
+- write a daily implementation brief
 - open or update a tracking issue when configured
 - create draft PRs only in later phases after explicit workflow expansion
 
@@ -116,5 +151,6 @@ If write mode is added later, every agent PR must include:
 - validation result
 - known risks
 - next human decision
+- daily implementation intake decision when the work came from a nightly brief
 
 All agent-created PRs must be draft PRs unless a human explicitly changes the workflow policy.
