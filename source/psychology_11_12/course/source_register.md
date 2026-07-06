@@ -2,7 +2,7 @@
 course: Psychology 11/12
 artifact_type: source_register
 audience: teacher
-version: 1
+version: 2
 status: draft
 source_spine: OpenStax Psychology 2e
 scope: psychology_only
@@ -13,119 +13,173 @@ visibility:
   student: false
   teacher: true
 answer_key: false
+phase: phase_1_source_authority
 created_from_repo_scan: true
+depends_on:
+  - source/psychology_11_12/course/lens_based_cycle_reference.md
+  - source/psychology_11_12/course/lens_matrix.md
 ---
 
-# Psychology 11/12 Source Register
+# Psychology 11/12 Source Register and Authority Rules
 
-## Applicability Confirmation
+## 1. Purpose
 
-This source register applies only to Psychology 11/12.
+This file is the Phase 1 housekeeping register for Psychology 11/12. It defines which repo areas count as Psychology source, how existing files should be classified, and which file wins when older engine materials conflict with the new A-F lens-based architecture.
 
-It should not be treated as a shared source register for Careers, English, literacy intervention, classroom-engine rendering in general, or any other course family. Any source, package, cycle, routine, safety rule, or assessment model listed here is included only because it is explicitly tied to Psychology 11/12 in the repository structure or course documents.
+This file does not create new curriculum content. It is a source-authority and drift-prevention document.
 
-## Scanned Psychology-Specific Repo Areas
+## 2. Phase 0 Decision Freeze
 
-The following repo areas were treated as Psychology-applicable:
+The following decisions are treated as frozen working assumptions for future Psychology 11/12 planning:
 
-| Repo area | Psychology-only reason | Use in source register |
+| Decision | Status |
+|---|---|
+| Psychology 11/12 is moving toward an A-F lens-based spiral curriculum. | Accepted |
+| The course is not a random topic grab bag. | Accepted |
+| Each cycle needs a dominant lens, repeated psychology domains, permanent through-lines, and a coherent capstone. | Accepted |
+| OpenStax Psychology 2e remains the primary academic spine. | Accepted |
+| Student safety boundary remains fixed: no diagnosis, no therapy, no forced disclosure, no peer counselling. | Accepted |
+| Existing engine materials are source banks, archive material, or legacy context unless reclassified. | Accepted |
+| Old Semester 1 / Semester 2 survey logic no longer governs the future architecture. | Accepted |
+| A-D prebuilt materials are preserved, but they do not automatically define the course. | Accepted |
+| E-F remain mapped future cycles until active source files or manifests exist. | Accepted |
+| Cycle A remains the first active build target after housekeeping. | Accepted |
+
+## 3. Current Architecture Source of Truth
+
+The current governing architecture is the A-F lens model.
+
+| Cycle | Current lens | Legacy / prior labels to preserve as aliases |
 |---|---|---|
-| `source/psychology_11_12/` | Dedicated normalized source folder for Psychology 11/12. | Primary source-side content location. |
-| `source/psychology_11_12/content_inventory.yaml` | Identifies the course as Psychology 11/12 and the source spine as OpenStax Psychology 2e. | Content status, expected paths, cycle inventory. |
-| `source/psychology_11_12/course/` | Expected course-level source folder for course map, overview, vocabulary, assessment spine, and source register. | Course-level source organization. |
-| `source/psychology_11_12/cycles/` | Dedicated normalized Psychology cycle folders. | Cycle-specific content registry. |
-| `source/psychology_11_12/slides/source/` | Dedicated Psychology slide-source folder. | Student-facing slide source references. |
-| `source/psychology_11_12/qa/` | Dedicated Psychology QA folder. | QA, render, and visibility checks. |
-| `courses/psychology-11-12/` | Course-family planning spine for Psychology 11/12. | Semester, unit, package, and pacing references. |
-| `units/psychology/` | GitHub source of truth for the complete Psychology 11/12 classroom unit. | Engine-native package source and render boundary. |
-| `fixtures/psychology/` | Psychology render proof / QA fixture area. | Render-proof evidence only; not a curriculum source by itself. |
-| Psychology-specific scripts such as `validate-psychology-*` and `qa-psychology-*` | Scripts explicitly named for Psychology. | Validation context only; not student or teacher content. |
+| A | Scientific / Evidence | Foundations; Psychology as a Science |
+| B | Intellectual / Learning | Learning / Cognition / Development / Applied; Applied |
+| C | Relational / Identity | Personality / Identity / Social / Relationships; Consciousness / Meaning |
+| D | Wellness / Change | Mental Health / Stress / Disorders / Treatment / Support; Change / Support Systems |
+| E | Justice / Responsibility | Forensic and Legal Psychology |
+| F | Systems / Media / Influence | Media / Technology / Persuasion / Consumer Psychology |
 
-## Excluded Areas
+Permanent through-lines across all cycles:
 
-The following were not treated as Psychology source material unless a file explicitly referenced Psychology 11/12:
+- Cultural / contextual
+- Developmental / lifespan
+- Biological / brain-body
+- Ethical / evidence
 
-- generic classroom-engine renderer code
-- generic repo setup, tooling, and package-management files
-- non-Psychology course folders
-- general official course-load files except where they identify Psychology course instances
-- generic QA scripts that are not Psychology-specific
-- generated previews, proof files, or render outputs as standalone curriculum sources
-- uploaded archives except where a Psychology manifest uses them as a provenance reference
+## 4. Source Authority Hierarchy
 
-## Primary Academic Source Spine
+Use this hierarchy when files disagree.
 
-Primary source spine:
+| Authority level | Source area | What it governs |
+|---:|---|---|
+| 1 | `source/psychology_11_12/course/lens_based_cycle_reference.md` | Governing architecture, safety stance, lens model, through-lines. |
+| 2 | `source/psychology_11_12/course/lens_matrix.md` | Domain-by-lens planning control panel. |
+| 3 | `source/psychology_11_12/course/source_register.md` | Source authority, lane classification, conflict rules. |
+| 4 | Future `source/psychology_11_12/course/course_map.md` | Program map once created. |
+| 5 | `source/psychology_11_12/cycles/` | Normalized cycle-specific source files. |
+| 6 | `courses/psychology-11-12/` | Legacy course-family planning and package support until migrated. |
+| 7 | `units/psychology/` | Prebuilt archive indexing and engine-native package staging. |
+| 8 | `fixtures/psychology/` | Render proof / QA evidence only. |
+| 9 | `scripts/validate-psychology-*` and `scripts/qa-psychology-*` | Validation behaviour and QA rules only. |
+| 10 | Uploaded or legacy materials | Provenance/source bank only when referenced by Psychology manifests. |
 
-- OpenStax Psychology 2e
+## 5. Conflict Resolution Rules
 
-Repo function:
+Use these rules before editing files.
 
-- provides core concepts
-- provides vocabulary grounding
-- provides chapter alignment
-- supports source-safe classroom adaptation
-- does not get reproduced directly into student materials
+| Conflict | Winning rule |
+|---|---|
+| Old Sem1/Sem2 survey model conflicts with A-F lens model. | A-F lens model wins. Treat Sem1/Sem2 files as legacy planning unless explicitly migrated. |
+| A-D prebuilt cycle assets conflict with normalized source files. | Normalized source files win. Prebuilt assets become source banks or archive references. |
+| Engine-native package JSON conflicts with course-level architecture. | Course-level architecture wins. Package JSON may remain useful for renderer proof or later migration. |
+| Render proof conflicts with source content. | Source content wins. Render proof only proves artifact-generation state. |
+| Old cycle titles conflict with new lens titles. | New lens title wins; old title is preserved as an alias until migration. |
+| Safety boundary conflicts with an activity idea. | Safety boundary wins. Revise, sanitize, or classify as needs safety review. |
+| OpenStax/course evidence boundary conflicts with pop-psych content. | OpenStax/evidence boundary wins. Treat pop-psych content as media-analysis material only, not as accepted psychology. |
 
-Classroom adaptation rule:
+## 6. Source Lanes
 
-Use OpenStax Psychology 2e as the academic spine, then translate it into high-school-appropriate classroom materials: teacher binders, student packets, assessment packs, source sheets, scenario tasks, capstone work, and low-risk reflection/application prompts.
+### 6.1 Current Architecture Source
 
-## Whole-Course Psychology Unit Map
+These files govern future planning.
 
-| Unit | Topic | OpenStax Psychology 2e alignment | Psychology-only use |
+| File | Lane | Status | Notes |
 |---|---|---|---|
-| Unit 1 | Psychology as a Science | Chapters 1-2 | Foundations, research reasoning, evidence, ethics. |
-| Unit 2 | Brain, Body, and Behaviour | Chapter 3 | Biological bases of behaviour and introductory brain-behaviour links. |
-| Unit 3 | Consciousness, Sensation, and Perception | Chapters 4-5 | States of consciousness, sensation, perception, and interpretation. |
-| Unit 4 | Learning and Memory | Chapters 6 and 8 | Learning theories, memory, study strategies, behaviour change. |
-| Unit 5 | Thinking, Intelligence, and Cognition | Chapter 7 | Cognition, problem-solving, intelligence, bias, decision-making. |
-| Unit 6 | Development Across the Lifespan | Chapter 9 | Lifespan change, development, nature/nurture, identity context. |
-| Unit 7 | Emotion, Motivation, and Personality | Chapters 10-11 | Emotion, motivation, trait language, personality concepts. |
-| Unit 8 | Social Psychology and Relationships | Chapter 12 | Social influence, groups, attribution, bias, belonging, relationships. |
-| Unit 9 | Stress, Health, and Mental Health | Chapters 14-16 | Stress, stigma, support literacy, disorder/treatment concepts. |
-| Unit 10 | Applied Psychology, Work, Law, Media, and Society | Chapter 13 plus extension sources | Applied psychology, work, forensic/legal, media, persuasion, consumer psychology. |
+| `source/psychology_11_12/course/lens_based_cycle_reference.md` | Current source-of-truth | draft | Architecture, safety, A-F lens model, through-lines. |
+| `source/psychology_11_12/course/lens_matrix.md` | Current source-of-truth | draft | Domain-by-lens planning matrix. |
+| `source/psychology_11_12/course/source_register.md` | Current source-of-truth | draft | Source authority and conflict rules. |
+| `source/psychology_11_12/course/course_map.md` | Future source-of-truth | missing | Next program-level artifact. |
 
-## Three-Year Cycle Register
+### 6.2 Active Normalized Source
 
-| Cycle | Normalized title | Current repo status | Source alignment | Register decision |
-|---|---|---|---|---|
-| A | Foundations | Active / partially normalized source | OpenStax Chapters 1-2 | Active Psychology source. |
-| B | Learning / Cognition / Development / Applied | Active external package; not yet fully normalized | OpenStax Chapters 6-9, Chapter 13 as useful | Psychology source, but requires normalization before treating all artifacts as source-stable. |
-| C | Personality / Identity / Social / Relationships | Active external package; not yet fully normalized | OpenStax Chapters 11-12, selected Chapter 4 | Psychology source, with heightened disclosure safeguards. |
-| D | Mental Health / Stress / Disorders / Treatment / Support | Active external package; not yet fully normalized | OpenStax Chapters 14-16 | Psychology source, with strongest safety controls. |
-| E | Forensic and Legal Psychology | Mapped future cycle | OpenStax Chapters 8, 12, 15 plus extension sources | Psychology-only future/extension source; not active unless files exist. |
-| F | Media / Technology / Persuasion / Consumer Psychology | Mapped future cycle | OpenStax Chapters 6-8, 12-13 plus extension sources | Psychology-only future/extension source; not active unless files exist. |
+These files are safe to build from, subject to ordinary review and QA.
 
-## Active Cycle A Source Register
+| Area / file | Lane | Status | Notes |
+|---|---|---|---|
+| `source/psychology_11_12/cycles/cycle_a_foundations/manifest.yaml` | Active normalized source | draft_manifest | Tracks Cycle A artifacts and known gaps. |
+| `source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md` | Active normalized source | draft | Student-facing evidence/research assessment. |
+| `source/psychology_11_12/cycles/cycle_a_foundations/marking_guide.md` | Active normalized source | draft | Teacher-facing marking support. |
+| `source/psychology_11_12/cycles/cycle_a_foundations/source_sheet.md` | Active normalized source | draft | Student-facing source support. |
+| `source/psychology_11_12/cycles/cycle_a_foundations/capstone_packet.md` | Active normalized source | draft | Student-facing claim-analysis capstone. |
+| `source/psychology_11_12/slides/source/cycle_a_foundations_slides.md` | Active normalized source | language_locked_draft | Student-facing slide language for Cycle A L1. |
 
-Cycle A is the clearest normalized source area currently present under `source/psychology_11_12/cycles/cycle_a_foundations/`.
+### 6.3 Legacy Planning Source
 
-| Source file | Artifact type | Audience | Status | Source spine | Psychology-only use |
-|---|---|---|---|---|---|
-| `manifest.yaml` | cycle manifest | repo / teacher | draft_manifest | OpenStax Psychology 2e, Chapters 1-2 | Tracks Cycle A artifact inventory and render links. |
-| `assessment_pack.md` | assessment pack | student assessment | draft | OpenStax Psychology 2e, Chapters 1-2 | Student-facing assessment of psychology definition, evidence, observation/inference, correlation/causation, ethics. |
-| `marking_guide.md` | marking guide | teacher assessment | draft | OpenStax Psychology 2e, Chapters 1-2 | Teacher-only answer key, rubric, look-fors, feedback language, accommodation notes. |
-| `source_sheet.md` | source sheet | student | draft | OpenStax Psychology 2e, Chapters 1-2 | Student-safe source support for foundational Psychology vocabulary and reasoning. |
-| `capstone_packet.md` | capstone packet | student | draft | OpenStax Psychology 2e, Chapters 1-2 | Student-facing claim-analysis capstone using evidence, limits, research reasoning, and ethics. |
-| `source/psychology_11_12/slides/source/cycle_a_foundations_slides.md` | slide source | student | language_locked_draft | OpenStax Psychology 2e, Chapters 1-2 | Student-facing slide language for Cycle A Lesson 1: What Is Psychology? |
+These files are useful, but they do not govern the future course architecture.
 
-## Psychology-Specific Pedagogical Frame
+| File / area | Lane | Decision |
+|---|---|---|
+| `courses/psychology-11-12/scope-sequence.yaml` | Legacy planning source | Useful generic survey-semester spine; superseded by A-F lens model for program architecture. |
+| `courses/psychology-11-12/semester-map.sem1.yaml` | Legacy planning source | Useful for pacing/first-run logic; no longer governs future architecture. |
+| `courses/psychology-11-12/semester-map.sem2.yaml` | Legacy planning source | Useful for refinement logic; no longer governs future architecture. |
+| `courses/psychology-11-12/packages/foundations/` | Legacy / engine-support source | Useful for Cycle A package support; should be migrated into normalized source when needed. |
 
-All included material supports a Psychology 11/12 classroom frame:
+### 6.4 Prebuilt Archive / Intake Source
 
-- students define psychological concepts accurately
-- students distinguish evidence from opinion
-- students separate observation, inference, claim, and evidence
-- students avoid diagnostic overreach
-- students apply concepts to neutral scenarios
-- students recognize uncertainty and limits
-- students discuss mental health and identity topics with safety and precision
-- students use source material responsibly
+These files preserve provenance and may be mined carefully, but they are not automatically source-of-truth.
 
-This frame is not a generic classroom-engagement model. It belongs to Psychology because it is organized around behaviour, mental processes, psychological science, research reasoning, social influence, development, learning, cognition, personality, mental health, treatment, and applied psychology.
+| Area / file | Lane | Decision |
+|---|---|---|
+| `units/psychology/_raw/` | Prebuilt archive lane | Preserve as intake/archive material. |
+| `units/psychology/psychology-unit.manifest.json` | Archive / engine staging | Tracks prebuilt source archive and engine-native render boundary. |
+| `units/psychology/cycles/cycle-a/cycle.manifest.json` | Prebuilt archive index | Mine carefully; Cycle A normalized source wins when conflicts occur. |
+| `units/psychology/cycles/cycle-b/cycle.manifest.json` | Prebuilt archive index | Useful source bank; content crosses multiple future lenses and must be remapped. |
+| `units/psychology/cycles/cycle-c/cycle.manifest.json` | Prebuilt archive index | Useful source bank; requires evidence and safety review before migration. |
+| `units/psychology/cycles/cycle-d/cycle.manifest.json` | Prebuilt archive index | Under-indexed; requires source normalization before use. |
 
-## Safety and Suitability Rules
+### 6.5 Engine-Native Package / Render Proof Lane
+
+These files show implementation/render state. They do not override course architecture.
+
+| Area / file | Lane | Decision |
+|---|---|---|
+| `units/psychology/cycles/*/packages/` | Engine-native staging | Use only when converting normalized content to package JSON. |
+| `fixtures/psychology/` | Render proof / QA | Evidence of output generation only. Not curriculum source by itself. |
+| `scripts/validate-psychology-*` | Validation logic | Update later after course map and cycle overviews stabilize. |
+| `scripts/qa-psychology-*` | QA logic | Update later after source lanes are stable. |
+
+### 6.6 Future / Mapped Only
+
+These cycles should not be treated as active engine-native cycles until active source files or manifests exist.
+
+| Cycle | Current lens | Lane | Rule |
+|---|---|---|---|
+| E | Justice / Responsibility | Future mapped only | Do not build from as active cycle yet. Avoid true-crime drift. |
+| F | Systems / Media / Influence | Future mapped only | Do not build from as active cycle yet. Avoid moral panic about technology. |
+
+## 7. Anti-Backtracking Classification Rule
+
+When an older Psychology file conflicts with the new architecture, do not immediately revise the new architecture. Classify the older file first.
+
+| Classification | Meaning | Action |
+|---|---|---|
+| Compatible | Fits the new A-F lens model directly. | Keep and use. |
+| Compatible with alias | Fits, but uses legacy naming. | Keep; rename or alias later. |
+| Useful source bank | Contains useful lesson/content material but does not define architecture. | Mine selectively. |
+| Legacy structure | Reflects old course organization. | Preserve, but supersede in course map. |
+| Needs safety review | Could invite disclosure, diagnosis, clinical overreach, true-crime drift, or moral panic. | Do not use until revised. |
+| Future/mapped only | Belongs to E/F or inactive future cycle. | Do not build as active source yet. |
+
+## 8. Safety and Suitability Rules
 
 The Psychology source materials must preserve classroom safety.
 
@@ -141,25 +195,28 @@ Do not require students to:
 - provide counselling
 - reveal private relationships
 - expose personal identity struggles
+- publicly analyze classmates
+- rank or judge people in the room
 
 Use instead:
 
 - fictional scenarios
 - public examples
 - neutral case studies
-- low-risk reflection
+- low-risk academic reflection
 - concept application
 - source analysis
 - evidence evaluation
+- teacher-controlled discussion structures
 
-Mental health lessons should teach literacy, stigma reduction, support awareness, and careful language. They should not become therapy or self-diagnosis lessons.
+Mental health lessons should teach literacy, stigma reduction, support awareness, careful language, and appropriate help-seeking. They should not become therapy lessons, self-diagnosis lessons, peer-counselling simulations, or trauma-disclosure activities.
 
-## Audience and Visibility Rules
+## 9. Audience and Visibility Rules
 
 | Artifact type | Student visible? | Teacher visible? | Answer key allowed? | Notes |
 |---|---:|---:|---:|---|
 | Student packet | Yes | No, unless duplicated into teacher guide | No | Keep free of teacher rationale and hidden notes. |
-| Source sheet | Yes | No, unless duplicated into teacher guide | No | Use short, purposeful, cited or traceable source support. |
+| Source sheet | Yes | No, unless duplicated into teacher guide | No | Use short, purposeful, traceable source support. |
 | Assessment pack | Yes | No | No | Student version only. |
 | Capstone packet | Yes | No | No | Student-facing synthesis task. |
 | Slide source | Yes | No | No | Low-density, student-facing language. |
@@ -167,68 +224,35 @@ Mental health lessons should teach literacy, stigma reduction, support awareness
 | Marking guide | No | Yes | Yes | Teacher-only assessment support. |
 | QA bundle | No | Yes / repo | No | Render and maintenance support. |
 
-## Differentiation Register
+## 10. What Phase 1 Does Not Do
 
-Use the same task tiers across Psychology materials:
+Phase 1 does not:
 
-- Supported
-- Proficient
-- Extending
+- rewrite the old scope sequence
+- rewrite Sem1/Sem2 maps
+- rename existing repo folders
+- split old Cycle B content across new lenses
+- rewrite old Cycle C Consciousness / Meaning material
+- add E/F manifests
+- update validation scripts
+- produce student-facing curriculum artifacts
 
-These are task-access tiers, not rubric achievement levels.
+Those are later phases.
 
-Use the same default rubric performance levels where needed:
+## 11. Phase 1 Completion Criteria
 
-- Emerging
-- Developing
-- Proficient
-- Extending
+Phase 1 is complete when:
 
-Do not confuse differentiation tiers with rubric levels.
+1. Source authority is explicit.
+2. Legacy files are classified without being deleted or rewritten.
+3. The source register is registered in `content_inventory.yaml`.
+4. Old files can be reviewed without triggering architecture backtracking.
+5. The next step is clearly `course_map.md`.
 
-## Render and Source Boundary
+## 12. Next Step After Phase 1
 
-There are two lanes in the repo:
+The next source artifact should be:
 
-1. Prebuilt asset lane: preserves and validates existing uploaded Psychology assets.
-2. Engine-native lane: converts lesson content into engine-readable package JSON and renders through the classroom engine.
+`source/psychology_11_12/course/course_map.md`
 
-A file is not considered engine-rendered just because it exists as a DOCX, PDF, PPTX, screenshot, or uploaded archive asset. It becomes engine-native only when the correct package JSON/source exists in the repo and renders successfully through the defined render workflow.
-
-## Current Source Gaps to Track
-
-The source inventory identifies several course-level files as missing or still needing normalization:
-
-- `source/psychology_11_12/course/course_map.md`
-- `source/psychology_11_12/course/course_overview.md`
-- `source/psychology_11_12/course/vocabulary_bank.md`
-- `source/psychology_11_12/course/assessment_spine.md`
-- `source/psychology_11_12/course/source_register.md` now created by this file
-
-Cycle A also identifies these normalization/render gaps:
-
-- normalized teacher binder Markdown not yet created
-- normalized student packet Markdown not yet created
-- assessment pack and marking guide need render proof / artifact rendering follow-through
-- source sheet needs render proof
-- capstone packet needs render proof
-- slide source needs artifact rendering and visual review
-
-## Source Register Maintenance Rules
-
-When adding future sources to this register:
-
-1. Add only material explicitly connected to Psychology 11/12.
-2. Keep OpenStax Psychology 2e as the core spine unless a new approved source is intentionally added.
-3. Mark extension sources clearly, especially for forensic/legal psychology and media/technology/persuasion topics.
-4. Separate student-facing, teacher-facing, and QA-facing materials.
-5. Do not place answer keys, marking notes, or teacher rationale in student-facing artifacts.
-6. Preserve the no-diagnosis, no-therapy, no-forced-disclosure boundary.
-7. Treat Cycles E-F as mapped future cycles unless active source files are present.
-8. Treat generated proof files as evidence of rendering, not as source curriculum by themselves.
-
-## Final Scope Statement
-
-Confirmed: this register is only applicable to Psychology 11/12.
-
-It should remain inside `source/psychology_11_12/course/` and should not be imported as a general source register for other course families.
+The course map should translate the Phase 0 architecture freeze and this Phase 1 source authority model into a stable program map.
