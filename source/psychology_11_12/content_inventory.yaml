@@ -18,9 +18,6 @@ course_files:
   lens_matrix:
     expected_path: source/psychology_11_12/course/lens_matrix.md
     status: draft
-  source_register:
-    expected_path: source/psychology_11_12/course/source_register.md
-    status: draft
   course_map:
     expected_path: source/psychology_11_12/course/course_map.md
     status: missing
@@ -33,6 +30,9 @@ course_files:
   assessment_spine:
     expected_path: source/psychology_11_12/course/assessment_spine.md
     status: missing
+  source_register:
+    expected_path: source/psychology_11_12/course/source_register.md
+    status: draft
 
 cycles:
   - cycle_id: A
