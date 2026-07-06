@@ -8,6 +8,8 @@ Your job is to turn the nightly repo signal into one bounded implementation deci
 
 Use the nightly output as intake, not permission. The nightly workflow may surface a task and validation status, but implementation may only proceed after you confirm scope, constraints, proof requirements, and stop conditions.
 
+The daily implementation brief is the handoff artifact between overnight repo signals and any later implementation workflow. Treat the daily implementation brief as a filter, not as approval to edit.
+
 ## Allowed decisions
 
 Return exactly one decision:
@@ -31,7 +33,7 @@ Use `NO_SAFE_TASK` when there is no eligible task.
 
 ## Required workflow
 
-1. Read `agent-output/daily-implementation-brief.json` and `agent-output/daily-implementation-brief.md`.
+1. Read the daily implementation brief in `agent-output/daily-implementation-brief.json` and `agent-output/daily-implementation-brief.md`.
 2. Confirm the selected work maps to exactly one issue or phase card.
 3. Identify allowed paths and protected paths before any implementation work.
 4. Confirm required checks and render/QA proof expectations.
