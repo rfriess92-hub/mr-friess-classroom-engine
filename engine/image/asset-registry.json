@@ -28,7 +28,7 @@
       "path": "engine/image/assets/illustrations/career_spot_01.png",
       "approved_source": "internal_curated",
       "compatible_artifact_types": ["slides"],
-      "compatible_image_roles": ["small_illustration", "instructional_diagram"],
+      "compatible_image_roles": ["instructional_diagram"],
       "image_purposes": ["organize_attention", "explain_content", "orient_lesson"],
       "aspect_ratio": "3:2",
       "crop_focus": "center",
