@@ -3,7 +3,11 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-const REQUIRED_AGENT_FILES = ['agents/phase-implementation.agent.md', 'agents/qa-cleanup.agent.md']
+const REQUIRED_AGENT_FILES = [
+  'agents/phase-implementation.agent.md',
+  'agents/qa-cleanup.agent.md',
+  'agents/daily-implementation-intake.agent.md',
+]
 const REQUIRED_CONTRACT_FILES = [
   'contracts/engine-expansion-contract.md',
   'contracts/page-role-contract.md',
@@ -40,6 +44,13 @@ function checkExists(path) {
 }
 
 for (const path of [...REQUIRED_AGENT_FILES, ...REQUIRED_CONTRACT_FILES, ...REQUIRED_ROADMAP_FILES]) checkExists(path)
+
+if (existsSync(resolve('agents/daily-implementation-intake.agent.md'))) {
+  const dailyAgent = readFileSync(resolve('agents/daily-implementation-intake.agent.md'), 'utf8').toLowerCase()
+  for (const term of ['daily implementation brief', 'implement_today', 'blocked', 'no_safe_task', 'stop conditions']) {
+    if (!dailyAgent.includes(term)) fail(`Daily implementation intake agent missing required concept: ${term}`)
+  }
+}
 
 const backlog = readJson('roadmap/phase-backlog.json')
 const status = readJson('roadmap/phase-status.json')
