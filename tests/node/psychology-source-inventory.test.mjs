@@ -2,7 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
 
- test('Psychology source inventory tracks course files and Cycle A sources', () => {
+test('Psychology source inventory tracks course files and Cycle A sources', () => {
   const output = execFileSync('node', ['scripts/validate-psychology-source-inventory.mjs'], {
     encoding: 'utf-8',
     stdio: ['ignore', 'pipe', 'pipe'],
