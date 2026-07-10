@@ -7,6 +7,7 @@ import { densityRuleFor } from '../../engine/render/layout-density-rules.mjs'
 
 const routeCases = [
   ['student follow-along route is stable', { artifact_class: 'student_packet_multi_page', page_roles: ['follow_along'] }, 'SP_OPEN_FOLLOW_ALONG'],
+  ['student continuation route is stable', { artifact_class: 'student_packet_multi_page', page_roles: ['continuation_notes'] }, 'SP_CONTINUATION_NOTES'],
   ['student reference route is stable', { artifact_class: 'student_packet_multi_page', page_roles: ['reference_bank'] }, 'SP_ACTIVITY_PLUS_REFERENCE'],
   ['student research planner route is stable', { artifact_class: 'student_packet_multi_page', page_roles: ['research_planner'] }, 'SP_RESEARCH_PLANNER'],
   ['student close route is stable', { artifact_class: 'student_packet_multi_page', page_roles: ['completion_check'] }, 'SP_CHECKLIST_CLOSE'],
