@@ -51,6 +51,73 @@ function extractIndentedPath(body, key) {
   return value.replace(/^['"]|['"]$/g, '')
 }
 
+function extractCourseFileEntries(body) {
+  const entries = []
+  const lines = body.split('\n')
+  let inCourseFiles = false
+  let current = null
+
+  function pushCurrent() {
+    if (current) entries.push(current)
+    current = null
+  }
+
+  for (const line of lines) {
+    if (line === 'course_files:') {
+      inCourseFiles = true
+      continue
+    }
+    if (!inCourseFiles) continue
+    if (/^\S/.test(line)) {
+      pushCurrent()
+      break
+    }
+
+    const entryMatch = line.match(/^  ([a-z0-9_-]+):\s*$/i)
+    if (entryMatch) {
+      pushCurrent()
+      current = { key: entryMatch[1], expected_path: null, status: null }
+      continue
+    }
+    if (!current) continue
+
+    const pathMatch = line.match(/^    expected_path:\s*(.+)$/)
+    if (pathMatch) {
+      current.expected_path = pathMatch[1].trim().replace(/^['"]|['"]$/g, '')
+      continue
+    }
+
+    const statusMatch = line.match(/^    status:\s*(.+)$/)
+    if (statusMatch) {
+      current.status = statusMatch[1].trim().replace(/^['"]|['"]$/g, '')
+    }
+  }
+
+  pushCurrent()
+  return entries
+}
+
+function validateCourseFileInventory(body) {
+  const entries = extractCourseFileEntries(body)
+  assert.ok(entries.length > 0, 'content inventory should declare course_files entries')
+
+  for (const entry of entries) {
+    assert.ok(entry.expected_path, `course_files.${entry.key} is missing expected_path`)
+    assert.ok(entry.status, `course_files.${entry.key} is missing status`)
+    assert.ok(
+      entry.expected_path.startsWith('source/psychology_11_12/course/'),
+      `course_files.${entry.key} must remain inside source/psychology_11_12/course/`,
+    )
+
+    const exists = existsSync(repoPath(entry.expected_path))
+    if (entry.status === 'missing') {
+      assert.equal(exists, false, `${entry.expected_path} exists but is marked missing`)
+    } else {
+      assert.equal(exists, true, `${entry.expected_path} is marked ${entry.status} but does not exist`)
+    }
+  }
+}
+
 mustExist(inventoryPath)
 mustExist(cycleAManifestPath)
 
@@ -71,6 +138,7 @@ mustInclude(inventory, 'source_spine: OpenStax Psychology 2e')
 mustInclude(inventory, cycleAManifestPath, 'Cycle A manifest path')
 mustInclude(inventory, 'fixtures/psychology/foundations-package.proof.json', 'Cycle A render proof path')
 validateStatuses(inventory, 'content inventory')
+validateCourseFileInventory(inventory)
 
 mustInclude(cycleA, 'cycle_id: A')
 mustInclude(cycleA, 'cycle_title: Foundations')
@@ -209,4 +277,4 @@ for (const oldGap of [
   mustNotInclude(cycleA, oldGap, `old gap ${oldGap}`)
 }
 
-console.log('psychology-source-inventory ok: A-F tracked, Cycle A linked, slide proof present')
+console.log('psychology-source-inventory ok: A-F tracked, course file statuses match disk, Cycle A linked, slide proof present')
