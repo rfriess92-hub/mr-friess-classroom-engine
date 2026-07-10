@@ -46,7 +46,7 @@ test('page-role contract documents the canonical multipage role IDs', () => {
   ]
 
   for (const role of canonicalRoles) {
-    assert.match(contract, new RegExp(`\\`${role}\\``), `${role} should be documented as a canonical page role`)
+    assert.equal(contract.includes('`' + role + '`'), true, `${role} should be documented as a canonical page role`)
   }
 })
 
