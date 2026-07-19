@@ -36,6 +36,16 @@ Assignment-family and upstream authoring surfaces include `engine/assignment-fam
 
 Transitional and compatibility surfaces include `engine/family/`, the Python fallback document paths for `teacher_guide`, `lesson_overview`, and `checkpoint_sheet`, the transitional PPTX internals behind `engine/pptx/renderer.py`, and the deprecated direct-builder scripts under `scripts/`.
 
+## Teacher-operated product templates
+
+Teacher-operated spreadsheet products are documented under `products/`. They remain outside the stable-core render contract and are independently usable.
+
+- `products/general-course-tracker/`
+- `products/literacy-intervention-tracker/`
+- `products/email-generator/`
+
+Cross-product integration is governed by `contracts/communication-bridge-v1.md` and `integration/tracker-email-integration-plan.md`. The email generator must consume the versioned bridge rather than raw tracker sheets. Real student data, live school Sheet URLs, credentials, and contact details must not be committed.
+
 ## Local commands
 
 Install dependencies:
