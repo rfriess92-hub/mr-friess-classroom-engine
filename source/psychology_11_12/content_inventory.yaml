@@ -21,6 +21,9 @@ course_files:
   course_map:
     expected_path: source/psychology_11_12/course/course_map.md
     status: draft
+  cycle_overviews:
+    expected_path: source/psychology_11_12/course/cycle_overviews/
+    status: draft
   course_overview:
     expected_path: source/psychology_11_12/course/course_overview.md
     status: missing
@@ -40,6 +43,7 @@ cycles:
     aliases:
       - Psychology as a Science
     status: active_partial_repo_source
+    overview: source/psychology_11_12/course/cycle_overviews/cycle_a_scientific_evidence_overview.md
     manifest: source/psychology_11_12/cycles/cycle_a_foundations/manifest.yaml
     render_proof: fixtures/psychology/foundations-package.proof.json
 
@@ -48,6 +52,7 @@ cycles:
     aliases:
       - Applied
     status: active_external_package_not_yet_normalized
+    overview: source/psychology_11_12/course/cycle_overviews/cycle_b_intellectual_learning_overview.md
     manifest: source/psychology_11_12/cycles/cycle_b_learning_cognition_development/manifest.yaml
 
   - cycle_id: C
@@ -55,6 +60,7 @@ cycles:
     aliases:
       - Consciousness / Meaning
     status: active_external_package_not_yet_normalized
+    overview: source/psychology_11_12/course/cycle_overviews/cycle_c_relational_identity_overview.md
     manifest: source/psychology_11_12/cycles/cycle_c_personality_identity_social/manifest.yaml
 
   - cycle_id: D
@@ -62,18 +68,21 @@ cycles:
     aliases:
       - Change / Support Systems
     status: active_external_package_not_yet_normalized
+    overview: source/psychology_11_12/course/cycle_overviews/cycle_d_wellness_change_overview.md
     manifest: source/psychology_11_12/cycles/cycle_d_mental_health_support/manifest.yaml
 
   - cycle_id: E
     normalized_title: Forensic and Legal Psychology
     aliases: []
     status: mapped_future_cycle
+    overview: source/psychology_11_12/course/cycle_overviews/cycle_e_justice_responsibility_overview.md
     manifest: source/psychology_11_12/cycles/cycle_e_forensic_legal/manifest.yaml
 
   - cycle_id: F
     normalized_title: Media / Technology / Persuasion / Consumer Psychology
     aliases: []
     status: mapped_future_cycle
+    overview: source/psychology_11_12/course/cycle_overviews/cycle_f_systems_media_influence_overview.md
     manifest: source/psychology_11_12/cycles/cycle_f_media_technology_persuasion/manifest.yaml
 
 allowed_content_statuses:
@@ -87,7 +96,8 @@ allowed_content_statuses:
   - archived
 
 next_inventory_tasks:
-  - create_cycle_overviews_from_course_map
+  - create_assessment_spine_from_course_map
+  - create_vocabulary_bank_from_cycle_overviews
   - confirm_active_cycle_a_d_files
   - normalize_cycle_names_with_aliases
   - create_or_verify_assessment_packs_a_d
