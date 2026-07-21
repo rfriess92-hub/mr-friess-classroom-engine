@@ -45,6 +45,7 @@ cycles:
     status: active_partial_repo_source
     overview: source/psychology_11_12/course/cycle_overviews/cycle_a_scientific_evidence_overview.md
     assessment_blueprint: source/psychology_11_12/cycles/cycle_a_foundations/assessment_blueprint.md
+    assessment_pack: source/psychology_11_12/cycles/cycle_a_foundations/assessment_pack.md
     manifest: source/psychology_11_12/cycles/cycle_a_foundations/manifest.yaml
     render_proof: fixtures/psychology/foundations-package.proof.json
 
@@ -97,10 +98,11 @@ allowed_content_statuses:
   - archived
 
 next_inventory_tasks:
-  - create_cycle_a_assessment_pack_from_blueprint
   - create_cycle_a_marking_guide_from_blueprint
   - create_cycle_a_capstone_packet_from_blueprint
   - create_cycle_a_source_evidence_sheets_from_blueprint
+  - create_cycle_a_qa_checklist_from_student_pack
+  - review_cycle_a_assessment_pack_for_classroom_texture
   - confirm_active_cycle_a_d_files
   - normalize_cycle_names_with_aliases
   - create_or_verify_assessment_packs_a_d
