@@ -78,7 +78,27 @@ The student assessment pack should eventually contain these sections.
 | 8 | Media Psychology Claim Audit | Evaluate a pop/media psychology claim. | Claim, source, evidence, limit, and careful conclusion organizer. |
 | 9 | Cycle A Capstone | Synthesize Cycle A evidence reasoning. | Full claim-analysis task with student-facing rubric. |
 
-## 7. Teacher Marking Guide Blueprint
+## 7. Formative / Summative Balance
+
+The Cycle A student assessment pack should not become one long worksheet sequence. The sections above should be built as a balanced assessment set with different classroom functions.
+
+| Assessment Piece | Function | Suggested Format |
+|---|---|---|
+| Evidence Language Check | Formative vocabulary and concept check. | Short check, matching task, or quick correction task. |
+| Psychology or Not? | Formative boundary-setting task. | Card sort, pair sort, or short explanation task. |
+| Claim / Evidence / Inference / Opinion | Formative reasoning practice. | Scenario cards, mini organizer, or discussion-prep task. |
+| Variables and Operational Definitions | Formative-to-bridge task. | Vague-claim rewrite, mini research-design prompt, or quick application. |
+| Correlation Is Not Causation | Formative-to-bridge task. | Scenario set, third-variable challenge, or misconception correction. |
+| Brain-Body Claim Audit | Bridge / performance task. | Short claim audit with evidence and limits. |
+| Fictional Ethics Board | Bridge / performance task. | Small-group review or individual ethics board form. |
+| Media Psychology Claim Audit | Bridge / capstone preparation task. | Headline/source audit with careful conclusion practice. |
+| Cycle A Capstone | Main summative task. | Full psychological claim evaluation with student-facing success criteria. |
+
+A1-A4 should mostly build practice, language, and confidence. A5-A6 should bridge toward performance by asking students to apply the reasoning routine in fuller situations. The capstone should be the main summative Cycle A task.
+
+When the student pack is built, not every section should be a full written assignment. Some pieces should be quick checks, card sorts, discussion-prep prompts, short scenario sets, mini applications, or misconception checks. The assessment pack should feel like a sequence of classroom moves that builds toward the capstone, not a stack of unrelated worksheets.
+
+## 8. Teacher Marking Guide Blueprint
 
 The teacher marking guide should eventually contain these sections.
 
@@ -96,7 +116,7 @@ The teacher marking guide should eventually contain these sections.
 | Feedback bank | Short comments that reinforce careful psychological reasoning. |
 | Safety notes | What to redirect immediately: diagnosis, personal disclosure, peer analysis, public-figure diagnosis, therapy framing. |
 
-## 8. Capstone Blueprint
+## 9. Capstone Blueprint
 
 Cycle A capstone: Evaluate a psychological claim.
 
@@ -128,7 +148,7 @@ Do not use:
 - personality quiz results
 - unsupported social media hot takes without a bounded analysis frame
 
-## 9. Cycle A Vocabulary Targets
+## 10. Cycle A Vocabulary Targets
 
 | Category | Terms |
 |---|---|
@@ -139,7 +159,7 @@ Do not use:
 | Ethics | informed consent; confidentiality; privacy; risk; benefit; debriefing. |
 | Brain-body caution | brain-body system; biological explanation; determinism; overclaiming. |
 
-## 10. Concrete Classroom Texture Required
+## 11. Concrete Classroom Texture Required
 
 When building the actual student pack, avoid a sterile worksheet sequence. Cycle A should feel like students are learning to inspect claims in the world around them.
 
@@ -162,7 +182,7 @@ Avoid:
 - personal surveys about students or classmates
 - pseudo-therapy reflection prompts
 
-## 11. Safety and Visibility Requirements
+## 12. Safety and Visibility Requirements
 
 Before any Cycle A student-facing assessment artifact is built, confirm that it:
 
@@ -175,7 +195,7 @@ Before any Cycle A student-facing assessment artifact is built, confirm that it:
 - uses careful language around brain/body explanations
 - keeps teacher-facing supports in a separate marking guide
 
-## 12. Build Order After This Blueprint
+## 13. Build Order After This Blueprint
 
 1. Create Cycle A student assessment pack.
 2. Create Cycle A teacher marking guide.
@@ -184,7 +204,7 @@ Before any Cycle A student-facing assessment artifact is built, confirm that it:
 5. Add Cycle A QA checklist.
 6. Only then decide whether to normalize full Cycle A student packet and slides.
 
-## 13. Review Gate Before Student Pack
+## 14. Review Gate Before Student Pack
 
 Before building the student assessment pack, review this blueprint for three questions:
 
