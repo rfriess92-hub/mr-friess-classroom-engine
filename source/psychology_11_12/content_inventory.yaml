@@ -29,7 +29,7 @@ course_files:
     status: missing
   vocabulary_bank:
     expected_path: source/psychology_11_12/course/vocabulary_bank.md
-    status: missing
+    status: draft
   assessment_spine:
     expected_path: source/psychology_11_12/course/assessment_spine.md
     status: draft
@@ -96,8 +96,8 @@ allowed_content_statuses:
   - archived
 
 next_inventory_tasks:
-  - create_vocabulary_bank_from_cycle_overviews
   - create_cycle_a_assessment_pack_from_assessment_spine
+  - create_cycle_a_marking_guide_from_assessment_spine
   - confirm_active_cycle_a_d_files
   - normalize_cycle_names_with_aliases
   - create_or_verify_assessment_packs_a_d
