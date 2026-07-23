@@ -5,6 +5,7 @@ import { resolve } from 'node:path'
 
 import { buildArtifactTrace } from '../../engine/render/artifact-classifier.mjs'
 import { runMultipageArtifactQa } from '../../engine/render/multipage-artifact-qa.mjs'
+import { derivePageRoles } from '../../engine/render/multipage-page-roles.mjs'
 import { resolveTemplateRoute } from '../../engine/render/template-router.mjs'
 import { buildTypedLayoutBlocks } from '../../engine/render/typed-blocks.mjs'
 import { validatePackage } from '../../engine/schema/preflight.mjs'
@@ -28,6 +29,57 @@ function buildQaContext(pkg, outputId) {
 function runQa(pkg, outputId) {
   return runMultipageArtifactQa(buildQaContext(pkg, outputId))
 }
+
+test('page-role contract documents the canonical multipage role IDs', () => {
+  const contract = readFileSync(resolve(process.cwd(), 'contracts/page-role-contract.md'), 'utf-8')
+  const canonicalRoles = [
+    'follow_along',
+    'continuation_notes',
+    'reference_bank',
+    'research_planner',
+    'completion_check',
+    'overview',
+    'sequence_map',
+    'project_tools',
+    'teacher_model',
+    'assessment_reference',
+  ]
+
+  for (const role of canonicalRoles) {
+    assert.equal(contract.includes('`' + role + '`'), true, `${role} should be documented as a canonical page role`)
+  }
+})
+
+test('page-role detection normalizes dotted, underscored, and hyphenated signal keys', () => {
+  const studentRoles = derivePageRoles({}, 'student_packet_multi_page', [
+    { block_type: 'workflow_section', source_key: 'tasks.1.follow_along', label: null },
+    { block_type: 'quick_tool', source_key: 'matching_bank', label: null },
+    { block_type: 'response_area', source_key: 'research-planner', label: null },
+    { block_type: 'checklist', source_key: 'success_criteria', label: null },
+  ])
+  assert.deepEqual(studentRoles, ['follow_along', 'reference_bank', 'research_planner', 'completion_check'])
+
+  const teacherRoles = derivePageRoles({}, 'teacher_guide_multi_page', [
+    { block_type: 'intro', source_key: 'unit.overview', label: null },
+    { block_type: 'workflow_section', source_key: 'class_sequence', label: null },
+    { block_type: 'exemplar', source_key: 'project_prompt', label: null },
+    { block_type: 'exemplar', source_key: 'teacher.model', label: null },
+    { block_type: 'assessment_note', source_key: 'assessment_focus', label: null },
+  ])
+  assert.deepEqual(teacherRoles, ['overview', 'sequence_map', 'project_tools', 'teacher_model', 'assessment_reference'])
+})
+
+test('high-risk roles do not appear from nearby support wording alone', () => {
+  const studentRoles = derivePageRoles({}, 'student_packet_multi_page', [
+    { block_type: 'callout', source_key: 'reflection', label: 'End-of-class check-in' },
+  ])
+  assert.equal(studentRoles.includes('completion_check'), false)
+
+  const teacherRoles = derivePageRoles({}, 'teacher_guide_multi_page', [
+    { block_type: 'teacher_note', source_key: 'project_overview', label: 'General project support' },
+  ])
+  assert.equal(teacherRoles.includes('project_tools'), false)
+})
 
 test('multi-page classifier proof fixture stays route-valid', () => {
   const pkg = loadFixture('fixtures/tests/multipage-classifier-page-roles.proof.json')
