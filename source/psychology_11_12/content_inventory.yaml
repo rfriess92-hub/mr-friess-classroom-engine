@@ -35,7 +35,7 @@ course_files:
     status: draft
   source_register:
     expected_path: source/psychology_11_12/course/source_register.md
-    status: missing
+    status: draft
 
 cycles:
   - cycle_id: A
