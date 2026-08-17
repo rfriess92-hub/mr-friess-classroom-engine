@@ -1,0 +1,48 @@
+name: Psychology v5 Link Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 17 15 * *'
+  push:
+    paths:
+      - 'source/psychology_11_12/v5/resources/urls.txt'
+      - 'source/psychology_11_12/course/source_register.md'
+      - '.github/workflows/psychology-v5-link-check.yml'
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Run lychee on Psychology v5 non-secure resource URLs
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress source/psychology_11_12/v5/resources/urls.txt
+          format: markdown
+          output: lychee/psychology-v5-links.md
+          fail: false
+          failIfEmpty: true
+          jobSummary: true
+
+      - name: Upload link-check report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: psychology-v5-link-check
+          path: lychee/psychology-v5-links.md
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Report pilot result
+        if: always()
+        shell: bash
+        run: |
+          echo 'Psychology v5 link checking is in pilot mode.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Automated failures are reviewed manually before any source is retired or replaced.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Scheduled lesson dependencies still require a local/static fallback in the source register.' >> "$GITHUB_STEP_SUMMARY"
