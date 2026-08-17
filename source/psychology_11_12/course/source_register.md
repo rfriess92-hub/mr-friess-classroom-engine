@@ -57,6 +57,7 @@ Legacy Cycle A-F folders remain historical/reference material. They do not overr
 | PSY5-SRC-0021 | Cognitive health and older adults | U.S. National Institute on Aging | 2024 | authoritative review/guidance | U3 aging evidence limits | Source Bank | biennial | S14 / B4-09 | https://www.nia.nih.gov/health/brain-health/cognitive-health-and-older-adults |
 | PSY5-SRC-0022 | Openverse | WordPress/Openverse | current | open-media discovery | visual discovery across units | Source Bank | term-check | — | https://openverse.org/ |
 | PSY5-SRC-0023 | Office accessibility guidance | Microsoft | current | accessibility QA | final release surfaces | Core control | annual | — | https://support.microsoft.com/en-us/accessibility/powerpoint/make-your-powerpoint-presentations-accessible-to-people-with-disabilities |
+| PSY5-SRC-0024 | Serve and Return | Center on the Developing Child at Harvard University | current (accessed 2026-08-17) | professional guidance / developmental-context resource | U3 infancy / early development | Flex / Source Bank | annual | — | https://developingchild.harvard.edu/key-concept/serve-and-return/ |
 
 ## Legacy currency bridge
 
