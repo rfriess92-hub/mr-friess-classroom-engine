@@ -58,6 +58,10 @@ Legacy Cycle A-F folders remain historical/reference material. They do not overr
 | PSY5-SRC-0022 | Openverse | WordPress/Openverse | current | open-media discovery | visual discovery across units | Source Bank | term-check | — | https://openverse.org/ |
 | PSY5-SRC-0023 | Office accessibility guidance | Microsoft | current | accessibility QA | final release surfaces | Core control | annual | — | https://support.microsoft.com/en-us/accessibility/powerpoint/make-your-powerpoint-presentations-accessible-to-people-with-disabilities |
 | PSY5-SRC-0024 | Serve and Return | Center on the Developing Child at Harvard University | current (accessed 2026-08-17) | professional guidance / developmental-context resource | U3 infancy / early development | Flex / Source Bank | annual | — | https://developingchild.harvard.edu/key-concept/serve-and-return/ |
+| PSY5-SRC-0025 | Emotion perception across cultures | Gendron et al. | 2014 | primary cross-cultural research | U4 emotion expression / culture | Source Bank | biennial | S15 / B4-11 | https://pmc.ncbi.nlm.nih.gov/articles/PMC4752367/ |
+| PSY5-SRC-0026 | Cultural expression review | Journal of Cross-Cultural Psychology | 2025 | review | U4 emotion expression / culture | Source Bank | biennial | S16 / B4-11 | https://journals.sagepub.com/doi/10.1177/00220221251334811 |
+| PSY5-SRC-0027 | Many Smiles Collaboration | Coles et al. | 2022 | preregistered multi-country primary research | U4 facial-feedback evidence | Source Bank | biennial | S17 / B4-12 | https://www.nature.com/articles/s41562-022-01458-9 |
+| PSY5-SRC-0028 | Registered Replication Report: facial feedback | Wagenmakers et al. | 2016 | multi-lab replication | U4 facial-feedback evidence | Source Bank | biennial | S18 / B4-12 | https://journals.sagepub.com/doi/10.1177/1745691616674458 |
 
 ## Legacy currency bridge
 
