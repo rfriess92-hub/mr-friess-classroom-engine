@@ -49,10 +49,13 @@ for (const tool of ['Zotero','lychee','PsyToolkit','JASP','draw.io','jsPsych','l
 mustInclude(tools, 'Quarto / Pandoc | DEFER')
 mustInclude(tools, 'PsychoPy | DEFER')
 
-const ids = [...register.matchAll(/PSY5-SRC-\d{4}/g)].map((match) => match[0])
-assert.ok(ids.length >= 20, `Expected at least 20 source IDs, found ${ids.length}`)
+// Source IDs are unique records only when they occur in the first column of the
+// Markdown register table. Examples and cross-reference prose may legitimately
+// repeat an existing ID and must not be treated as duplicate source records.
+const ids = [...register.matchAll(/^\|\s*(PSY5-SRC-\d{4})\s*\|/gm)].map((match) => match[1])
+assert.ok(ids.length >= 20, `Expected at least 20 source table records, found ${ids.length}`)
 const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index)
-assert.equal(duplicateIds.length, 0, `Duplicate source IDs: ${[...new Set(duplicateIds)].join(', ')}`)
+assert.equal(duplicateIds.length, 0, `Duplicate source table IDs: ${[...new Set(duplicateIds)].join(', ')}`)
 mustInclude(register, 'Psych11_12_v5.0.1_OPERATING_Semester_Plan.xlsx')
 mustInclude(register, 'Legacy Cycle A-F folders remain historical/reference material')
 mustInclude(register, 'S09 / B4-06')
@@ -64,4 +67,4 @@ assert.ok(urlLines.length >= 15, `Expected at least 15 link-check URLs, found ${
 for (const url of urlLines) assert.match(url, /^https:\/\//, `Non-HTTPS or malformed URL: ${url}`)
 assert.equal(new Set(urlLines).size, urlLines.length, 'Duplicate URLs in link-check target list')
 
-console.log(`psychology-v5-source-register ok: ${ids.length} source IDs, ${urlLines.length} link targets, six-unit v5 manifest`)
+console.log(`psychology-v5-source-register ok: ${ids.length} source table records, ${urlLines.length} link targets, six-unit v5 manifest`)
