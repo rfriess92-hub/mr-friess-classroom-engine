@@ -3,7 +3,7 @@ course: Psychology 11/12
 source_spine: OpenStax Psychology 2e
 status: draft_inventory
 purpose: >
-  Source-side inventory for Psychology 11/12. The active classroom rebuild is the six-unit v5 course
+  Source-side inventory for Psychology 11/12. The current classroom authority is the frozen six-unit v5 course
   controlled by Psych11_12_v5.0.1_OPERATING_Semester_Plan.xlsx. Legacy Cycle A-F materials remain
   tracked below for provenance and renderer compatibility, but they do not control current sequencing.
 
@@ -15,7 +15,8 @@ active_v5:
   zotero_schema: source/psychology_11_12/v5/zotero-tagging.md
   tool_rules: source/psychology_11_12/v5/tool-decision-rules.md
   link_targets: source/psychology_11_12/v5/resources/urls.txt
-  status: active_build
+  release_status: source/psychology_11_12/v5/RELEASE_STATUS.md
+  status: frozen_release
 
 contracts:
   content_contract: CONTENT.md
@@ -109,8 +110,8 @@ allowed_content_statuses:
   - archived
 
 next_inventory_tasks:
-  - use_v5_source_register_for_unit_3_build
-  - run_psychology_v5_link_check_pilot
+  - maintain_v5_source_register_and_currency_cadence
+  - run_scheduled_psychology_v5_link_checks_and_review_failures_manually
   - preserve_secure_and_controlled_boundaries
   - create_cycle_a_marking_guide_from_blueprint
   - create_cycle_a_capstone_packet_from_blueprint
