@@ -27,16 +27,16 @@ units:
     status: release_ready
   - unit_id: U3
     title: Development
-    status: next_build
+    status: release_ready
   - unit_id: U4
     title: Biopsychology
-    status: queued
+    status: release_ready
   - unit_id: U5
     title: Personality & Mental Health
-    status: queued
+    status: release_ready
   - unit_id: U6
     title: Social & Forensic
-    status: queued
+    status: release_ready
 
 release_boundaries:
   controlled_families:
