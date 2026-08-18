@@ -29,6 +29,10 @@ mustInclude(manifest, 'operating_authority: Psych11_12_v5.0.1_OPERATING_Semester
 mustInclude(manifest, 'architecture: six_unit_semester')
 mustInclude(manifest, 'source_spine: OpenStax Psychology 2e')
 for (const id of ['U1','U2','U3','U4','U5','U6']) mustInclude(manifest, `unit_id: ${id}`)
+const releaseReadyUnits = (manifest.match(/status:\s*release_ready/g) ?? []).length
+assert.equal(releaseReadyUnits, 6, `Expected all six v5 units to be release_ready, found ${releaseReadyUnits}`)
+mustNotInclude(manifest, 'status: next_build', 'stale next_build unit state')
+mustNotInclude(manifest, 'status: queued', 'stale queued unit state')
 mustInclude(manifest, 'secure_materials_in_public_repo: false')
 mustInclude(manifest, 'controlled_families:')
 mustNotInclude(manifest, 'student_names:')
