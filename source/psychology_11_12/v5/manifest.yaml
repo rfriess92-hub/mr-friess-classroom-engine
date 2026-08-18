@@ -1,8 +1,11 @@
 schema_version: 1
 course: Psychology 11/12
 version: v5
-status: active_build
+status: frozen_release
 operating_authority: Psych11_12_v5.0.1_OPERATING_Semester_Plan.xlsx
+frozen_classroom_payload: Psych11_12_v5_COURSE_TREE_RC2.zip
+frozen_classroom_payload_sha256: 709a3f79f47eb315b12cffbdb840bedf36138f609aad76e53f298dae6004cae4
+freeze_date: 2026-08-17
 source_spine: OpenStax Psychology 2e
 architecture: six_unit_semester
 
@@ -11,6 +14,7 @@ source_schema: source/psychology_11_12/v5/source-schema.md
 zotero_schema: source/psychology_11_12/v5/zotero-tagging.md
 tool_rules: source/psychology_11_12/v5/tool-decision-rules.md
 link_targets: source/psychology_11_12/v5/resources/urls.txt
+release_status: source/psychology_11_12/v5/RELEASE_STATUS.md
 
 source_id:
   canonical_prefix: PSY5-SRC-
@@ -47,6 +51,13 @@ release_boundaries:
   student_data_in_public_repo: false
   copyrighted_source_binaries_in_public_repo: false
 
+post_freeze_checks:
+  - google_classroom_student_view
+  - live_unit_4_test_timing
+  - physical_projection_and_grayscale_print_sanity
+  - office_native_accessibility_sanity
+  - scheduled_link_and_fallback_maintenance
+
 source_workflow:
   - capture_once
   - assign_source_id
@@ -59,5 +70,7 @@ source_workflow:
 
 notes:
   - The v5 operating semester plan controls current sequencing and assessment timing.
+  - The frozen classroom payload remains outside GitHub; GitHub records its identity and supports non-secure metadata/QA only.
+  - Do not edit the frozen classroom ZIP in place. Concrete classroom defects require a bounded new release and new checksum.
   - Legacy Cycle A-F source directories are historical/reference material and do not override v5 unit architecture.
   - GitHub supports non-secure metadata, validation, link checking and manifests; it is not the canonical classroom package.

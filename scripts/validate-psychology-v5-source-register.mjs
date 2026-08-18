@@ -9,6 +9,7 @@ const schemaPath = 'source/psychology_11_12/v5/source-schema.md'
 const zoteroPath = 'source/psychology_11_12/v5/zotero-tagging.md'
 const toolRulesPath = 'source/psychology_11_12/v5/tool-decision-rules.md'
 const urlsPath = 'source/psychology_11_12/v5/resources/urls.txt'
+const releaseStatusPath = 'source/psychology_11_12/v5/RELEASE_STATUS.md'
 
 function pathOf(path) { return resolve(ROOT, path) }
 function mustExist(path) { assert.ok(existsSync(pathOf(path)), `Missing required file: ${path}`) }
@@ -16,7 +17,7 @@ function text(path) { return readFileSync(pathOf(path), 'utf-8') }
 function mustInclude(body, needle, label = needle) { assert.ok(body.includes(needle), `Missing ${label}`) }
 function mustNotInclude(body, needle, label = needle) { assert.equal(body.includes(needle), false, `Unexpected ${label}`) }
 
-for (const path of [manifestPath, registerPath, schemaPath, zoteroPath, toolRulesPath, urlsPath]) mustExist(path)
+for (const path of [manifestPath, registerPath, schemaPath, zoteroPath, toolRulesPath, urlsPath, releaseStatusPath]) mustExist(path)
 
 const manifest = text(manifestPath)
 const register = text(registerPath)
@@ -24,8 +25,12 @@ const schema = text(schemaPath)
 const zotero = text(zoteroPath)
 const tools = text(toolRulesPath)
 const urls = text(urlsPath)
+const releaseStatus = text(releaseStatusPath)
 
+mustInclude(manifest, 'status: frozen_release')
 mustInclude(manifest, 'operating_authority: Psych11_12_v5.0.1_OPERATING_Semester_Plan.xlsx')
+mustInclude(manifest, 'frozen_classroom_payload: Psych11_12_v5_COURSE_TREE_RC2.zip')
+mustInclude(manifest, 'frozen_classroom_payload_sha256: 709a3f79f47eb315b12cffbdb840bedf36138f609aad76e53f298dae6004cae4')
 mustInclude(manifest, 'architecture: six_unit_semester')
 mustInclude(manifest, 'source_spine: OpenStax Psychology 2e')
 for (const id of ['U1','U2','U3','U4','U5','U6']) mustInclude(manifest, `unit_id: ${id}`)
@@ -36,6 +41,12 @@ mustNotInclude(manifest, 'status: queued', 'stale queued unit state')
 mustInclude(manifest, 'secure_materials_in_public_repo: false')
 mustInclude(manifest, 'controlled_families:')
 mustNotInclude(manifest, 'student_names:')
+
+mustInclude(releaseStatus, '# Psychology 11/12 v5 — Frozen Release Status')
+mustInclude(releaseStatus, 'Psych11_12_v5_COURSE_TREE_RC2.zip')
+mustInclude(releaseStatus, '709a3f79f47eb315b12cffbdb840bedf36138f609aad76e53f298dae6004cae4')
+mustInclude(releaseStatus, 'Google Classroom Student View')
+mustInclude(releaseStatus, 'GitHub is not the classroom package authority')
 
 mustInclude(schema, 'PSY5-SRC-0001')
 mustInclude(schema, 'fallback_source_id_or_local_fallback')
@@ -71,4 +82,4 @@ assert.ok(urlLines.length >= 15, `Expected at least 15 link-check URLs, found ${
 for (const url of urlLines) assert.match(url, /^https:\/\//, `Non-HTTPS or malformed URL: ${url}`)
 assert.equal(new Set(urlLines).size, urlLines.length, 'Duplicate URLs in link-check target list')
 
-console.log(`psychology-v5-source-register ok: ${ids.length} source table records, ${urlLines.length} link targets, six-unit v5 manifest`)
+console.log(`psychology-v5-source-register ok: frozen release, ${ids.length} source table records, ${urlLines.length} link targets, six-unit v5 manifest`)
