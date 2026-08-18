@@ -1,0 +1,63 @@
+schema_version: 1
+course: Psychology 11/12
+version: v5
+status: active_build
+operating_authority: Psych11_12_v5.0.1_OPERATING_Semester_Plan.xlsx
+source_spine: OpenStax Psychology 2e
+architecture: six_unit_semester
+
+source_register: source/psychology_11_12/course/source_register.md
+source_schema: source/psychology_11_12/v5/source-schema.md
+zotero_schema: source/psychology_11_12/v5/zotero-tagging.md
+tool_rules: source/psychology_11_12/v5/tool-decision-rules.md
+link_targets: source/psychology_11_12/v5/resources/urls.txt
+
+source_id:
+  canonical_prefix: PSY5-SRC-
+  format: PSY5-SRC-0001
+  rule: stable_numeric_id_not_unit_specific
+  legacy_aliases_preserved: true
+
+units:
+  - unit_id: U1
+    title: Introduction & Brain
+    status: release_ready
+  - unit_id: U2
+    title: Cognition, Learning & Perception
+    status: release_ready
+  - unit_id: U3
+    title: Development
+    status: release_ready
+  - unit_id: U4
+    title: Biopsychology
+    status: release_ready
+  - unit_id: U5
+    title: Personality & Mental Health
+    status: release_ready
+  - unit_id: U6
+    title: Social & Forensic
+    status: release_ready
+
+release_boundaries:
+  controlled_families:
+    - U1 Activity 2
+    - U2 Activity 4 Parts A/B
+    - U6 Activity 10
+  secure_materials_in_public_repo: false
+  student_data_in_public_repo: false
+  copyrighted_source_binaries_in_public_repo: false
+
+source_workflow:
+  - capture_once
+  - assign_source_id
+  - tag_unit_lesson_role
+  - record_evidence_type_and_rights
+  - flag_currency_review
+  - map_to_content_bank
+  - require_fallback_for_live_lesson_dependency
+  - run_link_check
+
+notes:
+  - The v5 operating semester plan controls current sequencing and assessment timing.
+  - Legacy Cycle A-F source directories are historical/reference material and do not override v5 unit architecture.
+  - GitHub supports non-secure metadata, validation, link checking and manifests; it is not the canonical classroom package.

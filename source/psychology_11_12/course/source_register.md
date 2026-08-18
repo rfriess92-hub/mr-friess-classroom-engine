@@ -2,233 +2,100 @@
 course: Psychology 11/12
 artifact_type: source_register
 audience: teacher
-version: 1
-status: draft
+version: 5
+status: active
 source_spine: OpenStax Psychology 2e
-scope: psychology_only
-applicability:
-  psychology_11_12: true
-  other_courses: false
-visibility:
-  student: false
-  teacher: true
-answer_key: false
-created_from_repo_scan: true
+operating_authority: Psych11_12_v5.0.1_OPERATING_Semester_Plan.xlsx
+scope: psychology_11_12_v5
+student_visible: false
+secure_content: false
 ---
 
-# Psychology 11/12 Source Register
+# Psychology 11/12 v5 — Unified Source Register
 
-## Applicability Confirmation
+This non-secure register gives reusable sources stable course IDs. It supports the current six-unit v5 package. It does not store secure assessments, answer keys, student data, controlled reveals, private school links, or copyrighted source binaries.
 
-This source register applies only to Psychology 11/12.
+The full metadata schema is defined in `source/psychology_11_12/v5/source-schema.md`.
 
-It should not be treated as a shared source register for Careers, English, literacy intervention, classroom-engine rendering in general, or any other course family. Any source, package, cycle, routine, safety rule, or assessment model listed here is included only because it is explicitly tied to Psychology 11/12 in the repository structure or course documents.
+## Active v5 unit map
 
-## Scanned Psychology-Specific Repo Areas
+| Unit | Current title |
+|---|---|
+| U1 | Introduction & Brain |
+| U2 | Cognition, Learning & Perception |
+| U3 | Development |
+| U4 | Biopsychology |
+| U5 | Personality & Mental Health |
+| U6 | Social & Forensic |
 
-The following repo areas were treated as Psychology-applicable:
+Legacy Cycle A-F folders remain historical/reference material. They do not override the v5 Operating Semester Plan or the six-unit package architecture.
 
-| Repo area | Psychology-only reason | Use in source register |
-|---|---|---|
-| `source/psychology_11_12/` | Dedicated normalized source folder for Psychology 11/12. | Primary source-side content location. |
-| `source/psychology_11_12/content_inventory.yaml` | Identifies the course as Psychology 11/12 and the source spine as OpenStax Psychology 2e. | Content status, expected paths, cycle inventory. |
-| `source/psychology_11_12/course/` | Expected course-level source folder for course map, overview, vocabulary, assessment spine, and source register. | Course-level source organization. |
-| `source/psychology_11_12/cycles/` | Dedicated normalized Psychology cycle folders. | Cycle-specific content registry. |
-| `source/psychology_11_12/slides/source/` | Dedicated Psychology slide-source folder. | Student-facing slide source references. |
-| `source/psychology_11_12/qa/` | Dedicated Psychology QA folder. | QA, render, and visibility checks. |
-| `courses/psychology-11-12/` | Course-family planning spine for Psychology 11/12. | Semester, unit, package, and pacing references. |
-| `units/psychology/` | GitHub source of truth for the complete Psychology 11/12 classroom unit. | Engine-native package source and render boundary. |
-| `fixtures/psychology/` | Psychology render proof / QA fixture area. | Render-proof evidence only; not a curriculum source by itself. |
-| Psychology-specific scripts such as `validate-psychology-*` and `qa-psychology-*` | Scripts explicitly named for Psychology. | Validation context only; not student or teacher content. |
+## Starter register
 
-## Excluded Areas
+| Source ID | Source | Provider / author | Year/version | Evidence / source type | Course use | Role | Currency | Legacy alias | URL / locator |
+|---|---|---|---|---|---|---|---|---|---|
+| PSY5-SRC-0001 | Psychology 2e | OpenStax | 2e | textbook spine | U1–U6 | Core | stable | — | https://openstax.org/details/books/psychology-2e |
+| PSY5-SRC-0002 | Psychology 2e Student Lecture Notes | OpenStax | 2e | student-note source | U1–U6 | Source Bank | stable | — | local open-source package |
+| PSY5-SRC-0003 | Psychology 2e Enhanced Lecture PowerPoints | OpenStax | 2e | lecture/source deck | U1–U6 | Source Bank | stable | — | local open-source package |
+| PSY5-SRC-0004 | Activities for Teaching Psychology, Vol. 3 | course source archive | source edition | teaching-resource | selected U1–U6 activities | Source Bank | stable | — | local source package |
+| PSY5-SRC-0005 | Activities for Teaching Psychology, Vol. 4 | course source archive | source edition | teaching-resource | selected U1–U6 activities | Source Bank | stable | — | local source package |
+| PSY5-SRC-0006 | Scientific Currency Ledger | Psychology 11/12 project | 2026-08 | provenance / currency control | changing claims across units | Core control | term-check | S01–Sxx; B4-01–B4-22 | local project register |
+| PSY5-SRC-0007 | Resources by Course or Topic | Society for the Teaching of Psychology | current | peer-reviewed teaching-resource hub | selective U1–U6 enrichment | Source Bank | term-check | — | https://teachpsych.org/page-1603066 |
+| PSY5-SRC-0008 | Promoting Psychological Science: High School Lab Compendium | Society for the Teaching of Psychology | current | high-school lab source | selective U1–U6 labs | Source Bank | annual | — | https://teachpsych.org/ebooks/promotingpsychscience |
+| PSY5-SRC-0009 | Teach Psych Science | TeachPsychScience.org | current | methods/open-science teaching resource | U1 / Final | Flex / Source Bank | annual | — | https://teachpsychscience.org/ |
+| PSY5-SRC-0010 | CAST UDL Guidelines 3.0 | CAST | 3.0 | professional-guidance | cross-course accessibility/design QA | Core control | annual | — | https://udlguidelines.cast.org/ |
+| PSY5-SRC-0011 | PsyToolkit Experiment Library | PsyToolkit | current | ready behavioural demonstrations | selected U1/U2/U6 demos | Flex | term-check | — | https://www.psytoolkit.org/experiment-library/ |
+| PSY5-SRC-0012 | JASP | JASP project | current | statistics software | selected U1/final data work | Flex | term-check | — | https://jasp-stats.org/ |
+| PSY5-SRC-0013 | Introduction to Modern Statistics | OpenIntro | current | statistics text/datasets | methods/data examples | Source Bank | annual | — | https://openintro-ims.netlify.app/ |
+| PSY5-SRC-0014 | BrainFacts 3D Brain | Society for Neuroscience / BrainFacts | current | interactive visual | U1 / U4 brain anatomy | Flex | term-check | — | https://www.brainfacts.org/3d-brain |
+| PSY5-SRC-0015 | OCAP® principles | First Nations Information Governance Centre | current | First Nations data-governance authority | U1 research ethics/governance | Source Bank | annual | — | https://fnigc.ca/ocap-training/ |
+| PSY5-SRC-0016 | Canadian longitudinal puberty-timing study | research article | 2020 | primary research | U3 puberty variability | Source Bank | biennial | S09 / B4-06 | https://pmc.ncbi.nlm.nih.gov/articles/PMC6976232/ |
+| PSY5-SRC-0017 | Puberty overview | Action Canada for Sexual Health & Rights | current | Canadian public-health guidance | U3 inclusive puberty language | Source Bank | annual | S10 / B4-06 | https://www.actioncanadashr.org/sexual-health-hub/puberty |
+| PSY5-SRC-0018 | Adolescent brain and family context | Qu et al. | 2015 | primary research | U3 adolescent development | Source Bank | biennial | S11 / B4-07 | https://pmc.ncbi.nlm.nih.gov/articles/PMC4532760/ |
+| PSY5-SRC-0019 | Adolescent reward-system development | Braams et al. | 2015 | longitudinal primary research | U3 adolescent development | Source Bank | biennial | S12 / B4-07 | https://www.jneurosci.org/content/35/18/7226 |
+| PSY5-SRC-0020 | Emerging adulthood framework | NCBI Bookshelf | 2019 | review/framework | U3 adulthood/context | Source Bank | biennial | S13 / B4-08 | https://www.ncbi.nlm.nih.gov/books/NBK543712/ |
+| PSY5-SRC-0021 | Cognitive health and older adults | U.S. National Institute on Aging | 2024 | authoritative review/guidance | U3 aging evidence limits | Source Bank | biennial | S14 / B4-09 | https://www.nia.nih.gov/health/brain-health/cognitive-health-and-older-adults |
+| PSY5-SRC-0022 | Openverse | WordPress/Openverse | current | open-media discovery | visual discovery across units | Source Bank | term-check | — | https://openverse.org/ |
+| PSY5-SRC-0023 | Office accessibility guidance | Microsoft | current | accessibility QA | final release surfaces | Core control | annual | — | https://support.microsoft.com/en-us/accessibility/powerpoint/make-your-powerpoint-presentations-accessible-to-people-with-disabilities |
+| PSY5-SRC-0024 | Serve and Return | Center on the Developing Child at Harvard University | current (accessed 2026-08-17) | professional guidance / developmental-context resource | U3 infancy / early development | Flex / Source Bank | annual | — | https://developingchild.harvard.edu/key-concept/serve-and-return/ |
+| PSY5-SRC-0025 | Emotion perception across cultures | Gendron et al. | 2014 | primary cross-cultural research | U4 emotion expression / culture | Source Bank | biennial | S15 / B4-11 | https://pmc.ncbi.nlm.nih.gov/articles/PMC4752367/ |
+| PSY5-SRC-0026 | Cultural expression review | Journal of Cross-Cultural Psychology | 2025 | review | U4 emotion expression / culture | Source Bank | biennial | S16 / B4-11 | https://journals.sagepub.com/doi/10.1177/00220221251334811 |
+| PSY5-SRC-0027 | Many Smiles Collaboration | Coles et al. | 2022 | preregistered multi-country primary research | U4 facial-feedback evidence | Source Bank | biennial | S17 / B4-12 | https://www.nature.com/articles/s41562-022-01458-9 |
+| PSY5-SRC-0028 | Registered Replication Report: facial feedback | Wagenmakers et al. | 2016 | multi-lab replication | U4 facial-feedback evidence | Source Bank | biennial | S18 / B4-12 | https://journals.sagepub.com/doi/10.1177/1745691616674458 |
+| PSY5-SRC-0029 | Mental Health & High School Curriculum Guide — Canada | Mental Health Literacy | current (Version 3) | Canadian school mental-health-literacy resource | U5 terminology, stigma, help-seeking context | Source Bank | annual | — | https://mentalhealthliteracy.org/product/mental-health-high-school-curriculum/ |
+| PSY5-SRC-0030 | Cultural Safety & Humility | First Nations Health Authority | current | BC First Nations health-system context | U5 access, cultural safety, service context | Source Bank | annual | — | https://fnha.ca/services-and-support/culturally-grounded-care/cultural-safety-and-humility/ |
+| PSY5-SRC-0031 | Depression | National Institute of Mental Health | current (accessed 2026-08-17) | authoritative clinical overview | U5 mood-disorder multi-factor biology | Source Bank | biennial | S19 / B4-13; B4-14; B4-20 | https://www.nimh.nih.gov/health/topics/depression |
+| PSY5-SRC-0032 | CANMAT 2023 MDD guideline update | CANMAT | 2023 | Canadian clinical guideline | U5 treatment evidence / mood-disorder context | Source Bank | biennial | S20 / B4-13; B4-14; B4-20 | https://www.canmat.org/sdm_downloads/canadian-network-for-mood-and-anxiety-treatments-canmat-2023-update-on-clinical-guidelines-for-management-of-major-depressive-disorder-in-adults/ |
+| PSY5-SRC-0033 | Major depressive disorder neurobiology review | peer-reviewed research review | 2024 | scientific review | U5 systems-level mood-disorder biology | Source Bank | biennial | S21 / B4-13; B4-14; B4-20 | https://pubmed.ncbi.nlm.nih.gov/38695002/ |
+| PSY5-SRC-0034 | Suicide and self-harm surveillance | Public Health Agency of Canada | current (accessed 2026-08-17) | Canadian public-health surveillance | U5 teacher-only sensitive-content context | Teacher Source Bank | annual | S22 / B4-15 | https://health-infobase.canada.ca/mental-health/suicide-self-harm/ |
+| PSY5-SRC-0035 | 9-8-8 Suicide Crisis Helpline | Government-supported Canadian service | current (accessed 2026-08-17) | current support route | U5 teacher support / safety protocol | Teacher Source Bank | term-check | S23 / B4-15 | https://988.ca/ |
+| PSY5-SRC-0036 | Mental disorders and access to mental health care | Statistics Canada | 2023 report / 2022 survey | Canadian population survey | U5 prevalence and measurement boundaries | Source Bank | annual | S27 / B4-16 | https://www150.statcan.gc.ca/n1/pub/75-006-x/2023001/article/00011-eng.htm |
+| PSY5-SRC-0037 | Unmet mental-health care needs | Canadian Institute for Health Information | 2025 report / 2024 data | Canadian health-system reporting | U5 access barriers / unmet need | Source Bank | annual | S28 / B4-17 | https://www.cihi.ca/en/news/about-2-in-5-canadians-living-with-mental-health-conditions-say-their-mental-health-care-needs-are |
+| PSY5-SRC-0038 | Community mental-health services | Canadian Institute for Health Information | 2025 | Canadian health-system reporting | U5 access, treatment settings, intake context | Source Bank | annual | S29 / B4-17; B4-18; B4-19 | https://www.cihi.ca/en/taking-the-pulse-measuring-shared-priorities-for-canadian-health-care-2025/mental-health-and-substance-use-services-2025/community-services-are-important-for |
+| PSY5-SRC-0039 | Identifying the Culprit: Assessing Eyewitness Identification | National Academies | 2014 | consensus report / authoritative review | U6 eyewitness identification science and procedure | Source Bank | biennial | S24 / B4-22 | https://www.nationalacademies.org/projects/PGA-STL-13-02/publication/18891 |
+| PSY5-SRC-0040 | Reconstruction of Automobile Destruction | Loftus & Palmer | 1974 | classic primary experiment | U6 leading-question / memory reconstruction evidence | Source Bank | biennial | S25 / B4-22 | https://www.demenzemedicinagenerale.net/images/mens-sana/AutomobileDestruction.pdf |
+| PSY5-SRC-0041 | Causes of Wrongful Convictions | Innocence Canada | current (accessed 2026-08-17) | Canadian justice-system reference | U6 wrongful-conviction context and multiple-cause boundary | Source Bank | annual | S26 / B4-22 | https://innocencecanada.com/causes-of-wrongful-convictions/ |
+| PSY5-SRC-0042 | Parable of the Polygons | Vi Hart & Nicky Case | current | interactive systems model | U6 segregation/systems extension | Extension | term-check | — | https://ncase.me/polygons/ |
+| PSY5-SRC-0043 | Eyewitness Misidentification | Innocence Canada | current (accessed 2026-08-17) | Canadian justice-system reference | U6 eyewitness backup localization | Contingency / Source Bank | annual | — | https://innocencecanada.com/justice_causes/eyewitness-identification-error/ |
 
-The following were not treated as Psychology source material unless a file explicitly referenced Psychology 11/12:
+## Legacy currency bridge
 
-- generic classroom-engine renderer code
-- generic repo setup, tooling, and package-management files
-- non-Psychology course folders
-- general official course-load files except where they identify Psychology course instances
-- generic QA scripts that are not Psychology-specific
-- generated previews, proof files, or render outputs as standalone curriculum sources
-- uploaded archives except where a Psychology manifest uses them as a provenance reference
+Existing Scientific Currency Ledger IDs remain authoritative aliases for their current claims. Do not renumber `S01`–`Sxx` or `B4-01`–`B4-22`. When one of those sources is used in a v5 content bank, cite both the stable v5 Source ID and the existing ledger alias when useful.
 
-## Primary Academic Source Spine
+Example:
 
-Primary source spine:
+`Source: PSY5-SRC-0019 — Braams et al. (legacy S12 / claim B4-07)`
 
-- OpenStax Psychology 2e
+## Admission notes
 
-Repo function:
+- `Core` sources are needed for the lesson/course control to run.
+- `Flex` sources improve a scheduled lesson but require a non-web/static fallback.
+- `Extension` is optional enrichment and may disappear without damaging required learning.
+- `Contingency` is a backup route.
+- `Source Bank` is teacher-facing until explicitly scheduled.
 
-- provides core concepts
-- provides vocabulary grounding
-- provides chapter alignment
-- supports source-safe classroom adaptation
-- does not get reproduced directly into student materials
+A source does not become curriculum merely because it appears in this register.
 
-Classroom adaptation rule:
+## Security and release boundary
 
-Use OpenStax Psychology 2e as the academic spine, then translate it into high-school-appropriate classroom materials: teacher binders, student packets, assessment packs, source sheets, scenario tasks, capstone work, and low-risk reflection/application prompts.
-
-## Whole-Course Psychology Unit Map
-
-| Unit | Topic | OpenStax Psychology 2e alignment | Psychology-only use |
-|---|---|---|---|
-| Unit 1 | Psychology as a Science | Chapters 1-2 | Foundations, research reasoning, evidence, ethics. |
-| Unit 2 | Brain, Body, and Behaviour | Chapter 3 | Biological bases of behaviour and introductory brain-behaviour links. |
-| Unit 3 | Consciousness, Sensation, and Perception | Chapters 4-5 | States of consciousness, sensation, perception, and interpretation. |
-| Unit 4 | Learning and Memory | Chapters 6 and 8 | Learning theories, memory, study strategies, behaviour change. |
-| Unit 5 | Thinking, Intelligence, and Cognition | Chapter 7 | Cognition, problem-solving, intelligence, bias, decision-making. |
-| Unit 6 | Development Across the Lifespan | Chapter 9 | Lifespan change, development, nature/nurture, identity context. |
-| Unit 7 | Emotion, Motivation, and Personality | Chapters 10-11 | Emotion, motivation, trait language, personality concepts. |
-| Unit 8 | Social Psychology and Relationships | Chapter 12 | Social influence, groups, attribution, bias, belonging, relationships. |
-| Unit 9 | Stress, Health, and Mental Health | Chapters 14-16 | Stress, stigma, support literacy, disorder/treatment concepts. |
-| Unit 10 | Applied Psychology, Work, Law, Media, and Society | Chapter 13 plus extension sources | Applied psychology, work, forensic/legal, media, persuasion, consumer psychology. |
-
-## Three-Year Cycle Register
-
-| Cycle | Normalized title | Current repo status | Source alignment | Register decision |
-|---|---|---|---|---|
-| A | Foundations | Active / partially normalized source | OpenStax Chapters 1-2 | Active Psychology source. |
-| B | Learning / Cognition / Development / Applied | Active external package; not yet fully normalized | OpenStax Chapters 6-9, Chapter 13 as useful | Psychology source, but requires normalization before treating all artifacts as source-stable. |
-| C | Personality / Identity / Social / Relationships | Active external package; not yet fully normalized | OpenStax Chapters 11-12, selected Chapter 4 | Psychology source, with heightened disclosure safeguards. |
-| D | Mental Health / Stress / Disorders / Treatment / Support | Active external package; not yet fully normalized | OpenStax Chapters 14-16 | Psychology source, with strongest safety controls. |
-| E | Forensic and Legal Psychology | Mapped future cycle | OpenStax Chapters 8, 12, 15 plus extension sources | Psychology-only future/extension source; not active unless files exist. |
-| F | Media / Technology / Persuasion / Consumer Psychology | Mapped future cycle | OpenStax Chapters 6-8, 12-13 plus extension sources | Psychology-only future/extension source; not active unless files exist. |
-
-## Active Cycle A Source Register
-
-Cycle A is the clearest normalized source area currently present under `source/psychology_11_12/cycles/cycle_a_foundations/`.
-
-| Source file | Artifact type | Audience | Status | Source spine | Psychology-only use |
-|---|---|---|---|---|---|
-| `manifest.yaml` | cycle manifest | repo / teacher | draft_manifest | OpenStax Psychology 2e, Chapters 1-2 | Tracks Cycle A artifact inventory and render links. |
-| `assessment_pack.md` | assessment pack | student assessment | draft | OpenStax Psychology 2e, Chapters 1-2 | Student-facing assessment of psychology definition, evidence, observation/inference, correlation/causation, ethics. |
-| `marking_guide.md` | marking guide | teacher assessment | draft | OpenStax Psychology 2e, Chapters 1-2 | Teacher-only answer key, rubric, look-fors, feedback language, accommodation notes. |
-| `source_sheet.md` | source sheet | student | draft | OpenStax Psychology 2e, Chapters 1-2 | Student-safe source support for foundational Psychology vocabulary and reasoning. |
-| `capstone_packet.md` | capstone packet | student | draft | OpenStax Psychology 2e, Chapters 1-2 | Student-facing claim-analysis capstone using evidence, limits, research reasoning, and ethics. |
-| `source/psychology_11_12/slides/source/cycle_a_foundations_slides.md` | slide source | student | language_locked_draft | OpenStax Psychology 2e, Chapters 1-2 | Student-facing slide language for Cycle A Lesson 1: What Is Psychology? |
-
-## Psychology-Specific Pedagogical Frame
-
-All included material supports a Psychology 11/12 classroom frame:
-
-- students define psychological concepts accurately
-- students distinguish evidence from opinion
-- students separate observation, inference, claim, and evidence
-- students avoid diagnostic overreach
-- students apply concepts to neutral scenarios
-- students recognize uncertainty and limits
-- students discuss mental health and identity topics with safety and precision
-- students use source material responsibly
-
-This frame is not a generic classroom-engagement model. It belongs to Psychology because it is organized around behaviour, mental processes, psychological science, research reasoning, social influence, development, learning, cognition, personality, mental health, treatment, and applied psychology.
-
-## Safety and Suitability Rules
-
-The Psychology source materials must preserve classroom safety.
-
-Do not require students to:
-
-- disclose trauma
-- disclose diagnoses
-- analyze their own mental health publicly
-- diagnose themselves
-- diagnose peers
-- share family history
-- role-play therapy
-- provide counselling
-- reveal private relationships
-- expose personal identity struggles
-
-Use instead:
-
-- fictional scenarios
-- public examples
-- neutral case studies
-- low-risk reflection
-- concept application
-- source analysis
-- evidence evaluation
-
-Mental health lessons should teach literacy, stigma reduction, support awareness, and careful language. They should not become therapy or self-diagnosis lessons.
-
-## Audience and Visibility Rules
-
-| Artifact type | Student visible? | Teacher visible? | Answer key allowed? | Notes |
-|---|---:|---:|---:|---|
-| Student packet | Yes | No, unless duplicated into teacher guide | No | Keep free of teacher rationale and hidden notes. |
-| Source sheet | Yes | No, unless duplicated into teacher guide | No | Use short, purposeful, cited or traceable source support. |
-| Assessment pack | Yes | No | No | Student version only. |
-| Capstone packet | Yes | No | No | Student-facing synthesis task. |
-| Slide source | Yes | No | No | Low-density, student-facing language. |
-| Teacher binder | No | Yes | Yes, where appropriate | Delivery guide, safety notes, misconceptions, differentiation, answer keys. |
-| Marking guide | No | Yes | Yes | Teacher-only assessment support. |
-| QA bundle | No | Yes / repo | No | Render and maintenance support. |
-
-## Differentiation Register
-
-Use the same task tiers across Psychology materials:
-
-- Supported
-- Proficient
-- Extending
-
-These are task-access tiers, not rubric achievement levels.
-
-Use the same default rubric performance levels where needed:
-
-- Emerging
-- Developing
-- Proficient
-- Extending
-
-Do not confuse differentiation tiers with rubric levels.
-
-## Render and Source Boundary
-
-There are two lanes in the repo:
-
-1. Prebuilt asset lane: preserves and validates existing uploaded Psychology assets.
-2. Engine-native lane: converts lesson content into engine-readable package JSON and renders through the classroom engine.
-
-A file is not considered engine-rendered just because it exists as a DOCX, PDF, PPTX, screenshot, or uploaded archive asset. It becomes engine-native only when the correct package JSON/source exists in the repo and renders successfully through the defined render workflow.
-
-## Current Source Gaps to Track
-
-The source inventory identifies several course-level files as missing or still needing normalization:
-
-- `source/psychology_11_12/course/course_map.md`
-- `source/psychology_11_12/course/course_overview.md`
-- `source/psychology_11_12/course/vocabulary_bank.md`
-- `source/psychology_11_12/course/assessment_spine.md`
-- `source/psychology_11_12/course/source_register.md` now created by this file
-
-Cycle A also identifies these normalization/render gaps:
-
-- normalized teacher binder Markdown not yet created
-- normalized student packet Markdown not yet created
-- assessment pack and marking guide need render proof / artifact rendering follow-through
-- source sheet needs render proof
-- capstone packet needs render proof
-- slide source needs artifact rendering and visual review
-
-## Source Register Maintenance Rules
-
-When adding future sources to this register:
-
-1. Add only material explicitly connected to Psychology 11/12.
-2. Keep OpenStax Psychology 2e as the core spine unless a new approved source is intentionally added.
-3. Mark extension sources clearly, especially for forensic/legal psychology and media/technology/persuasion topics.
-4. Separate student-facing, teacher-facing, and QA-facing materials.
-5. Do not place answer keys, marking notes, or teacher rationale in student-facing artifacts.
-6. Preserve the no-diagnosis, no-therapy, no-forced-disclosure boundary.
-7. Treat Cycles E-F as mapped future cycles unless active source files are present.
-8. Treat generated proof files as evidence of rendering, not as source curriculum by themselves.
-
-## Final Scope Statement
-
-Confirmed: this register is only applicable to Psychology 11/12.
-
-It should remain inside `source/psychology_11_12/course/` and should not be imported as a general source register for other course families.
+Never place secure assessment items/answers, controlled-reveal content, student names/data, accommodation records, credentials, or copyrighted source binaries in this public register. GitHub is a metadata/validation surface; the canonical classroom package remains in the approved local/school storage route.
