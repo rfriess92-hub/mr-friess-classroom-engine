@@ -27,7 +27,7 @@ permissions:
 
 jobs:
   nightly-agent:
-    name: Select task and report repo status
+    name: Select task and prepare daily intake
     runs-on: ubuntu-latest
     env:
       AGENT_OUTPUT_DIR: agent-output
@@ -72,7 +72,10 @@ jobs:
           AGENT_TEST_STATUS: ${{ steps.node_tests.outcome }}
         run: node scripts/agent/write-run-report.mjs
 
-      - name: Upload agent report
+      - name: Prepare daily intake artifact
+        run: cp agent-output/nightly-agent-report.md agent-output/daily-intake-brief.md
+
+      - name: Upload agent report and daily intake brief
         uses: actions/upload-artifact@v4
         with:
           name: nightly-agent-report
