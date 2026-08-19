@@ -4,6 +4,11 @@ export const LAYOUT_DENSITY_RULES = {
     maxHeaderHeightRatio: 0.14,
     minWritableAreaRatio: 0.35,
   },
+  SP_CONTINUATION_NOTES: {
+    maxDecorativeIcons: 2,
+    maxHeaderHeightRatio: 0.12,
+    minWritableAreaRatio: 0.35,
+  },
   SP_ACTIVITY_PLUS_REFERENCE: {
     maxDecorativeIcons: 3,
     maxHeaderHeightRatio: 0.12,
